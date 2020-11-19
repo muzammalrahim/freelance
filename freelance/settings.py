@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'payment.apps.PaymentConfig',
     'report.apps.ReportConfig',
     'support.apps.SupportConfig',
-    'drf_yasg'
+    'drf_yasg',
+    'rest_registration'
 ]
 
 MIDDLEWARE = [
@@ -161,4 +162,10 @@ SWAGGER_SETTINGS = {
     },
     'USE_SESSION_AUTH': False,
     
+}
+
+REST_REGISTRATION = {
+    'REGISTER_VERIFICATION_ENABLED': False,
+    'REGISTER_EMAIL_VERIFICATION_ENABLED': False,
+    'RESET_PASSWORD_VERIFICATION_ENABLED': False,
 }
