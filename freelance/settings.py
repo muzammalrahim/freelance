@@ -45,13 +45,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'account.apps.AccountConfig',
+    'acount.apps.AcountConfig',
     'job.apps.JobConfig',
     'payment.apps.PaymentConfig',
     'report.apps.ReportConfig',
     'support.apps.SupportConfig',
     'drf_yasg',
-    'rest_registration'
+    'rest_registration',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.linkedin',
 ]
 
 MIDDLEWARE = [
@@ -168,4 +177,6 @@ REST_REGISTRATION = {
     'REGISTER_VERIFICATION_ENABLED': False,
     'REGISTER_EMAIL_VERIFICATION_ENABLED': False,
     'RESET_PASSWORD_VERIFICATION_ENABLED': False,
+    # 'USER_PUBLIC_FIELDS': ('first_name', 'last_name', 'email',),
+    'REGISTER_SERIALIZER_CLASS':'acount.serializers.CustomRegisterUserSerializer'
 }
