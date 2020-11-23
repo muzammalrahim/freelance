@@ -3,9 +3,14 @@ from django.contrib.auth import get_user_model
 from rest_registration.utils.users import (
     get_user_field_names
 )
+from acount.models import Profile, City
 from rest_framework import serializers
-from acount.models import Profile
 
+
+class CitySerilaizers(serializers.ModelSerializer):
+    class Meta:
+        model = City
+        fields = '__all__'
 
 class CustomRegisterUserSerializer(DefaultRegisterUserSerializer):
     account_type = serializers.CharField(source='profile.account_type')

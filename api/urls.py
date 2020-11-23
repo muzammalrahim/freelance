@@ -4,7 +4,7 @@ from django.conf.urls import url
 from rest_framework.routers import DefaultRouter
 from acount import views as account_views
 
-from account.views import CityViewSet
+from acount.views import CityViewSet
 from job.views import JobViewSet, AttachmentViewSet, OfferViewSet, InviteViewSet, ApplicationViewSet, ContractViewSet, \
 	WorkViewSet, FeedbackViewSet, DisputViewSet
 
