@@ -15,7 +15,7 @@ class Skill(models.Model):
 	updated_at = models.DateTimeField(auto_now=True)
 
 
-class Catgory(models.Model):
+class Category(models.Model):
 	name = models.CharField(max_length=100)
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
@@ -46,7 +46,7 @@ class Profile(models.Model):
 	)
 	language = models.CharField(choices=LANG_CHOICES, max_length=30, default='arabic')
 	skills = models.ManyToManyField(Skill)
-	category = models.ForeignKey(Catgory, on_delete=models.SET_NULL, blank=True, null=True)
+	category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
 	city = models.ForeignKey(City, on_delete=models.SET_NULL, blank=True, null=True)
 	street = models.CharField(max_length=140)
 	zip_code = models.CharField(max_length=14, blank=True, null=True)
@@ -62,4 +62,4 @@ class Profile(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
 
-		
+
