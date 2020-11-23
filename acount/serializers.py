@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from rest_registration.utils.users import (
     get_user_field_names
 )
-from acount.models import Profile, City
+from acount.models import Profile, City, Skill, Category
 from rest_framework import serializers
 
 
@@ -11,6 +11,25 @@ class CitySerilaizers(serializers.ModelSerializer):
     class Meta:
         model = City
         fields = '__all__'
+
+
+class SkillSerilaizers(serializers.ModelSerializer):
+    class Meta:
+        model = Skill
+        fields = '__all__'
+
+
+class CategorySerilaizers(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
+
+
+class ProfileSerilaizers(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = '__all__'
+
 
 class CustomRegisterUserSerializer(DefaultRegisterUserSerializer):
     account_type = serializers.CharField(source='profile.account_type')
@@ -25,7 +44,6 @@ class CustomRegisterUserSerializer(DefaultRegisterUserSerializer):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.Meta.fields = self.Meta.fields + ('account_type',)
-
 
     def create(self, validated_data):
         profile = validated_data.pop('profile')
