@@ -14,7 +14,7 @@ class Attachment(models.Model):
 
 class Job(models.Model):
 	title = models.CharField(max_length=255)
-	category = models.ForeignKey("account.Catgory", on_delete=models.SET_NULL, blank=True, null=True)
+	category = models.ForeignKey("acount.Catgory", on_delete=models.SET_NULL, blank=True, null=True)
 
 	STATUS_CHOICES = (
 		('pending', 'Pending'),

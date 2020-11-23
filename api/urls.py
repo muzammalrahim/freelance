@@ -1,6 +1,8 @@
 from rest_framework.urlpatterns import format_suffix_patterns
 from django.urls import path, include
+from django.conf.urls import url
 from rest_framework.routers import DefaultRouter
+from acount import views as account_views
 
 from account.views import CityViewSet
 from job.views import JobViewSet, AttachmentViewSet, OfferViewSet, InviteViewSet, ApplicationViewSet, ContractViewSet, \
@@ -54,6 +56,7 @@ city_list = CityViewSet.as_view({
 # The API URLs are now determined automatically by the router.
 urlpatterns = format_suffix_patterns([
 	path('accounts/', include('rest_registration.api.urls')),
+    url(r'^rest-auth/linkedin/$', account_views.LinkedinLogin.as_view(), name='linkedin_login'),
     path('job', job_list),
 	path('attachment', attachment_list),
 	path('offer', offer_list),
