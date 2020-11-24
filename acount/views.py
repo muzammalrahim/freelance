@@ -5,7 +5,8 @@ from allauth.socialaccount.providers.twitter.views import TwitterOAuthAdapter
 from rest_auth.registration.views import SocialLoginView
 # from rest_auth.social_serializers import LinkedinLoginSerializer
 from acount.models import City, Skill, Category, Profile
-from acount.serializers import CitySerilaizers, SkillSerilaizers, CategorySerilaizers, ProfileSerilaizers
+from acount.serializers import CitySerilaizers, SkillSerilaizers, \
+    CategorySerilaizers, ProfileSerilaizers
 
 
 class LinkedinLogin(SocialLoginView):

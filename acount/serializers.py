@@ -1,4 +1,5 @@
-from rest_registration.api.serializers import DefaultRegisterUserSerializer, MetaObj
+from rest_registration.api.serializers import DefaultRegisterUserSerializer, \
+    MetaObj
 from django.contrib.auth import get_user_model
 from rest_registration.utils.users import (
     get_user_field_names
