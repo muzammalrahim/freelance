@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from job.models import Attachment, Job, Offer, Invite, Application, Contract, \
-    Work, Feedback, Dispute
+    Work, Feedback, Dispute, JobReview, FeedbackReview, WorkChanges
 
 
 class AttachmentSerializer(serializers.ModelSerializer):
@@ -13,6 +13,12 @@ class AttachmentSerializer(serializers.ModelSerializer):
 class JobSerializer(serializers.ModelSerializer):
     class Meta:
         model = Job
+        fields = '__all__'
+
+
+class JobReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = JobReview
         fields = '__all__'
 
 
@@ -48,9 +54,21 @@ class WorkSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class WorkChangesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WorkChanges
+        fields = '__all__'
+
+
 class FeedbackSerializer(serializers.ModelSerializer):
     class Meta:
         model = Feedback
+        fields = '__all__'
+
+
+class FeedbackReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FeedbackReview
         fields = '__all__'
 
 

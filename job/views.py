@@ -1,11 +1,12 @@
 from rest_framework import viewsets
 
 from job.models import Job, Attachment, Offer, Invite, Application, Contract, \
-    Work, Feedback, Dispute
+    Work, Feedback, Dispute, JobReview, FeedbackReview, WorkChanges
 from job.serializers import JobSerializer, AttachmentSerializer, \
     OfferSerializer, InviteSerializer, \
     ApplicationSerializer, ContractSerializer, WorkSerializer, \
-    FeedbackSerializer, DisputSerializer
+    FeedbackSerializer, DisputSerializer, FeedbackReviewSerializer, \
+    JobReviewSerializer, WorkChangesSerializer
 
 
 class JobViewSet(viewsets.ModelViewSet):
@@ -14,6 +15,11 @@ class JobViewSet(viewsets.ModelViewSet):
     """
     queryset = Job.objects.all()
     serializer_class = JobSerializer
+
+
+class JobReviewViewSet(viewsets.ModelViewSet):
+    queryset = JobReview.objects.all()
+    serializer_class = JobReviewSerializer
 
 
 class AttachmentViewSet(viewsets.ModelViewSet):
@@ -46,9 +52,19 @@ class WorkViewSet(viewsets.ModelViewSet):
     serializer_class = WorkSerializer
 
 
+class WorkChangesViewSet(viewsets.ModelViewSet):
+    queryset = WorkChanges.objects.all()
+    serializer_class = WorkChangesSerializer
+
+
 class FeedbackViewSet(viewsets.ModelViewSet):
     queryset = Feedback.objects.all()
     serializer_class = FeedbackSerializer
+
+
+class FeedbackReviewViewSet(viewsets.ModelViewSet):
+    queryset = FeedbackReview.objects.all()
+    serializer_class = FeedbackReviewSerializer
 
 
 class DisputViewSet(viewsets.ModelViewSet):
