@@ -176,11 +176,31 @@ SWAGGER_SETTINGS = {
 REST_REGISTRATION = {
     'REGISTER_VERIFICATION_ENABLED': False,
     'REGISTER_EMAIL_VERIFICATION_ENABLED': False,
-    'RESET_PASSWORD_VERIFICATION_ENABLED': False,
+    'RESET_PASSWORD_VERIFICATION_ENABLED': True,
+    'REGISTER_VERIFICATION_URL': '{}/verify-user/'.format(SITE_URL),
+    'RESET_PASSWORD_VERIFICATION_URL': '{}/reset-password/'.format(SITE_URL),
+    'REGISTER_EMAIL_VERIFICATION_URL': '{}/verify-email/'.format(SITE_URL),
+    'VERIFICATION_FROM_EMAIL': 'arslanmehmood051@gmail.com',
+    'USER_LOGIN_FIELDS':('email','username'),
+
     # 'USER_PUBLIC_FIELDS': ('first_name', 'last_name', 'email',),
     'REGISTER_SERIALIZER_CLASS':'acount.serializers.CustomRegisterUserSerializer'
 }
 
+
 FREELANCER_USER = 'Freelancer'
 CLIENT_USER = 'Client'
 ADMIN_USER = 'Admin'
+
+SITE_ID = 1
+
+EMAIL_BACKEND = env('EMAIL_BACKEND')
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+
+AUTH_USER_MODEL='acount.User'
+
+AUTHENTICATION_BACKENDS = ('acount.backends.EmailBackend',)
