@@ -1,5 +1,6 @@
+from rest_framework.response import Response
 from rest_framework import viewsets
-
+from django.db.models import Q
 from job.models import Job, Attachment, Offer, Invite, Application, Contract, \
     Work, Feedback, Dispute, JobReview, FeedbackReview, WorkChanges
 from job.serializers import JobSerializer, AttachmentSerializer, \
@@ -8,6 +9,8 @@ from job.serializers import JobSerializer, AttachmentSerializer, \
     FeedbackSerializer, DisputSerializer, FeedbackReviewSerializer, \
     JobReviewSerializer, WorkChangesSerializer
 
+from default.utils import isRoleFreelancer, isRoleClient
+
 
 class JobViewSet(viewsets.ModelViewSet):
     """
@@ -15,6 +18,30 @@ class JobViewSet(viewsets.ModelViewSet):
     """
     queryset = Job.objects.all()
     serializer_class = JobSerializer
+
+    # def get_queryset(self):
+    #     user = self.request.user
+    #     return self.queryset.filter(client=user)
+
+    # def list(self, request, *args, **kwargs):
+    #     user = request.user
+    #     print('user', user)
+    #     queryset = self.queryset
+    #     # queryset = queryset.filter(client=user)
+    #     # if user is not None:
+    #     #     queryset = queryset.exclude(name='client')
+    #     # queryset = self.filter_queryset(queryset)
+    #     serializer = self.get_serializer(queryset)
+    #     return Response(serializer.data)
+
+    def list(self, request, *args, **kwargs):
+        print('user', request.user.id)
+        queryset = self.filter_queryset(self.get_queryset())
+        queryset = queryset.filter(client=request.user)
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
+    #     if self.request.user.is_superuser:
 
 
 class JobReviewViewSet(viewsets.ModelViewSet):
@@ -45,6 +72,17 @@ class ApplicationViewSet(viewsets.ModelViewSet):
 class ContractViewSet(viewsets.ModelViewSet):
     queryset = Contract.objects.all()
     serializer_class = ContractSerializer
+
+    def list(self, request, *args, **kwargs):
+        user = request.user
+        queryset = self.filter_queryset(self.get_queryset())
+        if isRoleFreelancer(request.user):
+            queryset = queryset.filter(freelancer=user)
+        elif isRoleClient(request.user):
+            queryset = queryset.filter(client=user)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
 
 
 class WorkViewSet(viewsets.ModelViewSet):

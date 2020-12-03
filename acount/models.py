@@ -42,12 +42,6 @@ class Category(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
-    ACCOUNT_TYPE_CHOICES = (
-        ('work', 'Work'),
-        ('hire', 'Hire'),
-    )
-    account_type = models.CharField(choices=ACCOUNT_TYPE_CHOICES, max_length=4)
     account_title = models.CharField(max_length=70)
     description = models.TextField(max_length=5000)
 

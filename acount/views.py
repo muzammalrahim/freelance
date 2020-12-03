@@ -1,6 +1,7 @@
 from rest_framework import viewsets
 
 # Create your views here.
+from rest_framework.response import Response
 from allauth.socialaccount.providers.twitter.views import TwitterOAuthAdapter
 from rest_auth.registration.views import SocialLoginView
 # from rest_auth.social_serializers import LinkedinLoginSerializer

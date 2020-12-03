@@ -153,8 +153,8 @@ REST_FRAMEWORK = {
         # 'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
-    # 'DEFAULT_PERMISSION_CLASSES': (
-    #     'rest_framework.permissions.IsAuthenticated', ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated', ),
     'DEFAULT_PARSER_CLASSES': [
         'rest_framework.parsers.FormParser',
         'rest_framework.parsers.MultiPartParser',
@@ -180,3 +180,7 @@ REST_REGISTRATION = {
     # 'USER_PUBLIC_FIELDS': ('first_name', 'last_name', 'email',),
     'REGISTER_SERIALIZER_CLASS':'acount.serializers.CustomRegisterUserSerializer'
 }
+
+FREELANCER_USER = 'Freelancer'
+CLIENT_USER = 'Client'
+ADMIN_USER = 'Admin'
