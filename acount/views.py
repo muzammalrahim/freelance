@@ -20,16 +20,21 @@ class CityViewSet(viewsets.ModelViewSet):
     serializer_class = CitySerilaizers
 
 
+
 class SkillViewSet(viewsets.ModelViewSet):
     queryset = Skill.objects.all()
     serializer_class = SkillSerilaizers
+    search_fields = ['^name']
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerilaizers
+    search_fields = ['^name']
 
 
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerilaizers
+    search_fields = ['user__first_name', 'user__last_name', 'user___email', 'user__username', 'account_title']
+    filterset_fields = ['experience_level', 'zip_code', 'skills__name', 'category__name']

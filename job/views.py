@@ -45,7 +45,7 @@ class JobViewSet(viewsets.ModelViewSet):
 
 
 class JobReviewViewSet(viewsets.ModelViewSet):
-    queryset = JobReview.objects.all()
+    queryset = JobReview.objects.filter(deleted_at=None)
     serializer_class = JobReviewSerializer
 
 
