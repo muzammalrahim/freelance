@@ -20,7 +20,6 @@ class CityViewSet(viewsets.ModelViewSet):
     serializer_class = CitySerilaizers
 
 
-
 class SkillViewSet(viewsets.ModelViewSet):
     queryset = Skill.objects.all()
     serializer_class = SkillSerilaizers

@@ -35,7 +35,6 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS: List[str] = env('ALLOWED_HOSTS')
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -94,7 +93,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'freelance.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -107,7 +105,6 @@ DATABASES = {
         'HOST': env('DB_HOST'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -127,7 +124,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -140,7 +136,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -192,7 +187,6 @@ REST_REGISTRATION = {
     # 'USER_PUBLIC_FIELDS': ('first_name', 'last_name', 'email',),
     'REGISTER_SERIALIZER_CLASS':'acount.serializers.CustomRegisterUserSerializer'
 }
-
 
 FREELANCER_USER = 'Freelancer'
 CLIENT_USER = 'Client'

@@ -14,6 +14,7 @@ def isRoleClient(obj):
     else:
         return False
 
+
 def isRoleAdmin(obj):
     if obj and obj.groups.filter(name=settings.ADMIN_USER).exists():
         return True

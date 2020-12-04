@@ -42,7 +42,6 @@ class ProfileSerilaizers(serializers.ModelSerializer):
 
 
 class CustomRegisterUserSerializer(DefaultRegisterUserSerializer):
-
     ACCOUNT_TYPE_CHOICES = (
         ('work', 'Work'),
         ('hire', 'Hire'),
@@ -67,7 +66,9 @@ class CustomRegisterUserSerializer(DefaultRegisterUserSerializer):
 
         if account_type == 'work':
             user.groups.add(Group.objects.get(name=settings.FREELANCER_USER))
-        else:
+        elif account_type == 'hire':
             user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
+        else:
+            user.groups.add(Group.objects.get(name=settings.ADMIN_USER))
 
         return user
