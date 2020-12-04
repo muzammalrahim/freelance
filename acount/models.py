@@ -137,7 +137,7 @@ class FreelancerProfile(Profile):
 
 
 class Question(models.Model):
-    user = models.ForeignKey(ClientProfile, on_delete=models.CASCADE)
+    client = models.ForeignKey(ClientProfile, on_delete=models.CASCADE)
     description = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

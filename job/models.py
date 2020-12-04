@@ -2,7 +2,7 @@ from django.db import models
 from acount.models import User
 
 # Create your models here.
-from acount.models import Skill, Category
+from acount.models import Skill, Category, ClientProfile, FreelancerProfile
 
 
 class Attachment(models.Model):
@@ -54,7 +54,7 @@ class Job(models.Model):
         ('rejected', 'Rejected'),
     )
     status = models.CharField(STATUS_CHOICES, max_length=10)
-    client = models.ForeignKey(User, on_delete=models.CASCADE)
+    client = models.ForeignKey(ClientProfile, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
@@ -98,9 +98,9 @@ class Offer(models.Model):
     due_date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     budget = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
-    client = models.ForeignKey(User, on_delete=models.CASCADE,
+    client = models.ForeignKey(ClientProfile, on_delete=models.CASCADE,
                                related_name='client_offer')
-    freelancer = models.ForeignKey(User, on_delete=models.CASCADE)
+    freelancer = models.ForeignKey(FreelancerProfile, on_delete=models.CASCADE)
     STATUS_CHOICES = (
         ('pending', 'Pending'),
         ('approved', 'Approved'),
@@ -121,9 +121,9 @@ class Offer(models.Model):
 class Invite(models.Model):
     cover_letter = models.TextField(max_length=5000)
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
-    client = models.ForeignKey(User, on_delete=models.CASCADE,
+    client = models.ForeignKey(ClientProfile, on_delete=models.CASCADE,
                                related_name='client_invite')
-    freelancer = models.ForeignKey(User, on_delete=models.CASCADE)
+    freelancer = models.ForeignKey(FreelancerProfile, on_delete=models.CASCADE)
     description = models.TextField(max_length=5000)
 
     STATUS_CHOICES = (
@@ -152,10 +152,10 @@ class Invite(models.Model):
 
 class Application(models.Model):
     budget = models.DecimalField(max_digits=14, decimal_places=2)
-    freelancer = models.ForeignKey(User, on_delete=models.CASCADE)
+    freelancer = models.ForeignKey(FreelancerProfile, on_delete=models.CASCADE)
     job = models.ForeignKey(Job, on_delete=models.SET_NULL, blank=True,
                             null=True)
-    client = models.ForeignKey(User, on_delete=models.SET_NULL,
+    client = models.ForeignKey(ClientProfile, on_delete=models.SET_NULL,
                                related_name='client_application', blank=True,
                                null=True)
     description = models.TextField(max_length=500)
@@ -184,10 +184,10 @@ class Application(models.Model):
 
 
 class Contract(models.Model):
-    freelancer = models.ForeignKey(User, on_delete=models.CASCADE)
+    freelancer = models.ForeignKey(FreelancerProfile, on_delete=models.CASCADE)
     job = models.ForeignKey(Job, on_delete=models.SET_NULL, blank=True,
                             null=True)
-    client = models.ForeignKey(User, on_delete=models.SET_NULL,
+    client = models.ForeignKey(ClientProfile, on_delete=models.SET_NULL,
                                related_name='client_contract', blank=True,
                                null=True)
 
@@ -211,11 +211,11 @@ class Contract(models.Model):
 
 
 class Work(models.Model):
-    freelancer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True,
+    freelancer = models.ForeignKey(FreelancerProfile, on_delete=models.SET_NULL, blank=True,
                                    null=True)
     job = models.ForeignKey(Job, on_delete=models.SET_NULL, blank=True,
                             null=True)
-    client = models.ForeignKey(User, on_delete=models.SET_NULL,
+    client = models.ForeignKey(ClientProfile, on_delete=models.SET_NULL,
                                related_name='client_work', blank=True,
                                null=True)
     contract = models.ForeignKey(Contract, on_delete=models.SET_NULL,
@@ -235,12 +235,12 @@ class Work(models.Model):
 class WorkChanges(models.Model):
     work = models.ForeignKey(Work, on_delete=models.SET_NULL, blank=True,
                              null=True)
-    freelancer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True,
+    freelancer = models.ForeignKey(FreelancerProfile, on_delete=models.SET_NULL, blank=True,
                                    null=True,
                                    related_name='freelance_workchanges')
     job = models.ForeignKey(Job, on_delete=models.SET_NULL, blank=True,
                             null=True, related_name='job_workchanges')
-    client = models.ForeignKey(User, on_delete=models.SET_NULL,
+    client = models.ForeignKey(ClientProfile, on_delete=models.SET_NULL,
                                related_name='client_workchanges', blank=True,
                                null=True)
     contract = models.ForeignKey(Contract, on_delete=models.SET_NULL,
@@ -258,7 +258,7 @@ class WorkChanges(models.Model):
 
 
 class Feedback(models.Model):
-    freelancer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True,
+    freelancer = models.ForeignKey(FreelancerProfile, on_delete=models.SET_NULL, blank=True,
                                    null=True)
     job = models.ForeignKey(Job, on_delete=models.SET_NULL, blank=True,
                             null=True)
@@ -267,7 +267,7 @@ class Feedback(models.Model):
         ('client', 'Client'),
     )
     type = models.CharField(TYPE_CHOICES, max_length=50, blank=True)
-    client = models.ForeignKey(User, on_delete=models.SET_NULL,
+    client = models.ForeignKey(ClientProfile, on_delete=models.SET_NULL,
                                related_name='client_feedback', blank=True,
                                null=True)
     contract = models.ForeignKey(Contract, on_delete=models.SET_NULL,
@@ -315,11 +315,11 @@ class FeedbackReview(models.Model):
 
 
 class Dispute(models.Model):
-    freelancer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True,
+    freelancer = models.ForeignKey(FreelancerProfile, on_delete=models.SET_NULL, blank=True,
                                    null=True)
     job = models.ForeignKey(Job, on_delete=models.SET_NULL, blank=True,
                             null=True)
-    client = models.ForeignKey(User, on_delete=models.SET_NULL,
+    client = models.ForeignKey(ClientProfile, on_delete=models.SET_NULL,
                                related_name='client_dispute', blank=True,
                                null=True)
     DISPUTE_BY_CHOICES = (

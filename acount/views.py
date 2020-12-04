@@ -35,4 +35,4 @@ class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerilaizers
     search_fields = ['user__first_name', 'user__last_name', 'user___email', 'user__username', 'account_title']
-    filterset_fields = ['experience_level', 'zip_code', 'skills__name', 'category__name']
+    filterset_fields = ['experience_level', 'zip_code', 'skills__name']
