@@ -9,7 +9,6 @@ from acount.models import City, Skill, Category, Profile
 from acount.serializers import CitySerilaizers, SkillSerilaizers, \
     CategorySerilaizers, ProfileSerilaizers
 
-
 class LinkedinLogin(SocialLoginView):
     # serializer_class = LinkedinLoginSerializer
     adapter_class = LinkedInOAuthAdapter
