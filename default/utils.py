@@ -1,6 +1,7 @@
 from django.db.models import Q
 from django.conf import settings
 
+
 def isRoleFreelancer(obj):
     if obj and obj.groups.filter(name=settings.FREELANCER_USER).exists():
         return True
@@ -14,7 +15,8 @@ def isRoleClient(obj):
     else:
         return False
 
-def isRoleClient(obj):
+
+def isRoleAdmin(obj):
     if obj and obj.groups.filter(name=settings.ADMIN_USER).exists():
         return True
     else:

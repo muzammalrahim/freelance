@@ -19,29 +19,20 @@ class JobViewSet(viewsets.ModelViewSet):
     queryset = Job.objects.all()
     serializer_class = JobSerializer
 
-    # def get_queryset(self):
-    #     user = self.request.user
-    #     return self.queryset.filter(client=user)
-
-    # def list(self, request, *args, **kwargs):
-    #     user = request.user
-    #     print('user', user)
-    #     queryset = self.queryset
-    #     # queryset = queryset.filter(client=user)
-    #     # if user is not None:
-    #     #     queryset = queryset.exclude(name='client')
-    #     # queryset = self.filter_queryset(queryset)
-    #     serializer = self.get_serializer(queryset)
-    #     return Response(serializer.data)
-
     def list(self, request, *args, **kwargs):
-        print('user', request.user.id)
+        user = request.user.id
+        print(user)
         queryset = self.filter_queryset(self.get_queryset())
-        queryset = queryset.filter(client=request.user)
+        print(queryset)
+        if isRoleClient(request.user):
+            print('hello')
+            queryset = queryset.filter(client=user)
+            print('queryset', queryset)
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
-    #     if self.request.user.is_superuser:
+
+#     if self.request.user.is_superuser:
 
 
 class JobReviewViewSet(viewsets.ModelViewSet):
@@ -68,6 +59,23 @@ class ApplicationViewSet(viewsets.ModelViewSet):
     queryset = Application.objects.all()
     serializer_class = ApplicationSerializer
 
+    def list(self, request, *args, **kwargs):
+        user = request.user
+        queryset = self.filter_queryset(self.get_queryset())
+        if isRoleFreelancer(user):
+            queryset = queryset.filter(freelancer=user)
+        elif isRoleClient(user):
+            print('I am client?')
+            print(' I am ', user.id)
+            job_id = request.GET.get('job_id', None)
+            if job_id is not None and Job.objects.filter(client=user,
+                                                         id=job_id).exists():
+                queryset = queryset.filter(job_id=job_id)
+            else:
+                queryset = []
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
 
 class ContractViewSet(viewsets.ModelViewSet):
     queryset = Contract.objects.all()
@@ -75,11 +83,15 @@ class ContractViewSet(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         user = request.user
+        print(user)
         queryset = self.filter_queryset(self.get_queryset())
+        print(queryset)
         if isRoleFreelancer(request.user):
             queryset = queryset.filter(freelancer=user)
+            print(queryset)
         elif isRoleClient(request.user):
             queryset = queryset.filter(client=user)
+            print('queryset', queryset)
 
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)

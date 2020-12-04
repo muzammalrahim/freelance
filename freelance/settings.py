@@ -35,9 +35,9 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS: List[str] = env('ALLOWED_HOSTS')
-
 # Application definition
 
+SITE_ID = 1
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -93,7 +93,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'freelance.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -106,7 +105,6 @@ DATABASES = {
         'HOST': env('DB_HOST'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -126,7 +124,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -140,7 +137,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
@@ -153,15 +149,17 @@ REST_FRAMEWORK = {
         # 'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
+    # 'DEFAULT_FILTER_BACKENDS': (
+    #     'rest_framework_datatables.filters.DatatablesFilterBackend',
+    # ),
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated', ),
-    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',),
+    'DEFAULT_PARSER_CLASSES': (
         'rest_framework.parsers.FormParser',
         'rest_framework.parsers.MultiPartParser',
         'rest_framework.parsers.JSONParser',
-    ]
+    )
 }
-
 
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
@@ -170,7 +168,7 @@ SWAGGER_SETTINGS = {
         }
     },
     'USE_SESSION_AUTH': False,
-    
+
 }
 
 REST_REGISTRATION = {
@@ -178,7 +176,7 @@ REST_REGISTRATION = {
     'REGISTER_EMAIL_VERIFICATION_ENABLED': False,
     'RESET_PASSWORD_VERIFICATION_ENABLED': False,
     # 'USER_PUBLIC_FIELDS': ('first_name', 'last_name', 'email',),
-    'REGISTER_SERIALIZER_CLASS':'acount.serializers.CustomRegisterUserSerializer'
+    'REGISTER_SERIALIZER_CLASS': 'acount.serializers.CustomRegisterUserSerializer'
 }
 
 FREELANCER_USER = 'Freelancer'
