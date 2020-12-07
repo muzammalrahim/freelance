@@ -5,9 +5,9 @@ from rest_framework.response import Response
 from allauth.socialaccount.providers.linkedin.views import LinkedInOAuthAdapter
 from rest_auth.registration.views import SocialLoginView
 # from rest_auth.social_serializers import LinkedinLoginSerializer
-from acount.models import City, Skill, Category, Profile
+from acount.models import City, Skill, Speciality, Category, Profile, ClientProfile, FreelancerProfile, Question
 from acount.serializers import CitySerilaizers, SkillSerilaizers, \
-    CategorySerilaizers, ProfileSerilaizers
+    CategorySerilaizers, ProfileSerilaizers, SpecialitySerilaizers, QuestionSerilaizers, ClientProfileSerilaizers, FreelancerProfileSerilaizers
 
 
 class LinkedinLogin(SocialLoginView):
@@ -33,9 +33,36 @@ class CategoryViewSet(viewsets.ModelViewSet):
     search_fields = ['^name']
 
 
+class QuestionViewSet(viewsets.ModelViewSet):
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerilaizers
+    search_fields = ['description']
+
+class SpecialityViewSet(viewsets.ModelViewSet):
+    queryset = Speciality.objects.all()
+    serializer_class = SpecialitySerilaizers
+    search_fields = ['name']
+
+
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerilaizers
+    search_fields = ['user__first_name', 'user__last_name', 'user___email',
+                     'user__username', 'account_title']
+    filterset_fields = ['experience_level', 'zip_code', 'skills__name']
+
+
+class ClientProfileViewSet(viewsets.ModelViewSet):
+    queryset = ClientProfile.objects.all()
+    serializer_class = ClientProfileSerilaizers
+    search_fields = ['user__first_name', 'user__last_name', 'user___email',
+                     'user__username', 'account_title']
+    filterset_fields = ['experience_level', 'zip_code', 'skills__name']
+
+
+class FreelancerProfileViewSet(viewsets.ModelViewSet):
+    queryset = FreelancerProfile.objects.all()
+    serializer_class = FreelancerProfileSerilaizers
     search_fields = ['user__first_name', 'user__last_name', 'user___email',
                      'user__username', 'account_title']
     filterset_fields = ['experience_level', 'zip_code', 'skills__name']

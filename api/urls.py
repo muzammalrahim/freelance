@@ -9,11 +9,19 @@ from job import views as job_view
 
 
 router = DefaultRouter()
+# account app 
 router.register(r'city', account_views.CityViewSet)
 router.register(r'skill', account_views.SkillViewSet)
 router.register(r'profile', account_views.ProfileViewSet)
+router.register(r'clientprofile', account_views.ClientProfileViewSet)
+router.register(r'frelancerprofile', account_views.FreelancerProfileViewSet)
+router.register(r'profile', account_views.ProfileViewSet)
 router.register(r'category', account_views.CategoryViewSet)
+router.register(r'question', account_views.QuestionViewSet)
+router.register(r'speciality', account_views.SpecialityViewSet)
 
+
+# job app
 router.register(r'jobreview', job_view.JobReviewViewSet)
 router.register(r'feedbackreview', job_view.FeedbackReviewViewSet)
 router.register(r'workchanges', job_view.WorkChangesViewSet)

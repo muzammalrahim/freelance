@@ -7,11 +7,9 @@ from rest_registration.utils.users import (
 import base64
 from django.conf import settings
 
-from acount.models import Profile, City, Skill, Category
+from acount.models import Profile, City, Skill, Category, Question, FreelancerProfile, ClientProfile, Speciality
 from rest_framework import serializers
 from django.contrib.auth.models import Group
-
-from acount.models import FreelancerProfile, ClientProfile
 
 
 class CitySerilaizers(serializers.ModelSerializer):
@@ -40,6 +38,30 @@ class ProfileSerilaizers(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
+        fields = '__all__'
+
+
+class ClientProfileSerilaizers(serializers.ModelSerializer):
+    class Meta:
+        model = ClientProfile
+        fields = '__all__'
+
+
+class FreelancerProfileSerilaizers(serializers.ModelSerializer):
+    class Meta:
+        model = FreelancerProfile
+        fields = '__all__'
+
+
+class QuestionSerilaizers(serializers.ModelSerializer):
+    class Meta:
+        model = Question
+        fields = '__all__'
+
+
+class SpecialitySerilaizers(serializers.ModelSerializer):
+    class Meta:
+        model = Speciality
         fields = '__all__'
 
 
