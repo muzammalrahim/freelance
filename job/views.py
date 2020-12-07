@@ -14,6 +14,8 @@ class JobViewSet(viewsets.ModelViewSet):
     queryset = job_view.Job.objects.filter(deleted_at=None)
     serializer_class = job_serializer.JobSerializer
     search_fields = ['title']
+    filterset_fields = ['skills', 'type', 'experience_level', 'budget',
+                        'category']
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
@@ -30,6 +32,8 @@ class JobViewSet(viewsets.ModelViewSet):
 class JobReviewViewSet(viewsets.ModelViewSet):
     queryset = job_view.JobReview.objects.filter(deleted_at=None)
     serializer_class = job_serializer.JobReviewSerializer
+    search_fields = ['job_title']
+    filterset_fields = ['status']
 
     def destroy(self, request, *args, **kwargs):
         resp = safeDelete(self, request, job_view.JobReview)
@@ -44,18 +48,22 @@ class AttachmentViewSet(viewsets.ModelViewSet):
 class OfferViewSet(viewsets.ModelViewSet):
     queryset = job_view.Offer.objects.all()
     serializer_class = job_serializer.OfferSerializer
-    search_fields = ['title', 'category', 'budget', 'job__title']
+    search_fields = ['job__title', 'title']
+    filterset_fields = ['category', 'budget', 'status', 'due_date']
 
 
 class InviteViewSet(viewsets.ModelViewSet):
     queryset = job_view.Invite.objects.all()
     serializer_class = job_serializer.InviteSerializer
+    search_fields = ['cover_letter']
+    filterset_fields = ['status', 'reject_reason']
 
 
 class ApplicationViewSet(viewsets.ModelViewSet):
     queryset = job_view.Application.objects.all()
     serializer_class = job_serializer.ApplicationSerializer
-    search_fields = ['job__title']
+    search_fields = ['job__title', 'description']
+    filterset_fields = ['status', 'budget', ]
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
@@ -77,6 +85,7 @@ class ContractViewSet(viewsets.ModelViewSet):
     queryset = job_view.Contract.objects.all()
     serializer_class = job_serializer.ContractSerializer
     search_fields = ['job__title']
+    filterset_fields = ['start_date', 'project_budget', 'status']
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
@@ -91,6 +100,7 @@ class ContractViewSet(viewsets.ModelViewSet):
 class WorkViewSet(viewsets.ModelViewSet):
     queryset = job_view.Work.objects.all()
     serializer_class = job_serializer.WorkSerializer
+    search_fields = ['job__title']
 
 
 class WorkChangesViewSet(viewsets.ModelViewSet):
@@ -101,13 +111,19 @@ class WorkChangesViewSet(viewsets.ModelViewSet):
 class FeedbackViewSet(viewsets.ModelViewSet):
     queryset = job_view.Feedback.objects.all()
     serializer_class = job_serializer.FeedbackSerializer
+    search_fields = ['job__title', 'description']
+    filterset_fields = ['type', 'rate', 'status']
 
 
 class FeedbackReviewViewSet(viewsets.ModelViewSet):
     queryset = job_view.FeedbackReview.objects.all()
     serializer_class = job_serializer.FeedbackReviewSerializer
+    search_fields = ['type']
 
 
 class DisputViewSet(viewsets.ModelViewSet):
     queryset = job_view.Dispute.objects.all()
     serializer_class = job_serializer.DisputSerializer
+    search_fields = ['job__title']
+    filterset_fields = ['dispute_by']
+
