@@ -4,14 +4,14 @@ from rest_framework import viewsets
 from job import models as job_view
 from job import serializers as job_serializer
 
-from default.utils import isRoleFreelancer, isRoleClient
+from default.utils import isRoleFreelancer, isRoleClient, safeDelete
 
 
 class JobViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list` and `retrieve` actions.
     """
-    queryset = job_view.Job.objects.all()
+    queryset = job_view.Job.objects.filter(deleted_at=None)
     serializer_class = job_serializer.JobSerializer
     search_fields = ['title']
 
@@ -22,10 +22,18 @@ class JobViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
+    def destroy(self, request, *args, **kwargs):
+        resp = safeDelete(self, request, job_view.Job)
+        return resp
+
 
 class JobReviewViewSet(viewsets.ModelViewSet):
     queryset = job_view.JobReview.objects.filter(deleted_at=None)
     serializer_class = job_serializer.JobReviewSerializer
+
+    def destroy(self, request, *args, **kwargs):
+        resp = safeDelete(self, request, job_view.JobReview)
+        return resp
 
 
 class AttachmentViewSet(viewsets.ModelViewSet):

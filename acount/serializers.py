@@ -36,6 +36,14 @@ class ProfileSerilaizers(serializers.ModelSerializer):
     message_bytes = base64.b64decode(base64_bytes)
     message = message_bytes.decode('ascii')
 
+    def update(self, instance, validated_data):
+        instance.updated_by = self.context['request'].user
+        return super().update(instance, validated_data)
+
+    def create(self, validated_data):
+        validated_data['created_by'] = self.context['request'].user
+        return super().update(validated_data)
+
     class Meta:
         model = Profile
         fields = '__all__'

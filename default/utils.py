@@ -20,3 +20,17 @@ def isRoleAdmin(obj):
         return True
     else:
         return False
+
+def safeDelete(self, request, ModelName, field='id'):
+    instance = self.get_object()
+    from datetime import datetime
+    request_data = json.loads(request.body.decode('utf-8'))
+    lookup = "{}__in".format(field)
+    if 'ids' in request_data:
+        ModelName.objects.filter(**{lookup : request_data['ids']}).update(
+            deleted_at=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        return Response(status=HTTP_204_NO_CONTENT)
+    else:
+        instance.deleted_at = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        instance.save()
+        return Response(status=HTTP_204_NO_CONTENT)    

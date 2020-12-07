@@ -13,48 +13,24 @@ class City(models.Model):
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    created_by = models.ForeignKey(User, blank=True, null=True,
-                                   on_delete=models.SET_NULL,
-                                   related_name='created_by_city')
-    updated_by = models.ForeignKey(User, blank=True, null=True,
-                                   on_delete=models.SET_NULL,
-                                   related_name='updated_by_city')
 
 
 class Skill(models.Model):
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    created_by = models.ForeignKey(User, blank=True, null=True,
-                                   on_delete=models.SET_NULL,
-                                   related_name='created_by_skill')
-    updated_by = models.ForeignKey(User, blank=True, null=True,
-                                   on_delete=models.SET_NULL,
-                                   related_name='updated_by_skill')
 
 
 class Speciality(models.Model):
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    created_by = models.ForeignKey(User, blank=True, null=True,
-                                   on_delete=models.SET_NULL,
-                                   related_name='created_by_speciality')
-    updated_by = models.ForeignKey(User, blank=True, null=True,
-                                   on_delete=models.SET_NULL,
-                                   related_name='updated_by_speciality')
 
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    created_by = models.ForeignKey(User, blank=True, null=True,
-                                   on_delete=models.SET_NULL,
-                                   related_name='created_by_category')
-    updated_by = models.ForeignKey(User, blank=True, null=True,
-                                   on_delete=models.SET_NULL,
-                                   related_name='updated_by_category')
 
 
 class Profile(PolymorphicModel):
