@@ -5,10 +5,8 @@ from rest_framework.routers import DefaultRouter
 from acount import views as account_views
 from job import views as job_view
 
-
-
-
 router = DefaultRouter()
+
 # account app 
 router.register(r'city', account_views.CityViewSet)
 router.register(r'skill', account_views.SkillViewSet)
@@ -19,7 +17,6 @@ router.register(r'profile', account_views.ProfileViewSet)
 router.register(r'category', account_views.CategoryViewSet)
 router.register(r'question', account_views.QuestionViewSet)
 router.register(r'speciality', account_views.SpecialityViewSet)
-
 
 # job app
 router.register(r'jobreview', job_view.JobReviewViewSet)
@@ -34,10 +31,6 @@ router.register(r'contract', job_view.ContractViewSet)
 router.register(r'work', job_view.WorkViewSet)
 router.register(r'feedback', job_view.WorkViewSet)
 router.register(r'dispute', job_view.WorkViewSet)
-
-
-
-
 
 # profile_list = ProfileViewSet.as_view({
 #     'get': 'list',
