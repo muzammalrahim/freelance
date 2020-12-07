@@ -9,15 +9,9 @@ class Attachment(models.Model):
     file = models.FileField()
     model = models.CharField(max_length=50)
     model_id = models.IntegerField()
+    type = models.CharField(max_length=30)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    deleted_at = models.DateTimeField(blank=True, null=True)
-    created_by = models.ForeignKey(User, blank=True, null=True,
-                                   on_delete=models.SET_NULL,
-                                   related_name='created_by_attachement')
-    updated_by = models.ForeignKey(User, blank=True, null=True,
-                                   on_delete=models.SET_NULL,
-                                   related_name='updated_by_attachement')
 
 
 class Job(models.Model):
