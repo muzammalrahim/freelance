@@ -11,6 +11,8 @@ from acount.models import Profile, City, Skill, Category
 from rest_framework import serializers
 from django.contrib.auth.models import Group
 
+from acount.models import FreelancerProfile, ClientProfile
+
 
 class CitySerilaizers(serializers.ModelSerializer):
     class Meta:
@@ -62,11 +64,13 @@ class CustomRegisterUserSerializer(DefaultRegisterUserSerializer):
     def create(self, validated_data):
         account_type = validated_data.pop('account_type')
         user = super().create(validated_data)
-        Profile(user=user).save()
+        # Profile(user=user).save()
 
         if account_type == 'work':
+            FreelancerProfile(user=user).save()
             user.groups.add(Group.objects.get(name=settings.FREELANCER_USER))
         elif account_type == 'hire':
+            ClientProfile(user=user).save()
             user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
         else:
             user.groups.add(Group.objects.get(name=settings.ADMIN_USER))

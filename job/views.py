@@ -1,13 +1,8 @@
 from rest_framework.response import Response
 from rest_framework import viewsets
-from django.db.models import Q
-from job.models import Job, Attachment, Offer, Invite, Application, Contract, \
-    Work, Feedback, Dispute, JobReview, FeedbackReview, WorkChanges
-from job.serializers import JobSerializer, AttachmentSerializer, \
-    OfferSerializer, InviteSerializer, \
-    ApplicationSerializer, ContractSerializer, WorkSerializer, \
-    FeedbackSerializer, DisputSerializer, FeedbackReviewSerializer, \
-    JobReviewSerializer, WorkChangesSerializer
+
+from job import models as job_view
+from job import serializers as job_serializer
 
 from default.utils import isRoleFreelancer, isRoleClient
 
@@ -16,60 +11,53 @@ class JobViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list` and `retrieve` actions.
     """
-    queryset = Job.objects.all()
-    serializer_class = JobSerializer
+    queryset = job_view.Job.objects.all()
+    serializer_class = job_serializer.JobSerializer
+    search_fields = ['title']
 
     def list(self, request, *args, **kwargs):
-        user = request.user.id
-        print(user)
         queryset = self.filter_queryset(self.get_queryset())
-        print(queryset)
         if isRoleClient(request.user):
-            print('hello')
-            queryset = queryset.filter(client=user)
-            print('queryset', queryset)
+            queryset = queryset.filter(client=request.user.profile)
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
 
-#     if self.request.user.is_superuser:
-
-
 class JobReviewViewSet(viewsets.ModelViewSet):
-    queryset = JobReview.objects.filter(deleted_at=None)
-    serializer_class = JobReviewSerializer
+    queryset = job_view.JobReview.objects.filter(deleted_at=None)
+    serializer_class = job_serializer.JobReviewSerializer
 
 
 class AttachmentViewSet(viewsets.ModelViewSet):
-    queryset = Attachment.objects.all()
-    serializer_class = AttachmentSerializer
+    queryset = job_view.Attachment.objects.all()
+    serializer_class = job_serializer.AttachmentSerializer
 
 
 class OfferViewSet(viewsets.ModelViewSet):
-    queryset = Offer.objects.all()
-    serializer_class = OfferSerializer
+    queryset = job_view.Offer.objects.all()
+    serializer_class = job_serializer.OfferSerializer
+    search_fields = ['title', 'category', 'budget', 'job__title']
 
 
 class InviteViewSet(viewsets.ModelViewSet):
-    queryset = Invite.objects.all()
-    serializer_class = InviteSerializer
+    queryset = job_view.Invite.objects.all()
+    serializer_class = job_serializer.InviteSerializer
 
 
 class ApplicationViewSet(viewsets.ModelViewSet):
-    queryset = Application.objects.all()
-    serializer_class = ApplicationSerializer
+    queryset = job_view.Application.objects.all()
+    serializer_class = job_serializer.ApplicationSerializer
+    search_fields = ['job__title']
 
     def list(self, request, *args, **kwargs):
-        user = request.user
         queryset = self.filter_queryset(self.get_queryset())
-        if isRoleFreelancer(user):
-            queryset = queryset.filter(freelancer=user)
-        elif isRoleClient(user):
-            print('I am client?')
-            print(' I am ', user.id)
+        if isRoleFreelancer(request.user):
+            queryset = queryset.filter(freelancer=request.user.profile)
+        elif isRoleClient(request.user):
             job_id = request.GET.get('job_id', None)
-            if job_id is not None and Job.objects.filter(client=user,
-                                                         id=job_id).exists():
+            if job_id is not None and job_view.objects.filter(
+                    client=request.user.profile,
+                    id=job_id).exists():
                 queryset = queryset.filter(job_id=job_id)
             else:
                 queryset = []
@@ -78,45 +66,40 @@ class ApplicationViewSet(viewsets.ModelViewSet):
 
 
 class ContractViewSet(viewsets.ModelViewSet):
-    queryset = Contract.objects.all()
-    serializer_class = ContractSerializer
+    queryset = job_view.Contract.objects.all()
+    serializer_class = job_serializer.ContractSerializer
+    search_fields = ['job__title']
 
     def list(self, request, *args, **kwargs):
-        user = request.user
-        print(user)
         queryset = self.filter_queryset(self.get_queryset())
-        print(queryset)
         if isRoleFreelancer(request.user):
-            queryset = queryset.filter(freelancer=user)
-            print(queryset)
+            queryset = queryset.filter(freelancer=request.user.profile)
         elif isRoleClient(request.user):
-            queryset = queryset.filter(client=user)
-            print('queryset', queryset)
-
+            queryset = queryset.filter(client=request.user.profile)
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
 
 class WorkViewSet(viewsets.ModelViewSet):
-    queryset = Work.objects.all()
-    serializer_class = WorkSerializer
+    queryset = job_view.Work.objects.all()
+    serializer_class = job_serializer.WorkSerializer
 
 
 class WorkChangesViewSet(viewsets.ModelViewSet):
-    queryset = WorkChanges.objects.all()
-    serializer_class = WorkChangesSerializer
+    queryset = job_view.WorkChanges.objects.all()
+    serializer_class = job_serializer.WorkChangesSerializer
 
 
 class FeedbackViewSet(viewsets.ModelViewSet):
-    queryset = Feedback.objects.all()
-    serializer_class = FeedbackSerializer
+    queryset = job_view.Feedback.objects.all()
+    serializer_class = job_serializer.FeedbackSerializer
 
 
 class FeedbackReviewViewSet(viewsets.ModelViewSet):
-    queryset = FeedbackReview.objects.all()
-    serializer_class = FeedbackReviewSerializer
+    queryset = job_view.FeedbackReview.objects.all()
+    serializer_class = job_serializer.FeedbackReviewSerializer
 
 
 class DisputViewSet(viewsets.ModelViewSet):
-    queryset = Dispute.objects.all()
-    serializer_class = DisputSerializer
+    queryset = job_view.Dispute.objects.all()
+    serializer_class = job_serializer.DisputSerializer

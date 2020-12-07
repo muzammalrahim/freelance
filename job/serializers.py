@@ -41,8 +41,6 @@ class ApplicationSerializer(serializers.ModelSerializer):
 
 
 class ContractSerializer(serializers.ModelSerializer):
-    print('serializers.ModelSerializer', serializers)
-
     class Meta:
         model = Contract
         fields = '__all__'

@@ -9,6 +9,7 @@ from acount.models import City, Skill, Category, Profile
 from acount.serializers import CitySerilaizers, SkillSerilaizers, \
     CategorySerilaizers, ProfileSerilaizers
 
+
 class LinkedinLogin(SocialLoginView):
     # serializer_class = LinkedinLoginSerializer
     adapter_class = LinkedInOAuthAdapter
@@ -17,6 +18,7 @@ class LinkedinLogin(SocialLoginView):
 class CityViewSet(viewsets.ModelViewSet):
     queryset = City.objects.all()
     serializer_class = CitySerilaizers
+    search_fields = ['^name']
 
 
 class SkillViewSet(viewsets.ModelViewSet):
@@ -34,5 +36,6 @@ class CategoryViewSet(viewsets.ModelViewSet):
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerilaizers
-    search_fields = ['user__first_name', 'user__last_name', 'user___email', 'user__username', 'account_title']
+    search_fields = ['user__first_name', 'user__last_name', 'user___email',
+                     'user__username', 'account_title']
     filterset_fields = ['experience_level', 'zip_code', 'skills__name']

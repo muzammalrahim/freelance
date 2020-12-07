@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from polymorphic.models import PolymorphicModel
 
+
 # Create your models here.
 
 class User(AbstractUser):
@@ -31,6 +32,7 @@ class Skill(models.Model):
                                    on_delete=models.SET_NULL,
                                    related_name='updated_by_skill')
 
+
 class Speciality(models.Model):
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -58,9 +60,9 @@ class Category(models.Model):
 class Profile(PolymorphicModel):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     account_title = models.CharField(max_length=70,
-                                 blank=True, null=True)
+                                     blank=True, null=True)
     description = models.TextField(max_length=5000,
-                                 blank=True, null=True)
+                                   blank=True, null=True)
     mobile_no = models.CharField(max_length=20,
                                  blank=True, null=True)
 
@@ -108,29 +110,30 @@ class ClientProfile(Profile):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL,
                                  blank=True, null=True)
     speciality = models.ForeignKey(Speciality, on_delete=models.SET_NULL,
-                                 blank=True, null=True)
+                                   blank=True, null=True)
     PROJECT_TYPE_CHOICES = (
-      ('one-time', 'One Time'),
-      ('on-going', 'On Going'),
-      ('complex', 'Complex'),
+        ('one-time', 'One Time'),
+        ('on-going', 'On Going'),
+        ('complex', 'Complex'),
     )
-    project_type = models.CharField(max_length=20, choices=PROJECT_TYPE_CHOICES,
-                                 blank=True, null=True)
+    project_type = models.CharField(max_length=20,
+                                    choices=PROJECT_TYPE_CHOICES,
+                                    blank=True, null=True)
     currently_working = models.BooleanField(default=False)
     PAY_TYPE_CHOICES = (
-      ('hourly', 'Hourly'),
-      ('fixed', 'Fixed'),
+        ('hourly', 'Hourly'),
+        ('fixed', 'Fixed'),
     )
     pay_type = models.CharField(max_length=20, choices=PAY_TYPE_CHOICES,
-                                 blank=True, null=True)
+                                blank=True, null=True)
     budget = models.DecimalField(max_digits=8, decimal_places=2,
                                  blank=True, null=True)
 
 
 class FreelancerProfile(Profile):
     SERVICE_CHOICES = (
-      ('service1', 'Service 1'),
-      ('service2', 'Service 2'),
+        ('service1', 'Service 1'),
+        ('service2', 'Service 2'),
     )
     service = models.CharField(max_length=20, choices=SERVICE_CHOICES)
     category = models.ManyToManyField(Category)
