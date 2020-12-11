@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-
+import face_recognition
 # Create your views here.
 from rest_framework.response import Response
 from allauth.socialaccount.providers.linkedin.views import LinkedInOAuthAdapter
@@ -9,6 +9,7 @@ from acount import serializers as acount_serializer
 
 from acount.models import City, Skill, Category, Question, \
     Speciality, Profile, ClientProfile, FreelancerProfile
+from rest_framework.decorators import api_view
 
 
 class LinkedinLogin(SocialLoginView):
@@ -68,3 +69,15 @@ class FreelancerProfileViewSet(viewsets.ModelViewSet):
     search_fields = ['user__first_name', 'user__last_name', 'user___email',
                      'user__username', 'account_title']
     filterset_fields = ['experience_level', 'zip_code', 'skills__name']
+
+
+@api_view(['POST'])
+def validate_avatar(request):
+    image = face_recognition.load_image_file("acount/test.jpeg")
+    face_locations = face_recognition.face_locations(image)
+    if face_locations != []:
+        return Response({"success": True, "message": "Face detected"},
+                        status=200)
+    else:
+        return Response({"success": False, "message": "Not real photo"},
+                        status=400)

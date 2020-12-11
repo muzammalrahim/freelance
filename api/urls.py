@@ -40,6 +40,8 @@ router.register(r'dispute', job_view.WorkViewSet)
 # The API URLs are now determined automatically by the router.
 urlpatterns = format_suffix_patterns([
 
+    url('validate_avatar', account_views.validate_avatar,
+         name='validate_avatar'),
     path('accounts/', include('rest_registration.api.urls')),
     url(r'^rest-auth/linkedin/$', account_views.LinkedinLogin.as_view(),
         name='linkedin_login'),
