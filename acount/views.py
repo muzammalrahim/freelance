@@ -1,3 +1,5 @@
+from base64 import b64encode
+
 from rest_framework import viewsets
 import face_recognition
 # Create your views here.
@@ -73,8 +75,13 @@ class FreelancerProfileViewSet(viewsets.ModelViewSet):
 
 @api_view(['POST'])
 def validate_avatar(request):
-    image = face_recognition.load_image_file("acount/test.jpeg")
+    image = face_recognition.load_image_file(
+        request.data.get('avatar'))
+    # print('print', request.data.get('avatar'))
+    # print('image', image)
+    # image = face_recognition.load_image_file("acount/test.jpeg")
     face_locations = face_recognition.face_locations(image)
+
     if face_locations != []:
         return Response({"success": True, "message": "Face detected"},
                         status=200)
