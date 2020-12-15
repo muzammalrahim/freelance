@@ -164,7 +164,6 @@ REST_FRAMEWORK = {
     ]
 }
 
-
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
         'basic': {
@@ -172,7 +171,7 @@ SWAGGER_SETTINGS = {
         }
     },
     'USE_SESSION_AUTH': False,
-    
+
 }
 
 REST_REGISTRATION = {
@@ -183,10 +182,10 @@ REST_REGISTRATION = {
     'RESET_PASSWORD_VERIFICATION_URL': '{}/reset-password/'.format(SITE_URL),
     'REGISTER_EMAIL_VERIFICATION_URL': '{}/verify-email/'.format(SITE_URL),
     'VERIFICATION_FROM_EMAIL': 'arslanmehmood051@gmail.com',
-    'USER_LOGIN_FIELDS':('email','username'),
+    'USER_LOGIN_FIELDS': ('email', 'username'),
 
     # 'USER_PUBLIC_FIELDS': ('first_name', 'last_name', 'email',),
-    'REGISTER_SERIALIZER_CLASS':'acount.serializers.CustomRegisterUserSerializer'
+    'REGISTER_SERIALIZER_CLASS': 'acount.serializers.CustomRegisterUserSerializer'
 }
 
 FREELANCER_USER = 'Freelancer'
@@ -202,6 +201,6 @@ EMAIL_PORT = env('EMAIL_PORT')
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
-AUTH_USER_MODEL='acount.User'
+AUTH_USER_MODEL = 'acount.User'
 
 AUTHENTICATION_BACKENDS = ('acount.backends.EmailBackend',)

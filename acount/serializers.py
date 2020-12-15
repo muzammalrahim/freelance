@@ -11,6 +11,9 @@ from acount.models import Profile, City, Skill, Category, Question, FreelancerPr
 from rest_framework import serializers
 from django.contrib.auth.models import Group
 
+# from django.core.files.base import ContentFile
+# import base64
+
 
 class CitySerilaizers(serializers.ModelSerializer):
     class Meta:
@@ -31,10 +34,6 @@ class CategorySerilaizers(serializers.ModelSerializer):
 
 
 class ProfileSerilaizers(serializers.ModelSerializer):
-    base64_message = 'UHl0aG9uIGlzIGZ1bg=='
-    base64_bytes = base64_message.encode('ascii')
-    message_bytes = base64.b64decode(base64_bytes)
-    message = message_bytes.decode('ascii')
 
     def update(self, instance, validated_data):
         instance.updated_by = self.context['request'].user
@@ -106,3 +105,14 @@ class CustomRegisterUserSerializer(DefaultRegisterUserSerializer):
             user.groups.add(Group.objects.get(name=settings.ADMIN_USER))
 
         return user
+
+# class Base64ImageField(serializers.ImageField):
+#     def from_native(self, data):
+#         if isinstance(data, basestring) and data.startswith('data:image'):
+#             # base64 encoded image - decode
+#             format, imgstr = data.split(';base64,')  # format ~= data:image/X,
+#             ext = format.split('/')[-1]  # guess file extension
+#
+#             data = ContentFile(base64.b64decode(imgstr), name='temp.' + ext)
+#
+#         return super(Base64ImageField, self).from_native(data)
