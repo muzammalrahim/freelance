@@ -77,9 +77,6 @@ class FreelancerProfileViewSet(viewsets.ModelViewSet):
 def validate_avatar(request):
     image = face_recognition.load_image_file(
         request.data.get('avatar'))
-    # print('print', request.data.get('avatar'))
-    # print('image', image)
-    # image = face_recognition.load_image_file("acount/test.jpeg")
     face_locations = face_recognition.face_locations(image)
 
     if face_locations != []:
