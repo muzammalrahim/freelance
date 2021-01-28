@@ -1,0 +1,72 @@
+.iv_rightbox{
+    width:643px;
+    height: 473px;
+    display: flex;
+}
+
+
+.iv_nextButton{
+    margin: 149px 152px;
+    float: right;
+}
+.iv_prevButton{
+    margin: 158px 0% 0% 120px;
+    float: left;
+    border: none;
+}
+
+.iv_icon{
+    height: 42px;
+    margin-top: 5%;
+    margin-left: 120px;
+box-sizing: border-box;
+background-repeat: no-repeat;}
+
+.iv_icon2{
+    height: 42px;
+    margin-top: 1.5%;
+    margin-left: 45%;
+box-sizing: border-box;
+background-repeat: no-repeat;}
+
+.iv_foot{
+    height: 180px;
+    margin-left: 120px;
+    background-repeat: no-repeat;
+    margin: auto;
+
+    position: absolute;
+width: 404px;
+height: 182px;
+left: 0px;
+margin-top: 9%;
+}
+
+.iv_Head{
+    margin-top: 17px;
+    margin-left: 116px;
+    font-family:Poppins;
+font-style: normal;
+font-size: 20px;
+}
+
+.iv_Para{
+    font-family: Poppins;
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 20px;
+margin-left: 116px;
+width:280px;
+padding-top: 1%;
+}
+
+.mh1{
+   margin: 0% 0% 2% 16%;
+}
+
+.imgBack{
+    width: 86%;
+    background: white;
+    padding: 4%;
+}

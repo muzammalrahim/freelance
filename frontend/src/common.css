@@ -1,0 +1,54 @@
+.w-33{
+
+    width:30%;
+    background:rgb(82, 8, 42)
+}
+.w-66{
+
+    width:70%;
+    background:rgb(87, 146, 128)
+}
+
+.d-Iflex{
+    display: inline-flex;
+    width:100%;
+
+}
+.d-Iflex1{
+    display: inline-flex;
+}
+
+.bg1{
+    background: #FFFFFF;
+}
+
+.bg2{
+    background: #F7F8FA;
+}
+
+.b_line1{
+
+    border: 0.5px solid rgb(170, 156, 156);
+}
+.b_line2{
+
+    border: 0.5px solid rgb(247 248 250);
+}
+
+.pfmb{
+    margin-bottom: 6%;
+}
+
+
+.w46{
+
+    width: 46%;
+}
+
+.ml{
+    margin-left: 115px;
+}
+
+.ml2{
+    margin-right: 150px;
+}

@@ -1,0 +1,60 @@
+.pi_rightbox{
+    width:643px;
+    height: 473px;
+    display: flex;
+}
+
+
+.pi_nextButton{
+    margin: 149px 152px;
+    float: right;
+}
+.pi_prevButton{
+    margin: 158px 0% 0% 120px;
+    float: left;
+    border: none;
+}
+
+.pi_icon{
+    height: 42px;
+    margin-top: 5%;
+    margin-left: 120px;
+box-sizing: border-box;
+background-repeat: no-repeat;}
+
+.pi_foot{
+    height: 180px;
+    margin-left: 120px;
+    background-repeat: no-repeat;
+    margin: auto;
+
+    position: absolute;
+width: 404px;
+height: 182px;
+left: 0px;
+margin-top: 1%;
+}
+
+.pi_Head{
+    margin-top: 17px;
+    margin-left: 116px;
+    font-family: Poppins;
+font-style: normal;
+font-size: 20px;
+}
+
+.pi_Para{
+    font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 20px;
+margin-left: 116px;
+width:280px
+
+}
+
+.ExpireDate{
+    display: inline-flex;
+}
+

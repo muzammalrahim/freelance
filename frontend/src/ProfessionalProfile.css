@@ -1,0 +1,84 @@
+*{
+    margin: 0; padding: 0; box-sizing: border-box;
+}
+.background{
+    position: relative;
+width: 70%;
+height: 1090px;
+float:right;
+background: #F7F8FA;
+}
+.userpad{
+    position: absolute;
+width: 48px;
+height: 48px;
+left: 14.8%;
+right: 47.75%;
+top: 139px;
+}
+.text{
+    position: absolute;
+    height: 28px;
+    width: 197px;
+    left: 14.8%;
+    right: 47.75%;
+    top: 195px;
+    border-radius: nullpx;
+    font-family: Poppins;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 28px;
+letter-spacing: 0em;
+text-align: left;
+color: #6B6B6A;
+
+}
+.paragragh{
+    position: absolute;
+    height: 40px;
+width: 290px;
+left: 14.8%;
+right: 47.75%;
+top: 231px;
+border-radius: nullpx;
+font-family: Poppins;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.4rem;
+letter-spacing: 0em;
+text-align: left;
+color: #6b6a6a;
+
+
+}
+.su-Button{
+    position: absolute;
+    height: 38px;
+    width: 1%;
+    left: 79%;
+    right: 24%;
+    top: 92.70%;
+    border-radius: 2px;
+    font-weight: 400;
+ }
+ .su-button{
+     position: absolute;
+    height: 50px;
+    width: 98px;
+    left: 14.8%;
+    right: 47.75%;
+    top: 1030px;
+
+    
+ }
+ .previous{
+    border-radius: nullpx;
+    font-family: Poppins;
+    font-size: 0.9rem;
+    text-align: left;
+    color: #6B6B6A;
+    font-weight: 400;
+ }
+ 

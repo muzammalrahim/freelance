@@ -1,0 +1,57 @@
+.Pf-rightbox{
+    width:100%;
+    height: 473px;
+    display: flex;
+}
+
+
+.pf_nextButton{
+    margin: 149px 152px;
+    float: right;
+}
+.pf_prevButton{
+    margin: 158px 0% 0% 120px;
+    float: left;
+    border: none;
+}
+
+.personalprofileicon{
+    height: 42px;
+    margin-top: 5%;
+    margin-left: 120px;
+box-sizing: border-box;
+background-repeat: no-repeat;}
+
+.personalprofile_foot{
+    height: 180px;
+    margin-left: 120px;
+    background-repeat: no-repeat;
+    margin: auto;
+
+    position: absolute;
+width: 404px;
+height: 182px;
+left: 0px;
+margin-top: 0.5%;
+
+}
+
+
+.personalprofileHead{
+    margin-top: 17px;
+    margin-left: 116px;
+    font-family: Poppins;
+font-style: normal;
+font-size: 20px;
+}
+
+.personalprofilePara{
+    font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 20px;
+margin-left: 116px;
+width:280px;
+margin-top: 1%;
+}
