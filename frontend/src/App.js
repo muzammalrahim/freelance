@@ -15,6 +15,7 @@ import NotFound from "./App/pages/notFound/NotFound";
 import Jobs from "./App/pages/jobs/Jobs";
 import ProfessionalProfile from './ProfessionalProfile'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
 function App() {
 return (
     <>
@@ -51,3 +52,4 @@ return (
 }
 
 export default App;
+
