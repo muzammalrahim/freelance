@@ -3,7 +3,7 @@ import {Nav} from "react-bootstrap";
 import { withRouter } from "react-router";
 import './sidebar.css';
 import Slider from './Slider'
-import './slider.scss';
+
 
 
 
@@ -17,11 +17,11 @@ const Side = props => {
                 <div className="sidebar-sticky"></div>
                 <ul className="skills">
                     <h3>Skills</h3>
-                    <li>
-                        <label>
+                    <li className="checkbox-wrapper">
+                        <label className="checkmark">
                             <spna className="heading">Skill 01</spna> 
                         </label>
-                        <input type="checkbox" name="name" />
+                        <input type="checkbox" name="name" id="check" />
                     </li>
                     <li>
                         <label>

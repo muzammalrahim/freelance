@@ -42,7 +42,8 @@ function DefaultMenu() {
                       
                 </div>
                 </li>
-                <li class="nav-item dropdown"> 
+                <li class="nav-item dropdown">
+                   
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pixelz Warrios</a>
                     <div class="dropdown-menu dropdown-menu-right dropdown">
                         <a href="#" class="dropdown-item"data-toggle="dropdown2">Status</a>

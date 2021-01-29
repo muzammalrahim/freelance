@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './slider.css';
 
 export default class Slider extends Component {
    
@@ -9,7 +10,7 @@ export default class Slider extends Component {
             <div>
                 
                 <form class="container pb-4 range-slider">
-                <input type="range" min="0" max="100"></input>
+                <input type="range"></input>
                 <div class="number"></div>    
                 </form>
 

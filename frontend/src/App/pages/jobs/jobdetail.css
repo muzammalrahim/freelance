@@ -1,0 +1,90 @@
+.main-area {
+    background: #E5E5E5;
+    padding: 43px 172px 40px 20px;
+}
+.job-detail .row.details-grid {
+    display: grid;
+    grid-template-columns: 28% 80%;
+}
+.job-detail .row.job {
+    display: grid;
+    grid-template-columns: 15% 85%;
+    padding-top: 17px;
+    position: relative;
+}
+.job-detail .price {
+    position: absolute;
+    right: 135px;
+    bottom: 76px;
+}
+.job-detail .row-1 {
+    background: #fff;
+}
+.job-detail  ul.duration p {
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+}
+.job-detail .required-skills ul.tags {
+    border-bottom: 0.5px solid rgba(107, 107, 106, 0.2);
+    padding: 0 0 36px 0;
+}
+.job-detail .price span {
+    color: #6B6B6A;
+    font-size: 9px;
+    font-family: Poppins;
+    font-weight: 700;
+}
+.required-skills h3 {
+    padding-left: 40px;
+    font-size: 16px;
+    font-weight: 700;
+    padding-bottom: 15px;
+}
+.required-skills {
+    background: #ffffff;
+    padding: 34px 0 38px 0;
+    border-top: 0.5px solid rgba(107, 107, 106, 0.2);
+    border-bottom: 0.5px solid rgba(107, 107, 106, 0.2);
+}
+.bid-inner{
+    margin: 0 35px;
+    font-size: 13px;
+}
+.job-detail label.bid-title {
+    width: 118px;
+}
+.bid-detail {
+    font-weight: 700;
+}
+.information {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.bid-inner {
+    padding: 5px 0 0 0;
+}
+.bid-inner li {
+    padding: 0px 0 10px 0;
+}
+.client-info{
+    border-left: 0.5px solid rgba(107, 107, 106, 0.2);
+}
+.client-details ul{
+    padding: 0 0 0 40px;
+}
+.client-details ul i {
+    padding: 0 14px 0 0;
+    color: #1DA799;
+    font-size: 15px;
+}
+.client-details ul h4{
+    color: #6B6B6A;
+}
+.client-details h4 {
+    font-size: 15px;
+    font-weight: 700;
+}
+.client-details p {
+    padding: 0 0 0 26px;
+}

@@ -15,6 +15,8 @@ import NotFound from "./App/pages/notFound/NotFound";
 import Jobs from "./App/pages/jobs/Jobs";
 import ProfessionalProfile from './ProfessionalProfile'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import JobDetail from "./App/pages/jobs/JobDetail";
+
 
 function App() {
 return (
@@ -37,6 +39,7 @@ return (
         <Route path='/tabBar' exact component={tabBar}/>
         <Route path='/tabbar2' exact component={Root}/>
         <Route path='/Jobs' exact component={Jobs}/>
+        <Route path='/JobDetail' exact component={JobDetail}/>
         <Route component={NotFound} />
 
         <Route path='/Paymentinformation' exact component={PaymentInformation}/>
@@ -45,6 +48,7 @@ return (
         <Route path='/Idverification' exact component={IdVerification}/>
         <Route path='/registrationprocess' exact component={Root}/>
         <Route component={NotFound} />
+        
       </Switch>
       </Router>
     </>    
