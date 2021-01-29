@@ -2,6 +2,7 @@
   "name": "wildfire-tracker",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://52.7.91.105/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
