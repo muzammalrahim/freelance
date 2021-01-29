@@ -32,7 +32,7 @@ background-repeat: no-repeat;}
 width: 404px;
 height: 182px;
 left: 0px;
-margin-top: 1%;
+margin-top: 5%;
 }
 
 .pi_Head{
@@ -58,3 +58,9 @@ width:280px
     display: inline-flex;
 }
 
+
+.PiDiv{
+        display: flex;
+        margin-top: 50px;
+    margin-bottom: 7%;
+}

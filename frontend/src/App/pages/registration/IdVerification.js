@@ -17,8 +17,8 @@ function IdVerification() {
 
         <div className='Pf-container'>
             
-
-                    <div className='Pf-rightbox   bg2 b_line2' style={{display:"block",    height: "auto"}}>
+                                
+                    <div className='Pf-rightbox   bg2 b_line2' style={{display:"block",    height: "auto"}}> 
                        
                         <div>
 
@@ -41,8 +41,6 @@ function IdVerification() {
                                   <div >
                                         <div className="getimage">
                                         <GetImage/>
-
-
                                         </div>
                                    </div>
                         
@@ -65,7 +63,7 @@ function IdVerification() {
                         
                     </div>
 
-
+        
             
         </div>
     )
@@ -74,14 +72,14 @@ function IdVerification() {
 export default IdVerification
 
 
-export function IdVerificationFooter( )
+export function IdVerificationFooter( ) 
 {
     return (
         <>
 
         <div className='iv_foot' style={{backgroundImage: `url(${img2})`}}></div>
-
+    
         </>
         );
-
+      
 }

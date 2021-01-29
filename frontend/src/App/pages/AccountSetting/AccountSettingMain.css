@@ -1,3 +1,5 @@
+
+
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
 
 html {
@@ -8,7 +10,7 @@ body {
   line-height: 1;
 }
 
-.Root {
+.AccountSettingMain {
   height: 100vh;
 }
 
@@ -38,10 +40,9 @@ body {
   display: block;
 }
 
-.Button {
-  display: inline-block;
-  /* width: 13%; */
-  padding: 7px 15px;
+.AS_Button{
+     display: inline-block;
+    padding: 7px 15px;
     background: none;
     border: none;
     cursor: pointer;
@@ -56,12 +57,12 @@ body {
     border-radius: 25px;
     border: 1px solid;
 }
-.Button:focus,
-.Button:hover {
+.AS_Button:focus,
+.AS_Button:hover {
   outline: 0;
   background: #899499;
 }
-.Tab.is-active .Button {
+.Tab.is-active .AS_Button {
     background: #ffffff;
     color: #EE9821;
     border-radius: 25px;
@@ -69,25 +70,25 @@ body {
 }
 
 
-.line{
+.AS_line{
 width: 0px;
 left: 72px;
 border: 1px dashed #a0a0a0;
 height: 30px;
 margin-left: 21px;
 }
-.Tab.is-active .line{
+.Tab.is-active .AS_line{
 border: 1px dashed #EE9821;
 }
 
-.but{
+.AS_but{
   background: #ffffff;
   border :1px solid #6B6B6A;
   border-radius: 25px;
   border: 2px solid;
 }
 
-.text{
+.AS_text{
   font-family: Poppins;
   font-style: normal;
   font-weight: 700;
@@ -97,14 +98,14 @@ border: 1px dashed #EE9821;
   margin: 7%;
 }
 
-.Tab.is-active .text{
+.Tab.is-active .AS_text{
 
 color: #EE9821;;
 }
 
 
 
-.tb_nextButton{
+.AS_tb_nextButton{
  
     background-color: #EE9821;
     width: 116px;
@@ -122,7 +123,7 @@ color: #EE9821;;
     cursor: pointer;
 }
 
-.tb_prevButton{
+.AS_tb_prevButton{
 
   border: none;
   height: 37px;
@@ -132,7 +133,7 @@ color: #EE9821;;
   cursor: pointer;
 }
 
-.nextButtonDiv{
+.AS_nextButtonDiv{
   width:70%;
   float:right;
   /* border:2px solid green; */
@@ -141,12 +142,12 @@ color: #EE9821;;
 
 }
 
-.tb_prevButton:focus,
-.tb_prevButton:hover {
+.AS_tb_prevButton:focus,
+.AS_tb_prevButton:hover {
   outline: 0;
   background: #899499;
 }
 
-.left_img{
+.AS_left_img{
    margin-top: 6%;
 }

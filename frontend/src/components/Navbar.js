@@ -28,7 +28,7 @@ export default  function Navbar(props) {
 export function RegNavbar(props) {
     return (
         <>
-        <nav className="navbar">
+        <nav className="navbar2">
             <div className="navbar-flex-container">
                 <Link to='/' className="navbar-logo">
                 <img src={tuwaiqlogo} alt="Logo"></img>

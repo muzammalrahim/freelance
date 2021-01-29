@@ -1,5 +1,5 @@
 import React from 'react'
-import { MenuItems,AccountSettingMenuItems } from "./MenuItems";
+import { MenuItems } from "./MenuItems";
 import './defaultmenu.css';
 import AvatarImage from '../../../../src/AvatarImage.png';
 
@@ -9,24 +9,14 @@ import AvatarImage from '../../../../src/AvatarImage.png';
 
 function DefaultMenu(props) {
     return (
+
       <nav className="navbar navbar-expand-md">
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
             </button>
             <div id="navbarCollapse" class="collapse navbar-collapse">
               <ul className='default-menu nav navbar-nav'>
-                  
-              
-                  { props.value===2 ?  AccountSettingMenuItems.map((item, index)=>{
-                    return(
-                      <li key={index}>
-                          <a className={item.cName} href={item.url}>
-                              {item.title}
-                          </a>
-                      </li>
-                      
-                    )
-                  }) : MenuItems.map((item, index)=>{
+                  {MenuItems.map((item, index)=>{
                     return(
                       <li key={index}>
                           <a className={item.cName} href={item.url}>
@@ -36,8 +26,6 @@ function DefaultMenu(props) {
                       
                     )
                   })}
-
-           
                   
               </ul>
               <ul class="nav navbar-nav ml-auto">
