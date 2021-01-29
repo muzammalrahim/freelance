@@ -11,11 +11,9 @@ import BioGraphy from './BIoGraphy'
 // import Education from './Education'
 // import PortFolio from './PortFolio'
  function Profileview() {
-    
-
     return (
         <>
-        <Navbar value="Post a Project"/>
+        <Navbar value="Post a Project" className="btn-text"/>
             <Menuebar/>
             <CarD/>
             <BioGraphy/>

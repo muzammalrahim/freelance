@@ -7,8 +7,10 @@ import Sar from '../../assets/Sar.png'
 import Recomend from '../../assets/Recomend.png'
 import time from '../../assets/time.png'
 import Display from '../../assets/Display.png'
+import Slider from '../../App/pages/jobs/Slider'
 export function Card(props) {
     
+
 
     return (
         <div className="CarD">
@@ -18,8 +20,10 @@ export function Card(props) {
             UI/UX Designer
             </h>
              <h1>Completed Profile</h1>
-             <h2> <span> 3/5 </span>Followups</h2>
+             {/* <h2> <span> 3/5 </span>Followups</h2> */}
              <div className="LINN">
+             <Slider/>
+            
              <img src={LINEE} alt="/"/>
              </div>
             
