@@ -16,6 +16,7 @@ import Jobs from "./App/pages/jobs/Jobs";
 import ProfessionalProfile from './ProfessionalProfile'
 import ProfileView from './components/profileview/ProfileView'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
 function App() {
 return (
     <>
@@ -52,3 +53,4 @@ return (
 }
 
 export default App;
+
