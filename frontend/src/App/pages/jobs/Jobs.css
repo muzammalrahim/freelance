@@ -15,7 +15,19 @@
 /* Search Area */
 .row.search-area {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 40% 20% 40%;
+    position: relative;
+    grid-gap: 34px;
+}
+i.fa.fa-filter {
+    position: absolute;
+    top: 12px;
+    right: 31px;
+    color: #6B6B6A;
+}
+input.form-control.filter {
+    padding: 7px 0 7px 22px;
+    width: 285px;
 }
 .search-area .search-bar {
     margin-left: 14px;
@@ -35,10 +47,13 @@
  }
  span.fa.fa-search.form-control-feedback {
     position: absolute;
-    top: 219px;
-    left: 355px;
+    top: 16px;
+    left: 24px;
     font-size: 12px;
     color: #6B6B6A;
+}
+.search-button i.fas.fa-search {
+    padding-right: 8px;
 }
  button.btn.btn--yellow.btn--medium button{
     top: -4px; 
@@ -50,22 +65,27 @@
 }
 /* Search Area */
 /* inner-content */
+.row-1 {
+    background: rgba(29, 167, 153, 0.05);
+}
 .row.job {
     display: grid;
     grid-template-columns: 15% 70% 9% 6%;
-    padding-top: 10px;
+    padding-top: 17px;
+    position: relative;
 }
 .img-icon .avatar-user {
-    top: 320px;
-    left: 375px;
+    top: 15px;
+    left: 50px;
     width: 50px;
     height: 50px;
 }
-.inner-heading{
+.inner-heading {
     font-size: 16px;
     background: #ffffff;
     padding: 15px 10px;
     color: #6B6B6A;
+    margin: 0;
 }
 .content-heading {
     padding-left: 0;
@@ -98,11 +118,10 @@ i.fa.fa-bookmark-o {
     right: 41px;
 }
 .paragraph p {
-    padding: 20px 56px 0 20px;
+    padding: 20px 56px 0 48px;
     font-size: 14px;
     color: #6B6B6A;
     line-height: 23px;
-    
 }
 .paragraph a{
     color: #1DA799;
@@ -112,6 +131,7 @@ ul.tags {
     display: flex;
     font-size: 12px;
     padding: 17px 0 0 0;
+    position: relative;
 }
 ul.tags li a {
     color: #1DA799;
@@ -122,4 +142,68 @@ ul.tags li a {
     border-radius: 2px;
 }
 
+ul.duration {
+    display: flex;
+    margin: 0 0 0 110px;
+    padding: 18px 0 0 0;
+    
+}
+ul.duration i {
+    padding-right: 10px;
+    color: #1DA799;
+}
+ul.duration p {
+    padding: 0 10px;
+    color: #6B6B6A;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 700;
+}
+.price {
+    position: absolute;
+    right: 376px;
+}
+.price span{
+    color: #1DA799;
+    font-size: 16px;
+    font-family: Poppins;
+    font-weight: 700;
+}
+li.payment-btn {
+    position: absolute;
+    right: -38em;
+    border: 1px solid #61C1B8;
+    box-sizing: border-box;
+    border-radius: 50px;
+    padding: 10px 10px;
+    background: #ffffff;
+    bottom: -13px;
+}
+a.payment-button {
+    background: #fff !important;
+    color: #6B6B6A !important;
+    font-size: 16px;
+    margin: 0 !important;
+}
+a.payment-button i {
+    background:  #1DA799;
+    color: #ffffff;
+    border-radius: 50%;
+    padding: 4px;
+}
+a.payment-button span {
+    padding: 0 0 0 10px;
+}
+
 /* inner-content */
+.row-inner{
+    background: #ffffff;
+    border-top: 0.5px solid rgba(107, 107, 106, 0.2);
+}
+
+input:checked{
+    color: #1DA799;
+}
+.right-side {
+    padding-bottom: 67px;
+}
