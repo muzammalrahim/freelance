@@ -47,6 +47,7 @@ export default class GetImage extends Component {
       <div style={{textAlign:"center",marginLeft: "18%"}}>
           <div className="imgBack">
             <ReactDropzone
+            className="dropzone"
               accept="image/*"
               onDrop={this.onPreviewDrop}
               >
@@ -56,7 +57,7 @@ export default class GetImage extends Component {
               </div>
             </ReactDropzone>
             </div>
-        {/*<h2>Image Previews</h2> */}
+        {/*<h2>Image Previews</h2> 
         {this.state.files.length > 0 &&
           <Fragment>
             <h3>Previews</h3>
@@ -69,7 +70,7 @@ export default class GetImage extends Component {
               />
             ))}
           </Fragment>
-        }
+        } */}
 
       </div>
     );

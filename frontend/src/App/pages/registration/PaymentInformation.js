@@ -22,8 +22,8 @@ function PaymentInformation() {
 
         <div className='Pf-container'>
             
-
-                    <div className='Pf-rightbox  bg2 b_line2' style={{display:"block",    height: "auto"}}>
+                        
+                    <div className='Pf-rightbox  bg2 b_line2' style={{display:"block",    height: "auto"}}> 
                        
                         <div>
 
@@ -38,7 +38,7 @@ function PaymentInformation() {
                         </div>
                         </div>
 
-                        <div style={{display:"flex",marginTop:"50px"}}>
+                        <div className="PiDiv">
                         <div className="Rb-1 w46 ml">
                         <InputField2 heading="Card Holder Name" Placeholder=" Enter card holder name"/> 
                         <InputField2 heading="Card Number" Placeholder=" Enter card number"/>
@@ -54,7 +54,7 @@ function PaymentInformation() {
 
                     </div>
 
-
+      
             
         </div>
     )
