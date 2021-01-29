@@ -168,6 +168,9 @@ export default function JobDetail() {
                                 </div>
 
                             </div>
+                            <div className="client-history">
+                                
+                            </div>
                         </div>
                     </div>
                     </div>

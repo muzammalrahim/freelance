@@ -15,10 +15,11 @@
 .job-detail .price {
     position: absolute;
     right: 135px;
-    bottom: 76px;
+    top: 22px;
 }
 .job-detail .row-1 {
     background: #fff;
+    position: relative;
 }
 .job-detail  ul.duration p {
     font-size: 14px;
@@ -87,4 +88,9 @@
 }
 .client-details p {
     padding: 0 0 0 26px;
+}
+.client-history{
+    padding: 10px 0;
+    background: #ffffff;
+    margin-top: 10px;
 }
