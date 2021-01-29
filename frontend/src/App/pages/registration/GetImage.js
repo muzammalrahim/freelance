@@ -44,7 +44,7 @@ export default class GetImage extends Component {
     return (
 
    
-      <div className='style'>
+      <div style={{textAlign:"center",marginLeft: "18%"}}>
           <div className="imgBack">
             <ReactDropzone
 

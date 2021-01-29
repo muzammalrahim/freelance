@@ -7,4 +7,11 @@ input[type="range"] {
 }
 .range-slider{
     position: relative;
+    margin-left: -15px;
+    margin-top: 0px;
+    left: 0;
+    top: 0;
+}
+.range-slider{
+    position: relative;
 }
