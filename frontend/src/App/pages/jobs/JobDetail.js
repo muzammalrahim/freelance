@@ -167,12 +167,54 @@ export default function JobDetail() {
                                     </ul>
                                 </div>
 
-                            </div>
-                            <div className="client-history">
+                            </div> 
+                        </div>
+                    </div>
+                    <div className="client-history">
+                        <h3>Client’s History</h3>
+                        <div className="history-inner">
+                            <ul>
+                                <li>
+                                    <div className="review">
+                                    <h4>Job title lorem ipsum lorem ipsum lorem ipsum<span className="r-price">300 SAR<br></br>Fixed Price</span> </h4>
+                                    <p>Expert knowledge and very professional, highly recommended!"</p>
+                                    <h5><t>By</t> Maria Bator <span>(5 reviews)</span></h5>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="review">
+                                    <h4>Job title lorem ipsum lorem ipsum lorem ipsum<span className="r-price">300 SAR<br></br>Fixed Price</span> </h4>
+                                    <p>Expert knowledge and very professional, highly recommended!"</p>
+                                    <h5><t>By</t> Maria Bator <span>(5 reviews)</span></h5>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="review">
+                                    <h4>Job title lorem ipsum lorem ipsum lorem ipsum<span className="r-price">300 SAR<br></br>Fixed Price</span> </h4>
+                                    <p>Expert knowledge and very professional, highly recommended!"</p>
+                                    <h5><t>By</t> Maria Bator <span>(5 reviews)</span></h5>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="review last-line">
+                                    <h4>Job title lorem ipsum lorem ipsum lorem ipsum<span className="r-price">300 SAR<br></br>Fixed Price</span> </h4>
+                                    <p>Expert knowledge and very professional, highly recommended!"</p>
+                                    <h5><t>By</t> Maria Bator <span>(5 reviews)</span></h5>
+                                    </div>
+                                </li> 
+                            </ul>
+                            <div className="job-detail-btn">
+                                <div className="btn1">
+                                    <a href="#">View More</a>
+                                </div>
+                                <div className="btn2">
+                                    <a  href="#">(26 more reviews)</a>
+                                </div>
                                 
                             </div>
                         </div>
                     </div>
+                    
                     </div>
                 </div>
                 

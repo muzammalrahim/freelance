@@ -1,2 +1,10 @@
-.proposal-details {
-    }
+.proposal-details{
+    background: #ffffff;
+    padding: 20px 15px;
+}
+.proposal-heading h1 {
+    font-size: 22px;
+    text-align: left;
+    color: #6b6b6a;
+    font-weight: 700;
+}

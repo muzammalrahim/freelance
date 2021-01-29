@@ -5,8 +5,8 @@ import './jobdetail.css';
 export default class Proposal extends Component {
     render() {
         return (
-            <div className="main-area">
-                <div className="proposal-details">
+            <div className="proposal-details">
+                <div className="proposal-heading">
                     <h1>Proposal Details</h1> 
                     <ul>
                         <li>
