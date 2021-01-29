@@ -3,7 +3,7 @@ import {Nav} from "react-bootstrap";
 import { withRouter } from "react-router";
 import './sidebar.css';
 import Slider from './Slider'
-import './slider.scss';
+// import './slider.scss';
 
 
 
