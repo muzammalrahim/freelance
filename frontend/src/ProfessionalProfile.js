@@ -1,5 +1,5 @@
 import React from "react";
-import "./ProfessionalProfile.css";
+import "./App/pages/registration/ProfessionalProfile.css";
 import Group from './assets/Group 3539.png'
 import Dropdown from "./components/Dropdown";
 import Button from './components/Button';
