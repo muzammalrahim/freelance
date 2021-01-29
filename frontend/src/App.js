@@ -14,6 +14,7 @@ import {Root} from './App/pages/registration/tabbar2'
 import NotFound from "./App/pages/notFound/NotFound";
 import Jobs from "./App/pages/jobs/Jobs";
 import ProfessionalProfile from './ProfessionalProfile'
+import ProfileView from './components/profileview/ProfileView'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 function App() {
 return (
@@ -27,7 +28,7 @@ return (
         <Route path='/Accounttype' exact component={AccountType}/>
         <Route path='/PersonalProfile' exact component={PersonalProfile}/>
         <Route path='/ProfessionalProfile' exact component={ProfessionalProfile}/>
-        {/* <Route path='/ProfileView' exact component={ProfileView}/> */}
+        <Route path='/ProfileView' exact component={ProfileView}/>
 
         <Route path='/Paymentinformation' exact component={PaymentInformation}/>
         <Route path='/Companydetail' exact component={CompanyDetail}/>
@@ -37,7 +38,7 @@ return (
         <Route path='/tabbar2' exact component={Root}/>
         <Route path='/Jobs' exact component={Jobs}/>
         <Route component={NotFound} />
-
+  
         <Route path='/Paymentinformation' exact component={PaymentInformation}/>
         <Route path='/Companydetail' exact component={CompanyDetail}/>
         <Route path='/Hourlyrate' exact component={HourlyRate}/>

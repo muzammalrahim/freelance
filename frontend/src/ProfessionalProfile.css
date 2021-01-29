@@ -20,9 +20,9 @@ top: 139px;
     position: absolute;
     height: 28px;
     width: 197px;
-    left: 14.8%;
+    left: 8%;
     right: 47.75%;
-    top: 195px;
+    margin-top: 195px;
     border-radius: nullpx;
     font-family: Poppins;
 font-size: 20px;
@@ -50,35 +50,27 @@ line-height: 1.4rem;
 letter-spacing: 0em;
 text-align: left;
 color: #6b6a6a;
+}
+
+ .Buttons{
+     position: absolute;
+     margin-top: 989px;
+     margin-left: 15%;
+     width: 75%;
+     height: 90px;
+     
+ }
+ .Buttonss{
+    margin: 20px 1px;
+    float: right;
+ }
+ .pf_prevButtonns{
+    margin: 35px 0% 0% 0px;
+    float: left;
+    border: none;
+    border-radius: 18px;
+    color: #6B6B6A;
+    font-family: Poppins;
 
 
 }
-.su-Button{
-    position: absolute;
-    height: 38px;
-    width: 1%;
-    left: 79%;
-    right: 24%;
-    top: 92.70%;
-    border-radius: 2px;
-    font-weight: 400;
- }
- .su-button{
-     position: absolute;
-    height: 50px;
-    width: 98px;
-    left: 14.8%;
-    right: 47.75%;
-    top: 1030px;
-
-    
- }
- .previous{
-    border-radius: nullpx;
-    font-family: Poppins;
-    font-size: 0.9rem;
-    text-align: left;
-    color: #6B6B6A;
-    font-weight: 400;
- }
- 

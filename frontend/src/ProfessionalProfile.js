@@ -22,13 +22,16 @@ function Heading(props) {
         <SelectSkill />
         <Catagory />
        
-        <div className="su-Button">
-          <Button buttonStyle="btn--white" value="Next" />
-        </div>
-        <div className="su-button">
-          <a href="#" class="previous">
+        <div className="Buttons">
+         <div className="Buttonss"> 
+           <Button buttonStyle="btn--white" value="Next"/>
+        
+           </div>
+          <div>
+          <a href="#" class="pf_prevButtonns">
             Previous
           </a>
+        </div>
         </div>
         <Certificate />
       </div>
