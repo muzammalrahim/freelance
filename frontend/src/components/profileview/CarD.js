@@ -7,7 +7,7 @@ import Sar from '../../assets/Sar.png'
 import Recomend from '../../assets/Recomend.png'
 import time from '../../assets/time.png'
 import Display from '../../assets/Display.png'
-import Slider from '../../App/pages/jobs/Slider'
+// import Slider from '../../App/pages/jobs/Slider'
 export function Card(props) {
     
 
@@ -22,7 +22,7 @@ export function Card(props) {
              <h1>Completed Profile</h1>
              {/* <h2> <span> 3/5 </span>Followups</h2> */}
              <div className="LINN">
-             <Slider/>
+             {/* <Slider className=""SLID/> */}
             
              <img src={LINEE} alt="/"/>
              </div>

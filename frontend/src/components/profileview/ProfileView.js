@@ -13,7 +13,7 @@ import BioGraphy from './BIoGraphy'
  function Profileview() {
     return (
         <>
-        <Navbar value="Post a Project" className="btn-text"/>
+        <Navbar value="Post a Project" className="btn-project"/>
             <Menuebar/>
             <CarD/>
             <BioGraphy/>

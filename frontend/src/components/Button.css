@@ -67,28 +67,35 @@
   }
   .btn--Yellow{
     position: absolute;
-    height: 100px;
-    width: 160px;
-    left: 350px;
-    font-weight: 700;
+    height: 40px;
+   width: 180px;
+   left: 344px;
+   top: 350px;
+    color: #6B6B6A;
+    font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 20px;
+text-align: right;
+  }
+  .btn--project{
+
+    height:36px;
+    width: 150px;
+    font-weight: 500;
     border-radius: none;
     background: #ee9821;
     box-shadow: none;
-    font-weight: 400;
     color: white;
     font-family: "Poppins";
-  }
-  /* .btn--project{
-    position: absolute;
-    height: 100px;
-    width: 200px;
-    left: 350px;
-    font-weight: 700;
-    border-radius: none;
-    background: #090b97;
-    box-shadow: none;
-    font-weight: 400;
-    color: white;
-    font-family: "Poppins";
+    font-family: Poppins;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: 20px;
+letter-spacing: 0em;
+text-align: center;
+
       
-  } */
+  }
