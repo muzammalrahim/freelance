@@ -8,6 +8,7 @@ from allauth.socialaccount.providers.linkedin.views import LinkedInOAuthAdapter
 from rest_auth.registration.views import SocialLoginView
 # from rest_auth.social_serializers import LinkedinLoginSerializer
 from acount import serializers as acount_serializer
+from django.shortcuts import render
 
 from acount.models import City, Skill, Category, Question, \
     Speciality, Profile, ClientProfile, FreelancerProfile
@@ -85,3 +86,6 @@ def validate_avatar(request):
     else:
         return Response({"success": False, "message": "Not real photo"},
                         status=400)
+
+def frontend(request):
+	return render(request, 'build/index.html')
