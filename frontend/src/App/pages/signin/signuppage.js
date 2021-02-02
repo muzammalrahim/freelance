@@ -37,7 +37,7 @@ function SignIn() {
                   heading="Password"
                   Placeholder=" Enter Password"
                 />
-               <img src={eye}  style={{position: 'relative', right: '25px'}} />
+               <img src={eye}  style={{position: 'relative', right: '25px',top:'-2.5px'}} />
                 </div>
 
                <div className="Forgett">
@@ -57,7 +57,7 @@ function SignIn() {
                 <Button buttonStyle="btn--yellow1" value="Log In" />
               </div>
               <div className="su-button-2">
-                <p style={{position: 'relative', top: '-16px'}}> Or</p>
+                <p style={{position:'absolute', top:'0px',left:'50%'}}>Or</p>
               </div>
               <div className="su-button-3">
                 <Linkedin />

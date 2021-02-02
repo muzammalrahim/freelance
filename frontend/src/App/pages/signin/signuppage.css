@@ -133,7 +133,7 @@
   left: 25px;
 }
 
-.su-button-2 p {
+/* .su-button-2 p {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
@@ -141,8 +141,8 @@
   line-height: 20px;
   text-align: center;
   color: #495057;
-  padding-top: 400px;
-}
+  padding-top: -608px;
+} */
 
 .su-button-3 {
   position: absolute;
