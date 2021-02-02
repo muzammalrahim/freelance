@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import './proposal.css';
 import './jobdetail.css';
-import Navbar from './Navbar';
+// import ImageUpload from '../../../../src/img/ImageUpload.png';
+import img from '../../../img/ImageUpload.png'
+import GetImage from '../registration/GetImage'
 
 export default class Proposal extends Component {
     render() {
@@ -25,6 +27,13 @@ export default class Proposal extends Component {
                         <li>
                             <h3>Your Proposal</h3>
                             <textarea row="3" placeholder="Text"></textarea>
+                        </li>
+                        <li className="image-upload">
+                            <h3>Attachment</h3>
+                            <div className="upload-img">
+                                <GetImage value={2}/>
+                            </div>
+                            
                         </li>
                     </ul>
                     
