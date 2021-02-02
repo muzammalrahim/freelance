@@ -52,6 +52,7 @@
 .ml2{
     margin-right: 150px;
 }
+
 .dropzone{
     position: relative;
     width: 100%;
@@ -62,7 +63,10 @@
     border-radius: 5px;
 }
 
-.style{
-    text-align: center;
-    margin-left: 18%;
+.mr50{
+    margin-right: 50%;
+}
+
+.ml52{
+    margin-left: 52%;
 }

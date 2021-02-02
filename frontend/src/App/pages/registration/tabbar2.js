@@ -17,20 +17,20 @@ let selecvalue=0;
       <RegNavbar/>
         <Tab>
 
-        <div class=""><span class=" "><Button>1</Button></span> <span class="text">Personal Profile</span></div> <div className="line"></div>
+        <div class=""><span class=" "><Button>1</Button></span> <span class="text2">Personal Profile</span></div> <div className="line"></div>
   
         </Tab>
         <Tab>
-        <div class=""><span class=" "><Button>2</Button></span> <span class="text">Professional Profile</span></div> <div className="line"></div>
+        <div class=""><span class=" "><Button>2</Button></span> <span class="text2">Professional Profile</span></div> <div className="line"></div>
         </Tab>
         <Tab>
-        <div class=""><span class=" "><Button>3</Button></span> <span class="text">ID Verification</span></div> <div className="line"></div>
+        <div class=""><span class=" "><Button>3</Button></span> <span class="text2">ID Verification</span></div> <div className="line"></div>
         </Tab>
         <Tab>
-        <div class=""><span class=" "><Button>4</Button></span> <span class="text">Payment Information</span></div> <div className="line"></div>
+        <div class=""><span class=" "><Button>4</Button></span> <span class="text2">Payment Information</span></div> <div className="line"></div>
         </Tab>
         <Tab>
-        <div class=""><span class=" "><Button>5</Button></span> <span class="text">Hourly Rate</span></div> 
+        <div class=""><span class=" "><Button>5</Button></span> <span class="text2">Hourly Rate</span></div> 
         </Tab>
       </TabList>
       <TabPanel>

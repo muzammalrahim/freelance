@@ -30,16 +30,17 @@ box-sizing: border-box;
 background-repeat: no-repeat;}
 
 .iv_foot{
-    height: 180px;
-    margin-left: 120px;
-    background-repeat: no-repeat;
-    margin: auto;
 
-    position: absolute;
-width: 404px;
+height: 180px;
+margin-left: 120px;
+background-repeat: no-repeat;
+margin: auto;
+position: absolute;
+width: 30%;
 height: 182px;
 left: 0px;
-margin-top: 9%;
+margin-top: 11.2%;
+background-size: contain;
 }
 
 .iv_Head{
@@ -68,5 +69,52 @@ padding-top: 1%;
 .imgBack{
     width: 86%;
     background: white;
-    padding: 4%;
+    padding: 2%;
 }
+
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 700px) {
+    .iv_foot{
+        height: 92px;
+    margin-top: 18.5%;
+    }
+  } 
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 800px) {
+    .iv_foot{
+        height: 107px;
+        margin-top: 18%;
+    }
+  } 
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    .iv_foot {
+        height: 132px;
+        margin-top: 16%;
+    }
+    
+  } 
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    .iv_foot{
+        margin-top: 13.2%;
+        height: 154px;
+    }
+  }
+
+  @media only screen and (min-width: 1350px) {
+    .iv_foot{
+        margin-top: 11.2%;
+        height: 182px;
+    }
+  }
+  
+  @media only screen and (min-width: 1400px) {
+    .iv_foot{
+        margin-top: 11.2%;
+        height: 182px;
+    }
+  }
