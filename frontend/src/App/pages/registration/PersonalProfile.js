@@ -65,13 +65,14 @@ export default PersonalProfile
 export function PersonalProfileTabFooter( ) 
 {
     return (
-        <>
+       <div>
 
 <div className='w-33 bg1 '>
                 {/* <h1> hello</h1>*/}
                 <div className='personalprofile_foot' style={{backgroundImage: `url(${img2})`}}></div>
+
+                          </div>
                 </div>
-                </>
                 );
               
 }
@@ -80,7 +81,7 @@ export function PersonalProfileTabFooter( )
 export function PersonalProfileFooter2( ) 
 {
     return (
-        <>
+        <div>
 
     <div>
                         
@@ -92,7 +93,7 @@ export function PersonalProfileFooter2( )
     </div>
     </div>
 
-    </>
+    </div>
   );
 
 }

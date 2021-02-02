@@ -62,3 +62,11 @@
     border-style: dashed;
     border-radius: 5px;
 }
+
+.mr50{
+    margin-right: 50%;
+}
+
+.ml52{
+    margin-left: 52%;
+}

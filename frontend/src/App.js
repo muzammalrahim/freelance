@@ -25,25 +25,9 @@ return (
          <Route path='/SignIn' exact component={SignIn}/>
         <Route path='/signup' exact component={signuppage}/>
         <Route path='/Accounttype' exact component={AccountType}/>
-        <Route path='/PersonalProfile' exact component={PersonalProfile}/>
-        <Route path='/ProfessionalProfile' exact component={ProfessionalProfile}/>
-        {/* <Route path='/ProfileView' exact component={ProfileView}/> */}
-
-     {/*  <Route path='/Paymentinformation' exact component={PaymentInformation}/>
-        <Route path='/Companydetail' exact component={CompanyDetail}/>
-        <Route path='/Hourlyrate' exact component={HourlyRate}/>
-        <Route path='/Idverification' exact component={IdVerification}/> */} 
-        
-        <Route path='/registrationprocess' exact component={Root}/>
-        <Route path='/accountsetting' exact component={AccountSettingMain}/>
+        <Route path='/registration-process' exact component={Root}/>
+        <Route path='/account-setting' exact component={AccountSettingMain}/>
         <Route path='/Jobs' exact component={Jobs}/>
-        <Route component={NotFound} />
-
-        <Route path='/Paymentinformation' exact component={PaymentInformation}/>
-        <Route path='/Companydetail' exact component={CompanyDetail}/>
-        <Route path='/Hourlyrate' exact component={HourlyRate}/>
-        <Route path='/Idverification' exact component={IdVerification}/>
-        <Route path='/registrationprocess' exact component={Root}/>
         <Route component={NotFound} />
       </Switch>
       </Router>
