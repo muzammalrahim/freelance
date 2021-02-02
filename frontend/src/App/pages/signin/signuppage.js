@@ -2,7 +2,7 @@ import React from 'react'
 import Button from '../../../components/Button';
 import InputField from '../../../components/InputField';
 import Linkedin from '../../../components/linkedin';
-import Navbar from '../../../components/profileview/Navbar';
+import Navbar from '../../../components/Navbar';
 import './SignIn.css'
 import SiSoHero from '../../../components/SiSoHero';
 import loginimage from '../../../../src/loginimage.png';

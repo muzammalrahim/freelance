@@ -16,6 +16,7 @@ import ProfessionalProfile from './ProfessionalProfile'
 // import ProfileView from './components/profileview/ProfileView'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import JobDetail from "./App/pages/jobs/JobDetail";
+import  {AccountSettingMain} from './App/pages/AccountSetting/AccountSettingMain'
 
 
 function App() {
