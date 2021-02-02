@@ -52,6 +52,7 @@
 .ml2{
     margin-right: 150px;
 }
+
 .dropzone{
     position: relative;
     width: 100%;
@@ -60,6 +61,14 @@
     border-color: rgb(102, 102, 102);
     border-style: dashed;
     border-radius: 5px;
+}
+
+.mr50{
+    margin-right: 50%;
+}
+
+.ml52{
+    margin-left: 52%;
 }
 
 .style{
