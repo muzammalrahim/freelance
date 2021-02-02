@@ -2,6 +2,6 @@ input[type="range"] {
     position: absolute;
     width: 156px;
     height: 2px;
-    left: 358px;
-    top: 616px;
+    margin-left: -15px;
+    margin-top: 0px;
 }
