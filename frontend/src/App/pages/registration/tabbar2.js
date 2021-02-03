@@ -1,9 +1,12 @@
 
 import React, { Component } from 'react'
 import './tabbar2.css'
-import './tabBar.css'
 import {RegNavbar} from '../../../../src/components/Navbar';
 import PersonalProfile,{PersonalProfileTabFooter} from './PersonalProfile'
+import IdVerification,{IdVerificationFooter} from './IdVerification'
+import PaymentInformation,{PaymentInformationFooter} from './PaymentInformation'
+import HourlyRate,{HourlyRateFooter} from './HourlyRate'
+import Heading,{HeadingFooter} from './ProfessionalProfile'
 
 let selecvalue=0;
  export const  Root = () => (
@@ -34,20 +37,22 @@ let selecvalue=0;
          <PersonalProfile/>
 
       </TabPanel>
-
       <TabPanel>
-        Related to step 2
+         <Heading/>
+
       </TabPanel>
 
       <TabPanel>
-        Related to step 3
+         <IdVerification/>
+      </TabPanel>
+
+      <TabPanel>
+       <PaymentInformation/>
       </TabPanel>
       <TabPanel>
-      Related to step 4
+        <HourlyRate/>
     </TabPanel>
-    <TabPanel>
-    Related to step 5
-  </TabPanel>
+    
     </Tabs>
   </div>
 )
@@ -188,7 +193,10 @@ const TabList = ({
 
     <div className="left_img">
 {selecvalue===0&&<PersonalProfileTabFooter/>}
-{selecvalue===1&&<h2>dsdsds</h2>}
+{selecvalue===1&&<HeadingFooter/>}
+{selecvalue===2&&<IdVerificationFooter/>}
+{selecvalue===3&&<PaymentInformationFooter/>}
+{selecvalue===4&&<HourlyRateFooter/>}
 </div> 
 
   </li>

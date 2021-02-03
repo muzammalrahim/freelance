@@ -2,6 +2,7 @@
   "name": "wildfire-tracker",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://52.7.91.105/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
@@ -16,6 +17,7 @@
     "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "superagent": "3.8.3",
     "react-search-field": "^1.2.0",
     "rn-range-slider": "^2.0.4",
     "superagent": "3.8.3",

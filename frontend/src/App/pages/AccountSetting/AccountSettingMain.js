@@ -1,55 +1,59 @@
 
+
 import React, { Component } from 'react'
-import './RegistrationProcess.css'
-import {RegNavbar} from '../../../components/Navbar';
-import PersonalProfile,{PersonalProfileTabFooter} from './PersonalProfile'
-import IdVerification,{IdVerificationFooter} from './IdVerification'
-import PaymentInformation,{PaymentInformationFooter} from './PaymentInformation'
-import HourlyRate,{HourlyRateFooter} from './HourlyRate'
+import './AccountSettingMain.css'
+import ProfileSetting from './ProfileSetting'
+import  DefaultMenu from '../jobs/DefaultMenu'
+import Navbar from '../../../components/Navbar'
 
 let selecvalue=0;
- export const  Root = () => (
+ export const  AccountSettingMain = () => (
+   
+  <div className="AccountSettingMain">
 
-  <div className="Root">
+  <div className='default-menu '>
+             <Navbar text="" value="Post a Project" /> 
+             <DefaultMenu  value={2}/>
+          </div>
     <Tabs selected={ 0 }>
       <TabList>
-      <RegNavbar/>
+
         <Tab>
 
-        <div class=""><span class=" "><Button>1</Button></span> <span class="text">Personal Profile</span></div> <div className="line"></div>
+        <div class=""><span class=" "><Button>1</Button></span> <span class="AS_text">Profile Setting</span></div> <div className="AS_line"></div>
   
         </Tab>
         <Tab>
-        <div class=""><span class=" "><Button>2</Button></span> <span class="text">Professional Profile</span></div> <div className="line"></div>
+        <div class=""><span class=" "><Button>2</Button></span> <span class="AS_text">Contact Info</span></div> <div className="AS_line"></div>
         </Tab>
         <Tab>
-        <div class=""><span class=" "><Button>3</Button></span> <span class="text">ID Verification</span></div> <div className="line"></div>
+        <div class=""><span class=" "><Button>3</Button></span> <span class="AS_text">Membership Plan</span></div> <div className="AS_line"></div>
         </Tab>
         <Tab>
-        <div class=""><span class=" "><Button>4</Button></span> <span class="text">Payment Information</span></div> <div className="line"></div>
+        <div class=""><span class=" "><Button>4</Button></span> <span class="AS_text">Notification Setting</span></div> <div className="AS_line"></div>
         </Tab>
         <Tab>
-        <div class=""><span class=" "><Button>5</Button></span> <span class="text">Hourly Rate</span></div> 
+        <div class=""><span class=" "><Button>5</Button></span> <span class="AS_text">Payment Withdraw</span></div> 
         </Tab>
       </TabList>
       <TabPanel>
-         <PersonalProfile/>
+         <ProfileSetting/>
 
       </TabPanel>
       <TabPanel>
-         <PersonalProfile/>
+      <ProfileSetting/>
 
       </TabPanel>
 
       <TabPanel>
-         <IdVerification/>
+      <ProfileSetting/>
       </TabPanel>
 
       <TabPanel>
-       <PaymentInformation/>
+      <ProfileSetting/>
       </TabPanel>
       <TabPanel>
-        <HourlyRate/>
+      <ProfileSetting/>
     </TabPanel>
     
     </Tabs>
@@ -148,15 +152,15 @@ selecvalue=this.state.selected
                   {/* <Taimoor data={this.state.selected}/> */}
               </div>
 
-              <div className="nextButtonDiv">
-              {this.state.selected>0&& <>
-                <button className="tb_prevButton" onClick={() => this.setState({ selected: this.state.selected - 1 })}>
+              <div className="AS_nextButtonDiv">
+              {this.state.selected>=0&& <>
+                <button className="AS_tb_prevButton" onClick={() => this.setState({ selected: this.state.selected - 1 })}>
                 Previous Step
               </button>
               </>}             
 
               {this.state.selected<4&& <>
-              <button className="tb_nextButton" onClick={() => this.setState({ selected: this.state.selected + 1 })}>
+              <button className="AS_tb_nextButton" onClick={() => this.setState({ selected: this.state.selected + 1 })}>
               Next
             </button>
             </>}
@@ -190,12 +194,8 @@ const TabList = ({
 
     { children  }  
 
-    <div className="left_img">
-{selecvalue===0&&<PersonalProfileTabFooter/>}
-{selecvalue===1&&<PersonalProfileTabFooter/>}
-{selecvalue===2&&<IdVerificationFooter/>}
-{selecvalue===3&&<PaymentInformationFooter/>}
-{selecvalue===4&&<HourlyRateFooter/>}
+    <div className="AS_left_img">
+
 </div> 
 
   </li>

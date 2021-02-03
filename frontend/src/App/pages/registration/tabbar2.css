@@ -22,7 +22,7 @@ body {
   width: 30%;
   background: #ffffff;
   padding-left: 5%;
-  border: 2px solid silver;
+  /* border: 2px solid silver; */
   float:left;
   padding-top: 1%;
 }
@@ -55,6 +55,7 @@ body {
     border :1px solid #6B6B6A;
     border-radius: 25px;
     border: 1px solid;
+    height: 40px;
 }
 .Button:focus,
 .Button:hover {
@@ -73,7 +74,7 @@ body {
 width: 0px;
 left: 72px;
 border: 1px dashed #a0a0a0;
-height: 30px;
+height: 40px;
 margin-left: 21px;
 }
 .Tab.is-active .line{
@@ -120,6 +121,7 @@ color: #EE9821;;
     float: right;
     margin-right: 5%;
     cursor: pointer;
+
 }
 
 .tb_prevButton{
@@ -130,6 +132,7 @@ color: #EE9821;;
   border-radius: 18px;
   border: none;
   cursor: pointer;
+  font-size: 13px;
 }
 
 .nextButtonDiv{

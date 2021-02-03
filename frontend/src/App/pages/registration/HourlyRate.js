@@ -18,13 +18,13 @@ function HourlyRate() {
 
         <div className='Pf-container'>
             
-
-
-
-                     {/*left section END*/}
-
-                     {/*Right section*/}
-                    <div className='hr_rightbox   bg2 b_line2' style={{display:"block",    height: "auto"}}>
+           
+                
+             
+                     {/*left section END*/} 
+                      
+                     {/*Right section*/} 
+                    <div className='hr_rightbox   bg2 b_line2' style={{display:"block",    height: "auto"}}> 
                           {/*Rc 1_inn*/}
                         <div>
                           <div className='hr_icon' style={{backgroundImage: `url(${img})`}}></div> 
@@ -58,7 +58,7 @@ function HourlyRate() {
                         </div>
                      
                          {/*Rc 1_inn*/}
-
+                     
                         
                     </div>
                     {/*Right section end*/} 
@@ -75,7 +75,7 @@ export default HourlyRate
 export function HourlyRateFooter ()
 {
   return(
-
+ 
       <>
       <div className='hr_foot' style={{backgroundImage: `url(${img2})`}}></div>
       </>
