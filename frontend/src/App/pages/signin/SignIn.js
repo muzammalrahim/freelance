@@ -6,7 +6,7 @@ import Linkedin from '../../../components/linkedin';
 import Navbar from '../../../components/Navbar';
 import SiSoHero from '../../../components/SiSoHero';
 import './SignIn.css'
-
+import ToggleButton from './ToggleButton'
 import loginimage from '../../../../src/loginimage.png';
 import AvatarImage from '../../../../src/AvatarImage.png';
 function SignIn() {
@@ -37,12 +37,7 @@ function SignIn() {
                 <InputField heading="Email" Placeholder=" Enter Email" />
               </div>
               <div className="password">
-                <InputField
-                  type="password"
-                  heading="Password"
-                  value="hidden"
-                  Placeholder=" Enter Password"
-                />
+                <ToggleButton/>
               </div>
               <div className="tos-check">
                 <input type="checkbox" id="tos" name="tos"></input>

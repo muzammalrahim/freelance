@@ -20,7 +20,7 @@
     "superagent": "3.8.3",
     "react-search-field": "^1.2.0",
     "rn-range-slider": "^2.0.4",
-    "superagent": "3.8.3",
+    
     "web-vitals": "^0.2.4"
   },
   "scripts": {
