@@ -70,7 +70,7 @@ width:280px
 @media only screen and (min-width: 700px) {
     .pi_foot{
         height: 92px;
-    margin-top: 4%;
+        margin-top: 5.2%;
     }
   } 
   /* Large devices (laptops/desktops, 992px and up) */
@@ -101,7 +101,7 @@ width:280px
   @media only screen and (min-width: 1350px) {
     .pi_foot{
         height: 182px;
-        margin-top: 4.5%;
+        margin-top: 4.7%;
     }
   }
   
@@ -109,6 +109,6 @@ width:280px
   @media only screen and (min-width: 1400px) {
     .pi_foot{
         height: 182px;
-        margin-top: 4.5%;
+        margin-top: 4.7%;
     }
   }

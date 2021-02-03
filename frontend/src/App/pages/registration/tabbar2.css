@@ -98,7 +98,7 @@ border: 1px dashed #EE9821;
   color: #6B6B6A;
   margin: 7%;
       font-weight: 600;
-    font-size: 1.4vw;
+    font-size: 12px;
 }
 
 .Tab.is-active .text2{
@@ -158,12 +158,26 @@ color: #EE9821;;
 }
 
 
+@media screen and (max-width: 800px) {
+  .text2{
+    font-size: 1.4vw;
+  }  
+}
+@media screen and (max-width: 673px) {
+  .text2{
+    font-size: 1.2vw;
+;
+  }  
+}
+
+
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 700px) {
 
   .nextButtonDiv {
     height: 25vh
-  }  
+  } 
+ 
 } 
 
 
@@ -175,6 +189,9 @@ color: #EE9821;;
   .nextButtonDiv {
     height: 27vh;
   }  
+  .text2{
+    font-size: 1.4vw;
+  } 
 } 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {

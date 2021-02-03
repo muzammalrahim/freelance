@@ -56,14 +56,14 @@ margin-left: 116px;
 width:280px;
 margin-top: 1%;
 }
+  
   /* Large devices (laptops/desktops, 992px and up) */
-  /* @media only screen and (min-width: 700px) { */
-    /* .personalprofile_foot{ */
-        /* height: 94px; */
-        /* margin-top: 5%; */
-    /* } */
-  /* }  */
-  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 700px) {
+    .personalprofile_foot{
+      height: 92px;
+      margin-top: 42px;
+    }
+  } 
   @media only screen and (min-width: 800px) {
     .personalprofile_foot{
         height: 106px;

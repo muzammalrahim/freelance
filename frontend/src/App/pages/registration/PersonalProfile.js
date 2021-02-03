@@ -2,17 +2,15 @@ import React from 'react'
 
 import Button from '../../../../src/components/Button';
 import {InputField2} from '../../../../src/components/InputField';
-import {RegNavbar} from '../../../../src/components/Navbar';
-
 import './PersonalProfile.css'
 import '../../../../src/common.css'
 
 import img from '../../../img/personalProfile.png'
 import img2 from '../../../img/personalProfile_F.png'
 
-function PersonalProfile() {
-    return (
 
+function PersonalProfile() {
+    return (       
         <div className='Pf-container'>
             
           {/* <div className='d-Iflex'> */}
