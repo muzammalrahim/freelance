@@ -1,8 +1,17 @@
 .Certifies{
     height: 272px;
-width: 712px;
-margin-left: 336px;
-margin-top: 20px;
+    width: 780px;
+margin-left: 515px;
+margin-top: 30px;
 border-radius: 0px;
-background-color: rgb(241, 229, 235);
+background-color: white;
+}
+.cerificates-div{
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    margin: 3% 0%;
+}
+.cerificates-div p{
+    margin: 10% 2% 10% 0%;
 }

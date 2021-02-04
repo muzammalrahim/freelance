@@ -15,6 +15,8 @@ import Jobs from "./App/pages/jobs/Jobs";
 import ProfessionalProfile from './ProfessionalProfile'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import JobDetail from "./App/pages/jobs/JobDetail";
+import profileview from './components/profileview/ProfileView'
+import Profileview from './components/profileview/ProfileView';
 
 
 function App() {
@@ -29,7 +31,7 @@ return (
         <Route path='/Accounttype' exact component={AccountType}/>
         <Route path='/PersonalProfile' exact component={PersonalProfile}/>
         <Route path='/ProfessionalProfile' exact component={ProfessionalProfile}/>
-      
+        <Route path='/profile-view' exact component={Profileview}/>
 
         <Route path='/Paymentinformation' exact component={PaymentInformation}/>
         <Route path='/Companydetail' exact component={CompanyDetail}/>

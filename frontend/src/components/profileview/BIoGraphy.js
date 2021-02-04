@@ -1,18 +1,14 @@
 import React from "react";
 import "./BioGraphy.css";
-import Button from "../Button";
-export function BioGraphy(props) {
+import Button from '../Button'
+function BioGraphy() {
   return (
     <div className="ui-comments">
       <div className="comment">
       <div className="btn-edit">
-        <Button buttonStyle="btn--yellow" value="EDIT" />
-      </div>
-     <div className="Per">
-     <p>Personal Profile</p>
+        <Button buttonStyle="btn--ADD" value="EDIT" />
+       <p>Personal Profile</p>
      </div>
-      
-
         <div className="paRagraph">
         <h>BIO </h>
         <p>
@@ -28,10 +24,7 @@ export function BioGraphy(props) {
         <h> Address</h>
         <p>Lorem Ipsum is simply dummy text of the printing.</p>
         </div>
-        {/* <div className="SKILLS">
-        <h>Skills </h>
-        </div> */}
-      
+   
         </div>
     </div>
   );

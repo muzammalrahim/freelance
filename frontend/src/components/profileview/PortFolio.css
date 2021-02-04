@@ -1,9 +1,36 @@
 .Portfol{
+    position: relative;
     height: 332px;
-width: 712px;
-margin-left: 336px;
-margin-top: 20px;
+    width: 780px;
+
+margin-left: 515px;
+margin-top: 30px;
 border-radius: 0px;
-background: rgb(211, 213, 214);
+background: white;
+
+}
+
+.comp3{
+    width: 100%;
+    display: flex;
+    
+}
+.comp3 Button{
+    margin-top: 2%;
+    position: relative;
+    margin-left: 77%;
+}
+.comp3 h{
+    margin-top: 2%;
+    font-weight: 600;
+    font-size: 18px;
+    position: relative;
+    left: 3%;
+}
+.Pic-tag{
+    display: flex;
+    margin: 15px 0 0 0px;
+  justify-content: space-around;
+   
 
 }

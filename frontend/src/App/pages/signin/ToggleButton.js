@@ -1,29 +1,16 @@
-import React, { Component } from "react";
+import React, { useState, Component } from "react";
 import "./ToogleButton.css";
-import $ from 'jquery';
 import InputField from '../../../components/InputField'
+ function App () {
+  const [passwordShown, setPasswordShown] = useState(false);
 
-class App extends Component {
-
- componentDidMount() {
-$(document).ready(function () {
-  $("#show_hide_password a").on("click", function (event) {
-    event.preventDefault();
-    $("#show_hide_password i").toggleClass('fa-eye fa-eye-slash');
-    if ($("#show_hide_password input").attr("type") == "text") {
-      $("#show_hide_password input").attr("type", "password");
-    } else if ($("#show_hide_password input").attr("type") == "password") {
-      $("#show_hide_password input").attr("type", "text");
-    }
-  });
-});
-  }
-render() {
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
   return(
- 
           <div  id="show_hide_password">
             <InputField 
-             
+               type={passwordShown ? "text" : "password"}
                   type="password"
                   heading="Password"
                   value="hidden"
@@ -35,5 +22,4 @@ render() {
         </div>
     )
   }
-}
 export default App
