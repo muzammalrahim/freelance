@@ -37,6 +37,7 @@ body {
 }
 .TabPanel.is-active {
   display: block;
+  background: #f7f8fa;
 }
 
 .Button {
@@ -98,7 +99,7 @@ border: 1px dashed #EE9821;
   color: #6B6B6A;
   margin: 7%;
       font-weight: 600;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .Tab.is-active .text2{
@@ -124,6 +125,19 @@ color: #EE9821;;
     float: right;
     margin-right: 5%;
     cursor: pointer;
+
+
+    /* background-color: #EE9821; */
+    /* width: 116px; */
+    /* height: 36px; */
+    /* border-radius: 2px; */
+    /* color: white; */
+    /* font-family: 'Poppins', sans-serif; */
+    /* text-align: center; */
+    /* font-style: normal; */
+    /* font-weight: 400px; */
+    /* font-size: 12px; */
+    /* line-height: 20px */
 
 }
 
@@ -166,7 +180,7 @@ color: #EE9821;;
 @media screen and (max-width: 673px) {
   .text2{
     font-size: 1.2vw;
-;
+
   }  
 }
 
@@ -189,8 +203,10 @@ color: #EE9821;;
   .nextButtonDiv {
     height: 27vh;
   }  
+ 
+
   .text2{
-    font-size: 1.4vw;
+    font-size: 12px;
   } 
 } 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -201,6 +217,11 @@ color: #EE9821;;
   .nextButtonDiv {
     height: 32vh;
   }
+  
+
+  .text2{
+    font-size: 16px;
+  } 
 } 
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */

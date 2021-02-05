@@ -35,29 +35,8 @@ class App extends React.Component{
                 <div class="row">
                     <div class="col-md-6 offset-md-3">
                         <br /><br />
-
-                        <hr />
-
-<div class="two-column">
-
-  
-  <div class="">
-    <div class="styled-input-container styled-input--square">
-      <div class="styled-input-single">
-        <input type="checkbox" name="fieldset-6" id="checkbox2-example-one" />
-        <label for="checkbox2-example-one">Example Title</label>
-      </div>
-      <div class="styled-input-single">
-        <input type="checkbox" name="fieldset-6" id="checkbox2-example-two" />
-        <label for="checkbox2-example-two">Example Title</label>
-      </div>
-      
-    </div>
-  </div>
-</div>
-
                         
-                        <div class="form-row">
+                            <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Choose Category :</label><br />
                                 <div class="form-check form-check-inline">
