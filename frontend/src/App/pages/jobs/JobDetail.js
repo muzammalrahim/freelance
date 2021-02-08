@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import DefaultMenu from './DefaultMenu';
 import Proposal from './Proposal';
 import AvatarImage from '../../../../src/AvatarImage.png';
-
+import img from "../../../img/stars1.png"
 export default function JobDetail() {
     return (
         <div className="job-detail">
@@ -18,20 +18,28 @@ export default function JobDetail() {
             </div>
             {/* top header */}
             <div className="main-area">
-                <div className="container">
+                <div className="container-fluid">
                     <div className="row details-grid">
+                        <div className="col-md-3">
                         <div className="left-side"><Proposal/></div>
+                        </div>
+                        <div className="col-md-9">
                         <div className="right-side">
+                        <div className="container"></div> 
                              {/*--------- row1 ---------------*/}
+                             
                   <div className="row-1 pb-4">
-                  <div className="row job">
-                    <div className="img-icon">
-                    <div className='avatar-user' style={{backgroundImage: `url(${AvatarImage})`}}></div>
+                  <div className="row job-detail">
+                    <div className="job-detail-icon">
+                    
                     </div>
                     <div className="content-heading">
                       <h3>
-                      Job title lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+                      Job title lorem ipsum lorem ipsum lorem ipsum 
                       </h3>
+                      <div className="price">
+                      <p>300 SAR <br></br><span>Per Hour</span></p>
+                    </div>
                     </div>
                     {/* <div className="dislike fa-icon">
                     <i class="far fa-thumbs-down"></i>
@@ -52,20 +60,24 @@ export default function JobDetail() {
                     <li>
                       <p><i class="fas fa-clock"></i>20 min ago</p>
                     </li>
-                    <li className="price">
-                      <p>300 SAR <br></br><span>Per Hour</span></p>
-                    </li>
+                    
                   </ul>
                 </div>
                 <div className="row paragraph">
                         <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                        when an unknown printer took a galley of type and scrambled it to make a type 
-                        specimen book. It has survived not only five centuries
-                        <a href="#">more...</a>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                         when an unknown printer took a galley of type and scrambled it to make a type 
+                         specimen book. It has survived not only five centuries, but also the leap into 
+                         electronic typesetting, remaining essentially unchanged. It was popularised in the 
+                         1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more 
+                         recently with desktop publishing software like Aldus PageMaker including versions 
+                         of Lorem Ipsum.
                         </p>
-                        <ul className="tags">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-8 col-sm-6">
+                                <ul className="tags">
                         <li>
                           <a href="#">Design</a>
                           </li>
@@ -77,15 +89,24 @@ export default function JobDetail() {
                           </li>
                           <li>
                           <a href="#">Html</a>
-                          </li>
-                          <li className="payment-btn">
+                          </li> 
+                        </ul>
+                                </div>
+                                <div className="col-md-4 col-sm-6 col-6">
+                                <div className="t-button">
+                        
+                        <div className="payment-btn">
                             <a className="payment-button" href="#">
                               <i class="fas fa-check"></i>
                               <span>Payment verification</span>
                             </a>
-                          </li>
-                          
-                        </ul>
+                          </div>
+                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
                     </div>
                     </div>
                     {/*--------- row1 ---------------*/}
@@ -200,6 +221,13 @@ export default function JobDetail() {
                                     <h4>Job title lorem ipsum lorem ipsum lorem ipsum<span className="r-price">300 SAR<br></br>Fixed Price</span> </h4>
                                     <p>Expert knowledge and very professional, highly recommended!"</p>
                                     <h5><t>By</t> Maria Bator <span>(5 reviews)</span></h5>
+                                    <div>
+                                        <div className="rating-bar">
+                                            
+                                            <div className='rating-img star-ratings-sprite"' style={{backgroundImage: `url(${img})`}}></div>                
+                                        </div>
+                                        
+                                    </div>
                                     </div>
                                 </li> 
                             </ul>
@@ -216,6 +244,10 @@ export default function JobDetail() {
                     </div>
                     
                     </div>
+                        </div>
+                        
+                        
+                        
                 </div>
                 
             </div>

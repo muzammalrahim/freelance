@@ -5,7 +5,7 @@ import DefaultMenu from './DefaultMenu';
 import Sidebar from './Sidebar';
 import SearchBar from "./SearchBar";
 import Button from '../../../components/Button';
-import AvatarImage from '../../../../src/AvatarImage.png';
+// import AvatarImage from '../../../../src/AvatarImage.png';
 
 
 
@@ -30,8 +30,9 @@ function Jobs() {
                 <div className="range-slider col-md-3"> </div>
               </div>
               <div className="right-side">
-                <div className="row search-area">
-                    <div className="search-bar">
+                <div className="container">
+                  <div className="row search-area">
+                  <div className="search-bar">
                       <SearchBar/>
                     </div>
                     <div className="search-button">
@@ -39,8 +40,9 @@ function Jobs() {
                     </div>
                     <div className="filter">
                     <input type="text" class="form-control filter" placeholder="Sort by: Highest Price"></input>
-                    <i class="fa fa-filter"></i>
                     </div>
+                  </div>
+                    
                 </div>
                 <div className="inner-content">
                   <h1 className="inner-heading">My Feed</h1>
@@ -48,7 +50,7 @@ function Jobs() {
                   <div className="row-1 pb-4">
                   <div className="row job">
                     <div className="img-icon">
-                    <div className='avatar-user' style={{backgroundImage: `url(${AvatarImage})`}}></div>
+                    {/* <div className='avatar-user' style={{backgroundImage: `url(${AvatarImage})`}}></div> */}
                     </div>
                     <div className="content-heading">
                       <h3>
@@ -117,7 +119,7 @@ function Jobs() {
                   <div className="row-inner pb-4">
                   <div className="row job">
                     <div className="img-icon">
-                    <div className='avatar-user' style={{backgroundImage: `url(${AvatarImage})`}}></div>
+                    {/* <div className='avatar-user' style={{backgroundImage: `url(${AvatarImage})`}}></div> */}
                     </div>
                     <div className="content-heading">
                       <h3>
@@ -186,7 +188,7 @@ function Jobs() {
                   <div className="row-inner pb-5">
                   <div className="row job">
                     <div className="img-icon">
-                    <div className='avatar-user' style={{backgroundImage: `url(${AvatarImage})`}}></div>
+                    {/* <div className='avatar-user' style={{backgroundImage: `url(${AvatarImage})`}}></div> */}
                     </div>
                     <div className="content-heading">
                       <h3>

@@ -14,15 +14,45 @@ export default class Proposal extends Component {
                     <ul>
                         <li>
                             <h3>Proposal Amount</h3>
-                            <input type="text" placeholder="1"></input>
+                            
+                            
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">0</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"></input>
+                                
+                                <div class="input-group-append">
+                                    <span class="input-group-text">SAR</span>
+                                </div>
+                                </div>
+                            
                         </li>
                         <li>
                             <h3>15% service free</h3>
-                            <input type="text" placeholder="1"></input>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">0</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"></input>
+                                
+                                <div class="input-group-append">
+                                    <span class="input-group-text">SAR</span>
+                                </div>
+                                </div>
                         </li>
                         <li>
                             <h3>Total amount you’ll recieve</h3>
-                            <input type="text" placeholder="1"></input>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">0</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"></input>
+                                
+                                <div class="input-group-append">
+                                    <span class="input-group-text">SAR</span>
+                                </div>
+                                </div>
                         </li>
                         <li>
                             <h3>Your Proposal</h3>
