@@ -84,7 +84,7 @@ export function InputField4(props)
   return (
     <>
    
-    <p className="heading_style">{props.heading}</p>
+    <p className="heading_st2">{props.heading}</p>
   
       <input type={inputType} value={inputValue} placeholder={inputPlaceholder} name="input-form" onChange={handleChange} class="inputclass4  pf_mb"/>
  

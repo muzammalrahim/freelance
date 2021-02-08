@@ -109,8 +109,8 @@ width: 100%;
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 700px) {
     .hr_foot{
-        height: 91px;
-        margin-top: 18.5%;
+        height: 92px;
+        margin-top: 91px;
     }
   } 
   /* Large devices (laptops/desktops, 992px and up) */

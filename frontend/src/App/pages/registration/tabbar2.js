@@ -7,6 +7,7 @@ import IdVerification,{IdVerificationFooter} from './IdVerification'
 import PaymentInformation,{PaymentInformationFooter} from './PaymentInformation'
 import HourlyRate,{HourlyRateFooter} from './HourlyRate'
 import Heading,{HeadingFooter} from './ProfessionalProfile'
+import ProfessionalProfile2,{ProfessionalProfile2Footer} from './ProfessionalProfile2'
 
 let selecvalue=0;
  export const  Root = () => (
@@ -38,7 +39,7 @@ let selecvalue=0;
 
       </TabPanel>
       <TabPanel>
-         <Heading/>
+         <ProfessionalProfile2/>
 
       </TabPanel>
 
@@ -150,17 +151,25 @@ selecvalue=this.state.selected
               </div>
 
               <div className="nextButtonDiv">
-              {this.state.selected>=0&& <>
-                <button className="tb_prevButton" onClick={() => this.setState({ selected: this.state.selected - 1 })}>
-                Previous Step
-              </button>
-              </>}             
+                  <div className="left_section">
 
-              {this.state.selected<4&& <>
-              <button className="tb_nextButton" onClick={() => this.setState({ selected: this.state.selected + 1 })}>
-              Next
-            </button>
-            </>}
+                        {this.state.selected===1&&<ProfessionalProfile2Footer/>}
+                  </div>
+
+                  <div className="right_section">
+            
+                        {this.state.selected>=0&& <>
+                          <button className="tb_prevButton" onClick={() => this.setState({ selected: this.state.selected - 1 })}>
+                          Previous Step
+                        </button>
+                        </>}             
+
+                        {this.state.selected<4&& <>
+                        <button className="tb_nextButton" onClick={() => this.setState({ selected: this.state.selected + 1 })}>
+                        Next
+                      </button>
+                      </>}
+              </div>
             </div>
 
             
@@ -193,10 +202,11 @@ const TabList = ({
 
     <div className="left_img">
 {selecvalue===0&&<PersonalProfileTabFooter/>}
-{selecvalue===1&&<HeadingFooter/>}
+
 {selecvalue===2&&<IdVerificationFooter/>}
 {selecvalue===3&&<PaymentInformationFooter/>}
 {selecvalue===4&&<HourlyRateFooter/>}
+ 
 </div> 
 
   </li>
