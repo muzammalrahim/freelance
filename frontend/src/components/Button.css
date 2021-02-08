@@ -89,13 +89,39 @@ text-align: right;
     box-shadow: none;
     color: white;
     font-family: "Poppins";
-    font-family: Poppins;
 font-size: 12px;
 font-style: normal;
-font-weight: 500;
 line-height: 20px;
 letter-spacing: 0em;
 text-align: center;
 
       
+  }
+  .btn--ADD{
+    position: absolute;
+    width: 80px;
+    height: 34px;
+    background: #EE9821;
+    border-radius: 2px;
+    color: white;
+    font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 20px;
+text-align: center;
+  }
+  .btn--load{
+    position: absolute;
+width: 209px;
+height: 34px;
+border: 1px solid #6B6B6A;
+font-family: Poppins;
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 20px;
+color: #6B6B6A;
+box-sizing: border-box;
+border-radius: 2px;
   }
