@@ -10,32 +10,52 @@ export function PortFolio(props) {
     return (
         <div className="Portfol">
             <div className="comp3">
+            <div className="profile-inner">
             <h> Portfolio </h> 
             <Button buttonStyle="btn--ADD" value="+ADD" />
+            </div>
+            
          
             </div>
-            <div className="Pic-tag">
-            <div>
-                <img src={Commercial} alt="/"/>
-                <br/>
-                <br/>
-                <p> Ecomerce Project </p>
-                <h6>8 Artworks</h6>
+            <div className="row Pic-tag">
+                <div className="col-md-4 col-sm-4">
+                  <div>
+                      <div className='img-wraper'>
+                      <img src={Commercial} alt="/"/>
+                      </div>
+                      <div className="img-des">
+                        <p> Ecomerce Project </p>
+                        <h>8 Artworks</h>
+                      </div>
+                  
+                    
+                  </div>
+              </div>
+              <div className="col-md-4 col-sm-4 ">
+                <div>
+                    <div className="img-wraper"> 
+                    <img src={Ecomerce} alt="/"/>
+                    </div>
+                    <div className="img-des"> 
+                    <p> Ecomerce Project </p>
+                    <h>8 Artworks</h>
+                    </div>
+                    
+                </div>
+              </div>
+            <div className="col-md-4 col-sm-4">
+                <div>
+                    <div className="img-wraper">
+                    <img src={ Medical } alt="/"/>
+                    </div>
+                        <div className="img-wraper">
+                        <p> Ecomerce Project </p>
+                        <h>8 Artworks</h>
+                        </div>
+                      
+                    </div>
             </div>
-            <div>
-                <img src={Ecomerce} alt="/"/>
-                <br/>
-                <br/>
-                <p> Ecomerce Project </p>
-                <h6>8 Artworks</h6>
-            </div>
-            <div>
-                <img src={ Medical } alt="/"/>
-                <br/>
-                <br/>
-                <p> Ecomerce Project </p>
-                <h6>8 Artworks</h6>
-            </div>
+         
             </div>
         </div>
     )

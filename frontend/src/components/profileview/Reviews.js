@@ -8,10 +8,14 @@ export function Reviews(props) {
 
     return (
         <div className="Reviews">
+            <div className="profile-inner">
             <p> Reviews & Rating</p>
-            <div className="ANN">
-
+            </div>
+            <div className="rate">
+            
+            </div>
            
+            <div  className="ANN">
             <div>
            <img src={Stanton}/>
           <h>   Ann Stanton </h>
@@ -21,8 +25,8 @@ export function Reviews(props) {
              make a type specimen book. It has survived not only five centuries, 
            </p>
             </div>
-            </div>
-            <div className="row-2nd">
+
+            <div>
             <img src={Cooper}/>
             <h>   Cooper Dokidis </h>
             <p>
@@ -34,6 +38,7 @@ export function Reviews(props) {
     
             <div className="btn-load">
             <Button buttonStyle="btn--load" value="LOAD MORE" />
+            </div>
             </div>
             
         </div>

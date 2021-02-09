@@ -6,20 +6,32 @@ import certificate2 from "../../assets/certificate2.png";
 export function Certificate(props) {
   return (
     <div className="Certifies">
-      <div className="comp3">
+       <div className="profile-inner">
         <h> Certificates </h>
         <Button buttonStyle="btn--ADD" value="+ADD" />
       </div>
-      <div className="cerificates-div">
-        <div>
-          <img src={certificate} alt="" />
-          <p> UX Designer Certificate </p>
-          <h> .PNG </h>
+      <div className="row Pic-tag">
+        <div className="col-md-4 col-sm-4">
+          <div>
+            <div className="img-wraper">
+              <img src={certificate} alt="/" />
+            </div>
+            <div className="img-des">
+              <p> Ecomerce Project </p>
+              <h>8 Artworks</h>
+            </div>
+          </div>
         </div>
-        <div>
-          <img src={certificate2} alt="" />
-          <p> Developer Certificate </p>
-          <h> .JPEG </h>
+        <div className="col-md-4 col-sm-4 ">
+          <div>
+            <div className="img-wraper">
+              <img src={certificate2} alt="/" />
+            </div>
+            <div className="img-des">
+              <p> Ecomerce Project </p>
+              <h>8 Artworks</h>
+            </div>
+          </div>
         </div>
       </div>
     </div>

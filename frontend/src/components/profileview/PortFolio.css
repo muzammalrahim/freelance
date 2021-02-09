@@ -1,36 +1,60 @@
-.Portfol{
-    position: relative;
-    height: 332px;
-    width: 780px;
-
-margin-left: 515px;
-margin-top: 30px;
-border-radius: 0px;
-background: white;
-
+.Portfol {
+  border-radius: 0px;
+  background: white;
+  /* padding: 1%; */
+  margin-top: 30px;
 }
+/* .comp3 {
+  padding: 3%;
+  display: flex;
+  justify-content: space-between;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  color: #6b6b6a;
+  border-bottom: 1px solid #cececd;
+} */
+.profile-inner{
+    padding: 3%;
+  display: flex;
+  justify-content: space-between;
+  font-family: Poppins;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: 24px;
+letter-spacing: 0px;
+text-align: left;
 
-.comp3{
-    width: 100%;
-    display: flex;
-    
+  color: #6b6b6a;
+  border-bottom: 1px solid #cececd;
 }
-.comp3 Button{
-    margin-top: 2%;
-    position: relative;
-    margin-left: 77%;
+.comp3 h {
+  font-weight: 600;
+  font-size: 18px;
 }
-.comp3 h{
-    margin-top: 2%;
-    font-weight: 600;
-    font-size: 18px;
-    position: relative;
-    left: 3%;
+.Pic-tag {
+  padding: 3%;
 }
-.Pic-tag{
-    display: flex;
-    margin: 15px 0 0 0px;
-  justify-content: space-around;
-   
-
+.img-wraper {
+  overflow: hidden;
+}
+.Pic-tag p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #6b6b6a;
+}
+.Pic-tag h {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+  color: #6b6b6a;
+  opacity: 0.8;
 }

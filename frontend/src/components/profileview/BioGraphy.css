@@ -1,79 +1,77 @@
-.ui-comments{
-    height: 454px;
-width: 780px;
-margin-left: 512px;
-margin-top: -600px;
-background: white;
+.ui-comments {
+  background: white;
+  padding: 3%;
+}
+.comment {
+}
+.btn-edit {
+  display: flex;
+  justify-content: space-between;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: #6b6b6a;
+}
 
-}
-.comment{
-    position: relative;
-    padding: 1% 0% 0% 1%;
-   
-}
-.btn-edit{
-    position: absolute;
-    top: 8%;
-    left: 86%;
-}
-.btn-edit p{
-   position: relative;
-width: 142px;
-height: 24px;
-left: -635px;
-margin-top: 10px;
-font-family: Poppins;
-font-style: normal;
-font-weight: 600;
-font-size: 18px;
-line-height: 24px;
-color: #6B6B6A;
-}
-.paRagraph{
-width: 632px;
-height: 229px;
-margin-left: 330px;
-margin-top: 5%;
-}
-.paRagraph p{ 
-    position: relative;
-width: 504px;
-height: 96px;
-left: -90px;
-top: 30px;
-font-family: Poppins;
+.tst {
+    padding-top: 3%;
+  border-bottom: 1px solid #b4b4b2;
+  font-family: Poppins;
 font-size: 14px;
 font-style: normal;
 font-weight: 400;
 line-height: 24px;
 letter-spacing: 0px;
 text-align: left;
-color: #6B6B6A;
-opacity: 0.8;
+
 }
-.paRagraph  h{
-    position: relative;
-    left: -50px;
-top: 60px;
-width: 24px;
-height: 28px;
-margin-left: -250px;
-font-family: Poppins;
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 28px;
-color: #6B6B6A;
+
+.paRagraph span {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 28px;
+  color: #6b6b6a;
 }
-.SKILLS{
-width: 42px;
-height: 24px;
-margin-left: 60px;
-margin-top: 549px;
-font-family: Poppins;
-font-style: normal;
-font-weight: 600;
-font-size: 16px;
-line-height: 24px;
-color: #6B6B6A;
+
+.lanuage-tag {
+  display: flex;
+  flex-direction: row;
+  font-family: Poppins;
+  justify-content: space-between;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+}
+.lanuage-tag li a {
+  width: 100px;
+  background: #c8f0ec;
+}
+.bio-text {
+  display: flex;
+}
+.bio-text span {
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+
+  color: #6b6b6a;
+  margin-left: 148px;
+}
+.bio-text p {
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0px;
+
+  color: #6b6b6a;
 }

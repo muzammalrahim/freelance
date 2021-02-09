@@ -1,14 +1,12 @@
 .Reviews{
-    height: 479px;
-    width: 780px;
-
-margin-left: 515px;
-margin-top: 30px;
+    margin-top: 30px;
+    /* padding: 2% 15px 1px 3%; */
 border-radius: 0px;
 background-color:white;
+
 }
 .Reviews p{
-    padding: 3% 1px 1px 3%;
+    padding: 0% 0px 0px 1%;
     font-family: Poppins;
 font-style: normal;
 font-weight: 600;
@@ -17,15 +15,11 @@ line-height: 24px;
 color: #6B6B6A;
 }
 .ANN {
-    position: absolute;
-    width: 712px;
-    height: 167px;
-    left: 536px;
-    top: 950px;
     background: #FFFFFF;
+    padding: 4% 3%;
 }
 .ANN h{
-    margin-left:2%;
+    margin:2%;
     font-family: Poppins;
 font-style: normal;
 font-weight: 600;
@@ -34,23 +28,21 @@ line-height: 24px;
 color: #6B6B6A;
 }
 .ANN p{
-    position: absolute;
-width: 672px;
-height: 72px;
-left: -20px;
 font-family: Poppins;
 font-style: normal;
 font-weight: normal;
 font-size: 12px;
 line-height: 24px;
 color: #6B6B6A;
+padding: 2px;
 }
 .btn-load{
-    margin: 5% 0% 0% 35% ;
+    padding: 3% 35.6%;
+
 }
 .row-2nd{}
 .row-2nd p{
-    margin: 23% 0% 0% 0%;
+    margin: 2% 0% 0% 0%;
 
     font-family: Poppins;
 font-size: 12px;
@@ -61,17 +53,18 @@ letter-spacing: 0px;
 text-align: left;
 color: #6B6B6A;
 width: 672px;
+padding: 2% 15px 1px 3%;
+
 }
 .row-2nd h{
-    position: relative;
-    top: 190px;
-    left: 30px;
+   
     color: #6B6B6A;
     font-weight: bold;
     font-family: Poppins;
 }
 .row-2nd img{
-   position: relative;
-   top: 190px;
- left: 20px;
+  
+}
+.rate{
+border-bottom: 1px solid #6B6B6A;
 }
