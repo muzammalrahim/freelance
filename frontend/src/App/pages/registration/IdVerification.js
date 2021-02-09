@@ -39,7 +39,7 @@ function IdVerification() {
                                  </div>
                                 
                                   <div >
-                                        <div className="getimage">
+                                        <div className="">
                                         <GetImage/>
                                         </div>
                                    </div>

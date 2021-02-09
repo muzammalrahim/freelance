@@ -1,11 +1,12 @@
 .body {
   position: absolute;
-  height: 196px;
+  height: 142px;
   width: 74.8%;
-  
+
   margin-right: auto;
   left: 14.8%;
-  top: 553px;
+  right: 47.75%;
+  top: 540px;
   background: #ffffff;
   border-radius: 4px;
   display: inline;

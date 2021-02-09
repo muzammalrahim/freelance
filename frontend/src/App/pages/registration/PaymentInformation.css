@@ -1,6 +1,5 @@
 .pi_rightbox{
-    width:643px;
-    height: 473px;
+    width:100%;
     display: flex;
 }
 
@@ -23,16 +22,17 @@ box-sizing: border-box;
 background-repeat: no-repeat;}
 
 .pi_foot{
-    height: 180px;
-    margin-left: 120px;
-    background-repeat: no-repeat;
-    margin: auto;
-
-    position: absolute;
-width: 404px;
+height: 180px;
+margin-left: 120px;
+background-repeat: no-repeat;
+margin: auto;
+position: absolute;
+width: 30%;
 height: 182px;
 left: 0px;
-margin-top: 5%;
+margin-top: 4.5%;
+background-size: contain;
+
 }
 
 .pi_Head{
@@ -62,5 +62,53 @@ width:280px
 .PiDiv{
         display: flex;
         margin-top: 50px;
-    margin-bottom: 7%;
 }
+
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 700px) {
+    .pi_foot{
+        height: 92px;
+        margin-top: 5.2%;
+    }
+  } 
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 800px) {
+    .pi_foot{
+        height: 107px;
+        margin-top: 5.5%;
+    }
+  } 
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    .pi_foot {
+        height: 133px;
+        margin-top: 6.5%;
+    }
+    
+  } 
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    .pi_foot{
+        height: 160px;
+        margin-top: 5.7%;
+    }
+  }
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1350px) {
+    .pi_foot{
+        height: 182px;
+        margin-top: 4.7%;
+    }
+  }
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1400px) {
+    .pi_foot{
+        height: 182px;
+        margin-top: 4.7%;
+    }
+  }

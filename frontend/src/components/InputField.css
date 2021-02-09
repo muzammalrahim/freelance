@@ -6,6 +6,15 @@ font-size: 14px;
 line-height: 20px;
 color: #6B6B6A;
 }
+.heading_st2 {
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: bold;
+font-size: 14px;
+line-height: 20px;
+color: #6B6B6A;
+padding-left: 4px;
+}
 
 .inputclass{
 background: #FFFFFF;
@@ -70,6 +79,7 @@ padding-left: 2%;
   .rt-input-input {
     position: relative;
     display: inline-block;
+    width: 100%;
   }
   
   .rt-input-input::after {
@@ -78,11 +88,10 @@ padding-left: 2%;
     width: 1em;
     height: 1em;
     position: absolute;
-    top: 31%;
+    top: 28%;
     right: 14px;
     font-weight: 400;
+    font-weight: 800;
+    vertical-align: middle;
     font-size: 12px;
-  
-    
-    transform: translateY(-50%);
   }
