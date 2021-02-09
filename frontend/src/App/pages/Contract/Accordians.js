@@ -6,6 +6,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Avatar from '@material-ui/core/Avatar';
+import './accordian.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,15 +43,15 @@ export default function ControlledAccordions() {
           <Typography className={classes.secondaryHeading}></Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <div>
             <div className="m-info">
             <Avatar className="my-name">1</Avatar>
             </div>
-            <div>
+            <div className="milston-inner">
             <h4>Wireframes</h4></div>
             <div className="price-tag">100SAR</div>
             
-          </Typography>
+          </div>
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
