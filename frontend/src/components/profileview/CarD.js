@@ -1,5 +1,5 @@
 import React from "react";
-import "./card.css";
+import "./CarD.css";
 import Status from "../../assets/Status.png";
 import LINEE from "../../assets/LINEE.png";
 import india from "../../assets/india.png";

@@ -1,5 +1,5 @@
 import React from "react";
-import "./certificate.css";
+import "./CERTIFICATE.css";
 import Button from "../Button";
 import certificate from "../../assets/certificate.png";
 import certificate2 from "../../assets/certificate2.png";

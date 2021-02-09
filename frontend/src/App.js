@@ -18,6 +18,7 @@ import JobDetail from "./App/pages/jobs/JobDetail";
 import profileview from './components/profileview/ProfileView'
 import Profileview from './components/profileview/ProfileView';
 import ContractOne from './App/pages/Contract/ContractOne'
+import {AccountSettingMain} from './App/pages/AccountSetting/AccountSettingMain'
 
 
 function App() {
