@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import DefaultMenu from './DefaultMenu';
 import Proposal from './Proposal';
 import AvatarImage from '../../../../src/AvatarImage.png';
-import img from "../../../img/stars1.png"
+// import img from "../../../img/stars1.png"
 export default function JobDetail() {
     return (
         <div className="job-detail">
@@ -224,7 +224,7 @@ export default function JobDetail() {
                                     <div>
                                         <div className="rating-bar">
                                             
-                                            <div className='rating-img star-ratings-sprite"' style={{backgroundImage: `url(${img})`}}></div>                
+                                            {/* <div className='rating-img star-ratings-sprite"' style={{backgroundImage: `url(${img})`}}></div>                 */}
                                         </div>
                                         
                                     </div>

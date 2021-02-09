@@ -205,7 +205,7 @@ color: #6B6B6A;
     font-size: 17px;;
 }
 .rating-bar {
-    background: url(../../../img/stars1.png);
+    /* background: url(../../../img/stars1.png); */
     width: 80px;
     height: 16px;
     /* background-repeat: repeat-x; */
