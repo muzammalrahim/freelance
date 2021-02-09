@@ -151,20 +151,25 @@ selecvalue=this.state.selected
               </div>
 
               <div className="nextButtonDiv">
+                  <div className="left_section">
 
-              {this.state.selected===1&&<ProfessionalProfile2Footer/>}
+                        {this.state.selected===1&&<ProfessionalProfile2Footer/>}
+                  </div>
+
+                  <div className="right_section">
             
-              {this.state.selected>=0&& <>
-                <button className="tb_prevButton" onClick={() => this.setState({ selected: this.state.selected - 1 })}>
-                Previous Step
-              </button>
-              </>}             
+                        {this.state.selected>=0&& <>
+                          <button className="tb_prevButton" onClick={() => this.setState({ selected: this.state.selected - 1 })}>
+                          Previous Step
+                        </button>
+                        </>}             
 
-              {this.state.selected<4&& <>
-              <button className="tb_nextButton" onClick={() => this.setState({ selected: this.state.selected + 1 })}>
-              Next
-            </button>
-            </>}
+                        {this.state.selected<4&& <>
+                        <button className="tb_nextButton" onClick={() => this.setState({ selected: this.state.selected + 1 })}>
+                        Next
+                      </button>
+                      </>}
+              </div>
             </div>
 
             
