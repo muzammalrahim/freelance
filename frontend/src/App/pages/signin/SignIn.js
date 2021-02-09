@@ -6,11 +6,9 @@ import Linkedin from '../../../components/linkedin';
 import Navbar from '../../../components/Navbar';
 import SiSoHero from '../../../components/SiSoHero';
 import './SignIn.css'
-
+import ToggleButton from './ToggleButton'
 import loginimage from '../../../../src/loginimage.png';
 import AvatarImage from '../../../../src/AvatarImage.png';
-
-
 function SignIn() {
   return (
     <div className="SignUp-flex-container">
@@ -26,7 +24,7 @@ function SignIn() {
               <x>Welcome!</x>
               <t>Sign up to continue</t>
               <div
-                className="avatar-user"
+                className="avAtar-user"
                 style={{ backgroundImage: `url(${AvatarImage})` }}
               ></div>
               <div className="name">
@@ -39,20 +37,16 @@ function SignIn() {
                 <InputField heading="Email" Placeholder=" Enter Email" />
               </div>
               <div className="password">
-                <InputField
-                  type="password"
-                  heading="Password"
-                  value="hidden"
-                  Placeholder=" Enter Password"
-                />
+                <ToggleButton/>
               </div>
               <div className="tos-check">
                 <input type="checkbox" id="tos" name="tos"></input>
                 <label for="tos">
-                  {" "}
+                </label>
+                <p>
                   I agree to the Freelancer User <span>Agreement</span> and{" "}
                   <span>Privacy Policy.</span>
-                </label>
+                  </p>
               </div>
               <div className="su-button-1">
                 <Button buttonStyle="btn--yellow1" value="Sign Up" />

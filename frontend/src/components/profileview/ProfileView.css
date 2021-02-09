@@ -1,10 +1,8 @@
-.btn-text {
-    font-family: Poppins;
-font-size: 11px;
-font-style: normal;
-font-weight: 300;
-line-height: 20px;
-letter-spacing: 0em;
 
-
+BODY{
+    background: #F7F8FA;
+}
+.CARD-containers{
+    position: relative; 
+   
 }
