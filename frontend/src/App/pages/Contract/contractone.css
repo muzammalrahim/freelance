@@ -1,0 +1,21 @@
+.contractone-main{
+    background: #e5e5e5;
+}
+.cont-row {
+    background: #ffffff;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(107, 107, 106, .1);
+}
+.MuiButton-outlinedSecondary {
+    color: #6b6b6a !important;
+    border: 1px solid rgb(107 107 106) !important;
+}
+.contractone-main .content-heading {
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: 10% 65% auto;
+    padding: 0 20px;
+}
+.contractone-main  ul.duration {
+    margin: 0 0 0 90px;
+}

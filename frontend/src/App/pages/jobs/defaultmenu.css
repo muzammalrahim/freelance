@@ -1,3 +1,6 @@
+body{
+    font-family: Poppins;
+}
 a{
     text-decoration: none;
 }
@@ -6,7 +9,6 @@ nav.navbar.navbar-expand-md {
 }
 ul.default-menu {
     display: flex;
-    padding-left: 3rem;
 }
 .default-menu li {
     padding: 8px 14px 0 14px;
@@ -15,7 +17,7 @@ ul.default-menu {
 a.nav-links {
     color: #6B6B6A;
     font-family: Poppins;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 15px;
 }
 a.nav-links:hover{
@@ -64,9 +66,9 @@ a.notification {
     color: white;
   } */
 
-ul.nav.navbar-nav.ml-auto {
+  ul.nav.navbar-nav.ml-auto {
     position: absolute;
-    right: 37px;
+    right: 27px;
 }
 .dropdown a{
     color: #6B6B6A;
