@@ -5,14 +5,14 @@ import Dropdown from "../../../components/Dropdown";
 import Catagory from '../../../components/Catagory'
 import SelectSkill from "../../../components/SelectSkill";
 import img2 from '../../../img/profess_F.png';
-import App from './multiSelectionRadioBtn'
+// import App from './multiSelectionRadioBtn'
 
 import GetImage from './GetImage'
 function Heading(props) {
   return (
     <div class="container">
    <div>
-  <App/>
+  {/* <App/> */}
       <div className="background">
         <img src={Group} alt="user" className="userpad" />
         <p className="text">Professional Profile</p>

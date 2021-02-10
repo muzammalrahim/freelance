@@ -9,6 +9,8 @@ import NotFound from "./App/pages/notFound/NotFound";
 import Jobs from "./App/pages/jobs/Jobs";
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { AccountSettingMain } from './App/pages/AccountSetting/AccountSettingMain';
+import JobDetail from "./App/pages/jobs/JobDetail"
+import ContractOne from "./App/pages/Contract/ContractOne"
 function App() {
 return (
     <>
@@ -22,6 +24,8 @@ return (
         <Route path='/registration-process' exact component={Root}/>
         <Route path='/account-setting' exact component={AccountSettingMain}/>
         <Route path='/Jobs' exact component={Jobs}/>
+        <Route path='/JobDetail' exact component={JobDetail}/>
+        <Route path='/ContractOne' exact component={ContractOne}/>
         <Route component={NotFound} />
       </Switch>
       </Router>
