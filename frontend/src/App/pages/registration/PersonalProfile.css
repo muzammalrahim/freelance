@@ -2,7 +2,6 @@
     width:100%;
     height: 473px;
     display: flex;
-    padding-bottom: 2.5%;
 }
 
 
@@ -24,16 +23,16 @@ box-sizing: border-box;
 background-repeat: no-repeat;}
 
 .personalprofile_foot{
-      height: 180px;
+    height: 180px;
     margin-left: 120px;
     background-repeat: no-repeat;
     margin: auto;
+
     position: absolute;
-    width: 30%;
-    height: 182px;
-    left: 0px;
-    margin-top: 0.5%;
-    background-size: contain;
+width: 404px;
+height: 182px;
+left: 0px;
+margin-top: 0.5%;
 
 }
 
@@ -56,45 +55,4 @@ margin-left: 116px;
 width:280px;
 margin-top: 1%;
 }
-  
-  /* Large devices (laptops/desktops, 992px and up) */
-  @media only screen and (min-width: 700px) {
-    .personalprofile_foot{
-      height: 92px;
-      margin-top: 42px;
-    }
-  } 
-  @media only screen and (min-width: 800px) {
-    .personalprofile_foot{
-        height: 106px;
-        margin-top: 49px;;
-    }
-  } 
-  /* Large devices (laptops/desktops, 992px and up) */
-  @media only screen and (min-width: 992px) {
-    .personalprofile_foot {
-        height: 132px;
-        margin-top: 72px;
-    
-    }
-  } 
-  /* Extra large devices (large laptops and desktops, 1200px and up) */
-  @media only screen and (min-width: 1200px) {
-    .personalprofile_foot{
-        height: 160px;
 
-    }
-  }
-  @media only screen and (min-width: 1350px) {
-    .personalprofile_foot{
-        height: 182px;
-    }
-  }
-  
-  @media only screen and (min-width: 1400px) {
-    .personalprofile_foot{
-        height: 182px;
-    }
-  }
-
-  

@@ -54,7 +54,7 @@
   line-height: 20px;
 }
 
-.avAtar-user {
+.avatar-user {
   position: absolute;
   top: 88px;
   left: 22px;
@@ -66,13 +66,13 @@
 
 .name {
   position: absolute;
-  top: 185px;
+  top: 192px;
   left: 25px;
 }
 
 .email {
   position: absolute;
-  top: 270px;
+  top: 271px;
   left: 25px;
 }
 
@@ -84,8 +84,8 @@
 
 .tos-check {
   position: absolute;
-  top: 435px;
-  left: 25.5px;
+  top: 429px;
+  left: 25px;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
@@ -93,11 +93,7 @@
   line-height: 20px;
   color: #6b6b6a;
 }
-.tos-check p{
-  margin-left: 6%;
-  margin-top: -5.6%;
-  width: 400px;
-}
+
 .tos-check span {
   color: #038a7c;
 }

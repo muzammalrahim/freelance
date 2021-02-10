@@ -54,9 +54,9 @@
   line-height: 20px;
 }
 
-.avAtar-user {
+.avatar-user {
   position: absolute;
-  top: 288px;
+  top: 88px;
   left: 22px;
   width: 72px;
   height: 72px;
@@ -72,9 +72,10 @@
 
 .email {
   position: absolute;
-  margin-top: 190px;
+  top: 271px;
   left: 25px;
 }
+
 .password {
   position: absolute;
   top: 350px;
@@ -97,32 +98,6 @@
   color: #038a7c;
 }
 
-.tos-checkks{
-  position: relative;
-  left: 58.5%;
-  right: 30.08%;
-  top: 25.41%;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 20px;
-} 
-.tos-checkks i{
-  position: absolute;
-  left: 58.5%;
-  right: 30.08%;
-  top: 25.41%;
-  bottom: 73.66%;
-  
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 20px;
-
-  color: #6B6B6A;
-}
 .checkbox {
   margin-top: 2px;
 }
@@ -133,7 +108,7 @@
   left: 25px;
 }
 
-/* .su-button-2 p {
+.su-button-2 p {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
@@ -141,8 +116,8 @@
   line-height: 20px;
   text-align: center;
   color: #495057;
-  padding-top: -608px;
-} */
+  padding-top: 524px;
+}
 
 .su-button-3 {
   position: absolute;

@@ -6,7 +6,8 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Avatar from '@material-ui/core/Avatar';
-import './accordian.css';
+import './accordian.css'
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,11 +22,13 @@ const useStyles = makeStyles((theme) => ({
     fontSize: theme.typography.pxToRem(15),
     color: theme.palette.text.secondary,
   },
+  
 }));
+
 
 export default function ControlledAccordions() {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = React.useState('panel1');
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -43,14 +46,63 @@ export default function ControlledAccordions() {
           <Typography className={classes.secondaryHeading}></Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <div>
-            <div className="m-info">
-            <Avatar className="my-name">1</Avatar>
+          <div className="row m-info">
+            <div className="col-md-2 ">
+              <div>
+              <Avatar className="my-name">1</Avatar>
+              </div>
             </div>
-            <div className="milston-inner">
-            <h4>Wireframes</h4></div>
-            <div className="price-tag">100SAR</div>
-            
+            <div className="col-md-8 align-self-center">
+              <div>
+                <h4 className="align-self-center">Wireframes</h4>
+              </div>
+            </div>
+            <div className="col-md-2 align-self-center">
+              <div>
+                <div className="price-tag">100SAR</div>
+              </div>
+            </div>
+          </div> 
+          
+        </AccordionDetails>
+        <AccordionDetails>
+        <div className="row m-info r-3">
+          <div className="col-md-3">
+              <div>
+                <h4>Project type</h4>
+              </div>
+            </div>
+            <div className="col-md-7">
+              <div>
+                <h5>Monthly</h5>
+              </div>
+            </div>
+            <div className="col-md-2">
+              <div className="state">
+                <ol>
+                  <li>Active</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </AccordionDetails>
+        <AccordionDetails>
+        <div className="row m-info r-3">
+          <div className="col-md-3">
+              <div>
+                <h4>Time</h4>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div>
+                <h5>Mar 22 - Present</h5>
+              </div>
+            </div>
+            <div className="col-md-5">
+              <div className="mile-inner-btn">
+                <Button variant="outlined" color="secondary">Request For payment</Button> 
+              </div>
+            </div>
           </div>
         </AccordionDetails>
       </Accordion>
@@ -60,16 +112,68 @@ export default function ControlledAccordions() {
           aria-controls="panel2bh-content"
           id="panel2bh-header"
         >
-          <Typography className={classes.heading}>Users</Typography>
-          <Typography className={classes.secondaryHeading}>
-            You are currently not an owner
-          </Typography>
+          <Typography className={classes.heading}>Milestone 2</Typography>
+          <Typography className={classes.secondaryHeading}></Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus, varius pulvinar
-            diam eros in elit. Pellentesque convallis laoreet laoreet.
-          </Typography>
+          <div className="row m-info">
+            <div className="col-md-2 ">
+              <div>
+              <Avatar className="my-name">1</Avatar>
+              </div>
+            </div>
+            <div className="col-md-8 align-self-center">
+              <div>
+                <h4 className="align-self-center">Wireframes</h4>
+              </div>
+            </div>
+            <div className="col-md-2 align-self-center">
+              <div>
+                <div className="price-tag">100SAR</div>
+              </div>
+            </div>
+          </div> 
+          
+        </AccordionDetails>
+        <AccordionDetails>
+        <div className="row m-info r-3">
+          <div className="col-md-3">
+              <div>
+                <h4>Project type</h4>
+              </div>
+            </div>
+            <div className="col-md-7">
+              <div>
+                <h5>Monthly</h5>
+              </div>
+            </div>
+            <div className="col-md-2">
+              <div className="state2">
+                <ol>
+                  <li>Inactive</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </AccordionDetails>
+        <AccordionDetails>
+        <div className="row m-info r-3">
+          <div className="col-md-3">
+              <div>
+                <h4>Time</h4>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div>
+                <h5>Mar 22 - Present</h5>
+              </div>
+            </div>
+            <div className="col-md-5">
+              <div className="mile-inner-btn">
+                {/* <Button variant="outlined" color="secondary">Request For payment</Button>  */}
+              </div>
+            </div>
+          </div>
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
@@ -78,33 +182,71 @@ export default function ControlledAccordions() {
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
-          <Typography className={classes.heading}>Advanced settings</Typography>
-          <Typography className={classes.secondaryHeading}>
-            Filtering has been entirely disabled for whole web server
-          </Typography>
+          <Typography className={classes.heading}>Milestone 3</Typography>
+          <Typography className={classes.secondaryHeading}></Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas eros,
-            vitae egestas augue. Duis vel est augue.
-          </Typography>
+          <div className="row m-info">
+            <div className="col-md-2 ">
+              <div>
+              <Avatar className="my-name">1</Avatar>
+              </div>
+            </div>
+            <div className="col-md-8 align-self-center">
+              <div>
+                <h4 className="align-self-center">Wireframes</h4>
+              </div>
+            </div>
+            <div className="col-md-2 align-self-center">
+              <div>
+                <div className="price-tag">100SAR</div>
+              </div>
+            </div>
+          </div> 
+          
         </AccordionDetails>
-      </Accordion>
-      <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel4bh-content"
-          id="panel4bh-header"
-        >
-          <Typography className={classes.heading}>Personal data</Typography>
-        </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas eros,
-            vitae egestas augue. Duis vel est augue.
-          </Typography>
+        <div className="row m-info r-3">
+          <div className="col-md-3">
+              <div>
+                <h4>Project type</h4>
+              </div>
+            </div>
+            <div className="col-md-7">
+              <div>
+                <h5>Monthly</h5>
+              </div>
+            </div>
+            <div className="col-md-2">
+              <div className="state2">
+                <ol>
+                  <li>Inactive</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </AccordionDetails>
+        <AccordionDetails>
+        <div className="row m-info r-3">
+          <div className="col-md-3">
+              <div>
+                <h4>Time</h4>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div>
+                <h5>Mar 22 - Present</h5>
+              </div>
+            </div>
+            <div className="col-md-5">
+              <div className="mile-inner-btn">
+                {/* <Button variant="outlined" color="secondary">Request For payment</Button>  */}
+              </div>
+            </div>
+          </div>
         </AccordionDetails>
       </Accordion>
+      
     </div>
   );
 }

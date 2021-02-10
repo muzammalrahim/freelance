@@ -1,4 +1,4 @@
-
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
 
 html {
   font-size: 16px;
@@ -10,11 +10,11 @@ body {
 
 .Root {
   height: 100vh;
-
 }
 
 .Tabs {
   /* height: 100%; */
+  /* display: flex; */
 
 }
 
@@ -24,7 +24,7 @@ body {
   padding-left: 5%;
   /* border: 2px solid silver; */
   float:left;
-  padding-top: 3%;
+  padding-top: 1%;
 }
 
 .TabPanel {
@@ -36,7 +36,6 @@ body {
 }
 .TabPanel.is-active {
   display: block;
-  background: #f7f8fa;
 }
 
 .Button {
@@ -89,7 +88,7 @@ border: 1px dashed #EE9821;
   border: 2px solid;
 }
 
-.text2{
+.text{
   font-family: Poppins;
   font-style: normal;
   font-weight: 700;
@@ -97,11 +96,9 @@ border: 1px dashed #EE9821;
   line-height: 20px;
   color: #6B6B6A;
   margin: 7%;
-      font-weight: 600;
-    font-size: 16px;
 }
 
-.Tab.is-active .text2{
+.Tab.is-active .text{
 
 color: #EE9821;;
 }
@@ -124,19 +121,6 @@ color: #EE9821;;
     float: right;
     margin-right: 5%;
     cursor: pointer;
-
-
-    /* background-color: #EE9821; */
-    /* width: 116px; */
-    /* height: 36px; */
-    /* border-radius: 2px; */
-    /* color: white; */
-    /* font-family: 'Poppins', sans-serif; */
-    /* text-align: center; */
-    /* font-style: normal; */
-    /* font-weight: 400px; */
-    /* font-size: 12px; */
-    /* line-height: 20px */
 
 }
 
@@ -168,67 +152,4 @@ color: #EE9821;;
 
 .left_img{
    margin-top: 6%;
-}
-
-
-@media screen and (max-width: 800px) {
-  .text2{
-    font-size: 1.4vw;
-  }  
-}
-@media screen and (max-width: 673px) {
-  .text2{
-    font-size: 1.2vw;
-
-  }  
-}
-
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 700px) {
-
-  .nextButtonDiv {
-    height: 25vh
-  } 
- 
-} 
-
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 800px) {
-  .Root{
-    height: 78vh;
-  }
-  .nextButtonDiv {
-    height: 27vh;
-  }  
- 
-
-  .text2{
-    font-size: 12px;
-  } 
-} 
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-  .Root{
-    height: 90vh;
-  }
-  .nextButtonDiv {
-    height: 32vh;
-  }
-  
-
-  .text2{
-    font-size: 16px;
-  } 
-} 
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-  .Root{
-    height: 115vh;
-  }
-  .nextButtonDiv {
-    height: 34vh;
-  }  
 }

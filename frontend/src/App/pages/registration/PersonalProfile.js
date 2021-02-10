@@ -2,15 +2,17 @@ import React from 'react'
 
 import Button from '../../../../src/components/Button';
 import {InputField2} from '../../../../src/components/InputField';
+import {RegNavbar} from '../../../../src/components/Navbar';
+
 import './PersonalProfile.css'
 import '../../../../src/common.css'
 
 import img from '../../../img/personalProfile.png'
 import img2 from '../../../img/personalProfile_F.png'
 
-
 function PersonalProfile() {
-    return (       
+    return (
+
         <div className='Pf-container'>
             
           {/* <div className='d-Iflex'> */}
@@ -63,14 +65,13 @@ export default PersonalProfile
 export function PersonalProfileTabFooter( ) 
 {
     return (
-       <div>
+        <>
 
 <div className='w-33 bg1 '>
                 {/* <h1> hello</h1>*/}
                 <div className='personalprofile_foot' style={{backgroundImage: `url(${img2})`}}></div>
-
-                          </div>
                 </div>
+                </>
                 );
               
 }
@@ -79,7 +80,7 @@ export function PersonalProfileTabFooter( )
 export function PersonalProfileFooter2( ) 
 {
     return (
-        <div>
+        <>
 
     <div>
                         
@@ -91,7 +92,7 @@ export function PersonalProfileFooter2( )
     </div>
     </div>
 
-    </div>
+    </>
   );
 
 }

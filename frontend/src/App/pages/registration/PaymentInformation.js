@@ -1,10 +1,18 @@
 import React from 'react'
+
+
+import Button from '../../../../src/components/Button';
 import {InputField2} from '../../../../src/components/InputField';
 import {InputField4} from '../../../../src/components/InputField';
+import {RegNavbar} from '../../../../src/components/Navbar';
+
+
 import Date from './GetDate'
+
 
 import './PaymentInformation.css'
 import '../../../../src/common.css'
+
 import img from '../../../img/PaymentInfo.png'
 import img2 from '../../../img/PaymentInfo_F.png'
 
@@ -15,7 +23,7 @@ function PaymentInformation() {
         <div className='Pf-container'>
             
                         
-                    <div className='pi_rightbox  bg2 b_line2' style={{display:"block",    height: "auto"}}> 
+                    <div className='Pf-rightbox  bg2 b_line2' style={{display:"block",    height: "auto"}}> 
                        
                         <div>
 

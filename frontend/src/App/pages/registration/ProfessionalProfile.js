@@ -4,14 +4,13 @@ import Group from '../../../assets/Group 3539.png'
 import Dropdown from "../../../components/Dropdown";
 import Catagory from '../../../components/Catagory'
 import SelectSkill from "../../../components/SelectSkill";
-import img2 from '../../../img/profess_F.png';
-import App from './multiSelectionRadioBtn'
+import img2 from '../../../img/profess_F.png'
 
 import GetImage from './GetImage'
 function Heading(props) {
   return (
-   <div>
-  <App/>
+    <>
+
       <div className="background">
         <img src={Group} alt="user" className="userpad" />
         <p className="text">Professional Profile</p>
@@ -23,11 +22,9 @@ function Heading(props) {
         <SelectSkill />
         <Catagory/>
         </div>
-        <div className="getimage2">
+        <p style={{color:"white"}}>t</p>
         <GetImage/>
-
-        </div>
-      </div>
+    </>
   );
 }
 export default Heading;

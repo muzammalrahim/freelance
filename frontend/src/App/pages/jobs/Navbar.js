@@ -17,7 +17,7 @@ function Navbar(props) {
                 </Link>
                <div className="user-logo">
                    <a href="">{props.text}</a>
-               <Button buttonStyle='btn--project' value={props.value}/>
+               <Button buttonStyle='btn--yellow' value={props.value}/>
                 </div>
             </div>
             

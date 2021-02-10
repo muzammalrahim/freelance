@@ -67,61 +67,28 @@
   }
   .btn--Yellow{
     position: absolute;
-    height: 40px;
-   width: 180px;
-   left: 344px;
-   top: 350px;
-    color: #6B6B6A;
-    font-family: Poppins;
-font-style: normal;
-font-weight: normal;
-font-size: 12px;
-line-height: 20px;
-text-align: right;
-  }
-  .btn--project{
-
-    height:36px;
-    width: 150px;
-    font-weight: 500;
+    height: 100px;
+    width: 160px;
+    left: 350px;
+    font-weight: 700;
     border-radius: none;
     background: #ee9821;
     box-shadow: none;
+    font-weight: 400;
     color: white;
     font-family: "Poppins";
-font-size: 12px;
-font-style: normal;
-line-height: 20px;
-letter-spacing: 0em;
-text-align: center;
-
-      
   }
-  .btn--ADD{
+  /* .btn--project{
     position: absolute;
-    width: 80px;
-    height: 34px;
-    background: #EE9821;
-    border-radius: 2px;
+    height: 100px;
+    width: 200px;
+    left: 350px;
+    font-weight: 700;
+    border-radius: none;
+    background: #090b97;
+    box-shadow: none;
+    font-weight: 400;
     color: white;
-    font-family: Poppins;
-font-style: normal;
-font-weight: normal;
-font-size: 12px;
-line-height: 20px;
-text-align: center;
-  }
-  .btn--load{
-    position: absolute;
-width: 209px;
-height: 34px;
-border: 1px solid #6B6B6A;
-font-family: Poppins;
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 20px;
-color: #6B6B6A;
-box-sizing: border-box;
-border-radius: 2px;
-  }
+    font-family: "Poppins";
+      
+  } */

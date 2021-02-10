@@ -7,7 +7,6 @@ import IdVerification,{IdVerificationFooter} from './IdVerification'
 import PaymentInformation,{PaymentInformationFooter} from './PaymentInformation'
 import HourlyRate,{HourlyRateFooter} from './HourlyRate'
 import Heading,{HeadingFooter} from './ProfessionalProfile'
-import ProfessionalProfile2,{ProfessionalProfile2Footer} from './ProfessionalProfile2'
 
 let selecvalue=0;
  export const  Root = () => (
@@ -18,20 +17,20 @@ let selecvalue=0;
       <RegNavbar/>
         <Tab>
 
-        <div class=""><span class=" "><Button>1</Button></span> <span class="text2">Personal Profile</span></div> <div className="line"></div>
+        <div class=""><span class=" "><Button>1</Button></span> <span class="text">Personal Profile</span></div> <div className="line"></div>
   
         </Tab>
         <Tab>
-        <div class=""><span class=" "><Button>2</Button></span> <span class="text2">Professional Profile</span></div> <div className="line"></div>
+        <div class=""><span class=" "><Button>2</Button></span> <span class="text">Professional Profile</span></div> <div className="line"></div>
         </Tab>
         <Tab>
-        <div class=""><span class=" "><Button>3</Button></span> <span class="text2">ID Verification</span></div> <div className="line"></div>
+        <div class=""><span class=" "><Button>3</Button></span> <span class="text">ID Verification</span></div> <div className="line"></div>
         </Tab>
         <Tab>
-        <div class=""><span class=" "><Button>4</Button></span> <span class="text2">Payment Information</span></div> <div className="line"></div>
+        <div class=""><span class=" "><Button>4</Button></span> <span class="text">Payment Information</span></div> <div className="line"></div>
         </Tab>
         <Tab>
-        <div class=""><span class=" "><Button>5</Button></span> <span class="text2">Hourly Rate</span></div> 
+        <div class=""><span class=" "><Button>5</Button></span> <span class="text">Hourly Rate</span></div> 
         </Tab>
       </TabList>
       <TabPanel>
@@ -39,7 +38,7 @@ let selecvalue=0;
 
       </TabPanel>
       <TabPanel>
-         <ProfessionalProfile2/>
+         <Heading/>
 
       </TabPanel>
 
@@ -151,25 +150,17 @@ selecvalue=this.state.selected
               </div>
 
               <div className="nextButtonDiv">
-                  <div className="left_section">
+              {this.state.selected>=0&& <>
+                <button className="tb_prevButton" onClick={() => this.setState({ selected: this.state.selected - 1 })}>
+                Previous Step
+              </button>
+              </>}             
 
-                        {this.state.selected===1&&<ProfessionalProfile2Footer/>}
-                  </div>
-
-                  <div className="right_section">
-            
-                        {this.state.selected>=0&& <>
-                          <button className="tb_prevButton" onClick={() => this.setState({ selected: this.state.selected - 1 })}>
-                          Previous Step
-                        </button>
-                        </>}             
-
-                        {this.state.selected<4&& <>
-                        <button className="tb_nextButton" onClick={() => this.setState({ selected: this.state.selected + 1 })}>
-                        Next
-                      </button>
-                      </>}
-              </div>
+              {this.state.selected<4&& <>
+              <button className="tb_nextButton" onClick={() => this.setState({ selected: this.state.selected + 1 })}>
+              Next
+            </button>
+            </>}
             </div>
 
             
@@ -202,11 +193,10 @@ const TabList = ({
 
     <div className="left_img">
 {selecvalue===0&&<PersonalProfileTabFooter/>}
-
+{selecvalue===1&&<HeadingFooter/>}
 {selecvalue===2&&<IdVerificationFooter/>}
 {selecvalue===3&&<PaymentInformationFooter/>}
 {selecvalue===4&&<HourlyRateFooter/>}
- 
 </div> 
 
   </li>

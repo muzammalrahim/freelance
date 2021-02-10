@@ -34,7 +34,6 @@ return (
         <Route path='/registration-process' exact component={Root}/>
         <Route path='/account-setting' exact component={AccountSettingMain}/>
         <Route path='/Jobs' exact component={Jobs}/>
-        <Route component={NotFound} />
         <Route path='/JobDetail' exact component={JobDetail}/>
         <Route path='/Paymentinformation' exact component={PaymentInformation}/>
         <Route path='/Companydetail' exact component={CompanyDetail}/>

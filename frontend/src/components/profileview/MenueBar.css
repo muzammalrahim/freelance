@@ -31,22 +31,23 @@
         position: relative;
         display: inline-block;
         border-radius: 31px;
-        left: -100%;
+        left: -200%;
         margin-top: 40%;
       }
       .avatar-useR{
         position: relative;
         margin-top: 30%;
+        left: 77px;
         width: 40px;
         height: 40px;
-        left: -100%;
+        left: -230%;
       }
       .DROPDOWn{
         height: auto;
         width: 10%;
       }
       .dropdown-toggle-new{
-          margin-left: -20%;
+          margin-left: -70%;
           margin-top: 10%;
 
       }

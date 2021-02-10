@@ -7,7 +7,6 @@
 
 }
 .contractone-main .main-wrap {
-    padding: 41px 153px;
     color:#6B6B6A;
 }
 .contract-left ul li{
@@ -17,7 +16,7 @@ border-bottom: 1px solid rgba(107, 107, 106, .1);
     border-bottom: none;
 }
 .contract-left ul li p {
-    padding: 17px 20px;
+    /* padding: 17px 20px; */
     margin: 0;
     font-size: 13px;
 }

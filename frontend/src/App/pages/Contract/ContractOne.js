@@ -7,6 +7,9 @@ import ContractView  from "./ContractView"
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import ControlledAccordions from './Accordians'
+import FooterMenu from './FooterMenu';
+
+
 export default class ContractOne extends Component {
     render() {
         return (
@@ -22,8 +25,8 @@ export default class ContractOne extends Component {
                 </div>
                 {/* top header */}
                 <div className="contractone-main">
-                    <div className="container-fluid">
-                        <div className="main-wrap">
+                    <div className="container">
+                        <div className="main-wrap pt-4">
                             <div className="row">
                                 <div className="col-md-3 col-sm-4">
                                     <ContractNav/>
@@ -31,9 +34,10 @@ export default class ContractOne extends Component {
                                 <div className="col-md-9 col-sm-8">
                                     <ContractView/>
                                     <div className="cont-row">
+                                        <div className="con-des-area">
                                         <div className="content-heading">
                                             <Avatar className="my-name">OP</Avatar>
-                                            <h3>
+                                            <h3 className="pt-2 pl-2">
                                             Job title lorem ipsum lorem ipsum lorem ipsum 
                                             </h3>
                                             <Button variant="outlined" color="secondary">View Job</Button> 
@@ -52,12 +56,21 @@ export default class ContractOne extends Component {
                                                 
                                             </ul>
                                         </div>
+                                        </div>
+                                        
                                         <div className="mile-stones">
                                             <ControlledAccordions/>
                                         </div>
+                                        <div className="invoice-details">
+                                            <h3>Invoice Receipt</h3>
+                                            <FooterMenu/>
+                                        </div>
+                                        
                                     </div>
+                                    
                                 </div>
                             </div>
+                            
                         </div>
                         
                     </div>

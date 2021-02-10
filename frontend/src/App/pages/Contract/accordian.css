@@ -1,15 +1,61 @@
-.mile-stones .MuiAvatar-colorDefault {
+.row.m-info {
+    width: 100%;
+}
+.MuiAvatar-root {
+    width: 35px;
+    height: 35px;
+}
+.row.m-info .MuiAvatar-root.MuiAvatar-circle.my-name.MuiAvatar-colorDefault {
+    width: 30px;
+    height: 30px;
+}
+.row.m-info .MuiAvatar-colorDefault {
+    color: #1da799;
     background-color: #ddf2f0;
 }
-.milston-inner h4 {
-    font-size: 14px;
+.makeStyles-heading-23 {
+    font-size: 16px;
+    font-family: 'Poppins';
     color: #6b6b6a;
-    font-weight: 500;
-    font-family: Poppins;
 }
-.milston-inner .price-tag{
+.row.m-info h4 {
+    font-size: 14px;
+    color: #6b6b6a;
+    font-family: 'Poppins';
+}
+.price-tag {
     color: #6b6b6a;
     font-size: 14px;
-    font-weight: 500;
-    font-family: Poppins;
+    font-weight: 600;
+    float: right;
+}
+
+.row.m-info.r-3 h5{
+    color: #6b6b6a;
+    font-size: 12px;
+}
+.state{
+    color: #1DA799;
+    font-size: 14px;
+    float: right;
+}
+.mile-inner-btn{
+    float: right;
+}
+.state2{
+    color:#EE9821;
+    float: right;
+}
+.MuiAccordionDetails-root{
+    display: block;
+}
+.MuiPaper-elevation1 {
+    box-shadow: none;
+    border-bottom: 1px solid rgba(107, 107, 106, .1);
+}
+.row.m-info .MuiButton-outlinedSecondary {
+    color: #EE9821 !important;
+    border: 1px solid rgb(238 152 33) !important;
+    width: 213px;
+    height: 30px;
 }

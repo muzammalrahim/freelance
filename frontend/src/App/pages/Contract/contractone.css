@@ -3,19 +3,39 @@
 }
 .cont-row {
     background: #ffffff;
-    padding: 20px 0;
+    padding: 20px 0 50px 0;
     border-bottom: 1px solid rgba(107, 107, 106, .1);
 }
-.MuiButton-outlinedSecondary {
-    color: #6b6b6a !important;
-    border: 1px solid rgb(107 107 106) !important;
+.con-des-area .MuiButton-outlinedSecondary {
+    color: #6b6b6a;
+    border: 1px solid rgb(107 107 106);
+    width: 150px;
+    height: 36px;
+}
+button.MuiButtonBase-root.MuiButton-root.MuiButton-contained {
+    float: right;
+    background: #6b6b6a;
+    padding: 7px 0;
+    color: #ffffff;
+    width: 150px;
 }
 .contractone-main .content-heading {
     padding-left: 0;
-    display: grid;
-    grid-template-columns: 10% 65% auto;
+    display: flex;
     padding: 0 20px;
 }
 .contractone-main  ul.duration {
     margin: 0 0 0 90px;
+}
+.invoice-details h3 {
+    font-size: 16px;
+    padding: 20px 17px;
+    color: #6b6b6a;
+    margin: 0;
+}
+
+@media only screen and (max-width: 991px) {
+    .contract-left ul li p {
+        font-size: 11px;
+    }
 }
