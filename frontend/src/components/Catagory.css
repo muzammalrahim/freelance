@@ -1,11 +1,10 @@
 .body {
   position: absolute;
-  height: 196px;
+  height: 142px;
   width: 74.8%;
-  
-  margin-right: auto;
   left: 14.8%;
-  top: 553px;
+  right: 47.75%;
+  top: 540px;
   background: #ffffff;
   border-radius: 4px;
   display: inline;
@@ -30,7 +29,7 @@
   display: inline-flex;
   justify-content: space-around;
 }
-.Line input {
+.Line img {
   height: 16px;
   width: 16px;
   border-radius: 2px;
@@ -51,7 +50,7 @@
   display: flex;
   justify-content: space-around;
 }
-.Line1 input {
+.Line1 img {
   height: 16px;
   width: 16px;
   border-radius: 2px;
@@ -96,7 +95,7 @@
   display: inline-flex;
   justify-content: space-around;
 }
-.Line2-column1 input {
+.Line2-column1 img {
   height: 16px;
   width: 16px;
   border-radius: 2px;
@@ -140,7 +139,7 @@
   display: inline-flex;
   justify-content: space-around;
 }
-.Line2-column3 input {
+.Line2-column3 img {
   height: 16px;
   width: 16px;
   border-radius: 2px;
@@ -185,7 +184,7 @@
   display: inline-flex;
   justify-content: space-around;
 }
-.Line3-column2 input {
+.Line3-column2 img {
   height: 16px;
   width: 16px;
   border-radius: 2px;
@@ -231,7 +230,7 @@
   display: inline-flex;
   justify-content: space-around;
 }
-.Line4-column1 input {
+.Line4-column1 img {
   height: 16px;
   width: 16px;
   border-radius: 2px;
@@ -274,7 +273,7 @@
   display: inline-flex;
   justify-content: space-around;
 }
-.Line4-column3 input {
+.Line4-column3 img {
   height: 16px;
   width: 16px;
   border-radius: 2px;
@@ -296,7 +295,7 @@
   display: inline-flex;
   justify-content: space-around;
 }
-.Line5-column1 input {
+.Line5-column1 img {
   height: 16px;
   width: 16px;
   border-radius: 2px;
@@ -317,7 +316,7 @@
   display: inline-flex;
   justify-content: space-around;
 }
-.Line5-column2 input {
+.Line5-column2 img {
   height: 16px;
   width: 16px;
   border-radius: 2px;
@@ -338,7 +337,7 @@
   display: inline-flex;
   justify-content: space-around;
 }
-.Line5-column3 input {
+.Line5-column3 img {
   height: 16px;
   width: 16px;
   border-radius: 2px;

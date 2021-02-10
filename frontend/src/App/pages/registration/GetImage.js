@@ -44,11 +44,10 @@ export default class GetImage extends Component {
     return (
 
    
-      <div className='style'>
+      <div style={{textAlign:"center"}}>
           <div className="imgBack">
             <ReactDropzone
-
-            className={this.props.value === 2 ? "dropzone2" : "dropzone"}
+            className="dropzone"
               accept="image/*"
               onDrop={this.onPreviewDrop}
               >
