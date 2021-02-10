@@ -6,49 +6,46 @@
 
 
 .pp_nextButton{
-    margin: 149px 152px;
+    /* margin: 149px 152px; */
     float: right;
 }
 .pp_prevButton{
-    margin: 158px 0% 0% 120px;
+    /* margin: 158px 0% 0% 120px; */
     float: left;
     border: none;
 }
 
-.pp_icon{
+.pp_icon {
+    width: 42px;
     height: 42px;
-    margin-top: 5%;
-    margin-left: 120px;
-box-sizing: border-box;
-background-repeat: no-repeat;}
-
+    /* margin-left: 120px; */
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+}
+.Per_img-wrap {
+    width: 100%;
+}
 .pp_icon2{
     height: 42px;
-    margin-top: 1.5%;
-    margin-left: 45%;
+    /* margin-top: 1.5%; */
+    /* margin-left: 45%; */
 box-sizing: border-box;
 background-repeat: no-repeat;}
 
-.pp_foot{
 
-height: 180px;
-margin-left: 120px;
-background-repeat: no-repeat;
-margin: auto;
-position: absolute;
-width: 30%;
-height: 182px;
-left: 0px;
-
-background-size: contain;
-}
 
 .pp_Head{
-    margin-top: 17px;
-    margin-left: 116px;
-    font-family:Poppins;
-font-style: normal;
-font-size: 20px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 28px;
+    color: #6B6B6A;
+    left: 43.33%;
+    right: 43.58%;
+    top: 24.38%;
+    bottom: 72.12%;
+    padding-top: 12px;
 }
 
 .pp_Para{
@@ -57,13 +54,13 @@ font-style: normal;
 font-weight: 700;
 font-size: 12px;
 line-height: 20px;
-margin-left: 116px;
+/* margin-left: 116px; */
 width:280px;
 padding-top: 1%;
 }
 
 .mh1{
-   margin: 0% 0% 2% 16%;
+   /* margin: 0% 0% 2% 16%; */
 }
 
 .imgBack{
@@ -71,63 +68,37 @@ padding-top: 1%;
     background: white;
     padding: 2%;
 }
-.multiselect{
-    margin: 0 100px;
+              
+.multiselect h3{
+  color: #6b6b6a;
+  font-size: 14px;
+}
+.checkboxesMain h3 {
+    color: #6b6b6a;
+    font-size: 14px;
+    padding: 17px 0 4px 0;
 }
 .skills1{
     background: #61C1B8;
     color: white;
     padding: 0px 8px;
-    margin: 7px;
+    /* margin: 7px; */
     border-radius: 4px;
 }
+.prof-cer .mh1{
+    margin: 0;
+    padding: 20px 0 8px 0;
+}
+.prof-cer .mh1 p{
+    margin: 0;
+}
 
-
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 700px) {
-    .pp_foot{
-        /* height: 92px; */
-
-    }
-  } 
-  /* Large devices (laptops/desktops, 992px and up) */
-  @media only screen and (min-width: 800px) {
-    .pp_foot{
-        /* height: 107px; */
-
-    }
-  } 
-  /* Large devices (laptops/desktops, 992px and up) */
-  @media only screen and (min-width: 992px) {
-    .pp_foot {
-        /* height: 132px; */
-
-    }
-    
-  } 
-  
-
-  /* Extra large devices (large laptops and desktops, 1200px and up) */
-  @media only screen and (min-width: 1200px) {
-    .pp_foot{
-        /* height: 160px; */
-  
-    }
-  }
-
-  @media only screen and (min-width: 1350px) {
-    .pp_foot{
-        /* height: 182px; */
-
-    }
-  }
-  
-  @media only screen and (min-width: 1400px) {
-    .pp_foot{
-        /* height: 179px; */
-
-    }
+.prof-cer .certificates {
+    margin: 0;
+    padding-bottom: 60px;
+}
+.prof-cer .imgBack {
+    width: 100%;
 }
 
 
@@ -144,7 +115,7 @@ html {
       padding: 0;
   }
   
-  input {
+ .proff-prof input {
       font-size: 1rem;
       line-height: 1.5;
       padding: 11px 23px;
@@ -164,7 +135,7 @@ html {
       display: inline-block;
       width: 24px;
       height: 24px;
-      margin-right: 12px;
+      /* margin-right: 12px; */
       vertical-align: middle;
       background-color: inherit;
       color: #1DA799;
@@ -197,7 +168,7 @@ html {
   
 .container_Checkboxes{
     background: #fff;
-    margin: 27px 116px;
+    /* margin: 27px 116px; */
     display: grid;
     grid-template-columns: auto auto auto;
     padding: 20px;
@@ -208,7 +179,7 @@ html {
 
 
 .dropdown{
-    margin: 32px 116px;
+     padding-bottom: 20px;
 }
 .dropdown .dropheader{
     justify-content: space-around;
@@ -248,7 +219,7 @@ html {
 
 
 .certificates{
-    margin-top: 50px;
+    /* margin-top: 50px; */
     width: 100%;
     float: left;
 }
@@ -271,15 +242,15 @@ html {
 }
 
 .pl-4, .px-4 {
-    padding-left: .75rem!important;
-    cursor: pointer;
-    float: left;
-    padding: 2px 4px;
-    margin: 4px 3px;
-    background: #fff;
-    font-size: 12px;
-    border-radius: 50%;
-    color: #61c1b8;
+        /* padding-left: .75rem!important; */
+        cursor: pointer;
+        float: left;
+        padding: 2px 4px!important;
+        margin: 4px 3px!important;
+        background: #fff;
+        font-size: 12px;
+        border-radius: 50%;
+        color: #61c1b8;
 }
 
 .h5, h5 {

@@ -10,6 +10,7 @@ import App from './multiSelectionRadioBtn'
 import GetImage from './GetImage'
 function Heading(props) {
   return (
+    <div class="container">
    <div>
   <App/>
       <div className="background">
@@ -27,6 +28,7 @@ function Heading(props) {
         <GetImage/>
 
         </div>
+      </div>
       </div>
   );
 }

@@ -61,7 +61,7 @@ export function InputField3(props)
     <label className="heading_style">{props.heading}</label>
    
     <div class="rt-input-input">
-    <input type="text" pattern="[0-9]*" value={inputValue} placeholder={inputPlaceholder}  onChange={handleChange} class="inputclass  pf_mb" />
+    <input type="text" pattern="[0-9]*" value={inputValue} placeholder={inputPlaceholder}  onChange={handleChange} class="inputclass-hourly" />
   </div>
      
  

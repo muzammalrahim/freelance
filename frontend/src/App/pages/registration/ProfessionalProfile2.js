@@ -47,86 +47,99 @@ render(){
 
 return (
 
-        <div className='Pf-container'>                      
-          <div className='Pf-rightbox   bg2 b_line2' style={{display:"block",    height: "auto"}}> 
+        <div className='Pf-container proff-prof'>
+
+          <div className='Pf-rightbox   bg2 b_line2'> 
+           
+          <div class="container-fluid">
+            
              <div>   
-                <div className='pp_icon' style={{backgroundImage: `url(${img})`}}></div> 
-                <div>
-                <h4 className="pp_Head">Professional Profile</h4>
-                <p className="pp_Para">  Creating your account in just a few steps away, Fill your professional
-                details</p>
+                 <div class="row">
+                    <div className="Per_img-wrap">
+                    <div className='pp_icon' style={{backgroundImage: `url(${img})`}}></div> 
+                    </div>
+                    
+                    <div className="personalProfile_info">
+                    <h4 className="pp_Head">Professional Profile</h4>
+                    <p className="pp_Para">  Creating your account in just a few steps away, Fill your professional
+                    details</p>
+                    </div>
                 </div>
-              
-                <div className="dropdown">
-                <Dropdown/>
-                </div>
+
+                <div className="inner-parts">
+                  <div className="dropdown">
+                  
+                     <Dropdown/>
+
+                     </div>
                 <div className="multiselect">
                 <div>
        
-       
-    <select
-          //  value={this.state.selectValue}
-          //  onChange={this.handleChange}
+                <h3>Add your skills</h3> 
+                          <select
+                                //  value={this.state.selectValue}
+                                //  onChange={this.handleChange}
 
-          onChange={(e) => {
-            console.log(e.target.value);
-            console.log("test:",e.target.li);
-            this.setState((prevState) => ({
-              brand: [...prevState.brand, e.target.value],
-            }));
-          }}
-          className="form-control"
-          id="exampleFormControlSelect1">
-          <ul>
-          <li className="test">a</li>
-          <li className="test">b</li>
-          <li className="test">c</li>
-          <li className="test">d</li>
-          </ul>
-          <option  value="Php">Php</option>
-          <option value="Bootstrap">Bootstrap</option>
-          <option value="Azura">Azura</option>
-          <option value="Java">Java</option>
-          <option value="Python">Python</option>
-          <option value="javascript">javascript</option>
-          <option value="c#">c#</option>
-        </select>
-     
+                                onChange={(e) => {
+                                  console.log(e.target.value);
+                                  console.log("test:",e.target.li);
+                                  this.setState((prevState) => ({
+                                    brand: [...prevState.brand, e.target.value],
+                                  }));
+                                }}
+                                className="form-control"
+                                id="exampleFormControlSelect1">
+                                <ul>
+                                <li className="test">a</li>
+                                <li className="test">b</li>
+                                <li className="test">c</li>
+                                <li className="test">d</li>
+                                </ul>
+                                <option  value="Php">Php</option>
+                                <option value="Bootstrap">Bootstrap</option>
+                                <option value="Azura">Azura</option>
+                                <option value="Java">Java</option>
+                                <option value="Python">Python</option>
+                                <option value="javascript">javascript</option>
+                                <option value="c#">c#</option>
+                              </select>
+                          
 
-        <div className="test">
-          {this.state.brand.map((item, index) => (
-            <div
-              className="option"
-              style={{
-                background: "#61C1B8",
-                color: "white",
-                padding: "0px 8px",
-                margin: "7px ",
-                borderRadius: "4px",
-                width: "113px",
-              }}
-            >
-              <h5 className="h5item">{item} </h5>
-              <span
-                className="float pl-4"
-                onClick={() => {
-                  console.log(index);
-                  const a = this.state.brand;
-                  a.splice(index, 1);
-                  this.setState({ brand: a });
-                }}
-                style={{ cursor: "pointer" }}
-              >
-                x
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
+                              <div className="test">
+                                {this.state.brand.map((item, index) => (
+                                  <div
+                                    className="option"
+                                    style={{
+                                      background: "#61C1B8",
+                                      color: "white",
+                                      padding: "0px 8px",
+                                      margin: "7px ",
+                                      borderRadius: "4px",
+                                      width: "113px",
+                                    }}
+                                  >
+                                    <h5 className="h5item">{item} </h5>
+                                    <span
+                                      className="float pl-4"
+                                      onClick={() => {
+                                        console.log(index);
+                                        const a = this.state.brand;
+                                        a.splice(index, 1);
+                                        this.setState({ brand: a });
+                                      }}
+                                      style={{ cursor: "pointer" }}
+                                    >
+                                      x
+                                    </span>
+                                  </div>
+                                ))}
+                              </div>
+                     </div>
                 </div>
              </div>
 
               <div className="checkboxesMain">
+              <h3>Choose Category</h3>
               <div className="container_Checkboxes">
                 <div className="first_3col">
                     <div className="example">
@@ -276,7 +289,8 @@ return (
              </div> */}{/* End of Submit button*/}
 
            {/* End of multiple checkbox*/}
-             <div className="certificates" style={{marginTop:"50px"}}>
+           <div className="prof-cer">
+           <div className="certificates">
                         <div className="mh1">
                             <p className="certificate">Certficate</p>
                         </div>
@@ -288,10 +302,17 @@ return (
                         </div>
                 
              </div>
+           </div>
+             
+                </div>
+                
+
+                
 
 
 
         
+        </div>
         </div>
      </div>
     )
@@ -300,14 +321,3 @@ return (
 
 export default ProfessionalProfile2
 
-export function ProfessionalProfile2Footer( ) 
-{
-    return (
-     <div>
-
-        <div className='pp_foot pp_foot2' style={{backgroundImage: `url(${img2})`}}></div>
-    
-        </div>
-        );
-      
-}

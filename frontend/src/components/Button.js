@@ -3,7 +3,7 @@ import './Button.css'
 // import {Link} from 'react-router-dom';
 
 
-const STYLES = ['btn--primary','btn--yellow','btn--yellow1', 'btn--white','btn--Yellow','btn--project', 'btn--ADD','btn--load'];
+const STYLES = ['btn--primary','btn--yellow','btn--yellow1', 'btn--white','btn--Yellow','btn--project'];
 
 const SIZES = ['btn--medium','btn--large'];
 

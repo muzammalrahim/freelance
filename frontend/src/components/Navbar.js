@@ -2,7 +2,7 @@ import React from 'react'
 
 import './Navbar.css';
 import {Link} from 'react-router-dom';
-import tuwaiqlogo from '../assets/Logo.png'
+import tuwaiqlogo from '../components/tuwaiqlogo.svg'
 import Button from './Button';
 
 export default  function Navbar(props) {
@@ -15,8 +15,7 @@ export default  function Navbar(props) {
                 </Link>
                <div className="user-logo">
                    <a href="">{props.text}</a>
-               <Button buttonStyle='btn--project' value={props.value}/>
-               
+               <Button buttonStyle='btn--yellow' value={props.value}/>
                 </div>
             </div>
         </nav>
