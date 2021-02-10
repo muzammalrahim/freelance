@@ -5,7 +5,7 @@ export default class FooterMenu extends Component {
     render() {
         return (
             <div className="footer-nav">
-                <nav class="navbar navbar-expand-lg">
+                <nav class="navbar">
 
                     <ul class="navbar-nav">
                     <li class="nav-item active">
