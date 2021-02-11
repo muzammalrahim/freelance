@@ -54,19 +54,19 @@ function DefaultMenu(props) {
                       
                 </div>
                 </li>
-                <li class="nav-item dropdown">
-                   
+                <li class="nav-item dropdown"> 
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pixelz Warrios</a>
                     <div class="dropdown-menu dropdown-menu-right dropdown">
-                        <a href="#" class="dropdown-item"data-toggle="dropdown2">Status</a>
-                          <div class="dropdown-menu sub-menu dropdown2">
-                            
-
+                        <a href="#" class="dropdown-item"data-toggle="dropdown">Status
+                          <div class="dropdown-menu sub-menu dropdown">
+                            <select>
+                              <option value="1">One</option>
+                              <option value="2">Two</option>
+                            </select>
                             <a href="#" class="dropdown-item">View Profile</a>
                             <a href="#" class="dropdown-item">Account Settings</a>
-                            
-                            
                           </div>
+                        </a>
                         <a href="#" class="dropdown-item">View Profile</a>
                         <a href="#" class="dropdown-item">Account Settings</a>
                         {/* <div class="dropdown-divider"></div> */}

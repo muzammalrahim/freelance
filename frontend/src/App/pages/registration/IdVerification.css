@@ -21,9 +21,10 @@
 .iv_icon{
     width: 58px;
     height: 59px;
-    /* margin-left: 120px; */
+
     box-sizing: border-box;
     background-repeat: no-repeat;
+    margin-left: 17px;
 }
 
 .iv_icon2{
@@ -60,6 +61,7 @@ line-height: 20px;
 /* margin-left: 116px; */
 width:280px;
 padding-top: 1%;
+padding-bottom: 40px;
 }
 
 .mh1{
@@ -81,11 +83,13 @@ padding-top: 1%;
 
   .iv_texthead{
       
-font-family: Poppins;
-font-style: normal;
-font-weight: 700;
-font-size: 12px;
-line-height: 20px;
-color: #6B6B6A;
-font-size: 16px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: -8px;
+    color: #6B6B6A;
+    font-size: 16px;
+    margin: 0;
+    padding-bottom: 3px;
   }

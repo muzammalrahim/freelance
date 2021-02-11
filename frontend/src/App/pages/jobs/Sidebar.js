@@ -2,10 +2,6 @@ import React from "react";
 import {Nav} from "react-bootstrap";
 import { withRouter } from "react-router";
 import './sidebar.css';
-import Slider from './Slider'
-// import './slider.scss';
-
-
 
 const Side = props => {
    
@@ -15,76 +11,56 @@ const Side = props => {
             <div className="side-menu">
              <Nav className="bg-white sidebar">
                 <div className="sidebar-sticky"></div>
-                <ul className="skills">
+                <ul>
                     <h3>Skills</h3>
-                    <li className="checkbox-wrapper">
-                        <label className="checkmark">
-                            <spna className="heading">Skill 01</spna> 
-                        </label>
-                        <input type="checkbox" name="name" id="check" />
-                    </li>
                     <li>
-                        <label>
-                            <spna className="heading">Skill 02</spna> 
-                        </label>
-                        <input type="checkbox" name="name" />
-                     </li>
-                    <li>
-                        <label>
-                            <spna className="heading">Skill 03</spna> 
-                        </label>
-                        <input type="checkbox" name="name" />
-                    </li>
-                    <li>
-                        <label>
-                            <spna className="heading">Skill 04</spna> 
-                        </label>
-                        <input type="checkbox" name="name" />
-                    </li>
-                    <li>
-                        <label>
-                            <spna className="heading">Skill 05</spna> 
-                        </label>
-                        <input type="checkbox" name="name" />
-                    </li>
-                    <li>
-                        <label>
-                            <spna className="heading">Skill 06</spna> 
-                        </label>
-                        <input type="checkbox" name="name" />
-                    </li>
-                    <li>
-                        <label>
-                            <spna className="heading">Skill 07</spna> 
-                        </label>
-                        <input type="checkbox" name="name" />
-                    </li>
-                    <li>
-                        <label>
-                            <spna className="heading">Skill 08</spna> 
-                        </label>
-                        <input type="checkbox" name="name" />
-                    </li>
-                </ul>
-                <ul className="pt-4">
-                <h3>Price</h3>
-                    <Slider/>
-                </ul>
-                <ul className="pt-4 border-top">
-                <h3>Project Type</h3>
-                <li>
                     <label>
-                        <spna className="heading">Hourly</spna> 
+                        <spna className="heading">Skill 01</spna> 
+                        <input type="checkbox" name="name" />
                     </label>
-                    <input type="checkbox" name="name" />
-                </li>
-                <li>
+                    </li>
+                    <li>
                     <label>
-                        <spna className="heading">Monthly</spna> 
+                    <spna className="heading">Skill 02</spna> 
+                        <input type="checkbox" name="name" />
                     </label>
-                    <input type="checkbox" name="name" />
-                </li>
-                   
+                    </li>
+                    <li>
+                    <label>
+                    <spna className="heading">Skill 03</spna> 
+                        <input type="checkbox" name="name" />
+                    </label>
+                    </li>
+                    <li>
+                    <label>
+                    <spna className="heading">Skill 04</spna> 
+                        <input type="checkbox" name="name" />
+                    </label>
+                    </li>
+                    <li>
+                    <label>
+                    <spna className="heading">Skill 05</spna> 
+                        <input type="checkbox" name="name" />
+                    </label>
+                    </li>
+                    <li>
+                    <label>
+                    <spna className="heading">Skill 06</spna> 
+                        <input type="checkbox" name="name" />
+                    </label>
+                    </li>
+                    <li>
+                    <label>
+                    <spna className="heading">Skill 07</spna> 
+                        <input type="checkbox" name="name" />
+                    </label>
+                    </li>
+                    <li>
+                    <label>
+                    <spna className="heading">Skill 08</spna> 
+                        <input type="checkbox" name="name" />
+                    </label>
+                    </li>
                 </ul>
                 </Nav>
             </div>

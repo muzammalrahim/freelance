@@ -108,7 +108,14 @@ class Tabs extends Component {
           selected: this.state.selected + 1
         })
     
-        console.log("handler call")
+      }  
+
+      handler2=()=> {
+        this.setState({
+          selected: this.state.selected - 1
+        })
+    
+        
       }  
 
           renderTabList(child)
@@ -151,9 +158,10 @@ class Tabs extends Component {
                     if (child.type.name === "TabPanel") {
                       const _isActive = (panel === this.state.selected)
                       const _onClick = this.handler
+                      const _onClick2 = this.handler2
 
                       panel++
-                      return React.cloneElement(child, { _isActive, _onClick })
+                      return React.cloneElement(child, { _isActive, _onClick ,_onClick2})
                     }
 
                     return child
@@ -230,19 +238,19 @@ const Tab = ({
   </li>
 )
 
-const TabPanel = ({props,_isActive, children,_onClick,}) => (
+const TabPanel = ({props,_isActive, children,_onClick,_onClick2}) => (
   <div className={ `TabPanel  ${ _isActive ? "is-active" : "" }` }>
     { children }   
 
      <div className="nextButtonDiv">
     
-     {selecvalue>=0&& <>
-       <button className="tb_prevButton"  onClick={_onClick}>
+     {selecvalue>0&& <>
+       <button className="tb_prevButton"  onClick={_onClick2}>
        Previous Step
      </button>
      </>}             
 
-     {selecvalue<=4&& <>
+     {selecvalue<4&& <>
      <button className="tb_nextButton"  onClick={_onClick}> Next</button>
    </>}
    </div>  

@@ -19,7 +19,8 @@ function PersonalProfile() {
                     
                     <div className='Pf-rightbox   bg2 b_line2'> 
                        
-                        <div className="row container-fluid"><div className="row container-fluid">
+                        <div className="row container-fluid">
+                        <div className="pl-2">
 
                         <div className="img-wrap">
                         <div className='personalprofileicon' style={{backgroundImage: `url(${img})`}}>

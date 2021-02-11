@@ -50,7 +50,7 @@ function IdVerification() {
                         </div>
 
                         <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 pt-4">
                                  <div className="mh1">
                                     <p className="iv_texthead"> ID CARD</p>
                                  </div>

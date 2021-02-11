@@ -14,7 +14,7 @@ body {
   height: 100vh;
 }
 
-.Tabs {
+.Tabs2 {
   /* height: 100%; */
   /* display: flex; */
 
@@ -29,14 +29,14 @@ body {
   padding-top: 1%;
 }
 
-.TabPanel {
+.TabPanel2 {
   flex: 1;
   display: none;
   width:70%;
   float:right;
 
 }
-.TabPanel.is-active {
+.TabPanel-acc.is-active {
   display: block;
 }
 

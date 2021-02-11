@@ -54,7 +54,7 @@ return (
           <div class="container-fluid">
             
              <div>   
-                 <div class="row">
+                 <div class="row pl-3">
                     <div className="Per_img-wrap">
                     <div className='pp_icon' style={{backgroundImage: `url(${img})`}}></div> 
                     </div>
