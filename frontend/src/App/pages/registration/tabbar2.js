@@ -7,55 +7,75 @@ import IdVerification,{IdVerificationFooter} from './IdVerification'
 import PaymentInformation,{PaymentInformationFooter} from './PaymentInformation'
 import HourlyRate,{HourlyRateFooter} from './HourlyRate'
 import Heading,{HeadingFooter} from './ProfessionalProfile'
+import ProfessionalProfile2 from './ProfessionalProfile2'
+import ProfessionalProfile2Footer from "./ProfFooter";
 
 let selecvalue=0;
+
  export const  Root = () => (
+  <div className="Main">
 
-  <div className="Root">
-    <Tabs selected={ 0 }>
-      <TabList>
-      <RegNavbar/>
-        <Tab>
+  <div class="tabbarMain">
 
-        <div class=""><span class=" "><Button>1</Button></span> <span class="text">Personal Profile</span></div> <div className="line"></div>
+
+
+  <Tabs selected={ 0 }>
+
+
+
+    <TabList>
+    <RegNavbar/>
+      <Tab >
+
+      <div class=""><span class=" "><Button>1</Button></span> <span class="text2">Personal Profile</span></div> <div className="line"></div>
+
+      </Tab>
+      <Tab>
+      <div class=""><span class=" "><Button>2</Button></span> <span class="text2">Professional Profile</span></div> <div className="line"></div>
+      </Tab>
+      <Tab>
+      <div class=""><span class=" "><Button>3</Button></span> <span class="text2">ID Verification</span></div> <div className="line"></div>
+      </Tab>
+      <Tab>
+      <div class=""><span class=" "><Button>4</Button></span> <span class="text2">Payment Information</span></div> <div className="line"></div>
+      </Tab>
+      <Tab>
+      <div class=""><span class=" "><Button>5</Button></span> <span class="text2">Hourly Rate</span></div>
+      </Tab>
+    </TabList>
   
-        </Tab>
-        <Tab>
-        <div class=""><span class=" "><Button>2</Button></span> <span class="text">Professional Profile</span></div> <div className="line"></div>
-        </Tab>
-        <Tab>
-        <div class=""><span class=" "><Button>3</Button></span> <span class="text">ID Verification</span></div> <div className="line"></div>
-        </Tab>
-        <Tab>
-        <div class=""><span class=" "><Button>4</Button></span> <span class="text">Payment Information</span></div> <div className="line"></div>
-        </Tab>
-        <Tab>
-        <div class=""><span class=" "><Button>5</Button></span> <span class="text">Hourly Rate</span></div> 
-        </Tab>
-      </TabList>
-      <TabPanel>
-         <PersonalProfile/>
 
-      </TabPanel>
-      <TabPanel>
-         <Heading/>
+    <TabPanel>
+       <PersonalProfile/>
+       
 
-      </TabPanel>
-
-      <TabPanel>
-         <IdVerification/>
-      </TabPanel>
-
-      <TabPanel>
-       <PaymentInformation/>
-      </TabPanel>
-      <TabPanel>
-        <HourlyRate/>
     </TabPanel>
+    <TabPanel>
+       <ProfessionalProfile2/>
+
+    </TabPanel>
+
+    <TabPanel>
+       <IdVerification/>
+    </TabPanel>
+
+    <TabPanel>
+     <PaymentInformation/>
+    </TabPanel>
+
+    <TabPanel>
+      <HourlyRate/>
+  </TabPanel>
     
-    </Tabs>
-  </div>
+
+  </Tabs>
+
+
+  </div>  
+</div>
 )
+
+
 
 /*
  * Tabs is the stateful component.
@@ -85,6 +105,21 @@ class Tabs extends Component {
         return () => this.setSelected(tab)
       }
 
+      handler=()=> {
+        this.setState({
+          selected: this.state.selected + 1
+        })
+    
+      }
+
+      handler2=()=> {
+        this.setState({
+          selected: this.state.selected - 1
+        })
+
+
+      }  
+
           renderTabList(child)
           {
 
@@ -112,8 +147,10 @@ class Tabs extends Component {
                 renderChildren(children) 
                 {
                   let panel = 0
+                  let selectedTab = 0
 
-                  return React.Children.map(children, (child) => {
+                  return React.Children.map(children, (child) => 
+                  {
                     if (child.type.name === "TabList") 
                     {
                       const _ct = this.state.selected
@@ -122,21 +159,25 @@ class Tabs extends Component {
 
                     if (child.type.name === "TabPanel") {
                       const _isActive = (panel === this.state.selected)
+                      const _onClick = this.handler
+                      const _onClick2 = this.handler2
 
                       panel++
-                      return React.cloneElement(child, { _isActive })
+                      return React.cloneElement(child, { _isActive, _onClick ,_onClick2})
                     }
 
                     return child
                   })
                 }
 
+           
+   
+
   render() {
-selecvalue=this.state.selected
+                selecvalue=this.state.selected
     return (
       <div>
-            
-              
+          
               <div className="Tabs">
                 
                 { 
@@ -144,41 +185,19 @@ selecvalue=this.state.selected
                 
                 
                 }
-                  
-               
+                   
                   {/* <Taimoor data={this.state.selected}/> */}
-              </div>
-
-              <div className="nextButtonDiv">
-              {this.state.selected>=0&& <>
-                <button className="tb_prevButton" onClick={() => this.setState({ selected: this.state.selected - 1 })}>
-                Previous Step
-              </button>
-              </>}             
-
-              {this.state.selected<4&& <>
-              <button className="tb_nextButton" onClick={() => this.setState({ selected: this.state.selected + 1 })}>
-              Next
-            </button>
-            </>}
-            </div>
+              </div>  
 
             
        </div>
+       
     )
+  
   }
 }
 
 
-// const Taimoor = (props) => 
-// {
-//   return (
-//     <div>
-//        <h1>hiii {props.data}</h1>
-        
-//     </div>
-//   )
-// }
 
 
 const TabList = ({ 
@@ -186,20 +205,24 @@ const TabList = ({
   children, 
   
 }) => (
-
-  <li className="TabList">
+  <div className="TabList">
+<ul className="left_tabs dynamic_p">
+  <li >
 
     { children  }  
 
-    <div className="left_img">
+  </li>
+  </ul>
+ {/* <div className="left_img"> </div>  */}
 {selecvalue===0&&<PersonalProfileTabFooter/>}
-{selecvalue===1&&<HeadingFooter/>}
+
+{selecvalue===1&&<ProfessionalProfile2Footer/>}
 {selecvalue===2&&<IdVerificationFooter/>}
 {selecvalue===3&&<PaymentInformationFooter/>}
 {selecvalue===4&&<HourlyRateFooter/>}
-</div> 
+ 
 
-  </li>
+</div>
 
 )
 
@@ -212,16 +235,33 @@ const Tab = ({
   <li 
     className={ `Tab  ${ _isActive ? "is-active" : "" }` }
     onClick={ _onClick }>
+    
     { children }
   </li>
 )
 
-const TabPanel = ({
-  _isActive,
-  children,
-}) => (
-  <div className={ `TabPanel  ${ _isActive ? "is-active" : "" }` }>
+const TabPanel = ({props,_isActive, children,_onClick,_onClick2}) => (
+
+
+  <div  className={ `TabPanel  ${ _isActive ? "is-active" : "" }` }>
+  <div className=" container p-2 custom">
     { children }
+
+     <div className="container pt-4">
+
+     {selecvalue>0&& <>
+
+      <button type="button" className="btn rounded-pill " onClick={_onClick2}> Previous Step</button>
+
+     </>}
+
+     {selecvalue<4&& <>
+      <button type="button" className="btn tb_nextButton"  onClick={_onClick}> Next</button>
+   </>}
+   </div>
+
+
+  </div>
   </div>
 )
 
@@ -232,4 +272,5 @@ const Button = ({ children }) => (
     { children }
   </button>
 )
+
 

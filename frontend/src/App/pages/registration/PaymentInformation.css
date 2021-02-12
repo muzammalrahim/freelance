@@ -1,43 +1,35 @@
-.pi_rightbox{
-    width:643px;
-    height: 473px;
-    display: flex;
+
+.pi_rightbox {
+    width: 100%;
+    height: auto;
 }
 
-
-.pi_nextButton{
-    margin: 149px 152px;
-    float: right;
-}
-.pi_prevButton{
-    margin: 158px 0% 0% 120px;
-    float: left;
-    border: none;
+.Profile_info {
+    width: 100%;
+    padding-left: 8px;
 }
 
 .pi_icon{
-    height: 42px;
-    margin-top: 5%;
-    margin-left: 120px;
-box-sizing: border-box;
-background-repeat: no-repeat;}
+    width: 58px;
+    height: 59px;
+    /* margin-left: 120px; */
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+}
 
 .pi_foot{
-    height: 180px;
-    margin-left: 120px;
     background-repeat: no-repeat;
-    margin: auto;
+    height: 182px;
+    left: 0px;
+    margin-top: 0.5%;
+    background-size: contain;
+    background-position: bottom left;
 
-    position: absolute;
-width: 404px;
-height: 182px;
-left: 0px;
-margin-top: 5%;
 }
 
 .pi_Head{
-    margin-top: 17px;
-    margin-left: 116px;
+    /* margin-top: 17px; */
+    /* margin-left: 116px; */
     font-family: Poppins;
 font-style: normal;
 font-size: 20px;
@@ -49,7 +41,7 @@ font-style: normal;
 font-weight: 600;
 font-size: 12px;
 line-height: 20px;
-margin-left: 116px;
+/* margin-left: 116px; */
 width:280px
 
 }
@@ -61,6 +53,34 @@ width:280px
 
 .PiDiv{
         display: flex;
-        margin-top: 50px;
-    margin-bottom: 7%;
+        /* margin-top: 50px; */
 }
+
+.headingStyle{
+    font-family: Poppins;
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 20px;
+
+color: #6B6B6A;
+}
+
+@media screen and (max-width: 992px) {
+    .custom input.form-control::placeholder{
+        font-size: 10px;
+    }
+
+  }
+@media screen and (max-width: 775px) {
+    .pi_foot{
+        height: 202px;
+    }
+
+  }
+@media screen and (max-width: 603px) {
+    .pi_foot{
+        height: 289px;
+    }
+
+  }

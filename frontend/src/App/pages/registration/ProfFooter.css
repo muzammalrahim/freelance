@@ -1,0 +1,17 @@
+.imagesPer_footer{
+    background-repeat: no-repeat;
+    height: 452px;
+    left: 0px;
+    margin-top: 0.5%;
+    background-size: contain;
+    background-position: bottom left;
+}
+
+
+
+@media screen and (max-width: 603px) {
+    .imagesPer_footer{
+        height: 560px;
+    }
+  
+  }

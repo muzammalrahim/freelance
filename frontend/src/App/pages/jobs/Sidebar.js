@@ -22,7 +22,7 @@ const Side = props => {
                             <spna className="heading">Skill 01</spna> 
                         </label>
                         <input type="checkbox" name="name" id="check" />
-                        
+
                     </li>
                     <li>
                         <label>

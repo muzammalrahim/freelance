@@ -16,7 +16,7 @@ function Jobs() {
           {/* top header */}
           <div className="top-area">
             <div className='si-container'>
-              <Navbar text="" value="Post a Project" /> 
+              <Navbar text="" value="Post a Project" />
             </div>
             <div className='default-menu '>
               <DefaultMenu />
@@ -70,7 +70,7 @@ function Jobs() {
                         <div className="row">
                           <div className="col-md-1">
                             <div className="img-icon">
-                              <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage})`}}></div> 
+                              <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage})`}}></div>
                             </div>
                           </div>
                           <div className="col-md-7">
@@ -92,7 +92,7 @@ function Jobs() {
                               </li>
                             </ul>
                           </div>
-                        </div>   
+                        </div>
                         {/* title area */}
                         {/* Tags + Price */}
                         <div className="row pt-2">
@@ -108,7 +108,7 @@ function Jobs() {
                                 <li className="pr-3">
                                   <p><i class="fas fa-clock pr-2"></i>20 min ago</p>
                                 </li>
-                                
+
                               </ul>
                           </div>
                           <div className="offset-md-1 col-md-3">
@@ -123,16 +123,16 @@ function Jobs() {
                         <div className="row paragraph">
                           <div className="col-md-12">
                             <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                            when an unknown printer took a galley of type and scrambled it to make a type 
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type
                             specimen book. It has survived not only five centuries
                             <a href="#">more...</a>
                             </p>
-                          </div> 
+                          </div>
                         </div>
-                        {/* paragraph */}  
-                        {/* Search Tags */}  
+                        {/* paragraph */}
+                        {/* Search Tags */}
                         <div className=" search-tags row pt-3">
                           <div className="col-md-7">
                             <ul className="tags">
@@ -147,17 +147,17 @@ function Jobs() {
                               </li>
                               <li>
                                 <a className="pl-2 pr-2 pt-1 pb-1" href="#">Html</a>
-                              </li>   
+                              </li>
                             </ul>
                           </div>
                           <div className="col-md-5">
                             <div className="job-payment-btn pull-right mb-3">
                             <button class="btn btn--yellow btn--medium job-button"><i className="fas fa-check mr-2" aria-hidden="true"></i>Payment verification</button>
-                              
+
                             </div>
-                          </div>  
+                          </div>
                         </div>
-                        {/* Search Tags */}   
+                        {/* Search Tags */}
                       </div>
                       {/*--------- row1 ---------------*/}
 
@@ -169,7 +169,7 @@ function Jobs() {
                         <div className="row">
                           <div className="col-md-1">
                             <div className="img-icon">
-                              <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage})`}}></div> 
+                              <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage})`}}></div>
                             </div>
                           </div>
                           <div className="col-md-7">
@@ -191,7 +191,7 @@ function Jobs() {
                               </li>
                             </ul>
                           </div>
-                        </div>   
+                        </div>
                         {/* title area */}
                         {/* Tags + Price */}
                         <div className="row pt-2">
@@ -207,7 +207,7 @@ function Jobs() {
                                 <li className="pr-3">
                                   <p><i class="fas fa-clock pr-2"></i>20 min ago</p>
                                 </li>
-                                
+
                               </ul>
                           </div>
                           <div className="offset-md-1 col-md-3">
@@ -222,16 +222,16 @@ function Jobs() {
                         <div className="row paragraph">
                           <div className="col-md-12">
                             <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                            when an unknown printer took a galley of type and scrambled it to make a type 
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type
                             specimen book. It has survived not only five centuries
                             <a href="#">more...</a>
                             </p>
-                          </div> 
+                          </div>
                         </div>
-                        {/* paragraph */}  
-                        {/* Search Tags */}  
+                        {/* paragraph */}
+                        {/* Search Tags */}
                         <div className=" search-tags row pt-3">
                           <div className="col-md-7">
                             <ul className="tags">
@@ -246,20 +246,20 @@ function Jobs() {
                               </li>
                               <li>
                                 <a className="pl-2 pr-2 pt-1 pb-1" href="#">Html</a>
-                              </li>   
+                              </li>
                             </ul>
                           </div>
                           <div className="col-md-5">
                             <div className="job-payment-btn pull-right mb-3">
                             <button class="btn btn--yellow btn--medium job-button"><i className="fas fa-check mr-2" aria-hidden="true"></i>Payment verification</button>
-                              
+
                             </div>
-                          </div>  
+                          </div>
                         </div>
-                        {/* Search Tags */}   
+                        {/* Search Tags */}
                       </div>
                       {/*--------- row2 ---------------*/}
-                      
+
                       {/*--------- row3 ---------------*/}
                       {/* <div className="row job"> */}
                       <div className="job-inner pl-3 pr-3 pt-3 pb-4 row-inner border-top">
@@ -267,7 +267,7 @@ function Jobs() {
                         <div className="row">
                           <div className="col-md-1">
                             <div className="img-icon">
-                              <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage})`}}></div> 
+                              <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage})`}}></div>
                             </div>
                           </div>
                           <div className="col-md-7">
@@ -289,7 +289,7 @@ function Jobs() {
                               </li>
                             </ul>
                           </div>
-                        </div>   
+                        </div>
                         {/* title area */}
                         {/* Tags + Price */}
                         <div className="row pt-2">
@@ -305,7 +305,7 @@ function Jobs() {
                                 <li className="pr-3">
                                   <p><i class="fas fa-clock pr-2"></i>20 min ago</p>
                                 </li>
-                                
+
                               </ul>
                           </div>
                           <div className="offset-md-1 col-md-3">
@@ -320,16 +320,16 @@ function Jobs() {
                         <div className="row paragraph">
                           <div className="col-md-12">
                             <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                            when an unknown printer took a galley of type and scrambled it to make a type 
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type
                             specimen book. It has survived not only five centuries
                             <a href="#">more...</a>
                             </p>
-                          </div> 
+                          </div>
                         </div>
-                        {/* paragraph */}  
-                        {/* Search Tags */}  
+                        {/* paragraph */}
+                        {/* Search Tags */}
                         <div className=" search-tags row pt-3">
                           <div className="col-md-7">
                             <ul className="tags">
@@ -344,17 +344,17 @@ function Jobs() {
                               </li>
                               <li>
                                 <a className="pl-2 pr-2 pt-1 pb-1" href="#">Html</a>
-                              </li>   
+                              </li>
                             </ul>
                           </div>
                           <div className="col-md-5">
                             <div className="job-payment-btn pull-right mb-3">
                             <button class="btn btn--yellow btn--medium job-button"><i className="fas fa-check mr-2" aria-hidden="true"></i>Payment verification</button>
-                              
+
                             </div>
-                          </div>  
+                          </div>
                         </div>
-                        {/* Search Tags */}   
+                        {/* Search Tags */}
                       </div>
                       {/*--------- row3 ---------------*/}
 

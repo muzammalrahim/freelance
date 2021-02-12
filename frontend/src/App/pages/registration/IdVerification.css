@@ -1,3 +1,6 @@
+.Pf-rightbox.bg2.b_line2 {
+    height: auto;
+}
 .iv_rightbox{
     width:643px;
     height: 473px;
@@ -6,21 +9,23 @@
 
 
 .iv_nextButton{
-    margin: 149px 152px;
+    /* margin: 149px 152px; */
     float: right;
 }
 .iv_prevButton{
-    margin: 158px 0% 0% 120px;
+    /* margin: 158px 0% 0% 120px; */
     float: left;
     border: none;
 }
 
 .iv_icon{
-    height: 42px;
-    margin-top: 5%;
-    margin-left: 120px;
-box-sizing: border-box;
-background-repeat: no-repeat;}
+    width: 58px;
+    height: 59px;
+
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    margin-left: 17px;
+}
 
 .iv_icon2{
     height: 42px;
@@ -30,21 +35,18 @@ box-sizing: border-box;
 background-repeat: no-repeat;}
 
 .iv_foot{
-    height: 180px;
-    margin-left: 120px;
-    background-repeat: no-repeat;
-    margin: auto;
 
-    position: absolute;
-width: 404px;
-height: 182px;
-left: 0px;
-margin-top: 9%;
+    background-repeat: no-repeat;
+    height: 182px;
+    left: 0px;
+    margin-top: 0.5%;
+    background-size: contain;
+    background-position: bottom left;
 }
 
 .iv_Head{
-    margin-top: 17px;
-    margin-left: 116px;
+    /* margin-top: 17px; */
+    /* margin-left: 116px; */
     font-family:Poppins;
 font-style: normal;
 font-size: 20px;
@@ -56,17 +58,38 @@ font-style: normal;
 font-weight: 700;
 font-size: 12px;
 line-height: 20px;
-margin-left: 116px;
+/* margin-left: 116px; */
 width:280px;
 padding-top: 1%;
+padding-bottom: 40px;
 }
 
 .mh1{
-   margin: 0% 0% 2% 16%;
+   /* margin: 0% 0% 2% 16%; */
 }
 
 .imgBack{
     width: 86%;
     background: white;
-    padding: 4%;
+    padding: 2%;
 }
+
+
+.iv_info {
+    padding-left: 20px;
+    width: 100%;
+  }
+
+
+  .iv_texthead{
+      
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: -8px;
+    color: #6B6B6A;
+    font-size: 16px;
+    margin: 0;
+    padding-bottom: 3px;
+  }

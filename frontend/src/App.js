@@ -1,22 +1,15 @@
 import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar';
+
 import signuppage from './App/pages/signin/signuppage'
 import SignIn from './App/pages/signin/SignIn'
 import AccountType from './AccountType'
-import PersonalProfile from './App/pages/registration/PersonalProfile'
-import PaymentInformation from './App/pages/registration/PaymentInformation'
-import HourlyRate from './App/pages/registration/HourlyRate'
-import CompanyDetail from './App/pages/registration/CompanyDetail'
-import IdVerification from './App/pages/registration/IdVerification'
 import {Root} from './App/pages/registration/tabbar2'
 import NotFound from "./App/pages/notFound/NotFound";
 import Jobs from "./App/pages/jobs/Jobs";
 import ProfessionalProfile from './App/pages/registration/ProfessionalProfile'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import JobDetail from "./App/pages/jobs/JobDetail";
-import profileview from './components/profileview/ProfileView'
-import Profileview from './components/profileview/ProfileView';
 import ContractOne from './App/pages/Contract/ContractOne'
 import {AccountSettingMain} from './App/pages/AccountSetting/AccountSettingMain'
 import JobDetailTwo from "./App/pages/jobs/JobDetailTwo";
@@ -36,6 +29,7 @@ return (
         <Route path='/Accounttype' exact component={AccountType}/>
         <Route path='/registration-process' exact component={Root}/>
         <Route path='/account-setting' exact component={AccountSettingMain}/>
+        <Route path='/help' exact component={Help}/>
         <Route path='/Jobs' exact component={Jobs}/>
         <Route path='/JobDetail' exact component={JobDetail}/>
         <Route path='/Paymentinformation' exact component={PaymentInformation}/>
@@ -55,4 +49,5 @@ return (
 }
 
 export default App;
+
 
