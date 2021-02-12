@@ -6,6 +6,8 @@ import SiSoHero from "../../../components/SiSoHero";
 import loginimage from "../../../assets/LoginImage.png";
 import AvatarImage from "../../../../src/AvatarImage.png";
 import LOCKER from "../../../assets/LOCKER.png";
+import  Alert from '../../../App/pages/signin/Alert';
+import Signinfooter from "./Signinfooter";
 function SignIn() {
   return (
     <div className="SignUp-flex-container">
@@ -84,6 +86,8 @@ function SignIn() {
           </div>
         </div>
       </div>
+      <Alert/>
+      <Signinfooter/>
     </div>
   );
 }

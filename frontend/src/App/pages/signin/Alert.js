@@ -20,7 +20,7 @@ const Alert = () => {
           </div>
           <div class="col-md-6 col-sm-6 pt-5 pb-5">
               <h5 class="alert-text pb-3">Join over 15,000+ tech people</h5>
-              <h1 class="font-weight-bold pb-3 w-50">
+              <h1 class="font-weight-bold pb-3 w-75">
                 Get instant alert on your inbox
               </h1>
               <p class="alert-para pb-3 font-size-16 w-75">
