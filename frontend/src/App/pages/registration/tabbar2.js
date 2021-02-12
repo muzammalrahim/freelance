@@ -7,73 +7,55 @@ import IdVerification,{IdVerificationFooter} from './IdVerification'
 import PaymentInformation,{PaymentInformationFooter} from './PaymentInformation'
 import HourlyRate,{HourlyRateFooter} from './HourlyRate'
 import Heading,{HeadingFooter} from './ProfessionalProfile'
-import ProfessionalProfile2 from './ProfessionalProfile2'
-import ProfessionalProfile2Footer from "./ProfFooter";
 
 let selecvalue=0;
-
  export const  Root = () => (
-  <div className="Main">
-  <div class="">
 
+  <div className="Root">
+    <Tabs selected={ 0 }>
+      <TabList>
+      <RegNavbar/>
+        <Tab>
 
+        <div class=""><span class=" "><Button>1</Button></span> <span class="text">Personal Profile</span></div> <div className="line"></div>
+  
+        </Tab>
+        <Tab>
+        <div class=""><span class=" "><Button>2</Button></span> <span class="text">Professional Profile</span></div> <div className="line"></div>
+        </Tab>
+        <Tab>
+        <div class=""><span class=" "><Button>3</Button></span> <span class="text">ID Verification</span></div> <div className="line"></div>
+        </Tab>
+        <Tab>
+        <div class=""><span class=" "><Button>4</Button></span> <span class="text">Payment Information</span></div> <div className="line"></div>
+        </Tab>
+        <Tab>
+        <div class=""><span class=" "><Button>5</Button></span> <span class="text">Hourly Rate</span></div> 
+        </Tab>
+      </TabList>
+      <TabPanel>
+         <PersonalProfile/>
 
-  <Tabs selected={ 0 }>
+      </TabPanel>
+      <TabPanel>
+         <Heading/>
 
+      </TabPanel>
 
-    <TabList>
-    <RegNavbar/>
-      <Tab>
+      <TabPanel>
+         <IdVerification/>
+      </TabPanel>
 
-      <div class=""><span class=" "><Button>1</Button></span> <span class="text2">Personal Profile</span></div> <div className="line"></div>
-
-      </Tab>
-      <Tab>
-      <div class=""><span class=" "><Button>2</Button></span> <span class="text2">Professional Profile</span></div> <div className="line"></div>
-      </Tab>
-      <Tab>
-      <div class=""><span class=" "><Button>3</Button></span> <span class="text2">ID Verification</span></div> <div className="line"></div>
-      </Tab>
-      <Tab>
-      <div class=""><span class=" "><Button>4</Button></span> <span class="text2">Payment Information</span></div> <div className="line"></div>
-      </Tab>
-      <Tab>
-      <div class=""><span class=" "><Button>5</Button></span> <span class="text2">Hourly Rate</span></div>
-      </Tab>
-    </TabList>
-
-
-
-    <TabPanel>
-       <PersonalProfile/>
-
-
+      <TabPanel>
+       <PaymentInformation/>
+      </TabPanel>
+      <TabPanel>
+        <HourlyRate/>
     </TabPanel>
-    <TabPanel>
-       <ProfessionalProfile2/>
-
-    </TabPanel>
-
-    <TabPanel>
-       <IdVerification/>
-    </TabPanel>
-
-    <TabPanel>
-     <PaymentInformation/>
-    </TabPanel>
-    <TabPanel>
-      <HourlyRate/>
-  </TabPanel>
     
-
-  </Tabs>
-
-
+    </Tabs>
   </div>
-</div>
 )
-
-
 
 /*
  * Tabs is the stateful component.
@@ -103,14 +85,6 @@ class Tabs extends Component {
         return () => this.setSelected(tab)
       }
 
-      handler=()=> {
-        this.setState({
-          selected: this.state.selected + 1
-        })
-
-        console.log("handler call")
-      }
-
           renderTabList(child)
           {
 
@@ -138,10 +112,8 @@ class Tabs extends Component {
                 renderChildren(children) 
                 {
                   let panel = 0
-                  let selectedTab = 0
 
-                  return React.Children.map(children, (child) =>
-                  {
+                  return React.Children.map(children, (child) => {
                     if (child.type.name === "TabList") 
                     {
                       const _ct = this.state.selected
@@ -150,24 +122,21 @@ class Tabs extends Component {
 
                     if (child.type.name === "TabPanel") {
                       const _isActive = (panel === this.state.selected)
-                      const _onClick = this.handler
 
                       panel++
-                      return React.cloneElement(child, { _isActive, _onClick })
+                      return React.cloneElement(child, { _isActive })
                     }
 
                     return child
                   })
                 }
 
-
-
-
   render() {
-                selecvalue=this.state.selected
+selecvalue=this.state.selected
     return (
       <div>
-
+            
+              
               <div className="Tabs">
                 
                 { 
@@ -175,19 +144,41 @@ class Tabs extends Component {
                 
                 
                 }
-
+                  
+               
                   {/* <Taimoor data={this.state.selected}/> */}
               </div>
 
+              <div className="nextButtonDiv">
+              {this.state.selected>=0&& <>
+                <button className="tb_prevButton" onClick={() => this.setState({ selected: this.state.selected - 1 })}>
+                Previous Step
+              </button>
+              </>}             
 
+              {this.state.selected<4&& <>
+              <button className="tb_nextButton" onClick={() => this.setState({ selected: this.state.selected + 1 })}>
+              Next
+            </button>
+            </>}
+            </div>
+
+            
        </div>
-
     )
-
   }
 }
 
 
+// const Taimoor = (props) => 
+// {
+//   return (
+//     <div>
+//        <h1>hiii {props.data}</h1>
+        
+//     </div>
+//   )
+// }
 
 
 const TabList = ({ 
@@ -195,24 +186,20 @@ const TabList = ({
   children, 
   
 }) => (
-  <div className="TabList">
-<ul className="left_tabs">
-  <li >
+
+  <li className="TabList">
 
     { children  }  
 
-  </li>
-  </ul>
- {/* <div className="left_img"> </div>  */}
+    <div className="left_img">
 {selecvalue===0&&<PersonalProfileTabFooter/>}
-
-{selecvalue===1&&<ProfessionalProfile2Footer/>}
+{selecvalue===1&&<HeadingFooter/>}
 {selecvalue===2&&<IdVerificationFooter/>}
 {selecvalue===3&&<PaymentInformationFooter/>}
 {selecvalue===4&&<HourlyRateFooter/>}
- 
+</div> 
 
-</div>
+  </li>
 
 )
 
@@ -225,29 +212,16 @@ const Tab = ({
   <li 
     className={ `Tab  ${ _isActive ? "is-active" : "" }` }
     onClick={ _onClick }>
-
     { children }
   </li>
 )
 
-const TabPanel = ({props,_isActive, children,_onClick,}) => (
+const TabPanel = ({
+  _isActive,
+  children,
+}) => (
   <div className={ `TabPanel  ${ _isActive ? "is-active" : "" }` }>
     { children }
-
-     <div className="nextButtonDiv">
-
-     {selecvalue>=0&& <>
-       <button className="tb_prevButton"  onClick={_onClick}>
-       Previous Step
-     </button>
-     </>}
-
-     {selecvalue<=4&& <>
-     <button className="tb_nextButton"  onClick={_onClick}> Next</button>
-   </>}
-   </div>
-
-
   </div>
 )
 
@@ -258,5 +232,4 @@ const Button = ({ children }) => (
     { children }
   </button>
 )
-
 

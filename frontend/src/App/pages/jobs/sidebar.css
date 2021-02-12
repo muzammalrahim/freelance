@@ -13,6 +13,7 @@ padding: 15px 10px 0 0;
 }
 .side-menu ul {
     margin: 0 0 0 24px;
+    width: 100%;
 }
 
 
@@ -20,9 +21,21 @@ padding: 15px 10px 0 0;
     padding: 0 0 15px 0;
 }
 .side-menu ul li label {
-    width: 156px;
+    width: 188px;
 }
 .heading {
     font-size: 15px;
     color: #6B6B6A;
+}
+
+@media screen and (max-width: 1200px){
+    .side-menu ul li label {
+        width: 147px;
+    }
+}
+
+@media screen and (max-width: 991px){
+    .side-menu ul li label {
+        width: 92px;
+    }
 }

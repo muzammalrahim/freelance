@@ -1,4 +1,4 @@
-
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
 
 html {
   font-size: 16px;
@@ -10,36 +10,34 @@ body {
 
 .Root {
   height: 100vh;
-
 }
 
 .Tabs {
-  display: grid;
-  grid-template-columns: 30% auto;
+  /* height: 100%; */
+  /* display: flex; */
+
 }
 
 .TabList {
+  width: 30%;
   background: #ffffff;
-  padding-top: 3%;
-  overflow: hidden;
-}
-.left_tabs {
-  padding-left: 61px;
-  padding-bottom: 79px;
+  padding-left: 5%;
+  /* border: 2px solid silver; */
+  float:left;
+  padding-top: 1%;
 }
 
 .TabPanel {
   flex: 1;
   display: none;
-
+  width:70%;
   float:right;
 
 }
 .TabPanel.is-active {
   display: block;
-  background: #f7f8fa;
-  padding: 108px 100px 50px 100px;
 }
+
 .Button {
   display: inline-block;
   /* width: 13%; */
@@ -90,7 +88,7 @@ border: 1px dashed #EE9821;
   border: 2px solid;
 }
 
-.text2{
+.text{
   font-family: Poppins;
   font-style: normal;
   font-weight: 700;
@@ -98,11 +96,9 @@ border: 1px dashed #EE9821;
   line-height: 20px;
   color: #6B6B6A;
   margin: 7%;
-      font-weight: 600;
-    font-size: 16px;
 }
 
-.Tab.is-active .text2{
+.Tab.is-active .text{
 
 color: #EE9821;;
 }
@@ -125,7 +121,6 @@ color: #EE9821;;
     float: right;
     margin-right: 5%;
     cursor: pointer;
-    border: none;
 
 }
 
@@ -133,13 +128,21 @@ color: #EE9821;;
 
   border: none;
   height: 37px;
-  width: 16%;
+  width: 11%;
   border-radius: 18px;
   border: none;
   cursor: pointer;
   font-size: 13px;
 }
 
+.nextButtonDiv{
+  width:70%;
+  float:right;
+  /* border:2px solid green; */
+  background: #F7F8FA;
+  padding : 4% 0% 2% 8%;
+
+}
 
 .tb_prevButton:focus,
 .tb_prevButton:hover {
@@ -150,4 +153,3 @@ color: #EE9821;;
 .left_img{
    margin-top: 6%;
 }
-

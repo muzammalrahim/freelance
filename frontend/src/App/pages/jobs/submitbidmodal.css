@@ -1,0 +1,18 @@
+.avatar-job-detail{
+    width: 95px;
+    height: 95px;
+}
+.modal-main{
+    text-align: center;
+}
+.modal-main h2.d-flex.justify-content-center {
+    font-size: 22px;
+}
+.modal-main button.btn.btn--yellow.btn--medium {
+    width: 121px;
+    margin: 0;
+}
+.modal-main .MuiButton-outlinedSecondary {
+    color: #6b6b6a;
+    border: none;
+}

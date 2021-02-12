@@ -1,0 +1,17 @@
+.proposal-inner1 .active{
+    background: rgba(29, 167, 153, 0.05);
+}
+
+.proposal-inner1 h4 {
+    font-size: 15px;
+    font-family: 'Poppins';
+    font-weight: 500;
+} 
+.proposal-inner1 .avatar-user-job {
+    width: 60px;
+    height: 60px;
+}
+.proposal-inner1 p.r-price {
+    font-size: 14px;
+    text-align: right;
+}

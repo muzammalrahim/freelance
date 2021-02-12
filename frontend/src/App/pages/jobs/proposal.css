@@ -35,14 +35,10 @@ input.form-control {
     border-right: 0;
     
 }
-.proposal-details button.btn.btn--yellow.btn--medium {
-    width: 100%;
-    top: 2px;
-    position: relative;
-    left: 0;
-    font-size: 14px;
-    font-family: 'Poppins';
-    font-weight: 500;
+.proposal-details .button.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary {
+    background: #ee9821;
+    color: #ffffff;
+    border: none;
 }
 .proposal-details textarea {
     overflow: hidden;

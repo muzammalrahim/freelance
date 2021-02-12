@@ -4,6 +4,7 @@ import './jobdetail.css';
 // import ImageUpload from '../../../../src/img/ImageUpload.png';
 import img from '../../../img/ImageUpload.png'
 import GetImage from '../registration/GetImage'
+import ResponsiveDialog from "./SubmitBidModal";
 
 export default class Proposal extends Component {
     render() {
@@ -67,8 +68,7 @@ export default class Proposal extends Component {
                         </li>
                     </ul>
                     
-                    <button class="btn btn--yellow btn--medium">Submit a Proposal</button>
-                    
+                    <ResponsiveDialog/>
                 </div>
                 
             </div>
@@ -76,3 +76,5 @@ export default class Proposal extends Component {
         )
     }
 }
+
+

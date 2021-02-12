@@ -2,85 +2,61 @@ import React from 'react'
 
 import Button from '../../../../src/components/Button';
 import {InputField2} from '../../../../src/components/InputField';
+import {RegNavbar} from '../../../../src/components/Navbar';
+
 import './PersonalProfile.css'
 import '../../../../src/common.css'
 
 import img from '../../../img/personalProfile.png'
 import img2 from '../../../img/personalProfile_F.png'
 
-
 function PersonalProfile() {
-    return (       
-        <div className='Pf-container1'>
+    return (
+
+        <div className='Pf-container'>
             
           {/* <div className='d-Iflex'> */}
                 
                 
                     
-                    <div className='Pf-rightbox   bg2 b_line2'>
+                    <div className='Pf-rightbox   bg2 b_line2' style={{display:"block",    height: "auto"}}> 
                        
-                        <div className="row container-fluid"><div className="row container-fluid">
+                        <div>
 
-                        <div className="img-wrap">
+            
                         <div className='personalprofileicon' style={{backgroundImage: `url(${img})`}}>
                       
-                        </div>
-                        </div>
-
-                        <div className="Profile_info">
-
+                        </div> 
+                        <div>
                           <h4 className="personalprofileHead">Personal Profile</h4>
                           <p className="personalprofilePara"> Creating your account in just a few steps away,
                           Fill your Personal detail type.</p>
                         </div>
                         </div>
 
-                        <div className="container">
-                        <div className="row pt-3">
-                        <div className="col-md-6">
-                        <div className="Rb-0">
-                        <div class="form-group">
-                            <label  className="pp_inputHeading" for="usr">First Name</label>
-                            <input type="text" class="form-control"  Placeholder=" Enter first name"/>
-                        </div>
-                        <div class="form-group">
-                            <label  className="pp_inputHeading" for="usr">Mobile number</label>
-                            <input type="text" class="form-control" Placeholder=" Enter number"/>
-                        </div>
-                        <div class="form-group">
-                            <label  className="pp_inputHeading" for="usr">City:</label>
-                            <input type="text" class="form-control"  Placeholder=" Enter city"/>
-                        </div>
+                        <div style={{display:"flex",marginTop:"50px"}}>
+                        <div className="Rb-1 w46 ml">
+                        <InputField2 heading="First Name" Placeholder=" Enter first name"/> 
+                        <InputField2 heading="Mobile number" Placeholder=" Enter number"/>
+                        <InputField2 heading="City" Placeholder=" Enter city"/>
                         
-                        </div>
-                        </div>
-                        <div className="col-md-6">
-                        <div className="Rb-0">
-                        <div class="form-group">
-                            <label  className="pp_inputHeading" for="usr">LAST Name</label>
-                            <input type="text" class="form-control" Placeholder=" Enter last name"/>
-                        </div>
-                        <div class="form-group">
-                            <label  className="pp_inputHeading" for="usr">Address</label>
-                            <input type="text" class="form-control" Placeholder=" Enter address"/>
-                        </div>
-                        <div class="form-group">
-                            <label   className="pp_inputHeading"for="usr">Country</label>
-                            <input type="text" class="form-control" Placeholder=" Enter country"/>
+                        </div>       
+                        <div className="Rb-2 w46 ml2">
+                            <InputField2 heading="LAST Name" Placeholder=" Enter last name"/> 
+                            <InputField2 heading="Address" Placeholder=" Enter address"/>
+                            <InputField2 heading="Country" Placeholder=" Enter country"/>
+                        
+                           
+                        </div> 
                         </div>
 
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-
-
-
+                        
+                        
                     </div>
 
             </div>
             
-         </div>
+        //   </div> 
     )
 }
 
@@ -89,14 +65,13 @@ export default PersonalProfile
 export function PersonalProfileTabFooter( ) 
 {
     return (
-       <div>
+        <>
 
-<div className=' bg1 '>
+<div className='w-33 bg1 '>
                 {/* <h1> hello</h1>*/}
                 <div className='personalprofile_foot' style={{backgroundImage: `url(${img2})`}}></div>
-
-                          </div>
                 </div>
+                </>
                 );
               
 }
@@ -105,7 +80,7 @@ export function PersonalProfileTabFooter( )
 export function PersonalProfileFooter2( ) 
 {
     return (
-        <div>
+        <>
 
     <div>
                         
@@ -117,7 +92,7 @@ export function PersonalProfileFooter2( )
     </div>
     </div>
 
-    </div>
+    </>
   );
 
 }

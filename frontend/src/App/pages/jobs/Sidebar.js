@@ -2,9 +2,8 @@ import React from "react";
 import {Nav} from "react-bootstrap";
 import { withRouter } from "react-router";
 import './sidebar.css';
-import Slider from './Slider'
 import Checkbox from '@material-ui/core/Checkbox';
-// import './slider.scss';
+import RangeSlider from './RangeSlider'
 
 
 
@@ -70,7 +69,7 @@ const Side = props => {
                 </ul>
                 <ul className="pt-4">
                 <h3>Price</h3>
-                    <Slider/>
+                <RangeSlider/>
                 </ul>
                 <ul className="pt-4 border-top">
                 <h3>Project Type</h3>

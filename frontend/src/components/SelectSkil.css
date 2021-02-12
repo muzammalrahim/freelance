@@ -1,3 +1,4 @@
+
 section {
   min-width: 30%;
   display: flex;
@@ -6,20 +7,19 @@ section {
   margin-left: 14.8%;
   top: 480px;
   position: absolute;
+  height: 30px;
 }
 section div {
-  padding: 5px;
+  margin: 2px;
   display: flex;
   color: white;
   font-family: Poppins;
-  font-size: 12px;
+  font-size: 0.9rem;
   border-radius: 2px;
-  font-weight: 400;
 }
 .flex1 {
   background: #61c1b8;
   min-width: 10%;
-  /* flex-basis: 14%; */
 }
 .flex1 img {
   margin: -1px;
@@ -28,7 +28,7 @@ section div {
 .flex2 {
   background: #61c1b8;
   min-width: 20px;
-  /* flex-basis: 23%; */
+
 }
 .flex2 img {
   margin: -1px;
@@ -37,10 +37,9 @@ section div {
 .flex3 {
   background: #61c1b8;
   min-width: 20px;
-  /* flex-basis: 15%; */
 }
 .flex3 img {
-  margin: -1px;
+  margin-top: -5px;
   margin-left: 13px;
 }
 .Skills {
@@ -66,7 +65,7 @@ section div {
 
   font-family: Poppins;
   font-style: normal;
-  font-weight: 400;
+  font-weight: normal;
   font-size: 12px;
   line-height: 20px;
   color: #6b6b6a;
@@ -86,8 +85,9 @@ section div {
   top: 37.92%;
   font-family: Poppins;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 12px;
   line-height: 20px;
   color: #6b6b6a;
 }
+

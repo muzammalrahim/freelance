@@ -4,7 +4,7 @@ import './footermenu.css'
 export default class FooterMenu extends Component {
     render() {
         return (
-            <div className="footer-nav">
+            <div className="footer-nav d-flex justify-content-center">
                 <nav class="navbar">
 
                     <ul class="navbar-nav">

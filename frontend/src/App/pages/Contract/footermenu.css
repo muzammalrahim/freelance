@@ -1,13 +1,9 @@
 .footer-nav{
     background: #DDF2F0;
 }
-ul.navbar-nav {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    width: 100%;
-    text-align: left;
+.footer-nav li.nav-item {
+    padding: 0 78px;
 }
-
 .footer-nav li.nav-item a{
     font-size: 14px;
     color: #6b6b6a;
