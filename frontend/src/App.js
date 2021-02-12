@@ -7,7 +7,6 @@ import AccountType from './AccountType'
 import {Root} from './App/pages/registration/tabbar2'
 import NotFound from "./App/pages/notFound/NotFound";
 import Jobs from "./App/pages/jobs/Jobs";
-import ProfessionalProfile from './App/pages/registration/ProfessionalProfile'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import JobDetail from "./App/pages/jobs/JobDetail";
 import ContractOne from './App/pages/Contract/ContractOne'
@@ -15,7 +14,8 @@ import {AccountSettingMain} from './App/pages/AccountSetting/AccountSettingMain'
 import JobDetailTwo from "./App/pages/jobs/JobDetailTwo";
 import ApplicationList from '../src/App/pages/application-pages/ApplicationList'
 import ApplicationDetail from '../src/App/pages/application-pages/ApplicationDetail'
-
+import Faq from './App/pages/faq/faq'
+import Help from './App/pages/help/help'
 
 function App() {
 return (
@@ -29,7 +29,6 @@ return (
         <Route path='/Accounttype' exact component={AccountType}/>
         <Route path='/registration-process' exact component={Root}/>
         <Route path='/account-setting' exact component={AccountSettingMain}/>
-        <Route path='/help' exact component={Help}/>
         <Route path='/Jobs' exact component={Jobs}/>
         <Route path='/JobDetail' exact component={JobDetail}/>
         <Route path='/Paymentinformation' exact component={PaymentInformation}/>
@@ -41,6 +40,9 @@ return (
         <Route path='/JobDetailTwo' exact component={JobDetailTwo}/>
         <Route path='/ApplicationList' exact component={ApplicationList}/>
         <Route path='/ApplicationDetail' exact component={ApplicationDetail}/>
+        <Route path='/faq' exact component={Faq}/>
+        <Route path='/help' exact component={Help}/>
+        {/*<Route path='/profileview' exact component={Profileview}/>*/}
         <Route component={NotFound} />
       </Switch>
       </Router>
