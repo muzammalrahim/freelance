@@ -11,6 +11,9 @@ import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { AccountSettingMain } from './App/pages/AccountSetting/AccountSettingMain';
 import JobDetail from "./App/pages/jobs/JobDetail"
 import ContractOne from "./App/pages/Contract/ContractOne"
+import Faq from './App/pages/faq/faq'
+import Help from './App/pages/help/help'
+/*import Profileview from './App/pages/profileview/ProfileView'*/
 function App() {
 return (
     <>
@@ -26,6 +29,9 @@ return (
         <Route path='/Jobs' exact component={Jobs}/>
         <Route path='/JobDetail' exact component={JobDetail}/>
         <Route path='/ContractOne' exact component={ContractOne}/>
+        <Route path='/faq' exact component={Faq}/>
+        <Route path='/help' exact component={Help}/>
+        {/*<Route path='/profileview' exact component={Profileview}/>*/}
         <Route component={NotFound} />
       </Switch>
       </Router>
