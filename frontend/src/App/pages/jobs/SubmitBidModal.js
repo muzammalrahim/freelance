@@ -24,7 +24,7 @@ export default function ResponsiveDialog() {
   };
 
   return (
-    <div className="submit-bid">
+    <div className="submit-bid p-3">
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
       Submit a Proposal
       </Button>

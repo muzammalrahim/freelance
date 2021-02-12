@@ -27,7 +27,7 @@ export default function JobDetail() {
             {/* top header */}
             <div className="main-wrapper pt-5">
                 <div className="container">
-                    <div className="row details-grid p-4">
+                    <div className="row details-grid">
                         <div className="col-md-3">
                         <div className="left-side"><Proposal/></div>
                         </div>
@@ -58,7 +58,7 @@ export default function JobDetail() {
                                     {/* Tags + Price */}
                                     <div className="row pt-2">
                                         <div className="col-md-1"></div>
-                                        <div className="col-md-7">
+                                        <div className="col-md-11">
                                             <ul className="duration">
                                                 <li className="pr-3">
                                                 <p><i class="fas fa-lock pr-2"></i>Monthly</p>
@@ -71,9 +71,6 @@ export default function JobDetail() {
                                                 </li>
                                                 
                                             </ul>
-                                        </div>
-                                        <div className="offset-md-1 col-md-3">
-                                            
                                         </div>
                                     </div>
                                     {/* Tags + Price */}
@@ -206,7 +203,7 @@ export default function JobDetail() {
                             {/* client history */}
                             <div className="client-history">
                                 <h3 className="p-3">Client’s History</h3>
-                                <div className="history-inner1">
+                                <div className="history-inner1 ">
                                     <div className="row border-bottom">
                                         <div className="col-md-10">
                                             <div className="review pl-4">

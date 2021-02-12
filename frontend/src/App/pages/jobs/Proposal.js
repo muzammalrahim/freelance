@@ -9,10 +9,10 @@ import ResponsiveDialog from "./SubmitBidModal";
 export default class Proposal extends Component {
     render() {
         return (
-            <div className="proposal-details">
+            <div className="proposal-details pb-4">
                 <div className="proposal-heading">
-                    <h1>Proposal Details</h1> 
-                    <ul>
+                    <h1 className="pt-4 pl-3">Proposal Details</h1> 
+                    <ul className="p-3">
                         <li>
                             <h3>Proposal Amount</h3>
                             
@@ -67,7 +67,7 @@ export default class Proposal extends Component {
                             
                         </li>
                     </ul>
-                    
+                    {/* <button  class="btn btn--yellow btn--medium">Submit a Proposal</button> */}
                     <ResponsiveDialog/>
                 </div>
                 

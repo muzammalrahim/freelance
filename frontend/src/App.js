@@ -20,6 +20,8 @@ import Profileview from './components/profileview/ProfileView';
 import ContractOne from './App/pages/Contract/ContractOne'
 import {AccountSettingMain} from './App/pages/AccountSetting/AccountSettingMain'
 import JobDetailTwo from "./App/pages/jobs/JobDetailTwo";
+import ApplicationList from '../src/App/pages/application-pages/ApplicationList'
+import ApplicationDetail from '../src/App/pages/application-pages/ApplicationDetail'
 
 
 function App() {
@@ -43,6 +45,8 @@ return (
         <Route path='/registrationprocess' exact component={Root}/>
         <Route path='/ContractOne' exact component={ContractOne}/>
         <Route path='/JobDetailTwo' exact component={JobDetailTwo}/>
+        <Route path='/ApplicationList' exact component={ApplicationList}/>
+        <Route path='/ApplicationDetail' exact component={ApplicationDetail}/>
         <Route component={NotFound} />
       </Switch>
       </Router>

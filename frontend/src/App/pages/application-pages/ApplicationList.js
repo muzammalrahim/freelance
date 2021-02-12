@@ -1,18 +1,18 @@
 import React from 'react'
-import Navbar from './Navbar';
-import './Jobs.css';
-import DefaultMenu from './DefaultMenu';
-import Sidebar from './Sidebar';
-import SearchBar from "./SearchBar";
+import Navbar from '../jobs/Navbar';
+import DefaultMenu from '../jobs/DefaultMenu';
+import Sidebar from '../jobs/Sidebar';
+import SearchBar from "../jobs/SearchBar";
 import AvatarImage from '../../../../src/AvatarImage.png';
 import Button from '@material-ui/core/Button';
+import '../../../assets/css/sam.css'
 
 
 
-function Jobs() {
+function ApplicationList() {
     return (
         
-        <div className='Jobs'>
+        <div className='Jobs application-list'>
           {/* top header */}
           <div className="top-area">
             <div className='si-container'>
@@ -59,15 +59,23 @@ function Jobs() {
 
                       {/* Heading */}
                       <div className="inner-content">
-                        <h1 className="inner-heading">My Feed</h1>
+                        <h1 className="inner-heading">Submitted Application</h1>
                       </div>
                       {/* Heading */}
+
+                      {/* apply heading */}
+                      <div className="applied">
+                        <p className="m-0 p-2">Your Applied for this job 5 min ago</p>
+                      </div>
+                      {/* apply heading */}
 
                       {/*--------- row1 ---------------*/}
                       {/* <div className="row job"> */}
                       <div className="job-inner pl-3 pr-3 pt-3 pb-4">
                         {/* title area */}
+                        
                         <div className="row">
+                          
                           <div className="col-md-1">
                             <div className="img-icon">
                               <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage})`}}></div> 
@@ -161,10 +169,15 @@ function Jobs() {
                       </div>
                       {/*--------- row1 ---------------*/}
 
+                      {/* apply heading */}
+                      <div className="applied">
+                        <p className="m-0 p-2">Your Applied for this job 5 min ago</p>
+                      </div>
+                      {/* apply heading */}
 
                       {/*--------- row2 ---------------*/}
                       {/* <div className="row job"> */}
-                      <div className="job-inner pl-3 pr-3 pt-3 pb-4 row-inner border-top">
+                      <div className="job-inner pl-3 pr-3 pt-3 pb-4 row-inner">
                         {/* title area */}
                         <div className="row">
                           <div className="col-md-1">
@@ -260,9 +273,15 @@ function Jobs() {
                       </div>
                       {/*--------- row2 ---------------*/}
                       
+                      {/* apply heading */}
+                      <div className="applied">
+                        <p className="m-0 p-2">Your Applied for this job 5 min ago</p>
+                      </div>
+                      {/* apply heading */}
+                      
                       {/*--------- row3 ---------------*/}
                       {/* <div className="row job"> */}
-                      <div className="job-inner pl-3 pr-3 pt-3 pb-4 row-inner border-top">
+                      <div className="job-inner pl-3 pr-3 pt-3 pb-4 row-inner">
                         {/* title area */}
                         <div className="row">
                           <div className="col-md-1">
@@ -369,4 +388,4 @@ function Jobs() {
     );
 };
 
-export default Jobs
+export default ApplicationList

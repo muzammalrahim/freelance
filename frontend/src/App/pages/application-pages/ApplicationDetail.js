@@ -1,19 +1,18 @@
 import React from 'react'
-import Navbar from './Navbar';
-import DefaultMenu from './DefaultMenu';
-import Proposal from './Proposal';
+import Navbar from '../jobs/Navbar';
+import DefaultMenu from '../jobs/DefaultMenu';
+import Sidebar from '../jobs/Sidebar';
+import SearchBar from "../jobs/SearchBar";
 import AvatarImage from '../../../../src/AvatarImage.png';
-import img from "../../../img/stars1.png"
-import  "./jobdetailtwo.css";
+import Button from '@material-ui/core/Button';
+import CustomizedRatings from "../jobs/Rating"
+import '../../../assets/css/sam.css'
 
 
 
-
-
-
-export default function JobDetail() {
+export default function ApplicationDetail() {
     return (
-        <div className="job-detail job-detail-two">
+        <div className="job-detail application-detail">
             {/* top header */}
             <div className="top-area">
                 <div className='si-container'>
@@ -26,9 +25,9 @@ export default function JobDetail() {
             {/* top header */}
             <div className="main-wrapper pt-5">
                 <div className="container">
-                    <div className="row details-grid p-4">
+                    <div className="row details-grid">
                         <div className="col-md-3">
-                        <div className="left-side"><Proposal/></div>
+                        
                         </div>
                         <div className="col-md-9">
                             <div className="right-side">
@@ -52,7 +51,7 @@ export default function JobDetail() {
                                             <p><b>300 SAR</b><br/> <t>Per Hour</t></p>
                                         </div>
                                     </div>
-                                    </div>    
+                                    </div>   
                                     {/* title area */}
                                     {/* Tags + Price */}
                                     <div className="row pt-2">
@@ -201,128 +200,109 @@ export default function JobDetail() {
 
                             {/* client history */}
                             <div className="client-history">
-                                <h3 className="p-3 m-0">Proposals</h3>
-                                <div className="proposal-inner1 pb-2">
-                                    <div className="proposal-detail active border-bottom">
-                                        <div className="row pt-3 container-fluid pr-0">
-                                            <div className="col-md-1">
-                                                <div className="img-icon">
-                                                    <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage})`}}></div> 
-                                                </div>
-                                            </div>
-                                            <div className="col-md-8">
-                                                <div className="pl-3">
-                                                    <h4 className="pt-2">Emerson Torff</h4>
-                                                    <div className="prop-tag">
-                                                        <ul className="duration">
-                                                            <li className="pr-3">
-                                                            <p><i class="fa fa-calendar-alt pr-2"></i>Within 1 day </p>
-                                                            </li>
-                                                            <li className="pr-3">
-                                                            <p><i class="fas fa-clock pr-2"></i>With in a minutes</p>
-                                                            </li> 
-                                                        </ul>
-                                                    </div>
-                                                </div> 
-                                            </div>
-                                            <div className="col-md-3">
-                                                <p className="r-price pull-right pt-2"><b>250 SAR</b><br></br><span>Bid</span></p>
+                                <h3 className="p-3">Client’s History</h3>
+                                <div className="history-inner1 ">
+                                    <div className="row border-bottom">
+                                        <div className="col-md-10">
+                                            <div className="review pl-4">
+                                                <h4 className="pb-2">Job title lorem ipsum lorem ipsum lorem ipsum </h4>
+                                                <p className="mb-3">Expert knowledge and very professional, highly recommended!"</p>
+                                                    <ul className="rating-area">
+                                                        <li>
+                                                        <h5>By<b className="pl-1 pr-3">Maria Bator</b> </h5>
+                                                        </li>
+                                                        <li>
+                                                            <CustomizedRatings/>
+                                                        </li>
+                                                        <li>
+                                                            <h5 className="pl-3"><b>(5 reviews)</b></h5> 
+                                                        </li>
+                                                    </ul>   
+                                                    
                                             </div>
                                         </div>
-                                        <div className="row paragraph container-fluid pr-0">
-                                            <div className="col-md-12">
-                                                <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                                                when an unknown printer took a galley of type and scrambled it to make a type 
-                                                specimen book. It has survived not only five centuries.
-                                                </p>
-                                            </div> 
+                                        <div className="col-md-2">
+                                            <p className="r-price"><b>300 SAR</b><br></br><span>Fixed Price</span></p>
                                         </div>
                                     </div>
-                                        {/* row2 */}
-                                    <div className="proposal-detail border-bottom">
-                                        <div className="row pt-3 container-fluid pr-0">
-                                            <div className="col-md-1">
-                                                <div className="img-icon">
-                                                    <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage})`}}></div> 
-                                                </div>
-                                            </div>
-                                            <div className="col-md-8">
-                                                <div className="pl-3">
-                                                    <h4 className="pt-2">Maria Bator</h4>
-                                                    <div className="prop-tag">
-                                                        <ul className="duration">
-                                                            <li className="pr-3">
-                                                            <p><i class="fa fa-calendar-alt pr-2"></i>Within 5 weeks </p>
-                                                            </li>
-                                                            <li className="pr-3">
-                                                            <p><i class="fas fa-clock pr-2"></i>1 hour ago</p>
-                                                            </li> 
-                                                        </ul>
-                                                    </div>
-                                                </div> 
-                                            </div>
-                                            <div className="col-md-3">
-                                            <div className="price">
-                                            <p><b>300 SAR</b><br/> <t>Per Hour</t></p>
-                                            </div>
+                                    <div className="row pt-4 border-bottom">
+                                        <div className="col-md-10">
+                                            <div className="review pl-4">
+                                                <h4 className="pb-2">Job title lorem ipsum lorem ipsum lorem ipsum </h4>
+                                                <p className="mb-3">Expert knowledge and very professional, highly recommended!"</p>
+                                                    <ul className="rating-area">
+                                                        <li>
+                                                        <h5>By<b className="pl-1 pr-3">Maria Bator</b> </h5>
+                                                        </li>
+                                                        <li>
+                                                            <CustomizedRatings/>
+                                                        </li>
+                                                        <li>
+                                                            <h5 className="pl-3"><b>(5 reviews)</b></h5> 
+                                                        </li>
+                                                    </ul>   
+                                                    
                                             </div>
                                         </div>
-                                        <div className="row paragraph container-fluid pr-0">
-                                            <div className="col-md-12">
-                                                <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                                                when an unknown printer took a galley of type and scrambled it to make a type 
-                                                specimen book. It has survived not only five centuries.
-                                                </p>
-                                            </div> 
+                                        <div className="col-md-2">
+                                            <p className="r-price"><b>300 SAR</b><br></br><span>Fixed Price</span></p>
                                         </div>
                                     </div>
-                                    {/* row2 */}
-
-                                    {/* row2 */}
-                                    <div className="proposal-detail pb-2">
-                                        <div className="row pt-3  container-fluid pr-0">
-                                            <div className="col-md-1">
-                                                <div className="img-icon">
-                                                    <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage})`}}></div> 
-                                                </div>
-                                            </div>
-                                            <div className="col-md-8">
-                                                <div className="pl-3">
-                                                    <h4 className="pt-2">Brandon Rhiel Madsen</h4>
-                                                    <div className="prop-tag">
-                                                        <ul className="duration">
-                                                            <li className="pr-3">
-                                                            <p><i class="fa fa-calendar-alt pr-2"></i>Within 2 weeks </p>
-                                                            </li>
-                                                            <li className="pr-3">
-                                                            <p><i class="fas fa-clock pr-2"></i>2 hour ago</p>
-                                                            </li> 
-                                                        </ul>
-                                                    </div>
-                                                </div> 
-                                            </div>
-                                            <div className="col-md-3">
-                                                <p className="r-price pull-right pt-2"><b>250 SAR</b><br></br><span>Bid</span></p>
+                                    <div className="row pt-4 border-bottom">
+                                        <div className="col-md-10">
+                                            <div className="review pl-4">
+                                                <h4 className="pb-2">Job title lorem ipsum lorem ipsum lorem ipsum </h4>
+                                                <p className="mb-3">Expert knowledge and very professional, highly recommended!"</p>
+                                                    <ul className="rating-area">
+                                                        <li>
+                                                        <h5>By<b className="pl-1 pr-3">Maria Bator</b> </h5>
+                                                        </li>
+                                                        <li>
+                                                            <CustomizedRatings/>
+                                                        </li>
+                                                        <li>
+                                                            <h5 className="pl-3"><b>(5 reviews)</b></h5> 
+                                                        </li>
+                                                    </ul>   
+                                                    
                                             </div>
                                         </div>
-                                        <div className="row paragraph container-fluid pr-0 ">
-                                            <div className="col-md-12">
-                                                <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                                                when an unknown printer took a galley of type and scrambled it to make a type 
-                                                specimen book. It has survived not only five centuries.
-                                                </p>
-                                            </div> 
+                                        <div className="col-md-2">
+                                            <p className="r-price"><b>300 SAR</b><br></br><span>Fixed Price</span></p>
                                         </div>
                                     </div>
-                                    {/* row2 */}
-
-                                   
+                                    <div className="row pt-4 pb-3">
+                                        <div className="col-md-10">
+                                            <div className="review pl-4">
+                                                <h4 className="pb-2">Job title lorem ipsum lorem ipsum lorem ipsum </h4>
+                                                <p className="mb-3">Expert knowledge and very professional, highly recommended!"</p>
+                                                    <ul className="rating-area">
+                                                        <li>
+                                                        <h5>By<b className="pl-1 pr-3">Maria Bator</b> </h5>
+                                                        </li>
+                                                        <li>
+                                                            <CustomizedRatings/>
+                                                        </li>
+                                                        <li>
+                                                            <h5 className="pl-3"><b>(5 reviews)</b></h5> 
+                                                        </li>
+                                                    </ul>   
+                                                    
+                                            </div>
+                                        </div>
+                                        <div className="col-md-2">
+                                            <p className="r-price"><b>300 SAR</b><br></br><span>Fixed Price</span></p>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div className="job-detail-btn">
+                                    <div className="btn1 mb-1">
+                                        <a href="#">View More</a>
+                                    </div>
+                                    <div className="btn2 pb-3">
+                                        <a  href="#">(26 more reviews)</a>
+                                    </div>
                                     
                                 </div>
                             </div>
