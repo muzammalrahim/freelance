@@ -8,7 +8,7 @@ import PaymentInformation,{PaymentInformationFooter} from './PaymentInformation'
 import HourlyRate,{HourlyRateFooter} from './HourlyRate'
 import Heading,{HeadingFooter} from './ProfessionalProfile'
 import ProfessionalProfile2 from './ProfessionalProfile2'
-import ProfessionalProfile2Footer from "./ProfFooter";
+// import ProfessionalProfile2Footer from "./ProfFooter";
 
 let selecvalue=0;
 
@@ -216,7 +216,7 @@ const TabList = ({
  {/* <div className="left_img"> </div>  */}
 {selecvalue===0&&<PersonalProfileTabFooter/>}
 
-{selecvalue===1&&<ProfessionalProfile2Footer/>}
+{/*{selecvalue===1&&<ProfessionalProfile2Footer/>}*/}
 {selecvalue===2&&<IdVerificationFooter/>}
 {selecvalue===3&&<PaymentInformationFooter/>}
 {selecvalue===4&&<HourlyRateFooter/>}

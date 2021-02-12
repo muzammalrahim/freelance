@@ -1,7 +1,7 @@
 import React from "react";
-import Navbar from "../../../components/profileview/Navbar";
+import Navbar from "../../../components/Navbar";
 import "./SignIn.css";
-import ToggleButton from "./ToggleButton";
+// import ToggleButton from "./ToggleButton";
 import SiSoHero from "../../../components/SiSoHero";
 import loginimage from "../../../assets/LoginImage.png";
 import AvatarImage from "../../../../src/AvatarImage.png";

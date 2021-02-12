@@ -17,6 +17,10 @@ import ApplicationDetail from '../src/App/pages/application-pages/ApplicationDet
 import Faq from './App/pages/faq/faq'
 import Help from './App/pages/help/help'
 import Profileview from './components/profileview/ProfileView'
+import PaymentInformation from "./App/pages/registration/PaymentInformation"
+import CompanyDetail from "./App/pages/registration/CompanyDetail"
+import HourlyRate from "./App/pages/registration/HourlyRate"
+import IdVerification from "./App/pages/registration/IdVerification"
 
 
 function App() {
