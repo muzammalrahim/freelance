@@ -1,0 +1,16 @@
+body{
+color: #6B6B6A;
+}
+.main-area {
+    background: #E5E5E5;
+}
+.btn:focus {
+    box-shadow: none;
+    text-decoration: none;
+}
+.btn:hover {
+    text-decoration: none;
+}
+.faq .main-area .accordion .btn{
+    padding-left: 0px;
+}
