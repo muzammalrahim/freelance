@@ -71,8 +71,12 @@ a.notification {
     color: white;
   } */
 
+
 ul.nav.navbar-nav.ml-auto {
-    float: right; 
+    /* float: right; */
+    position: absolute;
+    right: -18px;
+    top: -27px;
 }
 ul.nav.navbar-nav.ml-auto li:before{
     content: '';
