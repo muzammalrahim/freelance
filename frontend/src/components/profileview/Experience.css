@@ -1,9 +1,52 @@
 .Experr{
-    height: 228px;
-width: 712px;
-margin-left: 336px;
-margin-top: 20px;
-border-radius: 0px;
-background-color: rgb(221, 226, 226);
+    margin-top: 30px;
+background-color: white;
 
+
+}
+.delete-button{
+display: flex;
+padding: 3% 3% 0% 3%;
+justify-content: space-between;
+}
+.delete-button h{
+
+font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 24px;
+color: #6B6B6A;
+
+}
+/* .delete-button  h{
+    padding: 3%;
+    font-family: Poppins;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 20px;
+color: #6B6B6A;
+opacity: 0.6;
+} */
+ .dlt-icon h {
+     padding: 3%;
+    font-family: Poppins;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 20px;
+color: #6B6B6A;
+opacity: 0.6;
+
+
+}
+.experince p{
+    font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 24px;
+color: #6B6B6A;
+padding: 2% 0% 2% 3%;
 }

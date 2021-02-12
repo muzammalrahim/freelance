@@ -38,9 +38,11 @@
         position: relative;
         margin-top: 30%;
         left: 77px;
+        margin-top: 15%;
         width: 40px;
         height: 40px;
         left: -230%;
+        /* left: -100%; */
       }
       .DROPDOWn{
         height: auto;
@@ -48,6 +50,7 @@
       }
       .dropdown-toggle-new{
           margin-left: -70%;
+          /* margin-left: -20%; */
           margin-top: 10%;
 
       }

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-
+import Navbar from './components/Navbar';
 import signuppage from './App/pages/signin/signuppage'
 import SignIn from './App/pages/signin/SignIn'
 import AccountType from './AccountType'
@@ -16,6 +16,8 @@ import ApplicationList from '../src/App/pages/application-pages/ApplicationList'
 import ApplicationDetail from '../src/App/pages/application-pages/ApplicationDetail'
 import Faq from './App/pages/faq/faq'
 import Help from './App/pages/help/help'
+import Profileview from './components/profileview/ProfileView'
+
 
 function App() {
 return (
@@ -42,6 +44,7 @@ return (
         <Route path='/ApplicationDetail' exact component={ApplicationDetail}/>
         <Route path='/faq' exact component={Faq}/>
         <Route path='/help' exact component={Help}/>
+        <Route path='/profile-view' exact component={Profileview}/>
         {/*<Route path='/profileview' exact component={Profileview}/>*/}
         <Route component={NotFound} />
       </Switch>

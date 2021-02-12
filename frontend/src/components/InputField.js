@@ -91,3 +91,25 @@ export function InputField4(props)
     </>
   );
 }
+
+export function InputField5(props) 
+{
+  const [inputType] = useState(props.type)
+  const [inputValue, setInputValue] = useState('')
+  const [inputPlaceholder] = useState(props.Placeholder)
+
+  function handleChange(event)
+  {
+    setInputValue(event.target.value);
+    if(props.onChange) props.onChange(inputValue)
+  }
+  return (
+    <>
+   
+    <p className="heading_style">{props.heading}</p>
+  
+      <input type={inputType} value={inputValue} placeholder={inputPlaceholder} name="input-form" onChange={handleChange} class="inputclass5"/>
+ 
+    </>
+  );
+}
