@@ -69,10 +69,15 @@ line-height: 20px;
     background: #e6c290c2;
     opacity: 0.8;
     text-align: center;
-    padding: 20px 30px ;
     font-size: 16px;
     font-family: 'Poppins';
     font-weight: bolder;
     border-radius: 6px;
 }
 
+@media screen and (max-width: 991px) {
+
+    .hr_Para2 {
+        font-size: 11px;
+    }
+}

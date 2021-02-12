@@ -24,7 +24,6 @@ body {
   overflow: hidden;
 }
 .left_tabs {
-  padding-left: 61px;
   padding-bottom: 79px;
 }
 
@@ -38,7 +37,7 @@ body {
 .TabPanel.is-active {
   display: block;
   background: #f7f8fa;
-  padding: 108px 100px 50px 100px;
+  /* padding: 108px 100px 50px 100px; */
 }
 .Button {
   display: inline-block;
@@ -151,3 +150,84 @@ color: #EE9821;;
    margin-top: 6%;
 }
 
+.Main {
+  overflow:hidden;
+}
+
+.row.tabbarMainRow {
+  display: block!important;
+}
+
+.dynamic_p {
+  padding-left: 50px;
+  padding-top: 19px;
+}
+
+
+
+@media screen and (max-width: 992px) {
+  .text2 {
+        font-size: 12px;
+  }
+  .dynamic_p {
+    padding-left: 27px;
+}
+.Tabs {
+  grid-template-columns: 38% auto;
+  }
+
+
+}
+
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 700px) {
+  .text2 {
+      font-size:12px ;
+  }
+  .Tabs {
+    grid-template-columns: 38% auto;
+    }
+
+    .dynamic_p {
+      padding-left: 27px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .text2 {
+    font-size: 10px;
+  }
+  .Tabs {
+    grid-template-columns: 38% auto;
+    }
+
+    .dynamic_p{
+
+      padding-left: 18px;
+    }
+    body .tabbarMain .custom {
+      width: 80%;
+      margin: 0 auto;
+      float: left;
+  }
+    
+  .line {
+    
+    margin-left: 17px;
+}
+
+.Button {
+ 
+  padding: 5px 11px;
+  border-radius: 25px;
+  height: 32px;
+}
+
+
+}
+
+.nextButtonDiv{
+  width: 100%;
+  float: left;
+}
+    

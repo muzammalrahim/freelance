@@ -1,7 +1,7 @@
 .pp_rightbox{
     width:643px;
-    height: 473px;
-    display: flex;
+    height: auto;
+  
 }
 
 
@@ -265,4 +265,13 @@ html {
     display: inline-block;
     float: left;
 }
+
+
+@media screen and (max-width: 992px) {
+    .checkbox-button__label {
+       
+        font-size: 9px;
+    
+    }
+  }
 

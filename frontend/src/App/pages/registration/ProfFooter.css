@@ -6,3 +6,12 @@
     background-size: contain;
     background-position: bottom left;
 }
+
+
+
+@media screen and (max-width: 603px) {
+    .imagesPer_footer{
+        height: 560px;
+    }
+  
+  }

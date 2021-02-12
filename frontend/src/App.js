@@ -5,11 +5,12 @@ import signuppage from './App/pages/signin/signuppage'
 import SignIn from './App/pages/signin/SignIn'
 import AccountType from './AccountType'
 import {Root} from './App/pages/registration/tabbar2'
-import test from './App/pages/registration/test'
 import NotFound from "./App/pages/notFound/NotFound";
 import Jobs from "./App/pages/jobs/Jobs";
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { AccountSettingMain } from './App/pages/AccountSetting/AccountSettingMain';
+import Help  from './App/pages/FaqsAndHelp/Help';
+
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 function App() {
 return (
     <>
@@ -22,8 +23,8 @@ return (
         <Route path='/Accounttype' exact component={AccountType}/>
         <Route path='/registration-process' exact component={Root}/>
         <Route path='/account-setting' exact component={AccountSettingMain}/>
+        <Route path='/help' exact component={Help}/>
         <Route path='/Jobs' exact component={Jobs}/>
-        <Route path='/test' exact component={test}/>
         <Route component={NotFound} />
       </Switch>
       </Router>

@@ -15,7 +15,7 @@ function PaymentInformation() {
         <div className='Pf-container'>
             
                         
-                    <div className='pi_rightbox  bg2 b_line2' > 
+                    <div className='pi_rightbox  bg2 b_line2 p-5' > 
                        
                         <div className="row Profile_info">
 
@@ -30,8 +30,8 @@ function PaymentInformation() {
                         </div>
                         </div>
 
-                        <div class="row">
-                        <div className="Rb-1 col-md-8">
+                        <div class="row w-75">
+                        <div className="Rb-1 col-md-12">
                         <div class="form-group">
                             <label className="headingStyle" for="usr">Card Holder Name</label>
                             <input type="text" class="form-control"  Placeholder=" Enter card holder name"/>
@@ -44,21 +44,15 @@ function PaymentInformation() {
                         </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row w-75">
                    
                   
-                        <div class="col-md-5">
-                            <Date/>
-                          
-                        </div>
+                            <div class="col-md-12">
+                                <Date/>
+                            
+                            </div>
                         
-                        <div class="col-md-3">
-    
-                        <div class="form-group">
-                            <label className="headingStyle" for="usr">CVV</label>
-                            <input type="text" class="form-control" Placeholder="Enter CVV"/>
-                        </div>
-                        </div>
+        
                         
                         </div>
 

@@ -19,7 +19,7 @@ function IdVerification() {
         <div className='Pf-container'>
             
                                 
-                    <div className='Pf-rightbox   bg2 b_line2'> 
+                    <div className='Pf-rightbox   bg2 b_line2 p-5'> 
                     <div class="container-fluid" >
                         <div>
 

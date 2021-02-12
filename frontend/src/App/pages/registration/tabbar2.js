@@ -14,17 +14,19 @@ let selecvalue=0;
 
  export const  Root = () => (
   <div className="Main">
-  <div class="">
- 
-   
+  
+  <div class="tabbarMain">
+  
+
    
   <Tabs selected={ 0 }>
   
-
+  
+       
     <TabList>
     <RegNavbar/>
-      <Tab>
-
+      <Tab >
+        
       <div class=""><span class=" "><Button>1</Button></span> <span class="text2">Personal Profile</span></div> <div className="line"></div>
 
       </Tab>
@@ -41,7 +43,6 @@ let selecvalue=0;
       <div class=""><span class=" "><Button>5</Button></span> <span class="text2">Hourly Rate</span></div> 
       </Tab>
     </TabList>
-  
   
 
     <TabPanel>
@@ -61,6 +62,7 @@ let selecvalue=0;
     <TabPanel>
      <PaymentInformation/>
     </TabPanel>
+
     <TabPanel>
       <HourlyRate/>
   </TabPanel>
@@ -204,7 +206,7 @@ const TabList = ({
   
 }) => (
   <div className="TabList">
-<ul className="left_tabs">
+<ul className="left_tabs dynamic_p">
   <li >
 
     { children  }  
@@ -239,23 +241,27 @@ const Tab = ({
 )
 
 const TabPanel = ({props,_isActive, children,_onClick,_onClick2}) => (
-  <div className={ `TabPanel  ${ _isActive ? "is-active" : "" }` }>
-    { children }   
 
-     <div className="nextButtonDiv">
+  
+  <div  className={ `TabPanel  ${ _isActive ? "is-active" : "" }` }>
+  <div className=" container p-2 custom">
+    { children }   
+      
+     <div className="container pt-4">
     
      {selecvalue>0&& <>
-       <button className="tb_prevButton"  onClick={_onClick2}>
-       Previous Step
-     </button>
+
+      <button type="button" className="btn rounded-pill " onClick={_onClick2}> Previous Step</button>
+
      </>}             
 
      {selecvalue<4&& <>
-     <button className="tb_nextButton"  onClick={_onClick}> Next</button>
+      <button type="button" className="btn tb_nextButton"  onClick={_onClick}> Next</button>
    </>}
    </div>  
 
 
+  </div>
   </div>
 )
 
