@@ -12,7 +12,7 @@ import img2 from '../../../img/HourlyRate_F.png'
 function HourlyRate() {
     return (
 
-        <div className='Pf-container'>
+        <div className='HourlyRate'>
             
            
                 
@@ -22,7 +22,7 @@ function HourlyRate() {
                      {/*Right section*/} 
                     <div className='hr_rightbox   bg2 b_line2 p-5' > 
                           {/*Rc 1_inn*/}
-                        <div class="container-fluid"> 
+                        <div class="container"> 
                         <div class="row pl-3">
                           <div class="col-sm-12">
                           <div className='hr_icon' style={{backgroundImage: `url(${img})`}}></div> 
@@ -84,10 +84,11 @@ export default HourlyRate
 export function HourlyRateFooter ()
 {
   return(
- 
-      <>
-      <div className='hr_foot' style={{backgroundImage: `url(${img2})`}}></div>
-      </>
+     
+        <div className="HourlyRate_footer_padding">
+    
+           <div className='hr_foot' style={{backgroundImage: `url(${img2})`}}></div>
+      </div>
   )
 
 }

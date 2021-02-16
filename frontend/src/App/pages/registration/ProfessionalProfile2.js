@@ -46,17 +46,17 @@ class  ProfessionalProfile2 extends Component{
 render(){
 
 return (
-
+          <div className="ProfessionalProfile">
         <div className='Pf-container proff-prof'>
 
-          <div className='Pf-rightbox   bg2 b_line2 p-5'> 
+          <div className='container Pf-rightbox   bg2 b_line2 p-5'> 
            
           <div class="container-fluid">
             
              <div>   
                  <div class="row pl-3">
                     <div className="Per_img-wrap">
-                    <div className='pp_icon' style={{backgroundImage: `url(${img})`}}></div> 
+                    <div className="pp_icon" style={{backgroundImage: `url(${img})`}}></div> 
                     </div>
                     
                     <div className="personalProfile_info">
@@ -81,8 +81,6 @@ return (
                                 //  onChange={this.handleChange}
 
                                 onChange={(e) => {
-                                  console.log(e.target.value);
-                                  console.log("test:",e.target.li);
                                   this.setState((prevState) => ({
                                     brand: [...prevState.brand, e.target.value],
                                   }));
@@ -118,9 +116,9 @@ return (
                                       width: "113px",
                                     }}
                                   >
-                                    <h5 className="h5item">{item} </h5>
+                                    <h5 className="Addskillh5item">{item} </h5>
                                     <span
-                                      className="float pl-4"
+                                      className="float AddSkill_pl"
                                       onClick={() => {
                                         console.log(index);
                                         const a = this.state.brand;
@@ -296,12 +294,14 @@ return (
                         </div>
                         
                         <div >
-                                <div className="">
+                                <div className="getimage">
                                 <GetImage/>
                                 </div>
                         </div>
                 
              </div>
+
+             
            </div>
              
                 </div>
@@ -314,6 +314,7 @@ return (
         
         </div>
         </div>
+     </div>
      </div>
     )
     }

@@ -1,0 +1,86 @@
+.main{
+
+  position: relative;
+}
+
+.back_gr{
+    background: #1DA799;
+}
+
+.para_style1{
+    font-family: Poppins;
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+color: #FFFFFF;
+}
+.para_style2{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    color: #FFFFFF;
+    opacity: 0.8;
+}
+
+.rightHeader{
+    font-weight: 700;
+    font-size: 17px;
+}
+.rightPara{
+    font-family: Poppins;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.sidebarcolheight{
+    height: 100vh;
+}
+
+.img-wh{
+      width: 80px;
+      height: 80px;
+    
+}
+
+.sidebarMiddleContent{
+    position: absolute;
+    top: 25vh;
+    font-size: 1rem;
+}
+
+.sidebarfooterimg{
+    position: absolute;
+    bottom: 0px;
+    height: 40vh;
+    right: 0;
+}
+
+
+.cardfocus:focus,
+.cardfocus:hover {
+     padding: 10px;
+    background: rgba(29, 167, 153, 0.1);
+    
+    border: 1px solid #1DA799;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.back_g{
+    background: #E5E5E5;
+}
+
+.bodr{
+    border: 1px solid #1DA799;
+}
+
+.jumbotron {
+  
+    background: none !important;
+
+}
+
+.right_con{
+    padding: 5rem;
+}

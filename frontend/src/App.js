@@ -3,14 +3,14 @@ import './App.css';
 
 import signuppage from './App/pages/signin/signuppage'
 import SignIn from './App/pages/signin/SignIn'
-import AccountType from './AccountType'
-import {Root} from './App/pages/registration/tabbar2'
+import tabbar2 from './App/pages/registration/tabbar2'
 import NotFound from "./App/pages/notFound/NotFound";
 import Jobs from "./App/pages/jobs/Jobs";
 import { AccountSettingMain } from './App/pages/AccountSetting/AccountSettingMain';
 import Help  from './App/pages/FaqsAndHelp/Help';
+import Accounttype from "./App/pages/registration/AccountType"
 
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 function App() {
 return (
     <>
@@ -20,11 +20,12 @@ return (
          <Route path='/' exact component={SignIn}/>
          <Route path='/SignIn' exact component={SignIn}/>
         <Route path='/signup' exact component={signuppage}/>
-        <Route path='/Accounttype' exact component={AccountType}/>
-        <Route path='/registration-process' exact component={Root}/>
+        <Route path='/Accounttype' exact component={Accounttype}/>
+        <Route path='/registration-process' exact component={tabbar2}/>
         <Route path='/account-setting' exact component={AccountSettingMain}/>
         <Route path='/help' exact component={Help}/>
         <Route path='/Jobs' exact component={Jobs}/>
+        <Redirect from='/Accounttype/' to="/registration-process/" />
         <Route component={NotFound} />
       </Switch>
       </Router>

@@ -11,12 +11,12 @@ import img2 from '../../../img/PaymentInfo_F.png'
 
 function PaymentInformation() {
     return (
-
+  <div className="PaymentInformation">
         <div className='Pf-container'>
             
                         
                     <div className='pi_rightbox  bg2 b_line2 p-5' > 
-                       
+                       <div className="container">
                         <div className="row Profile_info">
 
             
@@ -55,11 +55,14 @@ function PaymentInformation() {
         
                         
                         </div>
+                        
+                     </div>
 
                     </div>
 
       
             
+        </div>
         </div>
     )
 }
@@ -71,8 +74,16 @@ export default PaymentInformation
 export function PaymentInformationFooter()
 {
     return(
-        <>
-        <div className='pi_foot' style={{backgroundImage: `url(${img2})`}}></div>
-        </>
+        <div>
+
+        <div className='bg1  Paymentinfo_footer_img_padding'>
+       {/* <h1> hello</h1>*/}
+         
+           <div className='pi_foot' style={{backgroundImage: `url(${img2})`}}></div>
+
+          </div>
+       </div>
+
+        
     )
 }

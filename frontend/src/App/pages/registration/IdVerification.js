@@ -15,23 +15,23 @@ import img2 from '../../../img/IdVerfication_F.png'
 function IdVerification() {
     return (
         
-
+  <div className="idVerification">
         <div className='Pf-container'>
             
                                 
-                    <div className='Pf-rightbox   bg2 b_line2 p-5'> 
-                    <div class="container-fluid" >
+                    <div className='Pf-rightbox   bg2  p-5'> 
+                    <div class="container" >
                         <div>
 
-                        <div class="row ">
-                                <div className='iv_icon' style={{backgroundImage: `url(${img})`}}>
-                            
-                                </div> 
-                                <div className="iv_info">
-                                <h4 className="iv_Head">ID Verification</h4>
-                                <p className="iv_Para"> Creating your account in just a few steps away,
-                                Please upload your gov verified proofs</p>
-                                </div>
+                                 <div class="row ">
+                                    <div className='iv_icon' style={{backgroundImage: `url(${img})`}}>
+                                
+                                    </div> 
+                                    <div className="iv_info">
+                                    <h4 className="iv_Head">ID Verification</h4>
+                                    <p className="iv_Para"> Creating your account in just a few steps away,
+                                    Please upload your gov verified proofs</p>
+                                    </div>
                              </div>
                         </div>
 
@@ -41,16 +41,16 @@ function IdVerification() {
                                     <p className="iv_texthead"> International Driving License</p>
                                  </div>
                                 
-                                  <div >
+                                    <div >
                                         <div className="">
                                         <GetImage/>
                                         </div>
                                    </div>
-                                   </div>
+                                </div>
                         </div>
 
                         <div class="row">
-                        <div class="col-sm-12 pt-4">
+                            <div class="col-sm-12 pt-4">
                                  <div className="mh1">
                                     <p className="iv_texthead"> ID CARD</p>
                                  </div>
@@ -60,15 +60,16 @@ function IdVerification() {
                                         <GetImage/>
                                         </div>
                                    </div>
-                                   </div>
+                             </div>
                         </div>
 
-                        </div>
+                     </div>
                         
                     </div>
 
         
             
+        </div>
         </div>
     )
 }

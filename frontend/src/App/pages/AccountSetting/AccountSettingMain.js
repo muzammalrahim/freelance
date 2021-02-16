@@ -11,7 +11,7 @@ let selecvalue=0;
    
   <div className="AccountSettingMain">
 
-  <div className='default-menu '>
+          <div className='default-menu '>
              <Navbar text="" value="Post a Project" /> 
              <DefaultMenu  value={2}/>
           </div>
