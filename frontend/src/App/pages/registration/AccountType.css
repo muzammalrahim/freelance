@@ -1,20 +1,20 @@
-.main{
+.AccountType .main{
 
   position: relative;
 }
 
-.back_gr{
+.AccountType .back_gr{
     background: #1DA799;
 }
 
-.para_style1{
+.AccountType .para_style1{
     font-family: Poppins;
 font-style: normal;
 font-weight: 700;
 font-size: 20px;
 color: #FFFFFF;
 }
-.para_style2{
+.AccountType .para_style2{
     font-family: Poppins;
     font-style: normal;
     font-weight: 600;
@@ -23,42 +23,46 @@ color: #FFFFFF;
     opacity: 0.8;
 }
 
-.rightHeader{
+.AccountType .rightHeader{
     font-weight: 700;
     font-size: 17px;
 }
-.rightPara{
+.AccountType .rightPara{
     font-family: Poppins;
     font-weight: 700;
     font-size: 12px;
 }
 
-.sidebarcolheight{
+.AccountType .sidebarcolheight{
     height: 100vh;
 }
 
-.img-wh{
+.AccountType .img-wh{
       width: 80px;
       height: 80px;
     
 }
 
-.sidebarMiddleContent{
+.AccountType .sidebarMiddleContent{
     position: absolute;
     top: 25vh;
     font-size: 1rem;
 }
 
-.sidebarfooterimg{
+.AccountType .sidebarfooterimg{
     position: absolute;
     bottom: 0px;
-    height: 40vh;
+    height: 39vh;
     right: 0;
 }
 
+.AccountType .accounttype_logo{
+    height: 86px;
+width: 100px;}      
 
-.cardfocus:focus,
-.cardfocus:hover {
+
+.AccountType .cardfocus:focus,
+.AccountType .cardfocus:hover {
      padding: 10px;
     background: rgba(29, 167, 153, 0.1);
     
@@ -67,20 +71,36 @@ color: #FFFFFF;
     border-radius: 4px;
 }
 
-.back_g{
+.AccountType .back_g{
     background: #E5E5E5;
 }
 
-.bodr{
+.AccountType .bodr{
     border: 1px solid #1DA799;
 }
 
-.jumbotron {
+.AccountType .jumbotron {
   
     background: none !important;
 
 }
 
-.right_con{
+.AccountType .right_con{
     padding: 5rem;
 }
+
+
+
+@media screen and (max-width: 1300px)
+{
+    .sidebarfooterimg {
+                    
+      
+                     }
+
+                     .sidebarcolheight {
+                     
+            
+                    }
+  
+  }

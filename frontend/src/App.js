@@ -20,8 +20,8 @@ return (
          <Route path='/' exact component={SignIn}/>
          <Route path='/SignIn' exact component={SignIn}/>
         <Route path='/signup' exact component={signuppage}/>
-        <Route path='/Accounttype' exact component={Accounttype}/>
-        <Route path='/registration-process' exact component={tabbar2}/>
+        <Route path='/registration-process' exact component={Accounttype}/>
+        <Route path='/registration-processpages' exact component={tabbar2}/>
         <Route path='/account-setting' exact component={AccountSettingMain}/>
         <Route path='/help' exact component={Help}/>
         <Route path='/Jobs' exact component={Jobs}/>

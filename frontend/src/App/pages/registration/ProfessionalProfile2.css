@@ -227,10 +227,10 @@ padding-top: 1%;
 .ProfessionalProfile .AddSkill_pl{
         cursor: pointer;
         float: left;
-        padding: 2px 4px!important;
-        margin: 4px 3px!important;
+        padding: 0px 4px!important;
+        margin: 3px 3px!important;
         background: #fff;
-        font-size: 12px;
+        font-size: 11px;
         border-radius: 50%;
         color: #61c1b8;
 }

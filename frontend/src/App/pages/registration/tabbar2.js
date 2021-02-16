@@ -38,8 +38,8 @@ export default class tabbar2 extends Component {
                 <RegNavbar />
               </div>
 
-              <div className="tabbar_tabarlist container pt-4 pb-5 Changepadding ml-3 ">
-                {/* <Tab> */}
+              <div className="tabbar_tabarlist pt-4 pb-5 Changepadding ml-3 ">
+                  <div className="container">
                 <div class="Tab">
                   <span
                     class=" "
@@ -111,7 +111,7 @@ export default class tabbar2 extends Component {
                   </span>{" "}
                   <span class="text2">Hourly Rate</span>
                 </div>
-                <div></div>
+                </div>
             </div>
      
 
@@ -123,7 +123,7 @@ export default class tabbar2 extends Component {
             </div>
 
 
-            <div className="tabbar_min_height col-xs-6 col-sm-8 col-md-9  p-0 tabbar_panel_background">
+            <div className="tabbar_min_height col-xs-6 col-sm-8 col-md-9  p-5 tabbar_panel_background">
               {this.state.tabindex === 1 && <PersonalProfile />}
               {this.state.tabindex === 2 && <ProfessionalProfile2 />}
               {this.state.tabindex === 3 && <IdVerification />}
