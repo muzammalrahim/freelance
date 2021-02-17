@@ -1,13 +1,13 @@
 .alert-page {
   background: #ddf2f0;
 }
-.alert-page .btn-info {
+.alert-page .btn-primary {
   color: #fff;
   background-color: #ee9821;
 }
-.input-group {
+.input-group input {
   height: 80px;
-  border-radius: 0px;
+  border-radius: none;
 }
 .alert-text {
   color: #ee9821;
@@ -32,5 +32,49 @@
 .alert-front-img img {
   position: absolute;
   width: 100%;
-  top: -359px;
+  top: -413px;
+}
+.drop-img {
+  position: relative;
+}
+.drop-img img {
+  position: absolute;
+  top: 0px;
+  width: 43px;
+}
+.alert-front-img {
+  position: relative;
+}
+.alert-page-picutre {
+  position: absolute;
+  top: -348px;
+  left: 34px;
+}
+.alert-time {
+  left: 37px;
+  border-bottom: 4px dotted;
+}
+.al-picture-email {
+  position: relative;
+  top: -400px;
+  left: 350px;
+  width: 60px;
+  height: 60px;
+  border-radius: 70px;
+  text-align: center;
+  background: linear-gradient(141.82deg, #fad961 13.67%, #f76b1c 84.68%);
+}
+.al-picture-email i {
+  top: 15px;
+  position: relative;
+  color: white;
+  font-size: 27px;
+}
+.alert-page a {
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0px;
 }

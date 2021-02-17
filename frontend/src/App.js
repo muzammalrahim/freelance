@@ -16,14 +16,13 @@ import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import JobDetail from "./App/pages/jobs/JobDetail";
 import Profileview from './components/profileview/ProfileView'
 import faq from './App/pages/faq/faq'
-
-
-
+import AddPortfolio from './components/profileview/AddPortfolio'
+import PortfolioDetails from './components/profileview/PortfolioDetails'
+import DetailsPreview from './components/profileview/preview/DetailsPreview'
 function App() {
 return (
     <>
     <Router>
-      
     <Switch>
          <Route path='/' exact component={SignIn}/>
          <Route exact path='/faq' component={faq}/>
@@ -32,7 +31,10 @@ return (
         <Route path='/Accounttype' exact component={AccountType}/>
         <Route path='/PersonalProfile' exact component={PersonalProfile}/>
         <Route path='/ProfessionalProfile' exact component={ProfessionalProfile}/>
-        <Route path='/profile-view' exact component={Profileview}/>
+        <Route path='/profileview' exact component={Profileview}/>
+        <Route path='/addportfolio' exact component={AddPortfolio}/>
+        <Route path='/detailspreview' exact component={DetailsPreview}/>
+        <Route path='/portfoliodetails' exact component={PortfolioDetails}/>
         <Route path='/Paymentinformation' exact component={PaymentInformation}/>
         <Route path='/Companydetail' exact component={CompanyDetail}/>
         <Route path='/Hourlyrate' exact component={HourlyRate}/>
@@ -41,8 +43,8 @@ return (
         <Route path='/Jobs' exact component={Jobs}/>
         <Route path='/JobDetail' exact component={JobDetail}/>
         <Route path='/registrationprocess' exact component={Root}/>
-        <Route component={NotFound} />
 
+        <Route component={NotFound} />
       </Switch>
       </Router>
     </>    

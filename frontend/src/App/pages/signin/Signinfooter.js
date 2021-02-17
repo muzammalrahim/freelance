@@ -4,9 +4,9 @@ import footerlogo from "../../../assets/Logo.png";
 const Signinfooter = () => {
   return (
     <div className="si-footer-page">
-      <div class="container-fluid">
+      <div class="container">
         <div class="row">
-          <div class="col-md-5 col-sm-5 col-5 pt-5 pl-5">
+          <div class="col-md-5 col-sm-5 col-5 mr-0 ml-0 mt-5">
             <img src={footerlogo} alt="" />
             <p class="pt-4 w-50">
               Finity has a collection of latest 2,500 jobs to join next
@@ -37,17 +37,17 @@ const Signinfooter = () => {
                 </a>
               </li>
               <li>
-                <a href="#!" class="text-dark">
+                <a href="/faq" class="text-dark">
                   FAQ
                 </a>
               </li>
             </ul>
           </div>
-          <div class="col-md-2 col-sm-2 col-2  pt-5">
+          <div class="col-md-2 col-sm-2 col-2 pt-5">
             <h5> About us</h5>
             <ul class="list-unstyled mb-0">
               <li>
-                <a href="#!" class="text-dark">
+                <a href="/" class="text-dark">
                   {" "}
                   Meet the Team
                 </a>
