@@ -8,23 +8,23 @@
 
 
 
-.tabbarMain_bg{
+.tabbar .tabbarMain_bg{
   background: #f7f8fa;
 }
 
-.tabbar_sidebar_bg{
+.tabbar .tabbar_sidebar_bg{
   background: white;
 }
 
 
-.tabbar_next_pre_btn_background{
+.tabbar .tabbar_next_pre_btn_background{
   background: #f7f8fa;
 }
-.tabbar_panel_background{
+.tabbar .tabbar_panel_background{
   background: #f7f8fa;
 }
 
-.Buttoncls {
+.tabbar .Buttoncls {
   display: inline-block;
   padding: 7px 15px;
     cursor: pointer;
@@ -38,8 +38,8 @@
     border: 1px solid;
     height: 40px;
 }
-.Buttoncls:focus,
-.Buttoncls:hover {
+.tabbar .Buttoncls:focus,
+.tabbar .Buttoncls:hover {
   outline: 0;
   /* background: #899499; */
 }
@@ -49,15 +49,19 @@
     border-radius: 25px;
     border: 2px solid;
 }
- .ButtonclsActive {
+.tabbar .ButtonclsActive {
     background: #ffffff;
     color: #EE9821;
     border-radius: 25px;
     border: 2px solid;
 }
 
+.container.tabbarContainer {
+  max-width: 1921px;
+}
 
-.line{
+
+.tabbar .line{
 width: 0px;
 left: 72px;
 border: 1px dashed #a0a0a0;
@@ -67,7 +71,7 @@ margin-left: 21px;
 .Tab.is-active .line{
 border: 1px dashed #EE9821;
 }
-.lineActive{
+.tabbar .lineActive{
 border: 1px dashed #EE9821;
 }
 
@@ -78,20 +82,17 @@ border: 1px dashed #EE9821;
   border: 2px solid;
 }
 
-.text2{
+.tabbar .text2{
   font-family: Poppins;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
   line-height: 20px;
   color: #6B6B6A;
-  margin: 7%;
-      font-weight: 600;
-    font-size: 16px;
+  margin: 3%;
+  font-weight: 600;
+  font-size: 16px;
+  padding-left: 1%;
 }
 
-
-.tb_nextButton{
+.tabbar .tb_nextButton{
  
     background-color: #EE9821;
     width: 116px;
@@ -111,7 +112,7 @@ border: 1px dashed #EE9821;
 
 }
 
-.tb_prevButton{
+.tabbar .tb_prevButton{
 
   border: none;
   height: 37px;
@@ -133,7 +134,7 @@ border: 1px dashed #EE9821;
    margin-top: 6%;
 }
 
-.Main {
+.tabbar .Main {
   overflow:hidden;
 }
 
@@ -149,15 +150,15 @@ border: 1px dashed #EE9821;
 
 
 @media screen and (max-width: 1105px) {
-  .text2 {
-        font-size: 13px;
+  .tabbar .text2 {
+    font-size: 13px;
   }
 
 }
 
 
 @media screen and (max-width: 965px) {
-  .text2 {
+  .tabbar .text2 {
         font-size: 11px;
   }
 
@@ -166,47 +167,45 @@ border: 1px dashed #EE9821;
 
 }
 @media screen and (max-width: 873px) {
-  .text2 {
-        font-size: 10px;
+  .tabbar .text2 {
+    font-size: 14px;
   }
-  .Buttoncls{
-    padding: 5px 11px;
-    border-radius: 25px;
-    height: 32px;
-  }
-  
-
-  .line {
+  .tabbar .Buttoncls{
+    padding: 6px 14px;
+    border-radius: 22px;
+    height: 38px;
+}
+  .tabbar .line {
     
-    margin-left: 17px;
+    margin-left: 19px;
 }
 
 
 
 }
 @media screen and (max-width: 786px) {
-  .text2 {
-        font-size: 10px;
-  }
-  .Buttoncls{
-    /* padding: 5px 9px; */
-    /* border-radius: 25px; */
-  /* height: 29px; */
-  padding: 5px 12px;
-  border-radius: 22px;
-  height: 37px;
-  }
-  
+            .tabbar .text2 {
+                             font-size: 10.5px;
+                          }
+            .tabbar .Buttoncls{
+              /* padding: 5px 9px; */
+              /* border-radius: 25px; */
+            /* height: 29px; */
+            padding: 5px 12px;
+            border-radius: 22px;
+            height: 37px;
+            }
+            
 
-  .line {
-    
-    margin-left: 17px;
+            .tabbar .line {
+              
+                           margin-left: 17px;
+                       }
+
 }
 
-}
 
-
-.nextButtonDiv{
+.tabbar .nextButtonDiv{
   width: 100%;
   float: left;
 }

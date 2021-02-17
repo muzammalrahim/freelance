@@ -31,9 +31,9 @@ export default class tabbar2 extends Component {
   render() {
     return (
       <div className="tabbar  tabbarMain_bg">
-        <div className="container-fluid">
+        <div className="container tabbarContainer">
           <div className="row">
-            <div className="tabbar_min_height col-xs-6 col-sm-4 col-md-3  p-0 tabbar_sidebar_bg">
+            <div className="tabbar_min_height col-xs-6 col-sm-4 col-md-4 col-lg-3 p-0 tabbar_sidebar_bg">
               <div>
                 <RegNavbar />
               </div>
@@ -123,7 +123,7 @@ export default class tabbar2 extends Component {
             </div>
 
 
-            <div className="tabbar_min_height col-xs-6 col-sm-8 col-md-9  p-5 tabbar_panel_background">
+            <div className="tabbar_min_height col-xs-6 col-sm-8 col-md-8 col-lg-9  p-5 tabbar_panel_background">
               {this.state.tabindex === 1 && <PersonalProfile />}
               {this.state.tabindex === 2 && <ProfessionalProfile2 />}
               {this.state.tabindex === 3 && <IdVerification />}
