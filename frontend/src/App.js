@@ -16,6 +16,9 @@ import ApplicationList from '../src/App/pages/application-pages/ApplicationList'
 import ApplicationDetail from '../src/App/pages/application-pages/ApplicationDetail'
 import Faq from './App/pages/faq/faq'
 import Help from './App/pages/help/help'
+import Chat from './App/pages/chat/chat'
+import Reports from './App/pages/AccountSetting/Reports'
+import PaymentWithdraw from './App/pages/AccountSetting/PaymentWithdraw'
 import Profileview from './components/profileview/ProfileView'
 import PaymentInformation from "./App/pages/registration/PaymentInformation"
 import CompanyDetail from "./App/pages/registration/CompanyDetail"
@@ -48,6 +51,9 @@ return (
         <Route path='/ApplicationDetail' exact component={ApplicationDetail}/>
         <Route path='/faq' exact component={Faq}/>
         <Route path='/help' exact component={Help}/>
+        <Route path='/chat' exact component={Chat}/>
+        <Route path='/paymentWithdraw' exact component={PaymentWithdraw}/>
+        <Route path='/reports' exact component={Reports}/>
         <Route path='/profile-view' exact component={Profileview}/>
         {/*<Route path='/profileview' exact component={Profileview}/>*/}
         <Route component={NotFound} />

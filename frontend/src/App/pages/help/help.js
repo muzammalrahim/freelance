@@ -1,10 +1,6 @@
 import React, {useState} from 'react'
-import Navbar from './Navbar';
-import DefaultMenu from './DefaultMenu';
-//import Proposal from './Proposal';
-import AvatarImage from '../../../../src/AvatarImage.png';
-// import img from "../../../img/stars1.png"
 import {Modal, Button} from 'react-bootstrap'
+import Header from '../../../components/header/Header';
 import  "./help.css";
 
 const Help=()=> {
@@ -12,20 +8,20 @@ const Help=()=> {
     return (
         <div className="help">
             {/* top header */}
-            <div className="top-area">
-                <div className='si-container'>
-                    <Navbar text="" value="Post a Project" />
-                </div>
-                <div className='default-menu '>
-                    <DefaultMenu />
-                </div>
-            </div>
+                <div>
+          <Header/>
             {/* top header */}
             <div className="main-area">
                 <div className="container">
                     <div className="row pt-5 pb-5">
                         <div className="col-md-12 align-self-center bg-white pb-4">
-                            <div class="pg-heading pt-5 pb-4 pl-3 pr-3"><h3 class="font-weight-bold text-capitalize pull-left">Help</h3><button onClick={()=>setShow(true)} class="btn btn-warning text-white text-uppercase font-weight-bold pull-right"><i class="fa fa-plus"></i> New Query</button></div>
+                            <div class="pg-heading pt-5 pb-4 pl-3 pr-3">
+                                <h3 class="font-weight-bold text-capitalize pull-left">Help</h3>
+                                {/*<button onClick={()=>setShow(true)} class="btn btn-warning text-white text-uppercase font-weight-bold pull-right">
+                                <i class="fa fa-plus"></i> New Query</button>*/}
+
+                                <div class="btn btn-warning text-white btn-lg button-color pull-right"><a onClick={()=>setShow(true)} class="popup-with-form" href="#"><i class="fa fa-plus"></i>New Query</a></div>
+                            </div>
 
                             <div class="q-list pt-4 pr-3 pl-3 ">
                                 <h4>Get Started</h4>
@@ -85,7 +81,7 @@ const Help=()=> {
             </div>
         </div>
     </div>
-
+</div>
 
     )
 }
