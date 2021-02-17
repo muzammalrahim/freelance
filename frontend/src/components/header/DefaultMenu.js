@@ -1,11 +1,7 @@
 import React from 'react'
 import { MenuItems,AccountSettingMenuItems } from "./MenuItems";
-import './defaultmenu.css';
-import AvatarImage from '../../../../src/AvatarImage.png';
-
-
-
-
+/*import './defaultmenu.css';*/
+import AvatarImage from '../../AvatarImage.png';
 
 function DefaultMenu(props) {
     return (
@@ -40,10 +36,10 @@ function DefaultMenu(props) {
            
                   
               </ul>
-              <ul class="nav navbar-nav ml-auto">
+              <ul class="nav navbar-nav ml-auto user-pro">
                 <li>
                 <div>
-                  <a href="#" class="notification">
+                  <a href="#" class="notification mr-3">
                     <span><i class="fas fa-bell"></i>15</span>
                     {/* <span class="badge">15</span> */}
                   </a>
@@ -54,7 +50,7 @@ function DefaultMenu(props) {
                       
                 </div>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown pl-3">
                    
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pixelz Warrios</a>
                     <div class="dropdown-menu dropdown-menu-right dropdown">
