@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from './Navbar';
-import DefaultMenu from './DefaultMenu';
+import Header from '../../../../src/components/header/Header';
 import Proposal from './Proposal';
 import AvatarImage from '../../../../src/AvatarImage.png';
 import img from "../../../img/stars1.png"
@@ -16,12 +16,7 @@ export default function JobDetail() {
         <div className="job-detail">
             {/* top header */}
             <div className="top-area">
-                <div className='si-container'>
-                    <Navbar text="" value="Post a Project" /> 
-                </div> 
-                <div className='default-menu '>
-                    <DefaultMenu />
-                </div>
+              <Header />
             </div>
             {/* top header */}
             <div className="main-wrapper pt-5">

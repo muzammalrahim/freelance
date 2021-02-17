@@ -11,8 +11,8 @@ function Card() {
         <div class="row bg-white">
          <div class="col-md-12">
 
-        
-      
+
+
       <div class="profile pt-3">
         <img src={Status} class="pb-2"/>
         <p>Pixelz Warrios</p>

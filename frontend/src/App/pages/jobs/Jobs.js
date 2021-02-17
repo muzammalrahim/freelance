@@ -1,7 +1,8 @@
 import React from 'react'
 import Navbar from './Navbar';
 import "../../../assets/css/custom.css";
-import DefaultMenu from './DefaultMenu';
+// import DefaultMenu from './DefaultMenu';
+import Header from '../../../../src/components/header/Header'
 import Sidebar from './Sidebar';
 import SearchBar from "./SearchBar";
 import AvatarImage from '../../../../src/AvatarImage.png';
@@ -15,12 +16,7 @@ function Jobs() {
         <div className='Jobs'>
           {/* top header */}
           <div className="top-area">
-            <div className='si-container'>
-              <Navbar text="" value="Post a Project" />
-            </div>
-            <div className='default-menu '>
-              <DefaultMenu />
-            </div>
+              <Header />
           </div>
           {/* top header */}
           <div className="main-wrapper pt-5">

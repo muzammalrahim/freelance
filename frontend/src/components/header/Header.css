@@ -1,3 +1,11 @@
+/* @font-face {
+    font-family: 'Poppins';
+    src: url('../../fonts/poppins-medium-webfont.woff2') format('woff2'),
+         url('../../fonts/poppins-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+} */
 header .header-area {
     padding: 15px 50px;
 }
