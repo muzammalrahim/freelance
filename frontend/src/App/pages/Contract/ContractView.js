@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import  "./contractview.css";
+import "../../../assets/css/custom.css";
 import Button from '@material-ui/core/Button';
 
 export default class ContractView extends Component {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ContractNav from "./ContractNav";
 import Navbar from '../jobs/Navbar';
 import DefaultMenu from '../jobs/DefaultMenu';
-import  "./contractone.css";
+import "../../../assets/css/custom.css";
 import ContractView  from "./ContractView"
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';

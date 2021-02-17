@@ -4,7 +4,6 @@ import DefaultMenu from './DefaultMenu';
 import Proposal from './Proposal';
 import AvatarImage from '../../../../src/AvatarImage.png';
 import img from "../../../img/stars1.png"
-import  "./jobdetailtwo.css";
 
 
 

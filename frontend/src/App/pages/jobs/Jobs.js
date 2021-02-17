@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from './Navbar';
-import './Jobs.css';
+import "../../../assets/css/custom.css";
 import DefaultMenu from './DefaultMenu';
 import Sidebar from './Sidebar';
 import SearchBar from "./SearchBar";

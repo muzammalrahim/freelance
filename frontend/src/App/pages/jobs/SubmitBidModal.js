@@ -8,7 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import JobDetailPage from '../../../../src/JobDetailPage.png';
-import "./submitbidmodal.css";
+
 
 export default function ResponsiveDialog() {
   const [open, setOpen] = React.useState(false);
