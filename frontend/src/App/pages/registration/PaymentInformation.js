@@ -9,6 +9,7 @@ import img from '../../../img/PaymentInfo.png'
 import img2 from '../../../img/PaymentInfo_F.png'
 
 
+
 function PaymentInformation() {
     return (
   <div className="PaymentInformation">

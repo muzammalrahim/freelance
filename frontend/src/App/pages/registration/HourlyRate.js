@@ -51,6 +51,18 @@ function HourlyRate() {
                                    </div>
                                      
                                 </div>
+
+                                <div class="input-group mb-3">
+  
+  
+                                <div class="input-group-prepend">
+    <span class="input-group-text labelBoderLeft">0</span>
+  </div>
+  <input type="text" class="form-control form-controlBorderNone" aria-label="Amount (to the nearest dollar)"/>
+  <div class="input-group-append">
+    <span class="input-group-text labelBoderRight">SAR</span>
+  </div>
+</div>
                             
                             </div>       
                         
