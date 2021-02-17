@@ -81,6 +81,3 @@ export default class AccountType extends Component {
         )
     }
 }
-
-
-

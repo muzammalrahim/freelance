@@ -12,7 +12,7 @@ import Display from "../../assets/Display.png";
 function Card() {
   return (
     <div className="CarD ">
-          <div className="profile">
+      <div className="profile">
       <img src={Status} />
       <p>Pixelz Warrios</p>
       <h6>UI/UX Designer</h6>
