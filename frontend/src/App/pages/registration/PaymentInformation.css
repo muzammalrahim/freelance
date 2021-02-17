@@ -1,33 +1,39 @@
 
-.pi_rightbox {
+.PaymentInformation .pi_rightbox {
     width: 100%;
     height: auto;
 }
 
-.Profile_info {
+.PaymentInformation .Profile_info {
     width: 100%;
     padding-left: 8px;
 }
 
-.pi_icon{
+.PaymentInformation .pi_icon{
     width: 58px;
     height: 59px;
-    /* margin-left: 120px; */
     box-sizing: border-box;
     background-repeat: no-repeat;
 }
 
 .pi_foot{
+  
     background-repeat: no-repeat;
-    height: 182px;
+    height: 28vh;
     left: 0px;
     margin-top: 0.5%;
     background-size: contain;
     background-position: bottom left;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
 
 }
+.Paymentinfo_footer_img_padding{
+    padding: 100px;
+}
 
-.pi_Head{
+.PaymentInformation .pi_Head{
     /* margin-top: 17px; */
     /* margin-left: 116px; */
     font-family: Poppins;
@@ -35,7 +41,7 @@ font-style: normal;
 font-size: 20px;
 }
 
-.pi_Para{
+.PaymentInformation .pi_Para{
     font-family: Poppins;
 font-style: normal;
 font-weight: 600;
@@ -46,17 +52,17 @@ width:280px
 
 }
 
-.ExpireDate{
+.PaymentInformation .ExpireDate{
     display: inline-flex;
 }
 
 
-.PiDiv{
+.PaymentInformation .PiDiv{
         display: flex;
         /* margin-top: 50px; */
 }
 
-.headingStyle{
+.PaymentInformation .headingStyle{
     font-family: Poppins;
 font-style: normal;
 font-weight: 700;
