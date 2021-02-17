@@ -1,30 +1,8 @@
 .Certifies{
-    margin-top: 30px;
+    height: 272px;
+width: 712px;
+margin-left: 336px;
+margin-top: 20px;
 border-radius: 0px;
-background-color: white;
-}
-.cerificates-div{
-    padding: 3%;
-    display: flex;
-    justify-content: space-between;
-    
-}
-.cerificates-div p{
-   
-    font-family: Poppins;
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 20px;
-color: #6B6B6A;
-}
-.cerificates-div h{
-
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 18px;
-    color: #6B6B6A;
-    opacity: 0.8;
+background-color: rgb(241, 229, 235);
 }
