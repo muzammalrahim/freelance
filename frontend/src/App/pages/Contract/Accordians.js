@@ -6,7 +6,6 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Avatar from '@material-ui/core/Avatar';
-import './accordian.css'
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({

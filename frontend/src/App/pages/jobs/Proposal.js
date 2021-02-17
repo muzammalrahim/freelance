@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import './proposal.css';
-import './jobdetail.css';
 // import ImageUpload from '../../../../src/img/ImageUpload.png';
 import img from '../../../img/ImageUpload.png'
 import GetImage from '../registration/GetImage'

@@ -6,7 +6,7 @@ import SearchBar from "../jobs/SearchBar";
 import AvatarImage from '../../../../src/AvatarImage.png';
 import Button from '@material-ui/core/Button';
 import CustomizedRatings from "../jobs/Rating"
-import '../../../assets/css/sam.css'
+import '../../../assets/css/custom.css'
 
 
 

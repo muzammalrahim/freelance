@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { contractnav } from "./../Contract/contractnav.css";
+import "../../../assets/css/custom.css";
 
 
 export default class ContractNav extends Component {
