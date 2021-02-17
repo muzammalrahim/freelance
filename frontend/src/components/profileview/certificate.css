@@ -1,8 +1,42 @@
 .Certifies{
-    height: 272px;
-width: 712px;
-margin-left: 336px;
-margin-top: 20px;
+    margin-top: 30px;
 border-radius: 0px;
-background-color: rgb(241, 229, 235);
+}
+.Certifies .btn-primary{
+    background: #EE9821;
+    border-radius: 2px;
+
+}
+.cerificates-div{
+    padding: 3%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.cerificates-div p{
+   
+    font-family: Poppins;
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 20px;
+color: #6B6B6A;
+}
+.cerificates-div h{
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
+    color: #6B6B6A;
+    opacity: 0.8;
+}
+.Certifies .col-md-6{
+    font-family: Poppins;
+font-size: 18px;
+font-weight: 600;
+line-height: 24px;
+letter-spacing: 0px;
+color: #6B6B6A;
 }

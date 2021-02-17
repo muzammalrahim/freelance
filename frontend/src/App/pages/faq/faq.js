@@ -1,23 +1,25 @@
 import React from 'react'
-import Navbar from './Navbar';
-import DefaultMenu from './DefaultMenu';
+/*import Navbar from './Navbar';*/
+/*import DefaultMenu from './DefaultMenu';*/
 //import Proposal from './Proposal';
-import AvatarImage from '../../../../src/AvatarImage.png';
+/*import AvatarImage from '../../../../src/AvatarImage.png';*/
 // import img from "../../../img/stars1.png"
+import Header from '../../../components/header/Header';
 import  "./faq.css";
 
 export default function faq() {
     return (
         <div className="faq">
             {/* top header */}
-            <div className="top-area">
+            {/*<div className="top-area">
                 <div className='si-container'>
                     <Navbar text="" value="Post a Project" /> 
                 </div> 
                 <div className='default-menu '>
                     <DefaultMenu />
                 </div>
-            </div>
+            </div>*/}
+            <Header/>
             {/* top header */}
             <div className="main-area">
                 <div className="container">

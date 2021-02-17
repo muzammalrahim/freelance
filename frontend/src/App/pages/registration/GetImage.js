@@ -54,7 +54,9 @@ export default class GetImage extends Component {
               >
               <div  style={{textAlign:"center"}}> 
                 <div className='iv_icon2' style={{backgroundImage: `url(${img})`}}></div> 
-                <div><span>Drop your image here,</span><span style={{color:"#1da799"}} >  or browse </span></div>  
+                <div>
+                    <span style= {{cursor: "pointer"}}>Drop your image here,</span><span style={{color:"#1da799",cursor: "pointer"}} >  or browse </span>
+                </div>  
               </div>
             </ReactDropzone>
             </div>

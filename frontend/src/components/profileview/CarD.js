@@ -1,46 +1,71 @@
-import React from 'react'
-import "./CarD.css"
-import Status from '../../assets/Status.png'
-import LINEE from '../../assets/LINEE.png'
-import india from '../../assets/india.png'
-import Sar from '../../assets/Sar.png'
-import Recomend from '../../assets/Recomend.png'
-import time from '../../assets/time.png'
-import Display from '../../assets/Display.png'
-export function Card(props) {
-    
+import React from "react";
+import "./card.css";
+import Status from "../../assets/Status.png";
+import india from "../../assets/india.png";
+import Display from "../../assets/Display.png";
 
+function Card() {
+  return (
+    <div className="CarD ">
+      <div class="container">
+        <div class="row bg-white">
+         <div class="col-md-12">
 
-    return (
-        <div className="CarD">
-            <img src={Status}/>
-            <p>Pixelz Warrios</p>
-            <h>
-            UI/UX Designer
-            </h>
-             <h1>Completed Profile</h1>
-             {/* <h2> <span> 3/5 </span>Followups</h2> */}
-             <div className="LINN">
-             <img src={LINEE} alt="/"/>
-             </div>
-            
-   <div className="Details">
-   <p>Details</p>
-   </div>
+        
+      
+      <div class="profile pt-3">
+        <img src={Status} class="pb-2"/>
+        <p>Pixelz Warrios</p>
+        <h6>UI/UX Designer</h6>
+      </div>
 
-<div className="Details-subtext">
-<img src={Sar} alt=" "/>
-     <p>SAR 100 Per/Hour </p>
-<img src={india} alt=" "/>
-     <p>Indore </p>
-<img src={time} alt=" "/>
-      <p> It’s Currently 3:43 Pm here</p>
-<img src={Display} alt=" "/>
-      <p> Join Decemeber 10, 2015</p>
-<img src={Recomend} alt=" "/>
-      <p> 10 Recommendation</p>
-</div>
-</div>
-    )
+      <div className="complete-profile">
+        <h5>Completed Profile</h5>
+        <span> 3/5 </span>Followups
+      </div>
+      <div className="Details-subtext">
+        <h4>Details</h4>
+        <ul className="details-info">
+          <li>
+            <p>
+              <i className="fas fa-tags"></i>
+              SAR 100 Per/Hour{" "}
+            </p>
+          </li>
+          <li>
+            <p>
+              <img src={india} className="img_setting" alt=" " />
+              Indore{" "}
+            </p>
+          </li>
+          <li>
+            <p>
+              {" "}
+              <i class="fas fa-clock"> </i>
+              It’s Currently 3:43 Pm here
+            </p>
+          </li>
+        </ul>
+
+        <li>
+          <p className="details-info2">
+            {" "}
+            <img src={Display} className="img_setting" alt=" " />
+            Join Decemeber 10, 2015
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <i className="img_setting fas fa-heart "> </i>
+            10 Recommendation
+          </p>
+        </li>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+  );
 }
 export default Card;

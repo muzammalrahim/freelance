@@ -20,7 +20,13 @@ const Side = props => {
                         <label className="checkmark">
                             <spna className="heading">Skill 01</spna> 
                         </label>
-                        <input type="checkbox" name="name" id="check" />
+                        <label className="custom-checkbox pull-right">
+                            <input type="checkbox" name="checkbox"/>
+                            <span></span>
+                        </label>
+                        
+
+
 
                     </li>
                     <li>

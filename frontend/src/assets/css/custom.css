@@ -1,3 +1,18 @@
+body{
+    /* font-family: "Poppins"; */
+}
+p{
+    color: #6b6b6a;
+}
+a{
+    text-decoration: none !important;
+    color: #6b6b6a;
+}
+input::placeholder{
+}
+h1, h2, h3, h4, h5, h6{
+    color: #6b6b6a;
+}
 /* Application List */
 .applied{
     background: rgb(238, 152, 33, 0.2);
@@ -36,7 +51,6 @@
     .side-menu h3 {
         color: #6B6B6A;
         font-size: 16px;
-        font-weight: 700;
         padding-bottom: 10px;
 }
     .skills{
@@ -51,12 +65,11 @@
 .side-menu ul li{
     padding: 0 0 15px 0;
 }
-.side-menu ul li label {
-    width: 188px;
-}
+
 .heading {
     font-size: 15px;
     color: #6B6B6A;
+    font-weight: 700;
 }
    
 /* Side Bar */
@@ -75,13 +88,11 @@
     font-size: 16px;
     text-align: left;
     color: #6b6b6a;
-    /* font-weight: 500; */
     font-family: 'Poppins';
 }
 .proposal-heading h3 {
     font-size: 12px;
     color: #6b6b6a;
-    /* font-weight: 700; */
     font-family: 'Poppins';
 }
 .input-val {
@@ -175,7 +186,6 @@ input.form-control {
 .price-tag {
     color: #6b6b6a;
     font-size: 14px;
-    font-weight: 600;
     float: right;
 }
 
@@ -244,9 +254,114 @@ border-bottom: 1px solid rgba(107, 107, 106, .1);
 /* --------------------------------Pages--------------------*/
 
 /* Jobs Page  */
+
+/* custom checkbox */
+
+/* 
+ * Hide the inputs. 
+ */
+
+input {
+  display: none;
+}
+
+
+/*
+ * Then, style the label so it looks like however you want.
+ * Here's a quick rundown of how I did it here:
+ */
+
+
+/*
+ * Some basic positioning styles, and we give it the pointer cursor to show 
+ * that it's clickable
+ */
+
+label {
+  display: inline-block;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+
+/*
+ * With how I decided to build this, the position: relative is super important.
+ * We're going to position a pseudo element within this element(As it is the containing box)
+ */
+
+label span {
+  position: relative;
+  line-height: 22px;
+}
+
+
+/* 
+ * Because we're using pseudo elements, a content property is required to make them appear.
+ */
+
+label span:before,
+label span:after {
+  content: '';
+}
+
+
+/*
+ * We are using the :before peudo elemnt as the actual button,
+ * then we'll position the :after over it. You could also use a background-image,
+ * font-icon, or really anything if you want different styles.
+ * For the specific style we're going for, this approach is simply the easiest, but
+ * once you understand the concept you can really do it however you like.
+ */
+
+ label span:before {
+    border: 1px solid #1da799;
+    width: 16px;
+    height: 15px;
+    margin-right: 0px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+label span:after {
+    background: #1da799;
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    top: 8px;
+    left: 4px;
+    transition: 300ms;
+    opacity: 0;
+}
+
+/*
+ * This is the most important part of this whole file, if you understand what's happening here
+ * you can really make this in so many different ways.
+ * 
+ * We start by selecting the input inside of the label, with "label input". From there we use the 
+ * ":checked" selector to *only* select the input when it is checked. We then use the immediate sibling 
+ * selector(+) to select the span, and then it's pseudo element :after(What we are using to mark the button)
+ * Because we already styled the :after, all we have to do is set the opacity to 1, making it fade in.
+ */
+label input:checked+span:after {
+  opacity: 1;
+}
+
+
+/* 
+ * A little styling for the demo 
+ */
+
+body {
+  background: #fbfbfb;
+  font-family: Arial;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* custom checkbox */
+
 .btn--yellow {
     width: 137px;
-    font-weight: bold;
     text-transform: uppercase;
 }
 
@@ -329,9 +444,7 @@ ul.job-top-area li{
     padding-left: 0;
 }
 .content-heading h3 {
-    font-size: 16px;
-    font-family: "Poppins";
-    font-weight: 500;
+    font-size: 16px; 
     padding: 5px 0 0 0;
     width: 100%;
     color: #6b6b6a;
@@ -397,8 +510,6 @@ ul.duration p {
 .price span{
     color: #1DA799;
     font-size: 16px;
-    font-family: Poppins;
-    font-weight: 700;
 }
 
 .job-payment-btn .job-button {
@@ -408,6 +519,7 @@ ul.duration p {
     background: #ffffff;
     height: 39px;
     width: 215px;
+    font-weight: bold;
 }
 .job-payment-btn .job-button i {
     background:  #1DA799;
@@ -446,12 +558,10 @@ ul.duration p {
 }
 .job-detail label.bid-title {
     width: 116px;
-    font-weight: 600;
     color: #6b6b6a;
     font-size: 12px;
 }
 .bid-detail {
-    font-weight: 600;
     color: #6b6b6a;
     font-size: 13px;
 }
@@ -481,7 +591,6 @@ ul.duration p {
 }
 .client-details h4 {
     font-size: 13px;
-    font-weight: 700;
 }
 .client-details p {
     padding: 0 0 0 18px;
@@ -494,7 +603,6 @@ ul.duration p {
 }
 .client-history h3 {
     font-size: 17px;
-    font-weight: 700;
     border-bottom: 1px solid rgba(107,107,106,.2);
     color: #6b6b6a;
 }
@@ -506,7 +614,6 @@ ul.duration p {
 .history-inner li h4 {
     padding-bottom: 6px;
     font-size: 16px;
-    font-weight: 600;
     color: #6b6b6a;
 }
 .review p{
@@ -514,8 +621,6 @@ ul.duration p {
 }
 .review h4 {
     font-size: 16px;
-    font-weight: 600;
-    color: #6b6b6a;
 }
 .review h5 {
     font-size: 14px;
@@ -549,7 +654,6 @@ p.r-price span {
 .btn1 a{
     color: #6B6B6A;
     font-size: 16px;
-    font-weight: 700;
 }
 .btn2 a{
     color: #6B6B6A;
@@ -569,8 +673,6 @@ ul.rating-area {
 
 .proposal-inner1 h4 {
     font-size: 15px;
-    font-family: 'Poppins';
-    font-weight: 500;
 } 
 .proposal-inner1 .avatar-user-job {
     width: 60px;

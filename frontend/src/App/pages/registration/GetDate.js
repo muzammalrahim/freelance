@@ -76,9 +76,9 @@ class GetDate extends React.Component {
 				  </select>
 				</div>
 				
-				<div class="form-group col-md-4 pt-4">
+				<div class="form-group col-md-4 ">
 		
-				  
+				<label className="heading_style2 pt-3" for=""></label>
 				  <select id="inputState" placeholder="Year" class="form-control"
 				  value={this.state.selectedYear} onChange={this.changeYear}>
 					<option selected>Year</option>
