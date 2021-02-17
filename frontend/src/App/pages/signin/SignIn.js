@@ -7,10 +7,14 @@ import AvatarImage from "../../../../src/AvatarImage.png";
 import loginimage from "../../../assets/LoginImage.png";
 import  Alert from '../../../App/pages/signin/Alert';
 import Signinfooter from "./Signinfooter";
+import {Link } from "react-router-dom";
 function SignIn() {
+
+  
   return (
     <div className="SignUp-flex-container">
       <div className="si-container">
+    
         <Navbar text="Already A Member?" value="Log In" />
       </div>
       <div>

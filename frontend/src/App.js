@@ -26,11 +26,14 @@ import HourlyRate from "./App/pages/registration/HourlyRate"
 import IdVerification from "./App/pages/registration/IdVerification"
 
 
+import faq from './App/pages/faq/faq'
+import AddPortfolio from './components/profileview/AddPortfolio'
+import PortfolioDetails from './components/profileview/PortfolioDetails'
+import DetailsPreview from './components/profileview/preview/DetailsPreview'
 function App() {
 return (
     <>
     <Router>
-      
     <Switch>
          <Route path='/' exact component={SignIn}/>
          <Route path='/SignIn' exact component={SignIn}/>
@@ -40,6 +43,12 @@ return (
         <Route path='/account-setting' exact component={AccountSettingMain}/>
         <Route path='/Jobs' exact component={Jobs}/>
         <Route path='/JobDetail' exact component={JobDetail}/>
+        <Route path='/PersonalProfile' exact component={PersonalProfile}/>
+        <Route path='/ProfessionalProfile' exact component={ProfessionalProfile}/>
+        <Route path='/profileview' exact component={Profileview}/>
+        <Route path='/addportfolio' exact component={AddPortfolio}/>
+        <Route path='/detailspreview' exact component={DetailsPreview}/>
+        <Route path='/portfoliodetails' exact component={PortfolioDetails}/>
         <Route path='/Paymentinformation' exact component={PaymentInformation}/>
         <Route path='/Companydetail' exact component={CompanyDetail}/>
         <Route path='/Hourlyrate' exact component={HourlyRate}/>

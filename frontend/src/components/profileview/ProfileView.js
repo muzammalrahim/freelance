@@ -21,7 +21,7 @@ function Profileview() {
           <Menuebar />
         </div>
         <div className="p1">
-          <div className="container-fluid">
+          <div className="container">
             <div className="row">
               <div className="col-md-3">
                 <Card />
