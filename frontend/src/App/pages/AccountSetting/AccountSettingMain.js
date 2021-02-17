@@ -152,6 +152,19 @@ selecvalue=this.state.selected
                   {/* <Taimoor data={this.state.selected}/> */}
               </div>
 
+              <div className="AS_nextButtonDiv">
+              {this.state.selected>=0&& <>
+                <button className="AS_tb_prevButton" onClick={() => this.setState({ selected: this.state.selected - 1 })}>
+                Previous Step
+              </button>
+              </>}             
+
+              {this.state.selected<4&& <>
+              <button className="AS_tb_nextButton" onClick={() => this.setState({ selected: this.state.selected + 1 })}>
+              Next
+            </button>
+            </>}
+            </div>
 
             
        </div>

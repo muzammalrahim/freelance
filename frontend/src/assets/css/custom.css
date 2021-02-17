@@ -1,0 +1,803 @@
+body{
+    /* font-family: "Poppins"; */
+}
+p{
+    color: #6b6b6a;
+}
+a{
+    text-decoration: none !important;
+    color: #6b6b6a;
+}
+input::placeholder{
+}
+h1, h2, h3, h4, h5, h6{
+    color: #6b6b6a;
+}
+/* Application List */
+.applied{
+    background: rgb(238, 152, 33, 0.2);
+}
+.applied p{
+    color: #6b6b6a;
+}
+/*  Application List */
+
+/*  Submit Bid Modal */
+.avatar-job-detail{
+    width: 102px;
+    height: 102px;
+}
+.modal-main{
+    text-align: center;
+}
+.modal-main h2.d-flex.justify-content-center {
+    font-size: 22px;
+}
+.modal-main button.btn.btn--yellow.btn--medium {
+    width: 121px;
+    margin: 0;
+}
+.modal-main .MuiButton-outlinedSecondary {
+    color: #6b6b6a;
+    border: none;
+}
+/*  Submit Bid Modal */
+
+/* Side Bar */
+.bg-white.sidebar.nav{
+    width: 100% !important;
+    padding: 15px 10px 0 0;
+}
+    .side-menu h3 {
+        color: #6B6B6A;
+        font-size: 16px;
+        padding-bottom: 10px;
+}
+    .skills{
+        border-bottom: 0.5px solid rgba(107, 107, 106, 0.2)
+}
+    .side-menu ul {
+        margin: 0 0 0 24px;
+        width: 100%;
+}
+
+
+.side-menu ul li{
+    padding: 0 0 15px 0;
+}
+
+.heading {
+    font-size: 15px;
+    color: #6B6B6A;
+    font-weight: 700;
+}
+   
+/* Side Bar */
+
+/* Range Slider */
+.MuiSlider-root {
+    color: #1da799 !important;
+}
+/* Range Slider */
+
+/* Proposal-sidebar */
+.proposal-details{
+    background: #ffffff;
+}
+.proposal-heading h1 {
+    font-size: 16px;
+    text-align: left;
+    color: #6b6b6a;
+    font-family: 'Poppins';
+}
+.proposal-heading h3 {
+    font-size: 12px;
+    color: #6b6b6a;
+    font-family: 'Poppins';
+}
+.input-val {
+    border: 1px solid;
+    height: 54px;
+    border: 0.5px solid rgba(107, 107, 106, 0.2);
+    border-radius: 4px;
+    margin-bottom: 26px;
+}
+.input-group.mb-3 {
+    border-radius: 4px;
+}
+span.input-group-text{
+    background: #ffffff;
+}
+input.form-control {
+    height: 48px;
+    border-left: 0;
+    border-right: 0;
+    
+}
+.proposal-details .MuiButton-outlinedPrimary {
+    color: #ffffff;
+    border: none;
+    background: #ee9821;
+    width: 100%;
+} {
+    background: #ee9821;
+    color: #ffffff;
+    border: none;
+}
+.proposal-details textarea {
+    overflow: hidden;
+    width: 100%;
+    height: 88px;
+    background: rgba(29, 167, 153, 0.05);
+    color: #6b6b6a;
+    margin-bottom: 27px;
+    border-radius: 4px;
+    border: 1px solid rgba(107, 107, 106, 0.2);
+}
+.proposal-details textarea::placeholder{
+    color: #6B6B6A;
+    padding: 10px 0 0 10px;
+}
+
+.dropzone2{
+    position: relative;
+    width: 100%;
+    height: 96px;
+    border: 2px dashed rgba(107, 107, 106, 0.2);
+    border-radius: 5px;
+}
+.proposal-details .imgBack {
+    width: auto;
+    background: white;
+     padding: 0; 
+}
+.proposal-details .style{
+    margin-left: 0;
+}
+
+/* Proposal-sidebar */
+
+/* Accordian */
+.row.m-info {
+    width: 100%;
+}
+.MuiAvatar-root {
+    width: 35px;
+    height: 35px;
+}
+.row.m-info .MuiAvatar-root.MuiAvatar-circle.my-name.MuiAvatar-colorDefault {
+    width: 30px;
+    height: 30px;
+}
+.row.m-info .MuiAvatar-colorDefault {
+    color: #1da799;
+    background-color: #ddf2f0;
+}
+.makeStyles-heading-23 {
+    font-size: 16px;
+    font-family: 'Poppins';
+    color: #6b6b6a;
+}
+.row.m-info h4 {
+    font-size: 14px;
+    color: #6b6b6a;
+    font-family: 'Poppins';
+}
+.price-tag {
+    color: #6b6b6a;
+    font-size: 14px;
+    float: right;
+}
+
+.row.m-info.r-3 h5{
+    color: #6b6b6a;
+    font-size: 12px;
+}
+.state{
+    color: #1DA799;
+    font-size: 14px;
+    float: right;
+}
+.mile-inner-btn{
+    float: right;
+}
+.state2{
+    color:#EE9821;
+    float: right;
+}
+.MuiAccordionDetails-root{
+    display: block;
+}
+.MuiPaper-elevation1 {
+    box-shadow: none;
+    border-bottom: 1px solid rgba(107, 107, 106, .1);
+}
+.row.m-info .MuiButton-outlinedSecondary {
+    color: #EE9821 !important;
+    border: 1px solid rgb(238 152 33) !important;
+    width: 213px;
+    height: 30px;
+}
+/* Accordian */
+
+
+/* Contract Nav */
+.contract-left{
+    background: #ffffff;
+}
+.contract-left ul li span{
+    float: right;
+
+}
+.contractone-main .main-wrap {
+    color:#6B6B6A;
+}
+.contract-left ul li{
+border-bottom: 1px solid rgba(107, 107, 106, .1);
+}
+.contract-left ul li:last-child{
+    border-bottom: none;
+}
+.contract-left ul li p {
+    /* padding: 17px 20px; */
+    margin: 0;
+    font-size: 13px;
+}
+.budget{
+    color: #EE9821;
+}
+.paid{
+    color: #1DA799;
+}
+/* Contract Nav */
+
+/* --------------------------------Pages--------------------*/
+
+/* Jobs Page  */
+
+/* custom checkbox */
+
+/* 
+ * Hide the inputs. 
+ */
+
+input {
+  display: none;
+}
+
+
+/*
+ * Then, style the label so it looks like however you want.
+ * Here's a quick rundown of how I did it here:
+ */
+
+
+/*
+ * Some basic positioning styles, and we give it the pointer cursor to show 
+ * that it's clickable
+ */
+
+label {
+  display: inline-block;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+
+/*
+ * With how I decided to build this, the position: relative is super important.
+ * We're going to position a pseudo element within this element(As it is the containing box)
+ */
+
+label span {
+  position: relative;
+  line-height: 22px;
+}
+
+
+/* 
+ * Because we're using pseudo elements, a content property is required to make them appear.
+ */
+
+label span:before,
+label span:after {
+  content: '';
+}
+
+
+/*
+ * We are using the :before peudo elemnt as the actual button,
+ * then we'll position the :after over it. You could also use a background-image,
+ * font-icon, or really anything if you want different styles.
+ * For the specific style we're going for, this approach is simply the easiest, but
+ * once you understand the concept you can really do it however you like.
+ */
+
+ label span:before {
+    border: 1px solid #1da799;
+    width: 16px;
+    height: 15px;
+    margin-right: 0px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+label span:after {
+    background: #1da799;
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    top: 8px;
+    left: 4px;
+    transition: 300ms;
+    opacity: 0;
+}
+
+/*
+ * This is the most important part of this whole file, if you understand what's happening here
+ * you can really make this in so many different ways.
+ * 
+ * We start by selecting the input inside of the label, with "label input". From there we use the 
+ * ":checked" selector to *only* select the input when it is checked. We then use the immediate sibling 
+ * selector(+) to select the span, and then it's pseudo element :after(What we are using to mark the button)
+ * Because we already styled the :after, all we have to do is set the opacity to 1, making it fade in.
+ */
+label input:checked+span:after {
+  opacity: 1;
+}
+
+
+/* 
+ * A little styling for the demo 
+ */
+
+body {
+  background: #fbfbfb;
+  font-family: Arial;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* custom checkbox */
+
+.btn--yellow {
+    width: 137px;
+    text-transform: uppercase;
+}
+
+.main-wrapper{
+    background: #E5E5E5;
+}
+/* Search Area */
+
+input.form-control.filter {
+    padding: 7px 0 7px 22px;
+}
+.search-area .search-bar {
+    margin-left: 14px;
+    border-radius: 3px;
+}
+.search-area .form-control {
+    border-radius: 3px;
+    padding: 7px 0 7px 35px;
+    height: auto;
+
+}
+.search-tags.row.pt-3
+ul.content-icons {
+    text-align: right;
+}
+ul.content-icons li{
+    display: inline-block;
+}
+ul.job-top-area{
+    display: block;
+}
+ul.job-top-area li{
+    display: inline-block;
+}
+ .search-bar .fa-search.form-control-feedback {
+    position: absolute;
+    top: 12px;
+    left: 23px;
+ }
+.jobs span.fa.fa-search.form-control-feedback {
+    position: absolute;
+    top: 16px;
+    left: 39px;
+    font-size: 12px;
+    color: #6B6B6A;
+}
+.search-button i.fas.fa-search {
+    padding-right: 8px;
+}
+ button.btn.btn--yellow.btn--medium button{
+    top: -4px; 
+ }
+
+/* Search Area */
+/* inner-content */
+.job-inner{
+    background: rgba(29, 167, 153, 0.05);
+}
+/* .row.job {
+    display: grid;
+    grid-template-columns: 15% 70% 9% 6%;
+    padding-top: 17px;
+    position: relative;
+} */
+.avatar-user-job {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-position: center;
+    border: 1px solid rgba(107, 107, 106, .1);
+}
+.inner-heading {
+    font-size: 16px;
+    background: #ffffff;
+    padding: 15px 10px;
+    color: #6B6B6A;
+    margin: 0;
+}
+.content-heading {
+    padding-left: 0;
+}
+.content-heading h3 {
+    font-size: 16px; 
+    padding: 5px 0 0 0;
+    width: 100%;
+    color: #6b6b6a;
+}
+.fa-icon{
+    color: #6B6B6A;
+}
+.fa-thumbs-down {
+    content: "\f165";
+    background: #fff;
+    border-radius: 50%;
+    padding: 4px;
+    border: 0.5px solid rgba(107, 107, 106, 0.2);
+}
+i.fa.fa-bookmark-o {
+    content: "\f165";
+    background: #fff;
+    border-radius: 50%;
+    padding: 5px 7px;
+    border: 1px solid rgba(107, 107, 106, .1);
+    font-size: 13px;
+}
+.paragraph p {
+    font-size: 14px;
+    color: #6B6B6A;
+    line-height: 23px;
+    text-align: justify;
+    line-height: 28px;
+}
+.paragraph a{
+    color: #1DA799;
+    padding-left: 10px;
+}
+ul.tags {
+    display: flex;
+    font-size: 12px;
+    position: relative;
+}
+ul.tags li a {
+    color: #1DA799;
+    padding-left: 10px;
+    background: #DDF2F0;
+    border-radius: 2px;
+}
+
+ul.duration {
+    display: flex;
+}
+ul.duration i {
+    color: #1DA799;
+}
+ul.duration p {
+    color: #6B6B6A;
+    font-family: Poppins;
+    font-size: 13px;
+}
+.price{
+    text-align: right;
+}
+.price p{
+    font-size: 12px;
+}
+.price span{
+    color: #1DA799;
+    font-size: 16px;
+}
+
+.job-payment-btn .job-button {
+    color: #1da799;
+    border: 1px solid rgb(29 167 153);
+    border-radius: 20px;
+    background: #ffffff;
+    height: 39px;
+    width: 215px;
+    font-weight: bold;
+}
+.job-payment-btn .job-button i {
+    background:  #1DA799;
+    color: #ffffff;
+    border-radius: 50%;
+    padding: 4px;
+}
+.search-tags.row.pt-3 {
+    display: flex;
+    align-items: center;
+}
+
+/* inner-content */
+.row-inner{
+    background: #ffffff;
+    /* border-top: 0.5px solid rgba(107, 107, 106, 0.2); */
+}
+/* Jobs Page  */
+
+/* Jobs-Detail Page  */
+.main-area {
+    background: #E5E5E5;
+}
+
+.job-detail h3 {
+    font-size: 14px;
+    color: #6b6b6a;
+}
+.required-skills {
+    background: #ffffff;
+    border-top: 0.5px solid rgba(107, 107, 106, 0.2);
+    border-bottom: 0.5px solid rgba(107, 107, 106, 0.2);
+}
+.bid-inner{
+    font-size: 13px;
+}
+.job-detail label.bid-title {
+    width: 116px;
+    color: #6b6b6a;
+    font-size: 12px;
+}
+.bid-detail {
+    color: #6b6b6a;
+    font-size: 13px;
+}
+.job-detail .price p {
+    font-size: 16px;
+}
+
+.job-detail .price p t {
+    font-size: 12px;
+}
+.information {
+    background: #ffffff;
+}
+.bid-inner li {
+    padding: 0 0 7px;
+}
+.client-info{
+    border-left: 0.5px solid rgba(107, 107, 106, 0.2);
+}
+.client-details ul i {
+    padding: 0 7px 0 0;
+    color: #1da799;
+    font-size: 12px;
+}
+.client-details ul h4{
+    color: #6B6B6A;
+}
+.client-details h4 {
+    font-size: 13px;
+}
+.client-details p {
+    padding: 0 0 0 18px;
+    font-size: 12px;
+    color: #6b6b6a;
+}
+.client-history{
+    background: #ffffff;
+    margin-top: 20px;
+}
+.client-history h3 {
+    font-size: 17px;
+    border-bottom: 1px solid rgba(107,107,106,.2);
+    color: #6b6b6a;
+}
+
+.history-inner h3{
+    font-size: 18px;
+}
+
+.history-inner li h4 {
+    padding-bottom: 6px;
+    font-size: 16px;
+    color: #6b6b6a;
+}
+.review p{
+    font-size: 12px;
+}
+.review h4 {
+    font-size: 16px;
+}
+.review h5 {
+    font-size: 14px;
+}
+.history-inner li:last-child{
+    border: none;
+}
+.history-inner p {
+    color: #6B6B6A;
+    font-size: 14px;
+    padding-bottom: 4px;
+}
+.review h4{
+    position: relative;
+}
+
+p.r-price {
+    font-size: 14px;
+    text-align: center;
+}
+p.r-price span {
+    font-size: 12px;
+}
+.job-detail-btn {
+    text-align: center;
+    width: 100%;
+}
+.job-detail-btn a{
+    text-decoration: none; 
+}
+.btn1 a{
+    color: #6B6B6A;
+    font-size: 16px;
+}
+.btn2 a{
+    color: #6B6B6A;
+    font-size: 14px;;
+}
+ul.rating-area {
+    display: flex;
+    align-items: center;
+}
+/* Jobs-Detail Page  */
+
+/* Jobs-Detail-2 Page  */
+
+.proposal-inner1 .active{
+    background: rgba(29, 167, 153, 0.05);
+}
+
+.proposal-inner1 h4 {
+    font-size: 15px;
+} 
+.proposal-inner1 .avatar-user-job {
+    width: 60px;
+    height: 60px;
+}
+.proposal-inner1 p.r-price {
+    font-size: 14px;
+    text-align: right;
+}
+
+/* Jobs-Detail-2 Page  */
+
+/* Contract One */
+.contractone-main{
+    background: #e5e5e5;
+}
+.cont-row {
+    background: #ffffff;
+    padding: 20px 0 50px 0;
+    border-bottom: 1px solid rgba(107, 107, 106, .1);
+}
+.con-des-area .MuiButton-outlinedSecondary {
+    color: #6b6b6a;
+    border: 1px solid rgb(107 107 106);
+    width: 150px;
+    height: 36px;
+}
+button.MuiButtonBase-root.MuiButton-root.MuiButton-contained {
+    float: right;
+    background: #6b6b6a;
+    padding: 7px 0;
+    color: #ffffff;
+    width: 150px;
+}
+.contractone-main .content-heading {
+    padding-left: 0;
+    display: flex;
+    padding: 0 20px;
+}
+.contractone-main  ul.duration {
+    margin: 0 0 0 90px;
+}
+.invoice-details h3 {
+    font-size: 16px;
+    padding: 20px 17px;
+    color: #6b6b6a;
+    margin: 0;
+}
+/* Contract One */
+
+/* Contract View */
+.contract-view {
+    background: #ffffff;
+    padding: 20px 15px;
+    border-bottom: 1px solid rgba(107, 107, 106, .1);
+}
+.contract-view h2 {
+    font-size: 18px;
+}
+button.MuiButtonBase-root.MuiButton-root.MuiButton-contained {
+    float: right;
+    background: #6b6b6a;
+    padding: 8px 16px;
+    color: #ffffff;
+}
+/* Contract View */
+
+/* --------------------------------Pages--------------------*/
+
+
+/* -----------------------Mobile Quries----------------------*/
+@media screen and (max-width: 1200px){
+    /* Side Bar */
+    .side-menu ul li label {
+        width: 147px;
+    }
+    /* Side Bar */
+}
+
+@media only screen and (max-width: 991px) {
+    /* Side Bar */
+    .side-menu ul li label {
+        width: 92px;
+    }
+    /* Side Bar */
+
+    /* Jobs Page  */
+    .job-top-area .btn--yellow {
+        width: 113px !important;
+    }
+    .content-heading {
+        padding-left: 16px;
+    }
+    li.pr-3 {
+        padding-right: 0.25rem!important;
+    }
+    ul.duration {
+        padding-left: 14px;
+    }
+    .price span {
+        font-size: 12px;
+    }
+    ul.duration p {
+        font-size: 12px;
+    }
+    .price p {
+        font-size: 10px;
+    }
+    ul.tags li a {
+        font-size: 11px;
+    }
+    /* Jobs Page  */
+
+    /* Jobs-Detail-2 Page  */
+    .proposal-inner1 h4 {
+        padding-left: 13px;
+    }
+     /* Jobs-Detail-2 Page  */
+
+    
+    /* Contract One */
+    .contract-left ul li p {
+        font-size: 11px;
+    }
+    /* Contract One */
+}
+
+/* -----------------------Mobile Quries----------------------*/

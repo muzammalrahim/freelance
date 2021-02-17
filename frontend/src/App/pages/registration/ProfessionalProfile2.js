@@ -11,7 +11,7 @@ import '../../../../src/common.css'
 
 import img from '../../../assets/Group 3539.png'
 import img2 from '../../../img/profess_F.png';
-import img3 from '../../../img/WorkPlatform.png';
+// import img3 from '../../../img/WorkPlatform.png';
 
 
 class  ProfessionalProfile2 extends Component{

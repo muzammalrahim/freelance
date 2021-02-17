@@ -19,14 +19,14 @@ function IdVerification() {
         <div className='Pf-container'>
             
                                 
-                    <div className='Pf-rightbox   bg2  p-5'> 
+                    <div className='Pf-rightbox   bg2  p-5'>
                     <div class="container" >
                         <div>
 
                                  <div class="row ">
                                     <div className='iv_icon' style={{backgroundImage: `url(${img})`}}>
-                                
-                                    </div> 
+
+                                    </div>
                                     <div className="iv_info">
                                     <h4 className="iv_Head">ID Verification</h4>
                                     <p className="iv_Para"> Creating your account in just a few steps away,
@@ -64,11 +64,11 @@ function IdVerification() {
                         </div>
 
                      </div>
-                        
+
                     </div>
 
-        
-            
+
+
         </div>
         </div>
     )

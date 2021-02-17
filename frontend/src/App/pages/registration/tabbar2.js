@@ -48,7 +48,7 @@ export default class tabbar2 extends Component {
                     <button className={"Buttoncls " + (this.state.tabindex=== 1 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 1 })}>
                         1
                   </button>
-                   
+
                   </span>{" "}
                   <span class="text2">Personal Profile</span>
                 </div>{" "}
@@ -63,7 +63,7 @@ export default class tabbar2 extends Component {
                     <button className={"Buttoncls " + (this.state.tabindex=== 2 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 2 })}>
                         2
                   </button>
-                   
+
                   </span>{" "}
                   <span class="text2">Professional Profile</span>
                 </div>{" "}
@@ -78,7 +78,7 @@ export default class tabbar2 extends Component {
                     <button className={"Buttoncls " + (this.state.tabindex=== 3 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 3 })}>
                         3
                   </button>
-                   
+
                   </span>{" "}
                   <span class="text2">ID Verification</span>
                 </div>{" "}
@@ -92,7 +92,7 @@ export default class tabbar2 extends Component {
                     <button className={"Buttoncls " + (this.state.tabindex=== 4 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 4 })}>
                         4
                   </button>
-                   
+
                   </span>{" "}
                   <span class="text2">Payment Information</span>
                 </div>{" "}
@@ -107,13 +107,13 @@ export default class tabbar2 extends Component {
                     <button className={"Buttoncls " + (this.state.tabindex=== 5 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 5 })}>
                         5
                   </button>
-                   
+
                   </span>{" "}
                   <span class="text2">Hourly Rate</span>
                 </div>
                 </div>
             </div>
-     
+
 
               {this.state.tabindex === 1 && <PersonalProfileTabFooter />}
               {this.state.tabindex === 2 && <ProfessionalProfile2Footer />}

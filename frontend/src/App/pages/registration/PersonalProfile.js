@@ -14,7 +14,7 @@ function PersonalProfile() {
                 
                 
                     
-                    <div className='personalProfile_bg Pf-rightbox  p-5'> 
+                    <div className='personalProfile_bg Pf-rightbox  p-5'>
                        
                         <div className="container">
 
@@ -22,12 +22,12 @@ function PersonalProfile() {
                                 <div className="row">
 
                                         <div className='personalprofileicon' style={{backgroundImage: `url(${img})`}}>
-                                    
+
                                         </div>
-                                    
-                                        
+
+
                                         <div className="Profile_info">
-                                            
+
                                         <h4 className="personalprofileHead">Personal Profile</h4>
                                         <p className="personalprofilePara"> Creating your account in just a few steps away,
                                         Fill your Personal detail type.</p>
@@ -51,10 +51,10 @@ function PersonalProfile() {
                                                     <label  className="pp_inputHeading" for="usr">City:</label>
                                                     <input type="text" class="form-control"  Placeholder=" Enter city"/>
                                                 </div>
-                                                
+
                                                 </div>
                                             </div>
-                                            <div className=" col-sm-6 col-md-6">  
+                                            <div className=" col-sm-6 col-md-6">
                                                 <div className="Rb-0">
                                                 <div class="form-group">
                                                     <label  className="pp_inputHeading" for="usr">LAST Name</label>
@@ -68,8 +68,8 @@ function PersonalProfile() {
                                                     <label   className="pp_inputHeading"for="usr">Country</label>
                                                     <input type="text" class="form-control" Placeholder=" Enter country"/>
                                                 </div>
-                                                        
-                                                </div> 
+
+                                                </div>
                                             </div>
                                     </div>
                             </div>

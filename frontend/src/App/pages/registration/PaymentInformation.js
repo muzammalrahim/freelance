@@ -9,7 +9,6 @@ import img from '../../../img/PaymentInfo.png'
 import img2 from '../../../img/PaymentInfo_F.png'
 
 
-
 function PaymentInformation() {
     return (
   <div className="PaymentInformation">
@@ -56,13 +55,13 @@ function PaymentInformation() {
         
                         
                         </div>
-                        
+
                      </div>
 
                     </div>
 
-      
-            
+
+
         </div>
         </div>
     )
@@ -79,12 +78,12 @@ export function PaymentInformationFooter()
 
         <div className='bg1  Paymentinfo_footer_img_padding'>
        {/* <h1> hello</h1>*/}
-         
+
            <div className='pi_foot' style={{backgroundImage: `url(${img2})`}}></div>
 
           </div>
        </div>
 
-        
+
     )
 }

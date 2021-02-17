@@ -1,0 +1,117 @@
+/* @font-face {
+    font-family: 'Poppins';
+    src: url('../../fonts/poppins-medium-webfont.woff2') format('woff2'),
+         url('../../fonts/poppins-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+} */
+header .header-area {
+    padding: 15px 50px;
+}
+header .menu-area {
+    padding: 15px 50px;
+    border-top: 2px solid #e5e5e5;
+}
+header .navbar-logo img {
+    position: relative;
+    left: 0;
+    top: 0;
+}
+header nav.navbar.navbar-expand-md{
+    border:none;
+    padding: 0;
+}
+
+header .menu-area .menus-header{
+    padding: 0;
+}
+
+header .avatar-user {
+    position: relative;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background-position: center;
+    top: -10px;
+}
+header .user-pro{
+    top: -10px!important;
+    right:0 !important;
+    position: absolute;
+}
+.btn.button-color{
+    background-color: #ee9821;
+    border-color: transparent;
+    padding: 10px 20px;
+    font-size: 0;
+    border-radius: 5px;
+}
+.btn.button-color:hover{
+    background-color: #d2933d;
+    border-color: transparent;
+}
+.btn.button-color:hover a{
+    text-decoration:none;
+}
+.btn.button-color a{
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: poppins,sans-serif;
+        letter-spacing: 1px;
+    font-weight: bold;
+}
+.default-menu li {
+    padding: 8px 50px 8px 0px;
+    height: 34px;
+}
+a.nav-links {
+    color: #6B6B6A;
+    font-family: Poppins;
+    font-weight: bold;
+    font-size: 14px;
+    line-height:14px;
+}
+
+header .menu-area .fas.fa-bell{
+    color:#fff;
+    margin-right:5px;
+}
+
+.notification {
+    background-color: #1DA799;
+    color: #fff;
+    padding: 5px 15px 5px 10px;
+    position: relative;
+    display: revert;
+    border-radius: 31px;
+}
+.notification span {
+   color: #fff;
+   font-weight: bold;
+}
+
+header .menu-area ul.user-pro .dropdown-menu {
+    border: none;
+    border-radius: 0;
+    box-shadow: 4px 3px 9px 1px #bdbcbc;
+    min-width: 160px;
+    padding: .5rem 0;
+    margin: .125rem 11px 0 0;
+    right: -10px;
+}
+
+header .menu-area ul.user-pro .dropdown a {
+    color: #6B6B6A;
+}
+header .menu-area ul.user-pro .dropdown-item {
+    font-size: 14px;
+    padding: 5px 8px 15px 10px;
+    line-height: 20px;
+    font-weight: 500;
+}

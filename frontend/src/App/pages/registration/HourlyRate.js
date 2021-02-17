@@ -20,7 +20,7 @@ function HourlyRate() {
                      {/*left section END*/} 
                       
                      {/*Right section*/} 
-                    <div className='hr_rightbox   bg2 b_line2 p-5' > 
+                    <div className='hr_rightbox   bg2 b_line2 p-5' >
                           {/*Rc 1_inn*/}
                         <div class="container"> 
                         <div class="row pl-3">
@@ -51,11 +51,11 @@ function HourlyRate() {
                                 <div class="row">
                                     <div class="col-md-12 pb-3">
                                    <div class=" hr_Para3">
-                                   
+
                                    <div class="pull-left">0</div>
         <div class="pull-right">SAR</div>
-                                   </div>  
-                                  
+                                   </div>
+
                                    </div>
                                      
                                 </div>

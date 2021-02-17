@@ -1,11 +1,5 @@
 
 
-.Root {
-  height: 100vh;
-
-}
-
-
 
 
 .tabbar .tabbarMain_bg{
@@ -144,7 +138,7 @@ border-left: 1px dashed #EE9821;
 
 .tabbar_min_height{
   min-height: 100vh;
-} 
+}
 
 
 
@@ -176,7 +170,7 @@ border-left: 1px dashed #EE9821;
     height: 38px;
 }
   .tabbar .line {
-    
+
     margin-left: 19px;
 }
 
@@ -195,10 +189,10 @@ border-left: 1px dashed #EE9821;
             border-radius: 22px;
             height: 37px;
             }
-            
+
 
             .tabbar .line {
-              
+
                            margin-left: 17px;
                        }
 
@@ -209,4 +203,4 @@ border-left: 1px dashed #EE9821;
   width: 100%;
   float: left;
 }
-    
+
