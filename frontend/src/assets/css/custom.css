@@ -1,4 +1,9 @@
-
+.pull-right{
+    float: right;
+}
+.pull-left{
+    float:left;
+}
 p{
     color: #6b6b6a;
 }
@@ -631,6 +636,19 @@ h6.term-price {
 }
 .application-detail-btn{
     text-align: right;
+}
+.application-detail .MuiButton-outlinedPrimary {
+    color: #ffffff;
+    border: 1px solid rgb(238 152 33);
+    background: #ee9821;
+}
+ul.app-detail-btns li{
+    display: inline-block;
+}
+.edit-detail .MuiButton-outlinedPrimary {
+    color: #6b6b6a;
+    border: 1px solid #6b6b6a;
+    background: none;
 }
 /*  Application Detail Page */
 
