@@ -1,6 +1,6 @@
 .CarD{
     border-radius: 0px;
-    
+
     }
     .profile{
         text-align: center;
@@ -21,10 +21,10 @@
     line-height: 20px;
     text-align: center;
     color: #6B6B6A;
-    
+
     }
     .complete-profile{
-    
+
        margin: 24px 20px 17px;
         border-bottom: 2px solid#cececb;
         font-family: Poppins;
@@ -54,12 +54,12 @@
         border-radius: 50%;
         color:#FFFFFF;
         font-size: 8px;
-    } 
-    
+    }
+
     .img_setting{
         margin-right: 10px;
     }
-    
+
     @media only screen and (max-width: 1000px) {
         .complete-profile h5 {
             font-size: 12px;
@@ -69,7 +69,7 @@
         }
         .Details-subtext {
             margin: 0px 0px 0px 0px;
-         
+
         }
-          
+
       }
