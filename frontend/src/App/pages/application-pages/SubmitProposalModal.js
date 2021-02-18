@@ -1,17 +1,49 @@
-import React, { Component } from 'react'
-// import ImageUpload from '../../../../src/img/ImageUpload.png';
-import img from '../../../img/ImageUpload.png'
+import React from 'react'
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
+import Proposal from '../jobs/Proposal'
 import GetImage from '../registration/GetImage'
-import ResponsiveDialog from "./SubmitBidModal";
 
-      
 
-export default function Proposal () {
-    
-        return (
+
+
+function SubmitProposalModal() {
+    const [open, setOpen] = React.useState(false);
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <div className="submit-bid p-3">
+      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      Withdraw Proposal
+      </Button>
+      <Dialog
+        fullScreen={fullScreen}
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="responsive-dialog-title"
+      >
+        {/* <DialogTitle id="responsive-dialog-title">{"Submit Bid"}</DialogTitle> */}
+        <DialogContent>
+          <DialogContentText>
+            <div className="modal-main">
             <div className="proposal-details pb-4">
                 <div className="proposal-heading">
-                    <h1 className="pt-4 pl-3">Proposal Details</h1> 
+                    <h1 className="">Proposal Details</h1> 
                     <ul className="p-3">
                         <li className="pb-2">
                             <h3>Proposal Amount</h3>
@@ -58,17 +90,20 @@ export default function Proposal () {
                             
                         </li>
                     </ul>
-                    <ResponsiveDialog/>
-                    {/* <button  class="btn btn--yellow btn--medium">Submit a Proposal</button> */}
-                    {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                        Submit a Proposal
-                    </Button> */}
+                    <button  class="btn btn--yellow btn--medium">Submit a Proposal</button>
+                    
                 </div>
                 
             </div>
+      
+            </div>
             
-        )
-    
+          </DialogContentText>
+        </DialogContent>
+        
+      </Dialog>
+    </div>
+    )
 }
 
-
+export default SubmitProposalModal

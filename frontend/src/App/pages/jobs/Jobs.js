@@ -34,7 +34,7 @@ function Jobs() {
                   <div className="right-side">
                       {/* Search Area */}
                       <div className="row job-top-area search-area p-0">
-                        <div className="col-md-5 p-0">
+                        <div className="col-md-5 pr-0">
                           <div className="search-bar">
                             <SearchBar/>
                           </div>
@@ -55,7 +55,7 @@ function Jobs() {
 
                       {/* Heading */}
                       <div className="inner-content">
-                        <h1 className="inner-heading">My Feed</h1>
+                        <h1 className="inner-heading p-3">My Feed</h1>
                       </div>
                       {/* Heading */}
 
@@ -70,12 +70,12 @@ function Jobs() {
                             </div>
                           </div>
                           <div className="col-md-7">
-                            <div className="content-heading">
+                            <div className="content-heading pt-1">
                               <h3>Job title lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</h3>
                             </div>
                           </div>
                           <div className="offset-md-1 col-md-3">
-                            <ul className="content-icons pull-right">
+                            <ul className="content-icons float-right">
                               <li>
                                 <div className="dislike fa-icon">
                                   <i className="far fa-thumbs-down mr-4"></i>
@@ -108,8 +108,8 @@ function Jobs() {
                               </ul>
                           </div>
                           <div className="offset-md-1 col-md-3">
-                            <div className="price">
-                              <p>Per Hour/<span>300 SAR</span></p>
+                            <div className="price-colored float-right">
+                              <p>Per Hour/<span> 300 SAR</span></p>
                             </div>
                           </div>
 
@@ -130,7 +130,7 @@ function Jobs() {
                         {/* paragraph */}
                         {/* Search Tags */}
                         <div className=" search-tags row pt-3">
-                          <div className="col-md-7">
+                          <div className="col-md-8">
                             <ul className="tags">
                               <li className="pr-3">
                                 <a className="pl-2 pr-2 pt-1 pb-1" href="#">Design</a>
@@ -146,9 +146,9 @@ function Jobs() {
                               </li>
                             </ul>
                           </div>
-                          <div className="col-md-5">
-                            <div className="job-payment-btn pull-right mb-3">
-                            <button class="btn btn--yellow btn--medium job-button"><i className="fas fa-check mr-2" aria-hidden="true"></i>Payment verification</button>
+                          <div className="col-md-4">
+                            <div className="job-payment-btn float-right mb-3">
+                            <button class="btn btn--yellow btn--medium job-button p-0"><i className="fas fa-check mr-2" aria-hidden="true"></i>Payment verification</button>
 
                             </div>
                           </div>
@@ -174,7 +174,7 @@ function Jobs() {
                             </div>
                           </div>
                           <div className="offset-md-1 col-md-3">
-                            <ul className="content-icons pull-right">
+                            <ul className="content-icons float-right">
                               <li>
                                 <div className="dislike fa-icon">
                                   <i className="far fa-thumbs-down mr-4"></i>
@@ -207,8 +207,8 @@ function Jobs() {
                               </ul>
                           </div>
                           <div className="offset-md-1 col-md-3">
-                            <div className="price">
-                              <p>Per Hour/<span>300 SAR</span></p>
+                            <div className="price-colored float-right">
+                              <p>Per Hour/ <span>300 SAR</span></p>
                             </div>
                           </div>
 
@@ -229,7 +229,7 @@ function Jobs() {
                         {/* paragraph */}
                         {/* Search Tags */}
                         <div className=" search-tags row pt-3">
-                          <div className="col-md-7">
+                          <div className="col-md-8">
                             <ul className="tags">
                               <li className="pr-3">
                                 <a className="pl-2 pr-2 pt-1 pb-1" href="#">Design</a>
@@ -245,9 +245,9 @@ function Jobs() {
                               </li>
                             </ul>
                           </div>
-                          <div className="col-md-5">
-                            <div className="job-payment-btn pull-right mb-3">
-                            <button class="btn btn--yellow btn--medium job-button"><i className="fas fa-check mr-2" aria-hidden="true"></i>Payment verification</button>
+                          <div className="col-md-4">
+                            <div className="job-payment-btn float-right mb-3">
+                            <button class="btn btn--yellow btn--medium job-button p-0"><i className="fas fa-check mr-2" aria-hidden="true"></i>Payment verification</button>
 
                             </div>
                           </div>
@@ -272,7 +272,7 @@ function Jobs() {
                             </div>
                           </div>
                           <div className="offset-md-1 col-md-3">
-                            <ul className="content-icons pull-right">
+                            <ul className="content-icons float-right">
                               <li>
                                 <div className="dislike fa-icon">
                                   <i className="far fa-thumbs-down mr-4"></i>
@@ -305,8 +305,8 @@ function Jobs() {
                               </ul>
                           </div>
                           <div className="offset-md-1 col-md-3">
-                            <div className="price">
-                              <p>Per Hour/<span>300 SAR</span></p>
+                            <div className="price-colored float-right">
+                              <p>Per Hour/ <span>300 SAR</span></p>
                             </div>
                           </div>
 
@@ -327,7 +327,7 @@ function Jobs() {
                         {/* paragraph */}
                         {/* Search Tags */}
                         <div className=" search-tags row pt-3">
-                          <div className="col-md-7">
+                          <div className="col-md-8">
                             <ul className="tags">
                               <li className="pr-3">
                                 <a className="pl-2 pr-2 pt-1 pb-1" href="#">Design</a>
@@ -343,9 +343,9 @@ function Jobs() {
                               </li>
                             </ul>
                           </div>
-                          <div className="col-md-5">
-                            <div className="job-payment-btn pull-right mb-3">
-                            <button class="btn btn--yellow btn--medium job-button"><i className="fas fa-check mr-2" aria-hidden="true"></i>Payment verification</button>
+                          <div className="col-md-4">
+                            <div className="job-payment-btn float-right mb-3">
+                            <button class="btn btn--yellow btn--medium job-button p-0"><i className="fas fa-check mr-2" aria-hidden="true"></i>Payment verification</button>
 
                             </div>
                           </div>

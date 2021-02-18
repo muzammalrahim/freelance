@@ -7,9 +7,9 @@ function SearchBar (props) {
     return (
         <>
         
-        <div class="form-group has-search">
+        <div class="form-group has-search job-search">
             <span class="fa fa-search form-control-feedback"></span>
-            <input type="text" class="form-control" placeholder="Search"></input>
+            <input type="text" class="form-control pl-5" placeholder="Search"></input>
         </div>
         
         
