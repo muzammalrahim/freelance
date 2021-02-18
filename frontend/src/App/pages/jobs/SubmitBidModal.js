@@ -44,7 +44,7 @@ export default function ResponsiveDialog() {
             <h2 className="d-flex justify-content-center pt-3 pb-4">Are you sure you want to retract your bid?</h2>
             
               <div className="bid-buttons d-flex justify-content-center pb-4">
-              <button class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary" tabindex="0" type="button"><span class="MuiButton-label">Cancel</span><span class="MuiTouchRipple-root"></span></button>
+                <button class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary" tabindex="0" type="button"><span class="MuiButton-label">Cancel</span><span class="MuiTouchRipple-root"></span></button>
                 <button onClick={handleClose} class="btn btn--yellow btn--medium" autoFocus> Submit</button>
               </div>
           

@@ -43,54 +43,18 @@ function SubmitProposalModal() {
             <div className="modal-main">
             <div className="proposal-details pb-4">
                 <div className="proposal-heading">
-                    <h1 className="">Proposal Details</h1> 
+                    <h1 className="">Withdraw Proposal</h1>
+                    <p>
+                    We will politely notify the client that you are not interested. 
+                    The client will be able to view the reason you've withdrawn your proposal.
+                    </p> 
                     <ul className="p-3">
-                        <li className="pb-2">
-                            <h3>Proposal Amount</h3>
-                            <div class="input-group mb-3">
-                                
-                                <input type="text" class="form-control" placeholder="0"></input>
-                                
-                                <div class="input-group-append">
-                                    <span class="input-group-text">SAR</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li className="pb-2">
-                            <h3>15% service free</h3>
-                            <div class="input-group mb-3">
-                                
-                                <input type="text" class="form-control" placeholder="0"></input>
-                                
-                                <div class="input-group-append">
-                                    <span class="input-group-text">SAR</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li className="pb-2">
-                            <h3>Total amount you’ll recieve</h3>
-                            <div class="input-group mb-3">
-                                
-                                <input type="text" class="form-control" placeholder="0"></input>
-                                
-                                <div class="input-group-append">
-                                    <span class="input-group-text">SAR</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li className="pb-2">
-                            <h3>Your Proposal</h3>
-                            <textarea row="3" placeholder="Text"></textarea>
-                        </li>
-                        <li className="image-upload">
-                            <h3>Attachment</h3>
-                            <div className="upload-img">
-                                <GetImage value={2}/>
-                            </div>
-                            
-                        </li>
+                   
                     </ul>
-                    <button  class="btn btn--yellow btn--medium">Submit a Proposal</button>
+                    <div className="bid-buttons d-flex justify-content-center pb-4">
+                      <button class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary" tabindex="0" type="button"><span class="MuiButton-label">Cancel</span><span class="MuiTouchRipple-root"></span></button>
+                      <button onClick={handleClose} class="btn btn--yellow btn--medium" autoFocus> Submit</button>
+                    </div>
                     
                 </div>
                 

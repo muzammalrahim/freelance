@@ -1,11 +1,25 @@
 import React, { Component } from 'react'
 import Header from '../../../components/header/Header';
 import './Reports.css';
+import './PaymentWithdraw.css'
 class PaymentWithdraw extends Component {
-    state = {  }
+    state = { 
+		
+		RadioclassActive: 0, 
+	}
+
+	addClass=(e)=>
+	{
+	
+		console.log("hello")
+	}
+
     render() { 
+
         return (
+			console.log("agey",this.state.RadioclassActive),	
         <div>
+		
         <Header/>
             <div class="main-area withdraw">
 		    <div class="container">
@@ -36,7 +50,8 @@ class PaymentWithdraw extends Component {
 		                		</div>
 		                		<p>Available balance after deducted amount will be <span class="amount font-weight-bold">100 SAR</span></p>
 		                		<label for="exampleInputEmail1" class="font-weight-bold">Select method</label>
-		                		<div class="row border-bottom pb-3 radio-button">
+
+		                		<div className={"row border-bottom pb-3 radio-button "+ (this.state.RadioclassActive=== 1 ? 'RadioActiveborder': 'hidden')} onClick={() => this.setState({ RadioclassActive: 1 })}>
 		                			<div class="col-md-10 col-lg-10 col-sm-12 ">
 		                				<div class="pb-2 pt-2">
 		                					<span ><i class="fas fa-landmark fa-3x"></i></span>
@@ -46,11 +61,13 @@ class PaymentWithdraw extends Component {
 		                			</div>
 		                			<div class="col-md-2 col-lg-2 col-sm-12 pull-right">
 		                				<div class="form-check ">
-											<input class="form-check-input" type="radio" name="flexRadioDefault" checked/>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" value="driect to local bank" checked={this.state.RadioclassActive=== 1}/>
+										
 										</div>
 		                			</div>
 		                		</div>
-		                		<div class="row pt-3 radio-button">
+								
+		                		<div className={"row border-bottom pb-3 radio-button "+ (this.state.RadioclassActive=== 2 ? 'RadioActiveborder': 'hidden')}  onClick={() => this.setState({ RadioclassActive: 2 })}>
 		                			<div class="col-md-10 col-lg-10 col-sm-12">
 		                				<div class="pb-2">
 		                					<span ><i class="fas fa-landmark fa-3x"></i></span>
@@ -60,7 +77,7 @@ class PaymentWithdraw extends Component {
 		                			</div>
 		                			<div class="col-md-2 col-lg-2 col-sm-12 pull-right">
 		                				<div class="form-check">
-											<input class="form-check-input" type="radio" name="flexRadioDefault"/>
+											<input class="form-check-input" type="radio" name="flexRadioDefault" value="al rajhi bank" checked={this.state.RadioclassActive=== 2}/>
 										</div>
 		                			</div>
 		                		</div>
@@ -74,6 +91,7 @@ class PaymentWithdraw extends Component {
 		        </div>
 		    </div>
 		    </div>
+			
 		</div> );
     }
 }

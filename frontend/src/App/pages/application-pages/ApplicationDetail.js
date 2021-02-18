@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import CustomizedRatings from "../jobs/Rating"
 import '../../../assets/css/custom.css'
 import SubmitProposalModal from '../application-pages/SubmitProposalModal'
+import EditProposal from '../application-pages/EditProposal';
 
 
 
@@ -22,11 +23,8 @@ export default function ApplicationDetail() {
             <div className="main-wrapper pt-5">
                 <div className="container">
                     <div className="row details-grid">
-                        <div className="col-md-3">
-                        
-                        </div>
-                        <div className="col-md-9">
-                            <div className="right-side">
+                        <div className="ml-5 mr-5">
+                            <div className="right-side mr- ml-5">
                                 {/*--------- row2 ---------------*/}
                                 {/* <div className="row job"> */}
                                 <div className="job-inner pl-3 pr-3 pt-3 pb-4 row-inner">
@@ -222,11 +220,18 @@ export default function ApplicationDetail() {
                                     
                                 </div>
                                 <div className="application-detail-btn mt-4 pr-2">
-                                    <div className="btn-1 mb-1">
-                                        <SubmitProposalModal/>
-                                        <button  class="btn btn--yellow btn--medium">Withdraw Proposal</button>
+                                    <ul className="app-detail-btns">
+                                        <li className="edit-detail">
+                                            <EditProposal/>
+                                        </li>
+                                        <li className="proposal-detail">
+                                            
+                                            <SubmitProposalModal/>
+                                        </li>
                                         
-                                    </div>
+                                        
+                                        
+                                    </ul>
                                     
                                     
                                 </div>

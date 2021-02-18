@@ -9,13 +9,14 @@ function DefaultMenu(props) {
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
             </button>
+            
             <div id="navbarCollapse" class="collapse navbar-collapse">
               <ul className='default-menu nav navbar-nav'>
                   
               
                   { props.value===2 ?  AccountSettingMenuItems.map((item, index)=>{
                     return(
-                      <li key={index}>
+                      <li key={index} className="pr-3">
                           <a className={item.cName} href={item.url}>
                               {item.title}
                           </a>
@@ -38,7 +39,7 @@ function DefaultMenu(props) {
               </ul>
               <ul class="nav navbar-nav ml-auto user-pro">
                 <li>
-                <div>
+                <div className="">
                   <a href="#" class="notification mr-3">
                     <span><i class="fas fa-bell"></i>15</span>
                     {/* <span class="badge">15</span> */}
@@ -50,7 +51,7 @@ function DefaultMenu(props) {
                       
                 </div>
                 </li>
-                <li class="nav-item dropdown pl-3">
+                <li class="nav-item dropdown pl-1">
                    
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pixelz Warrios</a>
                     <div class="dropdown-menu dropdown-menu-right dropdown">

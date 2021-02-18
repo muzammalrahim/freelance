@@ -39,7 +39,9 @@ export default class tabbar2 extends Component {
               </div>
 
               <div className="tabbar_tabarlist pt-4 pb-5 Changepadding ml-3 ">
-                  <div className="container">
+               <div className="container">
+            
+
                 <div class="Tab">
                   <span
                     class=" "
@@ -53,6 +55,11 @@ export default class tabbar2 extends Component {
                   <span class="text2">Personal Profile</span>
                 </div>{" "}
                 <div className= {"line " + (this.state.tabindex=== 1 ? 'lineActive' : 'hidden')}> </div>
+
+
+
+
+
 
 
                 <div class="Tab">
