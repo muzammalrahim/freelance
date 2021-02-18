@@ -76,7 +76,7 @@ const DetailsPreview = () => {
             <a href="/portfoliodetails"> Previous</a>
           </div>
           <div className="col-md-6">
-            <button type="button" className="btn btn-primary pull-right">
+            <button type="button" className="btn btn-primary float-right">
               DONE
             </button>
           </div>

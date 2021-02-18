@@ -18,7 +18,7 @@ export function Education(props) {
           <div class="col-md-6 pr-4">
             <button
               type="button"
-              class="btn btn-primary btn-sm pull-right"
+              class="btn btn-primary btn-sm float-right"
               onClick={handleShow}
             >
               +ADD
@@ -35,7 +35,7 @@ export function Education(props) {
                 <p>Add Education Information</p>
                 </div>
                 <div class="col-md-6">
-                <i class="fas fa-times pull-right" onClick={handleClose}></i>
+                <i class="fas fa-times float-right" onClick={handleClose}></i>
                 </div>
               </div>
 
@@ -95,7 +95,7 @@ export function Education(props) {
               </div>
               <div class="form-row">
                 <div class="col-md-6 pb-5 pt-4">
-                  <a href="#" class="pull-right" onClick={handleClose}>
+                  <a href="#" class="float-right" onClick={handleClose}>
                     Cancel
                   </a>
                   </div>
@@ -117,7 +117,7 @@ export function Education(props) {
                   </div>
                   <div class="col-md-3">
                   <a href="">
-                    <i class="fas fa-trash pull-right"></i>
+                    <i class="fas fa-trash float-right"></i>
                   </a>
                   </div>
 
@@ -133,7 +133,7 @@ export function Education(props) {
                   </div>
                   <div class="col-md-3">
                   <a href="">
-                    <i class="fas fa-trash pull-right"></i>
+                    <i class="fas fa-trash float-right"></i>
                   </a>
                   </div>
                   <div class="col-md-8">

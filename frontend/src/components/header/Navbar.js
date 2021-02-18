@@ -1,7 +1,8 @@
 import React from 'react'
+
 import {Link} from 'react-router-dom';
-import tuwaiqlogo from '../../../../src/tuwaiqlogo.svg'
-import Button from '../../../components/Button';
+import tuwaiqlogo from '../../../src/tuwaiqlogo.svg'
+import Button from '../../components/Button';
 
 
 function Navbar(props) {

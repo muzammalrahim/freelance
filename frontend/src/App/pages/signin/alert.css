@@ -5,7 +5,7 @@
   color: #fff;
   background-color: #ee9821;
 }
-.input-group input {
+.input-group .form-control {
   height: 80px;
   border-radius: none;
 }

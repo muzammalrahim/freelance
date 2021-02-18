@@ -16,7 +16,7 @@ class Header_Logo extends Component {
                             </Link>
                         </div>
                         <div class="col-6 col-sm-6 col-md-6 pt-3 pr-0">
-                            <div class="post-project pull-right">
+                            <div class="post-project float-right">
                                 <div class="btn btn-warning text-white btn-lg button-color">
                                     <a class="popup-with-form" href="#">Post a Project</a>
                                 </div>
