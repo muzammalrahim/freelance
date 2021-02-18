@@ -1,6 +1,4 @@
-body{
-    /* font-family: "Poppins"; */
-}
+
 p{
     color: #6b6b6a;
 }
@@ -8,19 +6,14 @@ a{
     text-decoration: none !important;
     color: #6b6b6a;
 }
-input::placeholder{
-}
+
 h1, h2, h3, h4, h5, h6{
     color: #6b6b6a;
 }
-/* Application List */
-.applied{
-    background: rgb(238, 152, 33, 0.2);
+h3{
+    font-size: 16px;
 }
-.applied p{
-    color: #6b6b6a;
-}
-/*  Application List */
+
 
 /*  Submit Bid Modal */
 .avatar-job-detail{
@@ -46,30 +39,19 @@ h1, h2, h3, h4, h5, h6{
 /* Side Bar */
 .bg-white.sidebar.nav{
     width: 100% !important;
-    padding: 15px 10px 0 0;
 }
     .side-menu h3 {
-        color: #6B6B6A;
         font-size: 16px;
-        padding-bottom: 10px;
 }
     .skills{
         border-bottom: 0.5px solid rgba(107, 107, 106, 0.2)
 }
     .side-menu ul {
-        margin: 0 0 0 24px;
         width: 100%;
 }
 
-
-.side-menu ul li{
-    padding: 0 0 15px 0;
-}
-
 .heading {
-    font-size: 15px;
-    color: #6B6B6A;
-    font-weight: 700;
+    font-size: 12px;
 }
    
 /* Side Bar */
@@ -102,17 +84,24 @@ h1, h2, h3, h4, h5, h6{
     border-radius: 4px;
     margin-bottom: 26px;
 }
-.input-group.mb-3 {
+.proposal-heading .input-group {
     border-radius: 4px;
 }
-span.input-group-text{
-    background: #ffffff;
+.proposal-heading input.form-control {
+    border-right: 0;
 }
-input.form-control {
-    height: 48px;
+.proposal-heading input.form-control::placeholder {
+    font-size: 15px;
+}
+.proposal-heading span.input-group-text {
+    background: #ffffff;
+    font-size: 11px;
+    color: #6b6b6a;
+}
+.Jobs .search-area input.form-control {
+    height: 38px;
     border-left: 0;
     border-right: 0;
-    
 }
 .proposal-details .MuiButton-outlinedPrimary {
     color: #ffffff;
@@ -257,110 +246,52 @@ border-bottom: 1px solid rgba(107, 107, 106, .1);
 
 /* custom checkbox */
 
-/* 
- * Hide the inputs. 
- */
+/*  Hide the inputs*/
 
-input {
+.custom-checkbox input {
   display: none;
 }
 
-
-/*
- * Then, style the label so it looks like however you want.
- * Here's a quick rundown of how I did it here:
- */
-
-
-/*
- * Some basic positioning styles, and we give it the pointer cursor to show 
- * that it's clickable
- */
-
-label {
+.custom-checkbox label {
   display: inline-block;
-  padding: 5px 10px;
   cursor: pointer;
 }
 
-
-/*
- * With how I decided to build this, the position: relative is super important.
- * We're going to position a pseudo element within this element(As it is the containing box)
- */
-
-label span {
+.custom-checkbox label span {
   position: relative;
   line-height: 22px;
 }
 
-
-/* 
- * Because we're using pseudo elements, a content property is required to make them appear.
- */
-
-label span:before,
+.custom-checkbox label span:before,
 label span:after {
   content: '';
 }
 
-
-/*
- * We are using the :before peudo elemnt as the actual button,
- * then we'll position the :after over it. You could also use a background-image,
- * font-icon, or really anything if you want different styles.
- * For the specific style we're going for, this approach is simply the easiest, but
- * once you understand the concept you can really do it however you like.
- */
-
- label span:before {
+.custom-checkbox label span:before {
     border: 1px solid #1da799;
-    width: 16px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
     margin-right: 0px;
     display: inline-block;
     vertical-align: middle;
 }
 
-label span:after {
+.custom-checkbox label span:after {
     background: #1da799;
-    width: 9px;
-    height: 9px;
+    width: 6px;
+    height: 6px;
     position: absolute;
-    top: 8px;
-    left: 4px;
+    top: 6px;
+    left: 3px;
     transition: 300ms;
     opacity: 0;
 }
-
-/*
- * This is the most important part of this whole file, if you understand what's happening here
- * you can really make this in so many different ways.
- * 
- * We start by selecting the input inside of the label, with "label input". From there we use the 
- * ":checked" selector to *only* select the input when it is checked. We then use the immediate sibling 
- * selector(+) to select the span, and then it's pseudo element :after(What we are using to mark the button)
- * Because we already styled the :after, all we have to do is set the opacity to 1, making it fade in.
- */
-label input:checked+span:after {
+.custom-checkbox label input:checked+span:after {
   opacity: 1;
 }
-
-
-/* 
- * A little styling for the demo 
- */
-
-body {
-  background: #fbfbfb;
-  font-family: Arial;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.7);
-}
-
 /* custom checkbox */
 
-.btn--yellow {
+.Jobs .search-button .btn--yellow {
     width: 137px;
     text-transform: uppercase;
 }
@@ -370,16 +301,12 @@ body {
 }
 /* Search Area */
 
-input.form-control.filter {
-    padding: 7px 0 7px 22px;
-}
-.search-area .search-bar {
+.job .search-area .search-bar {
     margin-left: 14px;
     border-radius: 3px;
 }
-.search-area .form-control {
+.job .search-area .form-control {
     border-radius: 3px;
-    padding: 7px 0 7px 35px;
     height: auto;
 
 }
@@ -414,18 +341,9 @@ ul.job-top-area li{
  button.btn.btn--yellow.btn--medium button{
     top: -4px; 
  }
-
-/* Search Area */
-/* inner-content */
 .job-inner{
     background: rgba(29, 167, 153, 0.05);
 }
-/* .row.job {
-    display: grid;
-    grid-template-columns: 15% 70% 9% 6%;
-    padding-top: 17px;
-    position: relative;
-} */
 .avatar-user-job {
     width: 50px;
     height: 50px;
@@ -434,10 +352,8 @@ ul.job-top-area li{
     border: 1px solid rgba(107, 107, 106, .1);
 }
 .inner-heading {
-    font-size: 16px;
+    font-size: 18px;
     background: #ffffff;
-    padding: 15px 10px;
-    color: #6B6B6A;
     margin: 0;
 }
 .content-heading {
@@ -445,7 +361,6 @@ ul.job-top-area li{
 }
 .content-heading h3 {
     font-size: 16px; 
-    padding: 5px 0 0 0;
     width: 100%;
     color: #6b6b6a;
 }
@@ -468,9 +383,8 @@ i.fa.fa-bookmark-o {
     font-size: 13px;
 }
 .paragraph p {
-    font-size: 14px;
-    color: #6B6B6A;
-    line-height: 23px;
+    font-size: 12px;
+    line-height: 24px !important;
     text-align: justify;
     line-height: 28px;
 }
@@ -485,7 +399,6 @@ ul.tags {
 }
 ul.tags li a {
     color: #1DA799;
-    padding-left: 10px;
     background: #DDF2F0;
     border-radius: 2px;
 }
@@ -497,29 +410,36 @@ ul.duration i {
     color: #1DA799;
 }
 ul.duration p {
-    color: #6B6B6A;
-    font-family: Poppins;
-    font-size: 13px;
-}
-.price{
-    text-align: right;
-}
-.price p{
     font-size: 12px;
 }
-.price span{
+.price {
+    text-align: right;
+    line-height: 17px;
+}
+.price-colored p{
+    font-size: 11px;
+}
+.price-colored span{
     color: #1DA799;
-    font-size: 16px;
+    font-size: 14px;
+}
+.job-detail .price p{
+    font-size: 10px;
+}
+.job-detail .price span{
+    color: #1DA799;
+    font-size: 14px;
 }
 
 .job-payment-btn .job-button {
-    color: #1da799;
+    color: #6b6b6a;
     border: 1px solid rgb(29 167 153);
     border-radius: 20px;
     background: #ffffff;
-    height: 39px;
-    width: 215px;
-    font-weight: bold;
+    height: 34px;
+    width: 196px;
+    /* font-weight: bold; */
+    font-size: 12px;
 }
 .job-payment-btn .job-button i {
     background:  #1DA799;
@@ -527,7 +447,7 @@ ul.duration p {
     border-radius: 50%;
     padding: 4px;
 }
-.search-tags.row.pt-3 {
+.job-detail.search-tags.row.pt-3 {
     display: flex;
     align-items: center;
 }
@@ -566,11 +486,12 @@ ul.duration p {
     font-size: 13px;
 }
 .job-detail .price p {
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: 600;
 }
-
 .job-detail .price p t {
-    font-size: 12px;
+    font-size: 11px;
+    font-weight: 500;
 }
 .information {
     background: #ffffff;
@@ -685,6 +606,34 @@ ul.rating-area {
 
 /* Jobs-Detail-2 Page  */
 
+/* Application List */
+.applied{
+    background: rgb(238, 152, 33, 0.2);
+}
+.applied p{
+    color: #6b6b6a;
+    font-size: 12px;
+}
+/*  Application List */
+
+/*  Application Detail Page */
+.proposed-terms h3{
+    font-size: 16px;
+}
+.term-description h3{
+    font-size: 14px;
+}
+.term-description p{
+    font-size: 12px;
+}
+h6.term-price {
+    font-size: 14px;
+}
+.application-detail-btn{
+    text-align: right;
+}
+/*  Application Detail Page */
+
 /* Contract One */
 .contractone-main{
     background: #e5e5e5;
@@ -745,18 +694,12 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained {
 
 /* -----------------------Mobile Quries----------------------*/
 @media screen and (max-width: 1200px){
-    /* Side Bar */
-    .side-menu ul li label {
-        width: 147px;
-    }
-    /* Side Bar */
+    
 }
 
 @media only screen and (max-width: 991px) {
     /* Side Bar */
-    .side-menu ul li label {
-        width: 92px;
-    }
+   
     /* Side Bar */
 
     /* Jobs Page  */

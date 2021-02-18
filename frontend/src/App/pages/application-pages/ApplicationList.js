@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from '../jobs/Navbar';
-import DefaultMenu from '../jobs/DefaultMenu';
+import Header from '../../../../src/components/header/Header';
 import Sidebar from '../jobs/Sidebar';
 import SearchBar from "../jobs/SearchBar";
 import AvatarImage from '../../../../src/AvatarImage.png';
@@ -15,12 +15,7 @@ function ApplicationList() {
         <div className='Jobs application-list'>
           {/* top header */}
           <div className="top-area">
-            <div className='si-container'>
-              <Navbar text="" value="Post a Project" /> 
-            </div>
-            <div className='default-menu '>
-              <DefaultMenu />
-            </div>
+            <Header />
           </div>
           {/* top header */}
           <div className="main-wrapper pt-5">
@@ -59,19 +54,19 @@ function ApplicationList() {
 
                       {/* Heading */}
                       <div className="inner-content">
-                        <h1 className="inner-heading">Submitted Application</h1>
+                        <h1 className="inner-heading p-3">Submitted Application</h1>
                       </div>
                       {/* Heading */}
 
                       {/* apply heading */}
                       <div className="applied">
-                        <p className="m-0 p-2">Your Applied for this job 5 min ago</p>
+                        <p className="m-0 p-2 pl-4">Your Applied for this job 5 min ago</p>
                       </div>
                       {/* apply heading */}
 
                       {/*--------- row1 ---------------*/}
                       {/* <div className="row job"> */}
-                      <div className="job-inner pl-3 pr-3 pt-3 pb-4">
+                      <div className="row-inner pl-3 pr-3 pt-3 pb-4">
                         {/* title area */}
                         
                         <div className="row">
@@ -82,12 +77,12 @@ function ApplicationList() {
                             </div>
                           </div>
                           <div className="col-md-7">
-                            <div className="content-heading">
+                            <div className="content-heading pt-1">
                               <h3>Job title lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</h3>
                             </div>
                           </div>
                           <div className="offset-md-1 col-md-3">
-                            <ul className="content-icons pull-right">
+                            <ul className="content-icons float-right">
                               <li>
                                 <div className="dislike fa-icon">
                                   <i className="far fa-thumbs-down mr-4"></i>
@@ -103,7 +98,7 @@ function ApplicationList() {
                         </div>   
                         {/* title area */}
                         {/* Tags + Price */}
-                        <div className="row pt-2">
+                        <div className="row">
                           <div className="col-md-1"></div>
                           <div className="col-md-7">
                             <ul className="duration">
@@ -120,8 +115,8 @@ function ApplicationList() {
                               </ul>
                           </div>
                           <div className="offset-md-1 col-md-3">
-                            <div className="price">
-                              <p>Per Hour/<span>300 SAR</span></p>
+                            <div className="price-colored float-right">
+                              <p>Per Hour/<span> 300 SAR</span></p>
                             </div>
                           </div>
 
@@ -142,7 +137,7 @@ function ApplicationList() {
                         {/* paragraph */}  
                         {/* Search Tags */}  
                         <div className=" search-tags row pt-3">
-                          <div className="col-md-7">
+                          <div className="col-md-8">
                             <ul className="tags">
                               <li className="pr-3">
                                 <a className="pl-2 pr-2 pt-1 pb-1" href="#">Design</a>
@@ -158,8 +153,8 @@ function ApplicationList() {
                               </li>   
                             </ul>
                           </div>
-                          <div className="col-md-5">
-                            <div className="job-payment-btn pull-right mb-3">
+                          <div className="col-md-4">
+                            <div className="job-payment-btn float-right mb-3">
                             <button class="btn btn--yellow btn--medium job-button"><i className="fas fa-check mr-2" aria-hidden="true"></i>Payment verification</button>
                               
                             </div>
@@ -191,7 +186,7 @@ function ApplicationList() {
                             </div>
                           </div>
                           <div className="offset-md-1 col-md-3">
-                            <ul className="content-icons pull-right">
+                            <ul className="content-icons float-right">
                               <li>
                                 <div className="dislike fa-icon">
                                   <i className="far fa-thumbs-down mr-4"></i>
@@ -207,7 +202,7 @@ function ApplicationList() {
                         </div>   
                         {/* title area */}
                         {/* Tags + Price */}
-                        <div className="row pt-2">
+                        <div className="row">
                           <div className="col-md-1"></div>
                           <div className="col-md-7">
                             <ul className="duration">
@@ -224,8 +219,8 @@ function ApplicationList() {
                               </ul>
                           </div>
                           <div className="offset-md-1 col-md-3">
-                            <div className="price">
-                              <p>Per Hour/<span>300 SAR</span></p>
+                            <div className="price-colored float-right">
+                              <p>Per Hour/<span> 300 SAR</span></p>
                             </div>
                           </div>
 
@@ -246,7 +241,7 @@ function ApplicationList() {
                         {/* paragraph */}  
                         {/* Search Tags */}  
                         <div className=" search-tags row pt-3">
-                          <div className="col-md-7">
+                          <div className="col-md-8">
                             <ul className="tags">
                               <li className="pr-3">
                                 <a className="pl-2 pr-2 pt-1 pb-1" href="#">Design</a>
@@ -262,8 +257,8 @@ function ApplicationList() {
                               </li>   
                             </ul>
                           </div>
-                          <div className="col-md-5">
-                            <div className="job-payment-btn pull-right mb-3">
+                          <div className="col-md-4">
+                            <div className="job-payment-btn float-right mb-3">
                             <button class="btn btn--yellow btn--medium job-button"><i className="fas fa-check mr-2" aria-hidden="true"></i>Payment verification</button>
                               
                             </div>
@@ -295,7 +290,7 @@ function ApplicationList() {
                             </div>
                           </div>
                           <div className="offset-md-1 col-md-3">
-                            <ul className="content-icons pull-right">
+                            <ul className="content-icons float-right">
                               <li>
                                 <div className="dislike fa-icon">
                                   <i className="far fa-thumbs-down mr-4"></i>
@@ -311,7 +306,7 @@ function ApplicationList() {
                         </div>   
                         {/* title area */}
                         {/* Tags + Price */}
-                        <div className="row pt-2">
+                        <div className="row">
                           <div className="col-md-1"></div>
                           <div className="col-md-7">
                             <ul className="duration">
@@ -328,8 +323,8 @@ function ApplicationList() {
                               </ul>
                           </div>
                           <div className="offset-md-1 col-md-3">
-                            <div className="price">
-                              <p>Per Hour/<span>300 SAR</span></p>
+                            <div className="price-colored float-right">
+                              <p>Per Hour/<span> 300 SAR</span></p>
                             </div>
                           </div>
 
@@ -350,7 +345,7 @@ function ApplicationList() {
                         {/* paragraph */}  
                         {/* Search Tags */}  
                         <div className=" search-tags row pt-3">
-                          <div className="col-md-7">
+                          <div className="col-md-8">
                             <ul className="tags">
                               <li className="pr-3">
                                 <a className="pl-2 pr-2 pt-1 pb-1" href="#">Design</a>
@@ -366,8 +361,8 @@ function ApplicationList() {
                               </li>   
                             </ul>
                           </div>
-                          <div className="col-md-5">
-                            <div className="job-payment-btn pull-right mb-3">
+                          <div className="col-md-4">
+                            <div className="job-payment-btn float-right mb-3">
                             <button class="btn btn--yellow btn--medium job-button"><i className="fas fa-check mr-2" aria-hidden="true"></i>Payment verification</button>
                               
                             </div>

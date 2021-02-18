@@ -8,9 +8,6 @@
 .amount, .radio-button i.active{
 	color: #1DA799;
 }
-p,h3,label,span{
-	color: #6B6B6A;
-}
 .reports .reports-pagi__item button.reports-pagi__btn{
     height: 27px;
     width: 30px;

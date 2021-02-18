@@ -20,7 +20,7 @@ export default function JobDetail() {
             {/* top header */}
             <div className="main-wrapper pt-5">
                 <div className="container">
-                    <div className="row details-grid p-4">
+                    <div className="row details-grid">
                         <div className="col-md-3">
                         <div className="left-side"><Proposal/></div>
                         </div>
@@ -37,7 +37,7 @@ export default function JobDetail() {
                                         </div>
                                     </div>
                                     <div className="col-md-7">
-                                        <div className="content-heading">
+                                        <div className="content-heading pt-2">
                                         <h3>Job title lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</h3>
                                         </div>
                                     </div>
@@ -49,7 +49,7 @@ export default function JobDetail() {
                                     </div>    
                                     {/* title area */}
                                     {/* Tags + Price */}
-                                    <div className="row pt-2">
+                                    <div className="row">
                                         <div className="col-md-1"></div>
                                         <div className="col-md-11">
                                             <ul className="duration">
@@ -81,8 +81,8 @@ export default function JobDetail() {
                                     </div>
                                     {/* paragraph */}  
                                     {/* Search Tags */}  
-                                    <div className=" search-tags row pt-3">
-                                        <div className="col-md-7">
+                                    <div className=" search-tags row pt-4">
+                                        <div className="col-md-8">
                                             <ul className="tags">
                                             <li className="pr-3">
                                                 <a className="pl-2 pr-2 pt-1 pb-1" href="#">Design</a>
@@ -98,8 +98,8 @@ export default function JobDetail() {
                                             </li>   
                                             </ul>
                                         </div>
-                                        <div className="col-md-5">
-                                            <div className="job-payment-btn pull-right mb-3">
+                                        <div className="col-md-4">
+                                            <div className="job-payment-btn float-right mb-3">
                                             <button class="btn btn--yellow btn--medium job-button"><i className="fas fa-check mr-2" aria-hidden="true"></i>Payment verification</button>
                                             
                                             </div>

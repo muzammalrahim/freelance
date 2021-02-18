@@ -1,23 +1,70 @@
 import React from 'react';
-// import Rating from '@material-ui/lab';
-import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Rating from '@material-ui/lab/Rating';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
+import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
+import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
+import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAltOutlined';
+import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    '& > * + *': {
-      marginTop: theme.spacing(1),
-    },
+const StyledRating = withStyles({
+  iconFilled: {
+    color: '#ff6d75',
   },
-}));
+  iconHover: {
+    color: '#ff3d47',
+  },
+})(Rating);
 
-export default function HalfRating() {
-  const classes = useStyles();
+const customIcons = {
+  1: {
+    icon: <SentimentVeryDissatisfiedIcon />,
+    label: 'Very Dissatisfied',
+  },
+  2: {
+    icon: <SentimentDissatisfiedIcon />,
+    label: 'Dissatisfied',
+  },
+  3: {
+    icon: <SentimentSatisfiedIcon />,
+    label: 'Neutral',
+  },
+  4: {
+    icon: <SentimentSatisfiedAltIcon />,
+    label: 'Satisfied',
+  },
+  5: {
+    icon: <SentimentVerySatisfiedIcon />,
+    label: 'Very Satisfied',
+  },
+};
 
+function IconContainer(props) {
+  const { value, ...other } = props;
+  return <span {...other}>{customIcons[value].icon}</span>;
+}
+
+IconContainer.propTypes = {
+  value: PropTypes.number.isRequired,
+};
+
+export default function CustomizedRatings() {
   return (
-    <div className={classes.root}>
-      {/*<Rating name="half-rating" defaultValue={2.5} precision={0.5} />*/}
+    <div>
+      <Box component="fieldset"  borderColor="transparent">
+        <Rating
+          name="customized-empty"
+          defaultValue={2}
+          precision={0.5}
+          emptyIcon={<StarBorderIcon fontSize="inherit" />}
+        />
+      </Box>
+     
     </div>
   );
 }
