@@ -10,7 +10,6 @@ border: 1px solid #0078B9;
 .fab {
 color:white;
 font-size: 14px;
-margin-left: 1px;
 }
 
 .title{
@@ -22,8 +21,4 @@ margin-left: 1px;
     text-align: right;
     letter-spacing: -0.03em;
     color: #FFFFFF;
-}
-.title m {
-    margin-left: 6px;
-    font-weight: 600;
 }

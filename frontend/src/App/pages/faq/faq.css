@@ -11,6 +11,9 @@ color: #6B6B6A;
 .btn:hover {
     text-decoration: none;
 }
-.faq .main-area .accordion .btn{
-    padding-left: 0px;
+
+.faq .main-area .accordion .card-body p {
+    font-size: 14px;
+    line-height: 25px;
+    font-weight: bold;
 }

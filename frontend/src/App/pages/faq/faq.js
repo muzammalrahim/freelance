@@ -1,27 +1,29 @@
 import React from 'react'
-import Navbar from './Navbar';
-import DefaultMenu from './DefaultMenu';
+/*import Navbar from './Navbar';*/
+/*import DefaultMenu from './DefaultMenu';*/
 //import Proposal from './Proposal';
-import AvatarImage from '../../../../src/AvatarImage.png';
+/*import AvatarImage from '../../../../src/AvatarImage.png';*/
 // import img from "../../../img/stars1.png"
+import Header from '../../../components/header/Header';
 import  "./faq.css";
 
 export default function faq() {
     return (
         <div className="faq">
             {/* top header */}
-            <div className="top-area">
+            {/*<div className="top-area">
                 <div className='si-container'>
                     <Navbar text="" value="Post a Project" /> 
                 </div> 
                 <div className='default-menu '>
                     <DefaultMenu />
                 </div>
-            </div>
+            </div>*/}
+            <Header/>
             {/* top header */}
             <div className="main-area">
                 <div className="container">
-                    <div className="row pt-4 pb-4">
+                    <div className="row pt-5 pb-5">
                         <div className="col-md-12 align-self-center bg-white pb-4">
                             <div class="pg-heading pt-5 pb-4 pl-3"><h3 class="font-weight-bold text-uppercase">Faq's</h3></div>
 
@@ -30,36 +32,60 @@ export default function faq() {
                                 <div class="card border-0">
                                     <div class="card-header bg-white" id="headingOne">
                                         <h2 class="mb-0">
-                                            <button type="button" class="btn btn-link font-weight-bold text-dark" data-toggle="collapse" data-target="#collapseOne"><i class="fa fa-plus"></i> What is HTML?</button>
+                                            <button type="button" class="btn btn-link font-weight-bold text-dark text-left w-100 pl-0 pr-0" data-toggle="collapse" data-target="#collapseOne"> How can we help you Lorem ipsum? <i class="fa fa-minus pull-right"></i></button>
                                         </h2>
                                     </div>
-                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
-                                            <p>HTML stands for HyperText Markup Language. HTML is the standard markup language for describing the structure of web pages. <a href="https://www.tutorialrepublic.com/html-tutorial/" target="_blank">Learn more.</a></p>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae tincidunt diam. Pellentesque tincidunt velit quam. Proin venenatis eget nibh vel scelerisque. Donec vulputate, augue nec rutrum aliquet, diam odio rhoncus augue, ut sollicitudin nulla eros nec orci. Duis quis diam interdum neque fringilla porttitor blandit vitae eros. Duis luctus, ante sed dignissim pharetra, ante quam fermentum tellus, id vehicula magna nulla id magna. Fusce sit amet viverra tellus.</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card border-0">
                                     <div class="card-header bg-white" id="headingTwo">
                                         <h2 class="mb-0">
-                                            <button type="button" class="btn btn-link font-weight-bold text-dark collapsed" data-toggle="collapse" data-target="#collapseTwo"><i class="fa fa-plus"></i> What is Bootstrap?</button>
+                                            <button type="button" class="btn btn-link font-weight-bold text-dark text-left w-100 pl-0 pr-0" data-toggle="collapse" data-target="#collapseTwo"> How can we help you Lorem ipsum? <i class="fa fa-plus pull-right"></i></button>
                                         </h2>
                                     </div>
-                                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                         <div class="card-body">
-                                            <p>Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development. It is a collection of CSS and HTML conventions. <a href="https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank">Learn more.</a></p>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae tincidunt diam. Pellentesque tincidunt velit quam. Proin venenatis eget nibh vel scelerisque. Donec vulputate, augue nec rutrum aliquet, diam odio rhoncus augue, ut sollicitudin nulla eros nec orci. Duis quis diam interdum neque fringilla porttitor blandit vitae eros. Duis luctus, ante sed dignissim pharetra, ante quam fermentum tellus, id vehicula magna nulla id magna. Fusce sit amet viverra tellus.</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card border-0">
                                     <div class="card-header bg-white" id="headingThree">
                                         <h2 class="mb-0">
-                                            <button type="button" class="btn btn-link font-weight-bold text-dark collapsed" data-toggle="collapse" data-target="#collapseThree"><i class="fa fa-plus"></i> What is CSS?</button>
+                                            <button type="button" class="btn btn-link font-weight-bold text-dark text-left w-100 pl-0 pr-0" data-toggle="collapse" data-target="#collapseThree"> How can we help you Lorem ipsum? <i class="fa fa-plus pull-right"></i></button>
                                         </h2>
                                     </div>
                                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                                         <div class="card-body">
-                                            <p>CSS stands for Cascading Style Sheet. CSS allows you to specify various style properties for a given HTML element such as colors, backgrounds, fonts etc. <a href="https://www.tutorialrepublic.com/css-tutorial/" target="_blank">Learn more.</a></p>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae tincidunt diam. Pellentesque tincidunt velit quam. Proin venenatis eget nibh vel scelerisque. Donec vulputate, augue nec rutrum aliquet, diam odio rhoncus augue, ut sollicitudin nulla eros nec orci. Duis quis diam interdum neque fringilla porttitor blandit vitae eros. Duis luctus, ante sed dignissim pharetra, ante quam fermentum tellus, id vehicula magna nulla id magna. Fusce sit amet viverra tellus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card border-0">
+                                    <div class="card-header bg-white" id="headingThree">
+                                        <h2 class="mb-0">
+                                            <button type="button" class="btn btn-link font-weight-bold text-dark text-left w-100 pl-0 pr-0" data-toggle="collapse" data-target="#collapseFour"> How can we help you Lorem ipsum? <i class="fa fa-plus pull-right"></i></button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae tincidunt diam. Pellentesque tincidunt velit quam. Proin venenatis eget nibh vel scelerisque. Donec vulputate, augue nec rutrum aliquet, diam odio rhoncus augue, ut sollicitudin nulla eros nec orci. Duis quis diam interdum neque fringilla porttitor blandit vitae eros. Duis luctus, ante sed dignissim pharetra, ante quam fermentum tellus, id vehicula magna nulla id magna. Fusce sit amet viverra tellus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card border-0">
+                                    <div class="card-header bg-white" id="headingThree">
+                                        <h2 class="mb-0">
+                                            <button type="button" class="btn btn-link font-weight-bold text-dark text-left w-100 pl-0 pr-0" data-toggle="collapse" data-target="#collapseFive">How can we help you Lorem ipsum? <i class="fa fa-plus pull-right"></i></button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae tincidunt diam. Pellentesque tincidunt velit quam. Proin venenatis eget nibh vel scelerisque. Donec vulputate, augue nec rutrum aliquet, diam odio rhoncus augue, ut sollicitudin nulla eros nec orci. Duis quis diam interdum neque fringilla porttitor blandit vitae eros. Duis luctus, ante sed dignissim pharetra, ante quam fermentum tellus, id vehicula magna nulla id magna. Fusce sit amet viverra tellus.</p>
                                         </div>
                                     </div>
                                 </div>

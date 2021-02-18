@@ -1,7 +1,7 @@
 import React from "react";
-import Navbar from "../../../components/profileview/Navbar";
+import Navbar from "../../../components/Navbar";
 import "./SignIn.css";
-import ToggleButton from "./ToggleButton";
+// import ToggleButton from "./ToggleButton";
 import SiSoHero from "../../../components/SiSoHero";
 import loginimage from "../../../assets/LoginImage.png";
 import AvatarImage from "../../../../src/AvatarImage.png";
@@ -57,7 +57,7 @@ function SignIn() {
               <div className="sign-up-btn  pl-3 pr-3 pb-3">
               <div class="pull-right">
                 <img src={LOCKER} alt="" className="pr-1"/>
-              
+
                  <a href="#" data-target="#pwdModal" data-toggle="modal">Forgot your password? </a>
                 </div>
                 <div class="checkbox pt-3">

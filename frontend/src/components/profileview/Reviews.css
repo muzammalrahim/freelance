@@ -1,24 +1,63 @@
-.Reviews {
-  margin-top: 30px;
-  border-radius: 0px;
+.Reviews{
+    margin-top: 30px;
+border-radius: 0px;
 }
-.Reviews .reviews-header {
-  font-family: Poppins;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 24px;
-  letter-spacing: 0px;
+.Reviews .reviews-header{
+    font-family: Poppins;
+font-size: 18px;
+font-weight: 600;
+line-height: 24px;
+letter-spacing: 0px;
+
 }
-.Reviews .col-md-6 {
-  font-family: Poppins;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 24px;
+.Reviews .col-md-6{
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
 }
-.Reviews .col-md-12 {
-  font-family: Poppins;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0px;
+.Reviews .col-md-12{
+    font-family: Poppins;
+font-size: 12px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0px;
+
+
+}
+/* .Reviews p{
+    padding: 0% 0px 0px 1%;
+    font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 24px;
+color: #6B6B6A;
+}
+.ANN {
+    background: #FFFFFF;
+    padding: 4% 3%;
+}
+.ANN h{
+    margin:2%;
+    font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 24px;
+color: #6B6B6A;
+}
+.ANN p{
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 24px;
+color: #6B6B6A;
+padding: 2px;
+}
+.btn-load{
+   
+    text-align: center;
+
 }

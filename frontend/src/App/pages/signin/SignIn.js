@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../../../components/Navbar";
 import SiSoHero from "../../../components/SiSoHero";
 import "./SignIn.css";
-import ToggleButton from "./ToggleButton";
+// import ToggleButton from "./ToggleButton";
 import AvatarImage from "../../../../src/AvatarImage.png";
 import loginimage from "../../../assets/LoginImage.png";
 import  Alert from '../../../App/pages/signin/Alert';

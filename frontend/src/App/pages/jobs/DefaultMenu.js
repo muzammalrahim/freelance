@@ -1,7 +1,7 @@
 import React from 'react'
 import { MenuItems,AccountSettingMenuItems } from "./MenuItems";
 import './defaultmenu.css';
-import AvatarImage from '../../../../src/AvatarImage.png';
+import AvatarImage1 from '../../../../src/AvatarImage1.png';
 
 
 
@@ -9,12 +9,16 @@ import AvatarImage from '../../../../src/AvatarImage.png';
 
 function DefaultMenu(props) {
     return (
+      
       <nav className="navbar navbar-expand-md">
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <div className="row default-menu">
+          <div className="container">
+          <div className="col-md-8 pl-0">
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
             </button>
             <div id="navbarCollapse" class="collapse navbar-collapse">
-              <ul className='default-menu nav navbar-nav'>
+              <ul className='default-menu-left nav navbar-nav'>
                   
               
                   { props.value===2 ?  AccountSettingMenuItems.map((item, index)=>{
@@ -40,33 +44,36 @@ function DefaultMenu(props) {
            
                   
               </ul>
-              <ul class="nav navbar-nav ml-auto">
+        </div>
+        </div>
+        <div className="col-md-4 p-0">
+        <ul class="nav navbar-nav ml-auto">
                 <li>
                 <div>
-                  <a href="#" class="notification">
-                    <span><i class="fas fa-bell"></i>15</span>
+                  <a href="#" className="notification">
+                    <span><i className="fas fa-bell"></i>15</span>
                     {/* <span class="badge">15</span> */}
                   </a>
                 </div>
                 </li>
                 <li>
-                <div className='avatar-user' style={{backgroundImage: `url(${AvatarImage})`}}>
+                <div className='avatar-user1' style={{backgroundImage: `url(${AvatarImage1})`}}>
                       
                 </div>
                 </li>
-                <li class="nav-item dropdown">
-                   
+                <li class="nav-item dropdown"> 
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pixelz Warrios</a>
                     <div class="dropdown-menu dropdown-menu-right dropdown">
-                        <a href="#" class="dropdown-item"data-toggle="dropdown2">Status</a>
-                          <div class="dropdown-menu sub-menu dropdown2">
-                            
-
+                        <a href="#" class="dropdown-item"data-toggle="dropdown">Status
+                          <div class="dropdown-menu sub-menu dropdown">
+                            <select>
+                              <option value="1">One</option>
+                              <option value="2">Two</option>
+                            </select>
                             <a href="#" class="dropdown-item">View Profile</a>
                             <a href="#" class="dropdown-item">Account Settings</a>
-                            
-                            
                           </div>
+                        </a>
                         <a href="#" class="dropdown-item">View Profile</a>
                         <a href="#" class="dropdown-item">Account Settings</a>
                         {/* <div class="dropdown-divider"></div> */}
@@ -76,9 +83,12 @@ function DefaultMenu(props) {
                 <li>
                 </li>
             </ul>
-            </div>
+          </div>
+          </div>     
+        </div>
             
       </nav>
+      
      
     )
 }

@@ -13,7 +13,7 @@ export function Education(props) {
           <div className="col-md-6">
             
               <h> Education </h>
-          
+
           </div>
           <div className="col-md-6 pr-4">
             <button

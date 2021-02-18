@@ -61,27 +61,42 @@ class GetDate extends React.Component {
 
              
 			<div  id="container">
-            <p className="heading_style2">Expire Date</p>
-                <div className="dis_Flex">
-				<div className="mr1">
-					
-					<select className="selectcss" placeholder="Month" value={this.state.selectedMonth} onChange={this.changeMonth}>
-						<option style={{textAlign:"center"}}>Month</option>
-						{this.state.date.map((e, key) => {
-							return <option key={key}>{e.month}</option>;
-						})}
-					</select>
+				<form>
+				<div class="form-row">
+				
+				<div class="form-group col-md-4">
+				  <label className="heading_style2" for="inputState">State</label>
+				  
+				  <select id="inputState" placeholder="Month" class="form-control"
+				  value={this.state.selectedMonth} onChange={this.changeMonth}>
+					<option selected>Month</option>
+					{this.state.date.map((e, key) => {
+						return <option key={key}>{e.month}</option>;
+					})}
+				  </select>
 				</div>
 				
-				<div className="mr1">
-                        <select className="selectcss" placeholder="Year" value={this.state.selectedYear} onChange={this.changeYear}>
-                        <option style={{textAlign:"center"}}>Year</option>
-                        {this.state.date2.map((e, key) => {
-                            return <option key={key}>{e.year}</option>;
-                        })}
-                    </select>
-                </div>
-                </div>
+				<div class="form-group col-md-4 ">
+		
+				<label className="heading_style2 pt-3" for=""></label>
+				  <select id="inputState" placeholder="Year" class="form-control"
+				  value={this.state.selectedYear} onChange={this.changeYear}>
+					<option selected>Year</option>
+					{this.state.date2.map((e, key) => {
+						return <option key={key}>{e.year}</option>;
+					})}
+				  </select>
+				</div>
+				
+				
+				<div class="form-group col-md-4">
+				  <label className="heading_style2" for="inputZip">CVV</label>
+				  <input type="text" class="form-control" id=""/>
+				</div>
+			  </div>
+			  </form>
+
+
 			</div>
 		)
 	}
