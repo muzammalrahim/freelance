@@ -33,19 +33,19 @@ color: #000000;
 
 .user-logo {
     position: absolute;
-    right: 60px;
+    right: 160px;
     top: 27px;
 }
 
-.user-logo a{
+.user-logos a{
   font-size: 14px;
     line-height: 20px;
     font-family: 'Poppins';
     color: #6B6B6A;
     position: absolute;
-    right: 125.43px;
+    right: 172.43px;
     height: 40px;
-    font-weight: 400;
+    font-weight: bold;
     width: 144px;
     top: 8px;
 }

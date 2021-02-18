@@ -14,7 +14,7 @@ export function PortFolio(props) {
           </div>
           <div class="col-md-6 pr-4">
             <Link to="/addportfolio">
-              <button type="button" class="btn btn-primary btn-sm pull-right">
+              <button type="button" class="btn btn-primary btn-sm float-right">
                 +ADD
               </button>
             </Link>

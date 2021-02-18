@@ -9,7 +9,7 @@ function BioGraphy() {
             <h>Personal Profile</h>
           </div>
           <div class="col-md-6 pr-4">
-            <button type="button" class="btn btn-primary btn-sm pull-right">
+            <button type="button" class="btn btn-primary btn-sm float-right">
               EDIT
             </button>
           </div>

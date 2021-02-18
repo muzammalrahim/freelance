@@ -9,16 +9,13 @@ import Reviews from "./Reviews";
 import Certificate from "./Certifcate";
 import Experience from "./Experience";
 import Education from "./Education";
-
+import Header from '../header/Header'
 function Profileview() {
   return (
     <>
       <div className="main-profile-page">
-        <div className="post">
-          <Navbar value="Post a Project" className="btn-project" />
-        </div>
         <div className="design">
-          <Menuebar />
+         <Header/>
         </div>
         <div className="p1">
           <div className="container">

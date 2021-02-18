@@ -16,7 +16,7 @@ function Experience() {
           <div class="col-md-6 pr-4">
             <button
               type="button"
-              class="btn btn-primary btn-sm pull-right"
+              class="btn btn-primary btn-sm float-right"
               onClick={handleShow}
             >
               +ADD
@@ -32,14 +32,9 @@ function Experience() {
                 <p>Add Work Experience</p>
                 </div>
                 <div class="col-md-6">
-                <i class="fas fa-times pull-right" onClick={handleClose}></i>
+                <i class="fas fa-times float-right" onClick={handleClose}></i>
                 </div>
               </div>
-
-              {/* <div class="form-header pt-4 pb-3">
-                <p>Add Work Experience</p>
-                <i class="fas fa-times" onClick={handleClose}></i>
-              </div> */}
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputtext">Company</label>
@@ -145,7 +140,7 @@ function Experience() {
               </div>
               <div class="form-row">
                 <div class="col-md-6 pb-5 pt-4">
-                  <a href="#" class="pull-right" onClick={handleClose}>
+                  <a href="#" class="float-right" onClick={handleClose}>
                     Cancel
                   </a>
                   </div>
@@ -167,7 +162,7 @@ function Experience() {
               </div>
               <div class="col-md-4 pr-4">
               <a href="#">
-                  <i class="fas fa-trash pull-right"></i>
+                  <i class="fas fa-trash float-right"></i>
                 </a>
               </div>
               <div class="col-md-7 pb-2">

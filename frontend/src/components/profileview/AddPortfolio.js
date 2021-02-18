@@ -1,16 +1,12 @@
 import React from "react";
 import './addportfolio.css'
-import Navbar from "../Navbar";
-import Menuebar from "./Menuebar";
 import { Link } from  'react-router-dom';
+import Header from '../header/Header'
 const AddPortfolio = () => {
   return (
     <div className="add-portfolio">
-      <div className="post">
-        <Navbar value="Post a Project" className="btn-project" />
-      </div>
       <div className="design">
-        <Menuebar />
+        <Header/>
       </div>
       <div className="addportfolio-box pb-5">
 
@@ -71,7 +67,7 @@ const AddPortfolio = () => {
                   <div className="col-md-6">
                     <Link to="/PortfolioDetails">
                    
-                  <button type="button" className="btn btn-primary pull-right" >Next Step</button>
+                  <button type="button" className="btn btn-primary float-right" >Next Step</button>
                   </Link>
                   </div>
               </div>

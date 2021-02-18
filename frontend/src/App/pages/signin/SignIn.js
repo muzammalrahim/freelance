@@ -1,5 +1,6 @@
 import React from "react";
-import Navbar from "../../../components/Navbar";
+import Navbar from '../../../components/header/Navbar'
+// import Navbar from '../../../components/Navbar'
 import SiSoHero from "../../../components/SiSoHero";
 import "./SignIn.css";
 // import ToggleButton from "./ToggleButton";
@@ -12,10 +13,10 @@ function SignIn() {
 
   
   return (
-    <div className="SignUp-flex-container">
+    <div className="SignIn-flex-container">
       <div className="si-container">
     
-        <Navbar text="Already A Member?" value="Log In" />
+        <Navbar text="Already A Member?" value="Log In" class="pl-5"/>
       </div>
       <div>
         <SiSoHero />
@@ -26,12 +27,12 @@ function SignIn() {
           <div class="row">
             <div className="col-md-6 align-self-center bg-white offset-md-3">
               <div className="text-content">
-                <div className="welcome-text pt-3 pl-3 pull-left">
-                  <h5>Welcome!</h5>
-                  <h6>Sign up to continue</h6>
+                <div className="welcome-text pt-3 pl-3 float-left ">
+                  <h5 className="text-light">Welcome!</h5>
+                  <h6 className="text-light">Sign up to continue</h6>
                 </div>
 
-                <div class="pull-right">
+                <div class="float-right">
                   <img src={loginimage} alt="/" />
                 </div>
               </div>
@@ -89,7 +90,7 @@ function SignIn() {
                 <div className="pt-1 pb-4">
                   <button type="button" class="btn btn-primary btn-block">
                     Signup with
-                    <span class="pl-2  font-weight-bold">
+                    <span class="pl-2">
                       Linked <i class="fab fa-linkedin pl-1"></i>
                     </span>
                   </button>
