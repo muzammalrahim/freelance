@@ -8,17 +8,17 @@ export function Education(props) {
 
   return (
     <div className="EDUC">
-      <div class="container bg-white">
-        <div class="row pt-4 pb-3 pl-3 pb-5">
-          <div class="col-md-6">
+      <div className="container bg-white">
+        <div className="row pt-4 pb-3 pl-3 pb-5">
+          <div className="col-md-6">
             
               <h> Education </h>
           
           </div>
-          <div class="col-md-6 pr-4">
+          <div className="col-md-6 pr-4">
             <button
               type="button"
-              class="btn btn-primary btn-sm pull-right"
+              className="btn btn-primary btn-sm pull-right"
               onClick={handleShow}
             >
               +ADD
@@ -27,22 +27,22 @@ export function Education(props) {
         </div>
 
         <Modal show={show}>
-          <div class="container">
+          <div className="container">
             <form>
 
-            <div class="row pt-4 pb-3">
-              <div class="form-header col-md-6 ">
+            <div className="row pt-4 pb-3">
+              <div className="form-header col-md-6 ">
                 <p>Add Education Information</p>
                 </div>
-                <div class="col-md-6">
-                <i class="fas fa-times pull-right" onClick={handleClose}></i>
+                <div className="col-md-6">
+                <i className="fas fa-times pull-right" onClick={handleClose}></i>
                 </div>
               </div>
               
-              <div class="form-row">
-                <div class="form-group col-md-6">
+              <div className="form-row">
+                <div className="form-group col-md-6">
                   <label for="inputState">Country</label>
-                  <select id="inputState" class="form-control">
+                  <select id="inputState" className="form-control">
                     <option selected>Select Country</option>
                     <option>Doha</option>
                     <option>Manila</option>
@@ -50,20 +50,20 @@ export function Education(props) {
                     <option>Manila</option>
                   </select>
                 </div>
-                <div class="form-group col-md-6">
+                <div className="form-group col-md-6">
                   <label for="inputtext">University</label>
                   <input
                     type="email"
-                    class="form-control"
+                    className="form-control"
                     id="inputtext"
                     placeholder="Enter university"
                   />
                 </div>
               </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
+              <div className="form-row">
+                <div className="form-group col-md-6">
                   <label for="inputState">Period</label>
-                  <select id="inputState" class="form-control">
+                  <select id="inputState" className="form-control">
                     <option selected>Year from</option>
                     <option>january</option>
                     <option>february</option>
@@ -71,8 +71,8 @@ export function Education(props) {
                     <option>April</option>
                   </select>
                 </div>
-                <div class="form-group col-md-6 pt-4">
-                  <select id="inputState" class="form-control">
+                <div className="form-group col-md-6 pt-4">
+                  <select id="inputState" className="form-control">
                     <option selected>Year to</option>
                     <option>2020</option>
                     <option>2019</option>
@@ -81,10 +81,10 @@ export function Education(props) {
                   </select>
                 </div>
               </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
+              <div className="form-row">
+                <div className="form-group col-md-6">
                   <label for="inputState">Degree</label>
-                  <select id="inputState" class="form-control">
+                  <select id="inputState" className="form-control">
                     <option selected>e.g. Engineering</option>
                     <option>january</option>
                     <option>february</option>
@@ -93,14 +93,14 @@ export function Education(props) {
                   </select>
                 </div>
               </div>
-              <div class="form-row">
-                <div class="col-md-6 pb-5 pt-4">
-                  <a href="#" class="pull-right" onClick={handleClose}>
+              <div className="form-row">
+                <div className="col-md-6 pb-5 pt-4">
+                  <a href="#" className="pull-right" onClick={handleClose}>
                     Cancel
                   </a>
                   </div>
-                  <div class="col-md-6 pb-5 pt-3">
-                  <button type="button" class="form-btn btn btn-warning">
+                  <div className="col-md-6 pb-5 pt-3">
+                  <button type="button" className="form-btn btn btn-warning">
                     Save
                   </button>
                   </div>
@@ -110,33 +110,33 @@ export function Education(props) {
         </Modal>
 
         <div>
-          <div class="container">
-            <div class="row pb-3">
-            <div class="col-md-9">
+          <div className="container">
+            <div className="row pb-3">
+            <div className="col-md-9">
                   <h>Engineering in science | Oxford Universal College</h>
                   </div>
-                  <div class="col-md-3">
+                  <div className="col-md-3">
                   <a href="">
-                    <i class="fas fa-trash pull-right"></i>
+                    <i className="fas fa-trash pull-right"></i>
                   </a>
                   </div>
 
-                  <div class="col-md-8">
+                  <div className="col-md-8">
                 <h>20 Aug 2018 to 14 feb 2020</h>
               </div>
 
             </div>
-            <div class="row pb-3">
-              <div class="col-md-9">
+            <div className="row pb-3">
+              <div className="col-md-9">
               
                   <h>Engineering in science | Oxford Universal College</h>
                   </div>
-                  <div class="col-md-3">
+                  <div className="col-md-3">
                   <a href="">
-                    <i class="fas fa-trash pull-right"></i>
+                    <i className="fas fa-trash pull-right"></i>
                   </a>
                   </div>
-                  <div class="col-md-8">
+                  <div className="col-md-8">
                   <h>20 Aug 2018 to 14 feb 2020</h>
                 </div>
             </div>

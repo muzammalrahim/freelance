@@ -5,7 +5,7 @@
   color: #fff;
   background-color: #ee9821;
 }
-.input-group input {
+.input-group .form-control{
   height: 80px;
   border-radius: none;
 }
@@ -77,4 +77,44 @@
   font-weight: 400;
   line-height: 28px;
   letter-spacing: 0px;
+}
+@media screen and (max-width: 1000px) {
+  .alert-img-wrap img {
+    position: absolute;
+    width: 100%;
+    top: -155px;
+    width: 240px;
+  }
+  .alert-front-img img{
+    position: absolute;
+    width: 84%;
+    top: -449px;
+  }
+    .drop-img{
+      position: absolute;
+    top: 485px;
+    width: 48px;
+    left: 32px;
+    }
+    .alert-page .h4, h4 {
+      font-size: 1.3rem;
+  } 
+    .alert-page-text{
+      top: -55px;
+    left: -15px;
+    }
+    .alert-pages{
+      top: -58px;
+    left: 33px;
+    }
+    .al-picture-email {
+      position: relative;
+      top: -436px;
+      left: 291px;
+      width: 54px;
+      height: 56px;
+      border-radius: 70px;
+      text-align: center;
+      background: linear-gradient(141.82deg, #fad961 13.67%, #f76b1c 84.68%);
+    }
 }

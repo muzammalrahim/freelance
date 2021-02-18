@@ -24,9 +24,9 @@ return (
     <>
     <Router>
     <Switch>
-         <Route path='/' exact component={SignIn}/>
-         <Route exact path='/faq' component={faq}/>
-         <Route path='/SignIn' exact component={SignIn}/>
+        <Route path='/' exact component={SignIn}/>
+        <Route exact path='/faq' component={faq}/>
+        <Route path='/SignIn' exact component={SignIn}/>
         <Route path='/signup' exact component={signuppage}/>
         <Route path='/Accounttype' exact component={AccountType}/>
         <Route path='/PersonalProfile' exact component={PersonalProfile}/>
@@ -43,13 +43,11 @@ return (
         <Route path='/Jobs' exact component={Jobs}/>
         <Route path='/JobDetail' exact component={JobDetail}/>
         <Route path='/registrationprocess' exact component={Root}/>
-
         <Route component={NotFound} />
       </Switch>
       </Router>
     </>    
   );
 }
-
 export default App;
 

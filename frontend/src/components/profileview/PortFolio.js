@@ -7,14 +7,14 @@ import { Link } from "react-router-dom";
 export function PortFolio(props) {
   return (
     <div className="Portfol">
-      <div class="container bg-white">
-        <div class="row pt-4 pb-3 pl-3">
-          <div class="col-md-6">
+      <div className="container bg-white">
+        <div className="row pt-4 pb-3 pl-3">
+          <div className="col-md-6">
               <h> Portfolio </h>
           </div>
-          <div class="col-md-6 pr-4">
+          <div className="col-md-6 pr-4">
             <Link to="/addportfolio">
-              <button type="button" class="btn btn-primary btn-sm pull-right">
+              <button type="button" className="btn btn-primary btn-sm pull-right">
                 +ADD
               </button>
             </Link>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const PortfolioDetails = (props) => {
   return (
     <div className="ap-detail">
-      <div className="ap-detail-box pb-5 pt-5">
+      <div className="ap-detail-box pb-5">
         <div className="container">
           <div className="row bg-white">
             <div className="col-md-9 pt-4">
@@ -34,18 +34,18 @@ const PortfolioDetails = (props) => {
               </div>
               <div className="row pl-3">
                 <div className="col-md-6">
-                  <Multiselect/>
+                  <Multiselect value="Work Platform"/>
                 </div>
                 <div className="col-md-6">
-                <Multiselect />
+                <Multiselect  value="Deliverables in"/>
                 </div>
               </div>
               <div className="row pt-4 pl-3">
                 <div className="col-md-6">
-                  <Multiselect />
+                  <Multiselect  value="Skills"/>
                 </div>
                 <div className="col-md-6">
-                <Multiselect />
+                <Multiselect  value="Business Size"/>
                 </div>
               </div>
 

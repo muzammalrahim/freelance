@@ -7,14 +7,14 @@ import Display from "../../assets/Display.png";
 function Card() {
   return (
     <div className="CarD ">
-      <div class="container">
-        <div class="row bg-white">
-         <div class="col-md-12">
+      <div className="container">
+        <div className="row bg-white">
+         <div className="col-md-12">
 
         
       
-      <div class="profile pt-3">
-        <img src={Status} class="pb-2"/>
+      <div className="profile pt-3">
+        <img src={Status} className="pb-2"/>
         <p>Pixelz Warrios</p>
         <h6>UI/UX Designer</h6>
       </div>

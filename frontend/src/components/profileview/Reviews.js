@@ -6,22 +6,22 @@ import Button from "../Button";
 export function Reviews(props) {
   return (
     <div className="Reviews">
-      <div class="container bg-white">
-        <div class="row pt-4 pb-3 pl-3">
-          <div class="col-md-12">
-            <div class="font-weight-bold">
+      <div className="container bg-white">
+        <div className="row pt-4 pb-3 pl-3">
+          <div className="col-md-12">
+            <div className="font-weight-bold">
               <h className="reviews-header">Reviews & Rating</h>
             </div>
           </div>
         </div>  
-        <div class="container">
-          <div class="row pb-3">
-            <div class="col-md-6 pb-3">
+        <div className="container">
+          <div className="row pb-3">
+            <div className="col-md-6 pb-3">
               <img src={Stanton} alt="/" />
-              <h class="pl-3"> Ann Stanton </h>
+              <h className="pl-3"> Ann Stanton </h>
             </div>
-            <div class="col-md-6"></div>
-            <div class="col-md-12">
+            <div className="col-md-6"></div>
+            <div className="col-md-12">
               <p>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
@@ -31,13 +31,13 @@ export function Reviews(props) {
               </p>
             </div>
           </div>
-          <div class="row pb-3">
-            <div class="col-md-6 pb-3">
+          <div className="row pb-3">
+            <div className="col-md-6 pb-3">
               <img src={Cooper} alt="/"/>
-              <h class="pl-3"> Cooper Dokidis </h>
+              <h className="pl-3"> Cooper Dokidis </h>
             </div>
-            <div class="col-md-6"></div>
-            <div class="col-md-12">
+            <div className="col-md-6"></div>
+            <div className="col-md-12">
               <p>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
@@ -47,8 +47,8 @@ export function Reviews(props) {
               </p>
             </div>
           </div>
-          <div class="row pl-3 pb-4">
-            <div class="col-md-12 offset-md-3">
+          <div className="row pl-3 pb-4">
+            <div className="col-md-12 offset-md-3">
               <div className="btn-load">
                 <Button buttonStyle="btn--load" value="LOAD MORE" />
               </div>

@@ -1,10 +1,49 @@
-.mulitslect-heading{
-    font-family: Poppins;
-font-size: 12px;
-font-style: normal;
-font-weight: 500;
-line-height: 20px;
-letter-spacing: 0em;
-text-align: left;
-color: #6B6B6A;
+.mulitslect-heading {
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #6b6b6a;
+}
+.multiselect h3 {
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+.multislect-test {
+  width: 100%;
+}
+.multislect-option {
+  width: auto !important;
+  float: left;
+  display: block;
+  background: "#61C1B8",
+}
+.multislect-item {
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0px;
+  text-align: left;
+  padding: 5px 0px;
+  float: left;
+}
+.mulitslect-value-btn {
+  cursor: pointer;
+  float: left;
+  padding: 0px 4px !important;
+  margin: 7px 3px !important;
+  background: #fff;
+  font-size: 12px;
+  border-radius: 50%;
+  color: #61c1b8;
 }

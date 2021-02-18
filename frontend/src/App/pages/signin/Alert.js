@@ -19,7 +19,7 @@ const Alert = () => {
               <div class="alert-page-picutre">
                 <div class="container">
                   <div class="row pl-3 pr-2">
-                    <div class="col-md-8 col-sm-8 pl-5">
+                    <div class="alert-page-text col-md-8 col-sm-8 pl-5">
                       <a href="">
                         <h4>New Job Alert!</h4>
                       </a>
@@ -33,7 +33,7 @@ const Alert = () => {
                     <div class="drop-img col-md-2 col-sm-2">
                       <img src={Dropdrop} alt="/" class="pt-3" />
                     </div>
-                    <div class="col-md-9 col-sm-9 pt-3 pr-3">
+                    <div class="alert-pages col-md-9 col-sm-9 pt-3 pr-3">
                       <a href=""> DropDrop is hiring Marketing Manager!</a>
                     </div>
                   </div>
