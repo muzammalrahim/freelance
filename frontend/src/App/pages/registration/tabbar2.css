@@ -28,9 +28,10 @@
     color: rgb(115 115 115);
     background: #ffffff;
     border :1px solid #6B6B6A;
-    border-radius: 25px;
+    border-radius: 70%;
     border: 1px solid;
     height: 40px;
+
 }
 .tabbar .Buttoncls:focus,
 .tabbar .Buttoncls:hover {
@@ -58,15 +59,15 @@
 .tabbar .line{
 width: 0px;
 left: 72px;
-border: 1px dashed #a0a0a0;
+border-left: 1.5px dashed #a0a0a0;
 height: 40px;
 margin-left: 21px;
 }
 .Tab.is-active .line{
-border: 1px dashed #EE9821;
+border: 2px dashed #EE9821;
 }
 .tabbar .lineActive{
-border: 1px dashed #EE9821;
+border-left: 1px dashed #EE9821;
 }
 
 .but{
@@ -79,11 +80,12 @@ border: 1px dashed #EE9821;
 .tabbar .text2{
   font-family: Poppins;
   line-height: 20px;
-  color: #6B6B6A;
   margin: 3%;
-  font-weight: 600;
-  font-size: 16px;
-  padding-left: 1%;
+  padding-left: 1%; 
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+color: #6B6B6A;
 }
 
 .tabbar .tb_nextButton{

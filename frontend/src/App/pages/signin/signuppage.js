@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../../../components/Navbar";
 import "./SignIn.css";
+import './signuppage.css'
 // import ToggleButton from "./ToggleButton";
 import SiSoHero from "../../../components/SiSoHero";
 import loginimage from "../../../assets/LoginImage.png";
@@ -18,16 +19,16 @@ function SignIn() {
         <SiSoHero />
       </div>
       <div class="main-bg">
-        <div class="container">
+        <div class="container"> 
           <div class="row">
             <div className="col-md-6 align-self-center bg-white offset-md-3">
             <div className="text-content">
-                <div className="welcome-text pt-3 pl-3 pull-left">
-                  <h5>Welcome!</h5>
-                  <h6>Sign up to continue</h6>
+            <div className="welcome-text pt-3 pl-3 float-left ">
+                  <h5 className="text-light">Welcome!</h5>
+                  <h6 className="text-light">Sign up to continue</h6>
                 </div>
 
-                <div class="pull-right">
+                <div class="float-right">
                   <img src={loginimage} alt="/" />
                 </div>
               </div>
@@ -55,7 +56,7 @@ function SignIn() {
                 </form>
               </div>
               <div className="sign-up-btn  pl-3 pr-3 pb-3">
-              <div class="pull-right">
+              <div class="float-right">
                 <img src={LOCKER} alt="" className="pr-1"/>
 
                  <a href="#" data-target="#pwdModal" data-toggle="modal">Forgot your password? </a>
@@ -76,7 +77,7 @@ function SignIn() {
                 <div className="pt-1 pb-4">
                   <button type="button" class="btn btn-primary btn-block">
                     Signup with
-                    <span class="pl-2 font-weight-bold">
+                    <span class="pl-2 ">
                       Linked <i class="fab fa-linkedin pl-1"></i>
                     </span>
                   </button>

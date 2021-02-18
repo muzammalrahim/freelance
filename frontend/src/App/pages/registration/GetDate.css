@@ -1,3 +1,4 @@
+ 
 .selectcss{
     width: 85px;
     height: 36px;
@@ -6,30 +7,15 @@
     border: 1px solid rgba(107, 107, 106, 0.2);
     box-sizing: border-box;
     border-radius: 4px;
-
-    padding-left: 5%;
+.GetDate .paddingTop_year{
+    padding-top: 30px;
 }
 
-.dis_Flex{
-    display: inline-flex;
-}
 
-.mr1{
-    margin-right: 8%
-}
-
-.heading_style2 {
+.GetDate .heading_style2 {
     font-family: 'Poppins';
 font-style: normal;
-font-weight: bold;
+font-weight: normal;
 color: #6B6B6A;
-
+font-size: 12px;
 }
-
-@media screen and (max-width: 991px) {
-    .selectcss{
-        width: auto;
-  }
-}
-
-

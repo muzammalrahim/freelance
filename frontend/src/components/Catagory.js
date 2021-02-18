@@ -22,9 +22,11 @@ class Catagory extends React.Component {
       <p className="txt">Choose Category</p>
       <div className="body">
         <div className="Line">
-        {/* <img src={Plate} alt="Plate"/> */}
-          <input  type="checkbox" onChange={this.handleChange} />
-          <span>Animation</span>
+ 
+        <img src={Plate} alt="Plate"/>
+          {/* <input  type="checkbox" onChange={this.handleChange} /> */}
+          <span>sdff Animation</span>
+ 
         </div>
         <div className="Line1">
         {/* <img src={Plate} alt="Plate"/> */}

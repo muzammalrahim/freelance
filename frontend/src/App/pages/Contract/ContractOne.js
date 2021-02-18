@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ContractNav from "./ContractNav";
 import Navbar from '../jobs/Navbar';
-import DefaultMenu from '../jobs/DefaultMenu';
+import Header from '../../../../src/components/header/Header';
 import "../../../assets/css/custom.css";
 import ContractView  from "./ContractView"
 import Button from '@material-ui/core/Button';
@@ -16,12 +16,7 @@ export default class ContractOne extends Component {
             <div className="contract-pg1">
                 {/* top header */}
                 <div className="top-area">
-                    <div className='si-container'>
-                        <Navbar text="" value="Post a Project" /> 
-                    </div> 
-                    <div className='default-menu '>
-                        <DefaultMenu />
-                    </div>
+                    <Header />
                 </div>
                 {/* top header */}
                 <div className="contractone-main">

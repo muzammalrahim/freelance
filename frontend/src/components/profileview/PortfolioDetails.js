@@ -66,7 +66,7 @@ const PortfolioDetails = (props) => {
                   </div>
                   <div className="col-md-6">
                     <Link to="/DetailsPreview">
-                  <button type="button" className="btn btn-primary pull-right">NEXT STEP</button>
+                  <button type="button" className="btn btn-primary float-right">NEXT STEP</button>
                   </Link>
                   </div>
               </div>

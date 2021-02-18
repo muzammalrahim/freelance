@@ -4,56 +4,49 @@ import img from '../../../img/ImageUpload.png'
 import GetImage from '../registration/GetImage'
 import ResponsiveDialog from "./SubmitBidModal";
 
-export default class Proposal extends Component {
-    render() {
+      
+
+export default function Proposal () {
+    
         return (
             <div className="proposal-details pb-4">
                 <div className="proposal-heading">
                     <h1 className="pt-4 pl-3">Proposal Details</h1> 
                     <ul className="p-3">
-                        <li>
+                        <li className="pb-2">
                             <h3>Proposal Amount</h3>
-                            
-                            
                             <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">0</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"></input>
+                                
+                                <input type="text" class="form-control" placeholder="0"></input>
                                 
                                 <div class="input-group-append">
                                     <span class="input-group-text">SAR</span>
                                 </div>
-                                </div>
-                            
+                            </div>
                         </li>
-                        <li>
+                        <li className="pb-2">
                             <h3>15% service free</h3>
                             <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">0</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"></input>
+                                
+                                <input type="text" class="form-control" placeholder="0"></input>
                                 
                                 <div class="input-group-append">
                                     <span class="input-group-text">SAR</span>
                                 </div>
-                                </div>
+                            </div>
                         </li>
-                        <li>
+                        <li className="pb-2">
                             <h3>Total amount you’ll recieve</h3>
                             <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">0</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"></input>
+                                
+                                <input type="text" class="form-control" placeholder="0"></input>
                                 
                                 <div class="input-group-append">
                                     <span class="input-group-text">SAR</span>
                                 </div>
-                                </div>
+                            </div>
                         </li>
-                        <li>
+                        <li className="pb-2">
                             <h3>Your Proposal</h3>
                             <textarea row="3" placeholder="Text"></textarea>
                         </li>
@@ -65,14 +58,17 @@ export default class Proposal extends Component {
                             
                         </li>
                     </ul>
-                    {/* <button  class="btn btn--yellow btn--medium">Submit a Proposal</button> */}
                     <ResponsiveDialog/>
+                    {/* <button  class="btn btn--yellow btn--medium">Submit a Proposal</button> */}
+                    {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+                        Submit a Proposal
+                    </Button> */}
                 </div>
                 
             </div>
             
         )
-    }
+    
 }
 
 

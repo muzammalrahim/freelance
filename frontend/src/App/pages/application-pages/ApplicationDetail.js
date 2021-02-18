@@ -1,12 +1,14 @@
 import React from 'react'
 import Navbar from '../jobs/Navbar';
-import DefaultMenu from '../jobs/DefaultMenu';
+import Header from '../../../../src/components/header/Header';
 import Sidebar from '../jobs/Sidebar';
 import SearchBar from "../jobs/SearchBar";
 import AvatarImage from '../../../../src/AvatarImage.png';
 import Button from '@material-ui/core/Button';
 import CustomizedRatings from "../jobs/Rating"
 import '../../../assets/css/custom.css'
+import SubmitProposalModal from '../application-pages/SubmitProposalModal'
+import EditProposal from '../application-pages/EditProposal';
 
 
 
@@ -15,22 +17,14 @@ export default function ApplicationDetail() {
         <div className="job-detail application-detail">
             {/* top header */}
             <div className="top-area">
-                <div className='si-container'>
-                    <Navbar text="" value="Post a Project" /> 
-                </div> 
-                <div className='default-menu '>
-                    <DefaultMenu />
-                </div>
+                <Header />
             </div>
             {/* top header */}
             <div className="main-wrapper pt-5">
                 <div className="container">
                     <div className="row details-grid">
-                        <div className="col-md-3">
-                        
-                        </div>
-                        <div className="col-md-9">
-                            <div className="right-side">
+                        <div className="ml-5 mr-5">
+                            <div className="right-side mr- ml-5">
                                 {/*--------- row2 ---------------*/}
                                 {/* <div className="row job"> */}
                                 <div className="job-inner pl-3 pr-3 pt-3 pb-4 row-inner">
@@ -42,7 +36,7 @@ export default function ApplicationDetail() {
                                         </div>
                                     </div>
                                     <div className="col-md-7">
-                                        <div className="content-heading">
+                                        <div className="content-heading pt-1">
                                         <h3>Job title lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</h3>
                                         </div>
                                     </div>
@@ -54,7 +48,7 @@ export default function ApplicationDetail() {
                                     </div>   
                                     {/* title area */}
                                     {/* Tags + Price */}
-                                    <div className="row pt-2">
+                                    <div className="row">
                                         <div className="col-md-1"></div>
                                         <div className="col-md-11">
                                             <ul className="duration">
@@ -87,7 +81,7 @@ export default function ApplicationDetail() {
                                     {/* paragraph */}  
                                     {/* Search Tags */}  
                                     <div className=" search-tags row pt-3">
-                                        <div className="col-md-7">
+                                        <div className="col-md-8">
                                             <ul className="tags">
                                             <li className="pr-3">
                                                 <a className="pl-2 pr-2 pt-1 pb-1" href="#">Design</a>
@@ -103,8 +97,8 @@ export default function ApplicationDetail() {
                                             </li>   
                                             </ul>
                                         </div>
-                                        <div className="col-md-5">
-                                            <div className="job-payment-btn pull-right mb-3">
+                                        <div className="col-md-4">
+                                            <div className="job-payment-btn float-right mb-3">
                                             <button class="btn btn--yellow btn--medium job-button"><i className="fas fa-check mr-2" aria-hidden="true"></i>Payment verification</button>
                                             
                                             </div>
@@ -198,115 +192,51 @@ export default function ApplicationDetail() {
                             
                             {/* required skills */}
 
-                            {/* client history */}
-                            <div className="client-history">
-                                <h3 className="p-3">Client’s History</h3>
-                                <div className="history-inner1 ">
-                                    <div className="row border-bottom">
+                            {/* proposed terms*/}
+                            <div className="proposed-terms bg-white mt-4 p-2 pb-4">
+                                <h3 className="pl-2 pb-3 pt-3">Your proposed terms</h3>
+                                <div className="terms-inner1 ">
+                                    <div className="row border-bottom pl-2 term-description">
                                         <div className="col-md-10">
-                                            <div className="review pl-4">
-                                                <h4 className="pb-2">Job title lorem ipsum lorem ipsum lorem ipsum </h4>
-                                                <p className="mb-3">Expert knowledge and very professional, highly recommended!"</p>
-                                                    <ul className="rating-area">
-                                                        <li>
-                                                        <h5>By<b className="pl-1 pr-3">Maria Bator</b> </h5>
-                                                        </li>
-                                                        <li>
-                                                            <CustomizedRatings/>
-                                                        </li>
-                                                        <li>
-                                                            <h5 className="pl-3"><b>(5 reviews)</b></h5> 
-                                                        </li>
-                                                    </ul>   
-                                                    
-                                            </div>
+                                           <h3 className="pb-1">Hourly Rate</h3> 
+                                           <p>Total amount the client will see<br></br> on your proposal</p>
                                         </div>
                                         <div className="col-md-2">
-                                            <p className="r-price"><b>300 SAR</b><br></br><span>Fixed Price</span></p>
+                                            <h6 className="term-price pr-2 float-right">SAR 35.00/hr</h6>
                                         </div>
                                     </div>
-                                    <div className="row pt-4 border-bottom">
+
+                                    <div className="row border-bottom pl-2 pt-4 term-description">
                                         <div className="col-md-10">
-                                            <div className="review pl-4">
-                                                <h4 className="pb-2">Job title lorem ipsum lorem ipsum lorem ipsum </h4>
-                                                <p className="mb-3">Expert knowledge and very professional, highly recommended!"</p>
-                                                    <ul className="rating-area">
-                                                        <li>
-                                                        <h5>By<b className="pl-1 pr-3">Maria Bator</b> </h5>
-                                                        </li>
-                                                        <li>
-                                                            <CustomizedRatings/>
-                                                        </li>
-                                                        <li>
-                                                            <h5 className="pl-3"><b>(5 reviews)</b></h5> 
-                                                        </li>
-                                                    </ul>   
-                                                    
-                                            </div>
+                                           <h3 className="pb-1">You'll Receive</h3> 
+                                           <p>The estimated amount you'll receive <br></br>after service fees</p>
                                         </div>
                                         <div className="col-md-2">
-                                            <p className="r-price"><b>300 SAR</b><br></br><span>Fixed Price</span></p>
-                                        </div>
-                                    </div>
-                                    <div className="row pt-4 border-bottom">
-                                        <div className="col-md-10">
-                                            <div className="review pl-4">
-                                                <h4 className="pb-2">Job title lorem ipsum lorem ipsum lorem ipsum </h4>
-                                                <p className="mb-3">Expert knowledge and very professional, highly recommended!"</p>
-                                                    <ul className="rating-area">
-                                                        <li>
-                                                        <h5>By<b className="pl-1 pr-3">Maria Bator</b> </h5>
-                                                        </li>
-                                                        <li>
-                                                            <CustomizedRatings/>
-                                                        </li>
-                                                        <li>
-                                                            <h5 className="pl-3"><b>(5 reviews)</b></h5> 
-                                                        </li>
-                                                    </ul>   
-                                                    
-                                            </div>
-                                        </div>
-                                        <div className="col-md-2">
-                                            <p className="r-price"><b>300 SAR</b><br></br><span>Fixed Price</span></p>
-                                        </div>
-                                    </div>
-                                    <div className="row pt-4 pb-3">
-                                        <div className="col-md-10">
-                                            <div className="review pl-4">
-                                                <h4 className="pb-2">Job title lorem ipsum lorem ipsum lorem ipsum </h4>
-                                                <p className="mb-3">Expert knowledge and very professional, highly recommended!"</p>
-                                                    <ul className="rating-area">
-                                                        <li>
-                                                        <h5>By<b className="pl-1 pr-3">Maria Bator</b> </h5>
-                                                        </li>
-                                                        <li>
-                                                            <CustomizedRatings/>
-                                                        </li>
-                                                        <li>
-                                                            <h5 className="pl-3"><b>(5 reviews)</b></h5> 
-                                                        </li>
-                                                    </ul>   
-                                                    
-                                            </div>
-                                        </div>
-                                        <div className="col-md-2">
-                                            <p className="r-price"><b>300 SAR</b><br></br><span>Fixed Price</span></p>
+                                            <h6 className="term-price pr-2 float-right">SAR 28.00/hr</h6>
                                         </div>
                                     </div>
                                     
+                                   
+                                    
                                 </div>
-                                <div className="job-detail-btn">
-                                    <div className="btn1 mb-1">
-                                        <a href="#">View More</a>
-                                    </div>
-                                    <div className="btn2 pb-3">
-                                        <a  href="#">(26 more reviews)</a>
-                                    </div>
+                                <div className="application-detail-btn mt-4 pr-2">
+                                    <ul className="app-detail-btns">
+                                        <li className="edit-detail">
+                                            <EditProposal/>
+                                        </li>
+                                        <li className="proposal-detail">
+                                            
+                                            <SubmitProposalModal/>
+                                        </li>
+                                        
+                                        
+                                        
+                                    </ul>
+                                    
                                     
                                 </div>
                             </div>
-                            {/* client history */}
+                            {/* proposed terms*/}
                         </div>
                   </div> 
                 </div>
