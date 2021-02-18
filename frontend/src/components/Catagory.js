@@ -24,7 +24,7 @@ class Catagory extends React.Component {
         <div className="Line">
         <img src={Plate} alt="Plate"/>
           {/* <input  type="checkbox" onChange={this.handleChange} /> */}
-          <span>Animation</span>
+          <span>sdff Animation</span>
         </div>
         <div className="Line1">
         <img src={Plate} alt="Plate"/>

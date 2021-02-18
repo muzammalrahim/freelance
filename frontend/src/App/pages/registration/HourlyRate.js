@@ -37,7 +37,15 @@ function HourlyRate() {
                          {/*Rc 1_inn*/}
                         <div className="firstTextField">
                             <div className="Rb-1 col-md-8">
-                                <InputField3 heading="Proposal Amount" Placeholder=" 0 " type="number"/> 
+                                
+                                                         <label  className="hr_Para3">Proposal Amount</label>
+                                <div class="form-group input-group mb-3">
+ 
+  <input placeholder="0" type="text" class="form-control form-controlBorderNone" aria-label="Amount (to the nearest dollar)"/>
+  <div class="input-group-append">
+    <span class="input-group-text labelBoderRight hr_Para3">SAR</span>
+  </div>
+</div>
                               
                                 <div> <p className="hr_Para1 pt-3">15% service free</p></div>
                                 <div class="row">
@@ -51,16 +59,14 @@ function HourlyRate() {
                                    </div>
                                      
                                 </div>
-
-                                <div class="input-group mb-3">
-  
-  
-                                <div class="input-group-prepend">
-    <span class="input-group-text labelBoderLeft">0</span>
-  </div>
-  <input type="text" class="form-control form-controlBorderNone" aria-label="Amount (to the nearest dollar)"/>
+                                
+                                
+                                <label  className="hr_Para3">Total amount you’ll recieve</label>
+                                <div class="form-group input-group mb-3">
+ 
+  <input placeholder="0" type="text" class="form-control form-controlBorderNone" aria-label="Amount (to the nearest dollar)"/>
   <div class="input-group-append">
-    <span class="input-group-text labelBoderRight">SAR</span>
+    <span class="input-group-text labelBoderRight hr_Para3">SAR</span>
   </div>
 </div>
                             
@@ -68,14 +74,7 @@ function HourlyRate() {
                         
                         </div>
 
-                         {/*Rc 1_inn*/}
-                        <div className="Rb-1 col-md-8">
-                            <InputField3 heading="Total amount you’ll recieve" Placeholder=" 0 " type="number"/> 
-                            <div className="hourly-text">
-                            <p className="hr_Para2 mt2per p-4">Tuwaiq Freelancer service fees can be charge as 15%</p>
-                            </div>
-                            
-                        </div>
+                    
                         
                      
                          {/*Rc 1_inn*/}

@@ -61,12 +61,14 @@ class GetDate extends React.Component {
 
              
 			<div  id="container">
+				<div className="GetDate">
 				<form>
+	
 				<div class="form-row">
 				
 				<div class="form-group col-md-4">
-				  <label className="heading_style2" for="inputState">State</label>
-				  
+				 
+				<label className="heading_style2" for="inputState">Expire date</label>
 				  <select id="inputState" placeholder="Month" class="form-control"
 				  value={this.state.selectedMonth} onChange={this.changeMonth}>
 					<option selected>Month</option>
@@ -76,9 +78,7 @@ class GetDate extends React.Component {
 				  </select>
 				</div>
 				
-				<div class="form-group col-md-4 ">
-		
-				<label className="heading_style2 pt-3" for=""></label>
+				<div class="form-group col-md-4 paddingTop_year">
 				  <select id="inputState" placeholder="Year" class="form-control"
 				  value={this.state.selectedYear} onChange={this.changeYear}>
 					<option selected>Year</option>
@@ -88,7 +88,6 @@ class GetDate extends React.Component {
 				  </select>
 				</div>
 				
-				
 				<div class="form-group col-md-4">
 				  <label className="heading_style2" for="inputZip">CVV</label>
 				  <input type="text" class="form-control" id=""/>
@@ -96,7 +95,7 @@ class GetDate extends React.Component {
 			  </div>
 			  </form>
 
-
+			  </div>
 			</div>
 		)
 	}

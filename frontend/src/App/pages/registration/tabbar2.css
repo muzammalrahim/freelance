@@ -64,15 +64,15 @@
 .tabbar .line{
 width: 0px;
 left: 72px;
-border: 1px dashed #a0a0a0;
+border-left: 1.5px dashed #a0a0a0;
 height: 40px;
 margin-left: 21px;
 }
 .Tab.is-active .line{
-border: 1px dashed #EE9821;
+border: 2px dashed #EE9821;
 }
 .tabbar .lineActive{
-border: 1px dashed #EE9821;
+border-left: 1px dashed #EE9821;
 }
 
 .but{
