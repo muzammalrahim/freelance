@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ContractNav from "./ContractNav";
-import Navbar from '../jobs/Navbar';
 import Header from '../../../../src/components/header/Header';
 import "../../../assets/css/custom.css";
 import ContractView  from "./ContractView"
@@ -8,6 +7,9 @@ import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import ControlledAccordions from './Accordians'
 import FooterMenu from './FooterMenu';
+import WorkIcon from '@material-ui/icons/Work'
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import WatchLaterIcon from '@material-ui/icons/WatchLater';
 
 
 export default class ContractOne extends Component {
@@ -32,25 +34,31 @@ export default class ContractOne extends Component {
                                         <div className="con-des-area">
                                         <div className="content-heading">
                                             <Avatar className="my-name">OP</Avatar>
-                                            <h3 className="pt-2 pl-2">
-                                            Job title lorem ipsum lorem ipsum lorem ipsum 
+                                            <h3 className="pl-3">
+                                            Job title lorem ipsum lorem ipsum <br></br>lorem ipsum 
                                             </h3>
                                             <Button variant="outlined" color="secondary">View Job</Button> 
                                         </div>
+                                        {/* Tags */}
                                         <div className="row">
-                                            <ul className="duration">
-                                                <li>
-                                                <p><i class="fas fa-lock"></i>Monthly</p>
+                                        <div className="col-md-1"></div>
+                                        <div className="col-md-11">
+                                            <ul className="duration pl-1">
+                                                <li className="pr-3">
+                                                <p className="m-icon"><span className="pr-1"><WorkIcon/></span>Monthly</p>
                                                 </li>
-                                                <li>
-                                                <p><i class="fa fa-calendar-alt"></i>2 months</p>
+                                                <li className="pr-3">
+                                                <p className="m-icon"><span className="pr-1"><CalendarTodayIcon/></span>2 months</p>
                                                 </li>
-                                                <li>
-                                                <p><i class="fas fa-clock"></i>20 min ago</p>
+                                                <li className="pr-3">
+                                                <p className="m-icon"><span className="pr-1"><WatchLaterIcon/></span>20 min ago</p>
                                                 </li>
-                                                
+
                                             </ul>
                                         </div>
+
+                                        </div>
+                                        {/* Tags */}
                                         </div>
                                         
                                         <div className="mile-stones">
