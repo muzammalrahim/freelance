@@ -12,7 +12,12 @@ border: 1px solid rgba(107, 107, 106, 0.2);
 box-sizing: border-box;
 border-radius: 4px;
 font-family: Poppins;
-font-weight: 400;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 20px;
+color: #6B6B6A;
+padding-left: 3px;
 }
 .dropheader{
     position: absolute;
