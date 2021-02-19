@@ -15,6 +15,7 @@ export default function JobDetail() {
     return (
         <div className="job-detail">
             {/* top header */}
+            {/* top header */}
             <div className="top-area">
               <Header />
             </div>
