@@ -4,23 +4,23 @@ import './footermenu.css'
 export default class FooterMenu extends Component {
     render() {
         return (
-            <div className="footer-nav d-flex justify-content-center">
+            <div className="footer-nav">
                 <nav class="navbar">
 
-                    <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Date<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Description</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Amount</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Invoice</a>
-                    </li>
-                    </ul>
+                    <div class=" row footer-navbar">
+                        <div class=" col-md-2">
+                            <a class="" href="#">Date</a>
+                        </div>
+                        <div class=" col-md-4 text-center">
+                            <a class="" href="#">Description</a>
+                        </div>
+                        <div class=" col-md-4 text-center">
+                            <a class="" href="#">Amount</a>
+                        </div>
+                        <div class=" col-md-2">
+                            <a class="float-right" href="#">Invoice</a>
+                        </div>
+                    </div>
                 
                 </nav>
             </div>

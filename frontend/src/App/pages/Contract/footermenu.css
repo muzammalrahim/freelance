@@ -1,8 +1,11 @@
 .footer-nav{
     background: #DDF2F0;
 }
+.row.footer-navbar {
+    width: 100%;
+}
 .footer-nav li.nav-item {
-    padding: 0 78px;
+    display: inline-block;
 }
 .footer-nav li.nav-item a{
     font-size: 14px;
