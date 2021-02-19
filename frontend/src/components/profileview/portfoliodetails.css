@@ -15,6 +15,14 @@
     margin-top: 40px;
 }
 
+.ap-detail .iv_icon2{
+    height: 42px;
+    margin-top: 1.5%;
+    margin-left: 45%;
+box-sizing: border-box;
+background-repeat: no-repeat;}
+
+
 .ap-detail .col-md-12{
     height: 200px;
     border-radius: 4px;

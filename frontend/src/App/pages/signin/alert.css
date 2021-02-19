@@ -1,4 +1,4 @@
-alert-page {
+.alert-page {
   background: #ddf2f0;
 }
 .alert-page .btn-primary {
@@ -49,8 +49,8 @@ alert-page {
 }
 .alert-page-picutre {
   position: absolute;
-  top: -421px;
-  left: -36px;
+  top: -425px;
+    left: -36px;
 }
 .alert-time {
   left: 37px;

@@ -41,27 +41,30 @@ export default function ControlledAccordions() {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <Typography className={classes.heading}>Milestone 1</Typography>
+          <Typography className={classes.heading}><b>Milestone 1</b></Typography>
           <Typography className={classes.secondaryHeading}></Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <div className="row m-info">
-            <div className="col-md-2 ">
-              <div>
-              <Avatar className="my-name">1</Avatar>
+          <div className="container">
+            <div className="row m-info">
+              <div className="col-md-1 pl-0">
+                <div>
+                <Avatar className="my-name">1</Avatar>
+                </div>
               </div>
-            </div>
-            <div className="col-md-8 align-self-center">
-              <div>
-                <h4 className="align-self-center">Wireframes</h4>
+              <div className="col-md-9 align-self-center pt-2 pl-0">
+                <div>
+                  <h4 className="align-self-center">Wireframes</h4>
+                </div>
               </div>
-            </div>
-            <div className="col-md-2 align-self-center">
-              <div>
-                <div className="price-tag">100SAR</div>
+              <div className="col-md-2 align-self-center pr-0">
+                <div>
+                  <div className="price-tag">100SAR</div>
+                </div>
               </div>
-            </div>
-          </div> 
+            </div> 
+          </div>
+          
           
         </AccordionDetails>
         <AccordionDetails>
@@ -111,7 +114,7 @@ export default function ControlledAccordions() {
           aria-controls="panel2bh-content"
           id="panel2bh-header"
         >
-          <Typography className={classes.heading}>Milestone 2</Typography>
+          <Typography className={classes.heading}><b>Milestone 2</b></Typography>
           <Typography className={classes.secondaryHeading}></Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -181,18 +184,18 @@ export default function ControlledAccordions() {
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
-          <Typography className={classes.heading}>Milestone 3</Typography>
+          <Typography className={classes.heading}><b>Milestone 3</b></Typography>
           <Typography className={classes.secondaryHeading}></Typography>
         </AccordionSummary>
         <AccordionDetails>
           <div className="row m-info">
-            <div className="col-md-2 ">
+            <div className="col-md-1">
               <div>
               <Avatar className="my-name">1</Avatar>
               </div>
             </div>
-            <div className="col-md-8 align-self-center">
-              <div>
+            <div className="col-md-9 align-self-center">
+              <div className="c-iner-heading">
                 <h4 className="align-self-center">Wireframes</h4>
               </div>
             </div>

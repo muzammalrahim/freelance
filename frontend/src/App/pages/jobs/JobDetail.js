@@ -5,15 +5,16 @@ import Proposal from './Proposal';
 import AvatarImage from '../../../../src/AvatarImage.png';
 import img from "../../../img/stars1.png"
 import CustomizedRatings from "./Rating"
-
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock, faLock, faCalendar } from '@fortawesome/free-solid-svg-icons';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 
 
 
 export default function JobDetail() {
     return (
         <div className="job-detail">
+            {/* top header */}
             {/* top header */}
             <div className="top-area">
               <Header />
@@ -55,13 +56,13 @@ export default function JobDetail() {
                                         <div className="col-md-11">
                                             <ul className="duration mb-0">
                                                 <li className="pr-3">
-                                                <p><i class="fas fa-lock pr-2"></i>Monthly</p>
+                                                <p><FontAwesomeIcon icon={faLock} size="1x" />Monthly</p>
                                                 </li>
                                                 <li className="pr-3">
-                                                <p><i class="fa fa-calendar-alt pr-2"></i>2 months</p>
+                                                <p><CalendarTodayIcon/>2 months</p>
                                                 </li>
                                                 <li className="pr-3">
-                                                <p><i class="fas fa-clock pr-2"></i>20 min ago</p>
+                                                <p>20 min ago</p>
                                                 </li>
                                                 
                                             </ul>

@@ -1,6 +1,6 @@
 import React from "react";
 import "./alert.css";
-import rectangle from "../../../assets/Rectangle.png";
+import rectangle from "../../../assets/11.png";
 import alertpic from "../../../assets/1-01.png";
 import BG from "../../../assets/BG (1).png";
 import Dropdrop from "../../../assets/Dropdrop.png";
@@ -21,7 +21,7 @@ const Alert = () => {
                   <div class="row pl-3 pr-2">
                     <div class="col-md-8 col-sm-8 pl-5">
                       <a href="">
-                        <h4>New Job Alert!</h4>
+                        <h5>New Job Alert!</h5>
                       </a>
                       <a href="">
                         <h6 class="alert-time pb-3">20 mins ago</h6>

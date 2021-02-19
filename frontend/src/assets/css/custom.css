@@ -18,8 +18,12 @@ h1, h2, h3, h4, h5, h6{
 h3{
     font-size: 16px;
 }
-
-
+/* UI icons common styles */
+.m-icon .MuiSvgIcon-root {
+    font-size: 14px;
+    color: #1da799;
+}
+/* UI icons common styles */
 /*  Submit Bid Modal */
 .avatar-job-detail{
     width: 102px;
@@ -175,7 +179,6 @@ h3{
 .row.m-info h4 {
     font-size: 14px;
     color: #6b6b6a;
-    font-family: 'Poppins';
 }
 .price-tag {
     color: #6b6b6a;
@@ -365,9 +368,10 @@ ul.job-top-area li{
     padding-left: 0;
 }
 .content-heading h3 {
-    font-size: 16px; 
+    font-size: 16px;
     width: 100%;
     color: #6b6b6a;
+    line-height: 24px;
 }
 .fa-icon{
     color: #6B6B6A;
@@ -663,9 +667,14 @@ ul.app-detail-btns li{
 }
 .con-des-area .MuiButton-outlinedSecondary {
     color: #6b6b6a;
-    border: 1px solid rgb(107 107 106);
+    border: 2px solid rgb(107 107 106);
     width: 150px;
     height: 36px;
+}
+.con-des-area .MuiButton-outlinedSecondary:hover {
+    border: 2px solid #ee9821;
+    background-color: rgb(255 255 255);
+    color: #ee9821;
 }
 button.MuiButtonBase-root.MuiButton-root.MuiButton-contained {
     float: right;
@@ -679,9 +688,7 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained {
     display: flex;
     padding: 0 20px;
 }
-.contractone-main  ul.duration {
-    margin: 0 0 0 90px;
-}
+
 .invoice-details h3 {
     font-size: 16px;
     padding: 20px 17px;
@@ -704,6 +711,9 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained {
     background: #6b6b6a;
     padding: 8px 16px;
     color: #ffffff;
+}
+button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
+    background: #ee9821;
 }
 /* Contract View */
 

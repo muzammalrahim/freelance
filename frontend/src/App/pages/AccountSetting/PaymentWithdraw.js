@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import Header from '../../../components/header/Header';
 import './Reports.css';
 import './PaymentWithdraw.css'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLandmark } from '@fortawesome/free-solid-svg-icons';
 class PaymentWithdraw extends Component {
     state = { 
 		
@@ -19,7 +22,6 @@ class PaymentWithdraw extends Component {
         return (
 			console.log("agey",this.state.RadioclassActive),	
         <div>
-		
         <Header/>
             <div class="main-area withdraw">
 		    <div class="container">
@@ -44,17 +46,17 @@ class PaymentWithdraw extends Component {
 		                <div class="pb-3">
 		                	<form>
 		                		 <label for="amount" class="font-weight-bold">Enter Amount</label>
-		                		<div class="form-group payment-input">
+		                		<div class="form-group payment-input col-md-6">
 		                			<input type="text" name="" class="form-control "/>
 		                			<span class="">SAR</span>
 		                		</div>
 		                		<p>Available balance after deducted amount will be <span class="amount font-weight-bold">100 SAR</span></p>
 		                		<label for="exampleInputEmail1" class="font-weight-bold">Select method</label>
 
-		                		<div className={"row border-bottom pb-3 radio-button "+ (this.state.RadioclassActive=== 1 ? 'RadioActiveborder': 'hidden')} onClick={() => this.setState({ RadioclassActive: 1 })}>
+		                		<div className={"row  pb-3 radio-button pt-3 border-bottom "+ (this.state.RadioclassActive=== 1 ? 'RadioActiveborder': 'hidden')} onClick={() => this.setState({ RadioclassActive: 1 })}>
 		                			<div class="col-md-10 col-lg-10 col-sm-12 ">
 		                				<div class="pb-2 pt-2">
-		                					<span ><i class="fas fa-landmark fa-3x"></i></span>
+		                					<span ><FontAwesomeIcon icon={faLandmark} size="3x" /></span>
 		                					<span class="font-weight-bold">Riyad Bank</span>
 		                				</div>
 		                				<p class="font-weight-bold">Driect to local bank (INR) - Account ending in 086</p>
@@ -67,10 +69,10 @@ class PaymentWithdraw extends Component {
 		                			</div>
 		                		</div>
 								
-		                		<div className={"row border-bottom pb-3 radio-button "+ (this.state.RadioclassActive=== 2 ? 'RadioActiveborder': 'hidden')}  onClick={() => this.setState({ RadioclassActive: 2 })}>
+		                		<div className={"row  pb-3 radio-button pt-3 border-bottom "+ (this.state.RadioclassActive=== 2 ? 'RadioActiveborder': 'hidden')}  onClick={() => this.setState({ RadioclassActive: 2 })}>
 		                			<div class="col-md-10 col-lg-10 col-sm-12">
 		                				<div class="pb-2">
-		                					<span ><i class="fas fa-landmark fa-3x"></i></span>
+		                					<span ><FontAwesomeIcon icon={faLandmark} size="3x" /></span>
 		                					<span class="font-weight-bold">Al Rajhi Bank</span>
 		                				</div>
 		                				<p class="font-weight-bold">Driect to local bank (INR) - Account ending in 0676</p>
@@ -81,7 +83,7 @@ class PaymentWithdraw extends Component {
 										</div>
 		                			</div>
 		                		</div>
-		                		<div class="pay-withdraw-button-wrap pull-right" >
+		                		<div class="pay-withdraw-button-wrap pull-right pt-3" >
 		                			<button class="btn text-grey text-uppercase font-weight-bold mr-2" >cancel</button>
 		                			<button class="btn btn-warning text-white text-uppercase font-weight-bold pull-right" >submit</button>
 		                		</div>

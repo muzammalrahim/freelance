@@ -71,9 +71,13 @@ class GetDate extends React.Component {
 				<label className="heading_style2" for="inputState">Expire date</label>
 				  <select id="inputState" placeholder="Month" class="form-control"
 				  value={this.state.selectedMonth} onChange={this.changeMonth}>
+			
 					<option selected>Month</option>
 					{this.state.date.map((e, key) => {
-						return <option key={key}>{e.month}</option>;
+						  
+						 console.log(key)
+						return   <option  key={key}>{e.month} </option>
+									
 					})}
 				  </select>
 				</div>

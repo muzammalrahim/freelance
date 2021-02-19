@@ -8,6 +8,15 @@ border-radius: 0px;
     border-radius: 2px;
 
 }
+
+ .iv_icon2{
+    height: 42px;
+    margin-top: 1.5%;
+    margin-left: 45%;
+box-sizing: border-box;
+background-repeat: no-repeat;
+}
+
 .cerificates-div{
     padding: 3%;
     display: flex;

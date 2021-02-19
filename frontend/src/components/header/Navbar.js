@@ -5,8 +5,18 @@ import tuwaiqlogo from '../../../src/tuwaiqlogo.svg'
 import Button from '../../components/Button';
 
 
+
+
+
 function Navbar(props) {
+
+   const goTologin= () => {
+
+        this.props.history.push('/signup/');
+      }
+      
     return (
+        
         <>
         
         <nav className="navbar">
@@ -16,7 +26,7 @@ function Navbar(props) {
                 </Link>
                <div className="user-logo">
                    <a href="">{props.text}</a>
-               <Button buttonStyle='btn--project' value={props.value}/>
+               <Button buttonStyle='btn--project' value={props.value} onClick={props.value}/>
                 </div>
             </div>
             
