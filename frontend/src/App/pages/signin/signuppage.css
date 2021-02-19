@@ -12,3 +12,8 @@
     line-height: 20px;
     text-transform: uppercase;
 }
+
+.SignUp-flex-container .btn-default{
+    background: #EE9821;
+    border-radius: 4px;
+}

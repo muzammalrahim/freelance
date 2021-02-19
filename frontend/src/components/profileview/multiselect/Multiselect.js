@@ -38,7 +38,7 @@ class Multiselect extends Component{
                            brand: [...prevState.brand, e.target.value],
                          }));
                        }}
-                       className="form-control"
+                       className="mulitslect-form"
                        id="exampleFormControlSelect1">
                        <ul>
                        <li className="test">a</li>
@@ -56,10 +56,10 @@ class Multiselect extends Component{
                      </select>
                  
 
-                     <div className="test">
+                     <div className="mulitslect-test">
                        {this.state.brand.map((item, index) => (
                          <div
-                           className="option"
+                           className="mulitslect-test-option"
                            style={{
                              background: "#61C1B8",
                              color: "white",
@@ -69,9 +69,9 @@ class Multiselect extends Component{
                              width: "113px",
                            }}
                          >
-                           <h5 className="Addskillh5item">{item} </h5>
+                           <h5 className="mulitslect-Addskill">{item} </h5>
                            <span
-                             className="float AddSkill_pl"
+                             className="mulitslect-AddSkill-pl"
                              onClick={() => {
                                console.log(index);
                                const a = this.state.brand;

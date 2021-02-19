@@ -53,7 +53,7 @@ export default class AccountType extends Component {
                             <div className="col-sm-12 col-md-12 col-lg-6  pt-3">
                                 <div onClick={this.onNewPageLoad} className="p-4 card cardfocus">
                                 <img className="card-img-top img-wh" src={cardimg1} alt="Logo"></img>
-                                <h5 className="card-title">I want a job</h5>
+                                <h5 className="card-title pt-2">I want a job</h5>
                                 <p className="card-text ">It is a long established fact that a reader will be distracted by the readable layout.</p>
                                 <ArrowRight color="#1DA799" size={30} />
                              
@@ -63,7 +63,7 @@ export default class AccountType extends Component {
                             <div className="col-sm-12 col-md-12 col-lg-6 pt-3">
                                 <div onClick={this.onNewPageLoad} className="p-4 card cardfocus">
                                 <img className="card-img-top img-wh bodr" src={cardimg2} alt="Logo"></img>
-                                <h5 className="card-title">I want to hire</h5>
+                                <h5 className="card-title pt-2">I want to hire</h5>
                                 <p className="card-text pb-5 ">It is a long established fact that a reader will be distracted by the readable layout.</p>
                                 </div>
                             </div>

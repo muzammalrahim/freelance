@@ -1,11 +1,11 @@
-.alert-page {
+alert-page {
   background: #ddf2f0;
 }
 .alert-page .btn-primary {
   color: #fff;
   background-color: #ee9821;
 }
-.input-group .form-control {
+.alert-page .input-group .form-control {
   height: 80px;
   border-radius: none;
 }
@@ -22,17 +22,19 @@
 }
 .alert-img-wrap img {
   position: absolute;
-  width: 100%;
+  width: 92%;
   top: -155px;
 }
 .alert-front-img {
   position: relative;
-  width: 450px;
+  width: 298px;
+  left: 66px;
+  top: 72px;
 }
 .alert-front-img img {
   position: absolute;
-  width: 100%;
-  top: -413px;
+  width: 92%;
+  top: -437px;
 }
 .drop-img {
   position: relative;
@@ -47,8 +49,8 @@
 }
 .alert-page-picutre {
   position: absolute;
-  top: -348px;
-  left: 34px;
+  top: -421px;
+  left: -36px;
 }
 .alert-time {
   left: 37px;
@@ -56,8 +58,8 @@
 }
 .al-picture-email {
   position: relative;
-  top: -400px;
-  left: 350px;
+  top: -459px;
+    left: 261px;
   width: 60px;
   height: 60px;
   border-radius: 70px;

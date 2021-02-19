@@ -7,6 +7,7 @@
     border: 1px solid rgba(107, 107, 106, 0.2);
     box-sizing: border-box;
     border-radius: 4px;
+}
 .GetDate .paddingTop_year{
     padding-top: 30px;
 }
