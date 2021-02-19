@@ -67,7 +67,7 @@ function SignIn() {
                   </label>
                 </div>
                 <div className="pt-4">
-                  <button type="button" class="btn btn-default btn-block">
+                  <button type="button" class="btn btn-default btn-block text-white">
                     Log In
                   </button>
                 </div>

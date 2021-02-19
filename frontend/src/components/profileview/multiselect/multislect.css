@@ -24,8 +24,9 @@ color: #6B6B6A;
 }
 .mulitslect .mulitslect-Addskill{
     font-size: .75rem;
-    padding: 5px 0px; 
+    padding: 5px 0px;
     float: left;
+    color: white;
 }
 .mulitslect .mulitslect-AddSkill-pl{
     cursor: pointer;
