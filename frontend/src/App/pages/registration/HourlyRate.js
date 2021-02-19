@@ -49,7 +49,7 @@ function HourlyRate() {
                               
                                 <div> <p className="hr_Para1 pt-3">15% service free</p></div>
                                 <div class="row">
-                                    <div class="col-md-12 pb-3">
+                                    <div class="col-md-12 pb-3 pl-3 pr-4">
                                    <div class=" hr_Para3">
 
                                    <div class="pull-left">0</div>
