@@ -115,14 +115,26 @@ color: #6B6B6A;
 }
 .chat .bg-you{
     background-color:#EAEFF4 !important;
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 12px;
+    color: #6B6B6A;
+    line-height: 20px;
 }
 .chat .bg-other{
     background-color:#61C1B8 !important;
     display: inline-block;
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 12px;
+    color: #6B6B6A;
+    line-height: 20px;
 }
 .chat .search-contacts{
     width:30%;
 }
+
+
 
 @media (max-width: 991px){
 .chat .search-contacts {

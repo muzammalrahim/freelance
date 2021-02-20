@@ -9,6 +9,8 @@ import loginimage from "../../../assets/LoginImage.png";
 import  Alert from '../../../App/pages/signin/Alert';
 import Signinfooter from "./Signinfooter";
 import {Link } from "react-router-dom";
+
+
 function SignIn() {
 
   
@@ -16,7 +18,7 @@ function SignIn() {
     <div className="SignIn-flex-container">
       <div className="si-container">
     
-        <Navbar text="Already A Member?" value="Log In" class="pl-5"/>
+        <Navbar text="Already A Member?" value="LogIn" class="pl-5"/>
       </div>
       <div>
         <SiSoHero />
@@ -91,7 +93,7 @@ function SignIn() {
                   <button type="button" class="btn btn-primary btn-block">
                     Signup with
                     <span class="pl-2">
-                      Linked <i class="fab fa-linkedin pl-1"></i>
+                      Linked <i class="fa fa-linkedin-square" aria-hidden="true"></i>
                     </span>
                   </button>
                 </div>

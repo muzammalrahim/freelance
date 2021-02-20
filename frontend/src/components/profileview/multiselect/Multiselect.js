@@ -1,5 +1,7 @@
 import React, { Component }from 'react'
 import './multislect.css'
+
+
 class Multiselect extends Component{
     constructor(){
         super();
@@ -28,7 +30,7 @@ class Multiselect extends Component{
         return (
             <div className="mulitslect">
             <div className="mulitslect-heading">
-            <p>Deliverables in</p> 
+            <p>{this.props.value}</p> 
             
             </div>
      
@@ -45,6 +47,7 @@ class Multiselect extends Component{
                        <li className="test">b</li>
                        <li className="test">c</li>
                        <li className="test">d</li>
+                       
                        </ul>
                        <option  value="Php">Php</option>
                        <option value="Bootstrap">Bootstrap</option>
@@ -54,8 +57,6 @@ class Multiselect extends Component{
                        <option value="javascript">javascript</option>
                        <option value="c#">c#</option>
                      </select>
-                 
-
                      <div className="mulitslect-test">
                        {this.state.brand.map((item, index) => (
                          <div
