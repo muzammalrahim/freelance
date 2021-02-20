@@ -20,7 +20,6 @@ import AddPortfolio from './components/profileview/AddPortfolio'
 import PortfolioDetails from './components/profileview/PortfolioDetails'
 import DetailsPreview from './components/profileview/preview/DetailsPreview'
 import Accounttype from "./App/pages/registration/AccountType"
-import tabbar2 from './App/pages/registration/tabbar2'
 
 
 
@@ -30,7 +29,7 @@ return (
     <Router>
     <Switch>
          <Route path='/' exact component={SignIn}/>
-         <Route path='/SignIn' exact component={SignIn}/>
+         <Route path='/login' exact component={SignIn}/>
         <Route path='/signup' exact component={signuppage}/>
         <Route path='/Jobs' exact component={Jobs}/>
         <Route path='/JobDetail' exact component={JobDetail}/>
@@ -39,7 +38,6 @@ return (
         <Route path='/detailspreview' exact component={DetailsPreview}/>
         <Route path='/portfoliodetails' exact component={PortfolioDetails}/>
         <Route path='/registration-process' exact component={Accounttype}/>
-        <Route path='/registration-processpages' exact component={tabbar2}/>
         <Route path='/ContractOne' exact component={ContractOne}/>
         <Route path='/JobDetailTwo' exact component={JobDetailTwo}/>
         <Route path='/ApplicationList' exact component={ApplicationList}/>
