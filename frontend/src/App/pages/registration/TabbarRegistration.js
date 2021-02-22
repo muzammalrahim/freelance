@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./tabbar2.css";
-import { RegNavbar } from "../../../../src/components/Navbar";
+import "./TabBarReg.css";
+import { RegNavbar } from "../../../components/Navbar";
 import PersonalProfile, { PersonalProfileTabFooter } from "./PersonalProfile";
 import IdVerification, { IdVerificationFooter } from "./IdVerification";
 import PaymentInformation, {
@@ -9,8 +9,9 @@ import PaymentInformation, {
 import HourlyRate, { HourlyRateFooter } from "./HourlyRate";
 import ProfessionalProfile2 from "./ProfessionalProfile2";
 import ProfessionalProfile2Footer from "./ProfFooter";
+import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 
-export default class tabbar2 extends Component {
+export default class TabbarRegistration extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -151,7 +152,7 @@ export default class tabbar2 extends Component {
           </>
         )}
 
-        {this.state.tabindex < 5 && (
+        {this.state.tabindex < 5 ? (
           <>
             <button
               type="button"
@@ -162,7 +163,16 @@ export default class tabbar2 extends Component {
               Next
             </button>
           </>
-        )}
+        ):<>
+        <button
+          type="button"
+          className="btn tb_nextButton"
+         
+        >
+          {" "}
+          FINISH <ArrowRightAltIcon/>
+        </button>
+      </>}
       </div>
             </div>
           </div>

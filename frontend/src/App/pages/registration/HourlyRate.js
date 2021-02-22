@@ -69,6 +69,8 @@ function HourlyRate() {
     <span class="input-group-text labelBoderRight hr_Para3">SAR</span>
   </div>
 </div>
+
+                  <div> <p className="hr_Para2 mt-4">Tuwaiq Freelancer service fees can be charge as 15%</p></div>
                             
                             </div>       
                         
