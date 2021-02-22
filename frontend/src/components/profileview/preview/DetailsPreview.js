@@ -7,12 +7,12 @@ const DetailsPreview = () => {
   return (
     <div className="detail-preview">
       <div className="container bg-white">
-        <div className="row">
+        <div className="row pl-4">
           <div className="col-md-12 pt-4 pb-5">
             <p className="preview-heading">Preview</p>
           </div>
         </div>
-        <div className="row">
+        <div className="row pl-4 pr-4">
           <div className="image-wrap col-md-4">
             <img src={preview1} alt="/" />
           </div>
@@ -26,7 +26,14 @@ const DetailsPreview = () => {
 
         <address>
             <div className="tst">
-              <div className="container">
+              <div className="container ">
+                <div className="row pl-2 pt-3">
+                  <div className="col-md-8">
+                 <p>
+                 Portfolio Title Lorem Ipsum
+                 </p>
+                  </div>
+                </div>
                 <div className="contact-info row pt-3">
                   <div className="col-md-3 pl-4">
                     <p>Description</p>
@@ -51,16 +58,16 @@ const DetailsPreview = () => {
                    </p>
                   </div>
                 </div>
-                <div className="contact-info row">
-                  <div className="col-md-3 pl-4">
+                <div className="row pl-2">
+                  <div className="col-md-3">
                     <p>Start Date</p>
                   </div>
                   <div className="col-md-9">
                     <a href="jack14@gmail.com ">24-12-2019 </a>
                   </div>
                 </div>
-                <div className="contact-info row">
-                  <div className="col-md-3 pl-4">
+                <div className="row pl-2">
+                  <div className="col-md-3">
                     <p>Completion Date</p>
                   </div>
                   <div className="col-md-9">
@@ -70,8 +77,42 @@ const DetailsPreview = () => {
               </div>
             </div>
           </address>
+          <div className="row pl-4">
+            <div className="col-md-3">
+              <p>
+              Work Platform
+              </p>
+            </div>
+            <div className="col-md-9">
 
-        <div className="row pt-5 pl-3">
+         </div>
+         <div className="col-md-3">
+         <p>  Deliverable In </p>
+            </div>
+            <div className="col-md-9">
+
+         </div>
+         <div className="col-md-3">
+              
+         <p>Skills </p>  
+            
+            
+            </div>
+            <div className="col-md-9">
+
+         </div>
+      
+         <div className="col-md-3">
+            
+         <p> Business Size</p> 
+            
+            </div>
+            <div className="col-md-9">
+
+         </div>
+          </div>
+
+        <div className="row pt-5 pl-4 pr-4 pb-3">
           <div className="col-md-6">
             <a href="/portfoliodetails"> Previous</a>
           </div>

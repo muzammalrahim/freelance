@@ -29,7 +29,7 @@ export default function chat() {
                         <h6 class="py-4 px-4 border-bottom d-none d-lg-block">All Conversations</h6>
                         <a href="#" class="list-group-item list-group-item-action border-0">
                             <div class="d-flex align-items-start">
-                                <img src="chat-imges/avatar5.png" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40" />
+                                <img src="static/chat-imges/avatar5.png" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40" />
                                 <div class="flex-grow-1 ml-2">
                                     <h6 class="pull-left">Vanessa Tucker</h6>
                                     <div class="visibility-wrap">
@@ -43,7 +43,7 @@ export default function chat() {
                         </a>
                         <a href="#" class="list-group-item list-group-item-action border-0">
                             <div class="d-flex align-items-start">
-                                <img src="chat-imges/avatar2.png" class="rounded-circle mr-1" alt="William Harris" width="40" height="40" />
+                                <img src="static/chat-imges/avatar2.png" class="rounded-circle mr-1" alt="William Harris" width="40" height="40" />
                                 <div class="flex-grow-1 ml-2">
                                     <h6 class="pull-left mr-1">William Harris</h6>
                                     <div class="visibility-wrap">
@@ -56,7 +56,7 @@ export default function chat() {
                         </a>
                         <a href="#" class="list-group-item list-group-item-action border-0 active">
                             <div class="d-flex align-items-start">
-                                <img src="chat-imges/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40" />
+                                <img src="static/chat-imges/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40" />
                                 <div class="flex-grow-1 ml-2">
                                     <h6 class="pull-left mr-1">Sharon Lessman</h6>
                                     <div class="small">Now that it’s a new year we have updated some goals. . .</div>
@@ -65,7 +65,7 @@ export default function chat() {
                         </a>
                         <a href="#" class="list-group-item list-group-item-action border-0">
                             <div class="d-flex align-items-start">
-                                <img src="chat-imges/avatar4.png" class="rounded-circle mr-1" alt="Christina Mason" width="40" height="40" />
+                                <img src="static/chat-imges/avatar4.png" class="rounded-circle mr-1" alt="Christina Mason" width="40" height="40" />
                                 <div class="flex-grow-1 ml-2">
                                     <h6 class="pull-left mr-1">Christina Mason</h6>
                                     <div class="small">Thanks for your kind words, I’m very excited to start on. . .</div>
@@ -74,7 +74,7 @@ export default function chat() {
                         </a>
                         <a href="#" class="list-group-item list-group-item-action border-0">
                             <div class="d-flex align-items-start">
-                                <img src="chat-imges/avatar5.png" class="rounded-circle mr-1" alt="Fiona Green" width="40" height="40" />
+                                <img src="static/chat-imges/avatar5.png" class="rounded-circle mr-1" alt="Fiona Green" width="40" height="40" />
                                 <div class="flex-grow-1 ml-2">
                                     <h6 class="pull-left mr-1">Fiona Green</h6>
                                     <div class="small">I’m just trying to get a better idea on the overall client. . .</div>
@@ -83,7 +83,7 @@ export default function chat() {
                         </a>
                         <a href="#" class="list-group-item list-group-item-action border-0">
                             <div class="d-flex align-items-start">
-                                <img src="chat-imges/avatar2.png" class="rounded-circle mr-1" alt="Doris Wilder" width="40" height="40" />
+                                <img src="static/chat-imges/avatar2.png" class="rounded-circle mr-1" alt="Doris Wilder" width="40" height="40" />
                                 <div class="flex-grow-1 ml-2">
                                     <h6 class="pull-left mr-1">Doris Wilder</h6>
                                     <div class="small">I’d like to officially welcome you to our design team. . .</div>
@@ -92,7 +92,7 @@ export default function chat() {
                         </a>
                         <a href="#" class="list-group-item list-group-item-action border-0">
                             <div class="d-flex align-items-start">
-                                <img src="chat-imges/avatar4.png" class="rounded-circle mr-1" alt="Haley Kennedy" width="40" height="40" />
+                                <img src="static/chat-imges/avatar4.png" class="rounded-circle mr-1" alt="Haley Kennedy" width="40" height="40" />
                                 <div class="flex-grow-1 ml-2">
                                     <h6 class="pull-left mr-1">Haley Kennedy</h6>
                                     <div class="small">You should have access to all the documents now but...</div>
@@ -101,7 +101,7 @@ export default function chat() {
                         </a>
                         <a href="#" class="list-group-item list-group-item-action border-0">
                             <div class="d-flex align-items-start">
-                                <img src="chat-imges/avatar3.png" class="rounded-circle mr-1" alt="Jennifer Chang" width="40" height="40" />
+                                <img src="static/chat-imges/avatar3.png" class="rounded-circle mr-1" alt="Jennifer Chang" width="40" height="40" />
                                 <div class="flex-grow-1 ml-2">
                                     <h6 class="pull-left mr-1">Jennifer Chang</h6>
                                     <div class="small"> You should have access to all the documents now but...</div>
@@ -154,7 +154,7 @@ export default function chat() {
                                 </div>
                                 <div class="chat-message-left pb-4">
                                     <div>
-                                        <img src="chat-imges/avatar3.png" class="rounded-circle mr-3 pull-left" alt="Sharon Lessman" width="40" height="40" />
+                                        <img src="static/chat-imges/avatar3.png" class="rounded-circle mr-3 pull-left" alt="Sharon Lessman" width="40" height="40" />
                                         <div class="font-weight-bold mb-1 pull-left mt-2">Sharon Lessman</div>
                                         <div class="text-muted small text-nowrap mt-3 pull-right">2:34 am</div>
                                     </div>
@@ -176,7 +176,7 @@ export default function chat() {
                                 </div>
                                 <div class="chat-message-left pb-4">
                                     <div>
-                                        <img src="chat-imges/avatar3.png" class="rounded-circle mr-3 pull-left" alt="Sharon Lessman" width="40" height="40" />
+                                        <img src="static/chat-imges/avatar3.png" class="rounded-circle mr-3 pull-left" alt="Sharon Lessman" width="40" height="40" />
                                         <div class="font-weight-bold mb-1 pull-left mt-2">Sharon Lessman</div>
                                         <div class="text-muted small text-nowrap mt-3 pull-right">2:34 am</div>
                                     </div>
