@@ -190,22 +190,39 @@ h3{
     color: #6b6b6a;
     font-size: 12px;
 }
-.state{
+.state-active1{
     color: #1DA799;
     font-size: 14px;
     float: right;
 }
 .mile-inner-btn{
     float: right;
+    width: 200px;
 }
-.state2{
+.state-inactive2{
     color:#EE9821;
     float: right;
 }
-.MuiAccordionDetails-root{
+span.active-state {
+    height: 6px;
+    width: 6px;
+    background-color: #1da799;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 2px;
+}
+.inactive-state{
+        height: 6px;
+    width: 6px;
+    background-color: #EE9821;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 2px;  
+}
+.contract-one-acc .MuiAccordionDetails-root{
     display: block;
 }
-.MuiPaper-elevation1 {
+.contract-one-acc .MuiPaper-elevation1 {
     box-shadow: none;
     border-bottom: 1px solid rgba(107, 107, 106, .1);
 }
@@ -214,6 +231,11 @@ h3{
     border: 1px solid rgb(238 152 33) !important;
     width: 213px;
     height: 30px;
+}
+.row.m-info .MuiButton-outlinedSecondary:hover {
+    color: #6b6b6a !important;
+    border: 1px solid #6b6b6a !important;
+    background-color: #ffffff;
 }
 /* Accordian */
 
@@ -657,6 +679,11 @@ ul.app-detail-btns li{
 /*  Application Detail Page */
 
 /* Contract One */
+.contact1-avatar{
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+}
 .contractone-main{
     background: #e5e5e5;
 }
@@ -694,6 +721,9 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained {
     padding: 20px 17px;
     color: #6b6b6a;
     margin: 0;
+}
+.contract-one-acc .MuiIconButton-edgeEnd {
+    margin-right: 0;
 }
 /* Contract One */
 

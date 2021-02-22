@@ -10,6 +10,8 @@ import FooterMenu from './FooterMenu';
 import WorkIcon from '@material-ui/icons/Work'
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
+import CalanderIcon from '../../../img/calendar.svg';
+import AvtarIcon from '../../../img/contract-img.png';
 
 
 export default class ContractOne extends Component {
@@ -23,7 +25,7 @@ export default class ContractOne extends Component {
                 {/* top header */}
                 <div className="contractone-main">
                     <div className="container">
-                        <div className="main-wrap pt-4">
+                        <div className="main-wrap pt-5 pl-4 pr-4">
                             <div className="row">
                                 <div className="col-md-3 col-sm-4">
                                     <ContractNav/>
@@ -33,7 +35,7 @@ export default class ContractOne extends Component {
                                     <div className="cont-row">
                                         <div className="con-des-area">
                                         <div className="content-heading">
-                                            <Avatar className="my-name">OP</Avatar>
+                                            <div className="contact1-avatar"><img src={AvtarIcon} alt="no img"/></div>
                                             <h3 className="pl-3">
                                             Job title lorem ipsum lorem ipsum <br></br>lorem ipsum 
                                             </h3>
@@ -48,7 +50,7 @@ export default class ContractOne extends Component {
                                                 <p className="m-icon"><span className="pr-1"><WorkIcon/></span>Monthly</p>
                                                 </li>
                                                 <li className="pr-3">
-                                                <p className="m-icon"><span className="pr-1"><CalendarTodayIcon/></span>2 months</p>
+                                                <p className="m-icon"><span className="pr-1"><img src={CalanderIcon} alt="no img"/></span>2 months</p>
                                                 </li>
                                                 <li className="pr-3">
                                                 <p className="m-icon"><span className="pr-1"><WatchLaterIcon/></span>20 min ago</p>
