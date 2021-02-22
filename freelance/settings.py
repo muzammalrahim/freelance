@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'payment.apps.PaymentConfig',
     'report.apps.ReportConfig',
     'support.apps.SupportConfig',
+    'corsheaders',
     'drf_yasg',
     'rest_registration',
     'rest_framework',
@@ -67,6 +68,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -76,10 +78,17 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'freelance.urls'
 
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -142,16 +151,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'frontend/build/static'),
+    os.path.join(BASE_DIR, 'frontend/admin/build/static'),
 )
-if DEBUG:
-    STATICFILES_DIRS += (os.path.join(BASE_DIR, 'static'), )
-    STATIC_ROOT = os.path.join(BASE_DIR, 'debug_static')
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-    
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'frontend/build/static'),
+# )
+# if DEBUG:
+#     STATICFILES_DIRS += (os.path.join(BASE_DIR, 'static'), )
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'debug_static')
+# else:
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
@@ -159,7 +171,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated', ),
+        'rest_framework.permissions.IsAuthenticated',),
     'DEFAULT_PARSER_CLASSES': [
         'rest_framework.parsers.FormParser',
         'rest_framework.parsers.MultiPartParser',
