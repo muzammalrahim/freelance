@@ -6,18 +6,32 @@ import cardimg1 from '../../../img/cardimg1.png'
 import cardimg2 from '../../../img/cardimg2.png'
 import { ArrowRight } from 'react-bootstrap-icons';
 
-export default class AccountType extends Component {
+import TabbarRegistration  from './TabbarRegistration'
+
+ 
+export default class AccountType extends Component { 
+
+       state={
+              
+            pageloadvalue:0
+       }
 
     onNewPageLoad = () => {
 
-            this.props.history.push('/registration-processpages/');
+          this.setState({ pageloadvalue:1})
      }
 
     render() {
     
-     
-    
+             if(this.state.pageloadvalue===1)
+             {
+                return (
+                    <TabbarRegistration/>
+                ) 
+             }
+      else{
         return (
+            
             <div className="main back_g">
                 <div className="AccountType">
                   <div className="container AccountType_container">
@@ -79,5 +93,6 @@ export default class AccountType extends Component {
                 </div>
             </div>
         )
+      }
     }
 }

@@ -48,7 +48,7 @@ function PersonalProfile() {
                                                     <input type="text" class="form-control" Placeholder=" Enter number"/>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label  className="pp_inputHeading" for="usr">City:</label>
+                                                    <label  className="pp_inputHeading" for="usr">City</label>
                                                     <input type="text" class="form-control"  Placeholder=" Enter city"/>
                                                 </div>
 
@@ -57,7 +57,7 @@ function PersonalProfile() {
                                             <div className=" col-sm-6 col-md-6">
                                                 <div className="Rb-0">
                                                 <div class="form-group">
-                                                    <label  className="pp_inputHeading" for="usr">LAST Name</label>
+                                                    <label  className="pp_inputHeading" for="usr">Last name</label>
                                                     <input type="text" class="form-control" Placeholder=" Enter last name"/>
                                                 </div>
                                                 <div class="form-group">
