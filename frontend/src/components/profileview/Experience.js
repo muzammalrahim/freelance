@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import "./Experience.css";
 import Button from "../Button";
 import Modal from "react-bootstrap/Modal";
+import DeleteIcon from '@material-ui/icons/Delete';
+
+
 function Experience() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -161,8 +164,8 @@ function Experience() {
                 <h>Wordpress developer | Company pvt ltd</h>
               </div>
               <div class="col-md-4 pr-4">
-              <a href="#">
-                  <i class="fas fa-trash float-right"></i>
+              <a href="#" className="float-right">
+                  <DeleteIcon />
                 </a>
               </div>
               <div class="col-md-7 pb-2">

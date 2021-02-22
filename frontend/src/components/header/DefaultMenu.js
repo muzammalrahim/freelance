@@ -2,7 +2,7 @@ import React from 'react'
 import { MenuItems,AccountSettingMenuItems } from "./MenuItems";
 /*import './defaultmenu.css';*/
 import AvatarImage from '../../AvatarImage.png';
-
+import NotificationsIcon from '@material-ui/icons/Notifications';
 function DefaultMenu(props) {
     return (
       <nav className="navbar navbar-expand-md">
@@ -41,7 +41,7 @@ function DefaultMenu(props) {
                 <li>
                 <div className="">
                   <a href="#" class="notification mr-3">
-                    <span><i class="fas fa-bell"></i>15</span>
+                    <span><NotificationsIcon/>15</span>
                     {/* <span class="badge">15</span> */}
                   </a>
                 </div>

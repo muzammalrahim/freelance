@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 const PortfolioDetails = (props) => {
   return (
     <div className="ap-detail">
-      <div className="ap-detail-box pb-5 pt-5">
+      <div className="ap-detail-box">
         <div className="container">
           <div className="row bg-white">
-            <div className="col-md-9 pt-4">
+            <div className="col-md-9">
               <div className="col-md-4 pb-3">Add Details</div>
               <div className="col-md-6">
                 <label for="inputtext">Your role in project</label>
@@ -59,16 +59,6 @@ const PortfolioDetails = (props) => {
                   <p className="">Upload Videos</p>
                   <GetImage />
                 </div>
-              </div>
-              <div className="row pt-5 pb-3 pl-3">
-                  <div className="col-md-6">
-                      <a href="/AddPortfolio"> Previous</a>
-                  </div>
-                  <div className="col-md-6">
-                    <Link to="/DetailsPreview">
-                  <button type="button" className="btn btn-primary float-right">NEXT STEP</button>
-                  </Link>
-                  </div>
               </div>
             </div>
           </div>

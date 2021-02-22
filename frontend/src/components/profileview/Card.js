@@ -3,7 +3,9 @@ import "./card.css";
 import Status from "../../assets/Status.png";
 import india from "../../assets/india.png";
 import Display from "../../assets/Display.png";
-
+import WatchLaterIcon from '@material-ui/icons/WatchLater';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 function Card() {
   return (
     <div className="CarD ">
@@ -21,43 +23,65 @@ function Card() {
               <span> 3/5 </span>Followups
             </div>
             <div className="Details-subtext">
-              <h4>Details</h4>
-              <ul className="details-info">
-                <li>
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-6">
+                  <h4>Details</h4>
+                  </div>
+
+                </div>
+                <div className="row">
+                  <div className="col-md-2">
+                  <LocalOfferIcon className="img_setting"/>
+                  </div>
+                  <div className="col-md-10">
                   <p>
-                    <i className="fas fa-tags"></i>
                     SAR 100 Per/Hour{" "}
                   </p>
-                </li>
-                <li>
-                  <p>
-                    <img src={india} className="img_setting" alt=" " />
-                    Indore{" "}
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    {" "}
-                    <i class="fas fa-clock"> </i>
-                    It’s Currently 3:43 Pm here
-                  </p>
-                </li>
-              </ul>
+                  </div>
+                </div>
 
-              <li>
-                <p className="details-info2">
-                  {" "}
-                  <img src={Display} className="img_setting" alt=" " />
+                <div className="row">
+                  <div className="col-md-2">
+                  <img src={india} className="img_setting_Indore" alt=" " />
+                  </div>
+                  <div className="col-md-10">
+                  <p>
+                  Indore
+                  </p>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-2">
+                  <WatchLaterIcon className="img_setting"/>
+                  </div>
+                  <div className="col-md-10">
+                  <p>
+                  It’s Currently 3:43 Pm here
+                  </p>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-2">
+                  <img src={Display} className="img_setting_screen" alt=" " />
+                  </div>
+                  <div className="col-md-10">
+                  <p>
                   Join Decemeber 10, 2015
-                </p>
-              </li>
-
-              <li>
-                <p>
-                  <i className="img_setting fas fa-heart "> </i>
+                  </p>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-2">
+                  <FavoriteIcon className="img_setting" />
+                  </div>
+                  <div className="col-md-10">
+                  <p>
                   10 Recommendation
-                </p>
-              </li>
+                  </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

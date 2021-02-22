@@ -8,7 +8,7 @@ export function Reviews(props) {
   return (
     <div className="Reviews">
       <div class="container bg-white">
-        <div class="row pt-4 pb-3 pl-3">
+        <div class="review-row pt-4 pb-3">
           <div class="col-md-12">
             <div class="font-weight-bold">
               <h className="reviews-header">Reviews & Rating</h>
@@ -17,12 +17,16 @@ export function Reviews(props) {
         </div>
         <div class="container">
           <div class="row pb-3">
-            <div class="col-md-6 pb-3">
+            <div class="col-md-6 pb-3 pt-3">
               <img src={Stanton} alt="/" />
               <h class="pl-3"> Ann Stanton </h>
             </div>
-            <div class="col-md-6 float-right">
-            <CustomizedRatings/>
+            <div class="col-md-6 pt-3">
+              <div className="float-right">
+              <CustomizedRatings />
+              </div>
+             
+           
             </div>
             <div class="col-md-12">
               <p>
@@ -39,8 +43,10 @@ export function Reviews(props) {
               <img src={Cooper} alt="/"/>
               <h class="pl-3"> Cooper Dokidis </h>
             </div>
-            <div class="col-md-6">
-            <CustomizedRatings value="4.5" className="float-left"/>
+            <div class="col-md-6 float-right">
+            <div className="float-right">
+              <CustomizedRatings />
+              </div>
             </div>
             <div class="col-md-12">
               <p>

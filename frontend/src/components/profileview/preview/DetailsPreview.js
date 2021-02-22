@@ -7,12 +7,12 @@ const DetailsPreview = () => {
   return (
     <div className="detail-preview">
       <div className="container bg-white">
-        <div className="row pl-4">
+        <div className="row pl-3">
           <div className="col-md-12 pt-4 pb-5">
             <p className="preview-heading">Preview</p>
           </div>
         </div>
-        <div className="row pl-4 pr-4">
+        <div className="row pl-3 pr-4">
           <div className="image-wrap col-md-4">
             <img src={preview1} alt="/" />
           </div>
@@ -27,7 +27,7 @@ const DetailsPreview = () => {
         <address>
             <div className="tst">
               <div className="container ">
-                <div className="row pl-2 pt-3">
+                <div className="row pt-3">
                   <div className="col-md-8">
                  <p>
                  Portfolio Title Lorem Ipsum
@@ -35,7 +35,7 @@ const DetailsPreview = () => {
                   </div>
                 </div>
                 <div className="contact-info row pt-3">
-                  <div className="col-md-3 pl-4">
+                  <div className="col-md-3">
                     <p>Description</p>
                   </div>
                   <div className="col-md-9">
@@ -49,7 +49,7 @@ const DetailsPreview = () => {
                   </div>
                 </div>
                 <div className="contact-info row">
-                  <div className="col-md-3 pl-4">
+                  <div className="col-md-3 ">
                     <p>Role</p>
                   </div>
                   <div className="col-md-9">
@@ -58,7 +58,7 @@ const DetailsPreview = () => {
                    </p>
                   </div>
                 </div>
-                <div className="row pl-2">
+                <div className="row">
                   <div className="col-md-3">
                     <p>Start Date</p>
                   </div>
@@ -66,7 +66,7 @@ const DetailsPreview = () => {
                     <a href="jack14@gmail.com ">24-12-2019 </a>
                   </div>
                 </div>
-                <div className="row pl-2">
+                <div className="row ">
                   <div className="col-md-3">
                     <p>Completion Date</p>
                   </div>
@@ -77,7 +77,7 @@ const DetailsPreview = () => {
               </div>
             </div>
           </address>
-          <div className="row pl-4">
+          <div className="row pl-3">
             <div className="col-md-3">
               <p>
               Work Platform
@@ -111,17 +111,6 @@ const DetailsPreview = () => {
 
          </div>
           </div>
-
-        <div className="row pt-5 pl-4 pr-4 pb-3">
-          <div className="col-md-6">
-            <a href="/portfoliodetails"> Previous</a>
-          </div>
-          <div className="col-md-6">
-            <button type="button" className="btn btn-primary float-right">
-              DONE
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );

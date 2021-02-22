@@ -117,7 +117,7 @@ export function Education(props) {
                   <h>Engineering in science | Oxford Universal College</h>
                   </div>
                   <div class="col-md-3">
-                  <a href="">
+                  <a href="#" className="float-right">
                     <DeleteIcon/>
                
                   </a>
@@ -135,7 +135,7 @@ export function Education(props) {
                   </div>
                   <div class="col-md-3 pull-right
                   ">
-                  <a href="">
+                   <a href="#" className="float-right">
                   <DeleteIcon/>
                     {/* <i class="fas fa-trash "></i> */}
                   </a>
