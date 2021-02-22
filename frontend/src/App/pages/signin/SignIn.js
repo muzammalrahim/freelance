@@ -9,7 +9,7 @@ import loginimage from "../../../assets/LoginImage.png";
 import  Alert from '../../../App/pages/signin/Alert';
 import Signinfooter from "./Signinfooter";
 import {Link } from "react-router-dom";
-
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 
 function SignIn() {
 
@@ -60,7 +60,10 @@ function SignIn() {
                       placeholder="Enter Email"
                     />
                   </div>
-                  <div class="form-group">
+                  <div class="s-in-form-group">
+                    <div className="s-in-flex-eye">
+                    <VisibilityOffIcon />
+                    </div>
                     <label for="pwd">Password</label>
                     <input
                       type="password"

@@ -3,6 +3,7 @@ import "./Reviews.css";
 import Stanton from "../../assets/Stanton.png";
 import Cooper from "../../assets/Cooper.png";
 import Button from "../Button";
+import CustomizedRatings from '../../App/pages/jobs/Rating'
 export function Reviews(props) {
   return (
     <div className="Reviews">
@@ -20,7 +21,9 @@ export function Reviews(props) {
               <img src={Stanton} alt="/" />
               <h class="pl-3"> Ann Stanton </h>
             </div>
-            <div class="col-md-6"></div>
+            <div class="col-md-6 float-right">
+            <CustomizedRatings/>
+            </div>
             <div class="col-md-12">
               <p>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -36,7 +39,9 @@ export function Reviews(props) {
               <img src={Cooper} alt="/"/>
               <h class="pl-3"> Cooper Dokidis </h>
             </div>
-            <div class="col-md-6"></div>
+            <div class="col-md-6">
+            <CustomizedRatings value="4.5" className="float-left"/>
+            </div>
             <div class="col-md-12">
               <p>
                 Lorem Ipsum is simply dummy text of the printing and typesetting

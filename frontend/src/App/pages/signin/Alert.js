@@ -4,6 +4,10 @@ import rectangle from "../../../assets/11.png";
 import alertpic from "../../../assets/1-01.png";
 import BG from "../../../assets/BG (1).png";
 import Dropdrop from "../../../assets/Dropdrop.png";
+import DeleteIcon from '@material-ui/icons/Delete';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
+
+
 const Alert = () => {
   return (
     <div className="alert-page">
@@ -40,8 +44,9 @@ const Alert = () => {
                 </div>
               </div>
               <div className="al-picture-email">
-                <a href="">
-                  <i class="far fa-envelope"></i>
+                <a className="email-icon" href="">
+                  {/* <i class="far fa-envelope"></i> */}<MailOutlineIcon  style={{fill: "white", height: 30, width: "1.3em", fontSize: 40
+ }}/>
                 </a>
               </div>
             </div>
@@ -59,11 +64,15 @@ const Alert = () => {
               <div class="input-group">
                 <div class="input-group mb-5">
                   <div class="input-group-prepend"></div>
+                  <div className="sub-form-sec">
+                    <div className="sub-icon"><MailOutlineIcon /></div>
                   <input
                     class="form-control email-input"
                     type="text"
                     placeholder="Enter your email"
                   />
+                  </div>
+                  
                   <div class="input-group-append">
                     <button
                       class="btn btn-primary d-flex align-items-center text-uppercase font-weight-bold"

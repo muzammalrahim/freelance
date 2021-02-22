@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Education.css";
 import Modal from "react-bootstrap/Modal";
+import DeleteIcon from '@material-ui/icons/Delete';
 export function Education(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -117,7 +118,8 @@ export function Education(props) {
                   </div>
                   <div class="col-md-3">
                   <a href="">
-                    <i class="fas fa-trash float-right"></i>
+                    <DeleteIcon/>
+               
                   </a>
                   </div>
 
@@ -131,9 +133,11 @@ export function Education(props) {
 
                   <h>Engineering in science | Oxford Universal College</h>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-3 pull-right
+                  ">
                   <a href="">
-                    <i class="fas fa-trash float-right"></i>
+                  <DeleteIcon/>
+                    {/* <i class="fas fa-trash "></i> */}
                   </a>
                   </div>
                   <div class="col-md-8">
