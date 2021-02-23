@@ -41,7 +41,7 @@ function DefaultMenu(props) {
                 <li>
                 <div className="">
                   <a href="#" class="notification mr-3">
-                    <span><NotificationsIcon/>15</span>
+                    <span><i class="fas fa-bell"></i>15</span>
                     {/* <span class="badge">15</span> */}
                   </a>
                 </div>

@@ -3,6 +3,9 @@ import "./detailpreview.css";
 import preview1 from "../../../assets/preview1.png";
 import preview2 from "../../../assets/preview2.png";
 import preview3 from "../../../assets/preview3.png";
+
+
+
 const DetailsPreview = () => {
   return (
     <div className="detail-preview">
@@ -13,6 +16,7 @@ const DetailsPreview = () => {
           </div>
         </div>
         <div className="row pl-3 pr-4">
+          
           <div className="image-wrap col-md-4">
             <img src={preview1} alt="/" />
           </div>

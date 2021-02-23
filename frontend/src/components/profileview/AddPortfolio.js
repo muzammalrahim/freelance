@@ -1,8 +1,6 @@
 import React from "react";
 import './addportfolio.css'
-import { Link } from  'react-router-dom';
-import Header from '../header/Header'
-import PortfolioTab from './PortfolioTab'
+
 
 
   function AddPortfolio () { 

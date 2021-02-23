@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import "./Education.css";
 import Modal from "react-bootstrap/Modal";
 import DeleteIcon from '@material-ui/icons/Delete';
+import CloseIcon from '@material-ui/icons/Close';
+
 export function Education(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  
 
   return (
     <div className="EDUC">
@@ -36,7 +39,7 @@ export function Education(props) {
                 <p>Add Education Information</p>
                 </div>
                 <div class="col-md-6">
-                <i class="fas fa-times float-right" onClick={handleClose}></i>
+                <CloseIcon onClick={handleClose} className="float-right" />
                 </div>
               </div>
 
@@ -72,7 +75,8 @@ export function Education(props) {
                     <option>April</option>
                   </select>
                 </div>
-                <div class="form-group col-md-6 pt-4">
+                <div class="form-group col-md-6 pt-2">
+                <label for="inputState"></label>
                   <select id="inputState" class="form-control">
                     <option selected>Year to</option>
                     <option>2020</option>

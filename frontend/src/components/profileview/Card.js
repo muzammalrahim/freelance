@@ -26,18 +26,23 @@ function Card() {
               <div className="container">
                 <div className="row">
                   <div className="col-md-6">
-                  <h4>Details</h4>
+                  <h5>Details</h5>
                   </div>
 
                 </div>
+                <address>
+
+               
                 <div className="row">
                   <div className="col-md-2">
                   <LocalOfferIcon className="img_setting"/>
                   </div>
                   <div className="col-md-10">
+                    <a href="">
                   <p>
                     SAR 100 Per/Hour{" "}
                   </p>
+                  </a>
                   </div>
                 </div>
 
@@ -46,9 +51,11 @@ function Card() {
                   <img src={india} className="img_setting_Indore" alt=" " />
                   </div>
                   <div className="col-md-10">
+                    <a href="">
                   <p>
                   Indore
                   </p>
+                  </a>
                   </div>
                 </div>
                 <div className="row">
@@ -56,9 +63,11 @@ function Card() {
                   <WatchLaterIcon className="img_setting"/>
                   </div>
                   <div className="col-md-10">
+                    <a href="">
                   <p>
                   It’s Currently 3:43 Pm here
                   </p>
+                  </a>
                   </div>
                 </div>
                 <div className="row">
@@ -66,9 +75,11 @@ function Card() {
                   <img src={Display} className="img_setting_screen" alt=" " />
                   </div>
                   <div className="col-md-10">
+                    <a href="">
                   <p>
                   Join Decemeber 10, 2015
                   </p>
+                  </a>
                   </div>
                 </div>
                 <div className="row">
@@ -76,11 +87,14 @@ function Card() {
                   <FavoriteIcon className="img_setting" />
                   </div>
                   <div className="col-md-10">
+                    <a href="10 Recommendation">
                   <p>
                   10 Recommendation
                   </p>
+                  </a>
                   </div>
                 </div>
+                </address>
               </div>
             </div>
           </div>

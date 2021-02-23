@@ -4,7 +4,7 @@ import signuppage from './App/pages/signin/signuppage'
 import SignIn from './App/pages/signin/SignIn'
 import NotFound from "./App/pages/notFound/NotFound";
 import Jobs from "./App/pages/jobs/Jobs";
-import { BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import JobDetail from "./App/pages/jobs/JobDetail";
 import ContractOne from './App/pages/Contract/ContractOne'
 import JobDetailTwo from "./App/pages/jobs/JobDetailTwo";
