@@ -8,7 +8,7 @@ export default class ContractView extends Component {
             <div className="contract-view">
                 <div className="row">
                     <div className="col-md-6">
-                        <h2>Contract View</h2>
+                        <h2 className="pt-3">Contract View</h2>
                     </div>
                     <div className="col-md-6">
                         <Button variant="contained">End Contract</Button>

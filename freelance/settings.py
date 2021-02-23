@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'rest_registration',
     'rest_framework',
-    'rest_framework.authtoken',
+    # 'rest_framework.authtoken',
     'rest_auth',
     'django.contrib.sites',
     'allauth',
@@ -104,6 +104,7 @@ DATABASES = {
         'USER': env('DB_USER'),
         'PASSWORD': env('DB_PASSWORD'),
         'HOST': env('DB_HOST'),
+        # 'PORT': env('DB_PORT'),
     }
 }
 
@@ -158,8 +159,8 @@ REST_FRAMEWORK = {
         # 'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated', ),
+    # 'DEFAULT_PERMISSION_CLASSES': (
+        # 'rest_framework.permissions.IsAuthenticated', ),
     'DEFAULT_PARSER_CLASSES': [
         'rest_framework.parsers.FormParser',
         'rest_framework.parsers.MultiPartParser',
@@ -202,12 +203,12 @@ ADMIN_USER = 'Admin'
 
 SITE_ID = 1
 
-EMAIL_BACKEND = env('EMAIL_BACKEND')
-EMAIL_HOST = env('EMAIL_HOST')
-EMAIL_USE_TLS = env('EMAIL_USE_TLS')
-EMAIL_PORT = env('EMAIL_PORT')
-EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+# EMAIL_BACKEND = env('EMAIL_BACKEND')
+# EMAIL_HOST = env('EMAIL_HOST')
+# EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+# EMAIL_PORT = env('EMAIL_PORT')
+# EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 AUTH_USER_MODEL = 'acount.User'
 

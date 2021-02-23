@@ -4,6 +4,11 @@ import Header from '../../../../src/components/header/Header';
 import Proposal from './Proposal';
 import AvatarImage from '../../../../src/AvatarImage.png';
 import img from "../../../img/stars1.png"
+import WatchLaterIcon from '@material-ui/icons/WatchLater';
+import CalanderIcon from '../../../img/calendar.svg';
+import WorkIcon from '@material-ui/icons/Work'
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+
 
 
 
@@ -30,40 +35,46 @@ export default function JobDetail() {
                                 {/* <div className="row job"> */}
                                 <div className="job-inner pl-3 pr-3 pt-3 pb-4 row-inner">
                                     {/* title area */}
+                                    {/* title area */}
                                     <div className="row">
-                                    <div className="col-md-1">
-                                        <div className="img-icon">
-                                        <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage})`}}></div> 
+                                        <div className="col-md-1">
+                                            <div className="img-icon pt-2">
+                                            <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage})`}}></div> 
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="col-md-7">
-                                        <div className="content-heading pt-2">
-                                        <h3>Job title lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</h3>
+                                        <div className="col-md-7">
+                                            <div className="content-heading pt-2">
+                                            <h3>Job title lorem ipsum lorem ipsum lorem ipsum </h3>
+                                            {/* Tags + Price */}
+                                        
+                                                <ul className="duration mb-0">
+                                                    <li className="pr-3">
+                                                        <p className="m-icon"><span className="pr-2"><WorkIcon/></span>Monthly</p>
+                                                    </li>
+                                                    <li className="pr-3">
+                                                        <p className="m-icon"><span className="pr-2"><img src={CalanderIcon} alt="no img"/></span>2 months</p>
+                                                    </li>
+                                                    <li className="pr-3">
+                                                        <p className="m-icon"><span className="pr-2"><WatchLaterIcon/></span>20 min ago</p>
+                                                    </li>
+                                                    
+                                                </ul>
+                                                {/* Tags + Price */}
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="offset-md-1 col-md-3">
-                                        <div className="price">
-                                            <p><b>300 SAR</b><br/> <t>Per Hour</t></p>
+                                        <div className="offset-md-1 col-md-3">
+                                            <div className="price pt-2">
+                                                <p  className="">300 SAR<br/> <t>Per Hour</t></p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    </div>    
+                                    </div>   
+                                    {/* title area */}  
                                     {/* title area */}
                                     {/* Tags + Price */}
                                     <div className="row">
                                         <div className="col-md-1"></div>
                                         <div className="col-md-11">
-                                            <ul className="duration">
-                                                <li className="pr-3">
-                                                <p><i class="fas fa-lock pr-2"></i>Monthly</p>
-                                                </li>
-                                                <li className="pr-3">
-                                                <p><i class="fa fa-calendar-alt pr-2"></i>2 months</p>
-                                                </li>
-                                                <li className="pr-3">
-                                                <p><i class="fas fa-clock pr-2"></i>20 min ago</p>
-                                                </li>
-                                                
-                                            </ul>
+                                            
                                         </div>
                                     </div>
                                     {/* Tags + Price */}

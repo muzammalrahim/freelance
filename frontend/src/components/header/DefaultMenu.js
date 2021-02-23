@@ -3,6 +3,7 @@ import { MenuItems,AccountSettingMenuItems } from "./MenuItems";
 /*import './defaultmenu.css';*/
 import AvatarImage from '../../AvatarImage.png';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+
 function DefaultMenu(props) {
     return (
       <nav className="navbar navbar-expand-md">
@@ -41,7 +42,7 @@ function DefaultMenu(props) {
                 <li>
                 <div className="">
                   <a href="#" class="notification mr-3">
-                    <span><i class="fas fa-bell"></i>15</span>
+                    <span><NotificationsIcon/>15</span>
                     {/* <span class="badge">15</span> */}
                   </a>
                 </div>
@@ -55,15 +56,15 @@ function DefaultMenu(props) {
                    
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pixelz Warrios</a>
                     <div class="dropdown-menu dropdown-menu-right dropdown">
-                        <a href="#" class="dropdown-item"data-toggle="dropdown2">Status</a>
-                          <div class="dropdown-menu sub-menu dropdown2">
-                            
-
-                            <a href="#" class="dropdown-item">View Profile</a>
-                            <a href="#" class="dropdown-item">Account Settings</a>
-                            
-                            
-                          </div>
+                        <a href="#" class="dropdown-item users-status "data-toggle="dropdown">Status</a>
+                          <ul className="user-states pt-2 pl-2 pr-2 ml-5">
+                            <li>
+                              <p className="user-active-status dropdown"><span class="active-state mr-2"></span>Active</p>
+                            </li>
+                            <li>
+                              <p className="user-inactive-status dropdown"><span class="inactive-state mr-2 mb-0"></span>Inactive</p>
+                            </li>
+                          </ul>
                         <a href="#" class="dropdown-item">View Profile</a>
                         <a href="#" class="dropdown-item">Account Settings</a>
                         {/* <div class="dropdown-divider"></div> */}

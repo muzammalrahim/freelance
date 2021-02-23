@@ -3,6 +3,7 @@ import "./detailpreview.css";
 import preview1 from "../../../assets/preview1.png";
 import preview2 from "../../../assets/preview2.png";
 import preview3 from "../../../assets/preview3.png";
+import PortfolioSlider from './PortfolioSlider'
 
 
 
@@ -16,7 +17,8 @@ const DetailsPreview = () => {
           </div>
         </div>
         <div className="row pl-3 pr-4">
-          
+          <PortfolioSlider />
+{/*           
           <div className="image-wrap col-md-4">
             <img src={preview1} alt="/" />
           </div>
@@ -25,7 +27,7 @@ const DetailsPreview = () => {
           </div>
           <div className=" image-wrap col-md-4">
             <img src={preview3} alt="/" />
-          </div>
+          </div> */}
         </div>
 
         <address>
