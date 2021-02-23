@@ -56,11 +56,11 @@ IconContainer.propTypes = {
 export default function CustomizedRatings() {
   return (
     <div>
-      <Box component="fieldset"  borderColor="transparent">
+      <Box classes={{}} component="fieldset"  borderColor="transparent">
         <Rating
           name="customized-empty"
           defaultValue={2}
-          precision={0.5}
+          precision={0.1}
           emptyIcon={<StarBorderIcon fontSize="inherit" />}
         />
       </Box>
