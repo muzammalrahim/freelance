@@ -16,7 +16,7 @@ class JobViewSet(viewsets.ModelViewSet):
     search_fields = ['title']
     filterset_fields = ['skills', 'type', 'experience_level', 'budget',
                         'category']
-
+# 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
         if isRoleClient(request.user):
