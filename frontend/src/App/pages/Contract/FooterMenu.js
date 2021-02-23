@@ -9,16 +9,16 @@ export default class FooterMenu extends Component {
 
                     <div class=" row footer-navbar pl-1">
                         <div class=" col-md-2">
-                            <a className="pl-1" href="#">Date</a>
+                            <a className="pl-1 footer-des" href="#">Date</a>
                         </div>
                         <div class=" col-md-4 text-center">
-                            <a class="" href="#">Description</a>
+                            <a class="footer-des" href="#">Description</a>
                         </div>
                         <div class=" col-md-4 text-center">
-                            <a class="" href="#">Amount</a>
+                            <a class="footer-des" href="#">Amount</a>
                         </div>
                         <div class=" col-md-2 pr-0">
-                            <a class="float-right" href="#">Invoice</a>
+                            <a class="float-right footer-des" href="#">Invoice</a>
                         </div>
                     </div>
                 

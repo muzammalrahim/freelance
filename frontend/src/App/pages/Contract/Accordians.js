@@ -7,6 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
+import RequestPaymentModal from "./RequestPaymentModal"
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -104,7 +107,8 @@ export default function ControlledAccordions() {
             </div>
             <div className="col-md-5 pr-0">
               <div className="mile-inner-btn">
-                <Button variant="outlined" color="secondary">Request For payment</Button> 
+                {/* <Button variant="outlined" color="secondary">Request For payment</Button>  */}
+                <RequestPaymentModal/>
               </div>
             </div>
           </div>

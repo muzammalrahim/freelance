@@ -18,6 +18,9 @@ h1, h2, h3, h4, h5, h6{
 h3{
     font-size: 16px;
 }
+span.tick-status {
+    color: #1da799;
+}
 /* UI icons common styles */
 .m-icon .MuiSvgIcon-root {
     font-size: 14px;
@@ -137,10 +140,9 @@ h3{
     padding: 10px 0 0 10px;
 }
 
-.dropzone2{
+.proposal-details .dropzone2{
     position: relative;
     width: 100%;
-    height: 96px;
     border: 2px dashed rgba(107, 107, 106, 0.2);
     border-radius: 5px;
 }
@@ -230,12 +232,23 @@ span.active-state {
     color: #EE9821 !important;
     border: 1px solid rgb(238 152 33) !important;
     width: 213px;
-    height: 30px;
+    height: 38px;
+}
+.m-info{
+    align-items: center;
 }
 .row.m-info .MuiButton-outlinedSecondary:hover {
     color: #6b6b6a !important;
     border: 1px solid #6b6b6a !important;
     background-color: #ffffff;
+}
+.contract-one-acc .MuiButton-outlinedPrimary {
+    color: #ffffff;
+    border: 1px solid rgb(238 152 33);
+    background: #ee9821;
+    width: 210px;
+    height: 40px;
+    margin: 0 0 0 -22px;
 }
 /* Accordian */
 
@@ -467,7 +480,7 @@ ul.duration p {
     border: 1px solid rgb(29 167 153);
     border-radius: 20px;
     background: #ffffff;
-    height: 34px;
+    height: 36px;
     width: 196px;
     /* font-weight: bold; */
     font-size: 12px;
@@ -482,7 +495,9 @@ ul.duration p {
     display: flex;
     align-items: center;
 }
-
+.job-detail .tick-status .MuiSvgIcon-root {
+    margin-left: -2px;
+}
 /* inner-content */
 .row-inner{
     background: #ffffff;
@@ -533,10 +548,14 @@ ul.duration p {
 .client-info{
     border-left: 0.5px solid rgba(107, 107, 106, 0.2);
 }
-.client-details ul i {
+.client-details ul span{
+    width: 21px;
+    height: 21px;
+    overflow: hidden;
+}
+.client-details ul .svg-icons{
     padding: 0 7px 0 0;
     color: #1da799;
-    font-size: 12px;
 }
 .client-details ul h4{
     color: #6B6B6A;
@@ -545,9 +564,9 @@ ul.duration p {
     font-size: 13px;
 }
 .client-details p {
-    padding: 0 0 0 18px;
     font-size: 12px;
     color: #6b6b6a;
+    opacity: 0.8;
 }
 .client-history{
     background: #ffffff;
@@ -684,6 +703,10 @@ ul.app-detail-btns li{
     height: 50px;
     overflow: hidden;
 }
+.contact1-avatar img{
+    width: 100%;
+    display: block;
+}
 .contractone-main{
     background: #e5e5e5;
 }
@@ -747,6 +770,103 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
 }
 /* Contract View */
 
+/* Contract Two*/
+.mile-inner-text {
+    text-align: right;
+}
+p.mile-heading {
+    font-size: 12px;
+    line-height: 20px;
+}
+.mile-time {
+    font-size: 10px;
+}
+.state-disable {
+    color: #6B6B6A;
+    font-size: 14px;
+    float: right;
+}
+span.disable-state {
+    height: 6px;
+    width: 6px;
+    background-color: #6B6B6A;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 2px;
+}
+/* Contract Two*/
+
+/* Contract Three*/
+.mile-payment-status p {
+    font-size: 14px;
+    text-align: right;
+    color: #1DA799;
+}
+.tick-status .MuiSvgIcon-root{
+    font-size: 22px;
+}
+
+/* Contract Three Modal */
+/* .MuiDialogContent-root {
+    width: 700px !important;
+} */
+ .MuiDialog-paper.myCustomDialog {
+    width: 700px;
+}
+.modal-amount-inner {
+    background: #DDF2F0;
+    border: 1px solid #1DA799;
+}
+.row.amount-row {
+    align-items: center;
+}
+.cont-submit-payment h4{
+    font-size: 14px;
+}
+p.digit{
+    font-size: 30px;
+    font-weight: 600;
+    color: #1DA799;
+}
+.modal-msg h3 {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6B6B6A;
+}
+
+.modal-textarea textarea{
+ width: 100%;
+ height: 100px;
+ border: 1px solid rgba(107, 107, 106, 0.2);
+ padding: 10px 0 0 10px;
+}
+.modal-textarea textarea::placeholder{
+    color: #6b6b6a;
+}
+.modal-upload-img h3{
+    font-size: 12px;
+    font-weight: 600;
+    color: #6B6B6A;
+}
+.modal-upload-img .dropzone {
+    border-color: rgb(102, 102, 102, 0.1);
+}
+
+/* Contract Three Modal */
+.feedback-sec {
+    position: relative;
+    background: #DDF2F0;
+    height: 182px;
+}
+.MuiDialogContent-root.custom-root {
+    padding: 0;
+}
+.selection select{
+    color: #6B6B6A;
+    width: 300px;
+}
+/* Contract Three*/
+
 /* --------------------------------Pages--------------------*/
 
 
@@ -756,6 +876,17 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
 }
 
 @media only screen and (max-width: 991px) {
+    /* proposal */
+    .proposal-details .MuiButton-outlinedPrimary {
+        font-size: 8px;
+    }
+    .proposal-heading h1 {
+        font-size: 15px;
+    }
+    .proposal-details h3 {
+        font-size: 12px;
+    }
+    /* proposal */
     /* Side Bar */
    
     /* Side Bar */
@@ -770,9 +901,9 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
     li.pr-3 {
         padding-right: 0.25rem!important;
     }
-    ul.duration {
+    /* ul.duration {
         padding-left: 14px;
-    }
+    } */
     .price span {
         font-size: 12px;
     }

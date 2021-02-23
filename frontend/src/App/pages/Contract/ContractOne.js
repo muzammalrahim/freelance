@@ -14,6 +14,7 @@ import CalanderIcon from '../../../img/calendar.svg';
 import AvtarIcon from '../../../img/contract-img.png';
 
 
+
 export default class ContractOne extends Component {
     render() {
         return (
@@ -47,13 +48,13 @@ export default class ContractOne extends Component {
                                         <div className="col-md-11">
                                             <ul className="duration pl-1">
                                                 <li className="pr-3">
-                                                <p className="m-icon"><span className="pr-1"><WorkIcon/></span>Monthly</p>
+                                                    <p className="m-icon"><span className="pr-1"><WorkIcon/></span>Monthly</p>
                                                 </li>
                                                 <li className="pr-3">
-                                                <p className="m-icon"><span className="pr-1"><img src={CalanderIcon} alt="no img"/></span>2 months</p>
+                                                    <p className="m-icon"><span className="pr-1"><img src={CalanderIcon} alt="no img"/></span>2 months</p>
                                                 </li>
                                                 <li className="pr-3">
-                                                <p className="m-icon"><span className="pr-1"><WatchLaterIcon/></span>20 min ago</p>
+                                                    <p className="m-icon"><span className="pr-1"><WatchLaterIcon/></span>20 min ago</p>
                                                 </li>
 
                                             </ul>
