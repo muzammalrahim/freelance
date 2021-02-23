@@ -13,14 +13,17 @@ const PortfolioSlider = () => {
 
   return (
     <Carousel activeIndex={index} onSelect={handleSelect}>
+          <div className="image-wrap col-md-4"></div>
       <Carousel.Item>
         <img
           className="d-block w-100"
           src={preview1}
+          
           alt="First slide"
         />
         
       </Carousel.Item>
+      
       <Carousel.Item>
         <img
           className="d-block w-100"
