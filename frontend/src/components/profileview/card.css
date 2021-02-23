@@ -25,7 +25,7 @@
     }
     .complete-profile{
 
-       margin: 24px 20px 17px;
+        margin: 23px 12px 17px;
         border-bottom: 2px solid#cececb;
         font-family: Poppins;
     font-style: normal;
@@ -35,7 +35,6 @@
     color: #6B6B6A;
     }
     .Details-subtext{
-        margin: 24px 20px 17px;
     font-family: Poppins;
     font-style: normal;
     font-weight: normal;
@@ -58,8 +57,27 @@
 
     .img_setting{
         margin-right: 10px;
+        color: #1DA799;
+        height: 13px;
+        width: 13px;
     }
-
+    .img_setting p{
+        position: absolute;
+        height: 13.31px;
+width: 13.3px;
+border-radius: 0px;
+margin-right: 10px;
+color: #1DA799;
+    }
+    .img_setting_Indore{
+        height: 30px;
+    width: 23px;
+    }
+    .img_setting_screen{
+        height: 21px;
+        width: 16px;
+        margin-left: 5px;
+    }
     @media only screen and (max-width: 1000px) {
         .complete-profile h5 {
             font-size: 12px;

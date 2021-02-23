@@ -1,18 +1,17 @@
-*{
-    padding: 0; margin: 0; box-sizing: border-box;
-}
+
 .ap-detail{
     background: #F9F9F9;
+}
+.ap-detail .form-control-text{
+    height: 100px;
+    width: 100%;
 }
 .ap-detail .col-md-4{
     font-family: Poppins;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 24px;
     color: #6B6B6A;
-}
-.ap-detail-box{
-    margin-top: 40px;
 }
 
 .ap-detail .iv_icon2{
@@ -22,11 +21,6 @@
 box-sizing: border-box;
 background-repeat: no-repeat;}
 
-
-.ap-detail .col-md-12{
-    height: 200px;
-    border-radius: 4px;
-}
 .ap-detail .btn-primary{
     background: #EE9821;
     border-radius: 2px;

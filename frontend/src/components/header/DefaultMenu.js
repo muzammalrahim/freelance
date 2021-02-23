@@ -2,7 +2,7 @@ import React from 'react'
 import { MenuItems,AccountSettingMenuItems } from "./MenuItems";
 /*import './defaultmenu.css';*/
 import AvatarImage from '../../AvatarImage.png';
-
+import NotificationsIcon from '@material-ui/icons/Notifications';
 function DefaultMenu(props) {
     return (
       <nav className="navbar navbar-expand-md">
