@@ -2,13 +2,13 @@ import React from "react";
 import Navbar from "../../../components/Navbar";
 import "./SignIn.css";
 import './signuppage.css'
-// import ToggleButton from "./ToggleButton";
 import SiSoHero from "../../../components/SiSoHero";
 import loginimage from "../../../assets/LoginImage.png";
 import AvatarImage from "../../../../src/AvatarImage.png";
 import LOCKER from "../../../assets/LOCKER.png";
 import  Alert from '../../../App/pages/signin/Alert';
 import Signinfooter from "./Signinfooter";
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 function SignIn() {
   return (
     <div className="SignUp-flex-container">
@@ -18,9 +18,9 @@ function SignIn() {
       <div>
         <SiSoHero />
       </div>
-      <div class="main-bg">
-        <div class="container"> 
-          <div class="row">
+      <div className="main-bg">
+        <div className="container"> 
+          <div className="row">
             <div className="col-md-6 align-self-center bg-white offset-md-3">
             <div className="text-content">
             <div className="welcome-text pt-3 pl-3 float-left ">
@@ -28,27 +28,31 @@ function SignIn() {
                   <h6 className="text-light">Sign up to continue</h6>
                 </div>
 
-                <div class="float-right">
+                <div className="float-right">
                   <img src={loginimage} alt="/" />
                 </div>
               </div>
               <div className="floww pl-3 pr-3">
                 <img src={AvatarImage} alt="/" className="si-pic-tag" />
                 <form className="form-field pt-5">
-                  <div class="form-group pt-4">
-                    <label for="usr">Full name</label>
+                  <div className="form-group pt-4">
+                    <label form="usr">Full name</label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="usr"
                       placeholder="Enter Full Name"
                     />
                   </div>
-                  <div class="form-group">
-                    <label for="pwd">Password</label>
+                  <div className="s-in-form-group">
+                    {/* <div className="s-in-flex-eye">
+                    <VisibilityOffIcon />
+                    </div> */}
+
+                    <label form="pwd">Password</label>
                     <input
                       type="password"
-                      class="form-control"
+                      className="form-control"
                       id="pwd"
                       placeholder="Enter Password"
                     />
@@ -56,29 +60,29 @@ function SignIn() {
                 </form>
               </div>
               <div className="sign-up-btn  pl-3 pr-3 pb-3">
-              <div class="float-right">
+              <div className="float-right">
                 <img src={LOCKER} alt="" className="pr-1"/>
 
                  <a href="#" data-target="#pwdModal" data-toggle="modal">Forgot your password? </a>
                 </div>
-                <div class="checkbox pt-3">
+                <div className="checkbox pt-3">
                   <label>
                     <input type="checkbox" value="" /> Remember me
                   </label>
                 </div>
                 <div className="pt-4">
-                  <button type="button" class="btn btn-default btn-block text-white">
+                  <button type="button" className="btn btn-default btn-block text-white">
                     Log In
                   </button>
                 </div>
                 <div>
-                  <h6 class="text-center pt-2">or</h6>
+                  <h6 className="text-center pt-2">or</h6>
                 </div>
                 <div className="pt-1 pb-4">
-                  <button type="button" class="btn btn-primary btn-block">
+                  <button type="button" className="btn btn-primary btn-block">
                     Signup with
-                    <span class="pl-2 ">
-                      Linked <i class="fab fa-linkedin pl-1"></i>
+                    <span className="pl-2 ">
+                      Linked <LinkedInIcon/>
                     </span>
                   </button>
                 </div>
