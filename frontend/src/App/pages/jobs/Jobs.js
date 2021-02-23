@@ -38,7 +38,7 @@ function Jobs() {
       })
   
       console.log("data",job_list)
-      setRows(job_list);
+       setRows(job_list);
     })
 
 

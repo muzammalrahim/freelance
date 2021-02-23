@@ -162,6 +162,15 @@
   border: 2px solid;
 } 
 
+/* .btn-circle.btn-xl {  */
+    /* width: 70px;  */
+    /* height: 70px;  */
+    /* padding: 10px 16px;  */
+    /* border-radius: 35px;  */
+    /* font-size: 12px;  */
+    /* text-align: center;  */
+/* }  */
+
 .tabbar .btn-circle.btn-md:focus,
   .tabbar .btn-circle.btn-md:hover {
 
@@ -171,14 +180,7 @@
 
 
 
-/* .btn-circle.btn-xl {  */
-    /* width: 70px;  */
-    /* height: 70px;  */
-    /* padding: 10px 16px;  */
-    /* border-radius: 35px;  */
-    /* font-size: 12px;  */
-    /* text-align: center;  */
-/* }  */
+
   
   @media screen and (max-width: 1105px) {
     .tabbar .text2 {
