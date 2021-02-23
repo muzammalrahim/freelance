@@ -48,6 +48,16 @@ export default class TabbarRegistration extends Component {
                     class=" "
                     onClick={() => this.setState({ tabindex: 1 })}
                   >
+
+         
+    
+                      
+         {/*
+              <button type="button" class={"btn btn-outline-secondary btn-circle btn-md " + (this.state.tabindex=== 1 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 1 })}> 1</button> */}
+             
+          
+
+
                     <button className={"Buttoncls " + (this.state.tabindex=== 1 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 1 })}>
                         1
                   </button>
