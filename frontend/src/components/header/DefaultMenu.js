@@ -3,6 +3,10 @@ import { MenuItems,AccountSettingMenuItems } from "./MenuItems";
 /*import './defaultmenu.css';*/
 import AvatarImage from '../../AvatarImage.png';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 38f12e2644d38978faa15052a27b712a1d1bfd43
 function DefaultMenu(props) {
     return (
       <nav className="navbar navbar-expand-md">
