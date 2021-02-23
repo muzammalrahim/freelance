@@ -7,10 +7,49 @@ import Sidebar from './Sidebar';
 import SearchBar from "./SearchBar";
 import AvatarImage from '../../../../src/AvatarImage.png';
 import Button from '@material-ui/core/Button';
+import  { useEffect } from 'react';
+import list from '../helper/api';
 
-
+function createData(id, budget, title, description, skills,) {
+  return { id, budget, title, description, skills, };
+}
 
 function Jobs() {
+  const [rows, setRows] = React.useState([]);
+  
+  function getJobs (){
+
+    // console.log("getjob fun");
+    // list('api/v1/job').then((response)=>{
+      // let jobs_list = [];
+      // response.data.map((row)=>{
+// 
+        // console.log("data",row)
+        // jobs_list.push(createData(row.id, row.name, row.father_name, row.mobile, row.email, row.city))
+      // })
+      // setRows(jobs_list);
+    // })
+
+    list('api/v1/job/').then((response)=>{
+      let job_list = [];
+      response.data.map((row)=>{
+        console.log("data",row)
+        job_list.push(createData(row.id, row.budget, row.title, row.description, row.skills))
+      })
+  
+      console.log("data",job_list)
+      setRows(job_list);
+    })
+
+
+  }
+
+  useEffect(() => {
+    getJobs();
+    console.log("useeffect");
+  },[]);
+
+
     return (
         
         <div className='Jobs'>
@@ -58,10 +97,11 @@ function Jobs() {
                         <h1 className="inner-heading p-3">My Feed</h1>
                       </div>
                       {/* Heading */}
+   
+            {/*--------- row1 ---------------*/}
 
-                      {/*--------- row1 ---------------*/}
-                      {/* <div className="row job"> */}
-                      <div className="job-inner pl-3 pr-3 pt-3 pb-4">
+            {rows.map((row, index) => (
+                      <div className="myfeed pl-3 pr-3 pt-3 pb-4 border-top">
                         {/* title area */}
                         <div className="row">
                           <div className="col-md-1">
@@ -71,7 +111,7 @@ function Jobs() {
                           </div>
                           <div className="col-md-7">
                             <div className="content-heading pt-1">
-                              <h3>Job title lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</h3>
+                              <h3>{row.title}</h3>
                             </div>
                           </div>
                           <div className="offset-md-1 col-md-3">
@@ -109,7 +149,7 @@ function Jobs() {
                           </div>
                           <div className="offset-md-1 col-md-3">
                             <div className="price-colored float-right">
-                              <p>Per Hour/<span> 300 SAR</span></p>
+                              <p>Per Hour/<span> {row.budget} SAR</span></p>
                             </div>
                           </div>
 
@@ -119,10 +159,7 @@ function Jobs() {
                         <div className="row paragraph">
                           <div className="col-md-12">
                             <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and scrambled it to make a type
-                            specimen book. It has survived not only five centuries
+                             {row.description}
                             <a href="#">more...</a>
                             </p>
                           </div>
@@ -133,7 +170,7 @@ function Jobs() {
                           <div className="col-md-8">
                             <ul className="tags">
                               <li className="pr-3">
-                                <a className="pl-2 pr-2 pt-1 pb-1" href="#">Design</a>
+                                <a className="pl-2 pr-2 pt-1 pb-1" href="#">{row.budget}</a>
                               </li>
                               <li className="pr-3">
                                 <a className="pl-2 pr-2 pt-1 pb-1" href="#">Frontend developer</a>
@@ -155,205 +192,9 @@ function Jobs() {
                         </div>
                         {/* Search Tags */}
                       </div>
+
+                      ) )}   
                       {/*--------- row1 ---------------*/}
-
-
-                      {/*--------- row2 ---------------*/}
-                      {/* <div className="row job"> */}
-                      <div className="job-inner pl-3 pr-3 pt-3 pb-4 row-inner border-top">
-                        {/* title area */}
-                        <div className="row">
-                          <div className="col-md-1">
-                            <div className="img-icon">
-                              <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage})`}}></div>
-                            </div>
-                          </div>
-                          <div className="col-md-7">
-                            <div className="content-heading">
-                              <h3>Job title lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</h3>
-                            </div>
-                          </div>
-                          <div className="offset-md-1 col-md-3">
-                            <ul className="content-icons float-right">
-                              <li>
-                                <div className="dislike fa-icon">
-                                  <i className="far fa-thumbs-down mr-4"></i>
-                                </div>
-                              </li>
-                              <li className="">
-                                <div className="book-mark fa-icon">
-                                  <i className="fa fa-bookmark-o" aria-hidden="true"></i>
-                                </div>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        {/* title area */}
-                        {/* Tags + Price */}
-                        <div className="row pt-2">
-                          <div className="col-md-1"></div>
-                          <div className="col-md-7">
-                            <ul className="duration">
-                                <li className="pr-3">
-                                  <p><i class="fas fa-lock pr-2"></i>Monthly</p>
-                                </li>
-                                <li className="pr-3">
-                                  <p><i class="fa fa-calendar-alt pr-2"></i>2 months</p>
-                                </li>
-                                <li className="pr-3">
-                                  <p><i class="fas fa-clock pr-2"></i>20 min ago</p>
-                                </li>
-
-                              </ul>
-                          </div>
-                          <div className="offset-md-1 col-md-3">
-                            <div className="price-colored float-right">
-                              <p>Per Hour/ <span>300 SAR</span></p>
-                            </div>
-                          </div>
-
-                        </div>
-                        {/* Tags + Price */}
-                        {/* paragraph */}
-                        <div className="row paragraph">
-                          <div className="col-md-12">
-                            <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and scrambled it to make a type
-                            specimen book. It has survived not only five centuries
-                            <a href="#">more...</a>
-                            </p>
-                          </div>
-                        </div>
-                        {/* paragraph */}
-                        {/* Search Tags */}
-                        <div className=" search-tags row pt-3">
-                          <div className="col-md-8">
-                            <ul className="tags">
-                              <li className="pr-3">
-                                <a className="pl-2 pr-2 pt-1 pb-1" href="#">Design</a>
-                              </li>
-                              <li className="pr-3">
-                                <a className="pl-2 pr-2 pt-1 pb-1" href="#">Frontend developer</a>
-                              </li>
-                              <li className="pr-3">
-                                <a className="pl-2 pr-2 pt-1 pb-1" href="#">Java</a>
-                              </li>
-                              <li>
-                                <a className="pl-2 pr-2 pt-1 pb-1" href="#">Html</a>
-                              </li>
-                            </ul>
-                          </div>
-                          <div className="col-md-4">
-                            <div className="job-payment-btn float-right mb-3">
-                            <button class="btn btn--yellow btn--medium job-button p-0"><i className="fas fa-check mr-2" aria-hidden="true"></i>Payment verification</button>
-
-                            </div>
-                          </div>
-                        </div>
-                        {/* Search Tags */}
-                      </div>
-                      {/*--------- row2 ---------------*/}
-
-                      {/*--------- row3 ---------------*/}
-                      {/* <div className="row job"> */}
-                      <div className="job-inner pl-3 pr-3 pt-3 pb-4 row-inner border-top">
-                        {/* title area */}
-                        <div className="row">
-                          <div className="col-md-1">
-                            <div className="img-icon">
-                              <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage})`}}></div>
-                            </div>
-                          </div>
-                          <div className="col-md-7">
-                            <div className="content-heading">
-                              <h3>Job title lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</h3>
-                            </div>
-                          </div>
-                          <div className="offset-md-1 col-md-3">
-                            <ul className="content-icons float-right">
-                              <li>
-                                <div className="dislike fa-icon">
-                                  <i className="far fa-thumbs-down mr-4"></i>
-                                </div>
-                              </li>
-                              <li>
-                                <div className="book-mark fa-icon">
-                                  <i className="fa fa-bookmark-o" aria-hidden="true"></i>
-                                </div>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        {/* title area */}
-                        {/* Tags + Price */}
-                        <div className="row pt-2">
-                          <div className="col-md-1"></div>
-                          <div className="col-md-7">
-                            <ul className="duration">
-                                <li className="pr-3">
-                                  <p><i class="fas fa-lock pr-2"></i>Monthly</p>
-                                </li>
-                                <li className="pr-3">
-                                  <p><i class="fa fa-calendar-alt pr-2"></i>2 months</p>
-                                </li>
-                                <li className="pr-3">
-                                  <p><i class="fas fa-clock pr-2"></i>20 min ago</p>
-                                </li>
-
-                              </ul>
-                          </div>
-                          <div className="offset-md-1 col-md-3">
-                            <div className="price-colored float-right">
-                              <p>Per Hour/ <span>300 SAR</span></p>
-                            </div>
-                          </div>
-
-                        </div>
-                        {/* Tags + Price */}
-                        {/* paragraph */}
-                        <div className="row paragraph">
-                          <div className="col-md-12">
-                            <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and scrambled it to make a type
-                            specimen book. It has survived not only five centuries
-                            <a href="#">more...</a>
-                            </p>
-                          </div>
-                        </div>
-                        {/* paragraph */}
-                        {/* Search Tags */}
-                        <div className=" search-tags row pt-3">
-                          <div className="col-md-8">
-                            <ul className="tags">
-                              <li className="pr-3">
-                                <a className="pl-2 pr-2 pt-1 pb-1" href="#">Design</a>
-                              </li>
-                              <li className="pr-3">
-                                <a className="pl-2 pr-2 pt-1 pb-1" href="#">Frontend developer</a>
-                              </li>
-                              <li className="pr-3">
-                                <a className="pl-2 pr-2 pt-1 pb-1" href="#">Java</a>
-                              </li>
-                              <li>
-                                <a className="pl-2 pr-2 pt-1 pb-1" href="#">Html</a>
-                              </li>
-                            </ul>
-                          </div>
-                          <div className="col-md-4">
-                            <div className="job-payment-btn float-right mb-3">
-                            <button class="btn btn--yellow btn--medium job-button p-0"><i className="fas fa-check mr-2" aria-hidden="true"></i>Payment verification</button>
-
-                            </div>
-                          </div>
-                        </div>
-                        {/* Search Tags */}
-                      </div>
-                      {/*--------- row3 ---------------*/}
-
                   </div>
                 </div>
               </div>

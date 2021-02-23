@@ -352,6 +352,19 @@ ul.job-top-area li{
 .job-inner{
     background: rgba(29, 167, 153, 0.05);
 }
+
+.myfeed{
+    background: #ffffff;
+}
+
+.myfeed:focus,
+.myfeed:hover{
+
+ background: rgba(29, 167, 153, 0.05); 
+ padding: 4px;
+ border: 0.5px solid #2dafa2 !important;
+}
+
 .avatar-user-job {
     width: 50px;
     height: 50px;

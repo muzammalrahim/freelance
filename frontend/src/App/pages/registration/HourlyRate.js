@@ -85,8 +85,7 @@ function HourlyRate() {
                     </div>
                     {/*Right section end*/} 
 
-
-            
+                 
         </div>
     )
 }
