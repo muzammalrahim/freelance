@@ -1,7 +1,5 @@
 import React from "react";
 import "./ProfileView.css";
-import Navbar from "../Navbar";
-import Menuebar from "./Menuebar";
 import Card from './Card'
 import Certificate from './Certifcate'
 import BioGraphy from "./BIoGraphy";

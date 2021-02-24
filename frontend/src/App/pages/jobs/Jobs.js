@@ -1,14 +1,12 @@
 import React from 'react'
-import Navbar from './Navbar';
 import "../../../assets/css/custom.css";
-// import DefaultMenu from './DefaultMenu';
 import Header from '../../../../src/components/header/Header'
 import Sidebar from './Sidebar';
 import SearchBar from "./SearchBar";
 import AvatarImage from '../../../../src/AvatarImage.png';
-import Button from '@material-ui/core/Button';
 import  { useEffect } from 'react';
 import list from '../helper/api';
+
 
 function createData(id, budget, title, description, skills,) {
   return { id, budget, title, description, skills, };
