@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -24,10 +23,13 @@ export default function ResponsiveDialog() {
   };
 
   return (
+    
     <div className="submit-bid p-3">
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
       Submit a Proposal
       </Button>
+      
+     
       <Dialog
         fullScreen={fullScreen}
         open={open}
@@ -46,8 +48,9 @@ export default function ResponsiveDialog() {
               <div className="bid-buttons d-flex justify-content-center pb-4">
                 <button class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary" tabindex="0" type="button"><span class="MuiButton-label">Cancel</span><span class="MuiTouchRipple-root"></span></button>
                 <button onClick={handleClose} class="btn btn--yellow btn--medium" autoFocus> Submit</button>
+                
               </div>
-          
+              
       
             </div>
             

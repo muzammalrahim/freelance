@@ -5,8 +5,7 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
+import Avatar from '@material-ui/core/Avatar'
 import RequestPaymentModal from "./RequestPaymentModal"
 
 
