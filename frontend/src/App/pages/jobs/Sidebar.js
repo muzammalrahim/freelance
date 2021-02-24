@@ -1,7 +1,6 @@
 import React from "react";
 import {Nav} from "react-bootstrap";
 import { withRouter } from "react-router";
-import Checkbox from '@material-ui/core/Checkbox';
 import RangeSlider from './RangeSlider'
 
 
