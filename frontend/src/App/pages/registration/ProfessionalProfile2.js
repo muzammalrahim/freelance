@@ -3,14 +3,12 @@ import React,{Component} from 'react'
 
 import GetImage from './GetImage'
 import Dropdown from "../../../components/Dropdown";
-import SelectSkill from "../../../components/SelectSkill";
 
 import './ProfessionalProfile2.css'
 import '../../../../src/common.css'
 
 
 import img from '../../../assets/Group 3539.png'
-import img2 from '../../../img/profess_F.png';
 // import img3 from '../../../img/WorkPlatform.png';
 
 
@@ -131,7 +129,10 @@ return (
                                     >
                                       x
                                     </span>
+                             
                                   </div>
+
+                                 
                                 ))}
                               </div>
                      </div>
