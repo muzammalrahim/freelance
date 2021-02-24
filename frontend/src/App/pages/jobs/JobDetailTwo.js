@@ -1,13 +1,18 @@
 import React from 'react'
-import Navbar from './Navbar';
 import Header from '../../../../src/components/header/Header';
-import Proposal from './Proposal';
+import ProposalModal from './ProposalModal';
 import AvatarImage from '../../../../src/AvatarImage.png';
-import img from "../../../img/stars1.png"
+import AvatarImage1 from '../../../../src/img/AvatarImage1.png';
+import AvatarImage2 from '../../../../src/img/AvatarImage2.png';
+import AvatarImage3 from '../../../../src/img/AvatarImage3.png';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import CalanderIcon from '../../../img/calendar.svg';
 import WorkIcon from '@material-ui/icons/Work'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import ClientAdd1 from '../../../img/c1.svg'
+import ClientAdd2 from '../../../img/c2.svg'
+import ClientAdd3 from '../../../img/c3.svg'
+import ClientAdd4 from '../../../img/c4.svg'
 
 
 
@@ -27,7 +32,7 @@ export default function JobDetail() {
                 <div className="container">
                     <div className="row details-grid">
                         <div className="col-md-3">
-                        <div className="left-side"><Proposal/></div>
+                        <div className="left-side"><ProposalModal/></div>
                         </div>
                         <div className="col-md-9">
                             <div className="right-side">
@@ -82,36 +87,43 @@ export default function JobDetail() {
                                     <div className="row paragraph">
                                         <div className="col-md-12">
                                             <p>
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                                            when an unknown printer took a galley of type and scrambled it to make a type 
-                                            specimen book. It has survived not only five centuries
-                                            <a href="#">more...</a>
+                                            Lorem Ipsum is simply dummy text of the printing and
+                                             typesetting industry. Lorem Ipsum has been the
+                                              industry's standard dummy text ever since the 1500s,
+                                               when an unknown printer took a galley of type and 
+                                               scrambled it to make a type specimen book. It has 
+                                               survived not only five centuries, but also the leap 
+                                               into electronic typesetting, remaining essentially 
+                                               unchanged. It was popularised in the 1960s with the 
+                                               release of Letraset sheets containing Lorem Ipsum 
+                                               passages, and more recently with desktop publishing 
+                                               software like Aldus PageMaker including versions of 
+                                               Lorem Ipsum.
                                             </p>
                                         </div> 
                                     </div>
                                     {/* paragraph */}  
                                     {/* Search Tags */}  
-                                    <div className=" search-tags row pt-4">
-                                        <div className="col-md-8">
+                                    <div className=" search-tags row">
+                                        <div className="col-md-8 pt-3">
                                             <ul className="tags">
                                             <li className="pr-3">
-                                                <a className="pl-2 pr-2 pt-1 pb-1" href="#">Design</a>
+                                                <a className="pl-2 pr-2 pt-1 pb-1 pt-2 pb-2" href="#">Design</a>
                                             </li>
                                             <li className="pr-3">
-                                                <a className="pl-2 pr-2 pt-1 pb-1" href="#">Frontend developer</a>
+                                                <a className="pl-2 pr-2 pt-1 pb-1 pt-2 pb-2" href="#">Frontend developer</a>
                                             </li>
                                             <li className="pr-3">
-                                                <a className="pl-2 pr-2 pt-1 pb-1" href="#">Java</a>
+                                                <a className="pl-2 pr-2 pt-1 pb-1 pt-2 pb-2" href="#">Java</a>
                                             </li>
                                             <li>
-                                                <a className="pl-2 pr-2 pt-1 pb-1" href="#">Html</a>
+                                                <a className="pl-2 pr-2 pt-1 pb-1 pt-2 pb-2" href="#">Html</a>
                                             </li>   
                                             </ul>
                                         </div>
                                         <div className="col-md-4">
                                             <div className="job-payment-btn float-right mb-3">
-                                            <button class="btn btn--yellow btn--medium job-button"><i className="fas fa-check mr-2" aria-hidden="true"></i>Payment verification</button>
+                                            <button class="btn btn--yellow btn--medium job-button p-0"><span className="tick-status pr-2 border-0"><CheckCircleIcon/></span>Payment verification</button>
                                             
                                             </div>
                                         </div>  
@@ -126,25 +138,25 @@ export default function JobDetail() {
                                     {/* tags */}
                                     <ul className="tags">
                                         <li className="pr-3">
-                                            <a className="pl-2 pr-2 pt-1 pb-1" href="#">PHP</a>
+                                            <a className="pl-2 pr-2 pt-1 pb-1 pt-2 pb-2" href="#">PHP</a>
                                         </li>
                                         <li className="pr-3">
-                                            <a className="pl-2 pr-2 pt-1 pb-1" href="#">Website design</a>
+                                            <a className="pl-2 pr-2 pt-1 pb-1 pt-2 pb-2" href="#">Website design</a>
                                         </li>
                                         <li className="pr-3">
-                                            <a className="pl-2 pr-2 pt-1 pb-1" href="#">Wordpress</a>
+                                            <a className="pl-2 pr-2 pt-1 pb-1 pt-2 pb-2" href="#">Wordpress</a>
                                         </li>
                                         <li className="pr-3">
-                                            <a className="pl-2 pr-2 pt-1 pb-1" href="#">Java</a>
+                                            <a className="pl-2 pr-2 pt-1 pb-1 pt-2 pb-2" href="#">Java</a>
                                         </li>  
                                         <li className="pr-3">
-                                            <a className="pl-2 pr-2 pt-1 pb-1" href="#">UIUX</a>
+                                            <a className="pl-2 pr-2 pt-1 pb-1 pt-2 pb-2" href="#">UIUX</a>
                                         </li>
                                         <li className="pr-3">
-                                            <a className="pl-2 pr-2 pt-1 pb-1" href="#">Branding</a>
+                                            <a className="pl-2 pr-2 pt-1 pb-1 pt-2 pb-2" href="#">Branding</a>
                                         </li>
                                         <li className="pr-3">
-                                            <a className="pl-2 pr-2 pt-1 pb-1" href="#">Logo</a>
+                                            <a className="pl-2 pr-2 pt-1 pb-1 pt-2 pb-2" href="#">Logo</a>
                                         </li>
                                     </ul>
                                     {/* tags */}
@@ -180,19 +192,25 @@ export default function JobDetail() {
                                                 <div className="client-details">
                                                     <ul>
                                                         <li>
-                                                            <h4><i class="fa fa-map-marker" aria-hidden="true"></i>Brazil </h4>
-                                                            <p>Rio De Janerio 09:18 pm</p>
+                                                            <h4><span><img className="svg-icons mr-1" src={ClientAdd1} alt="no img"/></span>Brazil </h4>
+                                                            <p className="pl-4">Rio De Janerio 09:18 pm</p>
                                                         </li>
                                                         <li>
-                                                            <h4><i class="fa fa-briefcase"></i>5 Job Posted </h4>
-                                                            <p>75% Hiring Rate</p>
+                                                            <h4>
+                                                            <span><img className="svg-icons mr-1" src={ClientAdd2} alt="no img"/></span>
+                                                            5 Job Posted
+                                                            </h4>
+                                                            <p className="pl-4">75% Hiring Rate</p>
                                                         </li>
                                                         <li>
-                                                            <h4><i class="fas fa-wallet"></i>1800 SAR spent </h4>
-                                                            <p> 20 Hires, 6 Active</p>
+                                                            <h4><span><img className="svg-icons mr-1" src={ClientAdd3} alt="no img"/></span>
+                                                            1800 SAR spent </h4>
+                                                            <p className="pl-4"> 20 Hires, 6 Active</p>
                                                         </li>
                                                         <li>
-                                                            <h4><i class="fa fa-calendar"></i>Member since Nov 19, 2020 </h4>
+                                                            <h4>
+                                                            <span><img className="svg-icons mr-1" src={ClientAdd4} alt="no img"/></span>
+                                                            Member since Nov 19, 2020 </h4>
                                                             <p> </p>
                                                         </li>
                                                     </ul>
@@ -212,7 +230,7 @@ export default function JobDetail() {
                                         <div className="row pt-3 container-fluid pr-0">
                                             <div className="col-md-1">
                                                 <div className="img-icon">
-                                                    <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage})`}}></div> 
+                                                    <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage1})`}}></div> 
                                                 </div>
                                             </div>
                                             <div className="col-md-8">
@@ -221,10 +239,10 @@ export default function JobDetail() {
                                                     <div className="prop-tag">
                                                         <ul className="duration">
                                                             <li className="pr-3">
-                                                            <p><i class="fa fa-calendar-alt pr-2"></i>Within 1 day </p>
+                                                            <p><span className="pr-2"><img src={CalanderIcon} alt="no img"/></span>Within 1 day </p>
                                                             </li>
                                                             <li className="pr-3">
-                                                            <p><i class="fas fa-clock pr-2"></i>With in a minutes</p>
+                                                            <p className="m-icon"><span className="pr-2"><WatchLaterIcon/></span>With in a minutes</p>
                                                             </li> 
                                                         </ul>
                                                     </div>
@@ -250,19 +268,19 @@ export default function JobDetail() {
                                         <div className="row pt-3 container-fluid pr-0">
                                             <div className="col-md-1">
                                                 <div className="img-icon">
-                                                    <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage})`}}></div> 
+                                                    <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage2})`}}></div> 
                                                 </div>
                                             </div>
                                             <div className="col-md-8">
                                                 <div className="pl-3">
                                                     <h4 className="pt-2">Maria Bator</h4>
                                                     <div className="prop-tag">
-                                                        <ul className="duration">
+                                                    <ul className="duration">
                                                             <li className="pr-3">
-                                                            <p><i class="fa fa-calendar-alt pr-2"></i>Within 5 weeks </p>
+                                                            <p><span className="pr-2"><img src={CalanderIcon} alt="no img"/></span>Within 5 weeks </p>
                                                             </li>
                                                             <li className="pr-3">
-                                                            <p><i class="fas fa-clock pr-2"></i>1 hour ago</p>
+                                                            <p className="m-icon"><span className="pr-2"><WatchLaterIcon/></span>1 hour ago</p>
                                                             </li> 
                                                         </ul>
                                                     </div>
@@ -292,7 +310,7 @@ export default function JobDetail() {
                                         <div className="row pt-3  container-fluid pr-0">
                                             <div className="col-md-1">
                                                 <div className="img-icon">
-                                                    <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage})`}}></div> 
+                                                    <div className='avatar-user-job' style={{backgroundImage: `url(${AvatarImage3})`}}></div> 
                                                 </div>
                                             </div>
                                             <div className="col-md-8">
@@ -301,10 +319,10 @@ export default function JobDetail() {
                                                     <div className="prop-tag">
                                                         <ul className="duration">
                                                             <li className="pr-3">
-                                                            <p><i class="fa fa-calendar-alt pr-2"></i>Within 2 weeks </p>
+                                                            <p><span className="pr-2"><img src={CalanderIcon} alt="no img"/></span>Within 2 weeks </p>
                                                             </li>
                                                             <li className="pr-3">
-                                                            <p><i class="fas fa-clock pr-2"></i>2 hour ago</p>
+                                                            <p className="m-icon"><span className="pr-2"><WatchLaterIcon/></span>5 hours ago</p>
                                                             </li> 
                                                         </ul>
                                                     </div>

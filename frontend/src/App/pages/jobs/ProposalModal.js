@@ -4,7 +4,7 @@ import ResponsiveDialog from "./SubmitBidModal";
 
       
 
-export default function Proposal () {
+export default function ProposalModal () {
     
         return (
             <div className="proposal-details pb-4">
@@ -56,11 +56,11 @@ export default function Proposal () {
                             
                         </li>
                     </ul>
-
-                    <div className="text-center">
-                        <button  class="btn btn--yellow btn--medium">Submit a Proposal</button>
-                    </div>
-                    
+                    <ResponsiveDialog/>
+                    {/* <button  class="btn btn--yellow btn--medium">Submit a Proposal</button> */}
+                    {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+                        Submit a Proposal
+                    </Button> */}
                 </div>
                 
             </div>

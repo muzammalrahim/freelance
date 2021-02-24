@@ -1,17 +1,12 @@
 import React from 'react'
-import Navbar from './Navbar';
 import Header from '../../../../src/components/header/Header';
 import Proposal from './Proposal';
 import AvatarImage from '../../../../src/AvatarImage.png';
-import img from "../../../img/stars1.png"
 import CustomizedRatings from "./Rating"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faLock, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import CalanderIcon from '../../../img/calendar.svg';
 import WorkIcon from '@material-ui/icons/Work'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import ClientAdd1 from '../../../img/c1.svg'
 import ClientAdd2 from '../../../img/c2.svg'
 import ClientAdd3 from '../../../img/c3.svg'
