@@ -17,9 +17,9 @@ class Multiselect extends Component{
         var value = target.value;
         
         if(target.checked){
-            this.setstate.hobbies[value] = value;   
+            this.setState.hobbies[value] = value;   
         }else{
-            this.setstate.hobbies.splice(value, 1);
+            this.setState.hobbies.splice(value, 1);
         }
     }
     submit(){

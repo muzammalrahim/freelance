@@ -3,6 +3,7 @@ from rest_framework import serializers
 from job.models import Attachment, Job, Offer, Invite, Application, Contract, \
     Work, Feedback, Dispute, JobReview, FeedbackReview, WorkChanges
 
+from acount.serializers import SkillSerilaizers, CategorySerilaizers
 
 class AttachmentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,6 +12,29 @@ class AttachmentSerializer(serializers.ModelSerializer):
 
 
 class JobSerializer(serializers.ModelSerializer):
+    skills = SkillSerilaizers(many=True, write_only=True)
+    def create(self, validated_data):
+        skills = validated_data.pop('skills')
+        job = Job.objects.create(**validated_data)
+        for skill in skills:
+            s = Skill.objects.create(name=skill.get('name'))
+            job.skills.add(s)
+        return job
+    def to_representation(self, instance):
+        representation = super(JobSerializer, self).to_representation(instance)
+        try:
+            representation['skills'] = SkillSerilaizers(instance.skills, many=True).data
+        except:
+            representation['skills'] = None
+        try:
+            representation['category'] = CategorySerilaizers(instance.category).data
+        except:
+            representation['category'] = None
+        # try:
+            # representation['client'] = ClientProfileSerilaizers(instance.client).data
+        # except:
+            # representation['client'] = None
+        return representation    
     class Meta:
         model = Job
         fields = '__all__'
