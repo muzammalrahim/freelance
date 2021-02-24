@@ -1,6 +1,6 @@
 .SignUp-flex-container .btn--yellow {
   background-color: #EE9821;
-  width: 116px;
+  width: 115px;
   height: 36px;
   border-radius: 2px;
   color: white;
@@ -8,11 +8,15 @@
   text-align: center;
   font-style: normal;
   font-weight: 400px;
-  font-size: 12px;
-  line-height: 20px;   
-  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 23px;
 }
 .SignUp-flex-container .btn-default{
   background: #EE9821;
   border-radius: 4px;
+}
+.SignUp-flex-container button.btn.btn--project.btn--medium {
+  background: #ee9821;
+  color: #fff;
+  width: 116px !important;
 }

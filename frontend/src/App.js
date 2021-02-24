@@ -4,7 +4,7 @@ import signuppage from './App/pages/signin/signuppage'
 import SignIn from './App/pages/signin/SignIn'
 import NotFound from "./App/pages/notFound/NotFound";
 import Jobs from "./App/pages/jobs/Jobs";
-import { BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import JobDetail from "./App/pages/jobs/JobDetail";
 import ContractOne from './App/pages/Contract/ContractOne'
 import JobDetailTwo from "./App/pages/jobs/JobDetailTwo";
@@ -16,7 +16,7 @@ import Chat from './App/pages/chat/chat'
 import Reports from './App/pages/AccountSetting/Reports'
 import PaymentWithdraw from './App/pages/AccountSetting/PaymentWithdraw'
 import Profileview from './components/profileview/ProfileView'
-import AddPortfolio from './components/profileview/AddPortfolio'
+import PortfolioTab from './components/profileview/PortfolioTab'
 import PortfolioDetails from './components/profileview/PortfolioDetails'
 import DetailsPreview from './components/profileview/preview/DetailsPreview'
 import Accounttype from "./App/pages/registration/AccountType"
@@ -36,7 +36,7 @@ return (
         <Route path='/Jobs' exact component={Jobs}/>
         <Route path='/JobDetail' exact component={JobDetail}/>
         <Route path='/profileview' exact component={Profileview}/>
-        <Route path='/addportfolio' exact component={AddPortfolio}/>
+        <Route path='/portfoliotab' exact component={PortfolioTab}/>
         <Route path='/detailspreview' exact component={DetailsPreview}/>
         <Route path='/portfoliodetails' exact component={PortfolioDetails}/>
         <Route path='/registration-process' exact component={Accounttype}/>

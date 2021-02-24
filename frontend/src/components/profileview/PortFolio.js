@@ -1,20 +1,21 @@
-import React from "react";
+import React from 'react'
 import "./PortFolio.css";
 import Commercial from "../../assets/Commercial.png";
 import Ecomerce from "../../assets/Ecomerce.png";
 import Medical from "../../assets/Medical.png";
 import { Link } from "react-router-dom";
-export function PortFolio(props) {
+ function PortFolio () {
+
   return (
     <div className="Portfol">
-      <div class="container bg-white">
-        <div class="row pt-4 pb-3 pl-3">
-          <div class="col-md-6">
+      <div className="container bg-white">
+        <div className="row pt-4 pb-3 pl-3">
+          <div className="col-md-6">
               <h> Portfolio </h>
           </div>
-          <div class="col-md-6 pr-4">
-            <Link to="/addportfolio">
-              <button type="button" class="btn btn-primary btn-sm float-right">
+          <div className="col-md-6 pr-4">
+            <Link to="/PortfolioTab">
+              <button type="button" className="btn btn-primary btn-sm float-right" >
                 +ADD
               </button>
             </Link>
@@ -59,4 +60,5 @@ export function PortFolio(props) {
     </div>
   );
 }
+
 export default PortFolio;

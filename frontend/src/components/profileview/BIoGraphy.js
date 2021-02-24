@@ -72,14 +72,14 @@ function BioGraphy() {
                   <div class="col-md-1">
                     <ul className="lanuage-tag">
                       <li>
-                        <a href="#">PHP</a>
+                        <a href="#" class="pl-2 pr-2 pt-1 pb-1">PHP</a>
                       </li>
                     </ul>
                   </div>
                   <div class="col-md-3">
                     <ul className="lanuage-tag">
                       <li>
-                        <a href="#">Website design</a>
+                        <a href="#" class="pl-2 pr-2 pt-1 pb-1">Website design</a>
                       </li>
                     </ul>
                   </div>
@@ -87,14 +87,14 @@ function BioGraphy() {
                   <div class="col-md-2">
                     <ul className="lanuage-tag">
                       <li>
-                        <a href="#">Wordpress</a>
+                        <a href="#" class="pl-2 pr-2 pt-1 pb-1">Wordpress</a>
                       </li>
                     </ul>
                   </div>
                   <div class="col-md-1">
                     <ul className="lanuage-tag">
                       <li>
-                        <a href="#">Java</a>
+                        <a href="#" class="pl-2 pr-2 pt-1 pb-1">Java</a>
                       </li>
                     </ul>
                   </div>
@@ -102,7 +102,7 @@ function BioGraphy() {
                   <div class="col-md-1">
                     <ul className="lanuage-tag">
                       <li>
-                        <a href="#">UIUX</a>
+                        <a href="#" class="pl-2 pr-2 pt-1 pb-1">UIUX</a>
                       </li>
                     </ul>
                   </div>
@@ -110,7 +110,7 @@ function BioGraphy() {
                   <div class="col-md-2">
                     <ul className="lanuage-tag">
                       <li>
-                        <a href="#">Branding</a>
+                        <a href="#" class="pl-2 pr-2 pt-1 pb-1">Branding</a>
                       </li>
                     </ul>
                   </div>
@@ -118,7 +118,7 @@ function BioGraphy() {
                   <div class="col-md-2">
                     <ul className="lanuage-tag">
                       <li>
-                        <a href="#">Logo</a>
+                        <a href="#" class="pl-2 pr-2 pt-1 pb-1">Logo</a>
                       </li>
                     </ul>
                   </div>
