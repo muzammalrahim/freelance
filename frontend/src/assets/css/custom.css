@@ -880,6 +880,87 @@ p.digit{
     width: 300px;
 }
 /* Contract Three*/
+/* Notification Page */
+
+/* Notification Page */
+.notification-heading{
+    font-size: 20px;
+    font-weight: 600;
+}
+/* NotificationTab */
+.notification-wrapper{
+    background: #E5E5E5;
+}
+.notification-tabs .MuiAppBar-colorPrimary {
+    color: #6b7078;
+    background-color: #ffffff;
+}
+.notification-tabs .MuiTab-wrapper {
+    align-items: self-end;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.notification-tabs .MuiTab-root {
+    min-width: 85px;
+}
+.notification-tabs .PrivateTabIndicator-colorSecondary-4 {
+    background-color: #1da799;
+    width: 46px !important;
+    margin-left: 7px;
+}
+.notification-tabs .MuiPaper-elevation4 {
+    box-shadow: none;
+}
+.tabs-inner{
+    display: inline-flex;
+}
+.tabs-inner img{
+    width: 30px;
+    height: 30px;
+}
+.tabs-inner h4{
+    font-size: 14px;
+    font-weight: bold;
+}
+.tabs-inner h4 span{
+    font-size: 10px;
+    color: rgba(107, 107, 106, 0.5);
+}
+.notification-tab-btns .btn.button-color {
+    width: 120px;
+    border-radius: 2px;
+    height: 35px;
+    padding: 9px 0 0 0;
+}
+.btn.btn-warning.text-white.btn-lg.button-color.approve-btn{
+    background: #1DA799;
+}
+.notification-des h3{
+    font-size: 16px;
+}
+.notification-des h3 {
+    font-size: 16px;
+    font-family: 'Poppins';
+    font-weight: 600;
+}
+.notification-des p{
+    font-size: 14px;
+}
+.notification-tabs  .MuiBox-root{
+    padding: 0;
+}
+.notification-tabs  .notification-inner{
+    border-left: 4px solid rgba(238, 152, 33, 0.2);
+    padding: 0;
+}
+.notification-tabs .notification-inner:hover{
+    background: rgba(221, 242, 240, 0.5);
+    border-left: 4px solid #1DA799;
+}
+
+/* NotificationTab */
 
 /* --------------------------------Pages--------------------*/
 
