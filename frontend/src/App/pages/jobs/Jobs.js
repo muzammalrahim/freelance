@@ -17,20 +17,13 @@ function Jobs() {
   
   function getJobs (){
 
-    // console.log("getjob fun");
-    // list('api/v1/job').then((response)=>{
-      // let jobs_list = [];
-      // response.data.map((row)=>{
-// 
-        // console.log("data",row)
-        // jobs_list.push(createData(row.id, row.name, row.father_name, row.mobile, row.email, row.city))
-      // })
-      // setRows(jobs_list);
-    // })
-
-    list('api/v1/job/').then((response)=>{
+    list('api/v1/job/')
+      .then((response)=>{
       let job_list = [];
+      console.log("all data :",response)
+      
       response.data.map((row)=>{
+      
         job_list.push(createData(row.id, row.budget, row.title, row.description, row.skills))
       })
   
@@ -39,6 +32,7 @@ function Jobs() {
 
 
   }
+
 
   useEffect(() => {
     getJobs();
@@ -165,7 +159,7 @@ function Jobs() {
                           <div className="col-md-8">
                             <ul className="tags">
 
-                            {console.log("outer map"+index,row)}
+                        
 
                             {
                               Object.values(row.skills).map((keyName, i) =>{

@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 
+
 // signup pages
 import signuppage from './App/pages/signin/signuppage'
 import SignIn from './App/pages/signin/SignIn'
@@ -25,6 +26,7 @@ import PortfolioTab from './components/profileview/PortfolioTab'
 // Personal Profile
 
 // Account Setting
+import AccountSettingMain from './App/pages/AccountSetting/AccountSettingMain'
 // Account Setting
 
 // Notification
@@ -83,6 +85,7 @@ return (
 
         <Route path='/registration-process' exact component={Accounttype}/>
         <Route path='/tabbar-registration' exact component={TabbarRegistration}/>
+        <Route path='/account-setting' exact component={AccountSettingMain}/>
         
         <Route path='/Jobs' exact component={Jobs}/>
         <Route path='/JobDetail' exact component={JobDetail}/>

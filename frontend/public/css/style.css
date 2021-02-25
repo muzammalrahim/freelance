@@ -1,155 +1,69 @@
 
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
-
-html {
-  font-size: 16px;
+banner-ac{
+  background-image: url(banner.png);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  padding-top: 300px;
+  position: relative;
 }
-body {
-  font-family: "Open Sans", sans-serif;
-  line-height: 1;
-}
-
-.AccountSettingMain {
-  height: 100vh;
-}
-
-.Tabs2 {
-  /* height: 100%; */
-  /* display: flex; */
-
-}
-
-.TabList2 {
-  width: 30%;
-  background: #ffffff;
-  padding-left: 5%;
-  /* border: 2px solid silver; */
-  float:left;
-  padding-top: 1%;
-}
-
-.TabPanel2 {
-  flex: 1;
-  display: none;
-  width:70%;
-  float:right;
-
-}
-.TabPanel-acc.is-active {
-  display: block;
-}
-
-.AS_Button{
-     display: inline-block;
-    padding: 7px 15px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: bold;
-    color: rgb(115 115 115);
-    border-radius: 25px;
-
-    background: #ffffff;
-    border :1px solid #6B6B6A;
-    border-radius: 25px;
-    border: 1px solid;
-}
-.AS_Button:focus,
-.AS_Button:hover {
-  outline: 0;
-  background: #899499;
-}
-.Tab.is-active .AS_Button {
-    background: #ffffff;
-    color: #EE9821;
-    border-radius: 25px;
-    border: 2px solid;
-}
-
-
-.AS_line{
-width: 0px;
-left: 72px;
-border: 1px dashed #a0a0a0;
-height: 30px;
-margin-left: 21px;
-}
-.Tab.is-active .AS_line{
-border: 1px dashed #EE9821;
-}
-
-.AS_but{
-  background: #ffffff;
-  border :1px solid #6B6B6A;
-  border-radius: 25px;
-  border: 2px solid;
-}
-
-.AS_text{
+.banner-ac .change-cover-btn {
+  position: absolute;
+  top: 25px;
+  right: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-sizing: border-box;
+  border-radius: 2px;
   font-family: Poppins;
   font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 12px;
   line-height: 20px;
-  color: #6B6B6A;
-  margin: 7%;
-}
-
-.Tab.is-active .AS_text{
-
-color: #EE9821;;
-}
-
-
-
-.AS_tb_nextButton{
- 
-    background-color: #EE9821;
-    width: 116px;
-    height:36px;
-    border-radius: 2px;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    font-style: normal;
-    font-weight: 500px;
-    font-size: 12px;
-    line-height: 20px;
-    float: right;
-    margin-right: 5%;
-    cursor: pointer;
-}
-
-.AS_tb_prevButton{
-
-  border: none;
-  height: 37px;
-  width: 11%;
-  border-radius: 18px;
-  border: none;
-  cursor: pointer;
-}
-
-.AS_nextButtonDiv{
-  width:70%;
-  float:right;
-  /* border:2px solid green; */
-  background: #F7F8FA;
-  padding : 4% 0% 2% 8%;
 
 }
-
-.AS_tb_prevButton:focus,
-.AS_tb_prevButton:hover {
-  outline: 0;
-  background: #899499;
+.banner-ac .change-cover-btn a {
+  color: #FFFFFF;
+  margin-left: 10px;
+}
+.banner-ac .change-cover-btn a:hover {
+  text-decoration: none;
 }
 
-.AS_left_img{
-   margin-top: 6%;
+.position-wrapper{
+  margin-top: 0px
+}
+
+.wrap-bg{
+  background-color: #fff;
 }
 
 
+
+.btn-circle.btn-sm { 
+  width: 30px; 
+  height: 30px; 
+  padding: 6px 0px; 
+  border-radius: 15px; 
+  font-size: 8px; 
+  text-align: center; 
+} 
+.btn-circle.btn-md { 
+width: 50px;
+height: 50px;
+padding: 7px 10px;
+border-radius: 25px;
+font-size: 20px;
+text-align: center;
+border: 2px solid;
+} 
+
+.ButtonclsActive {
+  background: #ffffff;
+  color: #EE9821;
+  border: 2px solid;
+  padding: 9px 17px;
+}

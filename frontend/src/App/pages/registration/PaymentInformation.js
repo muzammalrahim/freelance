@@ -7,9 +7,10 @@ import './PaymentInformation.css'
 import '../../../../src/common.css'
 import img from '../../../img/PaymentInfo.png'
 import img2 from '../../../img/PaymentInfo_F.png'
+import {connect} from "react-redux"
 
 
-function PaymentInformation() {
+function PaymentInformation(props) {
     return (
   <div className="PaymentInformation">
         <div className='Pf-container'>
@@ -60,14 +61,23 @@ function PaymentInformation() {
 
                     </div>
 
-
+                {/*   <h1> {props.name}</h1>*/}
 
         </div>
         </div>
     )
 }
 
-export default PaymentInformation
+const mapStateToProps = (state)=>
+{
+  console.log("redux state:",state.nameReducer)
+   return{
+       name:state.nameReducer
+   }
+}
+
+
+export default connect(mapStateToProps) (PaymentInformation)
 
 
 
