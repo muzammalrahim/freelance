@@ -44,11 +44,6 @@ import Reports from './App/pages/AccountSetting/Reports'
 
 // Withdrawing amt.
 import PaymentWithdraw from './App/pages/AccountSetting/PaymentWithdraw'
-
-import Profileview from './components/profileview/ProfileView'
-import PortfolioTab from './components/profileview/PortfolioTab'
-import Accounttype from "./App/pages/registration/AccountType"
-
 // Withdrawing amt.
 
 // My Projects

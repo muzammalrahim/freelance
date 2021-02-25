@@ -11,10 +11,42 @@ import ClientAdd1 from '../../../img/c1.svg'
 import ClientAdd2 from '../../../img/c2.svg'
 import ClientAdd3 from '../../../img/c3.svg'
 import ClientAdd4 from '../../../img/c4.svg'
+import  { useEffect } from 'react';
+import list from '../helper/api';
 
 
+function createData(id, budget, title, description, skills,) {
+    return { id, budget, title, description, skills, };
+}
 
 export default function JobDetail() {
+
+    const [jobdetail, setjobdetail] = React.useState([]);
+  
+    function getJobdetail(){
+  
+      list('api/v1/jobreview/')
+        .then((response)=>{
+        let jobdetail_list = [];
+        console.log("all data :",response)
+        console.log("response",response)
+        response.data.map((row)=>{
+        console.log("response2",row)
+        //   job_list.push(createData(row.id, row.budget, row.title, row.description, row.skills))
+        })
+    
+        setjobdetail(jobdetail_list);
+      })
+  
+  
+    }
+  
+  
+    useEffect(() => {
+        getJobdetail();
+    },[]);
+  
+      
     return (
         <div className="job-detail">
             {/* top header */}
