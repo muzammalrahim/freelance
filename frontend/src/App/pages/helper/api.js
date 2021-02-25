@@ -14,9 +14,11 @@ export const headers = {
     //   params: params,
     }
     // return axios.get(API_URL+endpoint, config).then(response => {
-    return axios.get(API_URL+endpoint).then(response => {
+    return axios.get(API_URL+endpoint)
+    .then(response => 
+      {
       if(response.data.results !== undefined) {
-        response.extra_data = {
+         response.extra_data = {
           count : response.data.count,
           next : response.data.next,
           previous : response.data.previous,

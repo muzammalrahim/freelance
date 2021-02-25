@@ -63,7 +63,7 @@ function SignIn() {
               <div className="float-right">
                 <img src={LOCKER} alt="" className="pr-1"/>
 
-                 <a href="#" data-target="#pwdModal" data-toggle="modal">Forgot your password? </a>
+                 <a href="/" data-target="#pwdModal" data-toggle="modal">Forgot your password? </a>
                 </div>
                 <div className="checkbox pt-3">
                   <label>

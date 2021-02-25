@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 
+
 // signup pages
 import signuppage from './App/pages/signin/signuppage'
 import SignIn from './App/pages/signin/SignIn'
@@ -25,6 +26,7 @@ import PortfolioTab from './components/profileview/PortfolioTab'
 // Personal Profile
 
 // Account Setting
+import AccountSettingMain from './App/pages/AccountSetting/AccountSettingMain'
 // Account Setting
 
 // Notification
@@ -42,6 +44,11 @@ import Reports from './App/pages/AccountSetting/Reports'
 
 // Withdrawing amt.
 import PaymentWithdraw from './App/pages/AccountSetting/PaymentWithdraw'
+
+import Profileview from './components/profileview/ProfileView'
+import PortfolioTab from './components/profileview/PortfolioTab'
+import Accounttype from "./App/pages/registration/AccountType"
+
 // Withdrawing amt.
 
 // My Projects
@@ -50,6 +57,7 @@ import PaymentWithdraw from './App/pages/AccountSetting/PaymentWithdraw'
 
 // View Project Pages -Contract
 import ContractOne from './App/pages/Contract/ContractOne'
+
 import ContractTwo from "./App/pages/Contract/ContractTwo"
 import ContractThree from "./App/pages/Contract/ContractThree"
 // View Project Pages -Contract
@@ -86,7 +94,11 @@ return (
         {/* Registration Process */}
         <Route path='/registration-process' exact component={Accounttype}/>
         <Route path='/tabbar-registration' exact component={TabbarRegistration}/>
+
         {/* Registration Process */}
+
+        <Route path='/account-setting' exact component={AccountSettingMain}/>
+
         
         {/* Job Feed Page  */}
         <Route path='/Jobs' exact component={Jobs}/>
@@ -97,6 +109,7 @@ return (
         {/* Personal Profile */}
         <Route path='/profileview' exact component={Profileview}/>
         <Route path='/portfoliotab' exact component={PortfolioTab}/>
+
         {/* Personal Profile */}
 
         {/* Account Setting */}
@@ -107,12 +120,17 @@ return (
         <Route path='/notification' exact component={Notification}/>
         {/* Notification */}
 
+
+        <Route path='/registration-process' exact component={Accounttype}/>
+
+
         <Route path='/chat' exact component={Chat}/>
 
         <Route path='/reports' exact component={Reports}/>
 
         <Route path='/paymentWithdraw' exact component={PaymentWithdraw}/>
         
+
         <Route path='/ContractOne' exact component={ContractOne}/>
         <Route path='/ContractTwo' exact component={ContractTwo}/>
         <Route path='/ContractThree' exact component={ContractThree}/>

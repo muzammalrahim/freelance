@@ -1,234 +1,143 @@
 
-
 import React, { Component } from 'react'
-import './AccountSettingMain.css'
-import ProfileSetting from './ProfileSetting'
-import  DefaultMenu from '../jobs/DefaultMenu'
-import Navbar from '../../../components/Navbar'
+import  ProfileSetting from "./ProfileSetting"
+import   ContactInfo from "./ContactInfo"
+import   MembershipPlan from "./MembershipPlan"
+import  BillingMethod from "./BillingMethod"
+import  NotificationSetting from "./NotificationSetting"
+import  PaymentWithdraw  from "./PaymentWithdraw"
 
-let selecvalue=0;
- export const  AccountSettingMain = () => (
-   
-  <div className="AccountSettingMain">
 
-          <div className='default-menu '>
-             <Navbar text="" value="Post a Project" /> 
-             <DefaultMenu  value={2}/>
-          </div>
-    <Tabs selected={ 0 }>
-      <TabList>
 
-        <Tab>
-
-        <div class=""><span class=" "><Button>1</Button></span> <span class="AS_text">Profile Setting</span></div> <div className="AS_line"></div>
-  
-        </Tab>
-        <Tab>
-        <div class=""><span class=" "><Button>2</Button></span> <span class="AS_text">Contact Info</span></div> <div className="AS_line"></div>
-        </Tab>
-        <Tab>
-        <div class=""><span class=" "><Button>3</Button></span> <span class="AS_text">Membership Plan</span></div> <div className="AS_line"></div>
-        </Tab>
-        <Tab>
-        <div class=""><span class=" "><Button>4</Button></span> <span class="AS_text">Notification Setting</span></div> <div className="AS_line"></div>
-        </Tab>
-        <Tab>
-        <div class=""><span class=" "><Button>5</Button></span> <span class="AS_text">Payment Withdraw</span></div> 
-        </Tab>
-      </TabList>
-      <TabPanel>
-         <ProfileSetting/>
-
-      </TabPanel>
-      <TabPanel>
-      <ProfileSetting/>
-
-      </TabPanel>
-
-      <TabPanel>
-      <ProfileSetting/>
-      </TabPanel>
-
-      <TabPanel>
-      <ProfileSetting/>
-      </TabPanel>
-      <TabPanel>
-      <ProfileSetting/>
-    </TabPanel>
-    
-    </Tabs>
-  </div>
-)
-
-/*
- * Tabs is the stateful component.
- * You can pass an index in the `selected` prop
- * to specify which tab is active by default.
- *
- * This component handles the entire tabs system.
- * It transforms its own children (if they are Tab or TabPanel) to pass the
- * required props in order to run automatically the system.
- */
-
-class Tabs extends Component {
-  state = { 
-              selected: this.props.selected ,
-              currenttab : null,
-            
-            };
-
-  setSelected(selected) {
-    if (selected !== this.state.selected) {
-      this.setState({ selected })
-    }
+export default class AccountSettingMain extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tabindex: 1,
+    };
   }
 
-      handleClick(tab) 
-      {
-        return () => this.setSelected(tab)
-      }
 
-          renderTabList(child)
-          {
 
-            let tab = 0
-            return React.cloneElement(child, 
-              {
-                
-              children: React.Children.map(child.props.children, (childTab) => {
-                if (childTab.type.name === "Tab") 
-                {
-                  const _isActive = (tab === this.state.selected)
-                  const _ct = this.state.selected
-                  this.state.currenttab = this.state.selected
-                  const _onClick = this.handleClick(tab)
-                  tab++
-                  console.log("tab",_isActive)
-                  return React.cloneElement(childTab, { _isActive, _onClick,_ct })
-                }
-
-                return childTab
-              }),
-            })
-          }
-
-                renderChildren(children) 
-                {
-                  let panel = 0
-
-                  return React.Children.map(children, (child) => {
-                    if (child.type.name === "TabList") 
-                    {
-                      const _ct = this.state.selected
-                      return this.renderTabList(child)
-                    }
-
-                    if (child.type.name === "TabPanel") {
-                      const _isActive = (panel === this.state.selected)
-
-                      panel++
-                      return React.cloneElement(child, { _isActive })
-                    }
-
-                    return child
-                  })
-                }
 
   render() {
-selecvalue=this.state.selected
     return (
       <div>
-            
-              
-              <div className="Tabs">
-                
-                { 
-                  this.renderChildren(this.props.children)
-                
-                
-                }
-                  
-               
-                  {/* <Taimoor data={this.state.selected}/> */}
+
+      
+      <div class="main-area">
+      <div class="container-fluid pr-5 pl-5">
+          <div class="row">
+              <div class="banner-ac">
+                  <div class="btn btn-primary btn-lg change-cover-btn">
+                      <i class="fa fa-camera"></i>
+                      <a class="popup-with-form" href="#">Change Cover</a>
+                  </div>
               </div>
+          </div>
+      </div>
+      <div class="position-wrapper">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-3 pt-5">
+                      <div class="wrap-bg bg-white p-4">
+                                        
+         
+                      <div class="Tab">
+                      <span
+                        class=" "
+                        onClick={() => this.setState({ tabindex: 1 })}
+                      >
+                  <button type="button" class={"btn btn-outline-secondary btn-circle btn-md ButtonclsActive" + (this.state.tabindex=== 1 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 1 })}> 1</button> 
 
-              <div className="AS_nextButtonDiv">
-              {this.state.selected>=0&& <>
-                <button className="AS_tb_prevButton" onClick={() => this.setState({ selected: this.state.selected - 1 })}>
-                Previous Step
-              </button>
-              </>}             
+                  
+                
+    
+                      </span>{" "}
+                      <span class="text2">Profile Setting</span>
+                    </div>{" "}
+         
+                      <div class="Tab">
+                      <span
+                        class=" "
+                        onClick={() => this.setState({ tabindex: 2 })}
+                      >
+                  <button type="button" class={"btn btn-outline-secondary btn-circle btn-md " + (this.state.tabindex=== 2 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 2 })}> 2</button> 
+                
+    
+                      </span>{" "}
+                      <span class="text2">Contact Info</span>
+                    </div>{" "}
+         
+                      <div class="Tab">
+                      <span
+                        class=" "
+                     
+                      >
+                  <button type="button" class={"btn btn-outline-secondary btn-circle btn-md " + (this.state.tabindex=== 3 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 3 })}> 3</button> 
+                
+    
+                      </span>{" "}
+                      <span class="text2">Membership Plan</span>
+                    </div>{" "}
+         
+                      <div class="Tab">
+                      <span
+                        class=" "
+           
+                      >
+                  <button type="button" class={"btn btn-outline-secondary btn-circle btn-md " + (this.state.tabindex=== 4 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 4 })}> 4</button> 
+                
+    
+                      </span>{" "}
+                      <span class="text2">Billing Method</span>
+                    </div>{" "}
+         
+                      <div class="Tab">
+                      <span
+                        class=" "
+                 
+                      >
+                  <button type="button" class={"btn btn-outline-secondary btn-circle btn-md " + (this.state.tabindex=== 5 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 5 })}> 5</button> 
+                
+    
+                      </span>{" "}
+                      <span class="text2">Notification Setting</span>
+                    </div>{" "}
+         
+                      <div class="Tab">
+                      <span
+                        class=" "
+                
+                      >
+                  <button type="button" class={"btn btn-outline-secondary btn-circle btn-md " + (this.state.tabindex=== 6 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 6 })}> 6</button> 
+                
+    
+                      </span>{" "}
+                      <span class="text2">Payment Withdraw</span>
+                    </div>{" "}
 
-              {this.state.selected<4&& <>
-              <button className="AS_tb_nextButton" onClick={() => this.setState({ selected: this.state.selected + 1 })}>
-              Next
-            </button>
-            </>}
-            </div>
 
-            
-       </div>
+                      </div>
+                  </div>
+                  <div class="col-md-9 pt-5">
+                  {console.log(this.state.tabindex)}
+                  {this.state.tabindex === 1 && <ProfileSetting/>}
+                  {this.state.tabindex === 2 && <ContactInfo />}
+                  {this.state.tabindex === 3 && <MembershipPlan/>}
+                  {this.state.tabindex === 4 && <BillingMethod />}
+                  {this.state.tabindex === 5 && <NotificationSetting/>}
+                  {this.state.tabindex === 6 && <PaymentWithdraw/>}
+                      <div class="wrap-bg bg-white p-5">
+                        
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+      </div>
     )
   }
 }
-
-
-// const Taimoor = (props) => 
-// {
-//   return (
-//     <div>
-//        <h1>hiii {props.data}</h1>
-        
-//     </div>
-//   )
-// }
-
-
-const TabList = ({ 
-  
-  children, 
-  
-}) => (
-
-  <li className="TabList">
-
-    { children  }  
-
-    <div className="AS_left_img">
-
-</div> 
-
-  </li>
-
-)
-
-const Tab = ({
-  _ct,
-  _onClick,
-  _isActive,
-  children,
-}) => (
-  <li 
-    className={ `Tab  ${ _isActive ? "is-active" : "" }` }
-    onClick={ _onClick }>
-    { children }
-  </li>
-)
-
-const TabPanel = ({
-  _isActive,
-  children,
-}) => (
-  <div className={ `TabPanel  ${ _isActive ? "is-active" : "" }` }>
-    { children }
-  </div>
-)
-
-/* --- */
-
-const Button = ({ children }) => (
-  <button className="Button">
-    { children }
-  </button>
-)
 
