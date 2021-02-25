@@ -1,5 +1,4 @@
 from base64 import b64encode
-
 from rest_framework import viewsets
 import face_recognition
 
