@@ -17,8 +17,6 @@ import Reports from './App/pages/AccountSetting/Reports'
 import PaymentWithdraw from './App/pages/AccountSetting/PaymentWithdraw'
 import Profileview from './components/profileview/ProfileView'
 import PortfolioTab from './components/profileview/PortfolioTab'
-import PortfolioDetails from './components/profileview/PortfolioDetails'
-import DetailsPreview from './components/profileview/preview/DetailsPreview'
 import Accounttype from "./App/pages/registration/AccountType"
 import ContractTwo from "./App/pages/Contract/ContractTwo"
 import ContractThree from "./App/pages/Contract/ContractThree"
@@ -37,8 +35,6 @@ return (
         <Route path='/JobDetail' exact component={JobDetail}/>
         <Route path='/profileview' exact component={Profileview}/>
         <Route path='/portfoliotab' exact component={PortfolioTab}/>
-        <Route path='/detailspreview' exact component={DetailsPreview}/>
-        <Route path='/portfoliodetails' exact component={PortfolioDetails}/>
         <Route path='/registration-process' exact component={Accounttype}/>
         <Route path='/ContractOne' exact component={ContractOne}/>
         <Route path='/ContractTwo' exact component={ContractTwo}/>

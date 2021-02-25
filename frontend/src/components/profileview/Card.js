@@ -13,7 +13,7 @@ function Card() {
         <div className="row bg-white">
           <div className="col-md-12">
             <div className="profile pt-3">
-              <img src={Status} className="pb-2" />
+              <img src={Status} className="pb-2" alt=""/>
               <p>Pixelz Warrios</p>
               <h6>UI/UX Designer</h6>
             </div>
