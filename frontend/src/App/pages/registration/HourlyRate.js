@@ -1,5 +1,4 @@
 import React from 'react'
-import {InputField3} from '../../../../src/components/InputField';
 
 import './HourlyRate.css'
 import '../../../../src/common.css'
@@ -8,8 +7,11 @@ import img from '../../../img/HourlyRate.png'
 import img2 from '../../../img/HourlyRate_F.png'
 
 
+import {nameAction} from "../../../redux/actions/myaction"
+import {connect} from "react-redux"
 
-function HourlyRate() {
+
+function HourlyRate(props) {
     return (
 
         <div className='HourlyRate'>
@@ -82,15 +84,38 @@ function HourlyRate() {
                          {/*Rc 1_inn*/}
                      
                          </div> 
+                        
                     </div>
                     {/*Right section end*/} 
-
+                    
+   {/* <h1>redux state value:{props.name}</h1> 
+<button onClick ={()=>{props.changeName()}}> changeName </button>*/}
                  
         </div>
     )
 }
 
-export default HourlyRate
+const mapStateToProps = (state)=>
+{
+  console.log("redux state:",state.nameReducer)
+   return{
+       name:state.nameReducer
+   }
+}
+const mapDispatchToProps = (dispatch)=>
+{
+   return{
+     changeName:()=>
+     {
+       dispatch(nameAction())
+     }
+   }
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps) (HourlyRate)
+
+
 
 
 export function HourlyRateFooter ()

@@ -17,34 +17,25 @@ function Jobs() {
   
   function getJobs (){
 
-    // console.log("getjob fun");
-    // list('api/v1/job').then((response)=>{
-      // let jobs_list = [];
-      // response.data.map((row)=>{
-// 
-        // console.log("data",row)
-        // jobs_list.push(createData(row.id, row.name, row.father_name, row.mobile, row.email, row.city))
-      // })
-      // setRows(jobs_list);
-    // })
-
-    list('api/v1/job/').then((response)=>{
+    list('api/v1/job/')
+      .then((response)=>{
       let job_list = [];
+      console.log("all data :",response)
+      
       response.data.map((row)=>{
-        console.log("data",row)
+      
         job_list.push(createData(row.id, row.budget, row.title, row.description, row.skills))
       })
   
-      console.log("data",job_list)
        setRows(job_list);
     })
 
 
   }
 
+
   useEffect(() => {
     getJobs();
-    console.log("useeffect");
   },[]);
 
 
@@ -167,18 +158,21 @@ function Jobs() {
                         <div className=" search-tags row pt-3">
                           <div className="col-md-8">
                             <ul className="tags">
-                              <li className="pr-3">
-                                <a className="pl-2 pr-2 pt-1 pb-1" href="#">{row.budget}</a>
-                              </li>
-                              <li className="pr-3">
-                                <a className="pl-2 pr-2 pt-1 pb-1" href="#">Frontend developer</a>
-                              </li>
-                              <li className="pr-3">
-                                <a className="pl-2 pr-2 pt-1 pb-1" href="#">Java</a>
-                              </li>
-                              <li>
-                                <a className="pl-2 pr-2 pt-1 pb-1" href="#">Html</a>
-                              </li>
+
+                        
+
+                            {
+                              Object.values(row.skills).map((keyName, i) =>{
+                                
+                         return <li className="pr-3">
+                               <a className="pl-2 pr-2 pt-1 pb-1" href="#"> 
+                              {keyName.name}</a>
+                              
+                             </li>
+                               
+                            })}
+                              
+                             
                             </ul>
                           </div>
                           <div className="col-md-4">
