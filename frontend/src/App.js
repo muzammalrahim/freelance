@@ -30,6 +30,7 @@ import AccountSettingMain from './App/pages/AccountSetting/AccountSettingMain'
 // Account Setting
 
 // Notification
+import Notification from './App/pages/Notification/Notification' 
 // Notification
 
 // Chat
@@ -43,11 +44,11 @@ import Reports from './App/pages/AccountSetting/Reports'
 
 // Withdrawing amt.
 import PaymentWithdraw from './App/pages/AccountSetting/PaymentWithdraw'
-<<<<<<< HEAD
+
 import Profileview from './components/profileview/ProfileView'
 import PortfolioTab from './components/profileview/PortfolioTab'
 import Accounttype from "./App/pages/registration/AccountType"
-=======
+
 // Withdrawing amt.
 
 // My Projects
@@ -56,7 +57,7 @@ import Accounttype from "./App/pages/registration/AccountType"
 
 // View Project Pages -Contract
 import ContractOne from './App/pages/Contract/ContractOne'
->>>>>>> 998631e99564d6057111ba83de20657e079baf03
+
 import ContractTwo from "./App/pages/Contract/ContractTwo"
 import ContractThree from "./App/pages/Contract/ContractThree"
 // View Project Pages -Contract
@@ -84,24 +85,44 @@ return (
     <>
     <Router>
     <Switch>
-    
-         <Route path='/' exact component={SignIn}/>
-         <Route path='/login' exact component={SignIn}/>
+        {/* Signup/in */}
+        <Route path='/' exact component={SignIn}/>
+        <Route path='/login' exact component={SignIn}/>
         <Route path='/signup' exact component={signuppage}/>
+        {/* Signup/in */}
 
+        {/* Registration Process */}
         <Route path='/registration-process' exact component={Accounttype}/>
         <Route path='/tabbar-registration' exact component={TabbarRegistration}/>
+
+        {/* Registration Process */}
+
         <Route path='/account-setting' exact component={AccountSettingMain}/>
+
         
+        {/* Job Feed Page  */}
         <Route path='/Jobs' exact component={Jobs}/>
         <Route path='/JobDetail' exact component={JobDetail}/>
         <Route path='/JobDetailTwo' exact component={JobDetailTwo}/>
+        {/* Job Feed Page  */}
 
+        {/* Personal Profile */}
         <Route path='/profileview' exact component={Profileview}/>
         <Route path='/portfoliotab' exact component={PortfolioTab}/>
-<<<<<<< HEAD
+
+        {/* Personal Profile */}
+
+        {/* Account Setting */}
+
+        {/* Account Setting */}
+
+        {/* Notification */}
+        <Route path='/notification' exact component={Notification}/>
+        {/* Notification */}
+
+
         <Route path='/registration-process' exact component={Accounttype}/>
-=======
+
 
         <Route path='/chat' exact component={Chat}/>
 
@@ -109,7 +130,7 @@ return (
 
         <Route path='/paymentWithdraw' exact component={PaymentWithdraw}/>
         
->>>>>>> 998631e99564d6057111ba83de20657e079baf03
+
         <Route path='/ContractOne' exact component={ContractOne}/>
         <Route path='/ContractTwo' exact component={ContractTwo}/>
         <Route path='/ContractThree' exact component={ContractThree}/>
