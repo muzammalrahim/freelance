@@ -25,9 +25,11 @@ class JobSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         skills = validated_data.pop('skills')
         job = models.Job.objects.create(**validated_data)
+
         for skill in skills:
             s = acount_models.Skill.objects.create(name=skill.get('name'))
             job.skills.add(s)
+
         return job
 
     def to_representation(self, instance):

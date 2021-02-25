@@ -31,6 +31,11 @@ class CategorySerializers(serializers.ModelSerializer):
 
 
 class ProfileSerializers(serializers.ModelSerializer):
+    def to_representation(self, instance):
+        representation = super(ProfileSerializers, self).to_representation(instance)
+
+        representation['skills'] = SkillSerializers(instance.skills, many=True).data
+        return representation
 
     def update(self, instance, validated_data):
         instance.updated_by = self.context['request'].user
@@ -46,13 +51,14 @@ class ProfileSerializers(serializers.ModelSerializer):
 
 
 class ClientProfileSerializers(serializers.ModelSerializer):
-
     def to_representation(self, instance):
-        representation = super(ClientProfileserializers, self).to_representation(instance)
+        representation = super(ClientProfileSerializers, self).to_representation(instance)
+        representation['skills'] = SkillSerializers(instance.skills, many=True).data
         try:
             representation['user'] = UserSerializer(instance.user).data
         except:
             representation['user'] = None
+
         return representation
 
     class Meta:
@@ -61,6 +67,13 @@ class ClientProfileSerializers(serializers.ModelSerializer):
 
 
 class FreelancerProfileSerializers(serializers.ModelSerializer):
+    def to_representation(self, instance):
+        representation = super(FreelancerProfileSerializers, self).to_representation(instance)
+
+        representation['skills'] = SkillSerializers(instance.skills, many=True).data
+
+        return representation
+
     class Meta:
         model = models.FreelancerProfile
         fields = '__all__'
