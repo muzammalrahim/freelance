@@ -1,6 +1,6 @@
 from base64 import b64encode
 from rest_framework import viewsets
-import face_recognition
+#import face_recognition
 
 from rest_framework.response import Response
 from allauth.socialaccount.providers.linkedin.views import LinkedInOAuthAdapter
