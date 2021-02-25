@@ -28,6 +28,7 @@ import PortfolioTab from './components/profileview/PortfolioTab'
 // Account Setting
 
 // Notification
+import Notification from './App/pages/Notification/Notification' 
 // Notification
 
 // Chat
@@ -76,20 +77,35 @@ return (
     <>
     <Router>
     <Switch>
-    
-         <Route path='/' exact component={SignIn}/>
-         <Route path='/login' exact component={SignIn}/>
+        {/* Signup/in */}
+        <Route path='/' exact component={SignIn}/>
+        <Route path='/login' exact component={SignIn}/>
         <Route path='/signup' exact component={signuppage}/>
+        {/* Signup/in */}
 
+        {/* Registration Process */}
         <Route path='/registration-process' exact component={Accounttype}/>
         <Route path='/tabbar-registration' exact component={TabbarRegistration}/>
+        {/* Registration Process */}
         
+        {/* Job Feed Page  */}
         <Route path='/Jobs' exact component={Jobs}/>
         <Route path='/JobDetail' exact component={JobDetail}/>
         <Route path='/JobDetailTwo' exact component={JobDetailTwo}/>
+        {/* Job Feed Page  */}
 
+        {/* Personal Profile */}
         <Route path='/profileview' exact component={Profileview}/>
         <Route path='/portfoliotab' exact component={PortfolioTab}/>
+        {/* Personal Profile */}
+
+        {/* Account Setting */}
+
+        {/* Account Setting */}
+
+        {/* Notification */}
+        <Route path='/notification' exact component={Notification}/>
+        {/* Notification */}
 
         <Route path='/chat' exact component={Chat}/>
 
