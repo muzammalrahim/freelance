@@ -3,7 +3,7 @@ import "./detailpreview.css";
 import preview1 from "../../../assets/preview1.png";
 import preview2 from "../../../assets/preview2.png";
 import preview3 from "../../../assets/preview3.png";
-
+import PortfolioSlider from './PortfolioSlider'
 
 
 const DetailsPreview = () => {
