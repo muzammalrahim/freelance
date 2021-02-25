@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'payment.apps.PaymentConfig',
     'report.apps.ReportConfig',
     'support.apps.SupportConfig',
-    'corsheaders',
     'drf_yasg',
     'rest_registration',
     'rest_framework',
@@ -113,7 +112,6 @@ DATABASES = {
         'USER': env('DB_USER'),
         'PASSWORD': env('DB_PASSWORD'),
         'HOST': env('DB_HOST'),
-        # 'PORT': env('DB_PORT'),
     }
 }
 
@@ -152,6 +150,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'frontend/admin/build/static'),
 )
@@ -215,12 +214,12 @@ ADMIN_USER = 'Admin'
 
 SITE_ID = 1
 
-# EMAIL_BACKEND = env('EMAIL_BACKEND')
-# EMAIL_HOST = env('EMAIL_HOST')
-# EMAIL_USE_TLS = env('EMAIL_USE_TLS')
-# EMAIL_PORT = env('EMAIL_PORT')
-# EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_BACKEND = env('EMAIL_BACKEND')
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 AUTH_USER_MODEL = 'acount.User'
 
