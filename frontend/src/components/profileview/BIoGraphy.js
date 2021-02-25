@@ -1,11 +1,42 @@
-import React from "react";
+import React, { useEffect, useState} from "react";
 import "./BioGraphy.css";
+import list from '../../App/pages/helper/api';
+
+
+function dataCreated(id, account_title, mobile_no, skills, street, language ,BIO) {
+  return{id, account_title, mobile_no, skills, street, language ,BIO};
+}
 function BioGraphy() {
+ 
+  const [data, setData] = useState ([]);
+
+  function getdata() {
+
+
+    list('api/v1/profile/')
+    .then((response)=>{
+      let dataget = [];
+      console.log("show response:",response);
+      response.getdata.map((get)=>{
+        dataget.push(dataCreated(get.id, get.mobile_no, get.skills, get.language, get.description ,get.BIO ))
+
+      })
+      setData(dataget);
+    })
+    }
+ 
+    useEffect(() => {
+      getdata();
+    },[]);
+  
   return (
+
     <div className="ui-comments">
+     
       <div class="container bg-white">
         <div class="row pt-4 pb-3">
           <div className="btn-edit col-md-6 pl-4">
+            
             <h>Personal Profile</h>
           </div>
           <div class="col-md-6 pr-4">
@@ -13,24 +44,27 @@ function BioGraphy() {
               EDIT
             </button>
           </div>
+          {data.map((get) => (
           <address>
+            
             <div className="tst">
               <div className="container">
+                
                 <div className="contact-info row pt-3">
                   <div className="col-md-3 pl-4">
-                    <p>BIO</p>
-                  </div>
+                
+        
+  
+                    <p>{get.BIO}</p>
+               </div>
                   <div className="col-md-9">
                     <p>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book.
+                    {get.description}
                     </p>
                   </div>
                 </div>
                 <div className="contact-info row">
+                  
                   <div className="col-md-3 pl-4">
                     <p>Email</p>
                   </div>
@@ -59,6 +93,11 @@ function BioGraphy() {
               </div>
             </div>
           </address>
+                       
+                       )
+                       )
+                 }
+                       
           <div class="container">
             <div class="row">
               <div class="col-md-12 pl-4">
