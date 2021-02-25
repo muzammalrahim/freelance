@@ -76,7 +76,7 @@ import NotFound from "./App/pages/notFound/NotFound";
 // Not Found     
 
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-
+import Authenticated from "./Authenticated"
 
 
 function App() {
@@ -85,18 +85,20 @@ return (
     <Router>
     <Switch>
         {/* Signup/in */}
-        <Route path='/' exact component={SignIn}/>
-        <Route path='/login' exact component={SignIn}/>
-        <Route path='/signup' exact component={signuppage}/>
+        <Route path='/' exact ><SignIn/></Route>
+        <Route path='/login' exact ><Authenticated nonAuthenticated={true}> <SignIn/>
+        </Authenticated></Route>
+        <Route path='/signup' exact ><signuppage/></Route>
         {/* Signup/in */}
 
         {/* Registration Process */}
-        <Route path='/registration-process' exact component={Accounttype}/>
+        <Route path='/registration-process' exact ><Authenticated>
+          <Accounttype/></Authenticated></Route>
         <Route path='/tabbar-registration' exact component={TabbarRegistration}/>
 
         {/* Registration Process */}
 
-        <Route path='/account-setting' exact component={AccountSettingMain}/>
+        <Route path='/account-setting' exact> <Authenticated> <AccountSettingMain/> </Authenticated>  </Route>
 
         
         {/* Job Feed Page  */}

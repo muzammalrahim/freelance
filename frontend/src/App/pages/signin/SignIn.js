@@ -32,6 +32,13 @@ import { render } from "react-dom";
             
            
         }
+componentDidMount(){
+  if(localStorage.getItem("token"))
+  {
+    this.props.history.push("/registration-process")
+  }
+  
+}
 
 
     onChangeHandler =(e)=>{
@@ -50,6 +57,7 @@ import { render } from "react-dom";
    .then(({ data: { token } }) => {
    let accessToken = token;
     console.log("token:",accessToken)
+     localStorage.setItem("token", accessToken)
     this.props.history.replace("/registration-process");
    // props.login(accessToken);
   })
