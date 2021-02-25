@@ -3,6 +3,7 @@ from job import models
 from acount import serializers as acount_serializer
 from acount import models as acount_models
 
+from acount.serializers import SkillSerilaizers, CategorySerilaizers
 
 class AttachmentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,6 +12,7 @@ class AttachmentSerializer(serializers.ModelSerializer):
 
 
 class JobSerializer(serializers.ModelSerializer):
+  
     skills = acount_serializer.SkillSerializers(many=True, write_only=True)
 
     # def create(self, validated_data):
@@ -55,8 +57,7 @@ class JobSerializer(serializers.ModelSerializer):
             representation['client'] = acount_serializer.ClientProfileSerializers(instance.client).data
         except:
             representation['client'] = None
-        return representation
-
+        return representation  
     class Meta:
         model = models.Job
         fields = '__all__'

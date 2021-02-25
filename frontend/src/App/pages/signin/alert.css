@@ -1,6 +1,17 @@
 .alert-page {
   background: #ddf2f0;
 }
+.alert-page a.email-icon {
+  position: absolute;
+  top: 14px;
+  right: 4px;
+}
+.sub-form-sec .sub-icon {
+  position: absolute;
+  left: 13px;
+  top: 28px;
+  z-index: 1;
+}
 .alert-page .btn-primary {
   color: #fff;
   background-color: #ee9821;
@@ -8,6 +19,7 @@
 .alert-page .input-group .form-control {
   height: 80px;
   border-radius: none;
+  padding: 0 0 0 46px;
 }
 .alert-text {
   color: #ee9821;
@@ -44,6 +56,7 @@
   top: 0px;
   width: 43px;
 }
+
 .alert-front-img {
   position: relative;
 }
@@ -60,6 +73,7 @@
   position: relative;
   top: -459px;
     left: 261px;
+    color: #ddf2f0;
   width: 60px;
   height: 60px;
   border-radius: 70px;

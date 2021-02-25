@@ -1,7 +1,5 @@
 import React from "react";
 import "./ProfileView.css";
-import Navbar from "../Navbar";
-import Menuebar from "./Menuebar";
 import Card from './Card'
 import Certificate from './Certifcate'
 import BioGraphy from "./BIoGraphy";
@@ -10,6 +8,9 @@ import Reviews from "./Reviews";
 import Experience from "./Experience";
 import Education from "./Education";
 import Header from '../header/Header'
+
+
+
 function Profileview() {
   return (
     <>

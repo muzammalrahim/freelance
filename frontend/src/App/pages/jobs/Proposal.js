@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-// import ImageUpload from '../../../../src/img/ImageUpload.png';
-import img from '../../../img/ImageUpload.png'
 import GetImage from '../registration/GetImage'
 import ResponsiveDialog from "./SubmitBidModal";
 
@@ -58,11 +56,11 @@ export default function Proposal () {
                             
                         </li>
                     </ul>
-                    <ResponsiveDialog/>
-                    {/* <button  class="btn btn--yellow btn--medium">Submit a Proposal</button> */}
-                    {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                        Submit a Proposal
-                    </Button> */}
+
+                    <div className="text-center">
+                        <button  class="btn btn--yellow btn--medium">Submit a Proposal</button>
+                    </div>
+                    
                 </div>
                 
             </div>

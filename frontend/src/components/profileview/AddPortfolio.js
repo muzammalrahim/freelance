@@ -1,25 +1,17 @@
 import React from "react";
 import './addportfolio.css'
-import { Link } from  'react-router-dom';
-import Header from '../header/Header'
-const AddPortfolio = () => {
+
+
+
+  function AddPortfolio () { 
   return (
     <div className="add-portfolio">
-      <div className="design">
-        <Header/>
-      </div>
-      <div className="addportfolio-box pb-5">
-
-      
+      <div className="addportfolio-box">
       <div className="container">
         <div className="row bg-white">
-          <div className="col-md-3">
-
-          </div>
-
-          <div className="col-md-9">
+          <div className="col-md-12">
             <form action="required">
-              <h5 className="pt-4">Add project</h5>
+              <h5 className="">Add project</h5>
               <div className="row pt-3">
                 <div className="form-group col-md-6 ">
                   <label for="inputtext">Project Title</label>
@@ -60,16 +52,9 @@ const AddPortfolio = () => {
                   />
                 </div>
               </div>
-              <div className="row pt-5 pb-3">
-                  <div className="col-md-6">
-                      <a href="/profileview"> Cancel</a>
-                  </div>
-                  <div className="col-md-6">
-                    <Link to="/PortfolioDetails">
-                   
-                  <button type="button" className="btn btn-primary float-right" >Next Step</button>
-                  </Link>
-                  </div>
+              <div className="row pt-5">
+               <div className="col-md-12 pt-5 pb-5"> 
+               </div>
               </div>
             </form>
           </div>
@@ -77,7 +62,6 @@ const AddPortfolio = () => {
       </div>
       </div>
     </div>
-  );
-};
-
-export default AddPortfolio;
+  )
+ }
+ export default AddPortfolio;

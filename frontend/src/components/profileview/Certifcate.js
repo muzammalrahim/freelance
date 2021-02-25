@@ -4,21 +4,24 @@ import certificate from "../../assets/certificate.png";
 import certificate2 from "../../assets/certificate2.png";
 import Modal from "react-bootstrap/Modal";
 import GetImage from "../../App/pages/registration/GetImage";
+import CloseIcon from '@material-ui/icons/Close';
+
+
 export function Certificate(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
     <div className="Certifies">
-      <div class="container bg-white">
-        <div class="row pt-4 pb-3 pl-3">
-          <div class="col-md-6">
+      <div className="container bg-white">
+        <div className="row pt-4 pb-3 pl-3">
+          <div className="col-md-6">
               <h>Certificates </h>
           </div>
-          <div class="col-md-6 pr-4">
+          <div className="col-md-6 pr-4">
             <button
               type="button"
-              class="btn btn-primary btn-sm float-right"
+              className="btn btn-primary btn-sm float-right"
               onClick={handleShow}
             >
               +ADD
@@ -27,32 +30,32 @@ export function Certificate(props) {
         </div>
 
         <Modal show={show}>
-          <div class="container">
+          <div className="container">
             <form>
-              <div class="row pt-4 pb-3">
-              <div class="form-header col-md-6 ">
+              <div className="row pt-4 pb-3">
+              <div className="form-header col-md-6 ">
                 <p>Add Certificate</p>
                 </div>
-                <div class="col-md-6">
-                <i class="fas fa-times float-right" onClick={handleClose}></i>
+                <div className="col-md-6">
+                <CloseIcon onClick={handleClose} className="float-right" />
                 </div>
               </div>
               
               
               
-              <div class="form-row">
-                <div class="form-group col-md-6">
+              <div className="form-row">
+                <div className="form-group col-md-6">
                   <label for="inputtext">Certificate Title</label>
                   <input
                     type="email"
-                    class="form-control"
+                    className="form-control"
                     id="inputtext"
                     placeholder="Title"
                   />
                 </div>
-                <div class="form-group col-md-6">
+                <div className="form-group col-md-6">
                   <label for="inputtext">Publisher</label>
-                  <select id="inputState" class="form-control">
+                  <select id="inputState" className="form-control">
                     <option selected>Select</option>
                     <option>......</option>
                     <option>......</option>
@@ -61,20 +64,20 @@ export function Certificate(props) {
                   </select>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <p className="">Upload Images</p>
+              <div className="row">
+                <div className="col-md-12">
+                  <p classNameName="">Upload Images</p>
                   <GetImage />
                 </div>
               </div>
-              <div class="form-row">
-                <div class="col-md-6 pb-5 pt-4">
-                  <a href="#" class="float-right" onClick={handleClose}>
+              <div className="form-row">
+                <div className="col-md-6 pb-5 pt-4">
+                  <a href="#" className="float-right" onClick={handleClose}>
                     Cancel
                   </a>
                   </div>
-                  <div class="col-md-6 pb-5 pt-3">
-                  <button type="button" class="form-btn btn btn-warning">
+                  <div className="col-md-6 pb-5 pt-3">
+                  <button type="button" className="form-btn btn btn-warning">
                     Save
                   </button>
                   </div>
@@ -83,22 +86,22 @@ export function Certificate(props) {
           </div>
         </Modal>
 
-        <div class="container">
-          <div class="row">
-            <div class="col-md-3">
-              <div class="img-wraper pt-3 pb-3">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-3">
+              <div className="img-wraper pt-3 pb-3">
                 <img src={certificate} alt="/" />
               </div>
-              <div class="img-des pb-3">
+              <div className="img-des pb-3">
                 <p> Ecomerce Project </p>
                 <h>8 Artworks</h>
               </div>
             </div>
-            <div class="col-md-9">
-              <div class="img-wraper pt-3 pb-3">
+            <div className="col-md-9">
+              <div className="img-wraper pt-3 pb-3">
                 <img src={certificate2} alt="/" />
               </div>
-              <div class="img-des pb-3">
+              <div className="img-des pb-3">
                 <p> Ecomerce Project </p>
                 <h>8 Artworks</h>
               </div>
