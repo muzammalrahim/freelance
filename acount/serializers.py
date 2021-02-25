@@ -1,39 +1,36 @@
-from rest_registration.api.serializers import DefaultRegisterUserSerializer, \
-    MetaObj
-from django.contrib.auth import get_user_model
-from rest_registration.utils.users import (
-    get_user_field_names
-)
-import base64
+from rest_registration.api.serializers import DefaultRegisterUserSerializer
 from django.conf import settings
-
-from acount.models import Profile, City, Skill, Category, Question, FreelancerProfile, ClientProfile, Speciality
+from acount import models
 from rest_framework import serializers
 from django.contrib.auth.models import Group
 
-# from django.core.files.base import ContentFile
-# import base64
 
-
-class CitySerilaizers(serializers.ModelSerializer):
+class CitySerializers(serializers.ModelSerializer):
     class Meta:
-        model = City
+        model = models.City
         fields = '__all__'
 
 
-class SkillSerilaizers(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Skill
+        model = models.User
+        # fields = '__all__'
+        fields = ['id', 'username', 'first_name', 'last_name']
+
+
+class SkillSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = models.Skill
         fields = '__all__'
 
 
-class CategorySerilaizers(serializers.ModelSerializer):
+class CategorySerializers(serializers.ModelSerializer):
     class Meta:
-        model = Category
+        model = models.Category
         fields = '__all__'
 
 
-class ProfileSerilaizers(serializers.ModelSerializer):
+class ProfileSerializers(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         instance.updated_by = self.context['request'].user
@@ -44,31 +41,40 @@ class ProfileSerilaizers(serializers.ModelSerializer):
         return super().update(validated_data)
 
     class Meta:
-        model = Profile
+        model = models.Profile
         fields = '__all__'
 
 
-class ClientProfileSerilaizers(serializers.ModelSerializer):
+class ClientProfileSerializers(serializers.ModelSerializer):
+
+    def to_representation(self, instance):
+        representation = super(ClientProfileserializers, self).to_representation(instance)
+        try:
+            representation['user'] = UserSerializer(instance.user).data
+        except:
+            representation['user'] = None
+        return representation
+
     class Meta:
-        model = ClientProfile
+        model = models.ClientProfile
         fields = '__all__'
 
 
-class FreelancerProfileSerilaizers(serializers.ModelSerializer):
+class FreelancerProfileSerializers(serializers.ModelSerializer):
     class Meta:
-        model = FreelancerProfile
+        model = models.FreelancerProfile
         fields = '__all__'
 
 
-class QuestionSerilaizers(serializers.ModelSerializer):
+class QuestionSerializers(serializers.ModelSerializer):
     class Meta:
-        model = Question
+        model = models.Question
         fields = '__all__'
 
 
-class SpecialitySerilaizers(serializers.ModelSerializer):
+class SpecialitySerializers(serializers.ModelSerializer):
     class Meta:
-        model = Speciality
+        model = models.Speciality
         fields = '__all__'
 
 
@@ -96,23 +102,12 @@ class CustomRegisterUserSerializer(DefaultRegisterUserSerializer):
         # Profile(user=user).save()
 
         if account_type == 'work':
-            FreelancerProfile(user=user).save()
+            models.FreelancerProfile(user=user).save()
             user.groups.add(Group.objects.get(name=settings.FREELANCER_USER))
         elif account_type == 'hire':
-            ClientProfile(user=user).save()
+            models.ClientProfile(user=user).save()
             user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
         else:
             user.groups.add(Group.objects.get(name=settings.ADMIN_USER))
 
         return user
-
-# class Base64ImageField(serializers.ImageField):
-#     def from_native(self, data):
-#         if isinstance(data, basestring) and data.startswith('data:image'):
-#             # base64 encoded image - decode
-#             format, imgstr = data.split(';base64,')  # format ~= data:image/X,
-#             ext = format.split('/')[-1]  # guess file extension
-#
-#             data = ContentFile(base64.b64decode(imgstr), name='temp.' + ext)
-#
-#         return super(Base64ImageField, self).from_native(data)

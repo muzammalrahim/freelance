@@ -24,6 +24,7 @@ class Job(models.Model):
         ('long', 'Long'),
     )
     type = models.CharField(TYPE_CHOICES, max_length=50, blank=True)
+
     EXPERIENCE_LEVEL_CHOICES = (
         ('junior', 'Junior'),
         ('intermediate', 'Intermediate'),
@@ -39,6 +40,12 @@ class Job(models.Model):
     )
     access_setting = models.CharField(ACCESS_SETTING_CHOICES, max_length=20,
                                       blank=True)
+    PAY_TYPE_CHOICES = (
+        ('hourly', 'Hourly'),
+        ('fixed', 'Fixed'),
+    )
+    pay_type = models.CharField(max_length=20, choices=PAY_TYPE_CHOICES,
+                                blank=True, null=True)
     budget = models.DecimalField(max_digits=14, decimal_places=2, blank=True)
     category = models.ForeignKey("acount.Category", on_delete=models.SET_NULL,
                                  blank=True, null=True)
