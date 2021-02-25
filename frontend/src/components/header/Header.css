@@ -9,6 +9,28 @@
 header .header-area {
     padding: 15px 50px;
 }
+header .user-states{
+    background: #ffffff;
+    box-shadow: 3px 1px 14px rgba(25, 46, 57, 0.1);
+    width: 90px;
+    position: absolute;
+    right: -35px;
+    top: 18px;
+    display: none;
+}
+.users-status:hover + .user-states{
+    display: block;
+}
+header p.user-active-status {
+    font-size: 12px;
+    color: rgba(107, 107, 106, 0.2);
+    cursor: pointer;
+}
+header p.user-inactive-status{
+    font-size: 12px;
+    color: rgba(107, 107, 106, 0.8);
+    cursor: pointer;
+}
 header .menu-area {
     padding: 15px 50px;
     border-top: 2px solid #e5e5e5;
@@ -26,7 +48,9 @@ header nav.navbar.navbar-expand-md{
 header .menu-area .menus-header{
     padding: 0;
 }
-
+.notification .MuiSvgIcon-root {
+    font-size: 19px;
+}
 header .avatar-user {
     width: 40px;
     height: 40px;
@@ -112,12 +136,13 @@ header .menu-area ul.user-pro .dropdown-menu {
     min-width: 160px;
     padding: .5rem 0;
     margin: .125rem 11px 0 0;
-    right: -29px;
+    right: 2px;
     top: 53px;
 }
 
 header .menu-area ul.user-pro .dropdown a {
     color: #6B6B6A;
+    position: relative;
 }
 header .menu-area ul.user-pro .dropdown-item {
     font-size: 14px;

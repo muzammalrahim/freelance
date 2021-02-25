@@ -5,8 +5,10 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
+import Avatar from '@material-ui/core/Avatar'
+import RequestPaymentModal from "./RequestPaymentModal"
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,6 +36,7 @@ export default function ControlledAccordions() {
   };
 
   return (
+    <div className="contract-one-acc">
     <div className={classes.root}>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary
@@ -41,12 +44,13 @@ export default function ControlledAccordions() {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
+          <div className="pl-2">
           <Typography className={classes.heading}><b>Milestone 1</b></Typography>
-          <Typography className={classes.secondaryHeading}></Typography>
+          </div>
         </AccordionSummary>
         <AccordionDetails>
-          <div className="container">
-            <div className="row m-info">
+          <div className="container pr-0">
+            <div className="row m-info pl-2">
               <div className="col-md-1 pl-0">
                 <div>
                 <Avatar className="my-name">1</Avatar>
@@ -54,7 +58,7 @@ export default function ControlledAccordions() {
               </div>
               <div className="col-md-9 align-self-center pt-2 pl-0">
                 <div>
-                  <h4 className="align-self-center">Wireframes</h4>
+                  <h4 className="align-self-center"><b>Wireframes</b></h4>
                 </div>
               </div>
               <div className="col-md-2 align-self-center pr-0">
@@ -68,7 +72,7 @@ export default function ControlledAccordions() {
           
         </AccordionDetails>
         <AccordionDetails>
-        <div className="row m-info r-3">
+        <div className="row m-info r-3 pl-3">
           <div className="col-md-3">
               <div>
                 <h4>Project type</h4>
@@ -79,17 +83,17 @@ export default function ControlledAccordions() {
                 <h5>Monthly</h5>
               </div>
             </div>
-            <div className="col-md-2">
-              <div className="state">
+            <div className="col-md-2 pr-0">
+              <div className="state-active1">
                 <ol>
-                  <li>Active</li>
+                  <li><span className="active-state mr-1"></span>Active</li>
                 </ol>
               </div>
             </div>
           </div>
         </AccordionDetails>
         <AccordionDetails>
-        <div className="row m-info r-3">
+        <div className="row m-info r-3 pl-3">
           <div className="col-md-3">
               <div>
                 <h4>Time</h4>
@@ -100,9 +104,10 @@ export default function ControlledAccordions() {
                 <h5>Mar 22 - Present</h5>
               </div>
             </div>
-            <div className="col-md-5">
+            <div className="col-md-5 pr-0">
               <div className="mile-inner-btn">
-                <Button variant="outlined" color="secondary">Request For payment</Button> 
+                {/* <Button variant="outlined" color="secondary">Request For payment</Button>  */}
+                <RequestPaymentModal/>
               </div>
             </div>
           </div>
@@ -114,31 +119,34 @@ export default function ControlledAccordions() {
           aria-controls="panel2bh-content"
           id="panel2bh-header"
         >
+          <div className="pl-2">
           <Typography className={classes.heading}><b>Milestone 2</b></Typography>
-          <Typography className={classes.secondaryHeading}></Typography>
+          </div>
         </AccordionSummary>
         <AccordionDetails>
-          <div className="row m-info">
-            <div className="col-md-2 ">
-              <div>
-              <Avatar className="my-name">1</Avatar>
+        <div className="container pr-0">
+            <div className="row m-info pl-2">
+              <div className="col-md-1 pl-0">
+                <div>
+                <Avatar className="my-name">1</Avatar>
+                </div>
               </div>
-            </div>
-            <div className="col-md-8 align-self-center">
-              <div>
-                <h4 className="align-self-center">Wireframes</h4>
+              <div className="col-md-9 align-self-center pt-2 pl-0">
+                <div>
+                  <h4 className="align-self-center"><b>Interface Design</b></h4>
+                </div>
               </div>
-            </div>
-            <div className="col-md-2 align-self-center">
-              <div>
-                <div className="price-tag">100SAR</div>
+              <div className="col-md-2 align-self-center pr-0">
+                <div>
+                  <div className="price-tag">100SAR</div>
+                </div>
               </div>
-            </div>
-          </div> 
+            </div> 
+          </div>
           
         </AccordionDetails>
         <AccordionDetails>
-        <div className="row m-info r-3">
+        <div className="row m-info r-3 pl-3">
           <div className="col-md-3">
               <div>
                 <h4>Project type</h4>
@@ -149,17 +157,17 @@ export default function ControlledAccordions() {
                 <h5>Monthly</h5>
               </div>
             </div>
-            <div className="col-md-2">
-              <div className="state2">
+            <div className="col-md-2 pr-0">
+              <div className="state-inactive2">
                 <ol>
-                  <li>Inactive</li>
+                  <li><span className="inactive-state mr-1"></span>Inactive</li>
                 </ol>
               </div>
             </div>
           </div>
         </AccordionDetails>
         <AccordionDetails>
-        <div className="row m-info r-3">
+        <div className="row m-info r-3 pl-3">
           <div className="col-md-3">
               <div>
                 <h4>Time</h4>
@@ -170,11 +178,11 @@ export default function ControlledAccordions() {
                 <h5>Mar 22 - Present</h5>
               </div>
             </div>
-            <div className="col-md-5">
+            {/* <div className="col-md-5 pr-0">
               <div className="mile-inner-btn">
-                {/* <Button variant="outlined" color="secondary">Request For payment</Button>  */}
+                <Button variant="outlined" color="secondary">Request For payment</Button> 
               </div>
-            </div>
+            </div> */}
           </div>
         </AccordionDetails>
       </Accordion>
@@ -184,31 +192,35 @@ export default function ControlledAccordions() {
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
+          <div className="pl-2">
           <Typography className={classes.heading}><b>Milestone 3</b></Typography>
+          </div>
           <Typography className={classes.secondaryHeading}></Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <div className="row m-info">
-            <div className="col-md-1">
-              <div>
-              <Avatar className="my-name">1</Avatar>
+        <div className="container pr-0">
+            <div className="row m-info pl-2">
+              <div className="col-md-1 pl-0">
+                <div>
+                <Avatar className="my-name">1</Avatar>
+                </div>
               </div>
-            </div>
-            <div className="col-md-9 align-self-center">
-              <div className="c-iner-heading">
-                <h4 className="align-self-center">Wireframes</h4>
+              <div className="col-md-9 align-self-center pt-2 pl-0">
+                <div>
+                  <h4 className="align-self-center"><b>Interface Design</b></h4>
+                </div>
               </div>
-            </div>
-            <div className="col-md-2 align-self-center">
-              <div>
-                <div className="price-tag">100SAR</div>
+              <div className="col-md-2 align-self-center pr-0">
+                <div>
+                  <div className="price-tag">100SAR</div>
+                </div>
               </div>
-            </div>
-          </div> 
+            </div> 
+          </div>
           
         </AccordionDetails>
         <AccordionDetails>
-        <div className="row m-info r-3">
+        <div className="row m-info r-3 pl-3">
           <div className="col-md-3">
               <div>
                 <h4>Project type</h4>
@@ -219,17 +231,17 @@ export default function ControlledAccordions() {
                 <h5>Monthly</h5>
               </div>
             </div>
-            <div className="col-md-2">
-              <div className="state2">
+            <div className="col-md-2 pr-0">
+              <div className="state-inactive2">
                 <ol>
-                  <li>Inactive</li>
+                  <li><span className="inactive-state mr-1"></span>Inactive</li>
                 </ol>
               </div>
             </div>
           </div>
         </AccordionDetails>
         <AccordionDetails>
-        <div className="row m-info r-3">
+        <div className="row m-info r-3 pl-3">
           <div className="col-md-3">
               <div>
                 <h4>Time</h4>
@@ -240,15 +252,16 @@ export default function ControlledAccordions() {
                 <h5>Mar 22 - Present</h5>
               </div>
             </div>
-            <div className="col-md-5">
+            {/* <div className="col-md-5 pr-0">
               <div className="mile-inner-btn">
-                {/* <Button variant="outlined" color="secondary">Request For payment</Button>  */}
+                <Button variant="outlined" color="secondary">Request For payment</Button> 
               </div>
-            </div>
+            </div> */}
           </div>
         </AccordionDetails>
       </Accordion>
       
+    </div>
     </div>
   );
 }
