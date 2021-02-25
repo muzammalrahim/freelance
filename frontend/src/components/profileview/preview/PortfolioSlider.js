@@ -13,7 +13,7 @@ const PortfolioSlider = () => {
 
   return (
     <Carousel activeIndex={index} onSelect={handleSelect}>
-          <div className="image-wrap col-md-4">
+          
       <Carousel.Item>
         <img
           className="d-block w-100"
@@ -23,19 +23,19 @@ const PortfolioSlider = () => {
         />
         
       </Carousel.Item>
-      </div>
-      <div className="image-wrap col-md-4">
+      
+      
       <Carousel.Item>
         <img
-          className="d-block w-100"
+          className="d-block "
           src={preview3}
           alt="Second slide"
         />
 
        
       </Carousel.Item>
-      </div>
-      <div className="image-wrap col-md-4">
+      
+      
       <Carousel.Item>
         <img
           className="d-block w-100"
@@ -43,7 +43,7 @@ const PortfolioSlider = () => {
           alt="Third slide"
         />
       </Carousel.Item>
-      </div>
+      
     </Carousel>
   );
 }

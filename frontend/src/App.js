@@ -43,6 +43,11 @@ import Reports from './App/pages/AccountSetting/Reports'
 
 // Withdrawing amt.
 import PaymentWithdraw from './App/pages/AccountSetting/PaymentWithdraw'
+<<<<<<< HEAD
+import Profileview from './components/profileview/ProfileView'
+import PortfolioTab from './components/profileview/PortfolioTab'
+import Accounttype from "./App/pages/registration/AccountType"
+=======
 // Withdrawing amt.
 
 // My Projects
@@ -51,6 +56,7 @@ import PaymentWithdraw from './App/pages/AccountSetting/PaymentWithdraw'
 
 // View Project Pages -Contract
 import ContractOne from './App/pages/Contract/ContractOne'
+>>>>>>> 998631e99564d6057111ba83de20657e079baf03
 import ContractTwo from "./App/pages/Contract/ContractTwo"
 import ContractThree from "./App/pages/Contract/ContractThree"
 // View Project Pages -Contract
@@ -93,6 +99,9 @@ return (
 
         <Route path='/profileview' exact component={Profileview}/>
         <Route path='/portfoliotab' exact component={PortfolioTab}/>
+<<<<<<< HEAD
+        <Route path='/registration-process' exact component={Accounttype}/>
+=======
 
         <Route path='/chat' exact component={Chat}/>
 
@@ -100,6 +109,7 @@ return (
 
         <Route path='/paymentWithdraw' exact component={PaymentWithdraw}/>
         
+>>>>>>> 998631e99564d6057111ba83de20657e079baf03
         <Route path='/ContractOne' exact component={ContractOne}/>
         <Route path='/ContractTwo' exact component={ContractTwo}/>
         <Route path='/ContractThree' exact component={ContractThree}/>
