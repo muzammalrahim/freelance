@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from 'react'
 import Navbar from "../../../components/Navbar";
 import "./SignIn.css";
 import './signuppage.css'
@@ -9,7 +9,63 @@ import LOCKER from "../../../assets/LOCKER.png";
 import  Alert from '../../../App/pages/signin/Alert';
 import Signinfooter from "./Signinfooter";
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
-function SignIn() {
+import {login} from "../../../redux/auth/authCrud"
+import {Redirect} from 'react-router-dom'
+import { render } from "react-dom";
+
+
+
+
+
+  class SignIn extends Component{
+
+        constructor(props)
+        {
+            super(props)
+
+            this.state ={
+                email:"",
+                password:"",
+              
+
+            }
+            
+           
+        }
+
+
+    onChangeHandler =(e)=>{
+
+      this.setState({
+                          [e.target.name]:e.target.value
+                    })
+          }
+
+
+    login = ()=>{
+
+   console.log("email:",this.state.email,"password:",this.state.password)
+   // login(values.email, values.password)
+   login(this.state.email,this.state.password)
+   .then(({ data: { token } }) => {
+   let accessToken = token;
+    console.log("token:",accessToken)
+    this.props.history.replace("/registration-process");
+   // props.login(accessToken);
+  })
+  .catch(() => {
+   // disableLoading();
+
+   
+ });
+
+    }
+
+
+render(){
+
+
+
   return (
     <div className="SignUp-flex-container">
       <div className="si-container">
@@ -34,6 +90,7 @@ function SignIn() {
               </div>
               <div className="floww pl-3 pr-3">
                 <img src={AvatarImage} alt="/" className="si-pic-tag" />
+
                 <form className="form-field pt-5">
                   <div className="form-group pt-4">
                     <label form="usr">Full name</label>
@@ -42,6 +99,8 @@ function SignIn() {
                       className="form-control"
                       id="usr"
                       placeholder="Enter Full Name"
+                      name="email"
+                      onChange={this.onChangeHandler}
                     />
                   </div>
                   <div className="s-in-form-group">
@@ -55,6 +114,8 @@ function SignIn() {
                       className="form-control"
                       id="pwd"
                       placeholder="Enter Password"
+                      name="password"
+                      onChange={this.onChangeHandler}
                     />
                   </div>
                 </form>
@@ -71,7 +132,11 @@ function SignIn() {
                   </label>
                 </div>
                 <div className="pt-4">
-                  <button type="button" className="btn btn-default btn-block text-white">
+                  <button  
+                            type="button" 
+                            className="btn btn-default btn-block text-white"
+                            onClick={this.login}
+                            >
                     Log In
                   </button>
                 </div>
@@ -94,7 +159,8 @@ function SignIn() {
       <Alert/>
       <Signinfooter/>
     </div>
-  );
+  )
+}
 }
 
 export default SignIn;
