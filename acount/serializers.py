@@ -15,7 +15,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.User
         # fields = '__all__'
-        fields = ['id', 'username', 'first_name', 'last_name']
+        fields = ['id', 'username', 'first_name', 'last_name', 'email']
 
 
 class SkillSerializers(serializers.ModelSerializer):
@@ -33,6 +33,8 @@ class CategorySerializers(serializers.ModelSerializer):
 class ProfileSerializers(serializers.ModelSerializer):
     def to_representation(self, instance):
         representation = super(ProfileSerializers, self).to_representation(instance)
+
+        representation['user'] = UserSerializer(instance.user).data
 
         representation['skills'] = SkillSerializers(instance.skills, many=True).data
         return representation

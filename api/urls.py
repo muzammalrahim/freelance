@@ -4,6 +4,7 @@ from django.conf.urls import url
 from rest_framework.routers import DefaultRouter
 from acount import views as account_views
 from job import views as job_view
+from payment import views
 
 router = DefaultRouter()
 
@@ -32,10 +33,6 @@ router.register(r'work', job_view.WorkViewSet)
 router.register(r'feedback', job_view.WorkViewSet)
 router.register(r'dispute', job_view.WorkViewSet)
 
-# profile_list = ProfileViewSet.as_view({
-#     'get': 'list',
-#     'post': 'create'
-# })
 
 # The API URLs are now determined automatically by the router.
 urlpatterns = format_suffix_patterns([
@@ -46,11 +43,10 @@ urlpatterns = format_suffix_patterns([
     url(r'^rest-auth/linkedin/$', account_views.LinkedinLogin.as_view(),
         name='linkedin_login'),
 
-    # path('profile', profile_list),
-
 ])
 urlpatterns += [
     path('', include(router.urls)),
+    path(r'payment/', views.request),
     path('api-auth/', include('rest_framework.urls')),
 
 ]
