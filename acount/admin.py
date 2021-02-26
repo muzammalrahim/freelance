@@ -1,16 +1,13 @@
 from django.contrib import admin
-from acount.models import User, Profile
+from acount import models
 
 # Register your models here.
-admin.site.register(User)
-
-
-# class ProfileAdmin(admin.ModelAdmin):
-#     def save_model(self, request, obj, form, change):
-#         if obj.id is None:
-#         	obj.created_by = request.user
-#         else:
-#         	obj.updated_by = request.user
-#         super().save_model(request, obj, form, change)
-
-# admin.site.register(Profile, ProfileAdmin)
+admin.site.register(models.User)
+admin.site.register(models.City)
+admin.site.register(models.Skill)
+admin.site.register(models.Speciality)
+admin.site.register(models.Category)
+admin.site.register(models.Profile)
+admin.site.register(models.ClientProfile)
+admin.site.register(models.FreelancerProfile)
+admin.site.register(models.Question)
