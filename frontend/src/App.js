@@ -92,8 +92,7 @@ return (
         {/* Signup/in */}
 
         {/* Registration Process */}
-        <Route path='/registration-process' exact ><Authenticated>
-          <Accounttype/></Authenticated></Route>
+        <Route path='/registration-process' exact > <Accounttype/></Route>
         <Route path='/tabbar-registration' exact component={TabbarRegistration}/>
 
         {/* Registration Process */}

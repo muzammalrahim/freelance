@@ -9,9 +9,7 @@ import LOCKER from "../../../assets/LOCKER.png";
 import  Alert from '../../../App/pages/signin/Alert';
 import Signinfooter from "./Signinfooter";
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import {login} from "../../../redux/auth/authCrud"
-import {Redirect} from 'react-router-dom'
-import { render } from "react-dom";
+import {login} from "../../../redux/auth/authCrud";
 
 
 
@@ -26,6 +24,10 @@ import { render } from "react-dom";
             this.state ={
                 email:"",
                 password:"",
+
+                isAuthorization : false
+
+                
               
 
             }
@@ -35,7 +37,9 @@ import { render } from "react-dom";
 componentDidMount(){
   if(localStorage.getItem("token"))
   {
-    this.props.history.push("/registration-process")
+    this.setState({
+      isAuthorization : true
+    });
   }
   
 }
@@ -57,8 +61,9 @@ componentDidMount(){
    .then(({ data: { token } }) => {
    let accessToken = token;
     console.log("token:",accessToken)
-     localStorage.setItem("token", accessToken)
+     localStorage.setItem("token", accessToken);
     this.props.history.replace("/registration-process");
+
    // props.login(accessToken);
   })
   .catch(() => {
@@ -71,9 +76,7 @@ componentDidMount(){
 
 
 render(){
-
-
-
+      
   return (
     <div className="SignUp-flex-container">
       <div className="si-container">
