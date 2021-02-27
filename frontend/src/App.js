@@ -75,8 +75,12 @@ import Help from './App/pages/help/help'
 import NotFound from "./App/pages/notFound/NotFound";
 // Not Found     
 
+import Authenticated from './Authenticated'
+
+
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import Authenticated from "./Authenticated"
+
+
 
 
 function App() {
@@ -85,23 +89,36 @@ return (
     <Router>
     <Switch>
         {/* Signup/in */}
-        <Route path='/' exact ><SignIn/></Route>
-        <Route path='/login' exact ><Authenticated nonAuthenticated={true}> <SignIn/>
-        </Authenticated></Route>
-        <Route path='/signup' exact ><signuppage/></Route>
+      
+        <Route exact path="/"> 
+
+        <Authenticated>
+           <Jobs/>
+         </Authenticated> 
+      
+        </Route>
+
+
+         
+       <Route exact path="/login" > 
+       <Authenticated nonAuthenticated={true}>
+         <SignIn/>
+       </Authenticated> 
+        </Route>
+
+        <Route path='/signup' exact component={signuppage}/>
         {/* Signup/in */}
 
         {/* Registration Process */}
-        <Route path='/registration-process' exact > <Accounttype/></Route>
+        <Route path='/registration-process' exact component={Accounttype}/>
         <Route path='/tabbar-registration' exact component={TabbarRegistration}/>
 
         {/* Registration Process */}
 
-        <Route path='/account-setting' exact> <Authenticated> <AccountSettingMain/> </Authenticated>  </Route>
+          {/*  <Route path='/account-setting' exact component={AccountSettingMain}/>*/}
 
         
         {/* Job Feed Page  */}
-        <Route path='/Jobs' exact component={Jobs}/>
         <Route path='/JobDetail' exact component={JobDetail}/>
         <Route path='/JobDetailTwo' exact component={JobDetailTwo}/>
         {/* Job Feed Page  */}
@@ -113,7 +130,7 @@ return (
         {/* Personal Profile */}
 
         {/* Account Setting */}
-
+        <Route path='/account-setting' exact component={AccountSettingMain}/>
         {/* Account Setting */}
 
         {/* Notification */}

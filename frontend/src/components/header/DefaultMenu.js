@@ -4,6 +4,10 @@ import { MenuItems,AccountSettingMenuItems } from "./MenuItems";
 import AvatarImage from '../../AvatarImage.png';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 
+import Logout from "../../App/pages/signin/Logout"
+
+
+
 function DefaultMenu(props) {
     return (
       <nav className="navbar navbar-expand-md">
@@ -68,7 +72,8 @@ function DefaultMenu(props) {
                         <a href="#" class="dropdown-item">View Profile</a>
                         <a href="#" class="dropdown-item">Account Settings</a>
                         {/* <div class="dropdown-divider"></div> */}
-                        <a href="#"class="dropdown-item">Logout</a>
+                        <a href="#"  class="dropdown-item">Logout</a>
+                          <Logout/>
                     </div>
                 </li>
                 <li>

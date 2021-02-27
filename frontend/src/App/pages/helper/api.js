@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../../config/axiosConfig';
 
 const API_URL = process.env.REACT_APP_API_URL;
 const Authorization = JSON.parse(localStorage.getItem('persist:v705-demo1-auth')) && JSON.parse(localStorage.getItem('persist:v705-demo1-auth')).authToken;
@@ -7,16 +7,11 @@ export const headers = {
   Authorization: `Token ${Authorization && Authorization.replaceAll('"','')}`,
 }
 
-// export default function list(endpoint, params={}) {
-  export default function list(endpoint) {
-    let config = {
-    //   headers: headers,
-    //   params: params,
-    }
-    // return axios.get(API_URL+endpoint, config).then(response => {
-    return axios.get(API_URL+endpoint)
-    .then(response => 
-      {
+export default function list(endpoint, params={}) {
+  // export default function list(endpoint) {
+    
+     return axios.get(API_URL+endpoint).then(response => {
+    // return axios.get(API_URL+endpoint) .then(response => {
       if(response.data.results !== undefined) {
          response.extra_data = {
           count : response.data.count,
