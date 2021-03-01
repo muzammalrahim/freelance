@@ -29,11 +29,11 @@ export default function JobDetail() {
         .then((response)=>{
         let jobdetail_list = [];
         console.log("all data :",response)
-        console.log("response",response)
-        response.data.map((row)=>{
-        console.log("response2",row)
-        //   job_list.push(createData(row.id, row.budget, row.title, row.description, row.skills))
-        })
+        
+       response.data.map((row)=>{
+
+       jobdetail_list.push(createData(row.id, row.budget, row.title, row.description, row.skills))
+       })
     
         setjobdetail(jobdetail_list);
       })

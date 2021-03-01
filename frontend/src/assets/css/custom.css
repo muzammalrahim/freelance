@@ -120,11 +120,12 @@ span.tick-status {
     border: none;
     background: #ee9821;
     width: 100%;
-} {
+} 
+/* {
     background: #ee9821;
     color: #ffffff;
     border: none;
-}
+} */
 .proposal-details textarea {
     overflow: hidden;
     width: 100%;
