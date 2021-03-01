@@ -51,6 +51,38 @@ class PersonalProfile extends React.Component {
                 return true
         }
 
+      submitHandler(ans)
+      {
+           let [{per_profileValidate,personal_profile_isSubmit_value}] = [this.state]
+            let impValue = 0
+           Object.values(per_profileValidate).map((values)=>{
+                    console.log("loop",values)
+                  
+                  if(values === false)
+                  {
+                      impValue=impValue +1
+                      
+                  }
+                
+            })
+
+            if(impValue>0)
+            {
+                return false
+            }
+        
+            else if(impValue === 0)
+            {
+                return true
+            }
+
+            
+             
+           
+
+      }
+
+
         
         changeHandler(e){
             let isSubmit = null;
@@ -74,24 +106,9 @@ class PersonalProfile extends React.Component {
 
             this.setState({per_profile, per_profileValidate});
 
-            
-
-            Object.values(per_profileValidate).map((values)=>{
-
-                  if(values === false)
-                  {
-                    isSubmit=false
-                  }
-
-                  else
-                  {
-                    isSubmit=true;
-
-                  }
-                  
-                
-            })
-
+           var ans = Boolean (this.submitHandler(isSubmit) ? true : false);
+           
+                console.log("ans",ans);
 
           
 
