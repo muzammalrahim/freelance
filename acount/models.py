@@ -42,7 +42,7 @@ class Profile(PolymorphicModel):
     mobile_no = models.CharField(max_length=20,
                                  blank=True, null=True)
 
-    avatar = models.ImageField()
+    avatar = models.ImageField(null=True)
 
     VERIFICATION_STATUS_CHOICES = (
         ('pending', 'Pending'),

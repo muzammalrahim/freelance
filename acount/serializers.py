@@ -4,6 +4,8 @@ from acount import models
 from rest_framework import serializers
 from django.contrib.auth.models import Group
 
+from acount.models import User
+
 
 class CitySerializers(serializers.ModelSerializer):
     class Meta:
@@ -31,12 +33,13 @@ class CategorySerializers(serializers.ModelSerializer):
 
 
 class ProfileSerializers(serializers.ModelSerializer):
+
     def to_representation(self, instance):
         representation = super(ProfileSerializers, self).to_representation(instance)
 
         representation['user'] = UserSerializer(instance.user).data
-
         representation['skills'] = SkillSerializers(instance.skills, many=True).data
+
         return representation
 
     def update(self, instance, validated_data):
@@ -69,10 +72,35 @@ class ClientProfileSerializers(serializers.ModelSerializer):
 
 
 class FreelancerProfileSerializers(serializers.ModelSerializer):
+    skills = SkillSerializers(many=True, write_only=True)
+    category = CategorySerializers(many=True, write_only=True)
+    user = UserSerializer()
+
+    def create(self, validated_data):
+        skills = validated_data.pop('skills')
+        category = validated_data.pop('category')
+        user = validated_data.pop('user')
+
+        user = User.objects.create(**user)
+
+        freelance_profile = models.FreelancerProfile.objects.create(user=user, **validated_data)
+
+        for data in skills:
+            k = models.Skill.objects.create(name=data.get('name'))
+            freelance_profile.skills.add(k)
+
+        for data in category:
+            s = models.Category.objects.create(name=data.get('name'))
+            freelance_profile.category.add(s)
+
+        return freelance_profile
+
     def to_representation(self, instance):
         representation = super(FreelancerProfileSerializers, self).to_representation(instance)
 
         representation['skills'] = SkillSerializers(instance.skills, many=True).data
+        representation['category'] = CategorySerializers(instance.category, many=True).data
+        representation['user'] = UserSerializer(instance.user).data
 
         return representation
 
