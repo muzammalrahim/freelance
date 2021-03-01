@@ -4,8 +4,6 @@ from acount import models
 from rest_framework import serializers
 from django.contrib.auth.models import Group
 
-from acount.models import User
-
 
 class CitySerializers(serializers.ModelSerializer):
     class Meta:
