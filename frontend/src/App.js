@@ -44,10 +44,15 @@ import Reports from './App/pages/AccountSetting/Reports'
 
 // Withdrawing amt.
 import PaymentWithdraw from './App/pages/AccountSetting/PaymentWithdraw'
+// 
+
+
 
 // import Profileview from './components/profileview/ProfileView'
 // import PortfolioTab from './components/profileview/PortfolioTab'
 // import Accounttype from "./App/pages/registration/AccountType"
+
+
 
 // Withdrawing amt.
 
@@ -76,7 +81,11 @@ import Help from './App/pages/help/help'
 import NotFound from "./App/pages/notFound/NotFound";
 // Not Found     
 
+import Authenticated from './Authenticated'
+
+
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
 
 
 
@@ -86,8 +95,23 @@ return (
     <Router>
     <Switch>
         {/* Signup/in */}
-        <Route path='/' exact component={SignIn}/>
-        <Route path='/login' exact component={SignIn}/>
+      
+        <Route exact path="/"> 
+
+        <Authenticated>
+           <Jobs/>
+         </Authenticated> 
+      
+        </Route>
+
+
+         
+       <Route exact path="/login" > 
+       <Authenticated nonAuthenticated={true}>
+         <SignIn/>
+       </Authenticated> 
+        </Route>
+
         <Route path='/signup' exact component={signuppage}/>
         {/* Signup/in */}
 
@@ -97,11 +121,10 @@ return (
 
         {/* Registration Process */}
 
-        <Route path='/account-setting' exact component={AccountSettingMain}/>
+          {/*  <Route path='/account-setting' exact component={AccountSettingMain}/>*/}
 
         
         {/* Job Feed Page  */}
-        <Route path='/Jobs' exact component={Jobs}/>
         <Route path='/JobDetail' exact component={JobDetail}/>
         <Route path='/JobDetailTwo' exact component={JobDetailTwo}/>
         {/* Job Feed Page  */}
@@ -113,7 +136,7 @@ return (
         {/* Personal Profile */}
 
         {/* Account Setting */}
-
+        <Route path='/account-setting' exact component={AccountSettingMain}/>
         {/* Account Setting */}
 
         {/* Notification */}
