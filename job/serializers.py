@@ -56,6 +56,7 @@ class JobSerializer(serializers.ModelSerializer):
         except:
             representation['client'] = None
         return representation
+
     class Meta:
         model = models.Job
         fields = '__all__'
