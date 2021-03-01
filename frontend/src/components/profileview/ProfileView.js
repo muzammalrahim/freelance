@@ -8,10 +8,9 @@ import Reviews from "./Reviews";
 import Experience from "./Experience";
 import Education from "./Education";
 import Header from '../header/Header'
-
-
-
 function Profileview() {
+  
+
   return (
     <>
       <div className="main-profile-page">
@@ -26,6 +25,7 @@ function Profileview() {
               </div>
               <div className="col-md-9">
                 <div className="personal-prfile-main">
+                  
                   <BioGraphy />
                   <PortFolio />
                   <Reviews />
