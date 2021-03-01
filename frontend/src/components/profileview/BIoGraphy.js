@@ -2,26 +2,32 @@ import React, { useEffect, useState} from "react";
 import "./BioGraphy.css";
 import list from '../../App/pages/helper/api';
 
+// function dataCreated(account_title,description,mobile_no,street ,email) {
 
-function dataCreated(id, account_title, mobile_no, skills, street, language ,BIO) {
-  return{id, account_title, mobile_no, skills, street, language ,BIO};
-}
+
+//   return{account_title,description,mobile_no,street,email};
+// }
+
+
 function BioGraphy() {
+
  
-  const [data, setData] = useState ([]);
+  const [profiledata, setprofileData] = useState ('');
 
   function getdata() {
-
-
+    console.log("show response:");
     list('api/v1/profile/')
     .then((response)=>{
-      let dataget = [];
-      console.log("show response:",response);
-      response.getdata.map((get)=>{
-        dataget.push(dataCreated(get.id, get.mobile_no, get.skills, get.language, get.description ,get.BIO ))
+      console.log("show response:",response.data[0]);
+      const {...rest} = response.data[0];
+    console.log('description: ',rest.description);
+      //  response.data.map((rest)=>{
+      //   dataCreated(rest.description, rest.account_title ,rest.mobile_no,rest.street,rest.user.email))
+   
 
-      })
-      setData(dataget);
+      //  })
+       //console.log("dataget",dataget)
+       setprofileData(rest);
     })
     }
  
@@ -40,11 +46,12 @@ function BioGraphy() {
             <h>Personal Profile</h>
           </div>
           <div class="col-md-6 pr-4">
+           
             <button type="button" class="btn btn-primary btn-sm float-right">
-              EDIT
+        EDIT
             </button>
+         
           </div>
-          {data.map((get) => (
           <address>
             
             <div className="tst">
@@ -55,48 +62,50 @@ function BioGraphy() {
                 
         
   
-                    <p>{get.BIO}</p>
+                    <p>BIO</p> 
                </div>
                   <div className="col-md-9">
                     <p>
-                    {get.description}
+                    {profiledata && profiledata.description ? profiledata.description : ''}
                     </p>
                   </div>
                 </div>
                 <div className="contact-info row">
-                  
+             
                   <div className="col-md-3 pl-4">
                     <p>Email</p>
                   </div>
                   <div className="col-md-9">
-                    <a href="jack14@gmail.com ">jack14@gmail.com </a>
+                  {profiledata && profiledata.email ? profiledata.user.email : ''}
+                  {/* {console.log("email:")} */}
+                    <a href="jack14@gmail.com ">{profiledata.user.email} </a>
                   </div>
                 </div>
                 <div className="contact-info row">
                   <div className="col-md-3 pl-4">
+                
                     <p>Mobile Number</p>
                   </div>
                   <div className="col-md-9">
-                    <a href="97787879879767 ">97787879879767</a>
+                  {profiledata && profiledata.mobile_no ? profiledata.mobile_no : ''}
+                    <a href="97787879879767 ">{profiledata.mobile_no}</a>
+                   </div>  
+                  </div>
+                  <div className="contact-info row">
+                    <div className="col-md-3 pl-4">
+                      <p>Address</p>
+                    </div>
+                    <div className="col-md-9">
+                    {profiledata && profiledata.street ? profiledata.street : ''}
+                      <a href="jack14@gmail.com ">
+                     {profiledata.street}
+                    
+                      </a>
+                    </div>
                   </div>
                 </div>
-                <div className="contact-info row">
-                  <div className="col-md-3 pl-4">
-                    <p>Address</p>
-                  </div>
-                  <div className="col-md-9">
-                    <a href="jack14@gmail.com ">
-                      Lorem Ipsum is simply dummy text of the printing.
-                    </a>
-                  </div>
-                </div>
-              </div>
             </div>
           </address>
-                       
-                       )
-                       )
-                 }
                        
           <div class="container">
             <div class="row">
