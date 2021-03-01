@@ -10,8 +10,7 @@ import  Alert from '../../../App/pages/signin/Alert';
 import Signinfooter from "./Signinfooter";
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import {login} from "../../../redux/auth/authCrud"
-import {Redirect} from 'react-router-dom'
-import { render } from "react-dom";
+import { withRouter } from 'react-router-dom'
 
 
 
@@ -32,13 +31,6 @@ import { render } from "react-dom";
             
            
         }
-componentDidMount(){
-  if(localStorage.getItem("token"))
-  {
-    this.props.history.push("/registration-process")
-  }
-  
-}
 
 
     onChangeHandler =(e)=>{
@@ -55,11 +47,17 @@ componentDidMount(){
    // login(values.email, values.password)
    login(this.state.email,this.state.password)
    .then(({ data: { token } }) => {
-   let accessToken = token;
-    console.log("token:",accessToken)
-     localStorage.setItem("token", accessToken)
-    this.props.history.replace("/registration-process");
-   // props.login(accessToken);
+
+   localStorage.setItem("token", token)
+
+      if(localStorage.getItem("token"))
+         {
+      
+             this.props.history.push('/')
+            }
+
+  
+ 
   })
   .catch(() => {
    // disableLoading();
@@ -71,8 +69,6 @@ componentDidMount(){
 
 
 render(){
-
-
 
   return (
     <div className="SignUp-flex-container">
@@ -170,5 +166,5 @@ render(){
   )
 }
 }
+export default withRouter(SignIn)
 
-export default SignIn;

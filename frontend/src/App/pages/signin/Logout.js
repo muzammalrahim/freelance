@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
-import Button from '../../../components/Button'
+import { withRouter } from 'react-router-dom'
 
-export default class Logout extends Component {
+ class Logout extends Component {
 
     Logout=()=>{
 localStorage.removeItem("token")
-this.props.history.push("/SignUp")
+this.props.history.push('/login')
 }
     render() {
         return (
             <div>
-                <Button onClick={()=>this.Logout()}>Logout</Button>
+                <p onClick={()=>this.Logout()}> Logout </p>
+              
             </div>
         )
     }
 }
+
+export default withRouter(Logout)
