@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from "react";
 import "./BioGraphy.css";
-import list from '../../App/pages/helper/api';
+import list,{put}  from '../../App/pages/helper/api';
 
 // function dataCreated(account_title,description,mobile_no,street ,email) {
 
@@ -10,17 +10,25 @@ import list from '../../App/pages/helper/api';
 
 
 function BioGraphy() {
-
+  function handleClick(e) {
+    e.preventDefault(put('api/v1/profile/')
+    )
+  console.log('clicked')
+}
  
   const [profiledata, setprofileData] = useState ('');
+  const [skills, setSkills] = useState ('');
 
   function getdata() {
+
+    
+
     console.log("show response:");
     list('api/v1/profile/')
     .then((response)=>{
-      console.log("show response:",response.data[0]);
-      const {...rest} = response.data[0];
-    console.log('description: ',rest.description);
+      // console.log("show response:",response.data[1]);
+      const {...rest} = response.data[2];
+    // console.log('skill: ',rest.skills);
       //  response.data.map((rest)=>{
       //   dataCreated(rest.description, rest.account_title ,rest.mobile_no,rest.street,rest.user.email))
    
@@ -28,8 +36,18 @@ function BioGraphy() {
       //  })
        //console.log("dataget",dataget)
        setprofileData(rest);
+       const user_skills = rest.skills.map((skill, index) =>{
+                return(
+                <li>
+                  <a href="#" class="pl-3 pr-3 pt-1 pb-1">{skill.name}</a>
+                </li>)
+              })
+        setSkills(user_skills);
     })
+    
     }
+
+
  
     useEffect(() => {
       getdata();
@@ -47,7 +65,7 @@ function BioGraphy() {
           </div>
           <div class="col-md-6 pr-4">
            
-            <button type="button" class="btn btn-primary btn-sm float-right">
+            <button type="button" class="btn btn-primary btn-sm float-right" onClick={handleClick}>
         EDIT
             </button>
          
@@ -76,19 +94,20 @@ function BioGraphy() {
                     <p>Email</p>
                   </div>
                   <div className="col-md-9">
-                  {profiledata && profiledata.email ? profiledata.user.email : ''}
-                  {/* {console.log("email:")} */}
-                    <a href="jack14@gmail.com ">{profiledata.user.email} </a>
+                  {/* {profiledata && profiledata.email ? profiledata.user.email : ''} */}
+                  
+                    <a href="jack14@gmail.com ">{profiledata?.user?.email} </a>
                   </div>
                 </div>
+                
                 <div className="contact-info row">
                   <div className="col-md-3 pl-4">
                 
                     <p>Mobile Number</p>
                   </div>
                   <div className="col-md-9">
-                  {profiledata && profiledata.mobile_no ? profiledata.mobile_no : ''}
-                    <a href="97787879879767 ">{profiledata.mobile_no}</a>
+                  {/* {profiledata && profiledata.mobile_no ? profiledata.mobile_no : ''} */}
+                    <a href="9778787989767 ">{profiledata.mobile_no}</a>
                    </div>  
                   </div>
                   <div className="contact-info row">
@@ -96,7 +115,7 @@ function BioGraphy() {
                       <p>Address</p>
                     </div>
                     <div className="col-md-9">
-                    {profiledata && profiledata.street ? profiledata.street : ''}
+                    {/* {profiledata && profiledata.street ? profiledata.street : ''} */}
                       <a href="jack14@gmail.com ">
                      {profiledata.street}
                     
@@ -111,67 +130,22 @@ function BioGraphy() {
             <div class="row">
               <div class="col-md-12 pl-4">
               <p> Skills</p>
+              {console.log("loop",skills)}
               </div>
-
-            </div>
-
+         
+            </div>        
+            
+            {skills && 
               <div class="container">
                 <div class="row">
-                  <div class="col-md-1">
                     <ul className="lanuage-tag">
-                      <li>
-                        <a href="#" class="pl-2 pr-2 pt-1 pb-1">PHP</a>
-                      </li>
+                     { 
+                      skills  
+                    }
                     </ul>
-                  </div>
-                  <div class="col-md-3">
-                    <ul className="lanuage-tag">
-                      <li>
-                        <a href="#" class="pl-2 pr-2 pt-1 pb-1">Website design</a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="col-md-2">
-                    <ul className="lanuage-tag">
-                      <li>
-                        <a href="#" class="pl-2 pr-2 pt-1 pb-1">Wordpress</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="col-md-1">
-                    <ul className="lanuage-tag">
-                      <li>
-                        <a href="#" class="pl-2 pr-2 pt-1 pb-1">Java</a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="col-md-1">
-                    <ul className="lanuage-tag">
-                      <li>
-                        <a href="#" class="pl-2 pr-2 pt-1 pb-1">UIUX</a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="col-md-2">
-                    <ul className="lanuage-tag">
-                      <li>
-                        <a href="#" class="pl-2 pr-2 pt-1 pb-1">Branding</a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="col-md-2">
-                    <ul className="lanuage-tag">
-                      <li>
-                        <a href="#" class="pl-2 pr-2 pt-1 pb-1">Logo</a>
-                      </li>
-                    </ul>
-                  </div>
-              </div>
-            </div>
+                    </div>
+                </div>
+            }
           </div>
         </div>
       </div>
