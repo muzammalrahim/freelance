@@ -1,16 +1,25 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from polymorphic.models import PolymorphicModel
+from django.utils import timezone
 
 
 # Create your models here.
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
+    time_zone = models.DateTimeField(default=timezone.now, blank=True)
 
 
 class City(models.Model):
     name = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+class Country(models.Model):
+    name = models.CharField(max_length=100)
+    code = models.CharField(max_length=191, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -60,6 +69,8 @@ class Profile(PolymorphicModel):
     skills = models.ManyToManyField(Skill)
     city = models.ForeignKey(City, on_delete=models.SET_NULL, blank=True,
                              null=True)
+    country = models.ForeignKey(Country, on_delete=models.SET_NULL, blank=True,
+                                null=True)
     street = models.CharField(max_length=140)
     zip_code = models.CharField(max_length=14, blank=True, null=True)
 

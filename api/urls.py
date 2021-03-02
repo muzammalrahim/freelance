@@ -10,6 +10,7 @@ router = DefaultRouter()
 
 # account app 
 router.register(r'city', account_views.CityViewSet)
+router.register(r'country', account_views.CountryViewSet)
 router.register(r'skill', account_views.SkillViewSet)
 router.register(r'profile', account_views.ProfileViewSet)
 router.register(r'client_profile', account_views.ClientProfileViewSet)

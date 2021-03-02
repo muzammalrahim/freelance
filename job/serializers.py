@@ -13,15 +13,6 @@ class AttachmentSerializer(serializers.ModelSerializer):
 class JobSerializer(serializers.ModelSerializer):
     skills = acount_serializer.SkillSerializers(many=True, write_only=True)
 
-    # def create(self, validated_data):
-    #     job_skill = validated_data.pop('skills')
-    #     print("job skill", job_skill)
-    #     job = Job.objects.create(**validated_data)
-    #     for data in job_skill:
-    #         data['job'] = job
-    #         Skill.objects.create(**validated_data)
-    #     return job
-
     def create(self, validated_data):
         skills = validated_data.pop('skills')
         job = models.Job.objects.create(**validated_data)
