@@ -97,6 +97,14 @@ return (
          </Authenticated> 
       
         </Route>
+      
+        <Route exact path="/jobs"> 
+
+        <Authenticated>
+           <Jobs/>
+         </Authenticated> 
+      
+        </Route>
 
 
          

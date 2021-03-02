@@ -18,7 +18,7 @@ class RadioGroup extends Component {
 
   formSubmit(event) {
     event.preventDefault();
-    console.log(this.state.selectedOption)
+   
   }
 
   render() {

@@ -37,7 +37,7 @@ class  ProfessionalProfile2 extends Component{
     }
     submit(){
          
-        console.log(this.state.hobbies)
+   
     }
 
 
