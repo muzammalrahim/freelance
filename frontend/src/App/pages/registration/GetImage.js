@@ -13,25 +13,54 @@ export default class GetImage extends Component {
     super(props);
 
     this.state = {
-      files: [],
+      filesBase64: '',
     };
   }
 
+  
+
   onDrop = (files) => {
     //  POST to a test endpoint for demo purposes
-     const req = request.post('https://httpbin.org/post');
-
+    //  const req = request.post('https://httpbin.org/post');
+    // 
     files.forEach(file => {
-      req.attach(file.name, file);
-    });
+      // req.attach(file.name, file);
 
-    req.end();
+      this.setState({filesBase64: ''});
+      
+      const reader = new FileReader()
+      reader.onabort = () => console.log('file reading was aborted')
+      reader.onerror = () => console.log('file reading has failed')
+      reader.onload = () => {
+        const binaryStr = reader.result
+        // console.log(' binaryStr ', binaryStr);
+
+        var base64Image = btoa(
+          new Uint8Array(binaryStr)
+            .reduce((data, byte) => data + String.fromCharCode(byte), '')
+        );
+          // console.log(' base64Image ', base64Image);
+          this.setState({filesBase64: base64Image});
+          
+
+       
+       
+
+      }
+      reader.readAsArrayBuffer(file)
+      
+
+    });
+    // req.end();
+     
+     
+
   }
 
   onPreviewDrop = (files) => {
-    this.setState({
-      files: this.state.files.concat(files),
-    });
+    // this.setState({
+      // files: this.state.files[0],
+    // });
   }
 
   render() {
@@ -46,14 +75,21 @@ export default class GetImage extends Component {
    
       <div className='style'>
           <div className="imgBack">
+                {/* method to show base64 img*/}
+          {/* <img src={`data:image/png;base64,`+this.state.filesBase64}  />*/}
+            {/* method to show base64 img*/}
+
             <ReactDropzone
 
             className={this.props.value === 2 ? "dropzone2" : "dropzone"}
               accept="image/*"
-              onDrop={this.onPreviewDrop}
+              onDrop={this.onDrop}
               >
               <div  style={{textAlign:"center"}}> 
+
+  
                 <div className='iv_icon2' style={{backgroundImage: `url(${img})`}}></div> 
+                
                 <div>
                     <span style= {{cursor: "pointer"}}>Drop your image here,</span><span style={{color:"#1da799",cursor: "pointer"}} >  or browse </span>
                 </div>  
