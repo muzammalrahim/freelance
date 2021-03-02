@@ -55,8 +55,8 @@ class PersonalProfile extends React.Component {
       {
            let [{per_profileValidate,personal_profile_isSubmit_value}] = [this.state]
             let impValue = 0
-           Object.values(per_profileValidate).map((values)=>{
-                    console.log("loop",values)
+                Object.values(per_profileValidate).map((values)=>{
+                console.log("loop",values)
                   
                   if(values === false)
                   {
