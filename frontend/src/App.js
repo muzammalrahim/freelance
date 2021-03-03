@@ -44,6 +44,7 @@ import Reports from './App/pages/AccountSetting/Reports'
 
 // Withdrawing amt.
 import PaymentWithdraw from './App/pages/AccountSetting/PaymentWithdraw'
+
 // Withdrawing amt.
 
 // My Projects
@@ -87,6 +88,14 @@ return (
         {/* Signup/in */}
       
         <Route exact path="/"> 
+
+        <Authenticated>
+           <Jobs/>
+         </Authenticated> 
+      
+        </Route>
+      
+        <Route exact path="/jobs"> 
 
         <Authenticated>
            <Jobs/>

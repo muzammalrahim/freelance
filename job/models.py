@@ -1,17 +1,51 @@
 from django.db import models
 from acount.models import User
+import os
 
 # Create your models here.
 from acount.models import Skill, Category, ClientProfile, FreelancerProfile
 
 
+def attaches_upload(instance, filename):
+    """ this function has to return the location to upload the file """
+    return os.path.join(
+        '{0}/{1}/{2}'.format(instance.model, instance.model_id, filename))
+    # return os.path.join(
+    #     '{0}/{1}'.format(instance.model, filename))
+
+
 class Attachment(models.Model):
-    file = models.FileField()
+    file = models.FileField(max_length=191, upload_to=attaches_upload)
     model = models.CharField(max_length=50)
     model_id = models.IntegerField()
     type = models.CharField(max_length=30)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def _delete_file(self):
+        """ Deletes file from filesystem. """
+        if os.path.isfile(self.file.path):
+            os.remove(self.file.path)
+
+    # @staticmethod
+    # def get_attaches(instance, attach_type):
+    #     abattaches = Attachment.objects.filter(type=attach_type,
+    #                                            model_id=instance.id)
+    #     attaches = []
+    #     for abattache in abattaches:
+    #         attache = {
+    #
+    #             "id": abattache.id,
+    #             "file": abattache.file.name,
+    #             "model": abattache.model,
+    #             "model_id": abattache.model_id,
+    #             "type": abattache.type,
+    #             "created_at": abattache.created_at,
+    #             "updated_at": abattache.updated_at,
+    #
+    #         }
+    #         attaches.append(attache)
+    #     return attaches
 
 
 class Job(models.Model):
@@ -65,6 +99,25 @@ class Job(models.Model):
     updated_by = models.ForeignKey(User, blank=True, null=True,
                                    on_delete=models.SET_NULL,
                                    related_name='updated_by_job')
+    # def save(self, *args, **kwargs):
+    #     if not self.id:
+    #         self.original_file_name = self.compressImage(self.original_file_name)
+    #     super(Job, self).save(*args, **kwargs)
+    #
+    # def compressImage(self,uploadedImage):
+    #     imageTemproary = Image.open(uploadedImage)
+    #     outputIoStream = BytesIO()
+    #     # imageTemproaryResized = imageTemproary.resize( (1020,573) )
+    #     if imageTemproary.mode in ("RGBA", "P"):
+    #         imageTemproary = imageTemproary.convert("RGB")
+    #     imageTemproary.save(outputIoStream , format='JPEG', quality=70)
+    #     outputIoStream.seek(0)
+    #     uploadedImage = InMemoryUploadedFile(outputIoStream,'ImageField', "%s.jpg" % uploadedImage.name.split('.')[0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
+    #     return uploadedImage
+    #
+    # def _delete_file(self):
+    #     if os.path.isfile(self.original_file_name):
+    #         os.remove(self.original_file_name.path)
 
 
 class JobReview(models.Model):
@@ -274,7 +327,7 @@ class Feedback(models.Model):
     contract = models.ForeignKey(Contract, on_delete=models.SET_NULL,
                                  blank=True, null=True)
     description = models.TextField(max_length=500)
-    rate = models.IntegerField()
+    rate = models.IntegerField(null=True)
 
     STATUS_CHOICES = (
         ('published', 'Published'),

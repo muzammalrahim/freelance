@@ -16,12 +16,9 @@ import BookmarkBorderOutlinedIcon from '@material-ui/icons/BookmarkBorderOutline
 import SearchIconwhite from '../../../img/search-white.svg';
 import Dislike from '../../../img/dislike.svg';
 
+function createData(id, budget, title, description, skills,category) {
+  return { id, budget, title, description, skills,category };
 
-
-function createData(id, budget, title, description, skills, category) {
-
-  
-  return { id, budget, title, description, skills, category};
 }
 
 
@@ -34,11 +31,12 @@ function Jobs() {
     list('api/v1/job/')
       .then((response)=>{
       let job_list = [];
-      console.log("all data :",response)
-      
+     
+  
       response.data.map((row)=>{
       
-        job_list.push(createData(row.id, row.budget, row.title, row.description, row.skills, row.category))
+        job_list.push(createData(row.id, row.budget, row.title, row.description, row.skills,row.category))
+
       })
   
        setRows(job_list);
@@ -174,6 +172,9 @@ function Jobs() {
                             <ul className="tags">
                             
                             {
+
+                      
+
                                 
         
                                 Object.values(row.category).map((keyName, i) =>{
