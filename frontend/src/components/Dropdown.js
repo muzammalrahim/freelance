@@ -27,7 +27,7 @@ class Dropdown extends React.Component {
   render() {
     return (
       <div>
-        <p className="dropheader">What service you provide</p>
+        <p className="dropheader">{this.props.title}</p>
            <select className="Select" value={this.state.provide_service} onChange={this.handleChange} >
            
             <option value="Select service">Select service</option>

@@ -1,16 +1,49 @@
 import React, { Component } from 'react'
-import GroupRadioBtn from '../../../components/GroupRadioBtn'
 import  "./ProfileSetting.css"
+import Dropdown from "../../../components/Dropdown";
+
 
 export default class ProfileSetting extends Component {
     render() {
         return (
-            <div className="content-1">
-            <p>You can offset grid columns in two ways: our responsive .offset- grid classes and our margin utilities. Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.You can offset grid columns in two ways: our responsive .offset- grid classes and our margin utilities. Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.You can offset grid columns in two ways: our responsive .offset- grid classes and our margin utilities. Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.You can offset grid columns in two ways: our responsive .offset- grid classes and our margin utilities. Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.You can offset grid columns in two ways: our responsive .offset- grid classes and our margin utilities. Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.You can offset grid columns in two ways: our responsive .offset- grid classes and our margin utilities. Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.You can offset grid columns in two ways: our responsive .offset- grid classes and our margin utilities. Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.You can offset grid columns in two ways: our responsive .offset- grid classes and our margin utilities. Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.</p>
-            <p>You can offset grid columns in two ways: our responsive .offset- grid classes and our margin utilities. Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.You can offset grid columns in two ways: our responsive .offset- grid classes and our margin utilities. Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.You can offset grid columns in two ways: our responsive .offset- grid classes and our margin utilities. Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.You can offset grid columns in two ways: our responsive .offset- grid classes and our margin utilities. Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.You can offset grid columns in two ways: our responsive .offset- grid classes and our margin utilities. Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.You can offset grid columns in two ways: our responsive .offset- grid classes and our margin utilities. Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.You can offset grid columns in two ways: our responsive .offset- grid classes and our margin utilities. Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.You can offset grid columns in two ways: our responsive .offset- grid classes and our margin utilities. Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable</p>
-
-
-            </div>
+            <div className="profile-setting">
+               <div className="ps-heading">
+                  My Profile
+               </div>
+               <div className="container">
+                <div className="row">
+                        <div className="ps-selections col-md-6">
+                            <p>Visibility</p>
+                <div className="row">
+                            <div className=" col-md-6">
+                            <div className="selection-button">
+                            <div class="radio-item">
+                              <input type="radio" id="ritema" name="ritem" value="Private"></input>
+                              <label for="ritema"><span>Private</span></label>
+                            </div>
+                            </div>
+                            </div>
+                            <div className=" col-md-6">
+                            <div className="selection-button">
+                            <div class="radio-item">
+                              <input type="radio" id="ritemb" name="ritem" value="Public"></input>
+                              <label for="ritemb"><span>Public</span></label>
+                            </div>
+                            </div>     
+                            </div>
+                        </div>     
+                        </div>
+                        <div className="ps-selections col-md-6">
+                            <div className="row as-dropdown">
+                             <Dropdown title="Project" />
+                            </div>
+                        </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+               </div>
         )
     }
 }
