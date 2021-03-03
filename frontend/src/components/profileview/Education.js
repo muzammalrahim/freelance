@@ -106,9 +106,9 @@ export function Education(props) {
                   </a>
                   </div>
                   <div class="col-md-6 pb-5 pt-3">
-                  <button onClick={handleShow}>
-          Save
-        </button>
+                  <button type="button" className="form-btn btn btn-warning">
+                    Save
+                  </button>
                   </div>
               </div>
             </form>
