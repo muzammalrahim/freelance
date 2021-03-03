@@ -14,7 +14,7 @@ class PaymentWithdraw extends Component {
 	addClass=(e)=>
 	{
 	
-		console.log("hello")
+		
 	}
 
     render() { 
