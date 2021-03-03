@@ -75,7 +75,6 @@ class GetDate extends React.Component {
 					<option selected>Month</option>
 					{this.state.date.map((e, key) => {
 						  
-						 console.log(key)
 						return   <option  key={key}>{e.month} </option>
 									
 					})}

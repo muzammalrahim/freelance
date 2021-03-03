@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Reviews.css";
 import Stanton from "../../assets/Stanton.png";
 import Cooper from "../../assets/Cooper.png";
 import Button from "../Button";
-import CustomizedRatings from '../../App/pages/jobs/Rating'
-export function Reviews(props) {
+import CustomizedRatings from "../../App/pages/jobs/Rating";
+import list from "../../App/pages/helper/api";
+
+function createData(id, user, title, description) {
+  return { id,title, user, description};
+}
+export function Reviews() {
+  const [reviews, setReviews] = useState([]);
+
+  function Review() {
+    list("api/v1/profile/").then((response) => {
+      let Reviewdata = [];
+      console.log("response :", response);
+      response.data.map((review) => {
+        Reviewdata.push(
+          createData(review.id, review.user, review.title, review.description)
+        );
+      });
+
+      setReviews(Reviewdata);
+    });
+  }
+
+  useEffect(() => {
+    Review();
+  }, []);
+
   return (
     <div className="Reviews">
       <div class="container bg-white">
@@ -15,49 +40,26 @@ export function Reviews(props) {
             </div>
           </div>
         </div>
+
         <div class="container">
-          <div class="row pb-3">
-            <div class="col-md-6 pb-3 pt-3">
-              <img src={Stanton} alt="/" />
-              <h class="pl-3"> Ann Stanton </h>
-            </div>
-            <div class="col-md-6 pt-3">
-              <div className="float-right">
-              <CustomizedRatings />
+          {reviews.map((review) => (
+            <div class="row pb-3">
+              <div class="col-md-6 pb-3 pt-3">
+                <img src={Stanton} alt="/" />
+                <h class="pl-3"> {review?.user?.username} </h>
               </div>
-             
-           
-            </div>
-            <div class="col-md-12">
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries,
-              </p>
-            </div>
-          </div>
-          <div class="row pb-3">
-            <div class="col-md-6 pb-3">
-              <img src={Cooper} alt="/"/>
-              <h class="pl-3"> Cooper Dokidis </h>
-            </div>
-            <div class="col-md-6 float-right">
-            <div className="float-right">
-              <CustomizedRatings />
+              <div class="col-md-6 pt-3">
+                <div className="float-right">
+                  <CustomizedRatings />
+                  <p className="rate-start float-right pl-3 pr-3">4.5</p>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <p>{review.description}</p>
               </div>
             </div>
-            <div class="col-md-12">
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries,
-              </p>
-            </div>
-          </div>
+          ))}
+         
           <div class="row pl-3 pb-4">
             <div class="col-md-12 offset-md-3">
               <div className="btn-load">
