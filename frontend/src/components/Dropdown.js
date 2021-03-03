@@ -20,6 +20,10 @@ class Dropdown extends React.Component {
      handleChange(event) {
                              this.setState({provide_service: event.target.value});
                              this.props.changeName(event.target.value)
+
+                             this.props.onDropdownn(event.target.value);
+
+                             console.log("dropdown",event.target.value)
                          }
 
 
