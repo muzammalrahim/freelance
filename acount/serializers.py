@@ -5,6 +5,37 @@ from rest_framework import serializers
 from django.contrib.auth.models import Group
 import base64, six, uuid
 from django.core.files.base import ContentFile
+from rest_framework.fields import Field
+import datetime
+from django.utils import timezone
+
+
+# class TimeWithTimezoneField(Field):
+#     default_error_messages = {
+#         'invalid': 'Time has wrong format, expecting %H:%M:%S%z.',
+#     }
+#
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#
+#     def to_internal_value(self, value):
+#         value_with_date = datetime.datetime.now().strftime('%Y-%m-%d') + ' ' + value
+#         try:
+#             parsed = datetime.datetime.strptime(value_with_date, '%Y-%m-%d %H:%M:%S%z')
+#         except (ValueError, TypeError) as e:
+#             pass
+#         else:
+#             return parsed
+#         self.fail('invalid')
+#
+#     def to_representation(self, value):
+#         if not value:
+#             return None
+#
+#         if isinstance(value, str):
+#             return value
+#
+#         return timezone.make_naive(value, timezone.utc).strftime("%H:%M:%S+00:00")
 
 
 class Base64ImageField(serializers.ImageField):
@@ -74,10 +105,12 @@ class CountrySerializers(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    # time_zone = TimeWithTimezoneField()
+
     class Meta:
         model = models.User
         # fields = '__all__'
-        fields = ['id', 'username', 'first_name', 'last_name', 'email']
+        fields = ['id', 'username', 'first_name', 'last_name', 'email','time_zone']
 
 
 class SkillSerializers(serializers.ModelSerializer):
