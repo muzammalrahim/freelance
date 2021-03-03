@@ -47,6 +47,7 @@ import {connect} from "react-redux"
                       {
                         this.props.uploadImageHandler(base64Image)
                         console.log("if true",base64Image)
+                         this.props.onUpload(base64Image);
                       }
                   }
                   reader.readAsArrayBuffer(file) 
