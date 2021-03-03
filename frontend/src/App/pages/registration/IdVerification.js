@@ -1,13 +1,7 @@
 import React from 'react'
-
-
 import GetImage from './GetImage'
-
-
 import './IdVerification.css'
 import '../../../../src/common.css'
-
-
 import img from '../../../img/IdVerfication.png'
 import img2 from '../../../img/IdVerfication_F.png'
 
