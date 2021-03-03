@@ -112,19 +112,25 @@ span.tick-status {
 }
 .Jobs .search-area input.form-control {
     height: 38px;
-    border-left: 0;
-    border-right: 0;
+}
+.Jobs .ui-search-icon{
+    position:absolute;
+    top: 8px;
+}
+.Jobs .ui-search-icon svg{
+    font-size: 21px;
 }
 .proposal-details .MuiButton-outlinedPrimary {
     color: #ffffff;
     border: none;
     background: #ee9821;
     width: 100%;
-} {
+} 
+/* {
     background: #ee9821;
     color: #ffffff;
     border: none;
-}
+} */
 .proposal-details textarea {
     overflow: hidden;
     width: 100%;
@@ -337,6 +343,12 @@ label span:after {
 .Jobs .search-button .btn--yellow {
     width: 137px;
     text-transform: uppercase;
+    position: relative;
+}
+.Jobs .search-button .btn--yellow img {
+    position: absolute;
+    top: 10px;
+    left: 20px;
 }
 
 .main-wrapper{
@@ -421,24 +433,24 @@ ul.job-top-area li{
     color: #6b6b6a;
     line-height: 24px;
 }
-.fa-icon{
+.content-heading a:hover{
     color: #6B6B6A;
 }
-.fa-thumbs-down {
-    content: "\f165";
+.book-mark-icon svg{
     background: #fff;
     border-radius: 50%;
-    padding: 4px;
-    border: 0.5px solid rgba(107, 107, 106, 0.2);
-}
-i.fa.fa-bookmark-o {
-    content: "\f165";
-    background: #fff;
-    border-radius: 50%;
-    padding: 5px 7px;
     border: 1px solid rgba(107, 107, 106, .1);
-    font-size: 13px;
+    font-size: 22px;
+    padding: 3px;
 }
+.dislike-icon img{
+    background: #fff;
+    border-radius: 50%;
+    border: 1px solid rgba(107, 107, 106, .1); 
+    padding: 3px;
+    /* transform: rotate(-180deg); */
+}
+
 .paragraph p {
     font-size: 12px;
     line-height: 24px !important;

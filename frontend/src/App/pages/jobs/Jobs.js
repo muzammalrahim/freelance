@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
 import "../../../assets/css/custom.css";
 import Header from '../../../../src/components/header/Header'
 import Sidebar from './Sidebar';
@@ -6,11 +7,21 @@ import SearchBar from "./SearchBar";
 import AvatarImage from '../../../../src/AvatarImage.png';
 import  { useEffect } from 'react';
 import list from '../helper/api';
-
+import WatchLaterIcon from '@material-ui/icons/WatchLater';
+import CalanderIcon from '../../../img/calendar.svg';
+import WorkIcon from '@material-ui/icons/Work'
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import ThumbDownOutlinedIcon from '@material-ui/icons/ThumbDownOutlined';
+import BookmarkBorderOutlinedIcon from '@material-ui/icons/BookmarkBorderOutlined';
+import SearchIconwhite from '../../../img/search-white.svg';
+import Dislike from '../../../img/dislike.svg';
 
 function createData(id, budget, title, description, skills,category) {
   return { id, budget, title, description, skills,category };
+
 }
+
+
 
 function Jobs() {
   const [rows, setRows] = React.useState([]);
@@ -25,6 +36,7 @@ function Jobs() {
       response.data.map((row)=>{
       
         job_list.push(createData(row.id, row.budget, row.title, row.description, row.skills,row.category))
+
       })
   
        setRows(job_list);
@@ -69,7 +81,7 @@ function Jobs() {
                         </div>
                         <div className="col-md-2">
                           <div className="search-button">
-                            <button class="btn btn--yellow btn--medium"><i class="fas fa-search"></i> Search</button>
+                            <button class="btn btn--yellow btn--medium"> <img src={SearchIconwhite} alt="no img"/> Search</button>
                           </div>
                         </div>
                         <div className="col-md-1"></div>
@@ -100,19 +112,19 @@ function Jobs() {
                           </div>
                           <div className="col-md-7">
                             <div className="content-heading pt-1">
-                              <h3>{row.title}</h3>
+                              <h3><Link to={`/job/${row.id}`}>{row.title}</Link></h3>
                             </div>
                           </div>
                           <div className="offset-md-1 col-md-3">
                             <ul className="content-icons float-right">
-                              <li>
-                                <div className="dislike fa-icon">
-                                  <i className="far fa-thumbs-down mr-4"></i>
+                              <li className="mr-3">
+                                <div className="dislike dislike-icon">
+                                  <img src={Dislike} alt="no img"/>
                                 </div>
                               </li>
                               <li>
-                                <div className="book-mark fa-icon">
-                                  <i className="fa fa-bookmark-o" aria-hidden="true"></i>
+                                <div className="book-mark book-mark-icon">
+                                  <BookmarkBorderOutlinedIcon/>
                                 </div>
                               </li>
                             </ul>
@@ -120,21 +132,20 @@ function Jobs() {
                         </div>
                         {/* title area */}
                         {/* Tags + Price */}
-                        <div className="row pt-2">
+                        <div className="row">
                           <div className="col-md-1"></div>
                           <div className="col-md-7">
-                            <ul className="duration">
-                                <li className="pr-3">
-                                  <p><i class="fas fa-lock pr-2"></i>Monthly</p>
-                                </li>
-                                <li className="pr-3">
-                                  <p><i class="fa fa-calendar-alt pr-2"></i>2 months</p>
-                                </li>
-                                <li className="pr-3">
-                                  <p><i class="fas fa-clock pr-2"></i>20 min ago</p>
-                                </li>
-
-                              </ul>
+                          <ul className="duration mb-0">
+                            <li className="pr-3">
+                                <p className="m-icon"><span className="pr-2"><WorkIcon/></span>Monthly</p>
+                            </li>
+                            <li className="pr-3">
+                                <p className="m-icon"><span className="pr-2"><img src={CalanderIcon} alt="no img"/></span>2 months</p>
+                            </li>
+                            <li className="pr-3">
+                                <p className="m-icon"><span className="pr-2"><WatchLaterIcon/></span>20 min ago</p>
+                            </li>    
+                            </ul>
                           </div>
                           <div className="offset-md-1 col-md-3">
                             <div className="price-colored float-right">
@@ -149,7 +160,7 @@ function Jobs() {
                           <div className="col-md-12">
                             <p>
                              {row.description}
-                            <a href="#">more...</a>
+                             <Link to={`/job/${row.id}`}>{}more...</Link>
                             </p>
                           </div>
                         </div>
@@ -157,28 +168,32 @@ function Jobs() {
                         {/* Search Tags */}
                         <div className=" search-tags row pt-3">
                           <div className="col-md-8">
+                          {row.skills && 
                             <ul className="tags">
-
-                        
-
+                            
                             {
-                              Object.values(row.category).map((keyName, i) =>{
+
+                      
+
                                 
-                         return <li className="pr-3">
-                               <a className="pl-2 pr-2 pt-1 pb-1" href="#"> 
-                              {keyName.name}</a>
-                              
-                             </li>
-                               
-                            })}
-                              
-                             
+        
+                                Object.values(row.category).map((keyName, i) =>{
+                                  
+                                    console.log("map ",keyName)
+                                    if(i===1){
+                            return <li className="pr-3">
+                                <Link className="pl-2 pr-2 pt-1 pb-1"> 
+                                {keyName} </Link>
+                                
+                                </li>
+                                    }
+                                })}
                             </ul>
+                            }
                           </div>
                           <div className="col-md-4">
                             <div className="job-payment-btn float-right mb-3">
-                            <button class="btn btn--yellow btn--medium job-button p-0"><i className="fas fa-check mr-2" aria-hidden="true"></i>Payment verification</button>
-
+                              <button class="btn btn--yellow btn--medium job-button p-0"><span className="tick-status pr-2 border-0"><CheckCircleIcon/></span>Payment verification</button> 
                             </div>
                           </div>
                         </div>
