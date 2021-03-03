@@ -8,8 +8,8 @@ import  { useEffect } from 'react';
 import list from '../helper/api';
 
 
-function createData(id, budget, title, description, skills,) {
-  return { id, budget, title, description, skills, };
+function createData(id, budget, title, description, skills,category) {
+  return { id, budget, title, description, skills,category };
 }
 
 function Jobs() {
@@ -20,11 +20,11 @@ function Jobs() {
     list('api/v1/job/')
       .then((response)=>{
       let job_list = [];
-      console.log("all data :",response)
-      
+     
+  
       response.data.map((row)=>{
       
-        job_list.push(createData(row.id, row.budget, row.title, row.description, row.skills))
+        job_list.push(createData(row.id, row.budget, row.title, row.description, row.skills,row.category))
       })
   
        setRows(job_list);
@@ -162,7 +162,7 @@ function Jobs() {
                         
 
                             {
-                              Object.values(row.skills).map((keyName, i) =>{
+                              Object.values(row.category).map((keyName, i) =>{
                                 
                          return <li className="pr-3">
                                <a className="pl-2 pr-2 pt-1 pb-1" href="#"> 
