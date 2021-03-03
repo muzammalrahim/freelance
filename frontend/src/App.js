@@ -115,7 +115,7 @@ return (
 
         
         {/* Job Feed Page  */}
-        <Route path='/JobDetail' exact component={JobDetail}/>
+        <Route path='/job/:id' exact component={JobDetail}/>
         <Route path='/JobDetailTwo' exact component={JobDetailTwo}/>
         {/* Job Feed Page  */}
 
