@@ -9,15 +9,22 @@ import {connect} from "react-redux"
 
 class  ProfessionalProfile2 extends Component{
  
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
+
+
+
         this.state = {
-          chooseCategory:[],
-            skills: [],
-            provideService : "",
-        }
+                        provideService :'',
+                        skills: [],
+                        chooseCategory:[],
+                        img:''
+       
+                      }
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this. handleBase64File = this. handleBase64File.bind(this);
+        this. dropDownHandler = this. dropDownHandler.bind(this);
     }
 
     handleInputChange(event) 
@@ -39,16 +46,25 @@ class  ProfessionalProfile2 extends Component{
              }
         
     }
-    submit(){
-         
-   
-            }
+
+    handleBase64File(base64file)
+    {
+      this.setState({img:base64file})
+    }
+
+   dropDownHandler (provideService2)
+     {
+      
+      console.log("dropdown value in professional pro:",provideService2)
+        this.setState({provideService:provideService2})
+      }
 
 
 render(){
 
 return (
        <div className="ProfessionalProfile">
+
         <div className='Pf-container proff-prof'>
          <div className='container Pf-rightbox   bg2 b_line2 p-5'> 
           <div class="container-fluid">
@@ -65,7 +81,7 @@ return (
               </div>
                <div className="inner-parts">
                   <div className="dropdown">
-                      <Dropdown/>
+                      <Dropdown onDropdownn={this.dropDownHandler} title="What service you provide"/>
                   </div>
                 <div className="multiselect">
                 <div>
@@ -292,7 +308,8 @@ return (
                         
                      <div>
                           <div className="getimage">
-                            <GetImage/>
+                            <GetImage onUpload={this.handleBase64File} />
+                            
                           </div>
                       </div>
                 
@@ -310,7 +327,7 @@ return (
 
   const mapStateToProps = (state)=>
 {
-  console.log("redux state:",state.dropdownReducer)
+  
    return{
        R_serviceProvider:state.dropdownReducer
    }
