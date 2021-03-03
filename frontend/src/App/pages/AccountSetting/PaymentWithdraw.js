@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import Header from '../../../components/header/Header';
 import './Reports.css';
 import './PaymentWithdraw.css'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLandmark } from '@fortawesome/free-solid-svg-icons';
 class PaymentWithdraw extends Component {
@@ -22,15 +20,14 @@ class PaymentWithdraw extends Component {
         return (
 			console.log("agey",this.state.RadioclassActive),	
         <div>
-        <Header/>
             <div class="main-area withdraw">
-		    <div class="container">
-		        <div class="row pt-5 pb-5">
+		    <div class="container-fluid">
+		        
 		            <div class="col-md-12 align-self-center bg-white p-5">
 		                <div class="pg-heading pb-3">
 		                	<div class="row">
 		                		<div class="col-md-8 col-lg-8 col-sm-6 pr-5">
-		                			<h3 class="font-weight-bold pull-left ">Withdrawl Amount</h3>
+		                			<h3 class="font-weight-bold pull-left ">Withdrawal Amount</h3>
 		                			<p>ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 		                			tempor incididunt ut labore et dolore magna aliqua.</p>
 		                		</div>
@@ -57,9 +54,9 @@ class PaymentWithdraw extends Component {
 		                			<div class="col-md-10 col-lg-10 col-sm-12 ">
 		                				<div class="pb-2 pt-2">
 		                					<span ><FontAwesomeIcon icon={faLandmark} size="3x" /></span>
-		                					<span class="font-weight-bold">Riyad Bank</span>
+		                					<span class="font-weight-bold"> Riyad Bank</span>
 		                				</div>
-		                				<p class="font-weight-bold">Driect to local bank (INR) - Account ending in 086</p>
+		                				<p class="font-weight-bold">Direct to local bank (INR) - Account ending in 086</p>
 		                			</div>
 		                			<div class="col-md-2 col-lg-2 col-sm-12 pull-right">
 		                				<div class="form-check ">
@@ -73,9 +70,9 @@ class PaymentWithdraw extends Component {
 		                			<div class="col-md-10 col-lg-10 col-sm-12">
 		                				<div class="pb-2">
 		                					<span ><FontAwesomeIcon icon={faLandmark} size="3x" /></span>
-		                					<span class="font-weight-bold">Al Rajhi Bank</span>
+		                					<span class="font-weight-bold"> Al Rajhi Bank</span>
 		                				</div>
-		                				<p class="font-weight-bold">Driect to local bank (INR) - Account ending in 0676</p>
+		                				<p class="font-weight-bold">Direct to local bank (INR) - Account ending in 0676</p>
 		                			</div>
 		                			<div class="col-md-2 col-lg-2 col-sm-12 pull-right">
 		                				<div class="form-check">
@@ -90,7 +87,7 @@ class PaymentWithdraw extends Component {
 		                	</form>
 		                </div>
 		            </div>
-		        </div>
+		        
 		    </div>
 		    </div>
 			
