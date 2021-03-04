@@ -308,7 +308,7 @@ return (
                         
                      <div>
                           <div className="getimage">
-                            <GetImage onUpload={this.handleBase64File} />
+                            <GetImage onUpload={this.handleBase64File}  value="onUpload"/>
                             
                           </div>
                       </div>

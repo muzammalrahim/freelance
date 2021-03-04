@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import GetImage from './GetImage'
 import './IdVerification.css'
 import '../../../../src/common.css'
@@ -7,6 +7,24 @@ import img2 from '../../../img/IdVerfication_F.png'
 
 
 function IdVerification() {
+
+    const [drivingLicense, setdrivingLicense] = useState('');
+    const [idCard, setidCard] = useState('');
+
+  function  drimgUpload(base64file)
+    {
+        setdrivingLicense(base64file)
+        console.log("dr",base64file)
+    }
+
+   function icimgUpload(base64file)
+    {
+        setidCard(base64file)
+
+        console.log("ic",base64file)
+    }
+
+
     return (
         
   <div className="idVerification">
@@ -37,7 +55,7 @@ function IdVerification() {
                                 
                                     <div >
                                         <div className="">
-                                        <GetImage/>
+                                        <GetImage idVerf_DL_imgUpload={ drimgUpload} value="idVerf_DL_imgUpload" />
                                         </div>
                                    </div>
                                 </div>
@@ -51,7 +69,7 @@ function IdVerification() {
                                 
                                   <div >
                                         <div className="getimage">
-                                        <GetImage/>
+                                        <GetImage idVerf_IC_imgUpload={icimgUpload} value="idVerf_IC_imgUpload"/>
                                         </div>
                                    </div>
                              </div>

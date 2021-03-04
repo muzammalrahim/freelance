@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import {InputField2} from '../../../../src/components/InputField';
 import {InputField4} from '../../../../src/components/InputField';
 import Date from './GetDate'
@@ -11,8 +11,21 @@ import {connect} from "react-redux"
 
 
 function PaymentInformation(props) {
+    
+    const [paymentInfo, setpaymentInfo] = useState({
+        cardHoldername : "",
+        mobileNo : "",
+      });
+
+       
+      const onInputChange =e=>{
+        setpaymentInfo({...paymentInfo,[e.target.name] : e.target.value})
+      };
+
+      const { mobileNo , cardHoldername} = paymentInfo;
     return (
   <div className="PaymentInformation">
+  {console.log("data",paymentInfo)}
         <div className='Pf-container'>
             
                         
@@ -35,11 +48,23 @@ function PaymentInformation(props) {
                         <div className="Rb-1 col-md-12">
                         <div class="form-group">
                             <label className="headingStyle" for="usr">Card Holder Name</label>
-                            <input type="text" class="form-control"  Placeholder=" Enter card holder name"/>
+                            <input type="text" 
+                                    class="form-control" 
+                                    Placeholder=" Enter card holder name"
+                                    name="cardHoldername"
+                                    value={cardHoldername}
+                                    onChange={onInputChange}
+                                    />
                         </div>
                         <div class="form-group">
                             <label className="headingStyle" for="usr">Mobile number</label>
-                            <input type="text" class="form-control" Placeholder=" Enter number"/>
+                            <input type="text" 
+                                    class="form-control" 
+                                    Placeholder=" Enter number"
+                                    name="mobileNo"
+                                    value={mobileNo}
+                                    onChange={onInputChange}
+                                    />
                         </div>
                         
                         </div>
