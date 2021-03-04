@@ -44,6 +44,7 @@ class Category(models.Model):
 
 class Profile(PolymorphicModel):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    hourly_rate = models.DecimalField(max_digits=10, decimal_places=2, null=True)
     account_title = models.CharField(max_length=70,
                                      blank=True, null=True)
     description = models.TextField(max_length=5000,
