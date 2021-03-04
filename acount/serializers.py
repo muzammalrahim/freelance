@@ -4,7 +4,41 @@ from acount import models
 from rest_framework import serializers
 from django.contrib.auth.models import Group
 import base64, six, uuid
+from job.models import Attachment
 from django.core.files.base import ContentFile
+
+
+# from rest_framework.fields import Field
+# import datetime
+# from django.utils import timezone
+
+
+# class TimeWithTimezoneField(Field):
+#     default_error_messages = {
+#         'invalid': 'Time has wrong format, expecting %H:%M:%S%z.',
+#     }
+#
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#
+#     def to_internal_value(self, value):
+#         value_with_date = datetime.datetime.now().strftime('%Y-%m-%d') + ' ' + value
+#         try:
+#             parsed = datetime.datetime.strptime(value_with_date, '%Y-%m-%d %H:%M:%S%z')
+#         except (ValueError, TypeError) as e:
+#             pass
+#         else:
+#             return parsed
+#         self.fail('invalid')
+#
+#     def to_representation(self, value):
+#         if not value:
+#             return None
+#
+#         if isinstance(value, str):
+#             return value
+#
+#         return timezone.make_naive(value, timezone.utc).strftime("%H:%M:%S+00:00")
 
 
 class Base64ImageField(serializers.ImageField):
@@ -16,7 +50,7 @@ class Base64ImageField(serializers.ImageField):
 
             try:
                 decoded_file = base64.b64decode(data)
-                print("decoded_file", decoded_file)
+                # print("decoded_file", decoded_file)
             except TypeError:
                 self.fail('invalid_image')
 
@@ -44,9 +78,9 @@ class Base64ImageField(serializers.ImageField):
         import imghdr
 
         extension = imghdr.what(file_name, decoded_file)
-        print("extensionextensionextensionextensionextension", extension)
+        # print("extensionextensionextensionextensionextension", extension)
         extension = "jpg" if extension == "jpeg" else extension
-        print("image extension ", extension)
+        # print("image extension ", extension)
 
         return extension
 
@@ -74,10 +108,12 @@ class CountrySerializers(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    # time_zone = TimeWithTimezoneField()
+
     class Meta:
         model = models.User
-        # fields = '__all__'
-        fields = ['id', 'username', 'first_name', 'last_name', 'email']
+        fields = '__all__'
+        # fields = ['id', 'username', 'first_name', 'last_name', 'email', 'time_zone']
 
 
 class SkillSerializers(serializers.ModelSerializer):
@@ -135,19 +171,36 @@ class ClientProfileSerializers(serializers.ModelSerializer):
 
 
 class FreelancerProfileSerializers(serializers.ModelSerializer):
+    from job.serializers import AttachmentSerializer
     skills = SkillSerializers(many=True, write_only=True)
     category = CategorySerializers(many=True, write_only=True)
+    city = CitySerializers()
+    country = CountrySerializers()
+    license = AttachmentSerializer(write_only=True)
+    id_card = AttachmentSerializer(write_only=True)
+    certification = AttachmentSerializer(write_only=True)
     user = UserSerializer()
 
     def create(self, validated_data):
         skills = validated_data.pop('skills')
         category = validated_data.pop('category')
         user = validated_data.pop('user')
+        city = validated_data.pop('city')
+        country = validated_data.pop('country')
+        license = validated_data.pop('license')
+        id_card = validated_data.pop('id_card')
+        certification = validated_data.pop('certification')
 
-        user = models.User.objects.create(**user)
+        # user = models.User.objects.create(**user)
+        user = models.User.objects.get(id=user)
+        Attachment.objects.create(**license)
+        Attachment.objects.create(**id_card)
+        Attachment.objects.create(**certification)
+        city = models.City.objects.create(**city)
+        country = models.Country.objects.create(**country)
 
-        freelance_profile = models.FreelancerProfile.objects.create(user=user, **validated_data)
-
+        freelance_profile = models.FreelancerProfile.objects.create(user=user, city=city, country=country,
+                                                                    **validated_data)
         for data in skills:
             k = models.Skill.objects.create(name=data.get('name'))
             freelance_profile.skills.add(k)
@@ -164,6 +217,8 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
         representation['skills'] = SkillSerializers(instance.skills, many=True).data
         representation['category'] = CategorySerializers(instance.category, many=True).data
         representation['user'] = UserSerializer(instance.user).data
+        representation['city'] = CitySerializers(instance.city).data
+        representation['country'] = CountrySerializers(instance.country).data
 
         return representation
 
@@ -189,7 +244,7 @@ class CustomRegisterUserSerializer(DefaultRegisterUserSerializer):
         ('work', 'Work'),
         ('hire', 'Hire'),
     )
-    account_type = serializers.ChoiceField(choices=ACCOUNT_TYPE_CHOICES)
+    account_type = serializers.ChoiceField(choices=ACCOUNT_TYPE_CHOICES, required=False)
     """
     Default serializer used for user registration. It will use these:
     * User fields
@@ -203,17 +258,19 @@ class CustomRegisterUserSerializer(DefaultRegisterUserSerializer):
         self.Meta.fields = self.Meta.fields + ('account_type',)
 
     def create(self, validated_data):
-        account_type = validated_data.pop('account_type')
+        if 'account_type' in validated_data:
+            account_type = validated_data.pop('account_type')
         user = super().create(validated_data)
         # Profile(user=user).save()
 
-        if account_type == 'work':
-            models.FreelancerProfile(user=user).save()
-            user.groups.add(Group.objects.get(name=settings.FREELANCER_USER))
-        elif account_type == 'hire':
-            models.ClientProfile(user=user).save()
-            user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
-        else:
-            user.groups.add(Group.objects.get(name=settings.ADMIN_USER))
+        if 'account_type' in validated_data:
+            if account_type == 'work':
+                models.FreelancerProfile(user=user).save()
+                user.groups.add(Group.objects.get(name=settings.FREELANCER_USER))
+            elif account_type == 'hire':
+                models.ClientProfile(user=user).save()
+                user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
+            else:
+                user.groups.add(Group.objects.get(name=settings.ADMIN_USER))
 
         return user
