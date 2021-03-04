@@ -1,22 +1,56 @@
 from django.db import models
 from acount.models import User
+import os
 
 # Create your models here.
 from acount.models import Skill, Category, ClientProfile, FreelancerProfile
 
 
+def attaches_upload(instance, filename):
+    """ this function has to return the location to upload the file """
+    return os.path.join(
+        '{0}/{1}/{2}'.format(instance.model, instance.model_id, filename))
+    # return os.path.join(
+    #     '{0}/{1}'.format(instance.model, filename))
+
+
 class Attachment(models.Model):
-    file = models.FileField()
+    file = models.FileField(max_length=191, upload_to=attaches_upload)
     model = models.CharField(max_length=50)
     model_id = models.IntegerField()
     type = models.CharField(max_length=30)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def _delete_file(self):
+        """ Deletes file from filesystem. """
+        if os.path.isfile(self.file.path):
+            os.remove(self.file.path)
+
+    # @staticmethod
+    # def get_attaches(instance, attach_type):
+    #     abattaches = Attachment.objects.filter(type=attach_type,
+    #                                            model_id=instance.id)
+    #     attaches = []
+    #     for abattache in abattaches:
+    #         attache = {
+    #
+    #             "id": abattache.id,
+    #             "file": abattache.file.name,
+    #             "model": abattache.model,
+    #             "model_id": abattache.model_id,
+    #             "type": abattache.type,
+    #             "created_at": abattache.created_at,
+    #             "updated_at": abattache.updated_at,
+    #
+    #         }
+    #         attaches.append(attache)
+    #     return attaches
+
 
 class Job(models.Model):
     title = models.CharField(max_length=255)
-    description = models.TextField(max_length=5000)
+    description = models.TextField(max_length=500)
     skills = models.ManyToManyField(Skill)
     number_of_freelancer = models.IntegerField()
     TYPE_CHOICES = (
@@ -65,6 +99,25 @@ class Job(models.Model):
     updated_by = models.ForeignKey(User, blank=True, null=True,
                                    on_delete=models.SET_NULL,
                                    related_name='updated_by_job')
+    # def save(self, *args, **kwargs):
+    #     if not self.id:
+    #         self.original_file_name = self.compressImage(self.original_file_name)
+    #     super(Job, self).save(*args, **kwargs)
+    #
+    # def compressImage(self,uploadedImage):
+    #     imageTemproary = Image.open(uploadedImage)
+    #     outputIoStream = BytesIO()
+    #     # imageTemproaryResized = imageTemproary.resize( (1020,573) )
+    #     if imageTemproary.mode in ("RGBA", "P"):
+    #         imageTemproary = imageTemproary.convert("RGB")
+    #     imageTemproary.save(outputIoStream , format='JPEG', quality=70)
+    #     outputIoStream.seek(0)
+    #     uploadedImage = InMemoryUploadedFile(outputIoStream,'ImageField', "%s.jpg" % uploadedImage.name.split('.')[0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
+    #     return uploadedImage
+    #
+    # def _delete_file(self):
+    #     if os.path.isfile(self.original_file_name):
+    #         os.remove(self.original_file_name.path)
 
 
 class JobReview(models.Model):
@@ -96,9 +149,10 @@ class Offer(models.Model):
     category = models.ForeignKey(Category, blank=True, null=True,
                                  on_delete=models.SET_NULL)
     description = models.TextField(max_length=500, blank=True)
-    due_date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    due_date = models.DateTimeField(auto_now_add=True)
+    start_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     budget = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
-    job = models.ForeignKey(Job, on_delete=models.CASCADE)
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, null=True)
     client = models.ForeignKey(ClientProfile, on_delete=models.CASCADE,
                                related_name='client_offer')
     freelancer = models.ForeignKey(FreelancerProfile, on_delete=models.CASCADE)
@@ -125,7 +179,7 @@ class Invite(models.Model):
     client = models.ForeignKey(ClientProfile, on_delete=models.CASCADE,
                                related_name='client_invite')
     freelancer = models.ForeignKey(FreelancerProfile, on_delete=models.CASCADE)
-    description = models.TextField(max_length=5000)
+    description = models.TextField(max_length=500, null=True)
 
     STATUS_CHOICES = (
         ('pending', 'Pending'),
@@ -134,12 +188,7 @@ class Invite(models.Model):
     )
     status = models.CharField(STATUS_CHOICES, max_length=10)
 
-    REJECT_REASON_CHOICES = (
-        ('pending', 'Pending'),
-        ('approved', 'Approved'),
-        ('rejected', 'Rejected'),
-    )
-    reject_reason = models.CharField(REJECT_REASON_CHOICES, max_length=10)
+    reject_reason = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
@@ -274,7 +323,7 @@ class Feedback(models.Model):
     contract = models.ForeignKey(Contract, on_delete=models.SET_NULL,
                                  blank=True, null=True)
     description = models.TextField(max_length=500)
-    rate = models.IntegerField()
+    rate = models.IntegerField(null=True, blank=True)
 
     STATUS_CHOICES = (
         ('published', 'Published'),
@@ -300,6 +349,7 @@ class FeedbackReview(models.Model):
         ('client', 'Client'),
     )
     type = models.CharField(TYPE_CHOICES, max_length=50)
+    rate = models.IntegerField(null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True,
                              null=True)
     review_at = models.DateTimeField(auto_now=True)

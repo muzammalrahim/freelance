@@ -15,21 +15,54 @@ export default class TabbarRegistration extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tabindex: 1,
+      tabindex:null,
     };
   }
  handler = () => {
     this.setState({
        tabindex: this.state.tabindex + 1,
     });
+
   };
 
   handler2 = () => {
     this.setState({
        tabindex: this.state.tabindex - 1,
     });
+   
   };
+  
+  clickone =(tabindex2)=>{
+    console.log("tabindex2",tabindex2)
+
+        this.setState({tabindex:tabindex2});
+
+        console.log("tab state",this.state.tabindex)
+  }
+
+componentDidMount ()
+{
+   
+  var tabindex2 = 1
+
+  if(localStorage.getItem("tabindex"))
+  {
+    tabindex2 =parseInt(localStorage.getItem("tabindex"))
+  }
+
+  this.clickone(tabindex2)
+   
+}
+
   render() {
+    if(this.state.tabindex>1)
+    {
+      localStorage.setItem("tabindex",this.state.tabindex)
+    }
+    else if(this.state.tabindex===1){
+      
+        localStorage.setItem("tabindex",1)
+    }
     return (
       <div className="tabbar  tabbarMain_bg">
         <div className="container tabbarContainer">
@@ -131,8 +164,8 @@ export default class TabbarRegistration extends Component {
                 </div>
                 </div>
             </div>
-
-
+      
+             
               {this.state.tabindex === 1 && <PersonalProfileTabFooter />}
               {this.state.tabindex === 2 && <ProfessionalProfile2Footer />}
               {this.state.tabindex === 3 && <IdVerificationFooter />}

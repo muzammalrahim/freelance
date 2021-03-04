@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState} from "react";
 import "./card.css";
 import Status from "../../assets/Status.png";
 import india from "../../assets/india.png";
@@ -6,16 +6,41 @@ import Display from "../../assets/Display.png";
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import list  from '../../App/pages/helper/api';
+
+
 function Card() {
+  const [carddata, setcardData] = useState ('');
+  function  dataCollection() {
+      console.log("show response:");
+      list('api/v1/profile/')
+      .then((response)=>{
+        console.log("show response:",response.data[1]);
+        const {...rest} = response.data[1];
+       
+         setcardData(rest);
+      
+        }
+        )
+    
+      }
+  
+  useEffect(() => {
+    dataCollection();
+  },[]);
+
   return (
     <div className="CarD ">
       <div className="container">
         <div className="row bg-white">
           <div className="col-md-12">
+           
             <div className="profile pt-3">
+             
               <img src={Status} className="pb-2" alt=""/>
-              <p>Pixelz Warrios</p>
-              <h6>UI/UX Designer</h6>
+             
+              <p> {carddata?.user?.username}</p>
+      <h5>{carddata.account_title}</h5>
             </div>
 
             <div className="complete-profile">

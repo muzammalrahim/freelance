@@ -1,123 +1,273 @@
 import React from 'react'
-
-import Button from '../../../../src/components/Button';
 import './PersonalProfile.css'
 import img from '../../../img/personalProfile.png'
 import img2 from '../../../img/personalProfile_F.png'
 
 
-function PersonalProfile() {
-    return (       
-        <div className='PersonalProfile'>
+class PersonalProfile extends React.Component {
+    constructor(props){
+        super(props);
+
+
+        this.Per_Profile={
+              first_name : "" ,
+              mobile_number: "",
+              city : "" ,
+              username:"",
+              last_name : "" ,
+              address : "",
+              country : "" ,
+              email:""
             
-          {/* <div className='d-Iflex'> */}
+          
+        }
+
+
+        this.per_profileValidate={
+                            first_name : false,
+                            mobile_number: false,
+                            last_name : false ,
+                            username:false,
+                            address : false,
+                            country : false ,
+                            city : false ,
+                            email:false,
+                        }
+    
+        this.state={
+            per_profile: this.Per_Profile,
+            per_profileValidate:this.per_profileValidate,
+             personal_profile_isSubmit_value : false,
+         
+        }
+             
+        }  
+
+        validateEmail(email){
+            var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+                if (!pattern.test(email)) {
+                    return false
+                }
+                return true
+        }
+
+      submitHandler(ans)
+      {
+           let [{per_profileValidate,personal_profile_isSubmit_value}] = [this.state]
+            let impValue = 0
+                Object.values(per_profileValidate).map((values)=>{
+                console.log("loop",values)
+                  
+                  if(values === false)
+                  {
+                      impValue=impValue +1
+                      
+                  }
                 
-                
-                    
-                    <div className='personalProfile_bg Pf-rightbox  p-5'>
-                       
-                        <div className="container">
+            })
 
-                            <div className="pl-2">
-                                <div className="row">
+            if(impValue>0)
+            {
+                return false
+            }
+        
+            else if(impValue === 0)
+            {
+                return true
+            }
 
-                                        <div className='personalprofileicon' style={{backgroundImage: `url(${img})`}}>
+            
+             
+           
 
-                                        </div>
+      }
 
 
-                                        <div className="Profile_info">
+        
+        changeHandler(e){
+            let isSubmit = null;
+           
+            let [key, value, {per_profile,per_profileValidate,personal_profile_isSubmit_value}] = [e.target.id, e.target.value, this.state];
+        
 
-                                        <h4 className="personalprofileHead">Personal Profile</h4>
-                                        <p className="personalprofilePara"> Creating your account in just a few steps away,
-                                        Fill your Personal detail type.</p>
-                                        </div>
+            per_profile[key] = value;
+            
+
+                if(key==='email')
+                {
+                    per_profileValidate[key] = per_profile[key] && this.validateEmail(per_profile[key]) ? true : false;
+
+                   
+
+                }else{
+                    per_profileValidate[key] = per_profile[key] && per_profile[key].length > 3 ? true : false;
+                }
+     
+
+            this.setState({per_profile, per_profileValidate});
+
+           var ans = Boolean (this.submitHandler(isSubmit) ? true : false);
+           
+                console.log("ans",ans);
+
+          
+
+           
+            this.setState({per_profile, per_profileValidate,personal_profile_isSubmit_value});
+            console.log("personal_profile_isSubmit_value",isSubmit)
+            console.log("valid",per_profileValidate)
+        }
+        
+
+
+ render (){
+
+        let {per_profile} = this.state
+
+    return (       
+        <div className='PersonalProfile'>         
+             <div className='personalProfile_bg Pf-rightbox  p-5'>
+                <div className="container">
+                     <div className="pl-2">
+                        <div className="row">
+                            <div className='personalprofileicon' style={{backgroundImage: `url(${img})`}}>
+                            </div>
+                            <div className="Profile_info">
+                                <h4 className="personalprofileHead">Personal Profile</h4>
+                                <p className="personalprofilePara"> Creating your account in just a few steps away,
+                                Fill your Personal detail type.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="container">
+                        <div className="row pt-3">
+                            <div className=" col-sm-6 col-md-6">
+                                <div className="Rb-0">
+                                    <div class="form-group">
+                                        <label  className="pp_inputHeading" for="usr">First Name</label>
+                                        <input 
+                                                type="text" 
+                                                class="form-control"  
+                                                Placeholder="Enter first name"
+                                                id ="first_name"
+                                                value ={per_profile.first_name}
+                                                onChange={(e)=>{this.changeHandler(e)}}
+                                            />
+                                    </div>
+                                    <div class="form-group">
+                                        <label  className="pp_inputHeading" for="usr">Mobile number</label>
+                                        <input 
+                                                 type="text"
+                                                 class="form-control"
+                                                 Placeholder=" Enter number"
+                                                 id="mobile_number"
+                                                 value ={per_profile.mobile_number}
+                                                 onChange={(e)=>{this.changeHandler(e)}}
+                                                 />
+                                    </div>
+                                    <div class="form-group">
+                                        <label  className="pp_inputHeading" for="usr">City</label>
+                                        <input 
+                                                    type="text" 
+                                                    class="form-control"  
+                                                    Placeholder=" Enter city"
+                                                    id="city"
+                                                    value ={per_profile.city}
+                                                    onChange={(e)=>{this.changeHandler(e)}}
+                                                    />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label  className="pp_inputHeading" for="usr">Username</label>
+                                        <input 
+                                                    type="text" 
+                                                    class="form-control"  
+                                                    Placeholder=" Enter username"
+                                                    id="username"
+                                                    value ={per_profile.username}
+                                                    onChange={(e)=>{this.changeHandler(e)}}
+                                                    />
+                                    </div>
+
                                 </div>
                             </div>
-
-                            <div className="container">
-                                    <div className="row pt-3">
-                                            <div className=" col-sm-6 col-md-6">
-                                                <div className="Rb-0">
-                                                <div class="form-group">
-                                                    <label  className="pp_inputHeading" for="usr">First Name</label>
-                                                    <input type="text" class="form-control"  Placeholder=" Enter first name"/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label  className="pp_inputHeading" for="usr">Mobile number</label>
-                                                    <input type="text" class="form-control" Placeholder=" Enter number"/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label  className="pp_inputHeading" for="usr">City</label>
-                                                    <input type="text" class="form-control"  Placeholder=" Enter city"/>
-                                                </div>
-
-                                                </div>
-                                            </div>
-                                            <div className=" col-sm-6 col-md-6">
-                                                <div className="Rb-0">
-                                                <div class="form-group">
-                                                    <label  className="pp_inputHeading" for="usr">Last name</label>
-                                                    <input type="text" class="form-control" Placeholder=" Enter last name"/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label  className="pp_inputHeading" for="usr">Address</label>
-                                                    <input type="text" class="form-control" Placeholder=" Enter address"/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label   className="pp_inputHeading"for="usr">Country</label>
-                                                    <input type="text" class="form-control" Placeholder=" Enter country"/>
-                                                </div>
-
-                                                </div>
-                                            </div>
+                            <div className=" col-sm-6 col-md-6">
+                                <div className="Rb-0">
+                                    <div class="form-group">
+                                        <label  className="pp_inputHeading" for="usr">Last name</label>
+                                        <input 
+                                                    type="text" 
+                                                    class="form-control" 
+                                                    Placeholder=" Enter last name"
+                                                    id="last_name"
+                                                    value ={per_profile.last_name}
+                                                    onChange={(e)=>{this.changeHandler(e)}}
+                                                    />
                                     </div>
+                                    <div class="form-group">
+                                        <label  className="pp_inputHeading" for="usr">Address</label>
+                                        <input 
+                                                    type="text" 
+                                                    class="form-control" 
+                                                    Placeholder=" Enter address"
+                                                    id="address"
+                                                    value ={per_profile.address}
+                                                    onChange={(e)=>{this.changeHandler(e)}}
+                                                    />
+                                    </div>
+                                    <div class="form-group">
+                                        <label   className="pp_inputHeading"for="usr">Country</label>
+                                        <input 
+                                                    type="text" 
+                                                    class="form-control" 
+                                                    Placeholder=" Enter country"
+                                                    id="country"
+                                                    value ={per_profile.country}
+                                                    onChange={(e)=>{this.changeHandler(e)}}
+                                                    />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label   className="pp_inputHeading"for="usr">Email</label>
+                                        <input 
+                                                    type="email" 
+                                                    class="form-control" 
+                                                    Placeholder="Enter Email"
+                                                    id="email"
+                                                    value ={per_profile.email}
+                                                    onChange={(e)=>{this.changeHandler(e)}}
+                                                    />
+                                    </div>
+
+                                </div>
                             </div>
+                        </div>
+                    </div> {/* end of inner container*/}
 
                         
                         
-                    </div>
+                </div>
 
             </div>
             
          </div> 
     )
 }
+}
 
 export default PersonalProfile
 
-export function PersonalProfileTabFooter( ) 
+export function PersonalProfileTabFooter() 
 {
     return (
             <div>
-
                  <div className='bg1  footer_img_padding'>
-                {/* <h1> hello</h1>*/}
+              
                     <div className='personalprofile_foot' style={{backgroundImage: `url(${img2})`}}></div>
 
-                   </div>
-                </div>
-                );
-              
+                 </div>
+             </div>
+             );             
 }
 
-
-export function PersonalProfileFooter2( ) 
-{
-    return (
-        <div>
-
-    <div>
-                        
-    <div className="pf_prevButton">
-    <button class="">Previous Step</button>
-    </div>
-    <div className="pf_nextButton">
-    <Button buttonStyle='btn--yellow' value="Next"/>
-    </div>
-    </div>
-
-    </div>
-  );
-
-}

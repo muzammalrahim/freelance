@@ -222,3 +222,7 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 AUTH_USER_MODEL = 'acount.User'
 
 AUTHENTICATION_BACKENDS = ('acount.backends.EmailBackend',)
+
+# MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/uploads')  # os operating system

@@ -8,13 +8,14 @@ export function Education(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
 
   return (
     <div className="EDUC">
       <div class="container bg-white">
         <div class="row pt-4 pb-3 pl-3 pb-5">
           <div class="col-md-6">
+
+
 
               <h> Education </h>
 
@@ -105,9 +106,9 @@ export function Education(props) {
                   </a>
                   </div>
                   <div class="col-md-6 pb-5 pt-3">
-                  <button type="button" class="form-btn btn btn-warning">
-                    Save
-                  </button>
+                  <button onClick={handleShow}>
+          Save
+        </button>
                   </div>
               </div>
             </form>
@@ -141,7 +142,6 @@ export function Education(props) {
                   ">
                    <a href="#" className="float-right">
                   <DeleteIcon/>
-                    {/* <i class="fas fa-trash "></i> */}
                   </a>
                   </div>
                   <div class="col-md-8">
@@ -154,4 +154,5 @@ export function Education(props) {
     </div>
   );
 }
+
 export default Education;
