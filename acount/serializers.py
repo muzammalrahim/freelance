@@ -112,8 +112,8 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.User
-        # fields = '__all__'
-        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'time_zone']
+        fields = '__all__'
+        # fields = ['id', 'username', 'first_name', 'last_name', 'email', 'time_zone']
 
 
 class SkillSerializers(serializers.ModelSerializer):
@@ -178,6 +178,7 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
     country = CountrySerializers()
     license = AttachmentSerializer(write_only=True)
     id_card = AttachmentSerializer(write_only=True)
+    certification = AttachmentSerializer(write_only=True)
     user = UserSerializer()
 
     def create(self, validated_data):
@@ -188,10 +189,13 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
         country = validated_data.pop('country')
         license = validated_data.pop('license')
         id_card = validated_data.pop('id_card')
+        certification = validated_data.pop('certification')
 
-        user = models.User.objects.create(**user)
+        # user = models.User.objects.create(**user)
+        user = models.User.objects.get(id=user)
         Attachment.objects.create(**license)
         Attachment.objects.create(**id_card)
+        Attachment.objects.create(**certification)
         city = models.City.objects.create(**city)
         country = models.Country.objects.create(**country)
 
@@ -240,7 +244,7 @@ class CustomRegisterUserSerializer(DefaultRegisterUserSerializer):
         ('work', 'Work'),
         ('hire', 'Hire'),
     )
-    account_type = serializers.ChoiceField(choices=ACCOUNT_TYPE_CHOICES)
+    account_type = serializers.ChoiceField(choices=ACCOUNT_TYPE_CHOICES, required=False)
     """
     Default serializer used for user registration. It will use these:
     * User fields
@@ -254,17 +258,19 @@ class CustomRegisterUserSerializer(DefaultRegisterUserSerializer):
         self.Meta.fields = self.Meta.fields + ('account_type',)
 
     def create(self, validated_data):
-        account_type = validated_data.pop('account_type')
+        if 'account_type' in validated_data:
+            account_type = validated_data.pop('account_type')
         user = super().create(validated_data)
         # Profile(user=user).save()
 
-        if account_type == 'work':
-            models.FreelancerProfile(user=user).save()
-            user.groups.add(Group.objects.get(name=settings.FREELANCER_USER))
-        elif account_type == 'hire':
-            models.ClientProfile(user=user).save()
-            user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
-        else:
-            user.groups.add(Group.objects.get(name=settings.ADMIN_USER))
+        if 'account_type' in validated_data:
+            if account_type == 'work':
+                models.FreelancerProfile(user=user).save()
+                user.groups.add(Group.objects.get(name=settings.FREELANCER_USER))
+            elif account_type == 'hire':
+                models.ClientProfile(user=user).save()
+                user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
+            else:
+                user.groups.add(Group.objects.get(name=settings.ADMIN_USER))
 
         return user
