@@ -51,12 +51,28 @@ class PersonalProfile extends React.Component {
                 return true
         }
 
+componentDidMount()
+{
+     let [{per_profile,per_profileValidate}] = [this.state]
+    if(localStorage.getItem("personal_profile"))
+  {
+    var storedData = JSON.parse(localStorage.getItem("personal_profile"));
+    this.setState({per_profile:storedData })
+    
+   
+  }
+
+    
+
+}
+
+
       submitHandler(ans)
       {
-           let [{per_profileValidate,personal_profile_isSubmit_value}] = [this.state]
+          
+           let [{per_profile,per_profileValidate,personal_profile_isSubmit_value}] = [this.state]
             let impValue = 0
                 Object.values(per_profileValidate).map((values)=>{
-                console.log("loop",values)
                   
                   if(values === false)
                   {
@@ -68,18 +84,18 @@ class PersonalProfile extends React.Component {
 
             if(impValue>0)
             {
+                localStorage.removeItem("personal_profile");
                 return false
             }
         
             else if(impValue === 0)
             {
+               
+                localStorage.setItem('personal_profile', JSON.stringify(per_profile));
+       
                 return true
-            }
-
-            
-             
+            }      
            
-
       }
 
 
@@ -107,15 +123,12 @@ class PersonalProfile extends React.Component {
             this.setState({per_profile, per_profileValidate});
 
            var ans = Boolean (this.submitHandler(isSubmit) ? true : false);
-           
-                console.log("ans",ans);
-
-          
 
            
             this.setState({per_profile, per_profileValidate,personal_profile_isSubmit_value});
-            console.log("personal_profile_isSubmit_value",isSubmit)
-            console.log("valid",per_profileValidate)
+
+            console.log("wai wai",per_profile)
+       
         }
         
 

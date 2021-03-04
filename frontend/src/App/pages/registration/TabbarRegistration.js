@@ -37,7 +37,7 @@ export default class TabbarRegistration extends Component {
 
         this.setState({tabindex:tabindex2});
 
-        console.log("tab state",this.state.tabindex)
+        
   }
 
 componentDidMount ()
