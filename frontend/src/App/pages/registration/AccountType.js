@@ -34,7 +34,7 @@ export default class AccountType extends Component {
             
             <div className="main back_g">
                 <div className="AccountType">
-                  <div className="container AccountType_container">
+                  <div className="container-fluid AccountType_container">
                     <div className="row">
                         <div className="col-sm-3  col-md-3 back_gr sidebarcolheight">
         
