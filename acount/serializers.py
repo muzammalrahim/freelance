@@ -244,7 +244,7 @@ class CustomRegisterUserSerializer(DefaultRegisterUserSerializer):
         ('work', 'Work'),
         ('hire', 'Hire'),
     )
-    account_type = serializers.ChoiceField(choices=ACCOUNT_TYPE_CHOICES, required=False)
+    account_type = serializers.ChoiceField(choices=ACCOUNT_TYPE_CHOICES)
     """
     Default serializer used for user registration. It will use these:
     * User fields
