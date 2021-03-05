@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
+    'constance',
     'sslserver',
     'django.contrib.sites',
     'allauth',
@@ -73,6 +74,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CONSTANCE_CONFIG = {
+    'THE_ANSWER': (True, 'Answer to the Ultimate Question of Life, '
+                         'The Universe, and Everything'),
+    'SENT_MONTHLY_INVOICE': (True, 'Set this flag as True to send monthly invoice to  '
+                                   'business owners.',),
+    'VIDEOS_AUTO_APPROVAL': (False, 'Disable this flag to approve videos in admin end.'
+                                    'Enable this flag to approve videos automatically without admin approval.'),
+
+}
 ROOT_URLCONF = 'freelance.urls'
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -191,7 +201,11 @@ SWAGGER_SETTINGS = {
     'USE_SESSION_AUTH': False,
 
 }
+AUTHENTICATION_BACKENDS = [
 
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 REST_REGISTRATION = {
     'REGISTER_VERIFICATION_ENABLED': False,
     'REGISTER_EMAIL_VERIFICATION_ENABLED': False,
