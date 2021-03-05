@@ -3,7 +3,7 @@ import './App.css';
 
 
 // signup pages
-import signuppage from './App/pages/signin/signuppage'
+import SignupPage from './App/pages/signin/SignupPage'
 import SignIn from './App/pages/signin/SignIn'
 // signup pages
 
@@ -111,7 +111,7 @@ return (
        </Authenticated> 
         </Route>
 
-        <Route path='/signup' exact component={signuppage}/>
+        <Route path='/signup' exact component={SignupPage}/>
         {/* Signup/in */}
 
         {/* Registration Process */}
