@@ -4,10 +4,12 @@ import Modal from "react-bootstrap/Modal";
 import DeleteIcon from '@material-ui/icons/Delete';
 import CloseIcon from '@material-ui/icons/Close';
 
+
 export function Education(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleSave = () => setShow(false);
 
   return (
     <div className="EDUC">
@@ -106,9 +108,9 @@ export function Education(props) {
                   </a>
                   </div>
                   <div class="col-md-6 pb-5 pt-3">
-                  <button onClick={handleShow}>
-          Save
-        </button>
+                  <button type="button" className="form-btn btn btn-warning"onClick={handleSave} >
+                    Save
+                  </button>
                   </div>
               </div>
             </form>

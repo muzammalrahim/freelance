@@ -3,7 +3,7 @@ import { MenuItems,AccountSettingMenuItems } from "./MenuItems";
 /*import './defaultmenu.css';*/
 import AvatarImage from '../../AvatarImage.png';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-
+import {Link} from 'react-router-dom';
 import Logout from "../../App/pages/signin/Logout"
 
 
@@ -72,8 +72,8 @@ function DefaultMenu(props) {
                         <a href="#" class="dropdown-item">View Profile</a>
                         <a href="#" class="dropdown-item">Account Settings</a>
                         {/* <div class="dropdown-divider"></div> */}
-                        <a href="#"  class="dropdown-item">Logout</a>
-                          <Logout/>
+                        <Link href="#"  class="dropdown-item"><Logout/></Link>
+                          
                     </div>
                 </li>
                 <li>

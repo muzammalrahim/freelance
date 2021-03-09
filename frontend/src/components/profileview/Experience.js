@@ -1,13 +1,67 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Experience.css";
 import Modal from "react-bootstrap/Modal";
 import DeleteIcon from '@material-ui/icons/Delete';
 import CloseIcon from '@material-ui/icons/Close';
+import { post, del } from "../../App/pages/helper/api";
+import { useHistory } from "react-router-dom"
 
 function Experience() {
+
+    let history = useHistory ();
+
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleSave = () => setShow(false);
+  const [select, setSelect] = useState('id')
+  const [user, setUser] = useState({
+    name : "",
+    City : "",
+    Country : "",
+    Month : "",
+    Company :"",
+    Year :"",
+    role : "",
+    descripion :""
+
+  });
+  function saveUser(){
+    alert("form has been submitted")
+    console.warn("saveUser")
+  }
+    const { City, Country, Month, Year, Company, role,descripion} = user;
+  const onInputChange =e=>{
+   
+    setUser({...user,[e.target.name] : e.target.value})
+
+    console.log("user data",user)
+  };
+  const onSubmit = async e => {
+      e.preventDefault()
+       post('/api/v1/profile/', user)
+      .then(response => {
+        console.log(response)
+
+        history.push('/ProfileView');
+      })
+     
+      .catch(error => {
+        console.log(error)
+      })
+     
+    }
+  
+  const deleteUser = id =>{
+    del ('/api/v1/profile/2/ ', user)
+    .then(response => {
+      console.log(response)
+    })
+  }
+  useEffect(() => {
+    deleteUser("vlaueadded");
+  }, [])
   return (
     <div className="Experr">
       <div className="container">
@@ -28,7 +82,7 @@ function Experience() {
 
         <Modal show={show}>
           <div className="container">
-            <form>
+            <form onSubmit={e => onSubmit(e)}>
             <div className="row pt-4 pb-3">
               <div className="form-header col-md-6 ">
                 <p>Add Work Experience</p>
@@ -41,10 +95,12 @@ function Experience() {
                 <div className="form-group col-md-6">
                   <label for="inputtext">Company</label>
                   <input
-                    type="email"
+                    type="text"
                     className="form-control"
-                    id="inputtext"
                     placeholder="Enter Company"
+                    name="Company"
+                    value={Company}
+                    onChange={e => onInputChange(e)}
                   />
                 </div>
                 <div className="form-group col-md-6">
@@ -52,20 +108,29 @@ function Experience() {
                   <input
                     type="text"
                     className="form-control"
-                    id="inputtext"
                     placeholder="Enter Role"
+                    value={role}
+                    name="role"
+                    onChange={e => onInputChange(e)}
                   />
                 </div>
               </div>
               <div className="form-row">
                 <div className="form-group col-md-6">
-                  <label for="inputState">Location</label>
-                  <select id="inputState" className="form-control">
-                    <option selected>City</option>
-                    <option>Doha</option>
-                    <option>Manila</option>
-                    <option>Doha</option>
-                    <option>Manila</option>
+                  <label  for="inputState">Location</label>
+                  <select value = {select}
+                  onChange={(e) => {
+                    setSelect(e.target.value);
+                  }}
+                  
+                  id="inputState" 
+                  className="form-control"
+                  >
+                    <option value="City">Select</option>
+                    <option value="City">City</option>
+                    <option value="City">City</option>
+                    <option value="City">City</option>
+                    <option value="City">City</option>
                   </select>
                 </div>
                 <div className="form-group col-md-6">
@@ -136,8 +201,10 @@ function Experience() {
                     <label for="description"> Description</label>
                     <textarea
                       className="form-control-text"
-                      id="description"
                       placeholder="Text"
+                      name="descripion"
+                      value={descripion}
+                      onChange={e => onInputChange(e)}
                     ></textarea>
                   </div>
                 </div>
@@ -149,9 +216,11 @@ function Experience() {
                   </a>
                   </div>
                   <div className="col-md-6 pb-5 pt-3">
-                  <button type="button" className="form-btn btn btn-warning">
+                   
+                  <button type="button" className="form-btn btn btn-warning" onClick={handleSave}>
                     Save
                   </button>
+                   
                   </div>
               </div>
             </form>
@@ -166,7 +235,7 @@ function Experience() {
               </div>
               <div className="col-md-4 pr-4">
               <a href="#" className="float-right">
-                  <DeleteIcon />
+                  <DeleteIcon  onClick={(user) => deleteUser(user.id)}/>
                 </a>
               </div>
               <div className="col-md-7 pb-2">

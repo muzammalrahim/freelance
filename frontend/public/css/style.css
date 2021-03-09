@@ -67,6 +67,14 @@ border: 2px solid;
 padding: 9px 17px;
 }
 
+
+
+
+.linkedInBtnWidth{
+
+  width: 100%;
+}
+
 .banner-accountsetting{
 padding: 40px 50px 0px 50px;
 }
@@ -98,6 +106,8 @@ line-height: 20px;
 padding-bottom: 30px;
 }
 
+
 .account-settingLayout .Tab:last-child{
 padding-bottom: 104px;
 }
+

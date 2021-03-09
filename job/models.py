@@ -50,7 +50,7 @@ class Attachment(models.Model):
 
 class Job(models.Model):
     title = models.CharField(max_length=255)
-    description = models.TextField(max_length=5000)
+    description = models.TextField(max_length=500)
     skills = models.ManyToManyField(Skill)
     number_of_freelancer = models.IntegerField()
     TYPE_CHOICES = (
@@ -149,9 +149,10 @@ class Offer(models.Model):
     category = models.ForeignKey(Category, blank=True, null=True,
                                  on_delete=models.SET_NULL)
     description = models.TextField(max_length=500, blank=True)
-    due_date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    due_date = models.DateTimeField(auto_now_add=True)
+    start_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     budget = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
-    job = models.ForeignKey(Job, on_delete=models.CASCADE)
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, null=True)
     client = models.ForeignKey(ClientProfile, on_delete=models.CASCADE,
                                related_name='client_offer')
     freelancer = models.ForeignKey(FreelancerProfile, on_delete=models.CASCADE)
@@ -178,7 +179,7 @@ class Invite(models.Model):
     client = models.ForeignKey(ClientProfile, on_delete=models.CASCADE,
                                related_name='client_invite')
     freelancer = models.ForeignKey(FreelancerProfile, on_delete=models.CASCADE)
-    description = models.TextField(max_length=5000)
+    description = models.TextField(max_length=500, null=True)
 
     STATUS_CHOICES = (
         ('pending', 'Pending'),
@@ -187,12 +188,7 @@ class Invite(models.Model):
     )
     status = models.CharField(STATUS_CHOICES, max_length=10)
 
-    REJECT_REASON_CHOICES = (
-        ('pending', 'Pending'),
-        ('approved', 'Approved'),
-        ('rejected', 'Rejected'),
-    )
-    reject_reason = models.CharField(REJECT_REASON_CHOICES, max_length=10)
+    reject_reason = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
@@ -327,7 +323,7 @@ class Feedback(models.Model):
     contract = models.ForeignKey(Contract, on_delete=models.SET_NULL,
                                  blank=True, null=True)
     description = models.TextField(max_length=500)
-    rate = models.IntegerField(null=True)
+    rate = models.IntegerField(null=True, blank=True)
 
     STATUS_CHOICES = (
         ('published', 'Published'),
@@ -353,6 +349,7 @@ class FeedbackReview(models.Model):
         ('client', 'Client'),
     )
     type = models.CharField(TYPE_CHOICES, max_length=50)
+    rate = models.IntegerField(null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True,
                              null=True)
     review_at = models.DateTimeField(auto_now=True)
