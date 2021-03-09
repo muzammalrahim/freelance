@@ -17,9 +17,6 @@ export default class AccountSettingMain extends Component {
     };
   }
 
-
-
-
   render() {
     return (
       <div>
