@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -10,9 +10,22 @@ import AvatarImage1 from '../../../../src/img/AvatarImage1.png';
 import AvatarImage2 from '../../../../src/img/AvatarImage2.png';
 import AvatarImage3 from '../../../../src/img/AvatarImage3.png';
 import AvatarImage from '../../../../src/img/AvatarImage.png';
+import React, { useState, useEffect } from 'react';
+import list from '../helper/api';
+
+
+
+function createData(id, budget, title, description, skills,category) {
+  return { id, budget, title, description, skills,category };
+
+}
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
+
+
+
 
   return (
     <div
@@ -51,13 +64,119 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleTabs() {
+export default function SimpleTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const [rows, setRows] = React.useState([]);
+  const [offerRows, setofferRows] = React.useState([]);
+  const [contractRows, setcontractRows] = React.useState([]);
+  const [clientID, setclientID] = React.useState([]);
+  const [count, setCount] = useState(0);// button
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+
+
+  
+
+
+function clickHandler(){
+    console.log('button clicked')
+}
+
+
+
+  
+  // Invite
+  function getInvite (){
+
+    let all_data = [];
+    list('api/v1/invite/')
+      .then((response)=>{
+        response.data.map((row)=>{
+      
+          all_data.push(row)        
+        })
+          setRows(all_data);
+          console.log("res data ",all_data) 
+    })
+
+  }
+  // Invite
+
+  // Offer
+
+  function getoffer (){
+
+    let offer_data = [];
+    list('api/v1/offer/')
+      .then((response)=>{
+
+        console.log("response 2",response)
+        response.data.map((row)=>{
+      
+          offer_data.push(row)        
+          offerRows.push(row)        
+        })
+        setofferRows(offer_data);
+          console.log("res2 data ",offer_data) 
+          console.log("res2 data offerRows ",offerRows) 
+    })
+
+  }
+ 
+   // Offer
+
+
+    // Contract
+  function getcontract (){
+
+    let contract_data = [];
+    list('api/v1/contract/')
+      .then((response)=>{
+
+        console.log("response 3",contract_data)
+        response.data.map((row)=>{
+         
+
+          // Clinet ID
+          list('api/v1/client_profile/'+ row.id +'/')
+          .then((response)=>{
+
+             
+             Object.values(response.data).map((row)=>{
+
+                             console.log("final :",row)
+                          })
+           
+          })
+           
+        })
+        // Clinet ID
+
+        setcontractRows(contract_data);
+          console.log("res3 data ",contract_data) 
+    })
+
+  }
+   // Contract
+
+
+
+  
+  useEffect(() => {
+    getInvite ();
+    getoffer ();
+    getcontract()
+    // getclient()
+
+    
+}, []);
+
+
+
 
   return (
     <div className="notification-tabs pt-5">
@@ -75,138 +194,54 @@ export default function SimpleTabs() {
             </div>
           </div>
         </AppBar>
+
+         {/* invites */}
         <TabPanel className="border-bottom mt-5" value={value} index={0}>
           {/* tab1 */}
-          <div className="notification-inner">
-            <div className="container">
-              <div className="p-3">
-                <div className="row">
-                  <div className="col-md-3 pl-0">
-                    <div className="tabs-inner">
-                      <img src={AvatarImage1} alt="no img"/>
-                      <h4 className="pl-2 pt-2">Sarah <br></br><span>9/22 7:00 AM</span></h4>
+          {rows.map((row, index) => (
+            <div className="notification-inner">
+              <div className="container">
+                <div className="p-3">
+                  <div className="row">
+                    <div className="col-md-3 pl-0">
+                      <div className="tabs-inner">
+                        <img src={AvatarImage1} alt="no img"/>
+                        <h4 className="pl-2 pt-2">{row.client}<br></br><span>{row.created_at}</span></h4>
+                      </div>
+                      {console.log("map method",row)}
                     </div>
-                    
+                    <div className="col-md-9 text-right pr-0">
+                      <ul className="notification-tab-btns">
+                        <li class="btn btn-warning text-white btn-lg button-color approve-btn mr-2" onClick={clickHandler}>Click</li>
+                        <li class="btn btn-warning text-white btn-lg button-color approve-btn mr-2 aprroved-state"><Link>123</Link></li>
+                        <li class="btn btn-warning text-white btn-lg button-color reject-btn"><Link>Reject</Link></li>
+                      </ul>
+                    </div>
                   </div>
-                  <div className="col-md-9 text-right pr-0">
-                    <ul className="notification-tab-btns">
-                      <li class="btn btn-warning text-white btn-lg button-color approve-btn mr-2"><a class="" href="#">Approve</a></li>
-                      <li class="btn btn-warning text-white btn-lg button-color reject-btn"><a class="" href="#">Reject</a></li>
-                    </ul>
+                  <div className="notification-des">
+                  <h3>{row.cover_letter},</h3>
+                  <p>
+                    {row.description}
+                
+                  
+                  </p>
                   </div>
-                </div>
-                <div className="notification-des">
-                <h3>Hii Pixelz Warrios,</h3>
-                <p>
-                  I would like to invite you in my job post to review my 
-                  post and I want you to work for me. It is important that you 
-                  wear close-toed shoes. Please message me if you have any questions! 
-                </p>
-                </div>
-              </div> 
-            </div>   
-          </div> 
+                </div> 
+              </div>   
+            </div> 
+          )           
+          
+          )}   
           {/* tab1 */}
-
-          {/* tab2 */}
-          <div className="notification-inner">
-            <div className="container">
-              <div className="p-3">
-                <div className="row">
-                  <div className="col-md-3 pl-0">
-                    <div className="tabs-inner">
-                      <img src={AvatarImage2} alt="no img"/>
-                      <h4 className="pl-2 pt-2">Giana Korsgaard<br></br><span>9/22 7:00 AM</span></h4>
-                    </div>
-                    
-                  </div>
-                  <div className="col-md-9 text-right pr-0">
-                    <ul className="notification-tab-btns">
-                      <li class="btn btn-warning text-white btn-lg button-color approve-btn mr-2"><a class="" href="#">Approve</a></li>
-                      <li class="btn btn-warning text-white btn-lg button-color reject-btn"><a class="" href="#">Reject</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="notification-des">
-                <h3>Hii Pixelz Warrios,</h3>
-                <p>
-                  I would like to invite you in my job post to review my 
-                  post and I want you to work for me. It is important that you 
-                  wear close-toed shoes. Please message me if you have any questions! 
-                </p>
-                </div>
-              </div> 
-            </div>   
-          </div>
-          {/* tab2 */}
-
-          {/* tab3 */}
-          <div className="notification-inner">
-            <div className="container">
-              <div className="p-3">
-                <div className="row">
-                  <div className="col-md-3 pl-0">
-                    <div className="tabs-inner">
-                      <img src={AvatarImage3} alt="no img"/>
-                      <h4 className="pl-2 pt-2">Anika Septimus <br></br><span>9/22 7:00 AM</span></h4>
-                    </div>
-                    
-                  </div>
-                  <div className="col-md-9 text-right pr-0">
-                    <ul className="notification-tab-btns">
-                      <li class="btn btn-warning text-white btn-lg button-color approve-btn mr-2"><a class="" href="#">Approve</a></li>
-                      <li class="btn btn-warning text-white btn-lg button-color reject-btn"><a class="" href="#">Reject</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="notification-des">
-                <h3>Hii Pixelz Warrios,</h3>
-                <p>
-                  I would like to invite you in my job post to review my 
-                  post and I want you to work for me. It is important that you 
-                  wear close-toed shoes. Please message me if you have any questions! 
-                </p>
-                </div>
-              </div> 
-            </div>   
-          </div>
-          {/* tab3 */}
-
-          {/* tab4 */}
-          <div className="notification-inner">
-            <div className="container">
-              <div className="p-3">
-                <div className="row">
-                  <div className="col-md-3 pl-0">
-                    <div className="tabs-inner">
-                      <img src={AvatarImage} alt="no img"/>
-                      <h4 className="pl-2 pt-2">Sarah <br></br><span>9/22 7:00 AM</span></h4>
-                    </div>
-                    
-                  </div>
-                  <div className="col-md-9 text-right pr-0">
-                    <ul className="notification-tab-btns">
-                      <li class="btn btn-warning text-white btn-lg button-color approve-btn mr-2"><a class="" href="#">Approve</a></li>
-                      <li class="btn btn-warning text-white btn-lg button-color reject-btn"><a class="" href="#">Reject</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="notification-des">
-                <h3>Hii Pixelz Warrios,</h3>
-                <p>
-                  I would like to invite you in my job post to review my 
-                  post and I want you to work for me. It is important that you 
-                  wear close-toed shoes. Please message me if you have any questions! 
-                </p>
-                </div>
-              </div> 
-            </div>   
-          </div>
-          {/* tab4 */}
           
         </TabPanel>
+        {/* invites */}
+
+
+        {/* Offer*/}
         <TabPanel className="border-bottom mt-5" value={value} index={1}>
           {/* tab1 */}
+          {offerRows.map((row, index) => (
           <div className="notification-inner">
             <div className="container">
               <div className="p-3">
@@ -214,128 +249,42 @@ export default function SimpleTabs() {
                   <div className="col-md-3 pl-0">
                     <div className="tabs-inner">
                       <img src={AvatarImage1} alt="no img"/>
-                      <h4 className="pl-2 pt-2">Sarah <br></br><span>9/22 7:00 AM</span></h4>
+                      <h4 className="pl-2 pt-2">{row.client}<br></br><span>{row.created_at}</span></h4>
                     </div>
                     
                   </div>
                   <div className="col-md-9 text-right pr-0">
                     <ul className="notification-tab-btns">
-                      <li class="btn btn-warning text-white btn-lg button-color approve-btn mr-2"><a class="" href="#">Approve</a></li>
-                      <li class="btn btn-warning text-white btn-lg button-color reject-btn"><a class="" href="#">Reject</a></li>
+                      <li class="btn btn-warning text-white btn-lg button-color approve-btn mr-2"><Link>{row.status}</Link></li>
+                      <li class="btn btn-warning text-white btn-lg button-color approve-btn mr-2 aprroved-state"><Link>123</Link></li>
+
+                      <li class="btn btn-warning text-white btn-lg button-color reject-btn"><Link>Reject</Link></li>
                     </ul>
                   </div>
                 </div>
                 <div className="notification-des">
-                <h3>Hii Pixelz Warrios,</h3>
+                <h3>{row.cover_letter},</h3>
                 <p>
-                  I would like to invite you in my job post to review my 
-                  post and I want you to work for me. It is important that you 
-                  wear close-toed shoes. Please message me if you have any questions! 
+                  {row.description}
                 </p>
                 </div>
               </div> 
-            </div>   
+            </div>    
           </div> 
+           )           
+          
+           )}
+         
           {/* tab1 */}
-
-          {/* tab2 */}
-          <div className="notification-inner">
-            <div className="container">
-              <div className="p-3">
-                <div className="row">
-                  <div className="col-md-3 pl-0">
-                    <div className="tabs-inner">
-                      <img src={AvatarImage2} alt="no img"/>
-                      <h4 className="pl-2 pt-2">Giana Korsgaard<br></br><span>9/22 7:00 AM</span></h4>
-                    </div>
-                    
-                  </div>
-                  <div className="col-md-9 text-right pr-0">
-                    <ul className="notification-tab-btns">
-                      <li class="btn btn-warning text-white btn-lg button-color approve-btn mr-2"><a class="" href="#">Approve</a></li>
-                      <li class="btn btn-warning text-white btn-lg button-color reject-btn"><a class="" href="#">Reject</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="notification-des">
-                <h3>Bring close-toed shoes to class tomorrow</h3>
-                <p>
-                  I would like to invite you in my job post to review my 
-                  post and I want you to work for me. It is important that you 
-                  wear close-toed shoes. Please message me if you have any questions! 
-                </p>
-                </div>
-              </div> 
-            </div>   
-          </div>
-          {/* tab2 */}
-
-          {/* tab3 */}
-          <div className="notification-inner">
-            <div className="container">
-              <div className="p-3">
-                <div className="row">
-                  <div className="col-md-3 pl-0">
-                    <div className="tabs-inner">
-                      <img src={AvatarImage3} alt="no img"/>
-                      <h4 className="pl-2 pt-2">Chance Philips<br></br><span>9/22 7:00 AM</span></h4>
-                    </div>
-                    
-                  </div>
-                  <div className="col-md-9 text-right pr-0">
-                    <ul className="notification-tab-btns">
-                      <li class="btn btn-warning text-white btn-lg button-color approve-btn mr-2"><a class="" href="#">Approve</a></li>
-                      <li class="btn btn-warning text-white btn-lg button-color reject-btn"><a class="" href="#">Reject</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="notification-des">
-                <h3>Bring close-toed shoes to class tomorrow</h3>
-                <p>
-                  I would like to invite you in my job post to review my 
-                  post and I want you to work for me. It is important that you 
-                  wear close-toed shoes. Please message me if you have any questions! 
-                </p>
-                </div>
-              </div> 
-            </div>   
-          </div>
-          {/* tab3 */}
-
-          {/* tab4 */}
-          <div className="notification-inner">
-            <div className="container">
-              <div className="p-3">
-                <div className="row">
-                  <div className="col-md-3 pl-0">
-                    <div className="tabs-inner">
-                      <img src={AvatarImage} alt="no img"/>
-                      <h4 className="pl-2 pt-2">Anika Septimus <br></br><span>9/22 7:00 AM</span></h4>
-                    </div>
-                    
-                  </div>
-                  <div className="col-md-9 text-right pr-0">
-                    <ul className="notification-tab-btns">
-                      <li class="btn btn-warning text-white btn-lg button-color approve-btn mr-2"><a class="" href="#">Approve</a></li>
-                      <li class="btn btn-warning text-white btn-lg button-color reject-btn"><a class="" href="#">Reject</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="notification-des">
-                <h3>Bring close-toed shoes to class tomorrow</h3>
-                <p>
-                  I would like to invite you in my job post to review my 
-                  post and I want you to work for me. It is important that you 
-                  wear close-toed shoes. Please message me if you have any questions! 
-                </p>
-                </div>
-              </div> 
-            </div>   
-          </div>
-          {/* tab4 */}
         </TabPanel>
+        {/* Offer*/}
+
+
+         {/* Contract*/}   
         <TabPanel className="border-bottom mt-5" value={value} index={2}>
            {/* tab1 */}
+
+           {contractRows.map((row, index) => (
            <div className="notification-inner">
             <div className="container">
               <div className="p-3">
@@ -343,7 +292,7 @@ export default function SimpleTabs() {
                   <div className="col-md-3 pl-0">
                     <div className="tabs-inner">
                       <img src={AvatarImage1} alt="no img"/>
-                      <h4 className="pl-2 pt-2">Sarah <br></br><span>9/22 7:00 AM</span></h4>
+                      <h4 className="pl-2 pt-2">{row.client} <br></br><span>{row.created_at}</span></h4>
                     </div>
                     
                   </div>
@@ -355,116 +304,20 @@ export default function SimpleTabs() {
                   </div>
                 </div>
                 <div className="notification-des">
-                <h3>Hii Pixelz Warrios,</h3>
+                <h3>{row.title},</h3>
                 <p>
-                  I would like to invite you in my job post to review my 
-                  post and I want you to work for me. It is important that you 
-                  wear close-toed shoes. Please message me if you have any questions! 
+                 {row.description}
                 </p>
                 </div>
               </div> 
             </div>   
           </div> 
-          {/* tab1 */}
-
-          {/* tab2 */}
-          <div className="notification-inner">
-            <div className="container">
-              <div className="p-3">
-                <div className="row">
-                  <div className="col-md-3 pl-0">
-                    <div className="tabs-inner">
-                      <img src={AvatarImage2} alt="no img"/>
-                      <h4 className="pl-2 pt-2">Giana Korsgaard<br></br><span>9/22 7:00 AM</span></h4>
-                    </div>
-                    
-                  </div>
-                  <div className="col-md-9 text-right pr-0">
-                    <ul className="notification-tab-btns">
-                      <li class="btn btn-warning text-white btn-lg button-color approve-btn mr-2"><a class="" href="#">Approve</a></li>
-                      <li class="btn btn-warning text-white btn-lg button-color reject-btn"><a class="" href="#">Reject</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="notification-des">
-                <h3>Bring close-toed shoes to class tomorrow</h3>
-                <p>
-                  I would like to invite you in my job post to review my 
-                  post and I want you to work for me. It is important that you 
-                  wear close-toed shoes. Please message me if you have any questions! 
-                </p>
-                </div>
-              </div> 
-            </div>   
-          </div>
-          {/* tab2 */}
-
-          {/* tab3 */}
-          <div className="notification-inner">
-            <div className="container">
-              <div className="p-3">
-                <div className="row">
-                  <div className="col-md-3 pl-0">
-                    <div className="tabs-inner">
-                      <img src={AvatarImage3} alt="no img"/>
-                      <h4 className="pl-2 pt-2">Chance Philips<br></br><span>9/22 7:00 AM</span></h4>
-                    </div>
-                    
-                  </div>
-                  <div className="col-md-9 text-right pr-0">
-                    <ul className="notification-tab-btns">
-                      <li class="btn btn-warning text-white btn-lg button-color approve-btn mr-2"><a class="" href="#">Approve</a></li>
-                      <li class="btn btn-warning text-white btn-lg button-color reject-btn"><a class="" href="#">Reject</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="notification-des">
-                <h3>Bring close-toed shoes to class tomorrow</h3>
-                <p>
-                  I would like to invite you in my job post to review my 
-                  post and I want you to work for me. It is important that you 
-                  wear close-toed shoes. Please message me if you have any questions! 
-                </p>
-                </div>
-              </div> 
-            </div>   
-          </div>
-          {/* tab3 */}
-
-          {/* tab4 */}
-          <div className="notification-inner">
-            <div className="container">
-              <div className="p-3">
-                <div className="row">
-                  <div className="col-md-3 pl-0">
-                    <div className="tabs-inner">
-                      <img src={AvatarImage} alt="no img"/>
-                      <h4 className="pl-2 pt-2">Anika Septimus <br></br><span>9/22 7:00 AM</span></h4>
-                    </div>
-                    
-                  </div>
-                  <div className="col-md-9 text-right pr-0">
-                    <ul className="notification-tab-btns">
-                      <li class="btn btn-warning text-white btn-lg button-color approve-btn mr-2"><a class="" href="#">Approve</a></li>
-                      <li class="btn btn-warning text-white btn-lg button-color reject-btn"><a class="" href="#">Reject</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="notification-des">
-                <h3>Bring close-toed shoes to class tomorrow</h3>
-                <p>
-                  I would like to invite you in my job post to review my 
-                  post and I want you to work for me. It is important that you 
-                  wear close-toed shoes. Please message me if you have any questions! 
-                </p>
-                </div>
-              </div> 
-            </div>   
-          </div>
-          {/* tab4 */}
+          )           
+          
+          )}
+          {/* tab1 */} 
         </TabPanel>
-
-        
+        {/* Contract*/}  
       </div>
     </div>
     

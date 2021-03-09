@@ -12,6 +12,8 @@ export default function list(endpoint, params={}) {
     
      return axios.get(API_URL+endpoint).then(response => {
     // return axios.get(API_URL+endpoint) .then(response => {
+
+    console.log("api",API_URL+endpoint)
       if(response.data.results !== undefined) {
          response.extra_data = {
           count : response.data.count,

@@ -34,7 +34,7 @@ export default function JobDetail(props) {
   
       list('api/v1/job/'+jobID+'/')
         .then((response)=>{
-        console.log("data1111 res :",response)
+        console.log("data1111 res :",response.data)
 
          setjobdetail(response.data);
         
@@ -43,9 +43,6 @@ export default function JobDetail(props) {
   
     }
 
-
-  
-  
     useEffect(() => {
         getJobdetail();
     },[]);
