@@ -6,11 +6,14 @@ import Button from "../Button";
 import CustomizedRatings from "../../App/pages/jobs/Rating";
 import list from "../../App/pages/helper/api";
 
+
 function createData(id, user, title, description) {
   return { id,title, user, description};
 }
+
 export function Reviews() {
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState();
+  const [visible, setVisible] = useState(2)
 
   function Review() {
     list("api/v1/profile/").then((response) => {
@@ -25,11 +28,15 @@ export function Reviews() {
       setReviews(Reviewdata);
     });
   }
-
+  const loadMore = () =>{
+    setVisible((prevValue) => prevValue +1);
+    
+  };
   useEffect(() => {
     Review();
   }, []);
 
+ 
   return (
     <div className="Reviews">
       <div class="container bg-white">
@@ -42,7 +49,8 @@ export function Reviews() {
         </div>
 
         <div class="container">
-          {reviews.map((review) => (
+          
+          {reviews?.slice(0, visible).map((review) => (
             <div class="row pb-3">
               <div class="col-md-6 pb-3 pt-3">
                 <img src={Stanton} alt="/" />
@@ -60,10 +68,11 @@ export function Reviews() {
             </div>
           ))}
          
-          <div class="row pl-3 pb-4">
+          <div class="row pl-3 pb-4"> 
             <div class="col-md-12 offset-md-3">
               <div className="btn-load">
-                <Button buttonStyle="btn--load" value="LOAD MORE" />
+           
+                <Button buttonStyle="btn--load" value="LOAD MORE" onClick={loadMore}/>
               </div>
             </div>
           </div>
