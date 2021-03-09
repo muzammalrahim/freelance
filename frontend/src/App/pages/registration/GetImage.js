@@ -15,6 +15,7 @@ import {connect} from "react-redux"
     this.state = {
       filesBase64: '',
     };
+
   }
 
   
@@ -45,8 +46,24 @@ import {connect} from "react-redux"
                       
                       if(base64Image)
                       {
-                        this.props.uploadImageHandler(base64Image)
-                        console.log("if true",base64Image)
+                         this.props.uploadImageHandler(base64Image)
+                              
+                           if(this.props.value === "onUpload")
+                           {
+                            this.props.onUpload(base64Image);
+                           }
+
+                           else if(this.props.value === "idVerf_DL_imgUpload")
+                           {
+                            this.props.idVerf_DL_imgUpload(base64Image);
+                           }
+                    
+                           else if(this.props.value === "idVerf_IC_imgUpload")
+                           {
+                            this.props.idVerf_IC_imgUpload(base64Image);
+                           }
+              
+
                       }
                   }
                   reader.readAsArrayBuffer(file) 

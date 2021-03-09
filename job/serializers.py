@@ -5,6 +5,8 @@ from acount import models as acount_models
 
 
 class AttachmentSerializer(serializers.ModelSerializer):
+    file = acount_serializer.Base64ImageField(required=False)
+
     class Meta:
         model = models.Attachment
         fields = '__all__'

@@ -7,8 +7,6 @@ class GetDate extends React.Component {
 		this.state = {
 			date : [],
 			date2 : [],
-			states : [],
-			cities : [],
 			selectedMonth : 'Choose Month',
 			selectedYear : 'Choose year'
 		};
@@ -53,6 +51,8 @@ class GetDate extends React.Component {
 
     changeYear(event) {
 		this.setState({selectedYear: event.target.value});
+
+		
 	
 	}
 	
