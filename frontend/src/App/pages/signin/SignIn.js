@@ -9,8 +9,11 @@ import LOCKER from "../../../assets/LOCKER.png";
 import Alert from "../../../App/pages/signin/Alert";
 import Signinfooter from "./Signinfooter";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import { login } from "../../../redux/auth/authCrud";
+import { login ,Linkedinlogin } from "../../../redux/auth/authCrud";
 import { withRouter } from "react-router-dom";
+
+import { LinkedIn } from 'react-linkedin-login-oauth2';
+import linkedin from 'react-linkedin-login-oauth2/assets/linkedin.png'
 
 class SignIn extends Component {
   constructor(props) {
@@ -19,6 +22,8 @@ class SignIn extends Component {
     this.state = {
       email: "",
       password: "",
+      code: '',
+      errorMessage: '',
     };
   }
 
@@ -28,6 +33,24 @@ class SignIn extends Component {
     });
   };
 
+  
+  handleSuccess = (data) => {
+
+
+
+    this.setState({
+      code: data.code,
+      errorMessage: '',
+    });
+  }
+
+  handleFailure = (error) => {
+    this.setState({
+      code: '',
+      errorMessage: error.errorMessage,
+    });
+  }
+  
   login = () => {
     login(this.state.email, this.state.password)
       .then(({ data: { token } }) => {
@@ -42,7 +65,23 @@ class SignIn extends Component {
       });
   };
 
+  
+  LinkedinLoginHandler = () => {
+    Linkedinlogin()
+      .then((response) => {
+
+        console.log("linkedin reponse",response)
+
+      })
+      .catch(() => {
+        // disableLoading();
+      });
+  };
+
   render() {
+    const { code, errorMessage } = this.state;
+
+    console.log("code ka bacha",this.state.code)
     return (
       <div className="SignUp-flex-container">
         <div className="si-container">
@@ -123,7 +162,22 @@ class SignIn extends Component {
                     <h6 className="text-center pt-2">or</h6>
                   </div>
                   <div className="pt-1 pb-4">
-                    <button type="button" className="btn btn-primary btn-block">
+
+                  <div>
+                  <LinkedIn
+                    clientId="86zeljscdjejfk"
+                    onFailure={this.handleFailure}
+                    onSuccess={this.handleSuccess}
+                    redirectUri="http://localhost:3000/linkedin"
+                  >
+                    <img src={linkedin} alt="Log in with Linked In" style={{ maxWidth: '180px' }} />
+                  </LinkedIn>
+                  {!code && <div>No code</div>}
+                  {code && <div>Code: {code}</div>}
+                  {errorMessage && <div>{errorMessage}</div>}
+                </div>
+
+                    <button type="button" className="btn btn-primary btn-block" onClick={this.LinkedinLoginHandler}>
                       Signup with
                       <span className="pl-2 ">
                         Linked <LinkedInIcon />
