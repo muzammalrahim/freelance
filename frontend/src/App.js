@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 
-
+import { LinkedInPopUp } from 'react-linkedin-login-oauth2';
 // signup pages
-import signuppage from './App/pages/signin/signuppage'
+import SignupPage from './App/pages/signin/SignupPage'
 import SignIn from './App/pages/signin/SignIn'
 // signup pages
 
@@ -78,6 +78,7 @@ import Authenticated from './Authenticated'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 
+import LinkedInPage from '../src/App/pages/signin/LinkedInPage';
 
 
 function App() {
@@ -86,7 +87,8 @@ return (
     <Router>
     <Switch>
         {/* Signup/in */}
-      
+        <Route exact path="/linkedin" component={LinkedInPopUp} />
+
         <Route exact path="/"> 
 
         <Authenticated>
@@ -111,7 +113,7 @@ return (
        </Authenticated> 
         </Route>
 
-        <Route path='/signup' exact component={signuppage}/>
+        <Route path='/signup' exact component={SignupPage}/>
         {/* Signup/in */}
 
         {/* Registration Process */}

@@ -115,7 +115,6 @@ export default class AccountSettingMain extends Component {
                       </div>
                   </div>
                   <div class="col-md-9 pt-5">
-                  {console.log(this.state.tabindex)}
                   {this.state.tabindex === 1 && <ProfileSetting/>}
                   {this.state.tabindex === 2 && <ContactInfo />}
                   {this.state.tabindex === 3 && <MembershipPlan/>}
