@@ -19,11 +19,13 @@ class LinkedinLogin(SocialLoginView):
 	# adapter_class = LinkedInOAuthAdapter
 	adapter_class = LinkedInOAuth2Adapter
 
+	# def get_serializer(self, *args, **kwargs):
+	# 	serializer_class = self.get_serializer_class()
+	# 	kwargs['context'] = self.get_serializer_context()
+	# 	return serializer_class(*args, **kwargs)
 
-# def get_serializer(self, *args, **kwargs):
-# 	serializer_class = self.get_serializer_class()
-# 	kwargs['context'] = self.get_serializer_context()
-# 	return serializer_class(*args, **kwargs)
+	def get_response_serializer(self):
+		return acount_serializer.MyTokenSerializer
 
 
 class CityViewSet(viewsets.ModelViewSet):

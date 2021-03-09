@@ -6,39 +6,7 @@ from django.contrib.auth.models import Group
 import base64, six, uuid
 from job.models import Attachment
 from django.core.files.base import ContentFile
-
-
-# from rest_framework.fields import Field
-# import datetime
-# from django.utils import timezone
-
-
-# class TimeWithTimezoneField(Field):
-#     default_error_messages = {
-#         'invalid': 'Time has wrong format, expecting %H:%M:%S%z.',
-#     }
-#
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#
-#     def to_internal_value(self, value):
-#         value_with_date = datetime.datetime.now().strftime('%Y-%m-%d') + ' ' + value
-#         try:
-#             parsed = datetime.datetime.strptime(value_with_date, '%Y-%m-%d %H:%M:%S%z')
-#         except (ValueError, TypeError) as e:
-#             pass
-#         else:
-#             return parsed
-#         self.fail('invalid')
-#
-#     def to_representation(self, value):
-#         if not value:
-#             return None
-#
-#         if isinstance(value, str):
-#             return value
-#
-#         return timezone.make_naive(value, timezone.utc).strftime("%H:%M:%S+00:00")
+from rest_auth.models import TokenModel
 
 
 class Base64ImageField(serializers.ImageField):
@@ -227,6 +195,19 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
 	class Meta:
 		model = models.FreelancerProfile
 		fields = '__all__'
+
+
+class MyTokenSerializer(serializers.Serializer):
+	token = serializers.SerializerMethodField()
+
+	class Meta:
+		fields = ('access_token')
+
+	def get_token(self, obj):
+		# Later you change the simpleJWT token for more secure!
+		token_obj, created = TokenModel.objects.get_or_create(user=obj.user)
+		token = "Token {0}".format(token_obj.key)
+		return token
 
 
 class QuestionSerializers(serializers.ModelSerializer):
