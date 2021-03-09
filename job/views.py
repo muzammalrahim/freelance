@@ -61,7 +61,16 @@ class InviteViewSet(viewsets.ModelViewSet):
     queryset = job_view.Invite.objects.filter(deleted_at=None)
     serializer_class = job_serializer.InviteSerializer
     search_fields = ['cover_letter']
-    filterset_fields = ['status', 'reject_reason', 'job__title']
+    filterset_fields = ['status', 'reject_reason', 'job__title', "client", "freelancer"]
+
+    def list(self, request):
+        queryset = self.filter_queryset(self.get_queryset())
+        if isRoleFreelancer(request.user):
+            queryset = queryset.filter(freelancer=request.user.profile)
+        elif isRoleClient(request.user):
+            queryset = queryset.filter(client=request.user.profile)
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
 
     def destroy(self, request, *args, **kwargs):
         resp = safeDelete(self, request, job_view.Invite)

@@ -10,6 +10,7 @@ import CloseIcon from '@material-ui/icons/Close';
 export function Certificate(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
+  const handleSave = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
     <div className="Certifies">
@@ -77,7 +78,7 @@ export function Certificate(props) {
                   </a>
                   </div>
                   <div className="col-md-6 pb-5 pt-3">
-                  <button type="button" className="form-btn btn btn-warning">
+                  <button type="button" className="form-btn btn btn-warning" onClick={handleSave}>
                     Save
                   </button>
                   </div>

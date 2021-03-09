@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState ,useEffect } from 'react'
 import ContractNav from "./ContractNav";
 import Header from '../../../../src/components/header/Header';
 import "../../../assets/css/custom.css";
@@ -12,11 +12,50 @@ import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import CalanderIcon from '../../../img/calendar.svg';
 import AvtarIcon from '../../../img/contract-img.png';
+import { useHistory } from 'react-router-dom'
 
+import list from '../../pages/helper/api';
 
+// function createData(id, budget, title, description, skills,category) {
+//     return { id, budget, title, description, skills,category };
+  
+//   }
+  
 
-export default class ContractOne extends Component {
-    render() {
+export default function ContractOne () { 
+
+    let history = useHistory();
+
+    const [get ,setGet] = useState ();
+
+    const handleClick =() =>{
+        history.push('/jobs')
+    }
+    function Contract() {
+        console.log("show response:");
+        list('/api/v1/contract/')
+        .then((response)=>{
+          const {...rest} = response.data[2];
+           setGet(rest);
+
+    // function  Contract () {
+    //     list('api/v1/contract/')
+    //     .then((response)=>{
+    //         let job_list = [];
+    //         console.log("response:")
+    //         response.data.map((gets)=>{
+      
+    //             job_list.push(createData(gets.id, gets.budget, gets.title, gets.description, gets.skills,gets.category))
+        
+    //           })
+    //         setGet(createData);
+    //     })
+    // }
+})
+}
+    useEffect(() => {
+        Contract(); 
+      },[]);
         return (
             <div className="contract-pg1">
                 {/* top header */}
@@ -31,16 +70,22 @@ export default class ContractOne extends Component {
                                 <div className="col-md-3 col-sm-4">
                                     <ContractNav/>
                                 </div>
+{/* 
+                                {
+                                            get.map((gets ,index) =>(
+
+                                        */}
                                 <div className="col-md-9 col-sm-8">
                                     <ContractView/>
                                     <div className="cont-row">
+                                        
                                         <div className="con-des-area">
                                         <div className="content-heading">
                                             <div className="contact1-avatar"><img src={AvtarIcon} alt="no img"/></div>
                                             <h3 className="pl-3">
-                                            Job title lorem ipsum lorem ipsum <br></br>lorem ipsum 
+                                            {get && get.description ? get.description : ''}
                                             </h3>
-                                            <Button variant="outlined" color="secondary">View Job</Button> 
+                                            <Button variant="outlined" color="secondary" onClick={handleClick}>View Job</Button> 
                                         </div>
                                         {/* Tags */}
                                         <div className="row">
@@ -75,6 +120,9 @@ export default class ContractOne extends Component {
                                     </div>
                                     
                                 </div>
+     {/* ))
+    } */}
+
                             </div>
                             
                         </div>
@@ -87,4 +135,3 @@ export default class ContractOne extends Component {
             </div>
         )
     }
-}

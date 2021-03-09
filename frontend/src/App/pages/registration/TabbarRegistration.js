@@ -33,11 +33,8 @@ export default class TabbarRegistration extends Component {
   };
   
   clickone =(tabindex2)=>{
-    console.log("tabindex2",tabindex2)
 
-        this.setState({tabindex:tabindex2});
-
-        console.log("tab state",this.state.tabindex)
+        this.setState({tabindex:tabindex2});   
   }
 
 componentDidMount ()
@@ -81,9 +78,6 @@ componentDidMount ()
                     class=" "
                     onClick={() => this.setState({ tabindex: 1 })}
                   >
-
-         
-    
                       
          {/*
               <button type="button" class={"btn btn-outline-secondary btn-circle btn-md " + (this.state.tabindex=== 1 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 1 })}> 1</button> */}

@@ -12,9 +12,9 @@ import os, environ
 from typing import List
 
 env = environ.Env(
-    # set casting, default value
-    ALLOWED_HOSTS=(list, []),
-    DEBUG=(bool, False)
+	# set casting, default value
+	ALLOWED_HOSTS=(list, []),
+	DEBUG=(bool, False)
 )
 environ.Env.read_env()
 
@@ -34,68 +34,81 @@ DEBUG = env('DEBUG')
 ALLOWED_HOSTS: List[str] = env('ALLOWED_HOSTS')
 # Application definition
 
+
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'polymorphic',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'acount.apps.AcountConfig',
-    'job.apps.JobConfig',
-    'payment.apps.PaymentConfig',
-    'report.apps.ReportConfig',
-    'support.apps.SupportConfig',
-    'drf_yasg',
-    'rest_registration',
-    'rest_framework',
-    'rest_framework.authtoken',
-    'rest_auth',
-    'sslserver',
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'rest_auth.registration',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.linkedin',
-    'django_filters'
+	'django.contrib.admin',
+	'django.contrib.auth',
+	'polymorphic',
+	'django.contrib.contenttypes',
+	'django.contrib.sessions',
+	'django.contrib.messages',
+	'django.contrib.staticfiles',
+	'acount.apps.AcountConfig',
+	'job.apps.JobConfig',
+	'payment.apps.PaymentConfig',
+	'report.apps.ReportConfig',
+	'support.apps.SupportConfig',
+	'drf_yasg',
+	'rest_registration',
+	'rest_framework',
+	'rest_framework.authtoken',
+	'rest_auth',
+	'constance',
+	'sslserver',
+	'django.contrib.sites',
+	'dj_rest_auth',
+	'allauth',
+	'allauth.account',
+	'rest_auth.registration',
+	'allauth.socialaccount',
+	'allauth.socialaccount.providers.linkedin_oauth2',
+	'django_filters'
 ]
-
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+	'django.middleware.security.SecurityMiddleware',
+	'django.contrib.sessions.middleware.SessionMiddleware',
+	'corsheaders.middleware.CorsMiddleware',
+	'django.middleware.common.CommonMiddleware',
+	'django.middleware.csrf.CsrfViewMiddleware',
+	'django.middleware.csrf.CsrfViewMiddleware',
+	'django.middleware.csrf.CsrfViewMiddleware',
+	'django.contrib.auth.middleware.AuthenticationMiddleware',
+	'django.contrib.messages.middleware.MessageMiddleware',
+	'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CONSTANCE_CONFIG = {
+	'15 % service free': (True, 'Answer to the Ultimate Question of Life, '
+								'The Universe, and Everything'),
+	# 'SENT_MONTHLY_INVOICE': (True, 'Set this flag as True to send monthly invoice to  '
+	#                                'business owners.',),
+	# 'VIDEOS_AUTO_APPROVAL': (False, 'Disable this flag to approve videos in admin end.'
+	#                                 'Enable this flag to approve videos automatically without admin approval.'),
+
+}
 ROOT_URLCONF = 'freelance.urls'
 
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
+	"http://localhost:3000",
+	"http://127.0.0.1:3000",
 ]
 
 TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'frontend')],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
+	{
+		'BACKEND': 'django.template.backends.django.DjangoTemplates',
+		'DIRS': [os.path.join(BASE_DIR, 'frontend')],
+		'APP_DIRS': True,
+		'OPTIONS': {
+			'context_processors': [
+				'django.template.context_processors.debug',
+				'django.template.context_processors.request',
+				'django.contrib.auth.context_processors.auth',
+				'django.contrib.messages.context_processors.messages',
+			],
+		},
+	},
 ]
 
 WSGI_APPLICATION = 'freelance.wsgi.application'
@@ -104,31 +117,31 @@ WSGI_APPLICATION = 'freelance.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASSWORD'),
-        'HOST': env('DB_HOST'),
-    }
+	'default': {
+		'ENGINE': 'django.db.backends.postgresql_psycopg2',
+		'NAME': env('DB_NAME'),
+		'USER': env('DB_USER'),
+		'PASSWORD': env('DB_PASSWORD'),
+		'HOST': env('DB_HOST'),
+	}
 }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+	{
+		'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+	},
+	{
+		'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+	},
+	{
+		'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+	},
+	{
+		'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+	},
 ]
 
 # Internationalization
@@ -150,7 +163,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'frontend/admin/build/static'),
+	os.path.join(BASE_DIR, 'frontend/admin/build/static'),
 )
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # STATICFILES_DIRS = (
@@ -163,54 +176,58 @@ STATICFILES_DIRS = (
 #     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-    ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',),
-    'DEFAULT_PARSER_CLASSES': [
-        'rest_framework.parsers.FormParser',
-        'rest_framework.parsers.MultiPartParser',
-        'rest_framework.parsers.JSONParser',
-    ],
-    'DEFAULT_FILTER_BACKENDS': [
-        'django_filters.rest_framework.DjangoFilterBackend',
-        'rest_framework.filters.SearchFilter',
-        'rest_framework.filters.OrderingFilter',
-    ]
+	'DEFAULT_AUTHENTICATION_CLASSES': (
+		'rest_framework.authentication.TokenAuthentication',
+		# 'rest_framework.authentication.SessionAuthentication',
+		'rest_framework.authentication.BasicAuthentication',
+	),
+	'DEFAULT_PERMISSION_CLASSES': (
+		'rest_framework.permissions.IsAuthenticated',),
+	'DEFAULT_PARSER_CLASSES': [
+		'rest_framework.parsers.FormParser',
+		'rest_framework.parsers.MultiPartParser',
+		'rest_framework.parsers.JSONParser',
+	],
+	'DEFAULT_FILTER_BACKENDS': [
+		'django_filters.rest_framework.DjangoFilterBackend',
+		'rest_framework.filters.SearchFilter',
+		'rest_framework.filters.OrderingFilter',
+	]
 }
 
 SWAGGER_SETTINGS = {
-    'SECURITY_DEFINITIONS': {
-        'basic': {
-            'type': 'basic'
-        }
-    },
-    'USE_SESSION_AUTH': False,
+	'SECURITY_DEFINITIONS': {
+		'basic': {
+			'type': 'basic'
+		}
+	},
+	'USE_SESSION_AUTH': False,
 
 }
+AUTHENTICATION_BACKENDS = [
 
+	'django.contrib.auth.backends.ModelBackend',
+	'allauth.account.auth_backends.AuthenticationBackend',
+]
 REST_REGISTRATION = {
-    'REGISTER_VERIFICATION_ENABLED': False,
-    'REGISTER_EMAIL_VERIFICATION_ENABLED': False,
-    'RESET_PASSWORD_VERIFICATION_ENABLED': True,
-    'REGISTER_VERIFICATION_URL': '{}/verify-user/'.format(SITE_URL),
-    'RESET_PASSWORD_VERIFICATION_URL': '{}/reset-password/'.format(SITE_URL),
-    'REGISTER_EMAIL_VERIFICATION_URL': '{}/verify-email/'.format(SITE_URL),
-    'VERIFICATION_FROM_EMAIL': 'arslanmehmood051@gmail.com',
-    'USER_LOGIN_FIELDS': ('email', 'username'),
+	'REGISTER_VERIFICATION_ENABLED': False,
+	'REGISTER_EMAIL_VERIFICATION_ENABLED': False,
+	'RESET_PASSWORD_VERIFICATION_ENABLED': True,
+	'REGISTER_VERIFICATION_URL': '{}/verify-user/'.format(SITE_URL),
+	'RESET_PASSWORD_VERIFICATION_URL': '{}/reset-password/'.format(SITE_URL),
+	'REGISTER_EMAIL_VERIFICATION_URL': '{}/verify-email/'.format(SITE_URL),
+	'VERIFICATION_FROM_EMAIL': 'arslanmehmood051@gmail.com',
+	'USER_LOGIN_FIELDS': ('email', 'username'),
 
-    # 'USER_PUBLIC_FIELDS': ('first_name', 'last_name', 'email',),
-    'REGISTER_SERIALIZER_CLASS': 'acount.serializers.CustomRegisterUserSerializer'
+	# 'USER_PUBLIC_FIELDS': ('first_name', 'last_name', 'email',),
+	'REGISTER_SERIALIZER_CLASS': 'acount.serializers.CustomRegisterUserSerializer'
 }
 
 FREELANCER_USER = 'Freelancer'
 CLIENT_USER = 'Client'
 ADMIN_USER = 'Admin'
 
-SITE_ID = 1
+SITE_ID = 2
 
 EMAIL_BACKEND = env('EMAIL_BACKEND')
 EMAIL_HOST = env('EMAIL_HOST')
