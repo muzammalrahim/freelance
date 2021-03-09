@@ -949,6 +949,14 @@ p.digit{
 .btn.btn-warning.text-white.btn-lg.button-color.approve-btn{
     background: #1DA799;
 }
+
+.btn.btn-warning.text-white.btn-lg.button-color.aprroved-state{
+    background: none;
+    display: none;
+}
+.btn.btn-warning.text-white.btn-lg.button-color.aprroved-state a{
+    color: #1DA799;
+}
 .notification-des h3{
     font-size: 16px;
 }

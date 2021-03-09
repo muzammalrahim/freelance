@@ -17,8 +17,7 @@ class PaymentWithdraw extends Component {
 
     render() { 
 
-        return (
-			console.log("agey",this.state.RadioclassActive),	
+        return (	
         <div>
             <div class="main-area withdraw">
 		    <div class="container-fluid">

@@ -34,7 +34,10 @@ export default function JobDetail(props) {
   
       list('api/v1/job/'+jobID+'/')
         .then((response)=>{
-        console.log("data1111 res :",response)
+
+        console.log("data1111 res :",response.data)
+
+
 
          setjobdetail(response.data);
         
@@ -43,9 +46,6 @@ export default function JobDetail(props) {
   
     }
 
-
-  
-  
     useEffect(() => {
         getJobdetail();
     },[]);
@@ -125,8 +125,6 @@ export default function JobDetail(props) {
                                                 
                         
                                                 Object.values(jobdetail.category).map((keyName, i) =>{
-                                                  
-                                                    console.log("map ",keyName)
                                                     if(i===1){
                                             return <li className="pr-3">
                                                 <Link className="pl-2 pr-2 pt-1 pb-1"> 

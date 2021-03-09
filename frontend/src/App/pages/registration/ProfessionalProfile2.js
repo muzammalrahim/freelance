@@ -54,8 +54,6 @@ class  ProfessionalProfile2 extends Component{
 
    dropDownHandler (provideService2)
      {
-      
-      console.log("dropdown value in professional pro:",provideService2)
         this.setState({provideService:provideService2})
       }
 
@@ -308,7 +306,7 @@ return (
                         
                      <div>
                           <div className="getimage">
-                            <GetImage onUpload={this.handleBase64File} />
+                            <GetImage onUpload={this.handleBase64File}  value="onUpload"/>
                             
                           </div>
                       </div>
