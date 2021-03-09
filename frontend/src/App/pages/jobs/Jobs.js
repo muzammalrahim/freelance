@@ -179,8 +179,6 @@ function Jobs() {
                                 
         
                                 Object.values(row.category).map((keyName, i) =>{
-                                  
-                                    console.log("map ",keyName)
                                     if(i===1){
                             return <li className="pr-3">
                                 <Link className="pl-2 pr-2 pt-1 pb-1"> 

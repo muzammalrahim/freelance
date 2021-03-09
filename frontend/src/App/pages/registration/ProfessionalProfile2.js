@@ -54,8 +54,6 @@ class  ProfessionalProfile2 extends Component{
 
    dropDownHandler (provideService2)
      {
-      
-      console.log("dropdown value in professional pro:",provideService2)
         this.setState({provideService:provideService2})
       }
 

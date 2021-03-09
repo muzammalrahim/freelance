@@ -101,7 +101,6 @@ function HourlyRate(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log("redux state:", state.nameReducer);
   return {
     name: state.nameReducer,
   };

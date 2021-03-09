@@ -9,6 +9,7 @@ import Signinfooter from "./Signinfooter";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import { sign_up } from "../../../redux/auth/authCrud";
 import { withRouter } from "react-router-dom";
+import LinkedInPage from "./LinkedInPage";
 
 class SignupPage extends Component {
   constructor(props) {
@@ -142,12 +143,7 @@ class SignupPage extends Component {
                     <h6 className="text-center pt-2">or</h6>
                   </div>
                   <div className="pt-1 pb-4">
-                    <button type="button" class="btn btn-primary btn-block">
-                      Signup with
-                      <span className="pl-2">
-                        Linked <LinkedInIcon />
-                      </span>
-                    </button>
+                    <LinkedInPage />
                   </div>
                 </div>
               </div>

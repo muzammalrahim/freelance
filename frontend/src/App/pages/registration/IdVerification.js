@@ -14,14 +14,14 @@ function IdVerification() {
   function  drimgUpload(base64file)
     {
         setdrivingLicense(base64file)
-        console.log("dr",base64file)
+    
     }
 
    function icimgUpload(base64file)
     {
         setidCard(base64file)
 
-        console.log("ic",base64file)
+       
     }
 
 

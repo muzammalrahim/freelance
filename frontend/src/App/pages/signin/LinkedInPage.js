@@ -1,31 +1,78 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { LinkedIn } from 'react-linkedin-login-oauth2';
-import linkedin from 'react-linkedin-login-oauth2/assets/linkedin.png'
+import {
+  Linkedinlogin,
+  GettingLinkedinAccessToken,
+} from "../../../redux/auth/authCrud";
+import { LinkedIn } from "react-linkedin-login-oauth2";
+
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
 
 class LinkedInPage extends Component {
   state = {
-    code: '',
-    errorMessage: '',
+    code: "",
+    errorMessage: "",
+    access_token: "",
   };
 
-
   handleSuccess = (data) => {
+    let { code, access_token } = this.state;
+
     this.setState({
       code: data.code,
-      errorMessage: '',
+      errorMessage: "",
     });
-  }
+
+    if (data.code) {
+      GettingLinkedinAccessToken(data.code)
+        .then((response) => {
+          this.setState({ access_token: response.data.access_token });
+
+          if (response.data.access_token) {
+            Linkedinlogin(response.data.access_token, data.code)
+              .then((response) => {
+                console.log("linkedin login response", response);
+              })
+              // .then(({ data: { token } }) => {
+              // localStorage.setItem("token", token);
+              //
+              // if (localStorage.getItem("token")) {
+              // this.props.history.push("/");
+              // }
+              // })
+              .catch(() => {
+                // disableLoading();
+              });
+          } else {
+          }
+        })
+        .catch(() => {
+          // disableLoading();
+        });
+    }
+  };
 
   handleFailure = (error) => {
     this.setState({
-      code: '',
+      code: "",
       errorMessage: error.errorMessage,
     });
-  }
-  
+  };
+
+  LinkedinLoginHandler = () => {
+    // Linkedinlogin()
+    // .then((response) => {
+    //
+    // console.log("linkedin reponse",response)
+    //
+    // })
+    // .catch(() => {
+    // disableLoading();
+    // });
+  };
+
   render() {
-    const { code, errorMessage } = this.state;
+    const { code, errorMessage, access_token } = this.state;
     return (
       <div>
         <LinkedIn
@@ -34,11 +81,23 @@ class LinkedInPage extends Component {
           onSuccess={this.handleSuccess}
           redirectUri="http://localhost:3000/linkedin"
         >
-          <img src={linkedin} alt="Log in with Linked In" style={{ maxWidth: '180px' }} />
+          <button
+            type="button"
+            style={{ width: "39.5vw" }}
+            className="btn btn-primary btn-block "
+            onClick={this.LinkedinLoginHandler}
+          >
+            Signup with
+            <span className="pl-2">
+              Linked <LinkedInIcon />
+            </span>
+          </button>
         </LinkedIn>
+        {/*
         {!code && <div>No code</div>}
         {code && <div>Code: {code}</div>}
-        {errorMessage && <div>{errorMessage}</div>}
+        {code && <div>access token: {access_token}</div>}
+        {errorMessage && <div>{errorMessage}</div>} */}
       </div>
     );
   }

@@ -103,8 +103,6 @@ class PersonalProfile extends React.Component {
       per_profileValidate,
       personal_profile_isSubmit_value,
     });
-
-    console.log("wai wai", per_profile);
   }
 
   render() {

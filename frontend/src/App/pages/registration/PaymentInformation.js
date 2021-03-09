@@ -25,7 +25,6 @@ function PaymentInformation(props) {
   const onInputChange = (e) => {
     setpaymentInfo({ ...paymentInfo, [e.target.name]: e.target.value });
 
-    console.log("wai", paymentInfo);
   };
 
   function onChangeMonth(month) {}
@@ -99,7 +98,6 @@ function PaymentInformation(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log("redux state:", state.nameReducer);
   return {
     name: state.nameReducer,
   };

@@ -88,11 +88,8 @@ return (
     <Switch>
         {/* Signup/in */}
         <Route exact path="/linkedin" component={LinkedInPopUp} />
-      
-        <Route exact path="/linkedin" component={LinkedInPopUp} />
-        <Route path="/" component={LinkedInPage} />
 
-        <Route exact path="///"> 
+        <Route exact path="/"> 
 
         <Authenticated>
            <Jobs/>
