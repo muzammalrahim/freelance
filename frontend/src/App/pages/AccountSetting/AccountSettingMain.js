@@ -1,12 +1,12 @@
-
 import React, { Component } from 'react'
-import  ProfileSetting from "./ProfileSetting"
-import   ContactInfo from "./ContactInfo"
-import   MembershipPlan from "./MembershipPlan"
-import  BillingMethod from "./BillingMethod"
-import  NotificationSetting from "./NotificationSetting"
-import  PaymentWithdraw  from "./PaymentWithdraw"
-
+import ProfileSetting from "./ProfileSetting"
+import ContactInfo from "./ContactInfo"
+import MembershipPlan from "./MembershipPlan"
+import BillingMethod from "./BillingMethod"
+import NotificationSetting from "./NotificationSetting"
+import PaymentWithdraw  from "./PaymentWithdraw"
+import Header from '../../../components/header/Header';
+import AsHero from '../../../components/AsHero';
 
 
 export default class AccountSettingMain extends Component {
@@ -23,21 +23,15 @@ export default class AccountSettingMain extends Component {
   render() {
     return (
       <div>
-
-      
+      <div class="menu">
+        <Header />
+      </div>
       <div class="main-area">
-      <div class="container-fluid pr-5 pl-5">
-          <div class="row">
-              <div class="banner-ac">
-                  <div class="btn btn-primary btn-lg change-cover-btn">
-                      <i class="fa fa-camera"></i>
-                      <a class="popup-with-form" href="#">Change Cover</a>
-                  </div>
-              </div>
-          </div>
+      <div class="banner-accountsetting">
+       <AsHero />
       </div>
       <div class="position-wrapper">
-          <div class="container">
+          <div class="account-settingLayout container">
               <div class="row">
                   <div class="col-md-3 pt-5">
                       <div class="wrap-bg bg-white p-4">
@@ -127,9 +121,6 @@ export default class AccountSettingMain extends Component {
                   {this.state.tabindex === 4 && <BillingMethod />}
                   {this.state.tabindex === 5 && <NotificationSetting/>}
                   {this.state.tabindex === 6 && <PaymentWithdraw/>}
-                      <div class="wrap-bg bg-white p-5">
-                        
-                      </div>
                   </div>
               </div>
           </div>
