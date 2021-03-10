@@ -5,111 +5,111 @@ from acount import models as acount_models
 
 
 class AttachmentSerializer(serializers.ModelSerializer):
-    file = acount_serializer.Base64ImageField(required=False)
+	file = acount_serializer.Base64ImageField(required=False)
 
-    class Meta:
-        model = models.Attachment
-        fields = '__all__'
+	class Meta:
+		model = models.Attachment
+		fields = '__all__'
 
 
 class JobSerializer(serializers.ModelSerializer):
-    skills = acount_serializer.SkillSerializers(many=True, write_only=True)
+	skills = acount_serializer.SkillSerializers(many=True, write_only=True)
 
-    def create(self, validated_data):
-        skills = validated_data.pop('skills')
-        job = models.Job.objects.create(**validated_data)
+	def create(self, validated_data):
+		skills = validated_data.pop('skills')
+		job = models.Job.objects.create(**validated_data)
 
-        for skill in skills:
-            s = acount_models.Skill.objects.create(name=skill.get('name'))
-            job.skills.add(s)
+		for skill in skills:
+			s = acount_models.Skill.objects.create(name=skill.get('name'))
+			job.skills.add(s)
 
-        return job
+		return job
 
-    def to_representation(self, instance):
-        representation = super(JobSerializer, self).to_representation(instance)
-        # print("representation representation" , representation)
-        related_models = ['category', 'skills']
-        # print("related_modelsrelated_models ", related_models)
-        # for model in related_models:
-        #     try:
-        #         representation[model] = utils.to_dict(getattr(instance, model))
-        #         print("representation[model] representation[model]", representation[model])
-        #     except:
-        #         representation[model] = None
-        try:
-            representation['skills'] = acount_serializer.SkillSerializers(instance.skills, many=True).data
-        except:
-            representation['skills'] = None
-        try:
-            representation['category'] = acount_serializer.CategorySerializers(instance.category).data
-        except:
-            representation['category'] = None
-        try:
-            representation['client'] = acount_serializer.ClientProfileSerializers(instance.client).data
-        except:
-            representation['client'] = None
-        return representation
+	def to_representation(self, instance):
+		representation = super(JobSerializer, self).to_representation(instance)
+		# print("representation representation" , representation)
+		related_models = ['category', 'skills']
+		# print("related_modelsrelated_models ", related_models)
+		# for model in related_models:
+		#     try:
+		#         representation[model] = utils.to_dict(getattr(instance, model))
+		#         print("representation[model] representation[model]", representation[model])
+		#     except:
+		#         representation[model] = None
 
-    class Meta:
-        model = models.Job
-        fields = '__all__'
+		representation['skills'] = acount_serializer.SkillSerializers(instance.skills, many=True).data
+		representation['category'] = acount_serializer.CategorySerializers(instance.category).data
+		representation['client'] = acount_serializer.ClientProfileSerializers(instance.client).data
+
+		return representation
+
+	class Meta:
+		model = models.Job
+		fields = '__all__'
 
 
 class JobReviewSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.JobReview
-        fields = '__all__'
+	class Meta:
+		model = models.JobReview
+		fields = '__all__'
 
 
 class OfferSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Offer
-        fields = '__all__'
+	class Meta:
+		model = models.Offer
+		fields = '__all__'
 
 
 class InviteSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Invite
-        fields = '__all__'
+	class Meta:
+		model = models.Invite
+		fields = '__all__'
 
 
 class ApplicationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Application
-        fields = '__all__'
+	class Meta:
+		model = models.Application
+		fields = '__all__'
 
 
 class ContractSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Contract
-        fields = '__all__'
+	def to_representation(self, instance):
+		representation = super(ContractSerializer, self).to_representation(instance)
+
+		representation['job'] = JobSerializer(instance.job).data
+
+		return representation
+
+	class Meta:
+		model = models.Contract
+		fields = '__all__'
 
 
 class WorkSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Work
-        fields = '__all__'
+	class Meta:
+		model = models.Work
+		fields = '__all__'
 
 
 class WorkChangesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.WorkChanges
-        fields = '__all__'
+	class Meta:
+		model = models.WorkChanges
+		fields = '__all__'
 
 
 class FeedbackSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Feedback
-        fields = '__all__'
+	class Meta:
+		model = models.Feedback
+		fields = '__all__'
 
 
 class FeedbackReviewSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.FeedbackReview
-        fields = '__all__'
+	class Meta:
+		model = models.FeedbackReview
+		fields = '__all__'
 
 
 class DisputSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Dispute
-        fields = '__all__'
+	class Meta:
+		model = models.Dispute
+		fields = '__all__'

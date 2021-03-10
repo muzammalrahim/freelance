@@ -1,7 +1,7 @@
 from base64 import b64encode
 from rest_framework import viewsets
 # import face_recognition
-
+import decimal
 from rest_framework.response import Response
 from allauth.socialaccount.providers.linkedin.views import LinkedInOAuthAdapter
 from allauth.socialaccount.providers.linkedin_oauth2.views import LinkedInOAuth2Adapter
@@ -12,6 +12,7 @@ from acount import serializers as acount_serializer
 from django.shortcuts import render
 from acount import models
 from rest_framework.decorators import api_view
+from datetime import datetime, timedelta
 
 
 class LinkedinLogin(SocialLoginView):
@@ -71,25 +72,13 @@ class ProfileViewSet(viewsets.ModelViewSet):
 					 'user__username', 'account_title']
 	filterset_fields = ['experience_level', 'zip_code', 'skills__name']
 
-	# def retrieve(self):
-	#     print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-	#     instance = self.get_object()
-	#     print("instance instance", instance)
-	#     serializer = self.get_serializer(instance)
-	#     return Response(serializer.data)
-
-	# def retrieve(self,proposal_amount, request, pk=None):
-	#     queryset = models.Profile.objects.filter(proposal_amount=proposal_amount)
-	#     print("hellllllllllllllllllllllllllllllllllllllll")
-	#     user = get_object_or_404(queryset, pk=pk)
-	#     print("userrrr", user.id)
-	#     serializer = acount_serializer.ProfileSerializers(user)
-	#     return Response(serializer.data)
-	def get_percentage(self, proposal_amount):
-		total_amount = models.Profile.objects.filter(proposal_amount=proposal_amount)
-		cnt = models.Profile.objects.filter(option=self).count()
-		perc = cnt * 100 / total_amount
-		return
+	def retrieve(self, *args, **kwargs):
+		instance = self.get_object()
+		serializer = self.get_serializer(instance)
+		data = serializer.data
+		data['current_time'] = datetime.utcnow() + timedelta(hours=4)
+		data['toto_proposal_amount'] = instance.proposal_amount - (decimal.Decimal(15 / 100) * instance.proposal_amount)
+		return Response(data)
 
 
 class ClientProfileViewSet(viewsets.ModelViewSet):

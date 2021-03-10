@@ -46,9 +46,7 @@ class Base64ImageField(serializers.ImageField):
 		import imghdr
 
 		extension = imghdr.what(file_name, decoded_file)
-		# print("extensionextensionextensionextensionextension", extension)
 		extension = "jpg" if extension == "jpeg" else extension
-		# print("image extension ", extension)
 
 		return extension
 
@@ -76,14 +74,9 @@ class CountrySerializers(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-	# time_zone = TimeWithTimezoneField()
-
 	class Meta:
 		model = models.User
 		fields = '__all__'
-
-
-# fields = ['id', 'username', 'first_name', 'last_name', 'email', 'time_zone']
 
 
 class SkillSerializers(serializers.ModelSerializer):
@@ -127,11 +120,9 @@ class ProfileSerializers(serializers.ModelSerializer):
 class ClientProfileSerializers(serializers.ModelSerializer):
 	def to_representation(self, instance):
 		representation = super(ClientProfileSerializers, self).to_representation(instance)
+
 		representation['skills'] = SkillSerializers(instance.skills, many=True).data
-		try:
-			representation['user'] = UserSerializer(instance.user).data
-		except:
-			representation['user'] = None
+		representation['user'] = UserSerializer(instance.user).data
 
 		return representation
 

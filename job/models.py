@@ -10,8 +10,10 @@ def attaches_upload(instance, filename):
 	""" this function has to return the location to upload the file """
 	return os.path.join(
 		'{0}/{1}/{2}'.format(instance.model, instance.model_id, filename))
-	# return os.path.join(
-	#     '{0}/{1}'.format(instance.model, filename))
+
+
+# return os.path.join(
+#     '{0}/{1}'.format(instance.model, filename))
 
 
 class Attachment(models.Model):
@@ -27,25 +29,26 @@ class Attachment(models.Model):
 		if os.path.isfile(self.file.path):
 			os.remove(self.file.path)
 
-	# @staticmethod
-	# def get_attaches(instance, attach_type):
-	#     abattaches = Attachment.objects.filter(type=attach_type,
-	#                                            model_id=instance.id)
-	#     attaches = []
-	#     for abattache in abattaches:
-	#         attache = {
-	#
-	#             "id": abattache.id,
-	#             "file": abattache.file.name,
-	#             "model": abattache.model,
-	#             "model_id": abattache.model_id,
-	#             "type": abattache.type,
-	#             "created_at": abattache.created_at,
-	#             "updated_at": abattache.updated_at,
-	#
-	#         }
-	#         attaches.append(attache)
-	#     return attaches
+
+# @staticmethod
+# def get_attaches(instance, attach_type):
+#     abattaches = Attachment.objects.filter(type=attach_type,
+#                                            model_id=instance.id)
+#     attaches = []
+#     for abattache in abattaches:
+#         attache = {
+#
+#             "id": abattache.id,
+#             "file": abattache.file.name,
+#             "model": abattache.model,
+#             "model_id": abattache.model_id,
+#             "type": abattache.type,
+#             "created_at": abattache.created_at,
+#             "updated_at": abattache.updated_at,
+#
+#         }
+#         attaches.append(attache)
+#     return attaches
 
 
 class Job(models.Model):
@@ -99,25 +102,27 @@ class Job(models.Model):
 	updated_by = models.ForeignKey(User, blank=True, null=True,
 								   on_delete=models.SET_NULL,
 								   related_name='updated_by_job')
-	# def save(self, *args, **kwargs):
-	#     if not self.id:
-	#         self.original_file_name = self.compressImage(self.original_file_name)
-	#     super(Job, self).save(*args, **kwargs)
-	#
-	# def compressImage(self,uploadedImage):
-	#     imageTemproary = Image.open(uploadedImage)
-	#     outputIoStream = BytesIO()
-	#     # imageTemproaryResized = imageTemproary.resize( (1020,573) )
-	#     if imageTemproary.mode in ("RGBA", "P"):
-	#         imageTemproary = imageTemproary.convert("RGB")
-	#     imageTemproary.save(outputIoStream , format='JPEG', quality=70)
-	#     outputIoStream.seek(0)
-	#     uploadedImage = InMemoryUploadedFile(outputIoStream,'ImageField', "%s.jpg" % uploadedImage.name.split('.')[0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
-	#     return uploadedImage
-	#
-	# def _delete_file(self):
-	#     if os.path.isfile(self.original_file_name):
-	#         os.remove(self.original_file_name.path)
+
+
+# def save(self, *args, **kwargs):
+#     if not self.id:
+#         self.original_file_name = self.compressImage(self.original_file_name)
+#     super(Job, self).save(*args, **kwargs)
+#
+# def compressImage(self,uploadedImage):
+#     imageTemproary = Image.open(uploadedImage)
+#     outputIoStream = BytesIO()
+#     # imageTemproaryResized = imageTemproary.resize( (1020,573) )
+#     if imageTemproary.mode in ("RGBA", "P"):
+#         imageTemproary = imageTemproary.convert("RGB")
+#     imageTemproary.save(outputIoStream , format='JPEG', quality=70)
+#     outputIoStream.seek(0)
+#     uploadedImage = InMemoryUploadedFile(outputIoStream,'ImageField', "%s.jpg" % uploadedImage.name.split('.')[0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
+#     return uploadedImage
+#
+# def _delete_file(self):
+#     if os.path.isfile(self.original_file_name):
+#         os.remove(self.original_file_name.path)
 
 
 class JobReview(models.Model):
