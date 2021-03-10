@@ -10,7 +10,7 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn";
 
 class LinkedInPage extends Component {
   state = {
-    code: "",
+    code:"AQQumYDk85HEA4_zKcjWvxTvckrNwkzMIcJyHTirq3bmCaweHhHYOpaAGRenLvK9nzeCeZyK5SSlxjQPnQd-KsFcnQr3yeliB7gRIcP5rWCWl3ciAAuqk4YJSjwFVpgX8SevozRB_Cx9o3nzn2jUb6vpGspJjVzZ099XUwwdsieoe_RtIXjldXx0FKmol0g0c2TubvCjCTlFgGT3qr8",
     errorMessage: "",
     access_token: "",
   };
