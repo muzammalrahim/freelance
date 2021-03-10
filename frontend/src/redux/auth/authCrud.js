@@ -25,7 +25,7 @@ export function sign_up(username, email,password,account_type,password_confirm,)
 
   export function GettingLinkedinAccessToken (code)
   {
-    return axios.get(process.env.REACT_APP_LINKEDIN_API_URL+code+Linkedin_redirect_urI)
+    return axios.post(process.env.REACT_APP_LINKEDIN_API_URL+code+Linkedin_redirect_urI)
 
   }
 
@@ -34,6 +34,6 @@ export function sign_up(username, email,password,account_type,password_confirm,)
    
     console.log("taimooooor access_token",access_token)
     console.log("taimooooor code",code)
-    return axios.post(process.env.REACT_APP_API_URL + Linkedin_LOGIN_URL, { access_token, code})
+    return axios.post(process.env.REACT_APP_API_URL + Linkedin_LOGIN_URL, {access_token,code})
 
   }

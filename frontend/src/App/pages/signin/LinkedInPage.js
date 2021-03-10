@@ -93,11 +93,11 @@ class LinkedInPage extends Component {
             </span>
           </button>
         </LinkedIn>
-        {/*
+   
         {!code && <div>No code</div>}
         {code && <div>Code: {code}</div>}
         {code && <div>access token: {access_token}</div>}
-        {errorMessage && <div>{errorMessage}</div>} */}
+        {errorMessage && <div>{errorMessage}</div>} 
       </div>
     );
   }

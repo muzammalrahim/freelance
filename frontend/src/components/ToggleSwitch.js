@@ -4,12 +4,14 @@ import './ToggleSwitch.css'
 
 export default function Switches() {
   const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: true,
+    checkedA: false,
+    checkedB: false,
   });
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
+  console.log("abdullah:",state.checkedA)
+  
   };
 
   return (
@@ -20,7 +22,7 @@ export default function Switches() {
         name="checkedA"
         inputProps={{ 'aria-label': 'secondary checkbox' }}
       /><span>
-     <p> {state.checkedA ? "on" : "off"}</p></span>
+     <p> {state.checkedA ? "ON" : "OFF"}</p></span>
     </div>
   );
 }
