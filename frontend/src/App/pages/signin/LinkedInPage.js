@@ -92,7 +92,6 @@ class LinkedInPage extends Component {
 
   LinkedinLoginHandler = () => {
 
-<<<<<<< HEAD
   };
 
 
@@ -120,10 +119,6 @@ class LinkedInPage extends Component {
 
 
 
-=======
-  };
-
->>>>>>> 3ec4ff0650129051fcaceab6bfd1372dac79f862
 
   requestProfile = () => {
     var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.REACT_APP_CLIENT_ID}&scope=r_liteprofile&state=123456&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
@@ -142,7 +137,6 @@ class LinkedInPage extends Component {
         ", top=" +
         top +
         ", left=" +
-<<<<<<< HEAD
         left,
          
     );
@@ -151,10 +145,6 @@ class LinkedInPage extends Component {
    const code = this.props.match.params.code;
     console.log("aby",code)
 
-=======
-        left
-    );
->>>>>>> 3ec4ff0650129051fcaceab6bfd1372dac79f862
   };
 
 
