@@ -16,6 +16,7 @@ import { useHistory } from 'react-router-dom'
 
 import list from '../../pages/helper/api';
 
+
 // function createData(id, budget, title, description, skills,category) {
 //     return { id, budget, title, description, skills,category };
   
@@ -26,36 +27,72 @@ export default function ContractOne () {
 
     let history = useHistory();
 
-    const [get ,setGet] = useState ();
+    const [get ,setGet] = useState ([0]);
+    const [getjob, setGetjob] = useState([1])
+    // const [rows, setRows] = React.useState([]);
 
     const handleClick =() =>{
         history.push('/jobs')
     }
+
+
+    // function setContract (){
+
+        
+         
+      
+    //     //   response.data.map((row)=>{
+          
+    //     //     job_list.push(createData(row.id, row.budget, row.title, row.description, row.skills,row.category))
+    //     //     console.log("faizan2", job_list[0])
+    //     //   })
+      
+    
+    
+    //   }
+    
+//     function setContract() {
+//         console.log("show response:");
+//         list('api/v1/job/')
+//         .then((response)=>{
+//           console.log("show response:",response.data[1]);
+//           const {...data} = response.data[1];
+//           setGetjob(data);
+//         })
+//         .catch(error => console.error (`Error:${error}`));
+// }
+
     function Contract() {
         console.log("show response:");
-        list('/api/v1/contract/')
+        list('api/v1/contract/')
         .then((response)=>{
-          const {...rest} = response.data[2];
-           setGet(rest);
+          console.log("show response:",response.data[0]);
+          const {...rest} = response.data[0];
+          setGet(rest);
 
-    // function  Contract () {
-    //     list('api/v1/contract/')
-    //     .then((response)=>{
-    //         let job_list = [];
-    //         console.log("response:")
-    //         response.data.map((gets)=>{
-      
-    //             job_list.push(createData(gets.id, gets.budget, gets.title, gets.description, gets.skills,gets.category))
-        
-    //           })
-    //         setGet(createData);
-    //     })
-    // }
-})
+          list('api/v1/job/')
+          .then((response)=>{
+              console.log("faizan")
+        //   let job_list = [];
+          const data = response.data;
+          console.log("faizanfinal :" , response.data[0]);
+          setGetjob(data);
+          })
+          
+          
+        })
+        .catch(error => console.error (`Error:${error}`));
 }
+      
+       
+
     useEffect(() => {
         Contract(); 
+        // setContract();
+        // getJob();
       },[]);
+
+
         return (
             <div className="contract-pg1">
                 {/* top header */}
@@ -83,7 +120,9 @@ export default function ContractOne () {
                                         <div className="content-heading">
                                             <div className="contact1-avatar"><img src={AvtarIcon} alt="no img"/></div>
                                             <h3 className="pl-3">
-                                            {get && get.description ? get.description : ''}
+                                                  {getjob.title  ? getjob.title  : " " }
+                                            
+                                            
                                             </h3>
                                             <Button variant="outlined" color="secondary" onClick={handleClick}>View Job</Button> 
                                         </div>
@@ -96,11 +135,11 @@ export default function ContractOne () {
                                                     <p className="m-icon"><span className="pr-1"><WorkIcon/></span>Monthly</p>
                                                 </li>
                                                 <li className="pr-3">
-                                                    <p className="m-icon"><span className="pr-1"><img src={CalanderIcon} alt="no img"/></span>2 months</p>
+                                                    <p className="m-icon"><span className="pr-1"><img src={CalanderIcon} alt="no img"/></span>{get.start_date}</p>
                                                 </li>
                                                 <li className="pr-3">
                                                     <p className="m-icon"><span className="pr-1"><WatchLaterIcon/></span>20 min ago</p>
-                                                </li>
+                                                </li> 
 
                                             </ul>
                                         </div>

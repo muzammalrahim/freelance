@@ -1,10 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, isValidElement } from 'react'
 import  "./NotificationSetting.css"
 import  "./ProfileSetting.css"
 import Dropdown from "../../../components/Dropdown";
-import ToggleSwitch from '../../../components/ToggleSwitch';
-
-
+import ToggleSwitch  from "../../../components/ToggleSwitch";
 
 export default class NotificationSetting extends Component {
     render() {
@@ -50,13 +48,172 @@ export default class NotificationSetting extends Component {
                   <div className="col-md-6">
                    <Dropdown title="Receive recruiting emails for" />
                   </div>
-                  <ToggleSwitch />
-                
-
                   </div>
+                  <div className="email-toggle row">
+                   <div className="col-md-10">
+                      <p>A job is posted or modified</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>A Proposal is recieved</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>An Interview Is accepted or offer terms are modified</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>An offer is accepted</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>A job posting will expire soon</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>A job posting expired</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>No interview have been initiated</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  </div>
+                                   
+                  </div>
+                  
+                  <div className="ps-heading">
+                  <p>Freelancer and agency proposal</p>
+                  
+                  <div className="email-toggle row">
+                   <div className="col-md-10">
+                      <p>A job is posted or modified</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>A Proposal is recieved</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>An Interview Is accepted or offer terms are modified</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>An offer is accepted</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>A job posting will expire soon</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                 </div> 
+                 </div>
+
+                 <div className="ps-heading">
+                  <p>Contracts</p>
+                  <div className="row">
+                  <div className="col-md-6">
+                   <Dropdown title="Receive contract emails for" />
+                  </div>
+                  </div>
+                  <div className="email-toggle row">
+                   <div className="col-md-10">
+                      <p>A job is posted or modified</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>A Proposal is recieved</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>An Interview Is accepted or offer terms are modified</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>An offer is accepted</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>A job posting will expire soon</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>A job posting expired</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>No interview have been initiated</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>A job is posted or modified</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>A job is posted or modified</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>A job is posted or modified</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  <div className="col-md-10">
+                      <p>A job is posted or modified</p>
+                  </div>
+                  <div className="col-md-2">
+                     <ToggleSwitch />
+                  </div>
+                  </div>
+                                   
+                  </div>
+
                </div>
                
-            </div>
+            
         )
     }
 }
