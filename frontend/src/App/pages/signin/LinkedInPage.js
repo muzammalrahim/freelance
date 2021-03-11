@@ -152,21 +152,25 @@ class LinkedInPage extends Component {
     const { code, errorMessage, access_token } = this.state;
     return (
       <div>
+
        
           <button
             type="button"
             style={{ width: "39.5vw" }}
             className="btn btn-primary btn-block "
             onClick={this.requestProfile}
+
+
           >
             Signup with
             <span className="pl-2">
               Linked <LinkedInIcon />
             </span>
           </button>
-  
+
    
       <button onClick={this.tokenAccess}>  </button>
+
 
         {!code && <div>No code</div>}
         {code && <div>Code: {code}</div>}
