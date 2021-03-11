@@ -3,6 +3,7 @@ import Switch from "react-switch";
 import  "./ToggleSwitch.css"
 
 
+
 class ToggleSwitch extends Component {
   constructor() {
     super();
@@ -28,6 +29,7 @@ class ToggleSwitch extends Component {
      </div>
     );
   }
+
 }
 
 export default ToggleSwitch

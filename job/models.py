@@ -150,6 +150,7 @@ class JobReview(models.Model):
 
 
 class Offer(models.Model):
+
 	title = models.CharField(max_length=100)
 	category = models.ForeignKey(Category, blank=True, null=True,
 								 on_delete=models.SET_NULL)
