@@ -2,7 +2,7 @@ import React, { Component, isValidElement } from 'react'
 import  "./NotificationSetting.css"
 import  "./ProfileSetting.css"
 import Dropdown from "../../../components/Dropdown";
-import ToggleSwitch from "../../../components/ToggleSwitch";
+import ToggleSwitch  from "../../../components/ToggleSwitch";
 
 export default class NotificationSetting extends Component {
     render() {

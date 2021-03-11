@@ -32,4 +32,4 @@ class ToggleSwitch extends Component {
 
 }
 
-export default ToggleSwitch
+export default ToggleSwitch 
