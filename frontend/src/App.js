@@ -106,6 +106,16 @@ return (
 </Route>
 
 
+<<<<<<< HEAD
+        <Authenticated>
+           <Accounttype/>
+         </Authenticated> 
+      
+        </Route>
+      
+        <Route exact path="/jobs"> 
+=======
+>>>>>>> 9697eefd1c47256668af3c5a2d9a411863c45a66
 
 <Route exact path="/login" >
 <Authenticated nonAuthenticated={true}>

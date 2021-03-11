@@ -34,12 +34,15 @@ class SignIn extends Component {
 
   login = () => {
     login(this.state.email, this.state.password)
-      .then(({ data: { token } }) => {
-        localStorage.setItem("token", token);
-
-        if (localStorage.getItem("token")) {
-          this.props.history.push("/");
-        }
+     // .then(({ data: { token } }) => {
+      .then((res) => {
+        console.log("res",res)
+       
+        // localStorage.setItem("token", token);
+// 
+        // if (localStorage.getItem("token")) {
+          // this.props.history.push("/");
+        // }
       })
       .catch(() => {
         // disableLoading();
