@@ -7,7 +7,7 @@ import  "./ProfileSetting.css"
 export default class ContactInfo extends Component {
     render() {
         return (
-            <div className="contact-info">
+            <div className="contact-information">
                 <div className="ci-heading">
                     Account
                     <span>
