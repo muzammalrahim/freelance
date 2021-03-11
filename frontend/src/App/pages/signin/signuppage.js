@@ -4,7 +4,7 @@ import SiSoHero from "../../../components/SiSoHero";
 import "./SignIn.css";
 import AvatarImage from "../../../../src/AvatarImage.png";
 import loginimage from "../../../assets/LoginImage.png";
-import Alert from "../../../App/pages/signin/Alert";
+import Alert from "./Alert";
 import Signinfooter from "./Signinfooter";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import { sign_up } from "../../../redux/auth/authCrud";
