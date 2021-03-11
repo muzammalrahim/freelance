@@ -149,7 +149,7 @@ class Offer(models.Model):
     category = models.ForeignKey(Category, blank=True, null=True,
                                  on_delete=models.SET_NULL)
     description = models.TextField(max_length=500, blank=True)
-    due_date = models.DateTimeField(auto_now_add=True)
+    due_date = models.DateTimeField(auto_now_add=True,null=True, blank=True)
     start_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     budget = models.DecimalField(max_digits=8, decimal_places=2, blank=True)
     job = models.ForeignKey(Job, on_delete=models.CASCADE, null=True)
