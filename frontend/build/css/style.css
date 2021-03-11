@@ -67,3 +67,15 @@ border: 2px solid;
   border: 2px solid;
   padding: 9px 17px;
 }
+
+.ButtonclsActiveButtonclsActive {
+  border: 1px solid #EE9821;
+  box-sizing: border-box;
+  color: #EE9821;
+}
+
+.ButtonclsActivehidden{
+  border: 1px solid #EE9821;
+  box-sizing: border-box;
+  color: #EE9821;
+}
