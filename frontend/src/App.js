@@ -92,7 +92,7 @@ return (
         <Route exact path="/"> 
 
         <Authenticated>
-           <Jobs/>
+           <Accounttype/>
          </Authenticated> 
       
         </Route>
