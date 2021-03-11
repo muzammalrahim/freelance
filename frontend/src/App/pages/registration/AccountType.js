@@ -5,7 +5,6 @@ import AccounttypefooterIcon from "../../../img/AccounttypefooterIcon.png";
 import cardimg1 from "../../../img/cardimg1.png";
 import cardimg2 from "../../../img/cardimg2.png";
 import { ArrowRight } from "react-bootstrap-icons";
-
 import TabbarRegistration from "./TabbarRegistration";
 
 export default class AccountType extends Component {
