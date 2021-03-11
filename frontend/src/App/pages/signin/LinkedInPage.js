@@ -81,17 +81,17 @@ class LinkedInPage extends Component {
           onSuccess={this.handleSuccess}
           redirectUri="http://localhost:3000/linkedin"
         >
-          <button
-            type="button"
-            style={{ width: "39.5vw" }}
-            className="btn btn-primary btn-block "
-            onClick={this.LinkedinLoginHandler}
+          <div className="custom-btn">
+          <button className="btn btn-primary btn-block  custom-btton1" onClick={this.LinkedinLoginHandler}
+         
+          
           >
             Signup with
             <span className="pl-2">
               Linked <LinkedInIcon />
             </span>
           </button>
+          </div>
         </LinkedIn>
         {/*
         {!code && <div>No code</div>}
