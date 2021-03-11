@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component,useState } from 'react'
 import  "./ProfileSetting.css"
 import Dropdown from "../../../components/Dropdown";
 
@@ -8,30 +8,37 @@ export default class ProfileSetting extends Component {
     state = { 
 		
 		changeColorr: 0, 
+        ButtonChange:0,
+	}
+
+    addClass=(e)=>
+	{
+	
+		
 	}
     
-    constructor(){
+     constructor(){
          super();
 
-         this.state = {
-             black: true
+    //      this.state = {
+    //          black: true
+    //      }
+
+    //      this.state = {
+    //         greenn: true
+    //     }
+
+          this.state = {
+             green: true
          }
 
-         this.state = {
-            greenn: true
-        }
+     }
 
-        //  this.state = {
-        //     green: true
-        // }
-
-    }
-
-   changeColor(){
-    this.setState({black: !this.state.black})
+//    changeColor(){
+//     this.setState({black: !this.state.black})
 
 
-}
+//  }
 
 changeColorr(){
     this.setState({greenn: !this.state.greenn})
@@ -43,7 +50,7 @@ changeColorr(){
     
     render() {
 
-        let selection_button= this.state.black ? "neww-button" : "selection-button";
+        // let selection_button= this.state.black ? "neww-button" : "selection-button";
         // let radio_item= this.state.green ? "radio-item" : "radio-item1";
         let card_as= this.state.greenn ? "card-as" : "card-as-green";
 
@@ -60,7 +67,7 @@ changeColorr(){
                             <p>Visibility</p>
                 <div className="row">
                             <div className=" col-md-6">
-                            <div className={selection_button} onClick={this.changeColor.bind(this)}>
+                            <div className={"selection-button" + (this.state.ButtonChange=== 1 ? 'neww-button' : 'selection-button')} onClick={() => this.setState({ButtonChange:1})}>
                             <div class="radio-item">
                               <input  type="radio" id="ritema" name="ritem" value="Private"></input>
                               <label for="ritema"><span>Private</span></label>
