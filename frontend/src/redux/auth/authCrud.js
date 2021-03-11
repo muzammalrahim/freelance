@@ -30,10 +30,18 @@ export function sign_up(username, email,password,account_type,password_confirm,)
   }
 
 
-  export function Linkedinlogin(access_token,code) {
+  export function Linkedinlogin(data) {
    
-    console.log("taimooooor access_token",access_token)
-    console.log("taimooooor code",code)
-    return axios.post(process.env.REACT_APP_API_URL + Linkedin_LOGIN_URL, {access_token,code})
+    let config ={
+
+      headers : {
+                    'Content-Type': 'application/json',
+                    'Content-Length': data.length
+                }
+            }
+
+    console.log("api:",process.env.REACT_APP_API_URL + Linkedin_LOGIN_URL)
+    console.log("length",data.length)
+    return axios.post(process.env.REACT_APP_API_URL + Linkedin_LOGIN_URL,data,config)
 
   }
