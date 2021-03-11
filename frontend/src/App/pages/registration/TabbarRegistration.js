@@ -40,6 +40,9 @@ export default class TabbarRegistration extends Component {
 componentDidMount ()
 {
    
+    
+
+
   var tabindex2 = 1
 
   if(localStorage.getItem("tabindex"))
