@@ -17,7 +17,7 @@ class LinkedInPage extends Component {
  this.winUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.REACT_APP_CLIENT_ID}&scope=r_liteprofile&state=123456&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
 
   this.state = {
-    code:"",
+    authorizationCode:"",
     errorMessage: "",
     access_token: "",
 
@@ -30,23 +30,14 @@ class LinkedInPage extends Component {
   this.linkedinRequest = this.linkedinRequest.bind(this);
   this.getParameterByName = this.getParameterByName.bind(this);
    }
-  handleSuccess = (data) => {
-       console.log(' handleSuccess ', data );
-    this.setState({
-      code: data.code,
-      errorMessage: "",
-    });
 
-  
 
-    if (this.state.code) {
 
-      console.log("if  this.state.code")
+  handleSuccess = () => {
+      
+    if (this.state.authorizationCode) {
 
-       
-  
-
-      GettingLinkedinAccessToken(this.state.code)
+      GettingLinkedinAccessToken(this.state.authorizationCode)
         .then((response) => {
       
             console.log("response to access token :",response.data.access_token)
@@ -54,13 +45,13 @@ class LinkedInPage extends Component {
           this.setState({ access_token: response.data.access_token });
 
            console.log("a1 access token:",this.state.access_token)
-           console.log("a1 access code:",this.state.code)
+           console.log("a1 access code:",this.state.authorizationCode)
 
           if (this.state.access_token) {
 
             const data = JSON.stringify({
               access_token:this.state.access_token, 
-              code:this.state.code
+              code:this.state.authorizationCode
             })
 
 
@@ -126,14 +117,14 @@ class LinkedInPage extends Component {
         /* This is used to stoken the authorization code */
         const linkedInAuthCode = authCode;
 
-        console.log("bebe",linkedInAuthCode)
-
-
-      
-
+        this.setState({authorizationCode:linkedInAuthCode})
+        
         /* LinkedIn Base url */
-        const ROOT_URL = `https://www.linkedin.com/oauth/v2/accessToken`;
-
+        
+          if(this.state.authorizationCode)
+          {
+            this.handleSuccess()
+          }
         /* Sending Request object to server js file where the actual request is going to get fire for access token */
         
 
