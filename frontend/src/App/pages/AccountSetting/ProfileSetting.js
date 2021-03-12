@@ -1,60 +1,19 @@
-import React, { Component,useState } from 'react'
+import React, { Component } from 'react'
 import  "./ProfileSetting.css"
 import Dropdown from "../../../components/Dropdown";
 
 
 export default class ProfileSetting extends Component {
 
+
     state = { 
 		
-		changeColorr: 0, 
-        ButtonChange:0,
+		RadioclassActivee: 0, 
+        ButtonColor: 0,
+        RadioItem:0,
 	}
 
-    addClass=(e)=>
-	{
-	
-		
-	}
-    
-     constructor(){
-         super();
-
-    //      this.state = {
-    //          black: true
-    //      }
-
-    //      this.state = {
-    //         greenn: true
-    //     }
-
-          this.state = {
-             green: true
-         }
-
-     }
-
-//    changeColor(){
-//     this.setState({black: !this.state.black})
-
-
-//  }
-
-changeColorr(){
-    this.setState({greenn: !this.state.greenn})
-}
-
-// changeColorr(){
-//     this.setState({green: !this.state.green})
-// }
-    
     render() {
-
-        // let selection_button= this.state.black ? "neww-button" : "selection-button";
-        // let radio_item= this.state.green ? "radio-item" : "radio-item1";
-        let card_as= this.state.greenn ? "card-as" : "card-as-green";
-
-
 
         return (
             <div className="profile-setting">
@@ -67,17 +26,17 @@ changeColorr(){
                             <p>Visibility</p>
                 <div className="row">
                             <div className=" col-md-6">
-                            <div className={"selection-button" + (this.state.ButtonChange=== 1 ? 'neww-button' : 'selection-button')} onClick={() => this.setState({ButtonChange:1})}>
-                            <div class="radio-item">
-                              <input  type="radio" id="ritema" name="ritem" value="Private"></input>
+                            <div className={"selection-button "+ (this.state.ButtonColor=== 1 ? 'neww-button': 'hidden')}  onClick={() => this.setState({ ButtonColor: 1,RadioItem: 1 })}> 
+                            <div className={"radio-item "+ (this.state.RadioItem=== 1 ? 'radio-item1': 'hidden')}  onClick={() => this.setState({ RadioItem: 1 })}> 
+                              <input  type="radio" id="ritema" name="ritem" value="Private" checked={this.state.ButtonColor=== 1}></input>
                               <label for="ritema"><span>Private</span></label>
                             </div>
                             </div>
                             </div>
                             <div className=" col-md-6">
-                            <div className="selection-button">
-                            <div class="radio-item">
-                              <input type="radio" id="ritemb" name="ritem" value="Public"></input>
+                            <div className={"selection-button "+ (this.state.ButtonColor=== 2 ? 'neww-button': 'hidden')}  onClick={() => this.setState({ ButtonColor: 2,RadioItem: 2 })}> 
+                            <div className={"radio-item "+ (this.state.RadioItem=== 2 ? 'radio-item1': 'hidden')}  onClick={() => this.setState({ RadioItem: 2 })}> 
+                              <input type="radio" id="ritemb" name="ritem" value="Public" checked={this.state.ButtonColor=== 2}></input>
                               <label for="ritemb"><span>Public</span></label>
                             </div>
                             </div>     
@@ -95,19 +54,20 @@ changeColorr(){
                                 <p>Experience Level</p>
                                 <div className="row">
                                     <div className="col-md-4">
-                                    <div className={card_as} onClick={this.changeColorr.bind(this)}>
+                   
+                        <div className={"card-as "+ (this.state.RadioclassActivee=== 1 ? 'card-as-green': 'hidden')}  onClick={() => this.setState({ RadioclassActivee: 1 })}>         
                                         <t>Entry Level</t>
                                         <p>I am relatively new to this field.</p>
                                         </div>
                                     </div>
                                     <div className="col-md-4">
-                                    <div className={card_as} onClick={this.changeColorr.bind(this)}>
+                                    <div className={"card-as "+ (this.state.RadioclassActivee=== 2 ? 'card-as-green': 'hidden')}  onClick={() => this.setState({ RadioclassActivee: 2 })}>         
                                         <t>Intermediate</t>
                                         <p>I have substantial experience in this field.</p>
                                         </div>
                                     </div>
                                     <div className="col-md-4">
-                                    <div className={card_as} onClick={this.changeColorr.bind(this)}>
+                                    <div className={"card-as "+ (this.state.RadioclassActivee=== 3 ? 'card-as-green': 'hidden')}  onClick={() => this.setState({ RadioclassActivee: 3 })}>         
                                         <t>Expert</t>
                                         <p>I have comprehensive and deep experience in this field.</p>
                                         </div>
@@ -121,14 +81,8 @@ changeColorr(){
                                   <button>save changes</button>
                             </div>
                         </div>
-                        
-                        
-                        
                     </div>
                </div>
         )
     }
 }
-
-
-{/* <div className={radio_item} onClick={this.changeColorr.bind(this)}>  */}

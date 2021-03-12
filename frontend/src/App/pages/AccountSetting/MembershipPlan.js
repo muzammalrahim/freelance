@@ -56,9 +56,9 @@ export default function SimpleTabs() {
                 </span>
         </div>
         <div className="mp-tabs">
-              <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-                <Tab label="Current Plan" {...a11yProps(0)} />
-                <Tab label="Basic" {...a11yProps(1)} />
+              <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" indicatorColor='#FFFFF' >
+                <Tab label="Current Plan" {...a11yProps(0)} disableRipple='true' />
+                <Tab label="Basic" {...a11yProps(1)} disableRipple='true' />
               </Tabs>
         <TabPanel className="current-plan" value={value} index={0}>
         <div className="basic-bids">
