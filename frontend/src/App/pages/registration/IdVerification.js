@@ -55,7 +55,7 @@ function IdVerification() {
                                 
                                     <div >
                                         <div className="">
-                                        <GetImage idVerf_DL_imgUpload={ drimgUpload} value="idVerf_DL_imgUpload" />
+                                        <GetImage idVerf_DL_imgUpload={drimgUpload} value="idVerf_DL_imgUpload" />
                                         </div>
                                    </div>
                                 </div>

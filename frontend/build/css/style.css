@@ -62,8 +62,8 @@ border: 2px solid;
 } 
 
 .ButtonclsActive {
-  background: #ffffff;
-  color: #EE9821;
-  border: 2px solid;
-  padding: 9px 17px;
+  background: #ffffff !important;
+  color: #EE9821 !important;
+  border: 2px solid !important;
+  padding: 9px 17px !important;
 }

@@ -1,7 +1,6 @@
-.contact-info{
+.contact-information{
 background: white;
-min-height: 498px;
-margin-bottom:63px;
+margin-bottom: 63px;
 }
 
 .ci-heading{
@@ -50,6 +49,6 @@ opacity: 0.8;
 padding-left: 29px;
 }
 
-.contact-info .my-profile-links{
+.contact-information .my-profile-links{
 padding-top: 49px;
 }
