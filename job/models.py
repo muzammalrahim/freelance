@@ -240,6 +240,7 @@ class Application(models.Model):
 
 class Contract(models.Model):
 	freelancer = models.ForeignKey(FreelancerProfile, on_delete=models.CASCADE)
+	description = models.TextField(max_length=500)
 	job = models.ForeignKey(Job, on_delete=models.SET_NULL, blank=True,
 							null=True)
 	client = models.ForeignKey(ClientProfile, on_delete=models.SET_NULL,
