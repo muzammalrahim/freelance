@@ -1,71 +1,54 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
 
-
 import {
   Linkedinlogin,
   GettingLinkedinAccessToken,
 } from "../../../redux/auth/authCrud";
-import { LinkedIn } from "react-linkedin-login-oauth2";
-import _ from 'lodash';
+import _ from "lodash";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 
 class LinkedInPage extends Component {
-   constructor(props) {
+  constructor(props) {
     super(props);
 
- this.winUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.REACT_APP_CLIENT_ID}&scope=r_liteprofile&state=123456&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
+    this.winUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.REACT_APP_CLIENT_ID}&scope=r_liteprofile&state=123456&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`;
 
-  this.state = {
-    authorizationCode:"",
-    errorMessage: "",
-    access_token: "",
+    this.state = {
+      authorizationCode: "",
+      errorMessage: "",
+      access_token: "",
 
-    isAuthorized: false,
+      isAuthorized: false,
       firstName: null,
       lastName: null,
       profileURL: null,
       pictureURL: null,
-  };
-  this.linkedinRequest = this.linkedinRequest.bind(this);
-  this.getParameterByName = this.getParameterByName.bind(this);
-   }
-
-
+    };
+    this.linkedinRequest = this.linkedinRequest.bind(this);
+    this.getParameterByName = this.getParameterByName.bind(this);
+  }
 
   handleSuccess = () => {
-      
     if (this.state.authorizationCode) {
-
       GettingLinkedinAccessToken(this.state.authorizationCode)
         .then((response) => {
-      
-            console.log("response to access token :",response.data.access_token)
-              
           this.setState({ access_token: response.data.access_token });
 
-           console.log("a1 access token:",this.state.access_token)
-           console.log("a1 access code:",this.state.authorizationCode)
-
           if (this.state.access_token) {
-
             const data = JSON.stringify({
-              access_token:this.state.access_token, 
-              code:this.state.authorizationCode
-            })
-
+              access_token: this.state.access_token,
+              code: this.state.authorizationCode,
+            });
 
             Linkedinlogin(data)
-              .then((response) => {
-                console.log("linkedin login response", response);
+              .then(({ data: { token } }) => {
+                localStorage.setItem("token", token);
+
+                if (localStorage.getItem("token")) {
+                  this.props.history.push("/");
+                }
               })
-              // .then(({ data: { token } }) => {
-              // localStorage.setItem("token", token);
-              //
-              // if (localStorage.getItem("token")) {
-              // this.props.history.push("/");
-              // }
-              // })
               .catch(() => {
                 // disableLoading();
               });
@@ -78,23 +61,20 @@ class LinkedInPage extends Component {
     }
   };
 
-
-   getParameterByName(name, search) {
-    const match = RegExp('[?&]' + name + '=([^&]*)').exec(search);
-    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+  getParameterByName(name, search) {
+    const match = RegExp("[?&]" + name + "=([^&]*)").exec(search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, " "));
   }
 
   linkedinRequest() {
-
     /* Creates a new Window */
-    const newWindow = window.open(this.winUrl, '_blank', true, 500, 600);
+    const newWindow = window.open(this.winUrl, "_blank", true, 500, 600);
 
     if (window.focus) {
       newWindow.focus();
     }
 
     const intr = setInterval(() => {
-
       // if the window gets closed for any reason then clear the interval to prevent this from running for ever
       if (newWindow.closed) {
         clearInterval(intr);
@@ -111,22 +91,20 @@ class LinkedInPage extends Component {
 
       if (search) {
         // grab the token and error from the location of the popup window
-        const authCode = this.getParameterByName('code', search);
-        const error = this.getParameterByName('error', search);
+        const authCode = this.getParameterByName("code", search);
+        const error = this.getParameterByName("error", search);
 
         /* This is used to stoken the authorization code */
         const linkedInAuthCode = authCode;
 
-        this.setState({authorizationCode:linkedInAuthCode})
-        
+        this.setState({ authorizationCode: linkedInAuthCode });
+
         /* LinkedIn Base url */
-        
-          if(this.state.authorizationCode)
-          {
-            this.handleSuccess()
-          }
+
+        if (this.state.authorizationCode) {
+          this.handleSuccess();
+        }
         /* Sending Request object to server js file where the actual request is going to get fire for access token */
-        
 
         /* This will close the window popup automatically once all the above requests are completed */
         newWindow.close();
@@ -134,50 +112,25 @@ class LinkedInPage extends Component {
     }, 100);
   }
 
-
   render() {
     const { code, errorMessage, access_token } = this.state;
     return (
       <div>
+        <button
+          type="button"
+          className="btn btn-primary btn-block "
+          onClick={this.linkedinRequest}
+        >
+          Signup with
+          <span className="pl-2">
+            Linked <LinkedInIcon />
+          </span>
+        </button>
 
-       
-          {/* <button
-            type="button"
-            style={{ width: "39.5vw" }}
-            className="btn btn-primary btn-block "
-            onClick={this.requestProfile}
-
-
-          >
-            Signup with
-            <span className="pl-2">
-              Linked <LinkedInIcon />
-            </span>
-          </button> */}
-          <button
-            type="button"
-            style={{ width: "39.5vw" }}
-            className="btn btn-primary btn-block "
-            onClick={this.linkedinRequest}
-
-
-          >
-            Signup with
-            <span className="pl-2">
-              Linked <LinkedInIcon />
-            </span>
-          </button>
-
-   
-
-
-        {!code && <div>No code</div>}
-        {code && <div>Code: {code}</div>}
-        {code && <div>access token: {access_token}</div>}
-        {errorMessage && <div>{errorMessage}</div>} 
+        {errorMessage && <div>{errorMessage}</div>}
       </div>
     );
   }
 }
 
-export default  withRouter(LinkedInPage);
+export default withRouter(LinkedInPage);

@@ -6,7 +6,6 @@ import AvatarImage from "../../../../src/AvatarImage.png";
 import loginimage from "../../../assets/LoginImage.png";
 import Alert from "./Alert";
 import Signinfooter from "./Signinfooter";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import { sign_up } from "../../../redux/auth/authCrud";
 import { withRouter } from "react-router-dom";
 import LinkedInPage from "./LinkedInPage";
@@ -49,6 +48,8 @@ class SignupPage extends Component {
     let { username, email, password, passwordConfirm } = this.state;
     return (
       <div className="SignIn-flex-container">
+      
+
         <div className="si-container">
           <Navbar text="Already A Member?" value="LogIn" className="pl-5" />
         </div>
@@ -150,6 +151,7 @@ class SignupPage extends Component {
             </div>
           </div>
         </div>
+        
         <Alert />
         <Signinfooter />
       </div>
