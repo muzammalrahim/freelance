@@ -30,7 +30,7 @@ class Dropdown extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="dropdown-comp">
         <p className="dropheader">{this.props.title}</p>
            <select className="Select" value={this.state.provide_service} onChange={this.handleChange} >
            

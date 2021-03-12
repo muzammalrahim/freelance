@@ -4,7 +4,7 @@ export const LOGIN_URL = "api/v1/accounts/login/";
 
 export const SIGNUP_URL = "api/v1/accounts/register/";
 
-export const  Linkedin_redirect_urI  = "&redirect_uri=http://localhost:3000/linkedin"
+export const  Linkedin_redirect_urI  = "&redirect_uri=http://localhost:3000"
 
 export const  Linkedin_LOGIN_URL  = "api/v1/rest-auth/linkedin/"
 

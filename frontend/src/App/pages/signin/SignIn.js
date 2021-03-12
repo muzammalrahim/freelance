@@ -9,7 +9,7 @@ import LOCKER from "../../../assets/LOCKER.png";
 import Alert from "../../../App/pages/signin/Alert";
 import Signinfooter from "./Signinfooter";
 
-import { login, Linkedinlogin } from "../../../redux/auth/authCrud";
+import { login } from "../../../redux/auth/authCrud";
 import { withRouter } from "react-router-dom";
 
 import LinkedInPage from "./LinkedInPage";
@@ -35,20 +35,18 @@ class SignIn extends Component {
   login = () => {
     login(this.state.email, this.state.password)
       .then(({ data: { token } }) => {
-      
         localStorage.setItem("token", token);
 
         if (localStorage.getItem("token")) {
           this.props.history.push("/");
         }
-       })
+      })
       .catch(() => {
         // disableLoading();
       });
   };
 
   render() {
-    const { code, errorMessage } = this.state;
     return (
       <div className="SignUp-flex-container">
         <div className="si-container">
@@ -87,10 +85,6 @@ class SignIn extends Component {
                       />
                     </div>
                     <div className="s-in-form-group">
-                      {/* <div className="s-in-flex-eye">
-                    <VisibilityOffIcon />
-                    </div> */}
-
                       <label form="pwd">Password</label>
                       <input
                         type="password"
@@ -117,7 +111,11 @@ class SignIn extends Component {
                     </label>
                   </div>
                   <div className="pt-4">
-                    <button type="button" className="btn btn-default btn-block text-white" onClick={this.login}>
+                    <button
+                      type="button"
+                      className="btn btn-default btn-block text-white"
+                      onClick={this.login}
+                    >
                       Log In
                     </button>
                   </div>
@@ -125,7 +123,9 @@ class SignIn extends Component {
                     <h6 className="text-center pt-2">or</h6>
                   </div>
                   <div className="pt-1 pb-4">
-                    <div className="lin-btn"><LinkedInPage/></div>
+                    <div className="lin-btn">
+                      <LinkedInPage />
+                    </div>
                   </div>
                 </div>
               </div>
