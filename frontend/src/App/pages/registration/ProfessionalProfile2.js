@@ -318,20 +318,20 @@ return (
          </div>
         </div>
       </div>
+
+      {console.log("redux tabindex",this.props.tabindex)}
      </div>
       )
     }
   }
 
-  const mapStateToProps = (state)=>
-{
+  const mapStateToProps = (state) => {
+    return {
+      tabindex: state.RegistrationTabBarReducer,
+    };
+   
+  };
   
-   return{
-       R_serviceProvider:state.dropdownReducer
-   }
-}
-
-
 export default connect(mapStateToProps) (ProfessionalProfile2)
 
 

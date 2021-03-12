@@ -77,7 +77,8 @@ class ProfileViewSet(viewsets.ModelViewSet):
 		serializer = self.get_serializer(instance)
 		data = serializer.data
 		data['current_time'] = datetime.utcnow() + timedelta(hours=4)
-		data['toto_proposal_amount'] = instance.proposal_amount - (decimal.Decimal(15 / 100) * instance.proposal_amount)
+		if instance.proposal_amount is not None:
+			data['total_proposal_amount'] = instance.proposal_amount - (decimal.Decimal(10/100)*instance.proposal_amount)
 		return Response(data)
 
 
