@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState ,useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Avatar from '@material-ui/core/Avatar'
 import RequestPaymentModal from "./RequestPaymentModal"
-
+import list from '../../pages/helper/api';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -29,11 +29,25 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ControlledAccordions() {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState('panel1');
+  const [expanded, setExpanded] = useState('panel1');
+  const [type, setType] = useState()
+
+  function typeProject() {
+    list('api/v1/contract/')
+    .then((response) => {
+      const data = response.data[0];
+      console.log("response:", response.data[0]);
+      setType(data);
+    })
+    
+  }
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
+  useEffect(() => {
+    typeProject();
+  }, []);
 
   return (
     <div className="contract-one-acc">
@@ -63,7 +77,11 @@ export default function ControlledAccordions() {
               </div>
               <div className="col-md-2 align-self-center pr-0">
                 <div>
-                  <div className="price-tag">100SAR</div>
+                  <div className="price-tag">
+                    
+                    {type?.job?.budget}
+                   
+                    </div>
                 </div>
               </div>
             </div> 
@@ -80,7 +98,7 @@ export default function ControlledAccordions() {
             </div>
             <div className="col-md-7">
               <div>
-                <h5>Monthly</h5>
+                <h5>{type?.job?.pay_type}</h5>
               </div>
             </div>
             <div className="col-md-2 pr-0">
@@ -101,7 +119,7 @@ export default function ControlledAccordions() {
             </div>
             <div className="col-md-4">
               <div>
-                <h5>Mar 22 - Present</h5>
+                <h5>{type?.start_date} </h5>
               </div>
             </div>
             <div className="col-md-5 pr-0">
@@ -138,7 +156,7 @@ export default function ControlledAccordions() {
               </div>
               <div className="col-md-2 align-self-center pr-0">
                 <div>
-                  <div className="price-tag">100SAR</div>
+                  <div className="price-tag">  {type?.job?.budget}</div>
                 </div>
               </div>
             </div> 
@@ -154,7 +172,7 @@ export default function ControlledAccordions() {
             </div>
             <div className="col-md-7">
               <div>
-                <h5>Monthly</h5>
+                <h5>{type?.job?.pay_type}</h5>
               </div>
             </div>
             <div className="col-md-2 pr-0">
@@ -175,7 +193,7 @@ export default function ControlledAccordions() {
             </div>
             <div className="col-md-4">
               <div>
-                <h5>Mar 22 - Present</h5>
+                <h5>{type?.start_date} </h5>
               </div>
             </div>
             {/* <div className="col-md-5 pr-0">
@@ -212,7 +230,7 @@ export default function ControlledAccordions() {
               </div>
               <div className="col-md-2 align-self-center pr-0">
                 <div>
-                  <div className="price-tag">100SAR</div>
+                  <div className="price-tag">  {type?.job?.budget}</div>
                 </div>
               </div>
             </div> 
@@ -228,7 +246,7 @@ export default function ControlledAccordions() {
             </div>
             <div className="col-md-7">
               <div>
-                <h5>Monthly</h5>
+                <h5>  {type?.job?.pay_type}</h5>
               </div>
             </div>
             <div className="col-md-2 pr-0">
@@ -249,7 +267,7 @@ export default function ControlledAccordions() {
             </div>
             <div className="col-md-4">
               <div>
-                <h5>Mar 22 - Present</h5>
+                <h5>{type?.start_date}</h5>
               </div>
             </div>
             {/* <div className="col-md-5 pr-0">

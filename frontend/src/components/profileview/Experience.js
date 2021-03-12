@@ -34,7 +34,7 @@ function Experience() {
     const { City, Country, Month, Year, Company, role,descripion} = user;
   const onInputChange =e=>{
    
-    setUser({...user,[e.target.name] : e.target.value})
+    setUser({user,[e.target.name] : e.target.value})
 
     console.log("user data",user)
   };
