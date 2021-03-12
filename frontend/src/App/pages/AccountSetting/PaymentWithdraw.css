@@ -1,14 +1,6 @@
-/*.avai-amount,.radio-button.checked{
-	background: #DDF2F0;
+.RadioActiveborder{
+padding: 10px;
+background: rgba(29, 167, 153, 0.1);
+box-sizing: border-box;
+border-radius: 4px;
 }
-.amount, .radio-button i.active{
-	color: #1DA799;
-}*/
-/*p,h3,label,span{
-	color: #6B6B6A;
-}*/
-
-.RadioActiveborder{padding: 10px;
-	background: rgba(29, 167, 153, 0.1);
-	box-sizing: border-box;
-	border-radius: 4px;}

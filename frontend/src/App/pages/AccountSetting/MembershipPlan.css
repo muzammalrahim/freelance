@@ -125,10 +125,6 @@ opacity: 0.8;
     padding-top: 40px;
 }
 
-.membership-plan .PrivateTabIndicator-colorSecondary-3 {
-    background-color: white;
-}
-
 .membership-plan .MuiTab-wrapper{
     align-items: unset; 
     flex-direction: unset;
@@ -147,3 +143,4 @@ min-height: unset;
 min-width: 209px;
 text-transform: unset;
 }
+
