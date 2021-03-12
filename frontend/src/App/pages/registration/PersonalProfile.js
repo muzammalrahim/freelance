@@ -2,7 +2,7 @@ import React from "react";
 import "./PersonalProfile.css";
 import img from "../../../img/personalProfile.png";
 import img2 from "../../../img/personalProfile_F.png";
-
+import {connect} from "react-redux"
 class PersonalProfile extends React.Component {
   constructor(props) {
     super(props);
@@ -11,28 +11,30 @@ class PersonalProfile extends React.Component {
       first_name: "",
       mobile_number: "",
       city: "",
-      username: "",
+  
       last_name: "",
       address: "",
       country: "",
-      email: "",
+     
     };
 
     this.per_profileValidate = {
       first_name: false,
       mobile_number: false,
       last_name: false,
-      username: false,
+     
       address: false,
       country: false,
       city: false,
-      email: false,
+     
     };
 
     this.state = {
       per_profile: this.Per_Profile,
       per_profileValidate: this.per_profileValidate,
       personal_profile_isSubmit_value: false,
+
+    
     };
   }
 
@@ -52,6 +54,8 @@ class PersonalProfile extends React.Component {
       var storedData = JSON.parse(localStorage.getItem("personal_profile"));
       this.setState({ per_profile: storedData });
     }
+
+    console.log("")
   }
 
   submitHandler(ans) {
@@ -96,6 +100,7 @@ class PersonalProfile extends React.Component {
 
     this.setState({ per_profile, per_profileValidate });
 
+
     var ans = Boolean(this.submitHandler(isSubmit) ? true : false);
 
     this.setState({
@@ -103,11 +108,18 @@ class PersonalProfile extends React.Component {
       per_profileValidate,
       personal_profile_isSubmit_value,
     });
+
+    this.props.onStateChange(this.state)
+
+
   }
+
+
+  
 
   render() {
     let { per_profile } = this.state;
-
+  console.log("active ",this.state.active)
     return (
       <div className="PersonalProfile">
         <div className="personalProfile_bg Pf-rightbox  p-5">
@@ -178,21 +190,7 @@ class PersonalProfile extends React.Component {
                       />
                     </div>
 
-                    <div class="form-group">
-                      <label className="pp_inputHeading" for="usr">
-                        Username
-                      </label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        Placeholder=" Enter username"
-                        id="username"
-                        value={per_profile.username}
-                        onChange={(e) => {
-                          this.changeHandler(e);
-                        }}
-                      />
-                    </div>
+                   
                   </div>
                 </div>
                 <div className=" col-sm-6 col-md-6">
@@ -243,21 +241,7 @@ class PersonalProfile extends React.Component {
                       />
                     </div>
 
-                    <div class="form-group">
-                      <label className="pp_inputHeading" for="usr">
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        class="form-control"
-                        Placeholder="Enter Email"
-                        id="email"
-                        value={per_profile.email}
-                        onChange={(e) => {
-                          this.changeHandler(e);
-                        }}
-                      />
-                    </div>
+                  
                   </div>
                 </div>
               </div>
@@ -265,12 +249,22 @@ class PersonalProfile extends React.Component {
             {/* end of inner container*/}
           </div>
         </div>
+        {console.log(" personal profife redux ",this.props.tabindex)}
       </div>
     );
   }
 }
 
-export default PersonalProfile;
+
+const mapStateToProps = (state) => {
+  return {
+    tabindex: state.RegistrationTabBarReducer,
+  };
+ 
+};
+
+export default connect(mapStateToProps)(PersonalProfile);
+
 
 export function PersonalProfileTabFooter() {
   return (
