@@ -4,6 +4,8 @@ from acount import models
 from rest_framework import serializers
 from django.contrib.auth.models import Group
 import base64, six, uuid
+
+from acount.models import User
 from job.models import Attachment
 from django.core.files.base import ContentFile
 from rest_auth.models import TokenModel
@@ -109,6 +111,8 @@ class ProfileSerializers(serializers.ModelSerializer):
 		return super().update(instance, validated_data)
 
 	def create(self, validated_data):
+		# if User.account_type.exists():
+		# 	validated_data['account_type'] = self.context['request'].User.account_type
 		validated_data['created_by'] = self.context['request'].user
 		return super().create(validated_data)
 
@@ -142,7 +146,10 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
 	certification = AttachmentSerializer(write_only=True)
 	user = UserSerializer()
 
+	# user_type = UserSerializer
+
 	def create(self, validated_data):
+
 		skills = validated_data.pop('skills')
 		category = validated_data.pop('category')
 		user = validated_data.pop('user')
@@ -152,7 +159,6 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
 		id_card = validated_data.pop('id_card')
 		certification = validated_data.pop('certification')
 
-		# user = models.User.objects.create(**user)
 		user = models.User.objects.get(id=user)
 		Attachment.objects.create(**license)
 		Attachment.objects.create(**id_card)
@@ -218,7 +224,8 @@ class CustomRegisterUserSerializer(DefaultRegisterUserSerializer):
 		('work', 'Work'),
 		('hire', 'Hire'),
 	)
-	account_type = serializers.ChoiceField(choices=ACCOUNT_TYPE_CHOICES)
+	account_type = serializers.ChoiceField(choices=ACCOUNT_TYPE_CHOICES, required=False)
+
 	"""
 	Default serializer used for user registration. It will use these:
 	* User fields
@@ -237,14 +244,16 @@ class CustomRegisterUserSerializer(DefaultRegisterUserSerializer):
 		user = super().create(validated_data)
 		# Profile(user=user).save()
 
-		if 'account_type' in validated_data:
-			if account_type == 'work':
-				models.FreelancerProfile(user=user).save()
-				user.groups.add(Group.objects.get(name=settings.FREELANCER_USER))
-			elif account_type == 'hire':
-				models.ClientProfile(user=user).save()
-				user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
-			else:
-				user.groups.add(Group.objects.get(name=settings.ADMIN_USER))
+		# if 'account_type' in validated_data:
+		# 	print("dddddddddddddddd")
+
+		if account_type == 'work':
+			models.FreelancerProfile(user=user).save()
+			user.groups.add(Group.objects.get(name=settings.FREELANCER_USER))
+		elif account_type == 'hire':
+			models.ClientProfile(user=user).save()
+			user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
+		else:
+			user.groups.add(Group.objects.get(name=settings.ADMIN_USER))
 
 		return user
