@@ -5,13 +5,17 @@ from rest_framework import serializers
 from django.contrib.auth.models import Group
 import base64, six, uuid
 
-from acount.models import User
 from job.models import Attachment
 from django.core.files.base import ContentFile
 from rest_auth.models import TokenModel
 
 
 class Base64ImageField(serializers.ImageField):
+
+	def __init__(self, *args, **kwargs):
+		self.represent_in_base64 = kwargs.pop('represent_in_base64', False)
+		super(Base64ImageField, self).__init__(*args, **kwargs)
+
 	def to_internal_value(self, data):
 
 		if isinstance(data, six.string_types):
@@ -20,7 +24,6 @@ class Base64ImageField(serializers.ImageField):
 
 			try:
 				decoded_file = base64.b64decode(data)
-			# print("decoded_file", decoded_file)
 			except TypeError:
 				self.fail('invalid_image')
 
@@ -32,14 +35,6 @@ class Base64ImageField(serializers.ImageField):
 				file_name = str(uuid.uuid4())[:12]  # 12 characters are more than enough.
 				file_extension = self.get_file_extension(file_name, decoded_file)
 				complete_file_name = "%s.%s" % (file_name, file_extension,)
-
-			# file_name = str(uuid.uuid4())[:12]  # 12 characters are more than enough.
-			# print("file_name file_name", file_name)
-			# # Get the file name extension:
-			# file_extension = self.get_file_extension(file_name, decoded_file)
-			# print("file_extension file_extension", file_extension)
-
-			complete_file_name = "%s.%s" % (file_name, file_extension,)
 			data = ContentFile(decoded_file, name=complete_file_name)
 
 		return super(Base64ImageField, self).to_internal_value(data)
@@ -61,6 +56,17 @@ class Base64ImageField(serializers.ImageField):
 			data = ContentFile(base64.b64decode(imgstr), name='temp.' + ext)
 
 		return super(Base64ImageField, self).from_native(data)
+
+	def to_representation(self, file):
+		if self.represent_in_base64:
+			try:
+				with open(file.path, 'rb') as f:
+					return base64.b64encode(f.read()).decode()
+			except Exception as e:
+				print
+				'Fails to decode file: %s (%s)' % (e.message, type(e))
+		else:
+			return super(Base64ImageField, self).to_representation(file)
 
 
 class CitySerializers(serializers.ModelSerializer):
@@ -111,8 +117,14 @@ class ProfileSerializers(serializers.ModelSerializer):
 		return super().update(instance, validated_data)
 
 	def create(self, validated_data):
-		# if User.account_type.exists():
-		# 	validated_data['account_type'] = self.context['request'].User.account_type
+		# if 'account_type' == None:
+		# # 	validated_data['account_type'] = self.context['request'].User.account_type
+		# 	account_type = validated_data.pop('account_type')
+		# 	user =self.context['request'].User.account_type
+		# 	if account_type == 'work':
+		# 		user.groups.add(Group.objects.get(name=settings.FREELANCER_USER))
+		# 	elif account_type == "hire":
+		# 		user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
 		validated_data['created_by'] = self.context['request'].user
 		return super().create(validated_data)
 
