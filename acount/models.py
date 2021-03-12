@@ -8,7 +8,6 @@ from django.utils import timezone
 
 class User(AbstractUser):
 	email = models.EmailField(unique=True)
-	time_zone = models.DateTimeField(default=timezone.now, blank=True)
 
 
 class City(models.Model):
