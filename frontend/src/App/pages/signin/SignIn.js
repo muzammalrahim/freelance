@@ -6,7 +6,7 @@ import SiSoHero from "../../../components/SiSoHero";
 import loginimage from "../../../assets/LoginImage.png";
 import AvatarImage from "../../../../src/AvatarImage.png";
 import LOCKER from "../../../assets/LOCKER.png";
-import Alert from "../../../App/pages/signin/Alert";
+import AlertCompo from "./Alert";
 import Signinfooter from "./Signinfooter";
 
 import { login } from "../../../redux/auth/authCrud";
@@ -132,7 +132,7 @@ class SignIn extends Component {
             </div>
           </div>
         </div>
-        <Alert />
+        <AlertCompo />
         <Signinfooter />
       </div>
     );

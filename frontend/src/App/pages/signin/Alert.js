@@ -7,7 +7,7 @@ import Dropdrop from "../../../assets/Dropdrop.png";
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 
-const Alert = () => {
+const AlertCompo = () => {
   return (
     <div className="alert-page">
       <div className="container">
@@ -90,4 +90,4 @@ const Alert = () => {
   );
 };
 
-export default Alert;
+export default AlertCompo;
