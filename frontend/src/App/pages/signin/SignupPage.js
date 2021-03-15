@@ -36,12 +36,22 @@ this.user={
   password: "",
   passwordConfirm: "",
   account_type: "",
+  
+ 
+}
+
+this.userError={
+  usernameError: "",
+  emailError: "",
+  passwordError: "",
+  passwordConfirmError: "",
 }
 
     this.state = {
        alert: this.alert,
        user:this.user,
-       userValidate: this.userValidate
+       userValidate: this.userValidate,
+       userError:this.userError, 
     };
   }
 
@@ -65,23 +75,60 @@ validateEmail(email) {
         let [key, value, {user,userValidate}] = [e.target.name, e.target.value, this.state];
         user[key]=value;
         
+        this.setState({user});
 
+        if (key === "password") {
+          {
+            key !== "" ? (
+              value.length > 8 ? (
+                (userValidate[key] = true)
+              ) : (
+                <div>
+                  {" "}
+                  {(userValidate[key] = false)},
+                  {this.setState({
+                    passwordError: "minimum Password length 8 characters",
+                  })}
+                </div>
+              )
+            ) : (
+              this.setState({
+                passwordError: "Password is required",
+              })
+            );
+          }
+        } else if (key === "email") {
+          key !== "" ? (
+            this.validateEmail(value) ? (
+              (userValidate[key] = true)
+            ) : (
+              <div>
+                {" "}
+                {(userValidate[key] = false)},
+                {this.setState({
+                  emailerror: "email pattren not valid",
+                })}
+              </div>
+            )
+          ) : (
+            this.setState({
+              emailerror: "email is required",
+            })
+          );
+        }
 
-        if (key === "email") {
-          userValidate[key] = user[key] && this.validateEmail(user[key]) ? true : false;
-        } else {
+ else {
           userValidate[key] = user[key] && user[key].length > 7 ? true : false;
         }
 
         this.setState({user,userValidate});
+
     };
 
 
   
-  submitHandler(isSubmit) {
-    let [
-      {userValidate},
-    ] = [this.state];
+    checksubmitdata(isSubmit) {
+    let [{userValidate},] = [this.state];
 
     let impValue = 0;
 
@@ -99,9 +146,6 @@ validateEmail(email) {
     }
   }
 
-
-
-
   formSubmitHandler = () => {
     let {user:{
       username,
@@ -113,7 +157,7 @@ validateEmail(email) {
 
     let isSubmit = null;
 
-    isSubmit = Boolean(this.submitHandler(isSubmit) ? true : false);
+    isSubmit = Boolean(this.checksubmitdata(isSubmit) ? true : false);
     
     if(isSubmit===true)  
       {
@@ -146,7 +190,11 @@ validateEmail(email) {
   };
 
   render() {
-    let {user:{ username, email, password, passwordConfirm}, alert:{open, severity, message, title}} = this.state;
+    let {   user:{ username, email, password, passwordConfirm},
+            alert:{open, severity, message, title},
+            userError:{passwordError}
+
+        } = this.state;
     return (
       <div className="SignIn-flex-container">
       <Snackbar open={open} autoHideDuration={4000} anchorOrigin={{ vertical:'top', horizontal:'right' }} onClose={()=>{this.handleClose()}}>
@@ -206,7 +254,13 @@ validateEmail(email) {
                         onChange={this.signupChangeHandler}
                       />
                     </div>
-                    <div className="form-group">
+                    <div
+                    className={
+                      passwordError === ""
+                        ? "form-group"
+                        : "form-group error"
+                    }
+                      >
                       <label form="pwd">Password</label>
                       <input
                         type="password"
@@ -215,7 +269,12 @@ validateEmail(email) {
                         value={password}
                         name="password"
                         onChange={this.signupChangeHandler}
-                      />
+                        />
+
+                        {passwordError !== "" ? (
+                          <div className="error-message">{passwordError}</div>
+                        ) : null}
+                    
                     </div>
                     <div className="form-group">
                       <label form="passwordConfirm">confirm Password</label>
