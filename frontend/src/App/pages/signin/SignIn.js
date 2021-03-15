@@ -6,49 +6,180 @@ import SiSoHero from "../../../components/SiSoHero";
 import loginimage from "../../../assets/LoginImage.png";
 import AvatarImage from "../../../../src/AvatarImage.png";
 import LOCKER from "../../../assets/LOCKER.png";
-import Alert from "../../../App/pages/signin/Alert";
+import AlertCompo from "./Alert";
 import Signinfooter from "./Signinfooter";
 
 import { login } from "../../../redux/auth/authCrud";
 import { withRouter } from "react-router-dom";
 
 import LinkedInPage from "./LinkedInPage";
+import { Snackbar } from "@material-ui/core";
+import { Alert, AlertTitle } from "@material-ui/lab";
 
 class SignIn extends Component {
   constructor(props) {
     super(props);
 
+    this.alert = {
+      open: false,
+      severity: "",
+      message: "",
+      title: "",
+    };
+
+    this.userValidation = {
+      email: false,
+      password: false,
+    };
+
     this.state = {
+      alert: this.alert,
+      userValidation: this.userValidation,
       email: "",
       password: "",
       code: "",
       errorMessage: "",
+      passworderror: "",
+      emailerror: "",
     };
+  }
+
+  handleClose() {
+    this.setState({ alert: { open: false, severity: "", message: "" } });
   }
 
   onChangeHandler = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
+      passworderror: "",
+      emailerror:"",
     });
   };
 
-  login = () => {
-    login(this.state.email, this.state.password)
-      .then(({ data: { token } }) => {
-        localStorage.setItem("token", token);
-
-        if (localStorage.getItem("token")) {
-          this.props.history.push("/");
+  validateEmail(email){
+    var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+        if (!pattern.test(email)) {
+            return false
         }
-      })
-      .catch(() => {
-        // disableLoading();
-      });
+        return true
+}
+
+  login = () => {
+    let { password,email, userValidation } = this.state;
+    let isSubmit = null;
+
+    Object.keys(userValidation).map((key) => {
+      if (key === "password") {
+        {
+          password !== "" ? (
+            password.length > 8 ? (
+              (userValidation[key] = true)
+            ) : (
+              <div>
+                {" "}
+                {(userValidation[key] = false)},
+                {this.setState({
+                  passworderror: "minimum Password length 8 characters",
+                })}
+              </div>
+            )
+          ) : (
+            this.setState({
+              passworderror: "Password is required",
+            })
+          );
+        }
+      
+      } else if (key === "email") {
+
+        email !== "" ? (
+          this.validateEmail(email) ? (
+            (userValidation[key] = true)
+          ) : (
+            <div>
+              {" "}
+              {(userValidation[key] = false)},
+              {this.setState({
+                emailerror: "email pattren not valid",
+              })}
+            </div>
+          )
+        ) : (
+          this.setState({
+            emailerror: "email is required",
+          })
+        );
+
+      }
+    });
+
+  
+ if(userValidation.email === true && userValidation. password === true)
+ {
+  isSubmit = true
+ }
+ else{
+  isSubmit = false
+ }
+
+    isSubmit &&
+      login(this.state.email, this.state.password)
+        .then(({ data: { token } }) => {
+          localStorage.setItem("token", token);
+          this.setState({
+            alert: {
+              open: true,
+              severity: "success",
+              title: "success",
+              message: "you are successfully logged in",
+            },
+          });
+          if (localStorage.getItem("token")) {
+            setTimeout(() => {
+              this.props.history.push("/");
+            }, 3000);
+          }
+        })
+        .catch(() => {
+          this.setState({
+            alert: {
+              open: true,
+              severity: "error",
+              title: "Error",
+              //  message:`${key+": "+error.response.data[key][0]}`
+              message: "your full name or password invalid",
+            },
+          });
+        });
   };
 
   render() {
+    let {
+      passworderror,
+      emailerror,
+      alert: { open, severity, message, title },
+    } = this.state;
+
     return (
       <div className="SignUp-flex-container">
+        <Snackbar
+          open={open}
+          autoHideDuration={4000}
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          onClose={() => {
+            this.handleClose();
+          }}
+        >
+          <Alert
+            onClose={() => {
+              this.handleClose();
+            }}
+            severity={severity}
+          >
+            <AlertTitle>{title}</AlertTitle>
+            <strong>{message}</strong>
+          </Alert>
+        </Snackbar>
         <div className="si-container">
           <Navbar text="New Member?" value="Signup" />
         </div>
@@ -73,8 +204,14 @@ class SignIn extends Component {
                   <img src={AvatarImage} alt="/" className="si-pic-tag" />
 
                   <form className="form-field pt-5">
-                    <div className="form-group pt-4">
-                      <label form="usr">Full name</label>
+                    <div 
+                    className={
+                      emailerror === ""
+                        ? "form-group pt-4"
+                        : "form-group pt-4 error"
+                    }
+                    >
+                      <label form="usr">Full name </label>
                       <input
                         type="text"
                         className="form-control"
@@ -83,9 +220,19 @@ class SignIn extends Component {
                         name="email"
                         onChange={this.onChangeHandler}
                       />
+                      {emailerror !== "" ? (
+                        <div className="error-message">{emailerror}</div>
+                      ) : null}
                     </div>
-                    <div className="s-in-form-group">
-                      <label form="pwd">Password</label>
+
+                    <div
+                      className={
+                        passworderror === ""
+                          ? "s-in-form-group"
+                          : "s-in-form-group error"
+                      }
+                    >
+                      <label form="pwd">Password </label>
                       <input
                         type="password"
                         className="form-control"
@@ -94,6 +241,10 @@ class SignIn extends Component {
                         name="password"
                         onChange={this.onChangeHandler}
                       />
+
+                      {passworderror !== "" ? (
+                        <div className="error-message">{passworderror}</div>
+                      ) : null}
                     </div>
                   </form>
                 </div>
@@ -132,7 +283,7 @@ class SignIn extends Component {
             </div>
           </div>
         </div>
-        <Alert />
+        <AlertCompo />
         <Signinfooter />
       </div>
     );

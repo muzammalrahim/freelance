@@ -19,9 +19,9 @@ function IdVerification() {
 
    function icimgUpload(base64file)
     {
+      
         setidCard(base64file)
 
-       
     }
 
 
@@ -69,7 +69,7 @@ function IdVerification() {
                                 
                                   <div >
                                         <div className="getimage">
-                                        <GetImage idVerf_IC_imgUpload={icimgUpload} value="idVerf_IC_imgUpload"/>
+                                        <GetImage idVerf_IC_imgUpload={icimgUpload}         value="idVerf_IC_imgUpload"/>
                                         </div>
                                    </div>
                              </div>
