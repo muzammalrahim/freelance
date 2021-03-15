@@ -8,8 +8,8 @@ import Signinfooter from "./Signinfooter";
 import { sign_up } from "../../../redux/auth/authCrud";
 import { withRouter } from "react-router-dom";
 import LinkedInPage from "./LinkedInPage";
-import {  Snackbar} from "@material-ui/core";
 import AlertCompo from "./Alert"
+import {  Snackbar} from "@material-ui/core";
 import { Alert, AlertTitle } from '@material-ui/lab';
 
 class SignupPage extends Component {
