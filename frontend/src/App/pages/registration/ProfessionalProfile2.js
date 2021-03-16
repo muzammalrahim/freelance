@@ -86,7 +86,7 @@ return (
        
                 <h3>Add your skills</h3> 
 
-  
+              
                           <select
                                 //  value={this.state.selectValue}
                                 //  onChange={this.handleChange}
@@ -95,7 +95,9 @@ return (
                                   this.setState((prevState) => ({
                                     skills: [...prevState.skills, e.target.value],
                                   }));
-                                }}
+                                }
+                              }
+                              
                                 className="form-control"
                                 id="exampleFormControlSelect1">
                                 <ul>

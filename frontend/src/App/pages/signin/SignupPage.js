@@ -8,91 +8,86 @@ import Signinfooter from "./Signinfooter";
 import { sign_up } from "../../../redux/auth/authCrud";
 import { withRouter } from "react-router-dom";
 import LinkedInPage from "./LinkedInPage";
-import AlertCompo from "./Alert"
-import {  Snackbar} from "@material-ui/core";
-import { Alert, AlertTitle } from '@material-ui/lab';
+import AlertCompo from "./Alert";
+import { Snackbar } from "@material-ui/core";
+import { Alert, AlertTitle } from "@material-ui/lab";
 
 class SignupPage extends Component {
   constructor(props) {
     super(props);
 
-    this.alert={
-      open: false, 
-      severity: '',
-      message:'',
-      title:''
-      } 
+    this.alert = {
+      open: false,
+      severity: "",
+      message: "",
+      title: "",
+    };
 
-      this.userValidate={
-        username: false,
-        email: false,
-        password: false,
-        passwordConfirm: false,
-    }
+    this.userValidate = {
+      username: false,
+      email: false,
+      password: false,
+      passwordConfirm: false,
+    };
 
-this.user={
-  username: "",
-  email: "",
-  password: "",
-  passwordConfirm: "",
-  account_type: "",
-  
- 
-}
+    this.user = {
+      username: "",
+      email: "",
+      password: "",
+      passwordConfirm: "",
+      account_type: "",
+    };
 
-this.userError={
-  usernameError: "",
-  emailError: "",
-  passwordError: "",
-  passwordConfirmError: "",
-}
+    this.userError = {
+      username: "",
+      email: "",
+      password: "",
+      passwordConfirm: "",
+    };
 
     this.state = {
-       alert: this.alert,
-       user:this.user,
-       userValidate: this.userValidate,
-       userError:this.userError, 
-       statepasswordError :""
+      alert: this.alert,
+      user: this.user,
+      userValidate: this.userValidate,
+      userError: this.userError,
     };
   }
 
-  handleClose(){
-    this.setState({alert:{open:false, severity: '', message:'' }})
-}   
-
-validateEmail(email) {
-  var pattern = new RegExp(
-    /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
-  );
-  if (!pattern.test(email)) {
-    return false;
+  handleClose() {
+    this.setState({ alert: { open: false, severity: "", message: "" } });
   }
-  return true;
-}
 
+  validateEmail(email) {
+    var pattern = new RegExp(
+      /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
+    );
+    if (!pattern.test(email)) {
+      return false;
+    }
+    return true;
+  }
 
   signupChangeHandler = (e) => {
+    let [key, value, { user, userValidate, userError }] = [
+      e.target.name,
+      e.target.value,
+      this.state,
+    ];
+    user[key] = value;
+    this.setState({
+      user,
+      userValidate,
+      userError: {
+        username: "",
+        email: "",
+        password: "",
+        passwordConfirm: "",
+      },
+    });
+  };
 
-        let [key, value, {user,userValidate,userError}] = [e.target.name, e.target.value, this.state];
-        user[key]=value;
-        this.setState({
-                        user,
-                        userValidate,
-                         userError:{
-                             usernameError: "",
-                              emailError: "",
-                              passwordError: "",
-                              passwordConfirmError: "",
-                          }
-                   
-                      });
-
-    };
-
-
-  
-    checksubmitdata(isSubmit) {
-    let [{userValidate},] = [this.state];
+  checksubmitdata(isSubmit) {
+    let [{ userValidate }] = [this.state];
 
     let impValue = 0;
 
@@ -102,8 +97,9 @@ validateEmail(email) {
       }
     });
 
+    console.log("wai wai", impValue);
+
     if (impValue > 0) {
- 
       return false;
     } else if (impValue === 0) {
       return true;
@@ -111,128 +107,148 @@ validateEmail(email) {
   }
 
   formSubmitHandler = () => {
-    let {userValidate,
-      user:{
-      username,
-      email,
-      password,
-      account_type,
-      passwordConfirm,
-    } ,
-    userError:{
-            passwordError
-    }
-  } = this.state;
+    let {
+      userValidate,
+      user,
+      user: { username, email, password, account_type, passwordConfirm },
+      userError,
+    } = this.state;
 
     let isSubmit = null;
 
-
-Object.keys(userValidate).map((key) => {
- if (key === "password") {
-          {
-        
-            password !== "" ? ( 
-              password.length > 8 ? (
-                (userValidate[key] = true)
-              ) : (
-                <div>
-                  {console.log("length kaam ahy")}
-                  {" "}
-                  {(userValidate[key] = false)},
-                  {
-                  this.setState({
-                  
-                    statepasswordError : "minimum Password length 8 characters",
-                 
-                  })}
-                </div>
-              )
-            ) : (
-              
-                  this.setState({
-                  
-                           statepasswordError: "Password is required",
-                    
-                  })
-            );
-          }
-        } else if (key === "email") {
-          email !== "" ? (
-            this.validateEmail(email) ? (
-              (userValidate[key] = true)
+    Object.keys(userValidate).map((key) => {
+      if (
+        key === "password" ||
+        key === "username" ||
+        key === "passwordConfirm"
+      ) {
+        {
+          user[key] !== "" ? (
+            user[key].length > 7 ? (
+              <div>
+                {key === "passwordConfirm" ? (
+                  <div>
+                    {console.log("boom")}
+                    {user[key] === user["password"]
+                      ? (userValidate[key] = true)
+                      : (userError[key] =
+                          "password and confirm password are not match")}
+                  </div>
+                ) : (
+                  (userValidate[key] = true)
+                )}
+              </div>
             ) : (
               <div>
                 {" "}
                 {(userValidate[key] = false)},
-                {this.setState({
-                   userError:{
-                        emailerror: "email pattren not valid",
-                   }
-                
-                })}
+                {(userError[key] = "minimum Password length 8 characters")}
               </div>
             )
           ) : (
-            this.setState({
-               userError:{
-                        emailerror: "email pattren not valid",
-                   }
-            })
+            (userError[key] = "Password is required")
           );
         }
+      } else if (key === "email") {
+        user[key] !== "" ? (
+          this.validateEmail(email) ? (
+            (userValidate[key] = true)
+          ) : (
+            <div>
+              {" "}
+              {(userValidate[key] = false)},
+              {(userError[key] = "email pattren not valid")}
+            </div>
+          )
+        ) : (
+          (userError[key] = "email are required")
+        );
+      }
+    });
 
-      })
-
-
+    this.setState({ userError });
 
     isSubmit = Boolean(this.checksubmitdata(isSubmit) ? true : false);
-    
-    if(isSubmit===true)  
-      {
-         
 
-        if(password === passwordConfirm)
-        {
-      sign_up(username, email, password, account_type, passwordConfirm)
-      .then((res) => {
-        this.setState({alert:{open:true, severity:"success", title:"success", message:'User Created Sucessfully'}})
-        setTimeout(() => {
-          this.props.history.push("/login");
-        }, 3000);
-      })
-      .catch((error) => {
-        this.setState({alert:{open:true, severity:"error", title:"Error",
-        //  message:`${key+": "+error.response.data[key][0]}`
-                 message:'User not Created '
-        }})
-      })  
-        }else if(password != passwordConfirm){
-          this.setState({alert:{open:true, severity:"error", title:"Error", message:'password and confirm password are not match'}})
+    if (isSubmit === true) {
 
-        }
+        let  CustomRegisterUser={
+          username : username ,
+          first_name: "first name",
+          last_name: "last name",
+          email:email,
+          password:password,
+          account_type:account_type,
+          password_confirm:passwordConfirm
 
-     } else {
-    
-       this.setState({alert:{open:true, severity:"error", title:"Error", message:'please! fill your form completely'}})
-        }  
 
-     console.log("state",this.state)   
+
+          }
+        sign_up(CustomRegisterUser)
+          .then((res) => {
+            this.setState({
+              alert: {
+                open: true,
+                severity: "success",
+                title: "success",
+                message: "User Created Sucessfully",
+              },
+            });
+            setTimeout(() => {
+              this.props.history.push("/login");
+            }, 3000);
+          })
+          .catch((error) => {
+            this.setState({
+              alert: {
+                open: true,
+                severity: "error",
+                title: "Error",
+                //  message:`${key+": "+error.response.data[key][0]}`
+                message: "User not Created ",
+              },
+            });
+          });
+      
+    } else {
+      this.setState({
+        alert: {
+          open: true,
+          severity: "error",
+          title: "Error",
+          message: "please! fill your form completely",
+        },
+      });
+    }
   };
 
   render() {
-    let {   user:{ username, email, password, passwordConfirm},
-            alert:{open, severity, message, title},
-            userError:{passwordError}
+    let {
+      user: { username, email, password, passwordConfirm },
+      alert: { open, severity, message, title },
+      userError,
+    } = this.state;
 
-        } = this.state;
     return (
-      <div className="SignIn-flex-container">
-      <Snackbar open={open} autoHideDuration={4000} anchorOrigin={{ vertical:'top', horizontal:'right' }} onClose={()=>{this.handleClose()}}>
-      <Alert onClose={()=>{this.handleClose()}} severity={severity}>
-          <AlertTitle>{title}</AlertTitle>
-          <strong>{message}</strong>
-      </Alert>
-  </Snackbar> 
+      <div className="signUpPage SignIn-flex-container">
+        <Snackbar
+          open={open}
+          autoHideDuration={4000}
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          onClose={() => {
+            this.handleClose();
+          }}
+        >
+          <Alert
+            onClose={() => {
+              this.handleClose();
+            }}
+            severity={severity}
+          >
+            <AlertTitle>{title}</AlertTitle>
+            <strong>{message}</strong>
+          </Alert>
+        </Snackbar>
         <div className="si-container">
           <Navbar text="Already A Member?" value="LogIn" className="pl-5" />
         </div>
@@ -243,9 +259,6 @@ Object.keys(userValidate).map((key) => {
         <div className="main-bg">
           <div className="container">
             <div className="row">
-
-              
-
               <div className="col-md-6 align-self-center bg-white offset-md-3">
                 <div className="text-content">
                   <div className="welcome-text pt-3 pl-3 float-left ">
@@ -260,8 +273,15 @@ Object.keys(userValidate).map((key) => {
 
                 <div className="floww pl-3 pr-3">
                   <img src={AvatarImage} alt="/" className="si-pic-tag" />
+
                   <form className="form-field pt-5">
-                    <div className="form-group pt-4">
+                    <div
+                      className={
+                        userError.username === ""
+                          ? "form-group pt-4"
+                          : "form-group pt-4 error "
+                      }
+                    >
                       <label form="usr">Full name</label>
                       <input
                         type="text"
@@ -271,9 +291,21 @@ Object.keys(userValidate).map((key) => {
                         name="username"
                         onChange={this.signupChangeHandler}
                       />
-        
+
+                      {userError.username !== "" ? (
+                        <div className="error-message">
+                          {userError.username}
+                        </div>
+                      ) : null}
                     </div>
-                    <div className="form-group">
+
+                    <div
+                      className={
+                        userError.email === ""
+                          ? "form-group"
+                          : "form-group error"
+                      }
+                    >
                       <label form="email">Email</label>
                       <input
                         type="text"
@@ -283,14 +315,18 @@ Object.keys(userValidate).map((key) => {
                         name="email"
                         onChange={this.signupChangeHandler}
                       />
+                      {userError.email !== "" ? (
+                        <div className="error-message">{userError.email}</div>
+                      ) : null}
                     </div>
+
                     <div
-                    className={
-                      passwordError === ""
-                        ? "form-group"
-                        : "form-group error"
-                    }
-                      >
+                      className={
+                        userError.password === ""
+                          ? "form-group"
+                          : "form-group error"
+                      }
+                    >
                       <label form="pwd">Password</label>
                       <input
                         type="password"
@@ -299,14 +335,21 @@ Object.keys(userValidate).map((key) => {
                         value={password}
                         name="password"
                         onChange={this.signupChangeHandler}
-                        />
+                      />
 
-                        {passwordError !== "" ? (
-                          <div className="error-message">{passwordError}</div>
-                        ) : null}
-                    
+                      {userError.password !== "" ? (
+                        <div className="error-message">
+                          {userError.password}
+                        </div>
+                      ) : null}
                     </div>
-                    <div className="form-group">
+                    <div
+                      className={
+                        userError.passwordConfirm === ""
+                          ? "form-group"
+                          : "form-group error"
+                      }
+                    >
                       <label form="passwordConfirm">confirm Password</label>
                       <input
                         type="password"
@@ -314,12 +357,15 @@ Object.keys(userValidate).map((key) => {
                         placeholder="Enter confirm Password"
                         name="passwordConfirm"
                         value={passwordConfirm}
-                        pattern=".{8,}"  
+                        pattern=".{8,}"
                         onChange={this.signupChangeHandler}
                       />
+                      {userError.passwordConfirm !== "" ? (
+                        <div className="error-message">
+                          {userError.passwordConfirm}
+                        </div>
+                      ) : null}
                     </div>
-                    
- 
                   </form>
                 </div>
 
@@ -352,8 +398,8 @@ Object.keys(userValidate).map((key) => {
             </div>
           </div>
         </div>
-        
-        <AlertCompo/>
+
+        <AlertCompo />
         <Signinfooter />
       </div>
     );
