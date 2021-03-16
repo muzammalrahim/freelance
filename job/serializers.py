@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from acount.serializers import Base64ImageField
+# from acount.serializers import Base64ImageField
 from job import models
 from acount import serializers as acount_serializer
 from acount import models as acount_models
