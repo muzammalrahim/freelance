@@ -11,7 +11,6 @@ class PersonalProfile extends React.Component {
       first_name: "",
       mobile_number: "",
       city: "",
-  
       last_name: "",
       address: "",
       country: "",
@@ -22,7 +21,6 @@ class PersonalProfile extends React.Component {
       first_name: false,
       mobile_number: false,
       last_name: false,
-     
       address: false,
       country: false,
       city: false,
@@ -60,7 +58,7 @@ class PersonalProfile extends React.Component {
 
   submitHandler(ans) {
     let [
-      { per_profile, per_profileValidate, personal_profile_isSubmit_value },
+      { per_profile, per_profileValidate,},
     ] = [this.state];
     let impValue = 0;
     Object.values(per_profileValidate).map((values) => {

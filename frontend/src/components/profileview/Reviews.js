@@ -68,10 +68,9 @@ export function Reviews() {
             </div>
           ))}
          
-          <div class="row pl-3 pb-4"> 
-            <div class="col-md-12 offset-md-3">
+          <div class="row pb-4"> 
+            <div class="col-md-12 offset-md-4">
               <div className="btn-load">
-           
                 <Button buttonStyle="btn--load" value="LOAD MORE" onClick={loadMore}/>
               </div>
             </div>
