@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "../../../components/header/Navbar";
 import SiSoHero from "../../../components/SiSoHero";
-import "./SignIn.css";
+import "./signuppage.css";
 import AvatarImage from "../../../../src/AvatarImage.png";
 import loginimage from "../../../assets/LoginImage.png";
 import Signinfooter from "./Signinfooter";
@@ -52,6 +52,7 @@ this.userError={
        user:this.user,
        userValidate: this.userValidate,
        userError:this.userError, 
+       statepasswordError :""
     };
   }
 
@@ -72,56 +73,19 @@ validateEmail(email) {
 
   signupChangeHandler = (e) => {
 
-        let [key, value, {user,userValidate}] = [e.target.name, e.target.value, this.state];
+        let [key, value, {user,userValidate,userError}] = [e.target.name, e.target.value, this.state];
         user[key]=value;
-        
-        this.setState({user});
-
-        if (key === "password") {
-          {
-            key !== "" ? (
-              value.length > 8 ? (
-                (userValidate[key] = true)
-              ) : (
-                <div>
-                  {" "}
-                  {(userValidate[key] = false)},
-                  {this.setState({
-                    passwordError: "minimum Password length 8 characters",
-                  })}
-                </div>
-              )
-            ) : (
-              this.setState({
-                passwordError: "Password is required",
-              })
-            );
-          }
-        } else if (key === "email") {
-          key !== "" ? (
-            this.validateEmail(value) ? (
-              (userValidate[key] = true)
-            ) : (
-              <div>
-                {" "}
-                {(userValidate[key] = false)},
-                {this.setState({
-                  emailerror: "email pattren not valid",
-                })}
-              </div>
-            )
-          ) : (
-            this.setState({
-              emailerror: "email is required",
-            })
-          );
-        }
-
- else {
-          userValidate[key] = user[key] && user[key].length > 7 ? true : false;
-        }
-
-        this.setState({user,userValidate});
+        this.setState({
+                        user,
+                        userValidate,
+                         userError:{
+                             usernameError: "",
+                              emailError: "",
+                              passwordError: "",
+                              passwordConfirmError: "",
+                          }
+                   
+                      });
 
     };
 
@@ -147,15 +111,79 @@ validateEmail(email) {
   }
 
   formSubmitHandler = () => {
-    let {user:{
+    let {userValidate,
+      user:{
       username,
       email,
       password,
       account_type,
       passwordConfirm,
-    } } = this.state;
+    } ,
+    userError:{
+            passwordError
+    }
+  } = this.state;
 
     let isSubmit = null;
+
+
+Object.keys(userValidate).map((key) => {
+ if (key === "password") {
+          {
+        
+            password !== "" ? ( 
+              password.length > 8 ? (
+                (userValidate[key] = true)
+              ) : (
+                <div>
+                  {console.log("length kaam ahy")}
+                  {" "}
+                  {(userValidate[key] = false)},
+                  {
+                  this.setState({
+                  
+                    statepasswordError : "minimum Password length 8 characters",
+                 
+                  })}
+                </div>
+              )
+            ) : (
+              
+                  this.setState({
+                  
+                           statepasswordError: "Password is required",
+                    
+                  })
+            );
+          }
+        } else if (key === "email") {
+          email !== "" ? (
+            this.validateEmail(email) ? (
+              (userValidate[key] = true)
+            ) : (
+              <div>
+                {" "}
+                {(userValidate[key] = false)},
+                {this.setState({
+                   userError:{
+                        emailerror: "email pattren not valid",
+                   }
+                
+                })}
+              </div>
+            )
+          ) : (
+            this.setState({
+               userError:{
+                        emailerror: "email pattren not valid",
+                   }
+            })
+          );
+        }
+
+      })
+
+
 
     isSubmit = Boolean(this.checksubmitdata(isSubmit) ? true : false);
     
@@ -187,6 +215,8 @@ validateEmail(email) {
     
        this.setState({alert:{open:true, severity:"error", title:"Error", message:'please! fill your form completely'}})
         }  
+
+     console.log("state",this.state)   
   };
 
   render() {
