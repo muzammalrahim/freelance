@@ -17,9 +17,18 @@ export function login(login, password) {
 
 
 export function sign_up(data) {
+
+  let config ={
+
+    headers : {
+                  'Content-Type': 'application/json',
+                 
+              }
+          }
+
   console.log("baby",data)
     // return axios.post(LOGIN_URL, { email, password })
-    return axios.post(process.env.REACT_APP_API_URL + SIGNUP_URL, {data})
+    return axios.post(process.env.REACT_APP_API_URL + SIGNUP_URL,data,config)
   }
 
 

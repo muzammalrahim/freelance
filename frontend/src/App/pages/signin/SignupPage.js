@@ -35,7 +35,7 @@ class SignupPage extends Component {
       email: "",
       password: "",
       passwordConfirm: "",
-      account_type: "",
+      
     };
 
     this.userError = {
@@ -97,8 +97,6 @@ class SignupPage extends Component {
       }
     });
 
-    console.log("wai wai", impValue);
-
     if (impValue > 0) {
       return false;
     } else if (impValue === 0) {
@@ -128,7 +126,6 @@ class SignupPage extends Component {
               <div>
                 {key === "passwordConfirm" ? (
                   <div>
-                    {console.log("boom")}
                     {user[key] === user["password"]
                       ? (userValidate[key] = true)
                       : (userError[key] =
@@ -176,9 +173,9 @@ class SignupPage extends Component {
           username : username ,
           first_name: "first name",
           last_name: "last name",
+          account_type: "hire",
           email:email,
           password:password,
-          account_type:account_type,
           password_confirm:passwordConfirm
 
 
