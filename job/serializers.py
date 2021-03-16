@@ -1,11 +1,13 @@
 from rest_framework import serializers
+
+from acount.serializers import Base64ImageField
 from job import models
 from acount import serializers as acount_serializer
 from acount import models as acount_models
 
 
 class AttachmentSerializer(serializers.ModelSerializer):
-	file = acount_serializer.Base64ImageField(required=False)
+	# file = acount_serializer.Base64ImageField(required=False)
 
 	class Meta:
 		model = models.Attachment
@@ -73,16 +75,19 @@ class ApplicationSerializer(serializers.ModelSerializer):
 
 
 class ContractSerializer(serializers.ModelSerializer):
-	attachment = AttachmentSerializer(write_only=True)
+
+	attachment = serializers.ListField(write_only=True)
+
+	def __init__(self, *args, **kwargs):
+		super(ContractSerializer, self).__init__(*args, **kwargs)
 
 	def create(self, validated_data):
 		attachment = validated_data.pop('attachment')
-
-		models.Attachment.objects.create(**attachment)
-
 		contract = models.Contract.objects.create(
 			**validated_data)
 
+		for attachments in attachment:
+			models.Attachment.objects.create(model_id=contract.id, model='contract', file=attachments, type="attachment")
 		return contract
 
 	def to_representation(self, instance):
