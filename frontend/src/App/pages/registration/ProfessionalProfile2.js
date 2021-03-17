@@ -56,6 +56,8 @@ class  ProfessionalProfile2 extends Component{
      {
         this.setState({provideService:provideService2})
       }
+ 
+     
 
 
 render(){
@@ -83,6 +85,7 @@ return (
                   </div>
                 <div className="multiselect">
                 <div>
+                  {/* {console.log("Value",this.state.provideService)} */}
        
                 <h3>Add your skills</h3> 
 
@@ -149,6 +152,7 @@ return (
                 </div>
              </div>
                  {/* Choose Category Multi_select_checkboxes */}
+                 {console.log("Value",this.state.chooseCategory)}
               <div className="checkboxesMain">
                 <h3>Choose Category</h3>
                 <div className="container_Checkboxes">
@@ -160,7 +164,7 @@ return (
                         <span className="checkbox-button__label">Animation</span>
                       </label>
                     </div>
-
+                  
                     <div className="example">
                         <label className="checkbox-button">
                            <input type="checkbox" className="checkbox-button__input"  name="hobbies" id="inlineCheckboxh2" value="Interior Design" onChange={this.handleInputChange}/>
