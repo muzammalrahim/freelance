@@ -12,10 +12,10 @@ class ProfessionalProfile2 extends Component {
     super(props);
 
     this.state = {
-      provideService: "",
+      service: "",
       skills: [],
-      chooseCategory: [],
-      img: "",
+      category: [],
+      certification: "",
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -24,28 +24,35 @@ class ProfessionalProfile2 extends Component {
   }
 
   handleInputChange(event) {
+    let {category} = this.state
     const target = event.target;
     var value = target.value;
 
     if (target.checked) {
+           category.push(value);
       this.setState((prevState) => ({
-        chooseCategory: [...prevState.chooseCategory, value],
+        // category: [...prevState.category, event.target.value],
+          category: [...prevState.category],
       }));
+
     } else {
-      const a = this.state.chooseCategory;
-      a.splice(value, 1);
-      this.setState({ chooseCategory: a });
+      let chooseCate = this.state.category;
+      
+      this.setState({
+        category: chooseCate.filter(function(val) {return val!==value})
+      })
+
     }
     this.props.onStateChange(this.state);
   }
 
   handleBase64File(base64file) {
-    this.setState({ img: base64file });
+    this.setState({ certification: base64file });
     this.props.onStateChange(this.state);
   }
 
-  dropDownHandler(provideService2) {
-    this.setState({ provideService: provideService2 })
+  dropDownHandler(provideService) {
+    this.setState({ service: provideService })
     this.props.onStateChange(this.state);
   }
 
@@ -84,9 +91,6 @@ class ProfessionalProfile2 extends Component {
                       <h3>Add your skills</h3>
 
                       <select
-                        //  value={this.state.selectValue}
-                        //  onChange={this.handleChange}
-
                         onChange={(e) => {
                           this.setState((prevState) => ({
                             skills: [...prevState.skills, e.target.value],
@@ -425,8 +429,6 @@ class ProfessionalProfile2 extends Component {
             </div>
           </div>
         </div>
-
-        {console.log("redux tabindex", this.props.tabindex)}
       </div>
     );
   }
