@@ -73,12 +73,12 @@ class ApplicationSerializer(serializers.ModelSerializer):
 
 
 class ContractSerializer(serializers.ModelSerializer):
-	license = AttachmentSerializer(write_only=True)
+	attachment = AttachmentSerializer(write_only=True)
 
 	def create(self, validated_data):
-		license = validated_data.pop('license')
+		attachment = validated_data.pop('attachment')
 
-		models.Attachment.objects.create(**license)
+		models.Attachment.objects.create(**attachment)
 
 		contract = models.Contract.objects.create(
 			**validated_data)

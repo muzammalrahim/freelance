@@ -1,55 +1,251 @@
 import React, { Component } from "react";
 import Navbar from "../../../components/header/Navbar";
 import SiSoHero from "../../../components/SiSoHero";
-import "./SignIn.css";
+import "./signuppage.css";
 import AvatarImage from "../../../../src/AvatarImage.png";
 import loginimage from "../../../assets/LoginImage.png";
-import Alert from "./Alert";
 import Signinfooter from "./Signinfooter";
 import { sign_up } from "../../../redux/auth/authCrud";
 import { withRouter } from "react-router-dom";
 import LinkedInPage from "./LinkedInPage";
+import AlertCompo from "./Alert";
+import { Snackbar } from "@material-ui/core";
+import { Alert, AlertTitle } from "@material-ui/lab";
 
 class SignupPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+
+    this.alert = {
+      open: false,
+      severity: "",
+      message: "",
+      title: "",
+    };
+
+    this.userValidate = {
+      username: false,
+      email: false,
+      password: false,
+      passwordConfirm: false,
+    };
+
+    this.user = {
       username: "",
       email: "",
       password: "",
       passwordConfirm: "",
-      account_type: "work",
+      
+    };
+
+    this.userError = {
+      username: "",
+      email: "",
+      password: "",
+      passwordConfirm: "",
+    };
+
+    this.state = {
+      alert: this.alert,
+      user: this.user,
+      userValidate: this.userValidate,
+      userError: this.userError,
     };
   }
 
-  signupHandler = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+  handleClose() {
+    this.setState({ alert: { open: false, severity: "", message: "" } });
+  }
+
+  validateEmail(email) {
+    var pattern = new RegExp(
+      /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
+    );
+    if (!pattern.test(email)) {
+      return false;
+    }
+    return true;
+  }
+
+  signupChangeHandler = (e) => {
+    let [key, value, { user, userValidate, userError }] = [
+      e.target.name,
+      e.target.value,
+      this.state,
+    ];
+    user[key] = value;
+    this.setState({
+      user,
+      userValidate,
+      userError: {
+        username: "",
+        email: "",
+        password: "",
+        passwordConfirm: "",
+      },
+    });
   };
+
+  checksubmitdata(isSubmit) {
+    let [{ userValidate }] = [this.state];
+
+    let impValue = 0;
+
+    Object.values(userValidate).map((values) => {
+      if (values === false) {
+        impValue = impValue + 1;
+      }
+    });
+
+    if (impValue > 0) {
+      return false;
+    } else if (impValue === 0) {
+      return true;
+    }
+  }
 
   formSubmitHandler = () => {
     let {
-      username,
-      email,
-      password,
-      account_type,
-      passwordConfirm,
+      userValidate,
+      user,
+      user: { username, email, password, account_type, passwordConfirm },
+      userError,
     } = this.state;
 
-    sign_up(username, email, password, account_type, passwordConfirm)
-      .then((res) => {
-        setTimeout(() => {
-          this.props.history.push("/login");
-        }, 3000);
-      })
-      .catch((error) => {});
+    let isSubmit = null;
+
+    Object.keys(userValidate).map((key) => {
+      if (
+        key === "password" ||
+        key === "username" ||
+        key === "passwordConfirm"
+      ) {
+        {
+          user[key] !== "" ? (
+            user[key].length > 7 ? (
+              <div>
+                {key === "passwordConfirm" ? (
+                  <div>
+                    {user[key] === user["password"]
+                      ? (userValidate[key] = true)
+                      : (userError[key] =
+                          "password and confirm password are not match")}
+                  </div>
+                ) : (
+                  (userValidate[key] = true)
+                )}
+              </div>
+            ) : (
+              <div>
+                {" "}
+                {(userValidate[key] = false)},
+                {(userError[key] = "minimum Password length 8 characters")}
+              </div>
+            )
+          ) : (
+            (userError[key] = "Password is required")
+          );
+        }
+      } else if (key === "email") {
+        user[key] !== "" ? (
+          this.validateEmail(email) ? (
+            (userValidate[key] = true)
+          ) : (
+            <div>
+              {" "}
+              {(userValidate[key] = false)},
+              {(userError[key] = "email pattren not valid")}
+            </div>
+          )
+        ) : (
+          (userError[key] = "email are required")
+        );
+      }
+    });
+
+    this.setState({ userError });
+
+    isSubmit = Boolean(this.checksubmitdata(isSubmit) ? true : false);
+
+    if (isSubmit === true) {
+
+        let  CustomRegisterUser={
+          username : username ,
+          first_name: "first name",
+          last_name: "last name",
+          account_type: "hire",
+          email:email,
+          password:password,
+          password_confirm:passwordConfirm
+
+
+
+          }
+        sign_up(CustomRegisterUser)
+          .then((res) => {
+            this.setState({
+              alert: {
+                open: true,
+                severity: "success",
+                title: "success",
+                message: "User Created Sucessfully",
+              },
+            });
+            setTimeout(() => {
+              this.props.history.push("/login");
+            }, 3000);
+          })
+          .catch((error) => {
+            this.setState({
+              alert: {
+                open: true,
+                severity: "error",
+                title: "Error",
+                //  message:`${key+": "+error.response.data[key][0]}`
+                message: "User not Created ",
+              },
+            });
+          });
+      
+    } else {
+      this.setState({
+        alert: {
+          open: true,
+          severity: "error",
+          title: "Error",
+          message: "please! fill your form completely",
+        },
+      });
+    }
   };
 
   render() {
-    let { username, email, password, passwordConfirm } = this.state;
-    return (
-      <div className="SignIn-flex-container">
-      
+    let {
+      user: { username, email, password, passwordConfirm },
+      alert: { open, severity, message, title },
+      userError,
+    } = this.state;
 
+    return (
+      <div className="signUpPage SignIn-flex-container">
+        <Snackbar
+          open={open}
+          autoHideDuration={4000}
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          onClose={() => {
+            this.handleClose();
+          }}
+        >
+          <Alert
+            onClose={() => {
+              this.handleClose();
+            }}
+            severity={severity}
+          >
+            <AlertTitle>{title}</AlertTitle>
+            <strong>{message}</strong>
+          </Alert>
+        </Snackbar>
         <div className="si-container">
           <Navbar text="Already A Member?" value="LogIn" className="pl-5" />
         </div>
@@ -74,8 +270,15 @@ class SignupPage extends Component {
 
                 <div className="floww pl-3 pr-3">
                   <img src={AvatarImage} alt="/" className="si-pic-tag" />
+
                   <form className="form-field pt-5">
-                    <div className="form-group pt-4">
+                    <div
+                      className={
+                        userError.username === ""
+                          ? "form-group pt-4"
+                          : "form-group pt-4 error "
+                      }
+                    >
                       <label form="usr">Full name</label>
                       <input
                         type="text"
@@ -83,10 +286,23 @@ class SignupPage extends Component {
                         placeholder="Enter Full Name"
                         value={username}
                         name="username"
-                        onChange={this.signupHandler}
+                        onChange={this.signupChangeHandler}
                       />
+
+                      {userError.username !== "" ? (
+                        <div className="error-message">
+                          {userError.username}
+                        </div>
+                      ) : null}
                     </div>
-                    <div className="form-group">
+
+                    <div
+                      className={
+                        userError.email === ""
+                          ? "form-group"
+                          : "form-group error"
+                      }
+                    >
                       <label form="email">Email</label>
                       <input
                         type="text"
@@ -94,10 +310,20 @@ class SignupPage extends Component {
                         placeholder="Enter Email"
                         value={email}
                         name="email"
-                        onChange={this.signupHandler}
+                        onChange={this.signupChangeHandler}
                       />
+                      {userError.email !== "" ? (
+                        <div className="error-message">{userError.email}</div>
+                      ) : null}
                     </div>
-                    <div className="form-group">
+
+                    <div
+                      className={
+                        userError.password === ""
+                          ? "form-group"
+                          : "form-group error"
+                      }
+                    >
                       <label form="pwd">Password</label>
                       <input
                         type="password"
@@ -105,10 +331,22 @@ class SignupPage extends Component {
                         placeholder="Enter Password"
                         value={password}
                         name="password"
-                        onChange={this.signupHandler}
+                        onChange={this.signupChangeHandler}
                       />
+
+                      {userError.password !== "" ? (
+                        <div className="error-message">
+                          {userError.password}
+                        </div>
+                      ) : null}
                     </div>
-                    <div className="form-group">
+                    <div
+                      className={
+                        userError.passwordConfirm === ""
+                          ? "form-group"
+                          : "form-group error"
+                      }
+                    >
                       <label form="passwordConfirm">confirm Password</label>
                       <input
                         type="password"
@@ -116,8 +354,14 @@ class SignupPage extends Component {
                         placeholder="Enter confirm Password"
                         name="passwordConfirm"
                         value={passwordConfirm}
-                        onChange={this.signupHandler}
+                        pattern=".{8,}"
+                        onChange={this.signupChangeHandler}
                       />
+                      {userError.passwordConfirm !== "" ? (
+                        <div className="error-message">
+                          {userError.passwordConfirm}
+                        </div>
+                      ) : null}
                     </div>
                   </form>
                 </div>
@@ -151,8 +395,8 @@ class SignupPage extends Component {
             </div>
           </div>
         </div>
-        
-        <Alert />
+
+        <AlertCompo />
         <Signinfooter />
       </div>
     );
