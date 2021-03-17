@@ -15,8 +15,8 @@ function Card() {
       console.log("show response:");
       list('api/v1/profile/')
       .then((response)=>{
-        console.log("show response:",response.data[1]);
-        const {...rest} = response.data[1];
+        console.log("show response:",response.data[2]);
+        const {...rest} = response.data[2];
        
          setcardData(rest);
       
@@ -78,7 +78,7 @@ function Card() {
                   <div className="col-md-10">
                     <a href="">
                   <p>
-                  Indore
+                  {carddata?.city?.name}
                   </p>
                   </a>
                   </div>
@@ -102,7 +102,7 @@ function Card() {
                   <div className="col-md-10">
                     <a href="">
                   <p>
-                  Join Decemeber 10, 2015
+                {carddata?.user?.date_joined}
                   </p>
                   </a>
                   </div>
