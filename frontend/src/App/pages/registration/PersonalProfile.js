@@ -47,13 +47,12 @@ class PersonalProfile extends React.Component {
   }
 
   componentDidMount() {
-    let [{ per_profile, per_profileValidate }] = [this.state];
     if (localStorage.getItem("personal_profile")) {
       var storedData = JSON.parse(localStorage.getItem("personal_profile"));
       this.setState({ per_profile: storedData });
     }
 
-    console.log("")
+    console.log("state",this.state)
   }
 
   submitHandler(ans) {

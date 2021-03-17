@@ -38,7 +38,6 @@ class SignIn extends Component {
       email: "",
       password: "",
       code: "",
-      errorMessage: "",
       passworderror: "",
       emailerror: "",
     };
@@ -52,20 +51,22 @@ class SignIn extends Component {
     this.setState({
       [e.target.name]: e.target.value,
       passworderror: "",
-      emailerror:"",
+      emailerror: "",
     });
   };
 
-  validateEmail(email){
-    var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-        if (!pattern.test(email)) {
-            return false
-        }
-        return true
-}
+  validateEmail(email) {
+    var pattern = new RegExp(
+      /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
+    );
+    if (!pattern.test(email)) {
+      return false;
+    }
+    return true;
+  }
 
   login = () => {
-    let { password,email, userValidation } = this.state;
+    let { password, email, userValidation } = this.state;
     let isSubmit = null;
 
     Object.keys(userValidation).map((key) => {
@@ -89,9 +90,7 @@ class SignIn extends Component {
             })
           );
         }
-      
       } else if (key === "email") {
-
         email !== "" ? (
           this.validateEmail(email) ? (
             (userValidation[key] = true)
@@ -109,18 +108,14 @@ class SignIn extends Component {
             emailerror: "email is required",
           })
         );
-
       }
     });
 
-  
- if(userValidation.email === true && userValidation. password === true)
- {
-  isSubmit = true
- }
- else{
-  isSubmit = false
- }
+    if (userValidation.email === true && userValidation.password === true) {
+      isSubmit = true;
+    } else {
+      isSubmit = false;
+    }
 
     isSubmit &&
       login(this.state.email, this.state.password)
@@ -161,7 +156,7 @@ class SignIn extends Component {
     } = this.state;
 
     return (
-      <div className="SignUp-flex-container">
+      <div className="signInPage  SignUp-flex-container">
         <Snackbar
           open={open}
           autoHideDuration={4000}
@@ -204,12 +199,12 @@ class SignIn extends Component {
                   <img src={AvatarImage} alt="/" className="si-pic-tag" />
 
                   <form className="form-field pt-5">
-                    <div 
-                    className={
-                      emailerror === ""
-                        ? "form-group pt-4"
-                        : "form-group pt-4 error"
-                    }
+                    <div
+                      className={
+                        emailerror === ""
+                          ? "form-group pt-4"
+                          : "form-group pt-4 error"
+                      }
                     >
                       <label form="usr">Full name </label>
                       <input
@@ -246,6 +241,7 @@ class SignIn extends Component {
                         <div className="error-message">{passworderror}</div>
                       ) : null}
                     </div>
+                    
                   </form>
                 </div>
                 <div className="sign-up-btn  pl-3 pr-3 pb-3">
