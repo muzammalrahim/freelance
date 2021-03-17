@@ -11,7 +11,7 @@ import ProfessionalProfile2 from "./ProfessionalProfile2";
 import ProfessionalProfile2Footer from "./ProfFooter";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 
-import list from "../helper/api";
+import list,{post} from "../helper/api";
 import { connect } from "react-redux";
 import { RegistrationTabBarAction } from "../../../redux/actions/RegistrationTabBarAction";
 
@@ -21,19 +21,28 @@ class TabbarRegistration extends Component {
     this.state = {
       tabindex: null,
       userid: null,
+      sendData : false
     };
   }
 
-  stateHandler;
 
-  handler = () => {
+  sendDataHandler =() =>
+  {
+      let {sendData} = this.state
+      sendData= true
+      this.setState({ sendData });
+      // console.log("agey mai",sendData);
+  }
+
+
+  tabUphandler = () => {
     let { tabindex } = this.state;
     this.setState({ tabindex: tabindex + 1 });
 
     this.props.tabChangeHandler(tabindex);
   };
 
-  handler2 = () => {
+  tabDownhandler = () => {
     this.setState({
       tabindex: this.state.tabindex - 1,
     });
@@ -45,11 +54,12 @@ class TabbarRegistration extends Component {
 
   componentDidMount() {
     list("api/v1/accounts/profile/")
-      .then((res) => {
-        this.setState({ userid: res.data.id });
-        console.log("profile", this.state.userid);
-      })
-      .catch((error) => {});
+      // .then((res) => {
+        // this.setState({ userid: res.data.id });
+        // console.log("profile", this.state.userid);
+        // console.log("profile data", res.data);
+      // })
+      // .catch((error) => {});
 
     var tabindex2 = 1;
 
@@ -60,25 +70,46 @@ class TabbarRegistration extends Component {
     this.clickone(tabindex2);
   }
 
-  stateHandler(stateData) {
-    console.log("neeeeee", stateData);
+  stateHandler(stateData,isSubmit) {
+    console.log("personal state data", stateData);
+    console.log("issub sadka", isSubmit);
+
+    if (isSubmit === true)
+    {
+      post("api/v1/freelancer_profile/",stateData)
+      .then((response)=>{
+              console.log("freelancer_profile res:",response)
+                } )
+
+        .catch((error)=>{
+            console.log("error",error)
+        })        
+      
+
+    }
   }
 
   personalProfileStateHandler(stateData) {
-    console.log("neeeeee", stateData);
+    
+
+
   }
 
-  idVerificationStateHandler(stateData) {
-    console.log("neeeeee", stateData);
+  idVerificationStateHandler(stateData,imgOf) {
+     
+     if(imgOf === "idCard")
+     {
+       console.log("id card img",stateData)
+     }
+     else if(imgOf === "drivingLicense") {
+      console.log("driving  img",stateData)
+     }
   }
   paymentInformationStateHandler(stateData) {
-    console.log("neeeeee", stateData);
+    // console.log("neeeeee", stateData);
   }
 
-  hourlyRateStateHandler()
-  {
-
-  }
+  hourlyRateStateHandler() {}
 
   render() {
     let { tabindex } = this.state;
@@ -227,13 +258,25 @@ class TabbarRegistration extends Component {
             </div>
 
             <div className="tabbar_min_height col-xs-6 col-sm-8 col-md-8 col-lg-9  p-5 tabbar_panel_background">
-         {tabindex === 1 && (
+              {tabindex === 1 && (
                 <PersonalProfile onStateChange={this.stateHandler} />
               )}
-           {tabindex === 2 && <ProfessionalProfile2 onStateChange={this.personalProfileStateHandler} />}
-              {tabindex === 3 && <IdVerification onStateChange={this.idVerificationStateHandler} />}
-              {tabindex === 4 && <PaymentInformation onStateChange={this.stateHandler} />}
-              {tabindex === 5 && <HourlyRate onStateChange={this.stateHandler} />}
+              {tabindex === 2 && (
+                <ProfessionalProfile2
+                  onStateChange={this.personalProfileStateHandler}
+                />
+              )}
+              {tabindex === 3 && (
+                <IdVerification
+                  onStateChange={this.idVerificationStateHandler}
+                />
+              )}
+              {tabindex === 4 && (
+                <PaymentInformation onStateChange={this.stateHandler} />
+              )}
+              {tabindex === 5 && (
+                <HourlyRate onStateChange={this.stateHandler} />
+              )}
 
               <div className="container tabbar_next_pre_btn_background pt-4 pb-5">
                 {tabindex > 1 && (
@@ -255,7 +298,8 @@ class TabbarRegistration extends Component {
                       type="button"
                       className="btn tb_nextButton"
                       onClick={() => {
-                        this.handler();
+                        this.tabUphandler();
+                        this.sendDataHandler();
                       }}
                     >
                       {" "}
@@ -282,7 +326,7 @@ class TabbarRegistration extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     tabChangeHandler: (tabindex) => {
-      console.log("tab in redux:", tabindex);
+      // console.log("tab in redux:", tabindex);
       dispatch(
         RegistrationTabBarAction({
           type: "REGISTRATION_TAB_CHANGE",

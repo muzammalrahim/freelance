@@ -47,13 +47,12 @@ class PersonalProfile extends React.Component {
   }
 
   componentDidMount() {
-    let [{ per_profile, per_profileValidate }] = [this.state];
     if (localStorage.getItem("personal_profile")) {
       var storedData = JSON.parse(localStorage.getItem("personal_profile"));
       this.setState({ per_profile: storedData });
     }
 
-    console.log("")
+  
   }
 
   submitHandler(ans) {
@@ -99,7 +98,7 @@ class PersonalProfile extends React.Component {
     this.setState({ per_profile, per_profileValidate });
 
 
-    var ans = Boolean(this.submitHandler(isSubmit) ? true : false);
+    isSubmit = Boolean(this.submitHandler(isSubmit) ? true : false);
 
     this.setState({
       per_profile,
@@ -107,7 +106,7 @@ class PersonalProfile extends React.Component {
       personal_profile_isSubmit_value,
     });
 
-    this.props.onStateChange(this.state)
+    this.props.onStateChange(this.state.per_profile,isSubmit)
 
 
   }
@@ -117,7 +116,6 @@ class PersonalProfile extends React.Component {
 
   render() {
     let { per_profile } = this.state;
-  console.log("active ",this.state.active)
     return (
       <div className="PersonalProfile">
         <div className="personalProfile_bg Pf-rightbox  p-5">
@@ -247,7 +245,6 @@ class PersonalProfile extends React.Component {
             {/* end of inner container*/}
           </div>
         </div>
-        {console.log(" personal profife redux ",this.props.tabindex)}
       </div>
     );
   }

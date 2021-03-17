@@ -42,7 +42,7 @@
 
 /* Error Styling */
 
-.signInPage .signInPage .error label {
+.signInPage .error label {
   color: #cc0033;
 }
 
@@ -57,6 +57,3 @@
   outline: none;
 }
 
-.signInPage .error .error-message {
-  display: inline-block;
-}

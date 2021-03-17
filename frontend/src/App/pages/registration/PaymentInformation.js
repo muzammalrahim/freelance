@@ -51,7 +51,7 @@ function PaymentInformation(props) {
                 </p>
               </div>
             </div>
-
+{console.log("payment info",paymentInfo)}
             <div class="row w-75">
               <div className="Rb-1 col-md-12">
                 <div class="form-group">
