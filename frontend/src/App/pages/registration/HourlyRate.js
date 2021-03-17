@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./HourlyRate.css";
 import "../../../../src/common.css";
@@ -10,6 +10,21 @@ import { nameAction } from "../../../redux/actions/myaction";
 import { connect } from "react-redux";
 
 function HourlyRate(props) {
+
+     const [proposal_amount, setproposal_amount] = useState(null);
+     const [total_amount, settotal_amount] = useState(0);
+
+  const proposalHandler = (e) => {
+  let data = e.target.value
+    let percentage = 0
+    setproposal_amount({...proposal_amount,data });
+
+      const result = ( proposal_amount/ 100) * 85;
+
+settotal_amount(result)
+console.log("total",total_amount)
+
+  };
   return (
     <div className="HourlyRate">
       {/*left section END*/}
@@ -44,6 +59,9 @@ function HourlyRate(props) {
                   type="text"
                   class="form-control form-controlBorderNone"
                   aria-label="Amount (to the nearest dollar)"
+                  name="proposal_amount"
+                  value={proposal_amount}
+                  onChange={proposalHandler}
                 />
                 <div class="input-group-append">
                   <span class="input-group-text labelBoderRight hr_Para3">

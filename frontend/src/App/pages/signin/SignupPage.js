@@ -21,14 +21,13 @@ class SignupPage extends Component {
       severity: '',
       message:'',
       title:''
-      } 
-
-      this.userValidate={
+      }; 
+  this.userValidate={
         username: false,
         email: false,
         password: false,
         passwordConfirm: false,
-    }
+    };
 
 this.user={
   username: "",
@@ -36,22 +35,20 @@ this.user={
   password: "",
   passwordConfirm: "",
   account_type: "",
-  
- 
-}
+};
 
 this.userError={
   usernameError: "",
   emailError: "",
   passwordError: "",
   passwordConfirmError: "",
-}
+};
 
     this.state = {
        alert: this.alert,
        user:this.user,
        userValidate: this.userValidate,
-       userError:this.userError, 
+       userError: this.userError, 
        statepasswordError :""
     };
   }
@@ -139,20 +136,13 @@ Object.keys(userValidate).map((key) => {
                   {console.log("length kaam ahy")}
                   {" "}
                   {(userValidate[key] = false)},
-                  {
-                  this.setState({
-                  
-                    statepasswordError : "minimum Password length 8 characters",
-                 
+                  {this.setState({
+                  statepasswordError : "minimum Password length 8 characters", 
                   })}
                 </div>
               )
-            ) : (
-              
-                  this.setState({
-                  
-                           statepasswordError: "Password is required",
-                    
+            ) : (this.setState({
+                  statepasswordError : "password required", 
                   })
             );
           }
@@ -185,7 +175,7 @@ Object.keys(userValidate).map((key) => {
 
 
 
-    isSubmit = Boolean(this.checksubmitdata(isSubmit) ? true : false);
+    isSubmit = Boolean(this.checksubmitdata(isSubmit) ? false : false);
     
     if(isSubmit===true)  
       {
@@ -215,6 +205,12 @@ Object.keys(userValidate).map((key) => {
     
        this.setState({alert:{open:true, severity:"error", title:"Error", message:'please! fill your form completely'}})
         }  
+
+
+
+
+ this.setState({userError:{usernameError:"", emailError:"success", passwordError:"success",passwordConfirmError:'User Created Sucessfully'}})
+this.setState({userValidate,})
 
      console.log("state",this.state)   
   };
@@ -262,7 +258,7 @@ Object.keys(userValidate).map((key) => {
                   <img src={AvatarImage} alt="/" className="si-pic-tag" />
                   <form className="form-field pt-5">
                     <div className="form-group pt-4">
-                      <label form="usr">Full name</label>
+                      <label form="usr">Full name </label>
                       <input
                         type="text"
                         className="form-control"
