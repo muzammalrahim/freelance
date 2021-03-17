@@ -21,18 +21,28 @@ class TabbarRegistration extends Component {
     this.state = {
       tabindex: null,
       userid: null,
+      sendData : false
     };
   }
 
 
-  handler = () => {
+  sendDataHandler =() =>
+  {
+      let {sendData} = this.state
+      sendData= true
+      this.setState({ sendData });
+      console.log("agey mai",sendData);
+  }
+
+
+  tabUphandler = () => {
     let { tabindex } = this.state;
     this.setState({ tabindex: tabindex + 1 });
 
     this.props.tabChangeHandler(tabindex);
   };
 
-  handler2 = () => {
+  tabDownhandler = () => {
     this.setState({
       tabindex: this.state.tabindex - 1,
     });
@@ -63,6 +73,10 @@ class TabbarRegistration extends Component {
   stateHandler(stateData,isSubmit) {
     console.log("personal state data", stateData);
     console.log("is", isSubmit);
+
+    list("api/v1/freelancer_profile/")
+
+
   }
 
   personalProfileStateHandler(stateData) {
@@ -265,7 +279,8 @@ class TabbarRegistration extends Component {
                       type="button"
                       className="btn tb_nextButton"
                       onClick={() => {
-                        this.handler();
+                        this.tabUphandler();
+                        this.sendDataHandler();
                       }}
                     >
                       {" "}
