@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{ useState,useEffect }from 'react'
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -10,6 +10,7 @@ import { useTheme } from '@material-ui/core/styles';
 import Proposal from '../jobs/Proposal'
 import GetImage from '../registration/GetImage';
 import { makeStyles } from '@material-ui/core/styles';
+import post from '../helper/api'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -25,7 +26,17 @@ const useStyles = makeStyles((theme) => ({
 
 
 function RequestPaymentModal() {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
+    const [select, setSelect] = useState('id')
+    const [user, setUser] = useState({
+      City : "",
+      Country : "",
+      Company :"",
+      descripion :"",
+      budget : "" ,
+
+  
+    });
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -36,6 +47,35 @@ function RequestPaymentModal() {
   const handleClose = () => {
     setOpen(false);
   };
+
+
+ 
+  function saveUser(){
+    alert("form has been submitted")
+    console.warn("saveUser")
+  }
+    const { City, Country, Month, Year, budget,descripion} = user;
+  const onInputChange =e=>{
+   
+    setUser({user,[e.target.name] : e.target.value})
+
+    console.log("user data",user)
+  };
+  const onSubmit = async e => {
+    
+       post('/api/v1/contract/')
+      .then(response => {
+        console.log(response)
+      })
+     
+      .catch(error => {
+        console.log(error)
+      })
+     
+    }
+  useEffect(() => {
+    onSubmit();
+  }, [])
   
 
   return (
@@ -80,7 +120,12 @@ function RequestPaymentModal() {
                 <div className="modal-msg text-left pt-4">
                     <h3 className="pb-1">Message</h3>
                     <div className="modal-textarea">
-                        <textarea placeholder="Type your message to client..."/>
+                        <textarea
+                         placeholder="Type your message to client..."
+                         name="descripion"
+                         value={descripion}
+                         onChange={e => onInputChange(e)}
+                         />
                     </div>    
                 </div>
                 <div className="modal-upload-img text-left pt-4">

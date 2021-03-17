@@ -73,6 +73,18 @@ class ApplicationSerializer(serializers.ModelSerializer):
 
 
 class ContractSerializer(serializers.ModelSerializer):
+	attachment = AttachmentSerializer(write_only=True)
+
+	def create(self, validated_data):
+		attachment = validated_data.pop('attachment')
+
+		models.Attachment.objects.create(**attachment)
+
+		contract = models.Contract.objects.create(
+			**validated_data)
+
+		return contract
+
 	def to_representation(self, instance):
 		representation = super(ContractSerializer, self).to_representation(instance)
 

@@ -11,7 +11,6 @@ class PersonalProfile extends React.Component {
       first_name: "",
       mobile_number: "",
       city: "",
-  
       last_name: "",
       address: "",
       country: "",
@@ -22,7 +21,6 @@ class PersonalProfile extends React.Component {
       first_name: false,
       mobile_number: false,
       last_name: false,
-     
       address: false,
       country: false,
       city: false,
@@ -49,18 +47,17 @@ class PersonalProfile extends React.Component {
   }
 
   componentDidMount() {
-    let [{ per_profile, per_profileValidate }] = [this.state];
     if (localStorage.getItem("personal_profile")) {
       var storedData = JSON.parse(localStorage.getItem("personal_profile"));
       this.setState({ per_profile: storedData });
     }
 
-    console.log("")
+    console.log("state",this.state)
   }
 
   submitHandler(ans) {
     let [
-      { per_profile, per_profileValidate, personal_profile_isSubmit_value },
+      { per_profile, per_profileValidate,},
     ] = [this.state];
     let impValue = 0;
     Object.values(per_profileValidate).map((values) => {

@@ -25,3 +25,35 @@
   color: #fff;
   width: 116px !important;
 }
+
+
+
+.signInPage .error-message {
+  color: #cc0033;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 15px;
+  margin: 5px 0 0;
+}
+
+.signInPage .input-group .error-message {
+  display: none;
+}
+
+/* Error Styling */
+
+.signInPage .error label {
+  color: #cc0033;
+}
+
+.signInPage .error input[type="text"] {
+  background-color: #fce4e4;
+  border: 1px solid #cc0033;
+  outline: none;
+}
+.signInPage .error input[type="password"] {
+  background-color: #fce4e4;
+  border: 1px solid #cc0033;
+  outline: none;
+}
+

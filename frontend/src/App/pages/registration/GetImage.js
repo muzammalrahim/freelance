@@ -4,6 +4,7 @@ import request from "superagent";
 import img from '../../../img/ImageUpload.png'
 import './IdVerification.css'
 import '../../../../src/common.css'
+import './getimage.css'
 
 import {ProfessionalProfileAction} from "../../../redux/actions/ProfessionalProfileAction"
 import {connect} from "react-redux"
@@ -76,6 +77,22 @@ import {connect} from "react-redux"
     return (
       <div className='style'>
           <div className="imgBack">
+
+              { this.state.filesBase64 !=''?
+              <div>
+              <ReactDropzone
+                className={this.props.value === 2 ? "dropzone2" : "dropzone"}
+                accept="image/*"
+                onDrop={this.onDrop}
+                >
+                <div className="imgcssclass">
+                <img className="newimage" src={`data:image/png;base64,`+this.state.filesBase64}  />
+                 </div>
+               
+              </ReactDropzone>
+               </div>
+             
+              :  
             <ReactDropzone
                 className={this.props.value === 2 ? "dropzone2" : "dropzone"}
                 accept="image/*"
@@ -88,6 +105,7 @@ import {connect} from "react-redux"
                   </div>  
                 </div>
               </ReactDropzone>
+             }
             </div>
         {/*<h2>Image Previews</h2>
         {this.state.files.length > 0 &&

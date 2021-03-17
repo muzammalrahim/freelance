@@ -24,7 +24,6 @@ class TabbarRegistration extends Component {
     };
   }
 
-  stateHandler;
 
   handler = () => {
     let { tabindex } = this.state;
@@ -48,6 +47,7 @@ class TabbarRegistration extends Component {
       .then((res) => {
         this.setState({ userid: res.data.id });
         console.log("profile", this.state.userid);
+        console.log("profile data", res.data);
       })
       .catch((error) => {});
 
@@ -60,8 +60,9 @@ class TabbarRegistration extends Component {
     this.clickone(tabindex2);
   }
 
-  stateHandler(stateData) {
-    console.log("neeeeee", stateData);
+  stateHandler(stateData,isSubmit) {
+    console.log("personal state data", stateData);
+    console.log("is", isSubmit);
   }
 
   personalProfileStateHandler(stateData) {
@@ -75,10 +76,7 @@ class TabbarRegistration extends Component {
     console.log("neeeeee", stateData);
   }
 
-  hourlyRateStateHandler()
-  {
-
-  }
+  hourlyRateStateHandler() {}
 
   render() {
     let { tabindex } = this.state;
@@ -227,13 +225,25 @@ class TabbarRegistration extends Component {
             </div>
 
             <div className="tabbar_min_height col-xs-6 col-sm-8 col-md-8 col-lg-9  p-5 tabbar_panel_background">
-         {tabindex === 1 && (
+              {tabindex === 1 && (
                 <PersonalProfile onStateChange={this.stateHandler} />
               )}
-           {tabindex === 2 && <ProfessionalProfile2 onStateChange={this.personalProfileStateHandler} />}
-              {tabindex === 3 && <IdVerification onStateChange={this.idVerificationStateHandler} />}
-              {tabindex === 4 && <PaymentInformation onStateChange={this.stateHandler} />}
-              {tabindex === 5 && <HourlyRate onStateChange={this.stateHandler} />}
+              {tabindex === 2 && (
+                <ProfessionalProfile2
+                  onStateChange={this.personalProfileStateHandler}
+                />
+              )}
+              {tabindex === 3 && (
+                <IdVerification
+                  onStateChange={this.idVerificationStateHandler}
+                />
+              )}
+              {tabindex === 4 && (
+                <PaymentInformation onStateChange={this.stateHandler} />
+              )}
+              {tabindex === 5 && (
+                <HourlyRate onStateChange={this.stateHandler} />
+              )}
 
               <div className="container tabbar_next_pre_btn_background pt-4 pb-5">
                 {tabindex > 1 && (
