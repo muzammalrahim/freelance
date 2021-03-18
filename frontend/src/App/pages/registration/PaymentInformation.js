@@ -51,6 +51,7 @@ function PaymentInformation(props) {
                 </p>
               </div>
             </div>
+            {console.log("Number",{paymentInfo})}
 
             <div class="row w-75">
               <div className="Rb-1 col-md-12">

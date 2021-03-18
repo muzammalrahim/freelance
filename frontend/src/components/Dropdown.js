@@ -34,13 +34,15 @@ class Dropdown extends React.Component {
         <p className="dropheader">{this.props.title}</p>
            <select className="Select" value={this.state.provide_service} onChange={this.handleChange} >
            
-            <option value="Select service">Select service</option>
+       
+
+             <option value="Select service">Select service</option>
             <option value="Copywriting">Copywriting</option>
             <option value="Blog Editing">Blog Editing</option>
             <option value="Web Design">Web Design</option>
             <option value="Web Development">Web Development</option>
             <option value="WordPress Setup">WordPress Setup</option>
-            <option value="Graphic Design">Graphic Design</option>
+            <option value="Graphic Design">Graphic Design</option> 
            
           </select>
       </div>
