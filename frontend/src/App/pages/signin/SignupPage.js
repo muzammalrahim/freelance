@@ -16,42 +16,6 @@ class SignupPage extends Component {
   constructor(props) {
     super(props);
 
-<<<<<<< HEAD
-    this.alert={
-      open: false, 
-      severity: '',
-      message:'',
-      title:''
-      }; 
-  this.userValidate={
-        username: false,
-        email: false,
-        password: false,
-        passwordConfirm: false,
-    };
-
-this.user={
-  username: "",
-  email: "",
-  password: "",
-  passwordConfirm: "",
-  account_type: "",
-};
-
-this.userError={
-  usernameError: "",
-  emailError: "",
-  passwordError: "",
-  passwordConfirmError: "",
-};
-
-    this.state = {
-       alert: this.alert,
-       user:this.user,
-       userValidate: this.userValidate,
-       userError: this.userError, 
-       statepasswordError :""
-=======
     this.alert = {
       open: false,
       severity: "",
@@ -86,7 +50,6 @@ this.userError={
       user: this.user,
       userValidate: this.userValidate,
       userError: this.userError,
->>>>>>> 278c7a640cdbb070f337bec054c272231eb41b17
     };
   }
 
@@ -151,35 +114,6 @@ this.userError={
 
     let isSubmit = null;
 
-<<<<<<< HEAD
-
-Object.keys(userValidate).map((key) => {
- if (key === "password") {
-          {
-        
-            password !== "" ? ( 
-              password.length > 8 ? (
-                (userValidate[key] = true)
-              ) : (
-                <div>
-                  {console.log("length kaam ahy")}
-                  {" "}
-                  {(userValidate[key] = false)},
-                  {this.setState({
-                  statepasswordError : "minimum Password length 8 characters", 
-                  })}
-                </div>
-              )
-            ) : (this.setState({
-                  statepasswordError : "password required", 
-                  })
-            );
-          }
-        } else if (key === "email") {
-          email !== "" ? (
-            this.validateEmail(email) ? (
-              (userValidate[key] = true)
-=======
     Object.keys(userValidate).map((key) => {
       if (
         key === "password" ||
@@ -201,7 +135,6 @@ Object.keys(userValidate).map((key) => {
                   (userValidate[key] = true)
                 )}
               </div>
->>>>>>> 278c7a640cdbb070f337bec054c272231eb41b17
             ) : (
               <div>
                 {" "}
@@ -232,15 +165,7 @@ Object.keys(userValidate).map((key) => {
 
     this.setState({ userError });
 
-<<<<<<< HEAD
-    isSubmit = Boolean(this.checksubmitdata(isSubmit) ? false : false);
-    
-    if(isSubmit===true)  
-      {
-         
-=======
     isSubmit = Boolean(this.checksubmitdata(isSubmit) ? true : false);
->>>>>>> 278c7a640cdbb070f337bec054c272231eb41b17
 
     if (isSubmit === true) {
 
@@ -255,15 +180,6 @@ Object.keys(userValidate).map((key) => {
 
 
 
-<<<<<<< HEAD
-
-
-
- this.setState({userError:{usernameError:"", emailError:"success", passwordError:"success",passwordConfirmError:'User Created Sucessfully'}})
-this.setState({userValidate,})
-
-     console.log("state",this.state)   
-=======
           }
         sign_up(CustomRegisterUser)
           .then((res) => {
@@ -301,7 +217,6 @@ this.setState({userValidate,})
         },
       });
     }
->>>>>>> 278c7a640cdbb070f337bec054c272231eb41b17
   };
 
   render() {
@@ -357,10 +272,6 @@ this.setState({userValidate,})
                   <img src={AvatarImage} alt="/" className="si-pic-tag" />
 
                   <form className="form-field pt-5">
-<<<<<<< HEAD
-                    <div className="form-group pt-4">
-                      <label form="usr">Full name </label>
-=======
                     <div
                       className={
                         userError.username === ""
@@ -369,7 +280,6 @@ this.setState({userValidate,})
                       }
                     >
                       <label form="usr">Full name</label>
->>>>>>> 278c7a640cdbb070f337bec054c272231eb41b17
                       <input
                         type="text"
                         className="form-control"

@@ -65,6 +65,7 @@ function PaymentInformation(props) {
                     name="cardHoldername"
                     value={cardHoldername}
                     onChange={onInputChange}
+                    disabled
                   />
                 </div>
                 <div class="form-group">
@@ -78,6 +79,7 @@ function PaymentInformation(props) {
                     name="mobileNo"
                     value={mobileNo}
                     onChange={onInputChange}
+                    disabled
                   />
                 </div>
               </div>

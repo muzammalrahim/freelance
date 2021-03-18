@@ -60,11 +60,18 @@ class  ProfessionalProfile2 extends Component{
      {
         this.setState({provideService:provideService2})
       }
+
  checkExistedSkill(name) {
-    return this.state.skills.includes(name);
+  for (let i = 0; i < this.state.skills.length; i++) {
+    if (this.state.skills[i].name === name) {
+      return true;
+    }
+    }
+      return false;
   }
   removeSkills = (name) => {
     const skills = this.state.skills.filter((skill) => skill.name != name);
+    console.log("dam cham",skills)
     this.setState({
       skills,
     });
@@ -107,6 +114,7 @@ return (
                           );
                           console.log("isExisted", isExisted);
                           if (isExisted) {
+                            console.log("true", isExisted);
                           } else {
                             let data = { name: e.target.value };
                             this.setState((prevState) => ({
