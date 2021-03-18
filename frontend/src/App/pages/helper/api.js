@@ -28,8 +28,12 @@ export default function list(endpoint, params={}) {
 
 export function put(endpoint, data) {
   let config = {
-    headers: headers,
+    headers: {
+    'Content-Type': 'application/json',
+    
+    }
   }
+  console.log("user",data)
   return axios.put(API_URL + endpoint, data, config)
 }
 export function patch(endpoint, data) {

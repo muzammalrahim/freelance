@@ -16,6 +16,15 @@ function Experience() {
   const handleShow = () => setShow(true);
   const handleSave = () => setShow(false);
   const [select, setSelect] = useState('id')
+  const [data, setData] = useState({
+    provide_service: '',
+    checkbox : 'false'
+  });
+  function dropDownHandler(provideService2) {
+    setData({ provideService: provideService2 })
+    
+  }
+
   const [user, setUser] = useState({
     name : "",
     City : "",
@@ -31,6 +40,18 @@ function Experience() {
     alert("form has been submitted")
     console.warn("saveUser")
   }
+  
+  function handleChange(e) {
+    setData({provide_service: e.target.value});
+
+    console.log("dropdown",e.target.value)
+}
+
+ const handleAllChecked = (e) => {
+  setData({checkbox: e.target.value});
+  console.log("checked ",e.target.value);
+}
+
     const { City, Country, Month, Year, Company, role,descripion} = user;
   const onInputChange =e=>{
    
@@ -40,7 +61,7 @@ function Experience() {
   };
   const onSubmit = async e => {
       e.preventDefault()
-       post('/api/v1/profile/', user)
+       post('/api/v1/profile/')
       .then(response => {
         console.log(response)
 
@@ -118,80 +139,73 @@ function Experience() {
               <div className="form-row">
                 <div className="form-group col-md-6">
                   <label  for="inputState">Location</label>
-                  <select value = {select}
-                  onChange={(e) => {
-                    setSelect(e.target.value);
-                  }}
-                  
-                  id="inputState" 
-                  className="form-control"
-                  >
+                  <select id="inputState" value={data.provide_service} onChange={e => handleChange(e)}  className="form-control">
                     <option value="City">Select</option>
-                    <option value="City">City</option>
-                    <option value="City">City</option>
-                    <option value="City">City</option>
-                    <option value="City">City</option>
+                    <option value="islamabad">islamabad</option>
+                    <option value="dubai">dubai</option>
+                    <option value="qaira">qaira</option>
+                    <option value="qatar">qatar</option>
                   </select>
                 </div>
                 <div className="form-group col-md-6">
                   <label for="inputState">Country</label>
-                  <select id="inputState" className="form-control">
+                  <select id="inputState" value={data.provide_service} onChange={e => handleChange(e)}  className="form-control">
                     <option selected>Select</option>
-                    <option>Pakistan</option>
-                    <option>Dubai</option>
-                    <option>Qatar</option>
-                    <option>Iran</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="Dubai">Dubai</option>
+                    <option value="Qatar">Qatar</option>
+                    <option value="Iran">Iran</option>
                   </select>
                 </div>
               </div>
               <div className="form-row">
                 <div className="form-group col-md-6">
                   <label for="inputState">Period</label>
-                  <select id="inputState" className="form-control">
+                  <select id="inputState" value={data.provide_service} onChange={e => handleChange(e)}  className="form-control">
                     <option selected>Month</option>
-                    <option>january</option>
-                    <option>february</option>
-                    <option>March</option>
-                    <option>April</option>
+                    <option value="january">january</option>
+                    <option value="february">february</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
                   </select>
                 </div>
                 <div className="form-group col-md-6 pt-2">
                 <label for="inputState"></label>
-                  <select id="inputState" className="form-control">
+                <select id="inputState" value={data.provide_service} onChange={e => handleChange(e)}  className="form-control">
                     <option selected>Year</option>
-                    <option>2020</option>
-                    <option>2019</option>
-                    <option>2018</option>
-                    <option>2017</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
                   </select>
                 </div>
               </div>
               <div className="form-row">
                 <div className="form-group col-md-6">
                   <label for="inputState">Through</label>
-                  <select id="inputState" className="form-control">
+                  <select id="inputState" value={data.provide_service} onChange={e => handleChange (e) }className="form-control">
                     <option selected>Month</option>
-                    <option>january</option>
-                    <option>february</option>
-                    <option>March</option>
-                    <option>April</option>
+                    <option value="january">january</option>
+                    <option value="february">february</option>
+                    <option value="March"> March</option>
+                    <option value="April">April</option>
                   </select>
                 </div>
                 <div className="form-group col-md-6 pt-2">
                 <label for="inputState"></label>
-                  <select id="inputState" className="form-control">
+                <select id="inputState" value={data.provide_service} onChange={e => handleChange(e)}  className="form-control">
                     <option selected>Year</option>
-                    <option>2020</option>
-                    <option>2019</option>
-                    <option>2018</option>
-                    <option>2017</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
                   </select>
                 </div>
               </div>
               <div className="form-row">
                 <div className="col-md-6">
                   <label>
-                    <input type="checkbox" value="" /> Currently work here
+                    <input type="checkbox" onClick={handleAllChecked}  value="checked"/> Currently work here
                   </label>
                 </div>
               </div>
