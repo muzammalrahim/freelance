@@ -46,9 +46,10 @@ export default class PortfolioTab extends Component {
                     <button className={"Buttoncls " + (this.state.tabindex=== 1 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 1 })}>
                         1
                   </button>
+                  <span 
+                      class={"text2" + (this.state.tabindex===1 ? 'y-text':'hidden')} onClick={() => this.setState({ tabindex: 1 })}>Add Project</span>
 
                   </span>{" "}
-                  <span className="text2">Add Project</span>
                 </div>{" "}
                 <div className="pt-5"> </div>
 
@@ -60,9 +61,11 @@ export default class PortfolioTab extends Component {
                     <button className={"Buttoncls " + (this.state.tabindex=== 2 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 2 })}>
                         2
                   </button>
+                  <span class={"text2" + (this.state.tabindex===2 ? 'y-text':'hidden')} onClick={() => this.setState({ tabindex: 2 })}>Add Details</span>
+
 
                   </span>{" "}
-                  <span className="text2">Add Details</span>
+                  
                 </div>{" "}
                 <div className="pt-5"> </div>
 
@@ -75,9 +78,10 @@ export default class PortfolioTab extends Component {
                     <button className={"Buttoncls " + (this.state.tabindex=== 3 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 3 })}>
                         3
                   </button>
+                  <span class={"text2" + (this.state.tabindex===3 ? 'y-text':'hidden')} onClick={() => this.setState({ tabindex: 3 })}>Preview</span>
    
                   </span>{" "}
-                  <span className="text2">Preview</span>
+                 
                 </div>{" "}
             </div>
         
