@@ -11,7 +11,8 @@ import ProfessionalProfile2 from "./ProfessionalProfile2";
 import ProfessionalProfile2Footer from "./ProfFooter";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 
-import list,{post} from "../helper/api";
+import CheckIcon from '@material-ui/icons/Check';
+import list, { post } from "../helper/api";
 import { connect } from "react-redux";
 import { RegistrationTabBarAction } from "../../../redux/actions/RegistrationTabBarAction";
 
@@ -21,19 +22,17 @@ class TabbarRegistration extends Component {
     this.state = {
       tabindex: null,
       userid: null,
-      sendData : false
+      sendData: false,
+      personalProfileIsSubmit: false,
     };
   }
 
-
-  sendDataHandler =() =>
-  {
-      let {sendData} = this.state
-      sendData= true
-      this.setState({ sendData });
-      // console.log("agey mai",sendData);
-  }
-
+  sendDataHandler = () => {
+    let { sendData } = this.state;
+    sendData = true;
+    this.setState({ sendData });
+    // console.log("agey mai",sendData);
+  };
 
   tabUphandler = () => {
     let { tabindex } = this.state;
@@ -53,13 +52,13 @@ class TabbarRegistration extends Component {
   };
 
   componentDidMount() {
-    list("api/v1/accounts/profile/")
-      // .then((res) => {
-        // this.setState({ userid: res.data.id });
-        // console.log("profile", this.state.userid);
-        // console.log("profile data", res.data);
-      // })
-      // .catch((error) => {});
+    list("api/v1/accounts/profile/");
+    // .then((res) => {
+    // this.setState({ userid: res.data.id });
+    // console.log("profile", this.state.userid);
+    // console.log("profile data", res.data);
+    // })
+    // .catch((error) => {});
 
     var tabindex2 = 1;
 
@@ -70,40 +69,36 @@ class TabbarRegistration extends Component {
     this.clickone(tabindex2);
   }
 
-  stateHandler(stateData,isSubmit) {
+  stateHandler = (stateData, isSubmit) => {
     console.log("personal state data", stateData);
-    console.log("issub sadka", isSubmit);
 
-    if (isSubmit === true)
-    {
-      post("api/v1/freelancer_profile/",stateData)
-      .then((response)=>{
-              console.log("freelancer_profile res:",response)
-                } )
+    console.log("issub value", isSubmit);
 
-        .catch((error)=>{
-            console.log("error",error)
-        })        
-      
+    if (isSubmit === true) {
+      this.setState({ personalProfileIsSubmit: true });
+      post("api/v1/freelancer_profile/", stateData)
+        .then((response) => {
+          console.log("freelancer_profile res:", response);
+        })
 
+        .catch((error) => {
+          console.log("error", error);
+        });
+    } else {
+      this.setState({ personalProfileIsSubmit: false });
     }
-  }
 
-  personalProfileStateHandler(stateData) {
-    
+    console.log("pp in", this.state.personalProfileIsSubmit);
+  };
 
+  personalProfileStateHandler(stateData) {}
 
-  }
-
-  idVerificationStateHandler(stateData,imgOf) {
-     
-     if(imgOf === "idCard")
-     {
-       console.log("id card img",stateData)
-     }
-     else if(imgOf === "drivingLicense") {
-      console.log("driving  img",stateData)
-     }
+  idVerificationStateHandler(stateData, imgOf) {
+    if (imgOf === "idCard") {
+      console.log("id card img", stateData);
+    } else if (imgOf === "drivingLicense") {
+      console.log("driving  img", stateData);
+    }
   }
   paymentInformationStateHandler(stateData) {
     // console.log("neeeeee", stateData);
@@ -139,17 +134,33 @@ class TabbarRegistration extends Component {
                       {/*
               <button type="button" class={"btn btn-outline-secondary btn-circle btn-md " + (this.state.tabindex=== 1 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 1 })}> 1</button> */}
 
-                      <button
-                        className={
-                          "Buttoncls " +
-                          (tabindex === 1 ? "ButtonclsActive" : "hidden")
+              {this.state.tabindex >1 ?
+                <span style={{color: "white",background:" #1DA799", borderRadius: "25px"}}>
+                <CheckIcon/>
+                </span>
+              
+              :
+              
+              <button
+                className={
+                  "Buttoncls " +
+                  (tabindex === 1 ? "ButtonclsActive" : "hidden")
+                }
+                onClick={() => this.setState({ tabindex: 1 })}
+              >
+                1
+              </button>
+              }
+                     
+                      <span
+                        class={
+                          "text2" +
+                          (this.state.tabindex === 1 ? "y-text" : "hidden")
                         }
                         onClick={() => this.setState({ tabindex: 1 })}
                       >
-                        1
-                      </button>
-                      <span class={"text2" + (this.state.tabindex===1 ? 'y-text':'hidden')} onClick={() => this.setState({ tabindex: 1 })}>Personal Profile</span>
-
+                        Personal Profile
+                      </span>
                     </span>{" "}
                   </div>{" "}
                   <div
@@ -164,6 +175,13 @@ class TabbarRegistration extends Component {
                       class=" "
                       onClick={() => this.setState({ tabindex: 2 })}
                     >
+
+                    {this.state.tabindex > 2 ?
+                      <span style={{color: "white",background:" #1DA799", borderRadius: "25px"}}>
+                      <CheckIcon/>
+                      </span>
+                    
+                    :
                       <button
                         className={
                           "Buttoncls " +
@@ -173,10 +191,17 @@ class TabbarRegistration extends Component {
                       >
                         2
                       </button>
-                      <span class={"text2" + (this.state.tabindex===2 ? 'y-text':'hidden')} onClick={() => this.setState({ tabindex: 2 })}>Professional Profile</span>
-
+                    }
+                      <span
+                        class={
+                          "text2" +
+                          (this.state.tabindex === 2 ? "y-text" : "hidden")
+                        }
+                        onClick={() => this.setState({ tabindex: 2 })}
+                      >
+                        Professional Profile
+                      </span>
                     </span>{" "}
-                    
                   </div>{" "}
                   <div
                     className={
@@ -190,6 +215,12 @@ class TabbarRegistration extends Component {
                       class=" "
                       onClick={() => this.setState({ tabindex: 3 })}
                     >
+                    {this.state.tabindex > 3 ?
+                      <span style={{color: "white",background:" #1DA799", borderRadius: "25px"}}>
+                      <CheckIcon/>
+                      </span>
+                    
+                    :
                       <button
                         className={
                           "Buttoncls " +
@@ -199,10 +230,17 @@ class TabbarRegistration extends Component {
                       >
                         3
                       </button>
-                      <span class={"text2" + (this.state.tabindex===3 ? 'y-text':'hidden')} onClick={() => this.setState({ tabindex: 3 })}>ID Verification</span>
-
+                    }
+                      <span
+                        class={
+                          "text2" +
+                          (this.state.tabindex === 3 ? "y-text" : "hidden")
+                        }
+                        onClick={() => this.setState({ tabindex: 3 })}
+                      >
+                        ID Verification
+                      </span>
                     </span>{" "}
-                    
                   </div>{" "}
                   <div
                     className={
@@ -216,6 +254,12 @@ class TabbarRegistration extends Component {
                       class=" "
                       onClick={() => this.setState({ tabindex: 4 })}
                     >
+                    {this.state.tabindex > 4 ?
+                      <span style={{color: "white",background:" #1DA799", borderRadius: "25px"}}>
+                      <CheckIcon/>
+                      </span>
+                    
+                    :
                       <button
                         className={
                           "Buttoncls " +
@@ -225,10 +269,17 @@ class TabbarRegistration extends Component {
                       >
                         4
                       </button>
-                      <span class={"text2" + (this.state.tabindex===4 ? 'y-text':'hidden')} onClick={() => this.setState({ tabindex: 4 })}>Payment Information</span>
-
+                    }
+                      <span
+                        class={
+                          "text2" +
+                          (this.state.tabindex === 4 ? "y-text" : "hidden")
+                        }
+                        onClick={() => this.setState({ tabindex: 4 })}
+                      >
+                        Payment Information
+                      </span>
                     </span>{" "}
-                    
                   </div>{" "}
                   <div
                     className={
@@ -251,9 +302,16 @@ class TabbarRegistration extends Component {
                       >
                         5
                       </button>
-                      <span class={"text2" + (this.state.tabindex===5 ? 'y-text':'hidden')} onClick={() => this.setState({ tabindex: 5 })}>Hourly Rate</span>
+                      <span
+                        class={
+                          "text2" +
+                          (this.state.tabindex === 5 ? "y-text" : "hidden")
+                        }
+                        onClick={() => this.setState({ tabindex: 5 })}
+                      >
+                        Hourly Rate
+                      </span>
                     </span>{" "}
-            
                   </div>
                 </div>
               </div>

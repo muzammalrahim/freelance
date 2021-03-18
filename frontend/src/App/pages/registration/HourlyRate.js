@@ -16,7 +16,7 @@ class HourlyRate extends React.Component  {
     super();
     this.state = {
       total_amount: 0,
-      proposal_amount: 0,
+      proposal_amount: '',
       value2: 85,
       remainder : ''
     };
@@ -31,9 +31,6 @@ class HourlyRate extends React.Component  {
     
     var percent = (value/ 100) * 85;
     var remainder = (value - percent) ;
-
-console.log("self",percent)
-console.log("remainder",remainder)
   this.setState(state => ({
     [name]: value
   }));
