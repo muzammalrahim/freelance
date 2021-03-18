@@ -51,7 +51,6 @@ function PaymentInformation(props) {
                 </p>
               </div>
             </div>
-            {console.log("Number",{paymentInfo})}
 
             <div class="row w-75">
               <div className="Rb-1 col-md-12">
@@ -66,6 +65,7 @@ function PaymentInformation(props) {
                     name="cardHoldername"
                     value={cardHoldername}
                     onChange={onInputChange}
+                    disabled
                   />
                 </div>
                 <div class="form-group">
@@ -79,6 +79,7 @@ function PaymentInformation(props) {
                     name="mobileNo"
                     value={mobileNo}
                     onChange={onInputChange}
+                    disabled
                   />
                 </div>
               </div>

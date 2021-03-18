@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./HourlyRate.css";
 import "../../../../src/common.css";
@@ -9,7 +9,40 @@ import img2 from "../../../img/HourlyRate_F.png";
 import { nameAction } from "../../../redux/actions/myaction";
 import { connect } from "react-redux";
 
-function HourlyRate(props) {
+class HourlyRate extends React.Component  {
+
+
+  constructor() {
+    super();
+    this.state = {
+      total_amount: 0,
+      proposal_amount: 0,
+      value2: 85,
+      remainder : ''
+    };
+  }
+
+  
+
+ proposalHandler = (e) => {
+
+  const { name, value } = e.target;
+
+    
+    var percent = (value/ 100) * 85;
+    var remainder = (value - percent) ;
+
+console.log("self",percent)
+console.log("remainder",remainder)
+  this.setState(state => ({
+    [name]: value
+  }));
+
+  this.setState({total_amount:percent , remainder:remainder})
+
+  };
+render (){
+
   return (
     <div className="HourlyRate">
       {/*left section END*/}
@@ -44,6 +77,9 @@ function HourlyRate(props) {
                   type="text"
                   class="form-control form-controlBorderNone"
                   aria-label="Amount (to the nearest dollar)"
+                  name="proposal_amount"
+                  value={this.state.proposal_amount}
+                  onChange={this.proposalHandler}
                 />
                 <div class="input-group-append">
                   <span class="input-group-text labelBoderRight hr_Para3">
@@ -59,7 +95,7 @@ function HourlyRate(props) {
               <div class="row">
                 <div class="col-md-12 pb-3 pl-3 pr-4">
                   <div class=" hr_Para3">
-                    <div class="pull-left">0</div>
+                    <div class="pull-left">{this.state.remainder}</div>
                     <div class="pull-right">SAR</div>
                   </div>
                 </div>
@@ -68,13 +104,14 @@ function HourlyRate(props) {
               <label className="hr_Para3">Total amount you’ll recieve</label>
               <div class="form-group input-group mb-3">
                 <input
-                  placeholder="0"
+                  placeholder={this.state.total_amount}
                   type="text"
                   class="form-control form-controlBorderNone"
                   aria-label="Amount (to the nearest dollar)"
+                  disabled
                 />
                 <div class="input-group-append">
-                  <span class="input-group-text labelBoderRight hr_Para3">
+                  <span style={{backgroundColor: "#e9ecef"}} class="input-group-text labelBoderRight hr_Para3">
                     SAR
                   </span>
                 </div>
@@ -98,6 +135,7 @@ function HourlyRate(props) {
 <button onClick ={()=>{props.changeName()}}> changeName </button>*/}
     </div>
   );
+}
 }
 
 const mapStateToProps = (state) => {
