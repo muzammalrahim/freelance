@@ -11,7 +11,7 @@ import ProfessionalProfile2 from "./ProfessionalProfile2";
 import ProfessionalProfile2Footer from "./ProfFooter";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 
-import CheckIcon from '@material-ui/icons/Check';
+import CheckIcon from "@material-ui/icons/Check";
 import list, { post } from "../helper/api";
 import { connect } from "react-redux";
 import { RegistrationTabBarAction } from "../../../redux/actions/RegistrationTabBarAction";
@@ -24,6 +24,7 @@ class TabbarRegistration extends Component {
       userid: null,
       sendData: false,
       personalProfileIsSubmit: false,
+      data : {},
     };
   }
 
@@ -52,7 +53,7 @@ class TabbarRegistration extends Component {
   };
 
   componentDidMount() {
-    list("api/v1/accounts/profile/");
+    // list("api/v1/accounts/profile/");
     // .then((res) => {
     // this.setState({ userid: res.data.id });
     // console.log("profile", this.state.userid);
@@ -70,13 +71,14 @@ class TabbarRegistration extends Component {
   }
 
   stateHandler = (stateData, isSubmit) => {
+    let {data} = this.state
     console.log("personal state data", stateData);
-
     console.log("issub value", isSubmit);
-
     if (isSubmit === true) {
+      data = { user: stateData}
+        this.setState({data})
       this.setState({ personalProfileIsSubmit: true });
-      post("api/v1/freelancer_profile/", stateData)
+      post("api/v1/freelancer_profile/", this.state.data)
         .then((response) => {
           console.log("freelancer_profile res:", response);
         })
@@ -89,6 +91,7 @@ class TabbarRegistration extends Component {
     }
 
     console.log("pp in", this.state.personalProfileIsSubmit);
+  
   };
 
   personalProfileStateHandler(stateData) {}
@@ -123,7 +126,7 @@ class TabbarRegistration extends Component {
               <div>
                 <RegNavbar />
               </div>
-
+{  console.log("state data", this.state.data)}
               <div className="tabbar_tabarlist pt-4 pb-5 Changepadding ml-3 ">
                 <div className="ml-4 container">
                   <div class="Tab">
@@ -134,24 +137,28 @@ class TabbarRegistration extends Component {
                       {/*
               <button type="button" class={"btn btn-outline-secondary btn-circle btn-md " + (this.state.tabindex=== 1 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 1 })}> 1</button> */}
 
-              {this.state.tabindex >1 ?
-                <span style={{color: "white",background:" #1DA799", borderRadius: "25px"}}>
-                <CheckIcon/>
-                </span>
-              
-              :
-              
-              <button
-                className={
-                  "Buttoncls " +
-                  (tabindex === 1 ? "ButtonclsActive" : "hidden")
-                }
-                onClick={() => this.setState({ tabindex: 1 })}
-              >
-                1
-              </button>
-              }
-                     
+                      {this.state.tabindex > 1 ? (
+                        <span
+                          style={{
+                            color: "white",
+                            background: " #1DA799",
+                            borderRadius: "25px",
+                          }}
+                        >
+                          <CheckIcon />
+                        </span>
+                      ) : (
+                        <button
+                          className={
+                            "Buttoncls " +
+                            (tabindex === 1 ? "ButtonclsActive" : "hidden")
+                          }
+                          onClick={() => this.setState({ tabindex: 1 })}
+                        >
+                          1
+                        </button>
+                      )}
+
                       <span
                         class={
                           "text2" +
@@ -175,23 +182,27 @@ class TabbarRegistration extends Component {
                       class=" "
                       onClick={() => this.setState({ tabindex: 2 })}
                     >
-
-                    {this.state.tabindex > 2 ?
-                      <span style={{color: "white",background:" #1DA799", borderRadius: "25px"}}>
-                      <CheckIcon/>
-                      </span>
-                    
-                    :
-                      <button
-                        className={
-                          "Buttoncls " +
-                          (tabindex === 2 ? "ButtonclsActive" : "hidden")
-                        }
-                        onClick={() => this.setState({ tabindex: 2 })}
-                      >
-                        2
-                      </button>
-                    }
+                      {this.state.tabindex > 2 ? (
+                        <span
+                          style={{
+                            color: "white",
+                            background: " #1DA799",
+                            borderRadius: "25px",
+                          }}
+                        >
+                          <CheckIcon />
+                        </span>
+                      ) : (
+                        <button
+                          className={
+                            "Buttoncls " +
+                            (tabindex === 2 ? "ButtonclsActive" : "hidden")
+                          }
+                          onClick={() => this.setState({ tabindex: 2 })}
+                        >
+                          2
+                        </button>
+                      )}
                       <span
                         class={
                           "text2" +
@@ -215,22 +226,27 @@ class TabbarRegistration extends Component {
                       class=" "
                       onClick={() => this.setState({ tabindex: 3 })}
                     >
-                    {this.state.tabindex > 3 ?
-                      <span style={{color: "white",background:" #1DA799", borderRadius: "25px"}}>
-                      <CheckIcon/>
-                      </span>
-                    
-                    :
-                      <button
-                        className={
-                          "Buttoncls " +
-                          (tabindex === 3 ? "ButtonclsActive" : "hidden")
-                        }
-                        onClick={() => this.setState({ tabindex: 3 })}
-                      >
-                        3
-                      </button>
-                    }
+                      {this.state.tabindex > 3 ? (
+                        <span
+                          style={{
+                            color: "white",
+                            background: " #1DA799",
+                            borderRadius: "25px",
+                          }}
+                        >
+                          <CheckIcon />
+                        </span>
+                      ) : (
+                        <button
+                          className={
+                            "Buttoncls " +
+                            (tabindex === 3 ? "ButtonclsActive" : "hidden")
+                          }
+                          onClick={() => this.setState({ tabindex: 3 })}
+                        >
+                          3
+                        </button>
+                      )}
                       <span
                         class={
                           "text2" +
@@ -254,22 +270,27 @@ class TabbarRegistration extends Component {
                       class=" "
                       onClick={() => this.setState({ tabindex: 4 })}
                     >
-                    {this.state.tabindex > 4 ?
-                      <span style={{color: "white",background:" #1DA799", borderRadius: "25px"}}>
-                      <CheckIcon/>
-                      </span>
-                    
-                    :
-                      <button
-                        className={
-                          "Buttoncls " +
-                          (tabindex === 4 ? "ButtonclsActive" : "hidden")
-                        }
-                        onClick={() => this.setState({ tabindex: 4 })}
-                      >
-                        4
-                      </button>
-                    }
+                      {this.state.tabindex > 4 ? (
+                        <span
+                          style={{
+                            color: "white",
+                            background: " #1DA799",
+                            borderRadius: "25px",
+                          }}
+                        >
+                          <CheckIcon />
+                        </span>
+                      ) : (
+                        <button
+                          className={
+                            "Buttoncls " +
+                            (tabindex === 4 ? "ButtonclsActive" : "hidden")
+                          }
+                          onClick={() => this.setState({ tabindex: 4 })}
+                        >
+                          4
+                        </button>
+                      )}
                       <span
                         class={
                           "text2" +
