@@ -155,5 +155,5 @@ export default class ProfileSetting extends Component {
 
 
 
-// checked={this.state.ButtonColor === 1}
+
 
