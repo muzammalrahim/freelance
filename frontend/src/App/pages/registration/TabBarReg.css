@@ -164,17 +164,7 @@
     text-align: center; 
 } 
 
-.tabbar .btn-circle.btn-md:focus,
-  .tabbar .btn-circle.btn-md:hover {
 
-
-   
-  }
-
-
-
-
-  
   @media screen and (max-width: 1105px) {
     .tabbar .text2 {
       font-size: 13px;

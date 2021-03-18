@@ -41,8 +41,8 @@ import React from 'react'
         />
         <div
           style={{
-            height: "60px",
-            width: "60px",
+            height: "80px",
+            width: "80px",
           }}
           onClick={() => imageUploader.current.click()}
         >
