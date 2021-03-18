@@ -38,6 +38,7 @@ class Dropdown extends React.Component {
             <option value="Copywriting">Copywriting</option> 
             <option value="Select service">Select service</option>
            
+
             <option value="Graphic Design">Graphic Design</option>
           </select>
           </div> :
@@ -48,12 +49,15 @@ class Dropdown extends React.Component {
            <option value="Select service">Select service</option>
             <option value="Copywriting">Copywriting</option> 
             <option value="Select service">Select service</option>
+
             <option value="Copywriting">Copywriting</option>
             <option value="Blog Editing">Blog Editing</option>
             <option value="Web Design">Web Design</option>
             <option value="Web Development">Web Development</option>
             <option value="WordPress Setup">WordPress Setup</option>
+
             <option value="Graphic Design">Graphic Design</option>
+
           </select>
              </div> 
             

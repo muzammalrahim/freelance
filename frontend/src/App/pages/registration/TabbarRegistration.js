@@ -130,7 +130,7 @@ class TabbarRegistration extends Component {
               </div>
 
               <div className="tabbar_tabarlist pt-4 pb-5 Changepadding ml-3 ">
-                <div className="container">
+                <div className="ml-4 container">
                   <div class="Tab">
                     <span
                       class=" "
@@ -148,8 +148,9 @@ class TabbarRegistration extends Component {
                       >
                         1
                       </button>
+                      <span class={"text2" + (this.state.tabindex===1 ? 'y-text':'hidden')} onClick={() => this.setState({ tabindex: 1 })}>Personal Profile</span>
+
                     </span>{" "}
-                    <span class="text2">Personal Profile</span>
                   </div>{" "}
                   <div
                     className={
@@ -172,8 +173,10 @@ class TabbarRegistration extends Component {
                       >
                         2
                       </button>
+                      <span class={"text2" + (this.state.tabindex===2 ? 'y-text':'hidden')} onClick={() => this.setState({ tabindex: 2 })}>Professional Profile</span>
+
                     </span>{" "}
-                    <span class="text2">Professional Profile</span>
+                    
                   </div>{" "}
                   <div
                     className={
@@ -196,8 +199,10 @@ class TabbarRegistration extends Component {
                       >
                         3
                       </button>
+                      <span class={"text2" + (this.state.tabindex===3 ? 'y-text':'hidden')} onClick={() => this.setState({ tabindex: 3 })}>ID Verification</span>
+
                     </span>{" "}
-                    <span class="text2">ID Verification</span>
+                    
                   </div>{" "}
                   <div
                     className={
@@ -220,8 +225,10 @@ class TabbarRegistration extends Component {
                       >
                         4
                       </button>
+                      <span class={"text2" + (this.state.tabindex===4 ? 'y-text':'hidden')} onClick={() => this.setState({ tabindex: 4 })}>Payment Information</span>
+
                     </span>{" "}
-                    <span class="text2">Payment Information</span>
+                    
                   </div>{" "}
                   <div
                     className={
@@ -244,8 +251,9 @@ class TabbarRegistration extends Component {
                       >
                         5
                       </button>
+                      <span class={"text2" + (this.state.tabindex===5 ? 'y-text':'hidden')} onClick={() => this.setState({ tabindex: 5 })}>Hourly Rate</span>
                     </span>{" "}
-                    <span class="text2">Hourly Rate</span>
+            
                   </div>
                 </div>
               </div>

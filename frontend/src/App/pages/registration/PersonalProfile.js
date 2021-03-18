@@ -155,6 +155,7 @@ class PersonalProfile extends React.Component {
                         }}
                       />
                     </div>
+                    {console.log("Name",per_profile.first_name)}
                     <div class="form-group">
                       <label className="pp_inputHeading" for="usr">
                         Mobile number
