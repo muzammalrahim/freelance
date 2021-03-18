@@ -1,86 +1,107 @@
-import React, { Component } from "react";
-import GetImage from "./GetImage";
+import React,{Component} from 'react'
+import GetImage from './GetImage'
 import Dropdown from "../../../components/Dropdown";
-import "./ProfessionalProfile2.css";
-import "../../../../src/common.css";
-import img from "../../../assets/Group 3539.png";
+import './ProfessionalProfile2.css'
+import '../../../../src/common.css'
+import img from '../../../assets/Group 3539.png'
 // import img3 from '../../../img/WorkPlatform.png';
-import { connect } from "react-redux";
+import {connect} from "react-redux"
 
-class ProfessionalProfile2 extends Component {
-  constructor(props) {
-    super(props);
+class  ProfessionalProfile2 extends Component{
+ 
+    constructor(props){
+        super(props);
 
-    this.state = {
-      provideService: "",
-      skills: [],
-      chooseCategory: [],
-      img: "",
-    };
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleBase64File = this.handleBase64File.bind(this);
-    this.dropDownHandler = this.dropDownHandler.bind(this);
-  }
 
-  handleInputChange(event) {
-    const target = event.target;
-    var value = target.value;
+        this.state = {
+                        provideService :'',
+                        skills: [],
+                        chooseCategory:[],
+                        img:'', 
+                           
+                        //  people : [
+                        //                       { name: 'chris' },
+                        //                         { name: 'nick' }
+                        //           ]
+                      }
 
-    if (target.checked) {
-      this.setState((prevState) => ({
-        chooseCategory: [...prevState.chooseCategory, value],
-      }));
-    } else {
-      const a = this.state.chooseCategory;
-      a.splice(value, 1);
-      this.setState({ chooseCategory: a });
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this. handleBase64File = this. handleBase64File.bind(this);
+        this. dropDownHandler = this. dropDownHandler.bind(this);
     }
-    this.props.onStateChange(this.state);
-  }
 
-  handleBase64File(base64file) {
-    this.setState({ img: base64file });
-    this.props.onStateChange(this.state);
-  }
+    handleInputChange(event) 
+    {
+        const target = event.target;
+        var value = target.value;
+        
+        if(target.checked){
+            this.setState((prevState) => ({
+              chooseCategory: [...prevState.chooseCategory,value],
+            }));
 
-  dropDownHandler(provideService2) {
-    this.setState({ provideService: provideService2 })
-    this.props.onStateChange(this.state);
-  }
+        }else{
+            
+               const a = this.state.chooseCategory;
+                                        a.splice(value, 1);
+                                        this.setState({ chooseCategory: a });
 
-  render() {
-    return (
-      <div className="ProfessionalProfile">
-        <div className="Pf-container proff-prof">
-          <div className="container Pf-rightbox   bg2 b_line2 p-5">
-            <div class="container-fluid">
-              <div>
-                <div class="row pl-3">
-                  <div className="Per_img-wrap">
-                    <div
-                      className="pp_icon"
-                      style={{ backgroundImage: `url(${img})` }}
-                    ></div>
-                  </div>
-                  <div className="personalProfile_info">
-                    <h4 className="pp_Head">Professional Profile</h4>
-                    <p className="pp_Para">
-                      {" "}
-                      Creating your account in just a few steps away, Fill your
-                      professional details
-                    </p>
-                  </div>
-                </div>
-                <div className="inner-parts">
+             }
+        
+    }
+
+    handleBase64File(base64file)
+    {
+      this.setState({img:base64file})
+    }
+
+   dropDownHandler (provideService2)
+     {
+        this.setState({provideService:provideService2})
+      }
+
+ checkExistedSkill(name) {
+  for (let i = 0; i < this.state.skills.length; i++) {
+    if (this.state.skills[i].name === name) {
+      return true;
+    }
+    }
+      return false;
+  }
+  removeSkills = (name) => {
+    const skills = this.state.skills.filter((skill) => skill.name != name);
+    console.log("dam cham",skills)
+    this.setState({
+      skills,
+    });
+  };
+
+render(){
+
+return (
+       <div className="ProfessionalProfile">
+
+        <div className='Pf-container proff-prof'>
+         <div className='container Pf-rightbox   bg2 b_line2 p-5'> 
+          <div class="container-fluid">
+            <div>   
+              <div class="row pl-3">
+                    <div className="Per_img-wrap">
+                        <div className="pp_icon" style={{backgroundImage: `url(${img})`}}></div> 
+                    </div>
+                     <div className="personalProfile_info">
+                        <h4 className="pp_Head">Professional Profile</h4>
+                        <p className="pp_Para">  Creating your account in just a few steps away, Fill your professional
+                        details</p>
+                    </div>
+              </div>
+               <div className="inner-parts">
                   <div className="dropdown">
-                    <Dropdown
-                      onDropdownn={this.dropDownHandler}
-                      title="What service you provide"
-                    />
+                      <Dropdown onDropdownn={this.dropDownHandler} title="What service you provide"/>
                   </div>
-                  <div className="multiselect">
-                    <div>
+                <div className="multiselect">
+                <div>
                       <h3>Add your skills</h3>
 
                       <select
@@ -88,9 +109,18 @@ class ProfessionalProfile2 extends Component {
                         //  onChange={this.handleChange}
 
                         onChange={(e) => {
-                          this.setState((prevState) => ({
-                            skills: [...prevState.skills, e.target.value],
-                          }));
+                          const isExisted = this.checkExistedSkill(
+                            e.target.value
+                          );
+                          console.log("isExisted", isExisted);
+                          if (isExisted) {
+                            console.log("true", isExisted);
+                          } else {
+                            let data = { name: e.target.value };
+                            this.setState((prevState) => ({
+                              skills: [...prevState.skills, data],
+                            }));
+                          }
                         }}
                         className="form-control"
                         id="exampleFormControlSelect1"
@@ -123,319 +153,209 @@ class ProfessionalProfile2 extends Component {
                               width: "113px",
                             }}
                           >
-                            <h5 className="Addskillh5item">{item} </h5>
+                            <h5 className="Addskillh5item">{item.name} </h5>
                             <span
                               className="float AddSkill_pl"
                               onClick={() => {
-                                const a = this.state.skills;
-                                a.splice(index, 1);
-                                this.setState({ skills: a });
+                                this.removeSkills(item.name);
                               }}
                               style={{ cursor: "pointer" }}
                             >
                               x
                             </span>
                           </div>
+                          
                         ))}
                       </div>
+                      {console.log("ski",this.state.skills)}
+                      {console.log("ppl",this.state)}
                     </div>
-                  </div>
                 </div>
-                {/* Choose Category Multi_select_checkboxes */}
-                <div className="checkboxesMain">
-                  <h3>Choose Category</h3>
-                  <div className="container_Checkboxes">
-                    <div className="first_3col">
-                      <div className="example">
-                        <label className="checkbox-button">
-                          <input
-                            type="checkbox"
-                            className="checkbox-button__input"
-                            name="hobbies"
-                            id="inlineCheckboxh1"
-                            value="Animation"
-                            onChange={this.handleInputChange}
-                          />
-                          <span className="checkbox-button__control"></span>
-                          <span className="checkbox-button__label">
-                            Animation
-                          </span>
-                        </label>
-                      </div>
+             </div>
+                 {/* Choose Category Multi_select_checkboxes */}
+              <div className="checkboxesMain">
+                <h3>Choose Category</h3>
+                <div className="container_Checkboxes">
+                  <div className="first_3col">
+                    <div className="example">
+                       <label className="checkbox-button">
+                        <input type="checkbox" className="checkbox-button__input"  name="hobbies" id="inlineCheckboxh1" value="Animation" onChange={this.handleInputChange}/>
+                        <span className="checkbox-button__control"></span>
+                        <span className="checkbox-button__label">Animation</span>
+                      </label>
+                    </div>
 
-                      <div className="example">
+                    <div className="example">
                         <label className="checkbox-button">
-                          <input
-                            type="checkbox"
-                            className="checkbox-button__input"
-                            name="hobbies"
-                            id="inlineCheckboxh2"
-                            value="Interior Design"
-                            onChange={this.handleInputChange}
-                          />
-                          <span className="checkbox-button__control"></span>
-                          <span className="checkbox-button__label">
-                            Interior Design
-                          </span>
+                           <input type="checkbox" className="checkbox-button__input"  name="hobbies" id="inlineCheckboxh2" value="Interior Design" onChange={this.handleInputChange}/>
+                            <span className="checkbox-button__control"></span>
+                            <span className="checkbox-button__label">Interior Design</span>
                         </label>
-                      </div>
-                      <div className="example">
-                        <label className="checkbox-button">
-                          <input
-                            type="checkbox"
-                            className="checkbox-button__input"
-                            name="hobbies"
-                            id="inlineCheckboxh3"
-                            value="Graphic Design"
-                            onChange={this.handleInputChange}
-                          />
+                    
+                    </div>
+                    <div className="example">
+                      <label className="checkbox-button">
+                          <input type="checkbox" className="checkbox-button__input"  name="hobbies" id="inlineCheckboxh3" value="Graphic Design" onChange={this.handleInputChange}/>
                           <span className="checkbox-button__control"></span>
-                          <span className="checkbox-button__label">
-                            Graphic Design
-                          </span>
-                        </label>
-                      </div>
-                      <div className="example">
-                        <label className="checkbox-button">
-                          <input
-                            type="checkbox"
-                            className="checkbox-button__input"
-                            name="hobbies"
-                            id="inlineCheckboxh4"
-                            value="UI Design"
-                            onChange={this.handleInputChange}
-                          />
-                          <span className="checkbox-button__control"></span>
-                          <span className="checkbox-button__label">
-                            UI Design
-                          </span>
-                        </label>
-                      </div>
-                      <div className="example">
-                        <label className="checkbox-button">
-                          <input
-                            type="checkbox"
-                            className="checkbox-button__input"
-                            name="hobbies"
-                            id="inlineCheckboxh5"
-                            value="Wordpress"
-                            onChange={this.handleInputChange}
-                          />
-                          <span className="checkbox-button__control"></span>
-                          <span className="checkbox-button__label">
-                            Wordpress
-                          </span>
-                        </label>
-                      </div>
-                    </div>{" "}
-                    {/* End of first_3col*/}
-                    <div className="second_3col">
-                      <div className="example">
-                        <label className="checkbox-button">
-                          <input
-                            type="checkbox"
-                            className="checkbox-button__input"
-                            name="hobbies"
-                            id="inlineCheckboxh6"
-                            value="QA & Testing"
-                            onChange={this.handleInputChange}
-                          />
-                          <span className="checkbox-button__control"></span>
-                          <span className="checkbox-button__label">
-                            QA & Testing
-                          </span>
-                        </label>
-                      </div>
+                          <span className="checkbox-button__label">Graphic Design</span>
+                      </label>
+                    </div>
+                    <div className="example">
+                    <label className="checkbox-button">
+                        <input type="checkbox" className="checkbox-button__input"  name="hobbies" id="inlineCheckboxh4" value="UI Design" onChange={this.handleInputChange}/>
+                        <span className="checkbox-button__control"></span>
+                        <span className="checkbox-button__label">UI Design</span>
+                    </label>
+                    
+                    </div>
+                    <div className="example">
+                    <label className="checkbox-button">
+                        <input type="checkbox" className="checkbox-button__input"  name="hobbies" id="inlineCheckboxh5" value="Wordpress" onChange={this.handleInputChange}/>
+                        <span className="checkbox-button__control"></span>
+                        <span className="checkbox-button__label">Wordpress</span>
+                    </label>
+                    
+                    </div>
 
-                      <div className="example">
-                        <label className="checkbox-button">
-                          <input
-                            type="checkbox"
-                            className="checkbox-button__input"
-                            name="hobbies"
-                            id="inlineCheckboxh7"
-                            value="Video Editing"
-                            onChange={this.handleInputChange}
-                          />
-                          <span className="checkbox-button__control"></span>
-                          <span className="checkbox-button__label">
-                            Video Editing
-                          </span>
-                        </label>
-                      </div>
-                      <div className="example">
-                        <label className="checkbox-button">
-                          <input
-                            type="checkbox"
-                            className="checkbox-button__input"
-                            name="hobbies"
-                            id="inlineCheckboxh8"
-                            value="Content Writing"
-                            onChange={this.handleInputChange}
-                          />
-                          <span className="checkbox-button__control"></span>
-                          <span className="checkbox-button__label">
-                            Content Writing
-                          </span>
-                        </label>
-                      </div>
-                      <div className="example">
-                        <label className="checkbox-button">
-                          <input
-                            type="checkbox"
-                            className="checkbox-button__input"
-                            name="hobbies"
-                            id="inlineCheckboxh9"
-                            value="SEO"
-                            onChange={this.handleInputChange}
-                          />
-                          <span className="checkbox-button__control"></span>
-                          <span className="checkbox-button__label">SEO</span>
-                        </label>
-                      </div>
-                      <div className="example">
-                        <label className="checkbox-button">
-                          <input
-                            type="checkbox"
-                            className="checkbox-button__input"
-                            name="hobbies"
-                            id="inlineCheckboxh10"
-                            value="Marketing"
-                            onChange={this.handleInputChange}
-                          />
-                          <span className="checkbox-button__control"></span>
-                          <span className="checkbox-button__label">
-                            Marketing
-                          </span>
-                        </label>
-                      </div>
-                    </div>{" "}
-                    {/* End of 2nd_3col*/}
-                    <div className="third_3col">
-                      <div className="example">
-                        <label className="checkbox-button">
-                          <input
-                            type="checkbox"
-                            className="checkbox-button__input"
-                            name="hobbies"
-                            id="inlineCheckboxh11"
-                            value="Accounting"
-                            onChange={this.handleInputChange}
-                          />
-                          <span className="checkbox-button__control"></span>
-                          <span className="checkbox-button__label">
-                            Accounting
-                          </span>
-                        </label>
-                      </div>
+            </div> {/* End of first_3col*/}
+      
+            <div className="second_3col">
+                    <div className="example">
+                    <label className="checkbox-button">
+                        <input type="checkbox" className="checkbox-button__input"  name="hobbies" id="inlineCheckboxh6" value="QA & Testing" onChange={this.handleInputChange}/>
+                        <span className="checkbox-button__control"></span>
+                        <span className="checkbox-button__label">QA & Testing</span>
+                    </label>
+                    
+                    </div>
 
-                      <div className="example">
-                        <label className="checkbox-button">
-                          <input
-                            type="checkbox"
-                            className="checkbox-button__input"
-                            name="hobbies"
-                            id="inlineCheckboxh12"
-                            value="Translation"
-                            onChange={this.handleInputChange}
-                          />
-                          <span className="checkbox-button__control"></span>
-                          <span className="checkbox-button__label">
-                            Translation
-                          </span>
-                        </label>
-                      </div>
-                      <div className="example">
-                        <label className="checkbox-button">
-                          <input
-                            type="checkbox"
-                            className="checkbox-button__input"
-                            name="hobbies"
-                            id="inlineCheckboxh13"
-                            value="Website Design"
-                            onChange={this.handleInputChange}
-                          />
-                          <span className="checkbox-button__control"></span>
-                          <span className="checkbox-button__label">
-                            Website Design
-                          </span>
-                        </label>
-                      </div>
-                      <div className="example">
-                        <label className="checkbox-button">
-                          <input
-                            type="checkbox"
-                            className="checkbox-button__input"
-                            name="hobbies"
-                            id="inlineCheckboxh14"
-                            value="Software"
-                            onChange={this.handleInputChange}
-                          />
-                          <span className="checkbox-button__control"></span>
-                          <span className="checkbox-button__label">
-                            Software{" "}
-                          </span>
-                        </label>
-                      </div>
-                      <div className="example">
-                        <label className="checkbox-button">
-                          <input
-                            type="checkbox"
-                            className="checkbox-button__input"
-                            name="hobbies"
-                            id="inlineCheckboxh15"
-                            value="Data Entry"
-                            onChange={this.handleInputChange}
-                          />
-                          <span className="checkbox-button__control"></span>
-                          <span className="checkbox-button__label">
-                            Data Entry
-                          </span>
-                        </label>
-                      </div>
-                    </div>{" "}
-                    {/* End of third_3col*/}
-                  </div>
-                </div>{" "}
-                {/* Choose Category Multi_select_checkboxes */}
-                {/*   <div class="form-row">
+                    <div className="example">
+                    <label className="checkbox-button">
+                        <input type="checkbox" className="checkbox-button__input"  name="hobbies" id="inlineCheckboxh7" value="Video Editing" onChange={this.handleInputChange}/>
+                        <span className="checkbox-button__control"></span>
+                        <span className="checkbox-button__label">Video Editing</span>
+                    </label>
+                    
+                    </div>
+                    <div className="example">
+                    <label className="checkbox-button">
+                        <input type="checkbox" className="checkbox-button__input"  name="hobbies" id="inlineCheckboxh8" value="Content Writing" onChange={this.handleInputChange}/>
+                        <span className="checkbox-button__control"></span>
+                        <span className="checkbox-button__label">Content Writing</span>
+                    </label>
+                    
+                    </div>
+                    <div className="example">
+                    <label className="checkbox-button">
+                        <input type="checkbox" className="checkbox-button__input"  name="hobbies" id="inlineCheckboxh9" value="SEO" onChange={this.handleInputChange}/>
+                        <span className="checkbox-button__control"></span>
+                        <span className="checkbox-button__label">SEO</span>
+                    </label>
+                    
+                    </div>
+                    <div className="example">
+                    <label className="checkbox-button">
+                        <input type="checkbox" className="checkbox-button__input"  name="hobbies" id="inlineCheckboxh10" value="Marketing" onChange={this.handleInputChange}/>
+                        <span className="checkbox-button__control"></span>
+                        <span className="checkbox-button__label">Marketing</span>
+                    </label>
+                    
+                    </div>
+
+                  
+            </div> {/* End of 2nd_3col*/}
+
+            <div className="third_3col">
+                    <div className="example">
+                    <label className="checkbox-button">
+                        <input type="checkbox" className="checkbox-button__input"  name="hobbies" id="inlineCheckboxh11" value="Accounting" onChange={this.handleInputChange}/>
+                        <span className="checkbox-button__control"></span>
+                        <span className="checkbox-button__label">Accounting</span>
+                    </label>
+                    
+                    </div>
+
+                    <div className="example">
+                    <label className="checkbox-button">
+                        <input type="checkbox" className="checkbox-button__input"  name="hobbies" id="inlineCheckboxh12" value="Translation" onChange={this.handleInputChange}/>
+                        <span className="checkbox-button__control"></span>
+                        <span className="checkbox-button__label">Translation</span>
+                    </label>
+                    
+                    </div>
+                    <div className="example">
+                    <label className="checkbox-button">
+                        <input type="checkbox" className="checkbox-button__input"  name="hobbies" id="inlineCheckboxh13" value="Website Design" onChange={this.handleInputChange}/>
+                        <span className="checkbox-button__control"></span>
+                        <span className="checkbox-button__label">Website Design</span>
+                    </label>
+                    
+                    </div>
+                    <div className="example">
+                    <label className="checkbox-button">
+                        <input type="checkbox" className="checkbox-button__input"  name="hobbies" id="inlineCheckboxh14" value="Software" onChange={this.handleInputChange}/>
+                        <span className="checkbox-button__control"></span>
+                        <span className="checkbox-button__label">Software </span>
+                    </label>
+                    
+                    </div>
+                    <div className="example">
+                    <label className="checkbox-button">
+                        <input type="checkbox" className="checkbox-button__input"  name="hobbies" id="inlineCheckboxh15" value="Data Entry" onChange={this.handleInputChange}/>
+                        <span className="checkbox-button__control"></span>
+                        <span className="checkbox-button__label">Data Entry</span>
+                    </label>
+                    
+                    </div>
+
+                   
+
+            </div> {/* End of third_3col*/}
+
+
+            </div>
+            </div> {/* Choose Category Multi_select_checkboxes */}
+           {/*   <div class="form-row">
              <div class="col-md-12 text-center">
                 <button type="submit" class="btn btn-primary" onClick={()=>this.submit()}>Submit</button>
              </div>
-             </div> */}
-                {/* End of Submit button*/}
-                {/* End of multiple checkbox*/}
-                <div className="prof-cer">
-                  <div className="certificates">
+             </div> */}{/* End of Submit button*/}
+
+           {/* End of multiple checkbox*/}
+           <div className="prof-cer">
+              <div className="certificates">
                     <div className="mh1">
-                      <p className="certificate">Certficate</p>
+                       <p className="certificate">Certficate</p>
                     </div>
-
-                    <div>
-                      <div className="getimage">
-                        <GetImage
-                          onUpload={this.handleBase64File}
-                          value="onUpload"
-                        />
+                        
+                     <div>
+                          <div className="getimage">
+                            <GetImage onUpload={this.handleBase64File}  value="onUpload"/>
+                            
+                          </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                
+             </div>
+           </div>
+             
+          </div>            
+         </div>
         </div>
-
-        {console.log("redux tabindex", this.props.tabindex)}
       </div>
-    );
+
+      {console.log("redux tabindex",this.props.tabindex)}
+     </div>
+      )
+    }
   }
-}
 
-const mapStateToProps = (state) => {
-  return {
-    tabindex: state.RegistrationTabBarReducer,
+  const mapStateToProps = (state) => {
+    return {
+      tabindex: state.RegistrationTabBarReducer,
+    };
+   
   };
-};
+  
+export default connect(mapStateToProps) (ProfessionalProfile2)
 
-export default connect(mapStateToProps)(ProfessionalProfile2);
+

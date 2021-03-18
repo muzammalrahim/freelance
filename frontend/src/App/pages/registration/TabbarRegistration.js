@@ -11,7 +11,7 @@ import ProfessionalProfile2 from "./ProfessionalProfile2";
 import ProfessionalProfile2Footer from "./ProfFooter";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 
-import list from "../helper/api";
+import list,{post} from "../helper/api";
 import { connect } from "react-redux";
 import { RegistrationTabBarAction } from "../../../redux/actions/RegistrationTabBarAction";
 
@@ -21,18 +21,28 @@ class TabbarRegistration extends Component {
     this.state = {
       tabindex: null,
       userid: null,
+      sendData : false
     };
   }
 
 
-  handler = () => {
+  sendDataHandler =() =>
+  {
+      let {sendData} = this.state
+      sendData= true
+      this.setState({ sendData });
+      // console.log("agey mai",sendData);
+  }
+
+
+  tabUphandler = () => {
     let { tabindex } = this.state;
     this.setState({ tabindex: tabindex + 1 });
 
     this.props.tabChangeHandler(tabindex);
   };
 
-  handler2 = () => {
+  tabDownhandler = () => {
     this.setState({
       tabindex: this.state.tabindex - 1,
     });
@@ -44,12 +54,12 @@ class TabbarRegistration extends Component {
 
   componentDidMount() {
     list("api/v1/accounts/profile/")
-      .then((res) => {
-        this.setState({ userid: res.data.id });
-        console.log("profile", this.state.userid);
-        console.log("profile data", res.data);
-      })
-      .catch((error) => {});
+      // .then((res) => {
+        // this.setState({ userid: res.data.id });
+        // console.log("profile", this.state.userid);
+        // console.log("profile data", res.data);
+      // })
+      // .catch((error) => {});
 
     var tabindex2 = 1;
 
@@ -62,18 +72,41 @@ class TabbarRegistration extends Component {
 
   stateHandler(stateData,isSubmit) {
     console.log("personal state data", stateData);
-    console.log("is", isSubmit);
+    console.log("issub sadka", isSubmit);
+
+    if (isSubmit === true)
+    {
+      post("api/v1/freelancer_profile/",stateData)
+      .then((response)=>{
+              console.log("freelancer_profile res:",response)
+                } )
+
+        .catch((error)=>{
+            console.log("error",error)
+        })        
+      
+
+    }
   }
 
   personalProfileStateHandler(stateData) {
-    console.log("neeeeee", stateData);
+    
+
+
   }
 
-  idVerificationStateHandler(stateData) {
-    console.log("neeeeee", stateData);
+  idVerificationStateHandler(stateData,imgOf) {
+     
+     if(imgOf === "idCard")
+     {
+       console.log("id card img",stateData)
+     }
+     else if(imgOf === "drivingLicense") {
+      console.log("driving  img",stateData)
+     }
   }
   paymentInformationStateHandler(stateData) {
-    console.log("neeeeee", stateData);
+    // console.log("neeeeee", stateData);
   }
 
   hourlyRateStateHandler() {}
@@ -97,7 +130,7 @@ class TabbarRegistration extends Component {
               </div>
 
               <div className="tabbar_tabarlist pt-4 pb-5 Changepadding ml-3 ">
-                <div className="container">
+                <div className="ml-4 container">
                   <div class="Tab">
                     <span
                       class=" "
@@ -115,8 +148,9 @@ class TabbarRegistration extends Component {
                       >
                         1
                       </button>
+                      <span class={"text2" + (this.state.tabindex===1 ? 'y-text':'hidden')} onClick={() => this.setState({ tabindex: 1 })}>Personal Profile</span>
+
                     </span>{" "}
-                    <span class="text2">Personal Profile</span>
                   </div>{" "}
                   <div
                     className={
@@ -139,8 +173,10 @@ class TabbarRegistration extends Component {
                       >
                         2
                       </button>
+                      <span class={"text2" + (this.state.tabindex===2 ? 'y-text':'hidden')} onClick={() => this.setState({ tabindex: 2 })}>Professional Profile</span>
+
                     </span>{" "}
-                    <span class="text2">Professional Profile</span>
+                    
                   </div>{" "}
                   <div
                     className={
@@ -163,8 +199,10 @@ class TabbarRegistration extends Component {
                       >
                         3
                       </button>
+                      <span class={"text2" + (this.state.tabindex===3 ? 'y-text':'hidden')} onClick={() => this.setState({ tabindex: 3 })}>ID Verification</span>
+
                     </span>{" "}
-                    <span class="text2">ID Verification</span>
+                    
                   </div>{" "}
                   <div
                     className={
@@ -187,8 +225,10 @@ class TabbarRegistration extends Component {
                       >
                         4
                       </button>
+                      <span class={"text2" + (this.state.tabindex===4 ? 'y-text':'hidden')} onClick={() => this.setState({ tabindex: 4 })}>Payment Information</span>
+
                     </span>{" "}
-                    <span class="text2">Payment Information</span>
+                    
                   </div>{" "}
                   <div
                     className={
@@ -211,8 +251,9 @@ class TabbarRegistration extends Component {
                       >
                         5
                       </button>
+                      <span class={"text2" + (this.state.tabindex===5 ? 'y-text':'hidden')} onClick={() => this.setState({ tabindex: 5 })}>Hourly Rate</span>
                     </span>{" "}
-                    <span class="text2">Hourly Rate</span>
+            
                   </div>
                 </div>
               </div>
@@ -265,7 +306,8 @@ class TabbarRegistration extends Component {
                       type="button"
                       className="btn tb_nextButton"
                       onClick={() => {
-                        this.handler();
+                        this.tabUphandler();
+                        this.sendDataHandler();
                       }}
                     >
                       {" "}
@@ -292,7 +334,7 @@ class TabbarRegistration extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     tabChangeHandler: (tabindex) => {
-      console.log("tab in redux:", tabindex);
+      // console.log("tab in redux:", tabindex);
       dispatch(
         RegistrationTabBarAction({
           type: "REGISTRATION_TAB_CHANGE",
