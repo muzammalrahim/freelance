@@ -72,13 +72,13 @@ class TabbarRegistration extends Component {
 
   stateHandler = (stateData, isSubmit) => {
     let {data} = this.state
-    console.log("personal state data", stateData);
+    console.log("personal profile state data in tabbar:", stateData);
     console.log("issub value", isSubmit);
     if (isSubmit === true) {
       data = { user: stateData}
         this.setState({data})
       this.setState({ personalProfileIsSubmit: true });
-      post("api/v1/freelancer_profile/", this.state.data)
+      post("api/v1/freelancer_profile/", data)
         .then((response) => {
           console.log("freelancer_profile res:", response);
         })
