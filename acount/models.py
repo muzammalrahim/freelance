@@ -42,7 +42,7 @@ class Category(models.Model):
 
 
 class Profile(PolymorphicModel):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
 	level = models.CharField(max_length=100, blank=True, null=True)
 	proposal_amount = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 	account_title = models.CharField(max_length=70,
@@ -59,20 +59,20 @@ class Profile(PolymorphicModel):
 		('approved', 'Approved'),
 	)
 	verification_status = models.CharField(choices=VERIFICATION_STATUS_CHOICES,
-										   max_length=10)
+										   max_length=10, blank=True, null=True)
 
 	LANG_CHOICES = (
 		('arabic', 'Arabic'),
 		('english', 'English'),
 	)
 	language = models.CharField(choices=LANG_CHOICES, max_length=30,
-								default='arabic')
-	skills = models.ManyToManyField(Skill)
+								default='arabic', blank=True, null=True)
+	skills = models.ManyToManyField(Skill, blank=True)
 	city = models.ForeignKey(City, on_delete=models.SET_NULL, blank=True,
 							 null=True)
 	country = models.ForeignKey(Country, on_delete=models.SET_NULL, blank=True,
 								null=True)
-	street = models.CharField(max_length=140)
+	street = models.CharField(max_length=140, blank=True, null=True)
 	zip_code = models.CharField(max_length=14, blank=True, null=True)
 
 	EXPERIENCE_LEVEL_CHOICES = (
@@ -81,11 +81,11 @@ class Profile(PolymorphicModel):
 		('expert', 'Expert'),
 	)
 	experience_level = models.CharField(choices=EXPERIENCE_LEVEL_CHOICES,
-										max_length=12)
-	positions = models.CharField(max_length=100)
+										max_length=12, blank=True, null=True)
+	positions = models.CharField(max_length=100, blank=True, null=True)
 	birth_date = models.DateField(null=True, blank=True)
 	created_at = models.DateTimeField(auto_now_add=True)
-	updated_at = models.DateTimeField(auto_now=True)
+	updated_at = models.DateTimeField(auto_now=True, )
 	created_by = models.ForeignKey(User, blank=True, null=True,
 								   on_delete=models.SET_NULL,
 								   related_name='created_by_profile')
@@ -123,8 +123,8 @@ class FreelancerProfile(Profile):
 		('service1', 'Service 1'),
 		('service2', 'Service 2'),
 	)
-	service = models.CharField(max_length=20, choices=SERVICE_CHOICES)
-	category = models.ManyToManyField(Category)
+	service = models.CharField(max_length=20, choices=SERVICE_CHOICES, blank=True, null=True)
+	category = models.ManyToManyField(Category, blank=True)
 
 
 class Question(models.Model):
