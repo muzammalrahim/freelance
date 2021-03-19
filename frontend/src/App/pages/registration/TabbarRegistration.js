@@ -90,14 +90,14 @@ if(tabindex === 0)
     if (isSubmit === true) {
       data = { user: stateData}
         this.setState({data})
-      post("api/v1/freelancer_profile/", data)
-        .then((response) => {
-          console.log("freelancer_profile res:", response);
-        })
-
-        .catch((error) => {
-          console.log("error", error);
-        });
+      // post("api/v1/freelancer_profile/", data)
+        // .then((response) => {
+          // console.log("freelancer_profile res:", response);
+        // })
+// 
+        // .catch((error) => {
+          // console.log("error", error);
+        // });
     } else {
     
     }

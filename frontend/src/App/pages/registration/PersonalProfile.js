@@ -2,11 +2,30 @@ import React from "react";
 import "./PersonalProfile.css";
 import img from "../../../img/personalProfile.png";
 import img2 from "../../../img/personalProfile_F.png";
+
+import { Snackbar } from "@material-ui/core";
+import { Alert, AlertTitle } from "@material-ui/lab";
+
 class PersonalProfile extends React.Component {
   constructor(props) {
     super(props);
 
+    this.alert = {
+      open: false,
+      severity: "",
+      message: "",
+      title: "",
+    };
+
     this.Per_Profile = {
+      first_name: "",
+      mobile_number: "",
+      city: "",
+      last_name: "",
+      address: "",
+      country: "",
+    };
+    this.errorProfile = {
       first_name: "",
       mobile_number: "",
       city: "",
@@ -25,10 +44,16 @@ class PersonalProfile extends React.Component {
     };
 
     this.state = {
+      alert: this.alert,
       per_profile: this.Per_Profile,
       per_profileValidate: this.per_profileValidate,
+      errorProfile:this.errorProfile,
       personal_profile_isSubmit_value: false,
     };
+  }
+
+  handleClose() {
+    this.setState({ alert: { open: false, severity: "", message: "" } });
   }
 
   validateEmail(email) {
@@ -64,6 +89,7 @@ class PersonalProfile extends React.Component {
         } else {
           per_profileValidate[key] =
             per_profile[key] && per_profile[key].length > 3 ? true : false;
+            
         }
       });
 
@@ -101,20 +127,37 @@ class PersonalProfile extends React.Component {
     let [
       key,
       value,
-      { per_profile, per_profileValidate, personal_profile_isSubmit_value },
+      { per_profile, per_profileValidate, personal_profile_isSubmit_value,errorProfile },
     ] = [e.target.id, e.target.value, this.state];
 
     per_profile[key] = value;
-
+    errorProfile.first_name= "";
     if (key === "email") {
       per_profileValidate[key] =
         per_profile[key] && this.validateEmail(per_profile[key]) ? true : false;
     } else {
-      per_profileValidate[key] =
-        per_profile[key] && per_profile[key].length > 3 ? true : false;
+      // per_profileValidate[key] =
+        // per_profile[key] && per_profile[key].length > 3 ? true : false;
+        per_profile[key] !== "" ? (
+          per_profile[key].length > 3 ? (
+            (per_profileValidate[key] = true)
+          ) : (
+            <div>
+              {" "}
+              {(per_profileValidate[key] = false)},
+              {
+                errorProfile[key]= "minimum Password length 3 characters"
+                }
+            </div>
+          )
+        ) : (
+              errorProfile[key]= "Password is required"
+          );
+
+
     }
 
-    this.setState({ per_profile, per_profileValidate });
+    this.setState({ per_profile, per_profileValidate,errorProfile});
 
     isSubmit = Boolean(this.submitHandler(isSubmit));
 
@@ -128,14 +171,31 @@ class PersonalProfile extends React.Component {
   }
 
   render() {
-    let { per_profile } = this.state;
+    let { per_profile,errorProfile , alert: { open, severity, message, title }, } = this.state;
     return (
       <div className="PersonalProfile">
+      <Snackbar
+      open={open}
+      autoHideDuration={4000}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      onClose={() => {
+        this.handleClose();
+      }}
+    >
+      <Alert
+        onClose={() => {
+          this.handleClose();
+        }}
+        severity={severity}
+      >
+        <AlertTitle>{title}</AlertTitle>
+        <strong>{message}</strong>
+      </Alert>
+    </Snackbar>
         <div className="personalProfile_bg Pf-rightbox  p-5">
           <div className="container">
             <div className="pl-2">
               <div className="row">
-              { this.props.tabindex === true? alert("Great Shot!"):null}
                 <div
                   className="personalprofileicon"
                   style={{ backgroundImage: `url(${img})` }}
@@ -154,7 +214,15 @@ class PersonalProfile extends React.Component {
               <div className="row pt-3">
                 <div className=" col-sm-6 col-md-6">
                   <div className="Rb-0">
-                    <div class="form-group">
+                  
+                    <div
+                    className={
+                     this.props.tabindex === true ?
+                      errorProfile.first_name === ""
+                        ? "form-group "
+                        : "form-group error"  :null
+                    }
+                  >
                       <label className="pp_inputHeading" for="usr">
                         First Name
                       </label>
@@ -168,6 +236,9 @@ class PersonalProfile extends React.Component {
                           this.changeHandler(e);
                         }}
                       />
+                      {errorProfile.first_name !== "" ? (
+                        <div className="error-message">{errorProfile.first_name}</div>
+                      ) : null}
                     </div>
                     <div class="form-group">
                       <label className="pp_inputHeading" for="usr">
