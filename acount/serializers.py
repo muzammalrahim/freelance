@@ -273,8 +273,8 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
 	# from job.serializers import AttachmentSerializer
 	# skills = SkillSerializers(many=True, required=False)
 	# category = CategorySerializers(many=True, required=False)
-	# city = CitySerializers(required=False)
-	# country = CountrySerializers(required=False)
+	city = CitySerializers(required=False)
+	country = CountrySerializers(required=False)
 	# license = AttachmentSerializer(write_only=True, required=False)
 	# id_card = AttachmentSerializer(write_only=True, required=False)
 	# certification = AttachmentSerializer(write_only=True, required=False)
@@ -282,13 +282,13 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
 
 	# user_type = UserSerializer
 
-	# def create(self, validated_data):
+	def create(self, validated_data):
 
 	# 	skills = validated_data.pop('skills')
 	# 	category = validated_data.pop('category')
 	# user = validated_data.pop('user')
-	# 	city = validated_data.pop('city')
-	# 	country = validated_data.pop('country')
+		city = validated_data.pop('city')
+		country = validated_data.pop('country')
 	# 	license = validated_data.pop('license')
 	# 	id_card = validated_data.pop('id_card')
 	# 	certification = validated_data.pop('certification')
@@ -297,12 +297,12 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
 	# 	Attachment.objects.create(**license)
 	# 	Attachment.objects.create(**id_card)
 	# 	Attachment.objects.create(**certification)
-	# 	city = models.City.objects.create(**city)
-	# 	country = models.Country.objects.create(**country)
-	#
-	# 	freelance_profile = models.FreelancerProfile.objects.create(user=user, city=city, country=country,
-	# 																**validated_data)
-
+		city = models.City.objects.create(**city)
+		country = models.Country.objects.create(**country)
+	
+		freelance_profile = models.FreelancerProfile.objects.create( city=city, country=country,
+																	**validated_data)
+# 
 	# 	for data in skills:
 	# 		k = models.Skill.objects.create(name=data.get('name'))
 	# 		freelance_profile.skills.add(k)
@@ -311,7 +311,7 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
 	# 		s = models.Category.objects.create(name=data.get('name'))
 	# 		freelance_profile.category.add(s)
 	#
-	# return freelance_profile
+		return freelance_profile
 
 	def to_representation(self, instance):
 		representation = super(FreelancerProfileSerializers, self).to_representation(instance)
@@ -382,13 +382,13 @@ class CustomRegisterUserSerializer(DefaultRegisterUserSerializer):
 		# if 'account_type' in validated_data:
 		# 	print("dddddddddddddddd")
 
-		if account_type == 'work':
-			models.FreelancerProfile(user=user).save()
-			user.groups.add(Group.objects.get(name=settings.FREELANCER_USER))
-		elif account_type == 'hire':
-			models.ClientProfile(user=user).save()
-			user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
-		else:
-			user.groups.add(Group.objects.get(name=settings.ADMIN_USER))
+		# if account_type == 'work':
+			# models.FreelancerProfile(user=user).save()
+			# user.groups.add(Group.objects.get(name=settings.FREELANCER_USER))
+		# elif account_type == 'hire':
+			# models.ClientProfile(user=user).save()
+			# user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
+		# else:
+			# user.groups.add(Group.objects.get(name=settings.ADMIN_USER))
 
 		return user

@@ -2,7 +2,6 @@ import React from "react";
 import "./PersonalProfile.css";
 import img from "../../../img/personalProfile.png";
 import img2 from "../../../img/personalProfile_F.png";
-import {connect} from "react-redux"
 class PersonalProfile extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +13,6 @@ class PersonalProfile extends React.Component {
       last_name: "",
       address: "",
       country: "",
-     
     };
 
     this.per_profileValidate = {
@@ -24,15 +22,12 @@ class PersonalProfile extends React.Component {
       address: false,
       country: false,
       city: false,
-     
     };
 
     this.state = {
       per_profile: this.Per_Profile,
       per_profileValidate: this.per_profileValidate,
       personal_profile_isSubmit_value: false,
-
-    
     };
   }
 
@@ -46,30 +41,53 @@ class PersonalProfile extends React.Component {
     return true;
   }
 
-  componentDidMount() {
+  goal() {
+    let isSubmit = null;
+    let vvalue = 2;
+    let { per_profile, per_profileValidate } = this.state;
+
     if (localStorage.getItem("personal_profile")) {
       var storedData = JSON.parse(localStorage.getItem("personal_profile"));
-      this.setState({ per_profile: storedData });
+
+      Object.keys(storedData).map((key) => {
+        per_profile[key] = storedData[key];
+      });
+
+      this.setState(per_profile);
+
+      Object.keys(storedData).map((key) => {
+        if (key === "email") {
+          per_profileValidate[key] =
+            per_profile[key] && this.validateEmail(per_profile[key])
+              ? true
+              : false;
+        } else {
+          per_profileValidate[key] =
+            per_profile[key] && per_profile[key].length > 3 ? true : false;
+        }
+      });
+
     }
-    
-    this.props.onStateChange(storedData)
-  
+    this.setState({per_profile,per_profileValidate})
+    isSubmit = Boolean(this.submitHandler(isSubmit));
+    this.props.onStateChange(this.state.per_profile, isSubmit);
+  }
+
+  componentDidMount() {
+    this.goal();
   }
 
   submitHandler(ans) {
-    let [
-      { per_profile, per_profileValidate,},
-    ] = [this.state];
+    let [{ per_profile, per_profileValidate }] = [this.state];
     let impValue = 0;
+
     Object.values(per_profileValidate).map((values) => {
-      
       if (values === false) {
         impValue = impValue + 1;
       }
     });
 
     if (impValue > 0) {
-     
       return false;
     } else if (impValue === 0) {
       localStorage.setItem("personal_profile", JSON.stringify(per_profile));
@@ -80,7 +98,6 @@ class PersonalProfile extends React.Component {
 
   changeHandler(e) {
     let isSubmit = null;
-
     let [
       key,
       value,
@@ -99,8 +116,7 @@ class PersonalProfile extends React.Component {
 
     this.setState({ per_profile, per_profileValidate });
 
-
-    isSubmit = Boolean(this.submitHandler(isSubmit) ? true : false);
+    isSubmit = Boolean(this.submitHandler(isSubmit));
 
     this.setState({
       per_profile,
@@ -108,13 +124,8 @@ class PersonalProfile extends React.Component {
       personal_profile_isSubmit_value,
     });
 
-    this.props.onStateChange(this.state.per_profile,isSubmit)
-
-
+    this.props.onStateChange(this.state.per_profile, isSubmit);
   }
-
-
-  
 
   render() {
     let { per_profile } = this.state;
@@ -124,6 +135,7 @@ class PersonalProfile extends React.Component {
           <div className="container">
             <div className="pl-2">
               <div className="row">
+              { this.props.tabindex === true? alert("Great Shot!"):null}
                 <div
                   className="personalprofileicon"
                   style={{ backgroundImage: `url(${img})` }}
@@ -143,7 +155,6 @@ class PersonalProfile extends React.Component {
                 <div className=" col-sm-6 col-md-6">
                   <div className="Rb-0">
                     <div class="form-group">
-                    {console.log("oops",this.state.per_profile)}
                       <label className="pp_inputHeading" for="usr">
                         First Name
                       </label>
@@ -158,7 +169,6 @@ class PersonalProfile extends React.Component {
                         }}
                       />
                     </div>
-                    {console.log("Name",per_profile.first_name)}
                     <div class="form-group">
                       <label className="pp_inputHeading" for="usr">
                         Mobile number
@@ -189,8 +199,6 @@ class PersonalProfile extends React.Component {
                         }}
                       />
                     </div>
-
-                   
                   </div>
                 </div>
                 <div className=" col-sm-6 col-md-6">
@@ -240,8 +248,6 @@ class PersonalProfile extends React.Component {
                         }}
                       />
                     </div>
-
-                  
                   </div>
                 </div>
               </div>
@@ -254,16 +260,13 @@ class PersonalProfile extends React.Component {
   }
 }
 
+// const mapStateToProps = (state) => {
+  // return {
+    // tabindex: state.RegistrationTabBarReducer,
+  // };
+// };
 
-const mapStateToProps = (state) => {
-  return {
-    tabindex: state.RegistrationTabBarReducer,
-  };
- 
-};
-
-export default connect(mapStateToProps)(PersonalProfile);
-
+export default PersonalProfile
 
 export function PersonalProfileTabFooter() {
   return (
