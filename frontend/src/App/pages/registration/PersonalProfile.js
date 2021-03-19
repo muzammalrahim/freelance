@@ -51,7 +51,8 @@ class PersonalProfile extends React.Component {
       var storedData = JSON.parse(localStorage.getItem("personal_profile"));
       this.setState({ per_profile: storedData });
     }
-
+    
+    this.props.onStateChange(storedData)
   
   }
 
@@ -61,13 +62,14 @@ class PersonalProfile extends React.Component {
     ] = [this.state];
     let impValue = 0;
     Object.values(per_profileValidate).map((values) => {
+      
       if (values === false) {
         impValue = impValue + 1;
       }
     });
 
     if (impValue > 0) {
-      localStorage.removeItem("personal_profile");
+     
       return false;
     } else if (impValue === 0) {
       localStorage.setItem("personal_profile", JSON.stringify(per_profile));
@@ -141,6 +143,7 @@ class PersonalProfile extends React.Component {
                 <div className=" col-sm-6 col-md-6">
                   <div className="Rb-0">
                     <div class="form-group">
+                    {console.log("oops",this.state.per_profile)}
                       <label className="pp_inputHeading" for="usr">
                         First Name
                       </label>
