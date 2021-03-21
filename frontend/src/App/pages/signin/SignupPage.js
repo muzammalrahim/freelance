@@ -12,6 +12,13 @@ import AlertCompo from "./Alert";
 import { Snackbar } from "@material-ui/core";
 import { Alert, AlertTitle } from "@material-ui/lab";
 
+import IconButton from "@material-ui/core/IconButton"; 
+import InputLabel from "@material-ui/core/InputLabel"; 
+import Visibility from "@material-ui/icons/Visibility"; 
+import InputAdornment from "@material-ui/core/InputAdornment"; 
+import VisibilityOff from "@material-ui/icons/VisibilityOff"; 
+import Input from "@material-ui/core/Input"; 
+
 class SignupPage extends Component {
   constructor(props) {
     super(props);
@@ -50,6 +57,7 @@ class SignupPage extends Component {
       user: this.user,
       userValidate: this.userValidate,
       userError: this.userError,
+       showPassword: false,
     };
   }
 
@@ -65,6 +73,19 @@ class SignupPage extends Component {
       return false;
     }
     return true;
+  }
+
+  validatePassword(password) {
+    var pattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+    if (!pattern.test(password)) {
+      return false;
+    }
+    return true;
+  }
+
+ toggleShow= (e) => {
+   e.preventDefault(); 
+     this.setState({ showPassword: !this.state.showPassword });
   }
 
   signupChangeHandler = (e) => {
@@ -117,13 +138,22 @@ class SignupPage extends Component {
     Object.keys(userValidate).map((key) => {
       if (
         key === "password" ||
-        key === "username" ||
         key === "passwordConfirm"
       ) {
         {
           user[key] !== "" ? (
-            user[key].length > 7 ? (
+            user[key].length > 7  ? (
               <div>
+                  { this.validatePassword(password) ? (
+            (userValidate[key] = true)
+          ) : (
+            <div>
+              {" "}
+              {(userValidate[key] = false)},
+              {(userError[key] = "The password string must be eight characters or longer and should at least 1 lowercase,1 uppercase,1 numeric character,one special character")}
+            </div>
+          )}
+
                 {key === "passwordConfirm" ? (
                   <div>
                     {user[key] === user["password"]
@@ -161,6 +191,25 @@ class SignupPage extends Component {
           (userError[key] = "email are required")
         );
       }
+      else{
+          user[key] !== "" ? (
+            user[key].length > 7  ? (
+              <div>
+                { ( userValidate[key] = true ) }
+               
+              </div>
+            ) : (
+              <div>
+                {" "}
+                {(userValidate[key] = false)},
+                {(userError[key] = "minimum length 8 characters")}
+              </div>
+            )
+          ) : (
+            (userError[key] = "username is required")
+          );
+
+          }
     });
 
     this.setState({ userError });
@@ -224,6 +273,7 @@ class SignupPage extends Component {
       user: { username, email, password, passwordConfirm },
       alert: { open, severity, message, title },
       userError,
+      showPassword
     } = this.state;
 
     return (
@@ -326,14 +376,39 @@ class SignupPage extends Component {
                     >
                       <label form="pwd">Password</label>
                       <input
-                        type="password"
+                         type={showPassword ? "text" : "password"} 
                         className="form-control"
                         placeholder="Enter Password"
                         value={password}
                         name="password"
                         onChange={this.signupChangeHandler}
+                endAdornment={ 
+          <InputAdornment position="end"> 
+            <IconButton 
+              onClick={this.signupChangeHandler} 
+              onMouseDown={this.signupChangeHandler} 
+            > 
+              {showPassword ? <Visibility /> : <VisibilityOff />} 
+            </IconButton> 
+          </InputAdornment> 
+        } 
                       />
-
+                  {<button onClick={this.toggleShow}>Show / Hide</button>}
+        <Input 
+        type={showPassword ? "text" : "password"} 
+        onChange={this.signupChangeHandler} 
+        value={password} 
+        endAdornment={ 
+          <InputAdornment position="end"> 
+            <IconButton 
+              onClick={this.signupChangeHandler} 
+              onMouseDown={this.signupChangeHandler} 
+            > 
+              {showPassword ? <Visibility /> : <VisibilityOff />} 
+            </IconButton> 
+          </InputAdornment> 
+        } 
+      /> 
                       {userError.password !== "" ? (
                         <div className="error-message">
                           {userError.password}
