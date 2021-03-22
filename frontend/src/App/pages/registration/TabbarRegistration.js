@@ -24,7 +24,8 @@ class TabbarRegistration extends Component {
       userid: null,
       sendData: false,
       personalProfileIsSubmit: false,
-      data : {},
+      account_type: this.props.account_type,
+      data: {},
     };
   }
 
@@ -32,30 +33,26 @@ class TabbarRegistration extends Component {
     let { sendData } = this.state;
     sendData = true;
     this.setState({ sendData });
-    
+
     // console.log("agey mai",sendData);
   };
 
   tabUphandler = () => {
-    let { tabindex} = this.state;
+    let { tabindex } = this.state;
 
-    console.log("current tab index",tabindex)
-     this.setState({personalProfileIsSubmit:true})
+    console.log("current tab index", tabindex);
+    this.setState({ personalProfileIsSubmit: true });
 
     //  setTimeout(() => {
-      // this.setState({personalProfileIsSubmit:false})
+    // this.setState({personalProfileIsSubmit:false})
     // }, 3000);
-  
-if(tabindex === 0)
- {
-      
-    if (tabindex === 5)
-    {
-    this.setState({ tabindex: tabindex + 1 });
+
+    if (tabindex === 0) {
+       this.personalProfilestateHandler()
+      if (tabindex === 5) {
+        this.setState({ tabindex: tabindex + 1 });
+      }
     }
-  }
-         
-    
 
     this.props.tabChangeHandler(tabindex);
   };
@@ -71,13 +68,14 @@ if(tabindex === 0)
   };
 
   componentDidMount() {
-    // list("api/v1/accounts/profile/");
-    // .then((res) => {
-    // this.setState({ userid: res.data.id });
-    // console.log("profile", this.state.userid);
-    // console.log("profile data", res.data);
-    // })
-    // .catch((error) => {});
+     list("api/v1/accounts/profile/")
+     .then((res) => {
+       console.log("did mount:",res.data)
+     this.setState({ userid: res.data.id });
+     console.log("profile", this.state.userid);
+     console.log("profile data", res.data);
+     })
+     .catch((error) => {});
 
     var tabindex2 = 1;
 
@@ -88,27 +86,49 @@ if(tabindex === 0)
     this.clickone(tabindex2);
   }
 
+
+  accountType = (accountt)=>
+  {
+    console.log("account type",accountt)
+  }
+
+
   personalProfilestateHandler = (stateData, isSubmit) => {
-    let {data} = this.state
-    console.log("personal profile state data in tabbar:", stateData);
-    console.log("issub value", isSubmit);
+    let { data } = this.state;
     if (isSubmit === true) {
-      data = { user: stateData}
-        this.setState({data})
+
+      data = {
+              mobile_no:stateData.mobile_number, 
+              street: stateData.address,
+               service: "service1",
+                user: 11,
+                account_type : this.state.account_type,
+                city: {
+                  name: stateData.city,
+          
+                     },
+                country: {
+                  name: stateData.country,
+          
+                     }, 
+    }
+
+      this.setState({ data });
+      console.log("personal profile state data in tabbar:", stateData);
+      console.log("data object:",data);
+      console.log("issub value", isSubmit);
       // post("api/v1/freelancer_profile/", data)
-        // .then((response) => {
-          // console.log("freelancer_profile res:", response);
-        // })
-// 
-        // .catch((error) => {
-          // console.log("error", error);
-        // });
+      // .then((response) => {
+      // console.log("freelancer_profile res:", response);
+      // })
+      //
+      // .catch((error) => {
+      // console.log("error", error);
+      // });
     } else {
-    
     }
     this.setState({ personalProfileIsSubmit: false });
     console.log("pp in", this.state.personalProfileIsSubmit);
-  
   };
 
   idVerificationStateHandler(stateData, imgOf) {
@@ -141,7 +161,7 @@ if(tabindex === 0)
               <div>
                 <RegNavbar />
               </div>
-{  console.log("state data", this.state.data)}
+              {console.log("state data", this.state.data)}
               <div className="tabbar_tabarlist pt-4 pb-5 Changepadding ml-3 ">
                 <div className="ml-4 container">
                   <div class="Tab">
@@ -361,7 +381,10 @@ if(tabindex === 0)
 
             <div className="tabbar_min_height col-xs-6 col-sm-8 col-md-8 col-lg-9  p-5 tabbar_panel_background">
               {tabindex === 1 && (
-                <PersonalProfile onStateChange={this.personalProfilestateHandler} tabindex={this.state.personalProfileIsSubmit} />
+                <PersonalProfile
+                  onStateChange={this.personalProfilestateHandler}
+                  tabindex={this.state.personalProfileIsSubmit}
+                />
               )}
               {tabindex === 2 && (
                 <ProfessionalProfile2
@@ -374,7 +397,9 @@ if(tabindex === 0)
                 />
               )}
               {tabindex === 4 && (
-                <PaymentInformation onStateChange={this.paymentInformationstateHandler} />
+                <PaymentInformation
+                  onStateChange={this.paymentInformationstateHandler}
+                />
               )}
               {tabindex === 5 && (
                 <HourlyRate onStateChange={this.hourlyRatestateHandler} />

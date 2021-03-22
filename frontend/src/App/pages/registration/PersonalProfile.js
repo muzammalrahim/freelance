@@ -234,7 +234,6 @@ class PersonalProfile extends React.Component {
               <div className="row pt-3">
                 <div className=" col-sm-6 col-md-6">
                   <div className="Rb-0">
-                    {console.log("mer shuma", this.props.tabindex)}
                     <div
                       className={
                         this.props.tabindex === true
