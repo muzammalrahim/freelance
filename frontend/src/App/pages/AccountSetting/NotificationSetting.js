@@ -54,47 +54,49 @@ export default class NotificationSetting extends Component {
                       <p>A job is posted or modified</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A job is posted or modified" />
                   </div>
                   <div className="col-md-10">
                       <p>A Proposal is recieved</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived" />
+                     
                   </div>
                   <div className="col-md-10">
                       <p>An Interview Is accepted or offer terms are modified</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived"/>
                   </div>
                   <div className="col-md-10">
                       <p>An offer is accepted</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived" />
                   </div>
                   <div className="col-md-10">
                       <p>A job posting will expire soon</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived"/>
                   </div>
                   <div className="col-md-10">
                       <p>A job posting expired</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived"/>
                   </div>
                   <div className="col-md-10">
                       <p>No interview have been initiated</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived" />
                   </div>
                   </div>
                                    
                   </div>
+                
                   
                   <div className="ps-heading">
                   <p>Freelancer and agency proposal</p>
@@ -104,31 +106,31 @@ export default class NotificationSetting extends Component {
                       <p>A job is posted or modified</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived"/>
                   </div>
                   <div className="col-md-10">
                       <p>A Proposal is recieved</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived" />
                   </div>
                   <div className="col-md-10">
                       <p>An Interview Is accepted or offer terms are modified</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived"/>
                   </div>
                   <div className="col-md-10">
                       <p>An offer is accepted</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived"/>
                   </div>
                   <div className="col-md-10">
                       <p>A job posting will expire soon</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived"/>
                   </div>
                  </div> 
                  </div>
@@ -145,67 +147,67 @@ export default class NotificationSetting extends Component {
                       <p>A job is posted or modified</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch  id="job posted"/>
                   </div>
                   <div className="col-md-10">
                       <p>A Proposal is recieved</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="Proposal Received" />
                   </div>
                   <div className="col-md-10">
                       <p>An Interview Is accepted or offer terms are modified</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived" />
                   </div>
                   <div className="col-md-10">
                       <p>An offer is accepted</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived"/>
                   </div>
                   <div className="col-md-10">
                       <p>A job posting will expire soon</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived"/>
                   </div>
                   <div className="col-md-10">
                       <p>A job posting expired</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived"/>
                   </div>
                   <div className="col-md-10">
                       <p>No interview have been initiated</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived"/>
                   </div>
                   <div className="col-md-10">
                       <p>A job is posted or modified</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived" />
                   </div>
                   <div className="col-md-10">
                       <p>A job is posted or modified</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived" />
                   </div>
                   <div className="col-md-10">
                       <p>A job is posted or modified</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived"/>
                   </div>
                   <div className="col-md-10">
                       <p>A job is posted or modified</p>
                   </div>
                   <div className="col-md-2">
-                     <ToggleSwitch />
+                     <ToggleSwitch id="A proposal is recived" />
                   </div>
                   </div>
                                    
