@@ -36,8 +36,21 @@ class TabbarRegistration extends Component {
   };
 
   tabUphandler = () => {
-    let { tabindex } = this.state;
+    let { tabindex} = this.state;
+
+    console.log("current tab index",tabindex)
+     this.setState({personalProfileIsSubmit:true})
+  
+if(tabindex === 0)
+ {
+      
+    if (tabindex === 5)
+    {
     this.setState({ tabindex: tabindex + 1 });
+    }
+  }
+         
+    
 
     this.props.tabChangeHandler(tabindex);
   };
@@ -70,31 +83,28 @@ class TabbarRegistration extends Component {
     this.clickone(tabindex2);
   }
 
-  stateHandler = (stateData, isSubmit) => {
+  personalProfilestateHandler = (stateData, isSubmit) => {
     let {data} = this.state
     console.log("personal profile state data in tabbar:", stateData);
     console.log("issub value", isSubmit);
     if (isSubmit === true) {
       data = { user: stateData}
         this.setState({data})
-      this.setState({ personalProfileIsSubmit: true });
-      post("api/v1/freelancer_profile/", data)
-        .then((response) => {
-          console.log("freelancer_profile res:", response);
-        })
-
-        .catch((error) => {
-          console.log("error", error);
-        });
+      // post("api/v1/freelancer_profile/", data)
+        // .then((response) => {
+          // console.log("freelancer_profile res:", response);
+        // })
+// 
+        // .catch((error) => {
+          // console.log("error", error);
+        // });
     } else {
-      this.setState({ personalProfileIsSubmit: false });
+    
     }
-
+    this.setState({ personalProfileIsSubmit: false });
     console.log("pp in", this.state.personalProfileIsSubmit);
   
   };
-
-  personalProfileStateHandler(stateData) {}
 
   idVerificationStateHandler(stateData, imgOf) {
     if (imgOf === "idCard") {
@@ -346,11 +356,11 @@ class TabbarRegistration extends Component {
 
             <div className="tabbar_min_height col-xs-6 col-sm-8 col-md-8 col-lg-9  p-5 tabbar_panel_background">
               {tabindex === 1 && (
-                <PersonalProfile onStateChange={this.stateHandler} />
+                <PersonalProfile onStateChange={this.personalProfilestateHandler} tabindex={this.state.personalProfileIsSubmit} />
               )}
               {tabindex === 2 && (
                 <ProfessionalProfile2
-                  onStateChange={this.personalProfileStateHandler}
+                  onStateChange={this.professionalProfileStateHandler}
                 />
               )}
               {tabindex === 3 && (
@@ -359,10 +369,10 @@ class TabbarRegistration extends Component {
                 />
               )}
               {tabindex === 4 && (
-                <PaymentInformation onStateChange={this.stateHandler} />
+                <PaymentInformation onStateChange={this.paymentInformationstateHandler} />
               )}
               {tabindex === 5 && (
-                <HourlyRate onStateChange={this.stateHandler} />
+                <HourlyRate onStateChange={this.hourlyRatestateHandler} />
               )}
 
               <div className="container tabbar_next_pre_btn_background pt-4 pb-5">

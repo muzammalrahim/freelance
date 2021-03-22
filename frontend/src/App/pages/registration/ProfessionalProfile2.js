@@ -154,7 +154,7 @@ return (
                             }}
                           >
                             <h5 className="Addskillh5item">{item.name} </h5>
-                            <span
+                             <span
                               className="float AddSkill_pl"
                               onClick={() => {
                                 this.removeSkills(item.name);
