@@ -32,6 +32,7 @@ class TabbarRegistration extends Component {
     let { sendData } = this.state;
     sendData = true;
     this.setState({ sendData });
+    
     // console.log("agey mai",sendData);
   };
 
@@ -40,6 +41,10 @@ class TabbarRegistration extends Component {
 
     console.log("current tab index",tabindex)
      this.setState({personalProfileIsSubmit:true})
+
+    //  setTimeout(() => {
+      // this.setState({personalProfileIsSubmit:false})
+    // }, 3000);
   
 if(tabindex === 0)
  {
