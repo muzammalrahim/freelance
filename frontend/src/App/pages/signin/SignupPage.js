@@ -83,7 +83,7 @@ class SignupPage extends Component {
     return true;
   }
 
- toggleShow= (e) => {
+ passwordShowAndHide= (e) => {
    e.preventDefault(); 
      this.setState({ showPassword: !this.state.showPassword });
   }
@@ -393,7 +393,7 @@ class SignupPage extends Component {
           </InputAdornment> 
         } 
                       />
-                  {<button onClick={this.toggleShow}>Show / Hide</button>}
+                  {<button onClick={this.passwordShowAndHide}>Show / Hide</button>}
         <Input 
         type={showPassword ? "text" : "password"} 
         onChange={this.signupChangeHandler} 
