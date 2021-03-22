@@ -18,12 +18,9 @@ function Card() {
       .then((response)=>{
         console.log("show response:",response.data[2]);
         const {...rest} = response.data[2];
-       
          setcardData(rest);
       
-        }
-        )
-    
+        })
       }
   
   useEffect(() => {

@@ -7,20 +7,23 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import GetImage from "../registration/GetImage";
 import { post } from "../helper/api";
-import list from "../helper/api";
+import  list from "../helper/api";
 import { useHistory } from "react-router-dom";
 
 function RequestPaymentModal() {
+  
   let history = useHistory();
   const [open, setOpen] = useState(false);
   const [select, setSelect] = useState("");
   // hook for  imageupload
-  const [upload, setUpload] = useState();
+  // const [upload, setUpload] = useState();
   // hook for post  meassage
-  const [user, setUser] = useState({
+  const [data, setData] = useState({
     description: "",
-    imagebase64file: "",
+    attachments: "",
   });
+ 
+
   // for model pop
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
@@ -36,20 +39,20 @@ function RequestPaymentModal() {
   // function for image upload
 
   function uploadFile(base64file) {
-    setUser({
-      ...user,
-      imagebase64file: base64file,
+    setData({
+      ...data,
+      attachments: base64file,
     });
-    console.log("user : ", user);
+    console.log("user : ", data);
   }
+
   // post API call
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    post("/api/v1/contract/", user).then((response) => {
-      let alldata = { user: user, img: upload };
+    post('/api/v1/contract/', data).then((response) => {
+      let alldata = { user: data, img: data };
       console.log("userData", alldata);
-
       if (response.data.Status === "Success") {
         console.log(response.data.Status);
         alert("Data Save Successfully");
@@ -60,14 +63,14 @@ function RequestPaymentModal() {
       }
     });
   };
-  // const {description} = user;
-  const { description } = user;
+ 
+  const { description } = data;
   const onInputChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setData({ ...data, [e.target.name]: e.target.value });
   };
   // get data for milestone
   const showData = async (e) => {
-    list("api/v1/contract/").then((response) => {
+    list('api/v1/contract/').then((response) => {
       const data = response.data[1];
       console.log("response:", response.data[1]);
       setSelect(data);
