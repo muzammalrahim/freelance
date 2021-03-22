@@ -57,7 +57,7 @@ class SignupPage extends Component {
       user: this.user,
       userValidate: this.userValidate,
       userError: this.userError,
-       showPassword: false,
+      showPassword: false,
     };
   }
 
@@ -374,7 +374,9 @@ class SignupPage extends Component {
                           : "form-group error"
                       }
                     >
+                      
                       <label form="pwd">Password</label>
+                      <div className="hide-icon-position">
                       <input
                          type={showPassword ? "text" : "password"} 
                         className="form-control"
@@ -382,19 +384,14 @@ class SignupPage extends Component {
                         value={password}
                         name="password"
                         onChange={this.signupChangeHandler}
-                endAdornment={ 
-          <InputAdornment position="end"> 
-            <IconButton 
-              onClick={this.signupChangeHandler} 
-              onMouseDown={this.signupChangeHandler} 
-            > 
-              {showPassword ? <Visibility /> : <VisibilityOff />} 
-            </IconButton> 
-          </InputAdornment> 
-        } 
-                      />
-                  {<button onClick={this.passwordShowAndHide}>Show / Hide</button>}
-        <Input 
+                      /><span>{<i class="hide-icon" onClick={this.passwordShowAndHide}><span><IconButton 
+                      onClick={this.signupChangeHandler} 
+                      onMouseDown={this.signupChangeHandler} 
+                    > 
+                      {showPassword ? <Visibility /> : <VisibilityOff />} 
+                    </IconButton> </span></i>}</span></div>
+                  
+        {/* <Input 
         type={showPassword ? "text" : "password"} 
         onChange={this.signupChangeHandler} 
         value={password} 
@@ -408,7 +405,7 @@ class SignupPage extends Component {
             </IconButton> 
           </InputAdornment> 
         } 
-      /> 
+      />  */}
                       {userError.password !== "" ? (
                         <div className="error-message">
                           {userError.password}
