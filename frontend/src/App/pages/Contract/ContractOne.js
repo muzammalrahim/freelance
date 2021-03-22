@@ -21,7 +21,7 @@ export default function ContractOne () {
 
     let history = useHistory();
 
-    const [get ,setGet] = useState ([0]);
+    const [get ,setGet] = useState ();
 
     const handleClick =() =>{
         history.push('/jobs')
@@ -30,8 +30,8 @@ export default function ContractOne () {
         console.log("show response:");
         list('api/v1/contract/')
         .then((response)=>{
-          console.log("show response:",response.data[0]);
-          const {...rest} = response.data[0];
+          console.log("show response:",response.data);
+          const {...rest} = response.data;
           setGet(rest);
           
         })
@@ -87,7 +87,7 @@ export default function ContractOne () {
                                                     <p className="m-icon"><span className="pr-1"><WorkIcon/></span> {get?.job?.pay_type}</p>
                                                 </li>
                                                 <li className="pr-3">
-                                                    <p className="m-icon"><span className="pr-1"><img src={CalanderIcon} alt="no img"/></span>{get.start_date}</p>
+                                                    <p className="m-icon"><span className="pr-1"><img src={CalanderIcon} alt="no img"/></span></p>
                                                 </li>
                                                 <li className="pr-3">
                                                     <p className="m-icon"><span className="pr-1"><WatchLaterIcon/></span>{get?.job?.created_at}</p>
