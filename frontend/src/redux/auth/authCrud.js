@@ -51,6 +51,7 @@ export function sign_up(data) {
 
     console.log("api:",process.env.REACT_APP_API_URL + Linkedin_LOGIN_URL)
     console.log("length",data.length)
+    console.log("data",data)
     return axios.post(process.env.REACT_APP_API_URL + Linkedin_LOGIN_URL,data,config)
 
   }

@@ -66,13 +66,18 @@ class Profile(PolymorphicModel):
 		('english', 'English'),
 	)
 	language = models.CharField(choices=LANG_CHOICES, max_length=30,
+<<<<<<< HEAD
 								default='arabic')
 	skills = models.ManyToManyField(Skill,blank=True)
+=======
+								default='arabic', blank=True, null=True)
+	skills = models.ManyToManyField(Skill, blank=True)
+>>>>>>> d0ba3ac7aeed0851bb03c5195643e29662b77b31
 	city = models.ForeignKey(City, on_delete=models.SET_NULL, blank=True,
 							 null=True)
 	country = models.ForeignKey(Country, on_delete=models.SET_NULL, blank=True,
 								null=True)
-	street = models.CharField(max_length=140)
+	street = models.CharField(max_length=140, blank=True, null=True)
 	zip_code = models.CharField(max_length=14, blank=True, null=True)
 
 	EXPERIENCE_LEVEL_CHOICES = (
@@ -85,7 +90,7 @@ class Profile(PolymorphicModel):
 	positions = models.CharField(max_length=100, blank=True, null=True)
 	birth_date = models.DateField(null=True, blank=True)
 	created_at = models.DateTimeField(auto_now_add=True)
-	updated_at = models.DateTimeField(auto_now=True)
+	updated_at = models.DateTimeField(auto_now=True, )
 	created_by = models.ForeignKey(User, blank=True, null=True,
 								   on_delete=models.SET_NULL,
 								   related_name='created_by_profile')
@@ -123,8 +128,8 @@ class FreelancerProfile(Profile):
 		('service1', 'Service 1'),
 		('service2', 'Service 2'),
 	)
-	service = models.CharField(max_length=20, choices=SERVICE_CHOICES)
-	category = models.ManyToManyField(Category)
+	service = models.CharField(max_length=20, choices=SERVICE_CHOICES, blank=True, null=True)
+	category = models.ManyToManyField(Category, blank=True)
 
 
 class Question(models.Model):
