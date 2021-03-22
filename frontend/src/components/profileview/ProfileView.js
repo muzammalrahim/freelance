@@ -24,8 +24,7 @@ function Profileview() {
              <Card/>
               </div>
               <div className="col-md-9">
-                <div className="personal-prfile-main">
-                  
+                <div className="personal-prfile-main">  
                   <BioGraphy />
                   <PortFolio />
                   <Reviews />

@@ -78,8 +78,6 @@ function FeedBackModal() {
                     <option>3</option>
                   </select>
                 </div>
-                
-                    
                 </div>
                 <div className="modal-msg text-left p-4">
                     <h3 className="pb-1">Share your experience with client</h3>
@@ -91,19 +89,12 @@ function FeedBackModal() {
                       <button class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary" tabindex="0" type="button"><span class="MuiButton-label">Cancel</span><span class="MuiTouchRipple-root"></span></button>
                       <button onClick={handleClose} class="btn btn--yellow btn--medium" autoFocus> Submit</button>
                     </div>
-                    
-                
-                
             </div>
-      
             </div>
-            
           </DialogContentText>
         </DialogContent>
-        
       </Dialog>
     </div>
     )
 }
-
 export default FeedBackModal

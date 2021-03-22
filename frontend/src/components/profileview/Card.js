@@ -6,6 +6,7 @@ import Display from "../../assets/Display.png";
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import Uploading from './ImageUploader'
 import list  from '../../App/pages/helper/api';
 
 
@@ -15,14 +16,11 @@ function Card() {
       console.log("show response:");
       list('api/v1/profile/')
       .then((response)=>{
-        console.log("show response:",response.data[1]);
-        const {...rest} = response.data[1];
-       
+        console.log("show response:",response.data[2]);
+        const {...rest} = response.data[2];
          setcardData(rest);
       
-        }
-        )
-    
+        })
       }
   
   useEffect(() => {
@@ -37,12 +35,11 @@ function Card() {
            
             <div className="profile pt-3">
              
-              <img src={Status} className="pb-2" alt=""/>
+              <Uploading/>
              
-              <p> {carddata?.user?.username}</p>
+              <p><b>{carddata?.user?.username}</b></p>
       <h5>{carddata.account_title}</h5>
             </div>
-
             <div className="complete-profile">
               <h5>Completed Profile</h5>
               <span> 3/5 </span>Followups
@@ -65,7 +62,7 @@ function Card() {
                   <div className="col-md-10">
                     <a href="">
                   <p>
-                    SAR 100 Per/Hour{" "}
+                   SAR{carddata.proposal_amount} Per/Hour
                   </p>
                   </a>
                   </div>
@@ -78,7 +75,7 @@ function Card() {
                   <div className="col-md-10">
                     <a href="">
                   <p>
-                  Indore
+                  {carddata?.city?.name}
                   </p>
                   </a>
                   </div>
@@ -102,7 +99,7 @@ function Card() {
                   <div className="col-md-10">
                     <a href="">
                   <p>
-                  Join Decemeber 10, 2015
+                {carddata?.user?.date_joined}
                   </p>
                   </a>
                   </div>

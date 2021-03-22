@@ -101,6 +101,11 @@ class CategorySerializers(serializers.ModelSerializer):
 
 class ProfileSerializers(serializers.ModelSerializer):
 	avatar = Base64ImageField(required=False)
+	ACCOUNT_TYPE_CHOICES = (
+		('work', 'Work'),
+		('hire', 'Hire'),
+	)
+	account_type = serializers.ChoiceField(choices=ACCOUNT_TYPE_CHOICES, required=False)
 
 	def to_representation(self, instance):
 		representation = super(ProfileSerializers, self).to_representation(instance)
@@ -117,14 +122,18 @@ class ProfileSerializers(serializers.ModelSerializer):
 		return super().update(instance, validated_data)
 
 	def create(self, validated_data):
-		# if 'account_type' == None:
-		# # 	validated_data['account_type'] = self.context['request'].User.account_type
-		# 	account_type = validated_data.pop('account_type')
-		# 	user =self.context['request'].User.account_type
-		# 	if account_type == 'work':
-		# 		user.groups.add(Group.objects.get(name=settings.FREELANCER_USER))
-		# 	elif account_type == "hire":
-		# 		user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
+		if 'account_type' in validated_data:
+			account_type = validated_data.pop('account_type')
+			print("account_type", account_type)
+			# if 'account_type' in validated_data :
+			# 	validated_data['account_type'] = self.context['request'].User.account_type
+			# account_type = validated_data.pop('account_type')
+			user = self.context['request'].user
+			# user = super().create(validated_data)
+			if account_type == 'work':
+				user.groups.add(Group.objects.get(name=settings.FREELANCER_USER))
+			elif account_type == "hire":
+				user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
 		validated_data['created_by'] = self.context['request'].user
 		return super().create(validated_data)
 

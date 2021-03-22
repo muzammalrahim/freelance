@@ -78,7 +78,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
 		data = serializer.data
 		data['current_time'] = datetime.utcnow() + timedelta(hours=4)
 		if instance.proposal_amount is not None:
-			data['total_proposal_amount'] = instance.proposal_amount - (decimal.Decimal(10/100)*instance.proposal_amount)
+			data['total_proposal_amount'] = instance.proposal_amount - (decimal.Decimal(15/100)*instance.proposal_amount)
 		return Response(data)
 
 

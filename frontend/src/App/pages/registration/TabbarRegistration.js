@@ -11,7 +11,8 @@ import ProfessionalProfile2 from "./ProfessionalProfile2";
 import ProfessionalProfile2Footer from "./ProfFooter";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 
-import list from "../helper/api";
+import CheckIcon from "@material-ui/icons/Check";
+import list, { post } from "../helper/api";
 import { connect } from "react-redux";
 import { RegistrationTabBarAction } from "../../../redux/actions/RegistrationTabBarAction";
 
@@ -21,19 +22,27 @@ class TabbarRegistration extends Component {
     this.state = {
       tabindex: null,
       userid: null,
+      sendData: false,
+      personalProfileIsSubmit: false,
+      data : {},
     };
   }
 
-  stateHandler;
+  sendDataHandler = () => {
+    let { sendData } = this.state;
+    sendData = true;
+    this.setState({ sendData });
+    // console.log("agey mai",sendData);
+  };
 
-  handler = () => {
+  tabUphandler = () => {
     let { tabindex } = this.state;
     this.setState({ tabindex: tabindex + 1 });
 
     this.props.tabChangeHandler(tabindex);
   };
 
-  handler2 = () => {
+  tabDownhandler = () => {
     this.setState({
       tabindex: this.state.tabindex - 1,
     });
@@ -44,12 +53,13 @@ class TabbarRegistration extends Component {
   };
 
   componentDidMount() {
-    list("api/v1/accounts/profile/")
-      .then((res) => {
-        this.setState({ userid: res.data.id });
-        console.log("profile", this.state.userid);
-      })
-      .catch((error) => {});
+    // list("api/v1/accounts/profile/");
+    // .then((res) => {
+    // this.setState({ userid: res.data.id });
+    // console.log("profile", this.state.userid);
+    // console.log("profile data", res.data);
+    // })
+    // .catch((error) => {});
 
     var tabindex2 = 1;
 
@@ -60,25 +70,44 @@ class TabbarRegistration extends Component {
     this.clickone(tabindex2);
   }
 
-  stateHandler(stateData) {
-    console.log("neeeeee", stateData);
-  }
+  stateHandler = (stateData, isSubmit) => {
+    let {data} = this.state
+    console.log("personal state data", stateData);
+    console.log("issub value", isSubmit);
+    if (isSubmit === true) {
+      data = { user: stateData}
+        this.setState({data})
+      this.setState({ personalProfileIsSubmit: true });
+      post("api/v1/freelancer_profile/", this.state.data)
+        .then((response) => {
+          console.log("freelancer_profile res:", response);
+        })
 
-  personalProfileStateHandler(stateData) {
-    console.log("neeeeee", stateData);
-  }
+        .catch((error) => {
+          console.log("error", error);
+        });
+    } else {
+      this.setState({ personalProfileIsSubmit: false });
+    }
 
-  idVerificationStateHandler(stateData) {
-    console.log("neeeeee", stateData);
+    console.log("pp in", this.state.personalProfileIsSubmit);
+  
+  };
+
+  personalProfileStateHandler(stateData) {}
+
+  idVerificationStateHandler(stateData, imgOf) {
+    if (imgOf === "idCard") {
+      console.log("id card img", stateData);
+    } else if (imgOf === "drivingLicense") {
+      console.log("driving  img", stateData);
+    }
   }
   paymentInformationStateHandler(stateData) {
-    console.log("neeeeee", stateData);
+    // console.log("neeeeee", stateData);
   }
 
-  hourlyRateStateHandler()
-  {
-
-  }
+  hourlyRateStateHandler() {}
 
   render() {
     let { tabindex } = this.state;
@@ -97,9 +126,9 @@ class TabbarRegistration extends Component {
               <div>
                 <RegNavbar />
               </div>
-
+{  console.log("state data", this.state.data)}
               <div className="tabbar_tabarlist pt-4 pb-5 Changepadding ml-3 ">
-                <div className="container">
+                <div className="ml-4 container">
                   <div class="Tab">
                     <span
                       class=" "
@@ -108,17 +137,38 @@ class TabbarRegistration extends Component {
                       {/*
               <button type="button" class={"btn btn-outline-secondary btn-circle btn-md " + (this.state.tabindex=== 1 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 1 })}> 1</button> */}
 
-                      <button
-                        className={
-                          "Buttoncls " +
-                          (tabindex === 1 ? "ButtonclsActive" : "hidden")
+                      {this.state.tabindex > 1 ? (
+                        <span
+                          style={{
+                            color: "white",
+                            background: " #1DA799",
+                            borderRadius: "25px",
+                          }}
+                        >
+                          <CheckIcon />
+                        </span>
+                      ) : (
+                        <button
+                          className={
+                            "Buttoncls " +
+                            (tabindex === 1 ? "ButtonclsActive" : "hidden")
+                          }
+                          onClick={() => this.setState({ tabindex: 1 })}
+                        >
+                          1
+                        </button>
+                      )}
+
+                      <span
+                        class={
+                          "text2" +
+                          (this.state.tabindex === 1 ? "y-text" : "hidden")
                         }
                         onClick={() => this.setState({ tabindex: 1 })}
                       >
-                        1
-                      </button>
+                        Personal Profile
+                      </span>
                     </span>{" "}
-                    <span class="text2">Personal Profile</span>
                   </div>{" "}
                   <div
                     className={
@@ -132,17 +182,37 @@ class TabbarRegistration extends Component {
                       class=" "
                       onClick={() => this.setState({ tabindex: 2 })}
                     >
-                      <button
-                        className={
-                          "Buttoncls " +
-                          (tabindex === 2 ? "ButtonclsActive" : "hidden")
+                      {this.state.tabindex > 2 ? (
+                        <span
+                          style={{
+                            color: "white",
+                            background: " #1DA799",
+                            borderRadius: "25px",
+                          }}
+                        >
+                          <CheckIcon />
+                        </span>
+                      ) : (
+                        <button
+                          className={
+                            "Buttoncls " +
+                            (tabindex === 2 ? "ButtonclsActive" : "hidden")
+                          }
+                          onClick={() => this.setState({ tabindex: 2 })}
+                        >
+                          2
+                        </button>
+                      )}
+                      <span
+                        class={
+                          "text2" +
+                          (this.state.tabindex === 2 ? "y-text" : "hidden")
                         }
                         onClick={() => this.setState({ tabindex: 2 })}
                       >
-                        2
-                      </button>
+                        Professional Profile
+                      </span>
                     </span>{" "}
-                    <span class="text2">Professional Profile</span>
                   </div>{" "}
                   <div
                     className={
@@ -156,17 +226,37 @@ class TabbarRegistration extends Component {
                       class=" "
                       onClick={() => this.setState({ tabindex: 3 })}
                     >
-                      <button
-                        className={
-                          "Buttoncls " +
-                          (tabindex === 3 ? "ButtonclsActive" : "hidden")
+                      {this.state.tabindex > 3 ? (
+                        <span
+                          style={{
+                            color: "white",
+                            background: " #1DA799",
+                            borderRadius: "25px",
+                          }}
+                        >
+                          <CheckIcon />
+                        </span>
+                      ) : (
+                        <button
+                          className={
+                            "Buttoncls " +
+                            (tabindex === 3 ? "ButtonclsActive" : "hidden")
+                          }
+                          onClick={() => this.setState({ tabindex: 3 })}
+                        >
+                          3
+                        </button>
+                      )}
+                      <span
+                        class={
+                          "text2" +
+                          (this.state.tabindex === 3 ? "y-text" : "hidden")
                         }
                         onClick={() => this.setState({ tabindex: 3 })}
                       >
-                        3
-                      </button>
+                        ID Verification
+                      </span>
                     </span>{" "}
-                    <span class="text2">ID Verification</span>
                   </div>{" "}
                   <div
                     className={
@@ -180,17 +270,37 @@ class TabbarRegistration extends Component {
                       class=" "
                       onClick={() => this.setState({ tabindex: 4 })}
                     >
-                      <button
-                        className={
-                          "Buttoncls " +
-                          (tabindex === 4 ? "ButtonclsActive" : "hidden")
+                      {this.state.tabindex > 4 ? (
+                        <span
+                          style={{
+                            color: "white",
+                            background: " #1DA799",
+                            borderRadius: "25px",
+                          }}
+                        >
+                          <CheckIcon />
+                        </span>
+                      ) : (
+                        <button
+                          className={
+                            "Buttoncls " +
+                            (tabindex === 4 ? "ButtonclsActive" : "hidden")
+                          }
+                          onClick={() => this.setState({ tabindex: 4 })}
+                        >
+                          4
+                        </button>
+                      )}
+                      <span
+                        class={
+                          "text2" +
+                          (this.state.tabindex === 4 ? "y-text" : "hidden")
                         }
                         onClick={() => this.setState({ tabindex: 4 })}
                       >
-                        4
-                      </button>
+                        Payment Information
+                      </span>
                     </span>{" "}
-                    <span class="text2">Payment Information</span>
                   </div>{" "}
                   <div
                     className={
@@ -213,8 +323,16 @@ class TabbarRegistration extends Component {
                       >
                         5
                       </button>
+                      <span
+                        class={
+                          "text2" +
+                          (this.state.tabindex === 5 ? "y-text" : "hidden")
+                        }
+                        onClick={() => this.setState({ tabindex: 5 })}
+                      >
+                        Hourly Rate
+                      </span>
                     </span>{" "}
-                    <span class="text2">Hourly Rate</span>
                   </div>
                 </div>
               </div>
@@ -227,13 +345,25 @@ class TabbarRegistration extends Component {
             </div>
 
             <div className="tabbar_min_height col-xs-6 col-sm-8 col-md-8 col-lg-9  p-5 tabbar_panel_background">
-         {tabindex === 1 && (
+              {tabindex === 1 && (
                 <PersonalProfile onStateChange={this.stateHandler} />
               )}
-           {tabindex === 2 && <ProfessionalProfile2 onStateChange={this.personalProfileStateHandler} />}
-              {tabindex === 3 && <IdVerification onStateChange={this.idVerificationStateHandler} />}
-              {tabindex === 4 && <PaymentInformation onStateChange={this.stateHandler} />}
-              {tabindex === 5 && <HourlyRate onStateChange={this.stateHandler} />}
+              {tabindex === 2 && (
+                <ProfessionalProfile2
+                  onStateChange={this.personalProfileStateHandler}
+                />
+              )}
+              {tabindex === 3 && (
+                <IdVerification
+                  onStateChange={this.idVerificationStateHandler}
+                />
+              )}
+              {tabindex === 4 && (
+                <PaymentInformation onStateChange={this.stateHandler} />
+              )}
+              {tabindex === 5 && (
+                <HourlyRate onStateChange={this.stateHandler} />
+              )}
 
               <div className="container tabbar_next_pre_btn_background pt-4 pb-5">
                 {tabindex > 1 && (
@@ -255,7 +385,8 @@ class TabbarRegistration extends Component {
                       type="button"
                       className="btn tb_nextButton"
                       onClick={() => {
-                        this.handler();
+                        this.tabUphandler();
+                        this.sendDataHandler();
                       }}
                     >
                       {" "}
@@ -282,7 +413,7 @@ class TabbarRegistration extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     tabChangeHandler: (tabindex) => {
-      console.log("tab in redux:", tabindex);
+      // console.log("tab in redux:", tabindex);
       dispatch(
         RegistrationTabBarAction({
           type: "REGISTRATION_TAB_CHANGE",

@@ -22,6 +22,7 @@ import JobDetailTwo from "./App/pages/jobs/JobDetailTwo";
 
 // Personal Profile
 import Profileview from './components/profileview/ProfileView'
+import EditBio from './components/profileview/EditBio'
 import PortfolioTab from './components/profileview/PortfolioTab'
 // Personal Profile
 
@@ -137,6 +138,7 @@ return (
 
 
 <Route path='/profileview' exact component={Profileview}/>
+<Route path='/EditBio/:id' exact component={EditBio}/>
 <Route path='/portfoliotab' exact component={PortfolioTab}/>
 
 <Route path='/account-setting' exact component={AccountSettingMain}/>

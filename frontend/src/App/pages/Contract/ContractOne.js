@@ -17,68 +17,22 @@ import { useHistory } from 'react-router-dom'
 import list from '../../pages/helper/api';
 
 
-// function createData(id, budget, title, description, skills,category) {
-//     return { id, budget, title, description, skills,category };
-  
-//   }
-  
-
 export default function ContractOne () { 
 
     let history = useHistory();
 
-    const [get ,setGet] = useState ([0]);
-    const [getjob, setGetjob] = useState([1])
-    // const [rows, setRows] = React.useState([]);
+    const [get ,setGet] = useState ();
 
     const handleClick =() =>{
         history.push('/jobs')
     }
-
-
-    // function setContract (){
-
-        
-         
-      
-    //     //   response.data.map((row)=>{
-          
-    //     //     job_list.push(createData(row.id, row.budget, row.title, row.description, row.skills,row.category))
-    //     //     console.log("faizan2", job_list[0])
-    //     //   })
-      
-    
-    
-    //   }
-    
-//     function setContract() {
-//         console.log("show response:");
-//         list('api/v1/job/')
-//         .then((response)=>{
-//           console.log("show response:",response.data[1]);
-//           const {...data} = response.data[1];
-//           setGetjob(data);
-//         })
-//         .catch(error => console.error (`Error:${error}`));
-// }
-
     function Contract() {
         console.log("show response:");
         list('api/v1/contract/')
         .then((response)=>{
-          console.log("show response:",response.data[0]);
-          const {...rest} = response.data[0];
+          console.log("show response:",response.data);
+          const {...rest} = response.data;
           setGet(rest);
-
-          list('api/v1/job/')
-          .then((response)=>{
-              console.log("faizan")
-        //   let job_list = [];
-          const data = response.data;
-          console.log("faizanfinal :" , response.data[0]);
-          setGetjob(data);
-          })
-          
           
         })
         .catch(error => console.error (`Error:${error}`));
@@ -88,8 +42,6 @@ export default function ContractOne () {
 
     useEffect(() => {
         Contract(); 
-        // setContract();
-        // getJob();
       },[]);
 
 
@@ -120,7 +72,7 @@ export default function ContractOne () {
                                         <div className="content-heading">
                                             <div className="contact1-avatar"><img src={AvtarIcon} alt="no img"/></div>
                                             <h3 className="pl-3">
-                                                  {getjob.title  ? getjob.title  : " " }
+                                                 {get?.job?.title}
                                             
                                             
                                             </h3>
@@ -132,13 +84,13 @@ export default function ContractOne () {
                                         <div className="col-md-11">
                                             <ul className="duration pl-1">
                                                 <li className="pr-3">
-                                                    <p className="m-icon"><span className="pr-1"><WorkIcon/></span>Monthly</p>
+                                                    <p className="m-icon"><span className="pr-1"><WorkIcon/></span> {get?.job?.pay_type}</p>
                                                 </li>
                                                 <li className="pr-3">
-                                                    <p className="m-icon"><span className="pr-1"><img src={CalanderIcon} alt="no img"/></span>{get.start_date}</p>
+                                                    <p className="m-icon"><span className="pr-1"><img src={CalanderIcon} alt="no img"/></span></p>
                                                 </li>
                                                 <li className="pr-3">
-                                                    <p className="m-icon"><span className="pr-1"><WatchLaterIcon/></span>20 min ago</p>
+                                                    <p className="m-icon"><span className="pr-1"><WatchLaterIcon/></span>{get?.job?.created_at}</p>
                                                 </li> 
 
                                             </ul>

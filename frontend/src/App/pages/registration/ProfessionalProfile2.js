@@ -18,8 +18,12 @@ class  ProfessionalProfile2 extends Component{
                         provideService :'',
                         skills: [],
                         chooseCategory:[],
-                        img:''
-       
+                        img:'', 
+                           
+                        //  people : [
+                        //                       { name: 'chris' },
+                        //                         { name: 'nick' }
+                        //           ]
                       }
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -57,6 +61,21 @@ class  ProfessionalProfile2 extends Component{
         this.setState({provideService:provideService2})
       }
 
+ checkExistedSkill(name) {
+  for (let i = 0; i < this.state.skills.length; i++) {
+    if (this.state.skills[i].name === name) {
+      return true;
+    }
+    }
+      return false;
+  }
+  removeSkills = (name) => {
+    const skills = this.state.skills.filter((skill) => skill.name != name);
+    console.log("dam cham",skills)
+    this.setState({
+      skills,
+    });
+  };
 
 render(){
 
@@ -83,69 +102,74 @@ return (
                   </div>
                 <div className="multiselect">
                 <div>
-       
-                <h3>Add your skills</h3> 
+                      <h3>Add your skills</h3>
 
-  
-                          <select
-                                //  value={this.state.selectValue}
-                                //  onChange={this.handleChange}
+                      <select
+                        //  value={this.state.selectValue}
+                        //  onChange={this.handleChange}
 
-                                onChange={(e) => {
-                                  this.setState((prevState) => ({
-                                    skills: [...prevState.skills, e.target.value],
-                                  }));
-                                }}
-                                className="form-control"
-                                id="exampleFormControlSelect1">
-                                <ul>
-                                <li className="test">a</li>
-                                <li className="test">b</li>
-                                <li className="test">c</li>
-                                <li className="test">d</li>
-                                </ul>
-                                <option value="Php">Php</option>
-                                <option value="Bootstrap">Bootstrap</option>
-                                <option value="Azura">Azura</option>
-                                <option value="Java">Java</option>
-                                <option value="Python">Python</option>
-                                <option value="javascript">javascript</option>
-                                <option value="c#">c#</option>
-                              </select>
+                        onChange={(e) => {
+                          const isExisted = this.checkExistedSkill(
+                            e.target.value
+                          );
+                          console.log("isExisted", isExisted);
+                          if (isExisted) {
+                            console.log("true", isExisted);
+                          } else {
+                            let data = { name: e.target.value };
+                            this.setState((prevState) => ({
+                              skills: [...prevState.skills, data],
+                            }));
+                          }
+                        }}
+                        className="form-control"
+                        id="exampleFormControlSelect1"
+                      >
+                        <ul>
+                          <li className="test">a</li>
+                          <li className="test">b</li>
+                          <li className="test">c</li>
+                          <li className="test">d</li>
+                        </ul>
+                        <option value="Php">Php</option>
+                        <option value="Bootstrap">Bootstrap</option>
+                        <option value="Azura">Azura</option>
+                        <option value="Java">Java</option>
+                        <option value="Python">Python</option>
+                        <option value="javascript">javascript</option>
+                        <option value="c#">c#</option>
+                      </select>
+
+                      <div className="test">
+                        {this.state.skills.map((item, index) => (
+                          <div
+                            className="option"
+                            style={{
+                              background: "#61C1B8",
+                              color: "white",
+                              padding: "0px 8px",
+                              margin: "7px ",
+                              borderRadius: "4px",
+                              width: "113px",
+                            }}
+                          >
+                            <h5 className="Addskillh5item">{item.name} </h5>
+                            <span
+                              className="float AddSkill_pl"
+                              onClick={() => {
+                                this.removeSkills(item.name);
+                              }}
+                              style={{ cursor: "pointer" }}
+                            >
+                              x
+                            </span>
+                          </div>
                           
-
-                              <div className="test">
-                                {this.state.skills.map((item, index) => (
-                                  <div
-                                    className="option"
-                                    style={{
-                                      background: "#61C1B8",
-                                      color: "white",
-                                      padding: "0px 8px",
-                                      margin: "7px ",
-                                      borderRadius: "4px",
-                                      width: "113px",
-                                    }}
-                                  >
-                                    <h5 className="Addskillh5item">{item} </h5>
-                                    <span
-                                      className="float AddSkill_pl"
-                                      onClick={() => {
-                                        const a = this.state.skills;
-                                        a.splice(index, 1);
-                                        this.setState({ skills: a });
-                                      }}
-                                      style={{ cursor: "pointer" }}
-                                    >
-                                      x
-                                    </span>
-                             
-                                  </div>
-
-                                 
-                                ))}
-                              </div>
-                     </div>
+                        ))}
+                      </div>
+                      {console.log("ski",this.state.skills)}
+                      {console.log("ppl",this.state)}
+                    </div>
                 </div>
              </div>
                  {/* Choose Category Multi_select_checkboxes */}
