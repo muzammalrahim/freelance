@@ -68,12 +68,15 @@ class TabbarRegistration extends Component {
   };
 
   componentDidMount() {
+     let {userid} = this.state
      list("api/v1/accounts/profile/")
      .then((res) => {
-       console.log("did mount:",res.data)
-     this.setState({ userid: res.data.id });
+      var data  =  JSON.parse(res.data.id);
+      userid = data
+     
+     this.setState({userid});
      console.log("profile", this.state.userid);
-     console.log("profile data", res.data);
+
      })
      .catch((error) => {});
 
@@ -95,13 +98,15 @@ class TabbarRegistration extends Component {
 
   personalProfilestateHandler = (stateData, isSubmit) => {
     let { data } = this.state;
+
+    console.log("mera ",this.state)
     if (isSubmit === true) {
 
       data = {
               mobile_no:stateData.mobile_number, 
               street: stateData.address,
                service: "service1",
-                user: 11,
+                user: this.state.userid,
                 account_type : this.state.account_type,
                 city: {
                   name: stateData.city,
@@ -114,17 +119,17 @@ class TabbarRegistration extends Component {
     }
 
       this.setState({ data });
-      console.log("personal profile state data in tabbar:", stateData);
       console.log("data object:",data);
       console.log("issub value", isSubmit);
-      // post("api/v1/freelancer_profile/", data)
-      // .then((response) => {
-      // console.log("freelancer_profile res:", response);
-      // })
-      //
-      // .catch((error) => {
-      // console.log("error", error);
-      // });
+      post("api/v1/freelancer_profile/", data)
+      .then((response) => {
+      console.log("freelancer_profile res:", response);
+      console.log("freelancer_profile res:", response.data);
+      })
+      
+      .catch((error) => {
+      console.log("error", error);
+      });
     } else {
     }
     this.setState({ personalProfileIsSubmit: false });
