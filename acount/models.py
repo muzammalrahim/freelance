@@ -42,7 +42,7 @@ class Category(models.Model):
 
 
 class Profile(PolymorphicModel):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
 	level = models.CharField(max_length=100, blank=True, null=True)
 	proposal_amount = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 	account_title = models.CharField(max_length=70,
@@ -59,7 +59,7 @@ class Profile(PolymorphicModel):
 		('approved', 'Approved'),
 	)
 	verification_status = models.CharField(choices=VERIFICATION_STATUS_CHOICES,
-										   max_length=10)
+										   max_length=10, blank=True, null=True)
 
 	LANG_CHOICES = (
 		('arabic', 'Arabic'),
@@ -67,7 +67,7 @@ class Profile(PolymorphicModel):
 	)
 	language = models.CharField(choices=LANG_CHOICES, max_length=30,
 								default='arabic')
-	skills = models.ManyToManyField(Skill)
+	skills = models.ManyToManyField(Skill,blank=True)
 	city = models.ForeignKey(City, on_delete=models.SET_NULL, blank=True,
 							 null=True)
 	country = models.ForeignKey(Country, on_delete=models.SET_NULL, blank=True,
@@ -81,8 +81,8 @@ class Profile(PolymorphicModel):
 		('expert', 'Expert'),
 	)
 	experience_level = models.CharField(choices=EXPERIENCE_LEVEL_CHOICES,
-										max_length=12)
-	positions = models.CharField(max_length=100)
+										max_length=12, blank=True, null=True)
+	positions = models.CharField(max_length=100, blank=True, null=True)
 	birth_date = models.DateField(null=True, blank=True)
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)

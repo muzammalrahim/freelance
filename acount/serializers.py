@@ -100,7 +100,7 @@ class CategorySerializers(serializers.ModelSerializer):
 
 
 class ProfileSerializers(serializers.ModelSerializer):
-	avatar = Base64ImageField(required=False)
+	# avatar = Base64ImageField(required=False)
 	ACCOUNT_TYPE_CHOICES = (
 		('work', 'Work'),
 		('hire', 'Hire'),
