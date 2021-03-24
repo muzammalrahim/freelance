@@ -16,17 +16,32 @@ import list, { post } from "../helper/api";
 import { connect } from "react-redux";
 import { RegistrationTabBarAction } from "../../../redux/actions/RegistrationTabBarAction";
 
+import { Snackbar } from "@material-ui/core";
+import { Alert, AlertTitle } from "@material-ui/lab";
+
 class TabbarRegistration extends Component {
   constructor(props) {
     super(props);
+    this.alert = {
+      open: false,
+      severity: "",
+      message: "",
+      title: "",
+    };
     this.state = {
+      alert: this.alert,
       tabindex: null,
       userid: null,
       sendData: false,
+      showPersonalProfileError: false,
       personalProfileIsSubmit: false,
       account_type: this.props.account_type,
       data: {},
     };
+  }
+
+  handleClose() {
+    this.setState({ alert: { open: false, severity: "", message: "" } });
   }
 
   sendDataHandler = () => {
@@ -41,10 +56,10 @@ class TabbarRegistration extends Component {
     let { tabindex } = this.state;
 
     console.log("current tab index", tabindex);
-    this.setState({ personalProfileIsSubmit: true });
+    this.setState({ showPersonalProfileError: true });
 
     //  setTimeout(() => {
-    // this.setState({personalProfileIsSubmit:false})
+    // this.setState({showPersonalProfileError:false})
     // }, 3000);
 
     if (tabindex === 0) {
@@ -98,8 +113,6 @@ class TabbarRegistration extends Component {
 
   personalProfilestateHandler = (stateData, isSubmit) => {
     let { data } = this.state;
-
-    console.log("mera ",this.state)
     if (isSubmit === true) {
 
       data = {
@@ -119,21 +132,36 @@ class TabbarRegistration extends Component {
     }
 
       this.setState({ data });
-      console.log("data object:",data);
-      console.log("issub value", isSubmit);
       post("api/v1/freelancer_profile/", data)
       .then((response) => {
-      console.log("freelancer_profile res:", response);
+
       console.log("freelancer_profile res:", response.data);
+      this.setState({
+        alert: {
+          open: true,
+          severity: "success",
+          title: "success",
+          message: "you have completed successfully step no 1",
+        },
+      });
       })
       
       .catch((error) => {
+        this.setState({
+          alert: {
+            open: true,
+            severity: "error",
+            title: "Error",
+            //  message:`${key+": "+error.response.data[key][0]}`
+            message: "step one not completed",
+          },
+        });
       console.log("error", error);
       });
     } else {
     }
-    this.setState({ personalProfileIsSubmit: false });
-    console.log("pp in", this.state.personalProfileIsSubmit);
+    this.setState({ showPersonalProfileError: false });
+    console.log("pp in", this.state.showPersonalProfileError);
   };
 
   idVerificationStateHandler(stateData, imgOf) {
@@ -150,7 +178,7 @@ class TabbarRegistration extends Component {
   hourlyRateStateHandler() {}
 
   render() {
-    let { tabindex } = this.state;
+    let { tabindex , alert: { open, severity, message, title },} = this.state;
 
     if (tabindex > 1) {
       localStorage.setItem("tabindex", tabindex);
@@ -160,6 +188,24 @@ class TabbarRegistration extends Component {
 
     return (
       <div className="tabbar  tabbarMain_bg">
+      <Snackbar
+      open={open}
+      autoHideDuration={6000}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      onClose={() => {
+        this.handleClose();
+      }}
+    >
+      <Alert
+        onClose={() => {
+          this.handleClose();
+        }}
+        severity={severity}
+      >
+        <AlertTitle>{title}</AlertTitle>
+        <strong>{message}</strong>
+      </Alert>
+    </Snackbar>
         <div className="container tabbarContainer">
           <div className="row">
             <div className="tabbar_min_height col-xs-6 col-sm-4 col-md-4 col-lg-3 p-0 tabbar_sidebar_bg">
@@ -388,7 +434,7 @@ class TabbarRegistration extends Component {
               {tabindex === 1 && (
                 <PersonalProfile
                   onStateChange={this.personalProfilestateHandler}
-                  tabindex={this.state.personalProfileIsSubmit}
+                  tabindex={this.state.showPersonalProfileError}
                 />
               )}
               {tabindex === 2 && (
