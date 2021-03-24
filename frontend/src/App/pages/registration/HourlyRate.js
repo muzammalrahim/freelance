@@ -72,6 +72,7 @@ render (){
                 <input
                   placeholder="0"
                   type="number"
+                  min='0'
                   class="form-control form-controlBorderNone"
                   aria-label="Amount (to the nearest dollar)"
                   name="proposal_amount"

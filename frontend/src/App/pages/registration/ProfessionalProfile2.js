@@ -6,6 +6,7 @@ import '../../../../src/common.css'
 import img from '../../../assets/Group 3539.png'
 // import img3 from '../../../img/WorkPlatform.png';
 import {connect} from "react-redux"
+import list from '../helper/api'
 
 class  ProfessionalProfile2 extends Component{
  
@@ -17,6 +18,7 @@ class  ProfessionalProfile2 extends Component{
         this.state = {
                         provideService :'',
                         skills: [],
+                        skills2: [],
                         chooseCategory:[],
                         img:'', 
                            
@@ -54,6 +56,8 @@ class  ProfessionalProfile2 extends Component{
     handleBase64File(base64file)
     {
       this.setState({img:base64file})
+       
+      this.props.onStateChange(this.state)
     }
 
    dropDownHandler (provideService2)
@@ -71,14 +75,30 @@ class  ProfessionalProfile2 extends Component{
   }
   removeSkills = (name) => {
     const skills = this.state.skills.filter((skill) => skill.name != name);
-    console.log("dam cham",skills)
     this.setState({
       skills,
     });
   };
 
-render(){
+  componentDidMount ()
+  {
+    
+     list("api/v1/skill/")
+     .then((response)=>{
+          let list_data = []
+          console.log("res:",response)
+          console.log("res:",response.data)
 
+            Object.values(response.data).map((data)=>{
+
+              list_data.push({id: data.id,name:data.name,})
+            })
+              this.setState({skills2:list_data})
+     })
+  }
+
+render(){
+            let{skills2} = this.state
 return (
        <div className="ProfessionalProfile">
 
@@ -105,18 +125,15 @@ return (
                       <h3>Add your skills</h3>
 
                       <select
-                        //  value={this.state.selectValue}
-                        //  onChange={this.handleChange}
-
                         onChange={(e) => {
                           const isExisted = this.checkExistedSkill(
                             e.target.value
                           );
-                          console.log("isExisted", isExisted);
+                   
                           if (isExisted) {
-                            console.log("true", isExisted);
+               
                           } else {
-                            let data = { name: e.target.value };
+                            let data = { id: e.target.value };
                             this.setState((prevState) => ({
                               skills: [...prevState.skills, data],
                             }));
@@ -125,19 +142,13 @@ return (
                         className="form-control"
                         id="exampleFormControlSelect1"
                       >
-                        <ul>
-                          <li className="test">a</li>
-                          <li className="test">b</li>
-                          <li className="test">c</li>
-                          <li className="test">d</li>
-                        </ul>
-                        <option value="Php">Php</option>
-                        <option value="Bootstrap">Bootstrap</option>
-                        <option value="Azura">Azura</option>
-                        <option value="Java">Java</option>
-                        <option value="Python">Python</option>
-                        <option value="javascript">javascript</option>
-                        <option value="c#">c#</option>
+                      {skills2.map(option => (
+                        <option value={option.id}>
+                      {option.name}
+                        </option>
+                      ))}
+                      
+                      
                       </select>
 
                       <div className="test">
@@ -167,9 +178,8 @@ return (
                           
                         ))}
                       </div>
-                      {console.log("ski",this.state.skills)}
-                      {console.log("ppl",this.state)}
                     </div>
+                    {console.log("stae",this.state)}
                 </div>
              </div>
                  {/* Choose Category Multi_select_checkboxes */}
@@ -342,8 +352,6 @@ return (
          </div>
         </div>
       </div>
-
-      {console.log("redux tabindex",this.props.tabindex)}
      </div>
       )
     }
