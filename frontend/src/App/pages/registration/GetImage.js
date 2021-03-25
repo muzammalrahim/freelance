@@ -104,6 +104,8 @@ import {connect} from "react-redux"
                       <span style= {{cursor: "pointer"}}>Drop your image here,</span><span style={{color:"#1da799",cursor: "pointer"}} >  or browse </span>
                   </div>  
                 </div>
+                
+
               </ReactDropzone>
              }
             </div>

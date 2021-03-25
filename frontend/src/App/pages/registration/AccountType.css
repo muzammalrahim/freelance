@@ -34,7 +34,7 @@ color: #FFFFFF;
 }
 
 .AccountType .sidebarcolheight{
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .AccountType .img-wh{

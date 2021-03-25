@@ -283,9 +283,13 @@ class TabbarRegistration extends Component {
                             color: "white",
                             background: " #1DA799",
                             borderRadius: "25px",
+                            height:"25px",
+                            width:"25px",
+
                           }}
                         >
-                          <CheckIcon />
+                          <CheckIcon /> 
+                         
                         </span>
                       ) : (
                         <button
