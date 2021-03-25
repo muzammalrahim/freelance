@@ -256,6 +256,7 @@ class ProfessionalProfile2 extends Component {
                           value="onUpload"
                         />
                       </div>
+                      {<p>{this.state.img}</p>}
                     </div>
                   </div>
                 </div>
