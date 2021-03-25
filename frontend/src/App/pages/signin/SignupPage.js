@@ -162,7 +162,7 @@ class SignupPage extends Component {
                     {user[key] === user["password"]
                       ? (userValidate[key] = true)
                       : (userError[key] =
-                          "password and confirm password are not match")}
+                          "Password and confirm password are not matching")}
                   </div>
                 ) : (
                   (userValidate[key] = true)
@@ -205,11 +205,11 @@ class SignupPage extends Component {
               <div>
                 {" "}
                 {(userValidate[key] = false)},
-                {(userError[key] = "minimum length 8 characters")}
+                {(userError[key] = "Minimum length 8 characters")}
               </div>
             )
           ) : (
-            (userError[key] = "username is required")
+            (userError[key] = "Username is required")
           );
 
           }
