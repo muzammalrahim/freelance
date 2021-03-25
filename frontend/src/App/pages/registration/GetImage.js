@@ -6,8 +6,10 @@ import './IdVerification.css'
 import '../../../../src/common.css'
 import './getimage.css'
 
+
 import {ProfessionalProfileAction} from "../../../redux/actions/ProfessionalProfileAction"
 import {connect} from "react-redux"
+import {post} from "../helper/api"
 
  class GetImage extends Component {
   constructor(props) {
@@ -15,16 +17,55 @@ import {connect} from "react-redux"
 
     this.state = {
       filesBase64: '',
+      fileBinary : null,
+     
     };
 
   }
 
-  
+  //  handleChange=(event)=> {
+    // this.setState({
+    //   file: URL.createObjectURL(event.target.files[0]),
+    //   currentFile: event.target.files[0],
+    // })
+// let data = new FormData();
+// { file: event.target.files[0] ,
+//              model : "profile",
+//              model_id: 4,
+//              type: "certification",
+// }
+// data.append("file",event.target.files[0]);
+// data.append("model","profile");
+// data.append("model_id",4);
+// data.append("type","certification")
+// console.log("we are here");
+
+//      post('api/v1/attachment/',data)
+//      .then((response)=>{
+//             console.log("res",response)
+//         })
+//         .catch((error)=>console.log(error))
+  // }
 
   onDrop = (files) => {
             //  POST to a test endpoint for demo purposes
             //  const req = request.post('https://httpbin.org/post');
             // 
+      
+
+// let BinaryImgdata = new FormData();
+// BinaryImgdata.append("file",files[0]);
+// data.append("model","profile");
+// data.append("model_id",4);
+// data.append("type","certification")
+
+
+    //  post('api/v1/attachment/',data)
+    //  .then((response)=>{
+    //         console.log("res",response)
+    //     })
+    //     .catch((error)=>console.log(error))
+                                                           
             files.forEach(file => 
               {
                     // req.attach(file.name, file);
@@ -45,27 +86,43 @@ import {connect} from "react-redux"
                       // console.log(' base64Image ', base64Image);
                       this.setState({filesBase64: base64Image});
                       
-                      if(base64Image)
-                      {
-                         this.props.uploadImageHandler(base64Image)
+                      // if(base64Image)
+                      // {
                               
-                           if(this.props.value === "onUpload")
+                      //      if(this.props.value === "onUpload")
+                      //      {
+                      //       this.props.onUpload(base64Image);
+                      //      }
+
+                      //      else if(this.props.value === "idVerf_DL_imgUpload")
+                      //      {
+                      //       this.props.idVerf_DL_imgUpload(base64Image);
+                      //      }
+                    
+                      //      else if(this.props.value === "idVerf_IC_imgUpload")
+                      //      {
+                      //       this.props.idVerf_IC_imgUpload(base64Image);
+                      //      }
+              
+
+                      // }
+                       if(this.props.value === "onUpload")
                            {
-                            this.props.onUpload(base64Image);
+                          
+                            this.props.onUpload(files[0]);
                            }
 
                            else if(this.props.value === "idVerf_DL_imgUpload")
                            {
-                            this.props.idVerf_DL_imgUpload(base64Image);
+                            this.props.idVerf_DL_imgUpload(files[0]);
                            }
                     
                            else if(this.props.value === "idVerf_IC_imgUpload")
                            {
-                            this.props.idVerf_IC_imgUpload(base64Image);
+                            this.props.idVerf_IC_imgUpload(files[0]);
                            }
               
 
-                      }
                   }
                   reader.readAsArrayBuffer(file) 
             });  
@@ -102,6 +159,7 @@ import {connect} from "react-redux"
                   <div className='iv_icon2' style={{backgroundImage: `url(${img})`}}></div> 
                   <div>
                       <span style= {{cursor: "pointer"}}>Drop your image here,</span><span style={{color:"#1da799",cursor: "pointer"}} >  or browse </span>
+                   
                   </div>  
                 </div>
               </ReactDropzone>
@@ -121,21 +179,11 @@ import {connect} from "react-redux"
             ))}
           </Fragment>
         } */}
-
       </div>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch)=>
-{
-   return{
-     uploadImageHandler:(imageBase64)=>
-     {
-       dispatch(ProfessionalProfileAction({type:'UPLOAD_IMAGE',payload:imageBase64}))
-     }
-   }
-}
 
 
-export default connect(null, mapDispatchToProps)(GetImage)
+export default GetImage

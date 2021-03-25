@@ -49,8 +49,8 @@ class ProfessionalProfile2 extends Component {
   }
 
   handleBase64File(base64file) {
-    this.setState({ img: base64file });
 
+    console.log("mer shuma",base64file)
     this.props.onStateChange(this.state);
   }
 
@@ -77,7 +77,6 @@ class ProfessionalProfile2 extends Component {
     list("api/v1/skill/")
       .then((response) => {
         let list_data = [];
-        console.log("res:", response.data);
         Object.values(response.data).map((data) => {
           list_data.push({ id: data.id, name: data.name });
         });
@@ -90,7 +89,6 @@ class ProfessionalProfile2 extends Component {
     list("api/v1/category/")
       .then((response) => {
         let list_data = [];
-        console.log("res:", response.data);
         Object.values(response.data).map((data)=>{
 
           list_data.push({id: data.id,name:data.name,})
@@ -200,7 +198,6 @@ class ProfessionalProfile2 extends Component {
                         ))}
                       </div>
                     </div>
-                    {console.log("stae", this.state)}
                   </div>
                 </div>
                 {/* Choose Category Multi_select_checkboxes */}
