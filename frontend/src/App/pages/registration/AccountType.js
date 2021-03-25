@@ -16,14 +16,14 @@ export default class AccountType extends Component {
   FreelacerPage = () => {
     this.setState({
       pageloadvalue: 1,
-      Accounttype: "freelance",
+      Accounttype: "hire",
     });
   };
 
   ClientPage = () => {
     this.setState({
       pageloadvalue: 1,
-      Accounttype: "client",
+      Accounttype: "work",
     });
   };
 
@@ -33,7 +33,7 @@ export default class AccountType extends Component {
     }
 
     if (this.state.pageloadvalue === 1) {
-      return <TabbarRegistration />;
+      return <TabbarRegistration  account_type={this.state.Accounttype}/>;
     } else {
       return (
         <div className="main back_g">
