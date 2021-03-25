@@ -18,7 +18,7 @@ class  ProfessionalProfile2 extends Component{
         this.state = {
                         provideService :'',
                         skills: [],
-                        skills2: [],
+                        getSkillsList: [],
                         chooseCategory:[],
                         img:'', 
                            
@@ -73,8 +73,8 @@ class  ProfessionalProfile2 extends Component{
     }
       return false;
   }
-  removeSkills = (name) => {
-    const skills = this.state.skills.filter((skill) => skill.name != name);
+  removeSkills = (item) => {
+    const skills = this.state.skills.filter((skill) => skill != item);
     this.setState({
       skills,
     });
@@ -86,19 +86,17 @@ class  ProfessionalProfile2 extends Component{
      list("api/v1/skill/")
      .then((response)=>{
           let list_data = []
-          console.log("res:",response)
           console.log("res:",response.data)
-
             Object.values(response.data).map((data)=>{
 
               list_data.push({id: data.id,name:data.name,})
             })
-              this.setState({skills2:list_data})
+              this.setState({getSkillsList:list_data})
      })
   }
 
 render(){
-            let{skills2} = this.state
+            let{getSkillsList} = this.state
 return (
        <div className="ProfessionalProfile">
 
@@ -125,15 +123,20 @@ return (
                       <h3>Add your skills</h3>
 
                       <select
+
                         onChange={(e) => {
+                          let value = JSON.parse(e.target.value)
                           const isExisted = this.checkExistedSkill(
-                            e.target.value
+                              value     
                           );
                    
                           if (isExisted) {
                
                           } else {
-                            let data = { id: e.target.value };
+                            let data = { 
+                                          id: value.id,
+                                          name:value.name 
+                                        };
                             this.setState((prevState) => ({
                               skills: [...prevState.skills, data],
                             }));
@@ -142,10 +145,8 @@ return (
                         className="form-control"
                         id="exampleFormControlSelect1"
                       >
-                      {skills2.map(option => (
-                        <option value={option.id}>
-                      {option.name}
-                        </option>
+                      {getSkillsList.map(option => (
+                        <option value={JSON.stringify({id:option.id,name:option.name})}> {option.name}  </option>
                       ))}
                       
                       
@@ -168,7 +169,7 @@ return (
                              <span
                               className="float AddSkill_pl"
                               onClick={() => {
-                                this.removeSkills(item.name);
+                                this.removeSkills(item);
                               }}
                               style={{ cursor: "pointer" }}
                             >
