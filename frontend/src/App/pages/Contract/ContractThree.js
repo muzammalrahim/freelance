@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState ,useEffect } from 'react'
 import ContractNav from "./ContractNav";
 import Header from '../../../../src/components/header/Header';
 import "../../../assets/css/custom.css";
@@ -13,11 +13,28 @@ import CalanderIcon from '../../../img/calendar.svg';
 import AvtarIcon from '../../../img/contract-img.png';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import FeedBackModal from "./FeedBackModal";
+import list from '../helper/api';
 
 
+export default function ContractThree() {
+    const [contract, setContract] = useState();
+    
+  const secondContract = () => {
+  
+      list('api/v1/contract/')
+      .then ((response ) => {
+       
+          const {...rest} = response.data;
+          console.log("response:");
+          setContract(rest)
 
-export default class ContractThree extends Component {
-    render() {
+      })
+  }
+    useEffect(() => {
+        secondContract() ; 
+    }, [])
+
+   
         return (
             <div className="contract-pg3">
                 {/* top header */}
@@ -254,4 +271,3 @@ export default class ContractThree extends Component {
             </div>
         )
     }
-}

@@ -85,9 +85,12 @@ render (){
               <label className="hr_Para3">Proposal Amount</label>
               <div class="form-group input-group mb-3">
                 <input
+
                   placeholder="Enter Value"
                   type="number"
                   min="0"
+
+
                   class="form-control form-controlBorderNone"
                   aria-label="Amount (to the nearest dollar)"
                   name="proposal_amount"

@@ -119,7 +119,7 @@ export default function ControlledAccordions() {
             </div>
             <div className="col-md-4">
               <div>
-                <h5>{type?.start_date} </h5>
+                <h5>{type?.start_date} - {type?.job?.client?.currently_working} </h5>
               </div>
             </div>
             <div className="col-md-5 pr-0">
@@ -193,7 +193,7 @@ export default function ControlledAccordions() {
             </div>
             <div className="col-md-4">
               <div>
-                <h5>{type?.start_date} </h5>
+              <h5>{type?.start_date} - {type?.job?.client?.currently_working} </h5>
               </div>
             </div>
             {/* <div className="col-md-5 pr-0">
@@ -267,7 +267,7 @@ export default function ControlledAccordions() {
             </div>
             <div className="col-md-4">
               <div>
-                <h5>{type?.start_date}</h5>
+              <h5>{type?.start_date} - {type?.job?.client?.currently_working} </h5>
               </div>
             </div>
             {/* <div className="col-md-5 pr-0">

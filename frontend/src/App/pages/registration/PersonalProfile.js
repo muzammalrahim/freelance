@@ -47,7 +47,7 @@ class PersonalProfile extends React.Component {
       alert: this.alert,
       per_profile: this.Per_Profile,
       per_profileValidate: this.per_profileValidate,
-      errorProfile:this.errorProfile,
+      errorProfile: this.errorProfile,
       personal_profile_isSubmit_value: false,
     };
   }
@@ -69,7 +69,7 @@ class PersonalProfile extends React.Component {
   goal() {
     let isSubmit = null;
     let vvalue = 2;
-    let { per_profile, per_profileValidate } = this.state;
+    let { per_profile, per_profileValidate, errorProfile } = this.state;
 
     if (localStorage.getItem("personal_profile")) {
       var storedData = JSON.parse(localStorage.getItem("personal_profile"));
@@ -87,14 +87,23 @@ class PersonalProfile extends React.Component {
               ? true
               : false;
         } else {
-          per_profileValidate[key] =
-            per_profile[key] && per_profile[key].length > 3 ? true : false;
-            
+          per_profile[key] !== "" ? (
+            per_profile[key].length > 3 ? (
+              (per_profileValidate[key] = true)
+            ) : (
+              <div>
+                {" "}
+                {(per_profileValidate[key] = false)},
+                {(errorProfile[key] = "minimum Password length 3 characters")}
+              </div>
+            )
+          ) : (
+            (errorProfile[key] = "Password is required")
+          );
         }
       });
-
     }
-    this.setState({per_profile,per_profileValidate})
+    this.setState({ per_profile, per_profileValidate });
     isSubmit = Boolean(this.submitHandler(isSubmit));
     this.props.onStateChange(this.state.per_profile, isSubmit);
   }
@@ -116,8 +125,6 @@ class PersonalProfile extends React.Component {
     if (impValue > 0) {
       return false;
     } else if (impValue === 0) {
-      localStorage.setItem("personal_profile", JSON.stringify(per_profile));
-
       return true;
     }
   }
@@ -127,37 +134,45 @@ class PersonalProfile extends React.Component {
     let [
       key,
       value,
-      { per_profile, per_profileValidate, personal_profile_isSubmit_value,errorProfile },
+      {
+        per_profile,
+        per_profileValidate,
+        personal_profile_isSubmit_value,
+        errorProfile,
+      },
     ] = [e.target.id, e.target.value, this.state];
 
     per_profile[key] = value;
-    errorProfile.first_name= "";
-    if (key === "email") {
-      per_profileValidate[key] =
-        per_profile[key] && this.validateEmail(per_profile[key]) ? true : false;
-    } else {
-      // per_profileValidate[key] =
-        // per_profile[key] && per_profile[key].length > 3 ? true : false;
+    this.setState(per_profile);
+
+    Object.keys(per_profile).map((key) => {
+      if (key === "email") {
+        per_profileValidate[key] =
+          per_profile[key] && this.validateEmail(per_profile[key])
+            ? true
+            : false;
+      } else {
         per_profile[key] !== "" ? (
           per_profile[key].length > 3 ? (
-            (per_profileValidate[key] = true)
+            <div>
+              {" "}
+              {(per_profileValidate[key] = true)},{(errorProfile[key] = "")}
+            </div>
           ) : (
             <div>
               {" "}
               {(per_profileValidate[key] = false)},
-              {
-                errorProfile[key]= "minimum Password length 3 characters"
-                }
+              {(errorProfile[key] = "minimum Password length 3 characters")}
             </div>
           )
         ) : (
-              errorProfile[key]= "Password is required"
-          );
-
-
-    }
-
-    this.setState({ per_profile, per_profileValidate,errorProfile});
+          (errorProfile[key] = "Password is required")
+        );
+      }
+    });
+    
+    localStorage.setItem("personal_profile", JSON.stringify(per_profile));
+    this.setState({ per_profile, per_profileValidate, errorProfile });
 
     isSubmit = Boolean(this.submitHandler(isSubmit));
 
@@ -165,33 +180,38 @@ class PersonalProfile extends React.Component {
       per_profile,
       per_profileValidate,
       personal_profile_isSubmit_value,
+      errorProfile,
     });
 
     this.props.onStateChange(this.state.per_profile, isSubmit);
   }
 
   render() {
-    let { per_profile,errorProfile , alert: { open, severity, message, title }, } = this.state;
+    let {
+      per_profile,
+      errorProfile,
+      alert: { open, severity, message, title },
+    } = this.state;
     return (
       <div className="PersonalProfile">
-      <Snackbar
-      open={open}
-      autoHideDuration={4000}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      onClose={() => {
-        this.handleClose();
-      }}
-    >
-      <Alert
-        onClose={() => {
-          this.handleClose();
-        }}
-        severity={severity}
-      >
-        <AlertTitle>{title}</AlertTitle>
-        <strong>{message}</strong>
-      </Alert>
-    </Snackbar>
+        <Snackbar
+          open={open}
+          autoHideDuration={4000}
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          onClose={() => {
+            this.handleClose();
+          }}
+        >
+          <Alert
+            onClose={() => {
+              this.handleClose();
+            }}
+            severity={severity}
+          >
+            <AlertTitle>{title}</AlertTitle>
+            <strong>{message}</strong>
+          </Alert>
+        </Snackbar>
         <div className="personalProfile_bg Pf-rightbox  p-5">
           <div className="container">
             <div className="pl-2">
@@ -214,15 +234,15 @@ class PersonalProfile extends React.Component {
               <div className="row pt-3">
                 <div className=" col-sm-6 col-md-6">
                   <div className="Rb-0">
-                  
                     <div
-                    className={
-                     this.props.tabindex === true ?
-                      errorProfile.first_name === ""
-                        ? "form-group "
-                        : "form-group error"  :null
-                    }
-                  >
+                      className={
+                        this.props.tabindex === true
+                          ? errorProfile.first_name === ""
+                            ? "form-group "
+                            : "form-group error"
+                          : null
+                      }
+                    >
                       <label className="pp_inputHeading" for="usr">
                         First Name
                       </label>
@@ -236,11 +256,26 @@ class PersonalProfile extends React.Component {
                           this.changeHandler(e);
                         }}
                       />
-                      {errorProfile.first_name !== "" ? (
-                        <div className="error-message">{errorProfile.first_name}</div>
-                      ) : null}
+
+                      {this.props.tabindex === true ? (
+                        errorProfile.first_name !== "" ? (
+                          <div className="error-message">
+                            {errorProfile.first_name}
+                          </div>
+                        ) : (
+                          <div> </div>
+                        )
+                      ) : <div> </div>}
                     </div>
-                    <div class="form-group">
+
+                    <div
+                      className={
+                        errorProfile.mobile_number !== "" &&
+                        this.props.tabindex === true
+                          ? "form-group error"
+                          : "form-group "
+                      }
+                    >
                       <label className="pp_inputHeading" for="usr">
                         Mobile number
                       </label>
@@ -254,8 +289,23 @@ class PersonalProfile extends React.Component {
                           this.changeHandler(e);
                         }}
                       />
+                      {errorProfile.mobile_number !== "" ?
+                      (
+                      this.props.tabindex === true && 
+                        <div className="error-message">
+                          {errorProfile.mobile_number}
+                        </div>
+                       ): null}
+                    
                     </div>
-                    <div class="form-group">
+
+                    <div
+                      className={
+                        errorProfile.city !== "" && this.props.tabindex === true
+                          ? "form-group error"
+                          : "form-group "
+                      }
+                    >
                       <label className="pp_inputHeading" for="usr">
                         City
                       </label>
@@ -269,12 +319,23 @@ class PersonalProfile extends React.Component {
                           this.changeHandler(e);
                         }}
                       />
+                      {errorProfile.city !== "" &&
+                      this.props.tabindex === true ? (
+                        <div className="error-message">{errorProfile.city}</div>
+                      ) : null}
                     </div>
                   </div>
                 </div>
                 <div className=" col-sm-6 col-md-6">
                   <div className="Rb-0">
-                    <div class="form-group">
+                    <div
+                      className={
+                        errorProfile.last_name !== "" &&
+                        this.props.tabindex === true
+                          ? "form-group error"
+                          : "form-group "
+                      }
+                    >
                       <label className="pp_inputHeading" for="usr">
                         Last name
                       </label>
@@ -288,8 +349,21 @@ class PersonalProfile extends React.Component {
                           this.changeHandler(e);
                         }}
                       />
+                      {errorProfile.last_name !== "" &&
+                      this.props.tabindex === true ? (
+                        <div className="error-message">
+                          {errorProfile.last_name}
+                        </div>
+                      ) : null}
                     </div>
-                    <div class="form-group">
+                    <div
+                      className={
+                        errorProfile.address !== "" &&
+                        this.props.tabindex === true
+                          ? "form-group error"
+                          : "form-group "
+                      }
+                    >
                       <label className="pp_inputHeading" for="usr">
                         Address
                       </label>
@@ -303,8 +377,21 @@ class PersonalProfile extends React.Component {
                           this.changeHandler(e);
                         }}
                       />
+                      {errorProfile.address !== "" &&
+                      this.props.tabindex === true ? (
+                        <div className="error-message">
+                          {errorProfile.address}
+                        </div>
+                      ) : null}
                     </div>
-                    <div class="form-group">
+                    <div
+                      className={
+                        errorProfile.country !== "" &&
+                        this.props.tabindex === true
+                          ? "form-group error"
+                          : "form-group "
+                      }
+                    >
                       <label className="pp_inputHeading" for="usr">
                         Country
                       </label>
@@ -318,6 +405,12 @@ class PersonalProfile extends React.Component {
                           this.changeHandler(e);
                         }}
                       />
+                      {errorProfile.country !== "" &&
+                      this.props.tabindex === true ? (
+                        <div className="error-message">
+                          {errorProfile.country}
+                        </div>
+                      ) : null}
                     </div>
                   </div>
                 </div>
@@ -332,12 +425,12 @@ class PersonalProfile extends React.Component {
 }
 
 // const mapStateToProps = (state) => {
-  // return {
-    // tabindex: state.RegistrationTabBarReducer,
-  // };
+// return {
+// tabindex: state.RegistrationTabBarReducer,
+// };
 // };
 
-export default PersonalProfile
+export default PersonalProfile;
 
 export function PersonalProfileTabFooter() {
   return (

@@ -79,7 +79,7 @@ function BioGraphy() {
                       <p>Address</p>
                     </div>
                     <div className="col-md-9">
-                      <a href="jack14@gmail.com ">
+                      <a href="">
                      {profiledata.street}
                       </a>
                     </div>
