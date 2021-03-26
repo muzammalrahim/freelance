@@ -9,7 +9,7 @@
         font-family: Poppins;
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
     color: #6B6B6A;
     }
@@ -25,8 +25,8 @@
     }
     .complete-profile{
 
-        margin: 23px 12px 17px;
-        border-bottom: 2px solid#cececb;
+        margin: 8px 7px 17px;
+        border-bottom: 2px solid#4ab9ad;
         font-family: Poppins;
     font-style: normal;
     font-weight: 500;
