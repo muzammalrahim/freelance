@@ -11,6 +11,10 @@ import LinkedInPage from "./LinkedInPage";
 import AlertCompo from "./Alert";
 import { Snackbar } from "@material-ui/core";
 import { Alert, AlertTitle } from "@material-ui/lab";
+import IconButton from "@material-ui/core/IconButton"; 
+import Visibility from "@material-ui/icons/Visibility"; 
+import VisibilityOff from "@material-ui/icons/VisibilityOff"; 
+
 
 class SignupPage extends Component {
   constructor(props) {
@@ -50,6 +54,8 @@ class SignupPage extends Component {
       user: this.user,
       userValidate: this.userValidate,
       userError: this.userError,
+      showPassword: false,
+      showPasswordd: false
     };
   }
 
@@ -66,6 +72,24 @@ class SignupPage extends Component {
     }
     return true;
   }
+
+  validatePassword(password) {
+    var pattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+    if (!pattern.test(password)) {
+      return false;
+    }
+    return true;
+  }
+
+ passwordShowAndHide= (e) => {
+   e.preventDefault(); 
+     this.setState({ showPassword: !this.state.showPassword });
+  }
+
+  passworddShowAndHide= (e) => {
+    e.preventDefault(); 
+      this.setState({ showPasswordd: !this.state.showPasswordd });
+   }
 
   signupChangeHandler = (e) => {
     let [key, value, { user, userValidate, userError }] = [
@@ -117,13 +141,22 @@ class SignupPage extends Component {
     Object.keys(userValidate).map((key) => {
       if (
         key === "password" ||
-        key === "username" ||
         key === "passwordConfirm"
       ) {
         {
           user[key] !== "" ? (
-            user[key].length > 7 ? (
+            user[key].length > 7  ? (
               <div>
+                  { this.validatePassword(password) ? (
+            (userValidate[key] = true)
+          ) : (
+            <div>
+              {" "}
+              {(userValidate[key] = false)},
+              {(userError[key] = "The password string must be eight characters or longer and should at least 1 lowercase,1 uppercase,1 numeric character,one special character")}
+            </div>
+          )}
+
                 {key === "passwordConfirm" ? (
                   <div>
                     {user[key] === user["password"]
@@ -154,13 +187,32 @@ class SignupPage extends Component {
             <div>
               {" "}
               {(userValidate[key] = false)},
-              {(userError[key] = "email pattren not valid")}
+              {(userError[key] = "Email pattern is not valid")}
             </div>
           )
         ) : (
-          (userError[key] = "email are required")
+          (userError[key] = "Email is required")
         );
       }
+      else{
+          user[key] !== "" ? (
+            user[key].length > 7  ? (
+              <div>
+                { ( userValidate[key] = true ) }
+               
+              </div>
+            ) : (
+              <div>
+                {" "}
+                {(userValidate[key] = false)},
+                {(userError[key] = "minimum length 8 characters")}
+              </div>
+            )
+          ) : (
+            (userError[key] = "username is required")
+          );
+
+          }
     });
 
     this.setState({ userError });
@@ -224,6 +276,7 @@ class SignupPage extends Component {
       user: { username, email, password, passwordConfirm },
       alert: { open, severity, message, title },
       userError,
+      showPassword,showPasswordd
     } = this.state;
 
     return (
@@ -324,16 +377,22 @@ class SignupPage extends Component {
                           : "form-group error"
                       }
                     >
+                      
                       <label form="pwd">Password</label>
+                      <div className="hide-icon-position">
                       <input
-                        type="password"
+                         type={showPassword ? "text" : "password"} 
                         className="form-control"
                         placeholder="Enter Password"
                         value={password}
                         name="password"
                         onChange={this.signupChangeHandler}
-                      />
-
+                      /><span>{<i class="hide-icon" onClick={this.passwordShowAndHide}><span><IconButton 
+                      onClick={this.signupChangeHandler} 
+                      onMouseDown={this.signupChangeHandler} 
+                    > 
+                      { showPassword ? <Visibility /> : <VisibilityOff />} 
+                    </IconButton> </span></i>}</span></div>
                       {userError.password !== "" ? (
                         <div className="error-message">
                           {userError.password}
@@ -347,16 +406,22 @@ class SignupPage extends Component {
                           : "form-group error"
                       }
                     >
-                      <label form="passwordConfirm">confirm Password</label>
+                      <label form="passwordConfirm">Confirm Password</label>
+                      <div className="hide-icon-position">
                       <input
-                        type="password"
+                        type={showPasswordd ? "text" : "password"} 
                         className="form-control"
                         placeholder="Enter confirm Password"
                         name="passwordConfirm"
                         value={passwordConfirm}
                         pattern=".{8,}"
                         onChange={this.signupChangeHandler}
-                      />
+                      /><span>{<i class="hide-icon" onClick={this.passworddShowAndHide} ><span><IconButton 
+                      onClick={this.signupChangeHandler} 
+                      onMouseDown={this.signupChangeHandler} 
+                    > 
+                      { showPasswordd ? <Visibility /> : <VisibilityOff />} 
+                    </IconButton> </span></i>}</span></div>
                       {userError.passwordConfirm !== "" ? (
                         <div className="error-message">
                           {userError.passwordConfirm}
@@ -372,7 +437,7 @@ class SignupPage extends Component {
                       <input type="checkbox" value="" /> I agree to the
                       Freelancer User
                       <span className="checkbox-text"> Agreement</span> and
-                      <span className="checkbox-text">Privacy Policy. </span>
+                      <span className="checkbox-text"> Privacy Policy. </span>
                     </label>
                   </div>
                   <div className="pt-4">
@@ -381,11 +446,11 @@ class SignupPage extends Component {
                       className="btn btn-default btn-block"
                       onClick={this.formSubmitHandler}
                     >
-                      sign up
+                      Sign up
                     </button>
                   </div>
                   <div>
-                    <h6 className="text-center pt-2">or</h6>
+                    <h6 className="text-center pt-2">Or</h6>
                   </div>
                   <div className="pt-1 pb-4">
                     <LinkedInPage />

@@ -71,7 +71,8 @@ render (){
               <div class="form-group input-group mb-3">
                 <input
                   placeholder="0"
-                  type="text"
+                  type="number"
+                  min='0'
                   class="form-control form-controlBorderNone"
                   aria-label="Amount (to the nearest dollar)"
                   name="proposal_amount"

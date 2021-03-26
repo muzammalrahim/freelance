@@ -16,28 +16,94 @@ import list, { post } from "../helper/api";
 import { connect } from "react-redux";
 import { RegistrationTabBarAction } from "../../../redux/actions/RegistrationTabBarAction";
 
+import { Snackbar } from "@material-ui/core";
+import { Alert, AlertTitle } from "@material-ui/lab";
+
 class TabbarRegistration extends Component {
   constructor(props) {
     super(props);
+    this.alert = {
+      open: false,
+      severity: "",
+      message: "",
+      title: "",
+    };
     this.state = {
+      alert: this.alert,
       tabindex: null,
       userid: null,
+      registrationProcessid: null,
       sendData: false,
-      personalProfileIsSubmit: false,
-      data : {},
+      showPersonalProfileError: false,
+      personalProfileIsSubmited: false,
+      personalProfileTickIcon: false,
+      professionalProfileError: false,
+      professionalProfileIsSubmited: false,
+      iDVerificationError: false,
+      iDVerificationIsSubmited: false,
+      hourlyRateError: false,
+      hourlyRateErrorIsSubmited: false,
+
+      goolo: false,
+
+      account_type: this.props.account_type,
+      data: {},
     };
+  }
+
+  handleClose() {
+    this.setState({ alert: { open: false, severity: "", message: "" } });
   }
 
   sendDataHandler = () => {
     let { sendData } = this.state;
     sendData = true;
     this.setState({ sendData });
-    // console.log("agey mai",sendData);
   };
 
   tabUphandler = () => {
-    let { tabindex } = this.state;
-    this.setState({ tabindex: tabindex + 1 });
+    let { tabindex, personalProfileIsSubmited, userid, data } = this.state;
+
+    console.log("current tab index", tabindex);
+    this.setState({ showPersonalProfileError: true });
+    console.log("personalProfileIsSubmited", personalProfileIsSubmited);
+    console.log("userid", userid);
+    if (userid) {
+      console.log("personalProfileIsSubmited", personalProfileIsSubmited);
+      if (personalProfileIsSubmited === true) {
+        post("api/v1/freelancer_profile/", data)
+          .then((response) => {
+            console.log("freelancer_profile res:", response);
+            console.log("freelancer_profile res:", response.data.id);
+            this.setState({
+              personalProfileTickIcon: true,
+              registrationProcessid: response.data.id,
+              tabindex: tabindex + 1,
+              alert: {
+                open: true,
+                severity: "success",
+                title: "success",
+                message: "you have successfully complete step one",
+              },
+            });
+          })
+
+          .catch((error) => {
+            this.setState({
+              alert: {
+                open: true,
+                severity: "error",
+                title: "Error",
+                //  message:`${key+": "+error.response.data[key][0]}`
+                message: "step one not completed",
+              },
+            });
+
+            console.log("error", error);
+          });
+      } else {
+      }
+    }
 
     this.props.tabChangeHandler(tabindex);
   };
@@ -48,18 +114,21 @@ class TabbarRegistration extends Component {
     });
   };
 
-  clickone = (tabindex2) => {
+  getTabIndexFromLocalStorage = (tabindex2) => {
     this.setState({ tabindex: tabindex2 });
   };
 
   componentDidMount() {
-    // list("api/v1/accounts/profile/");
-    // .then((res) => {
-    // this.setState({ userid: res.data.id });
-    // console.log("profile", this.state.userid);
-    // console.log("profile data", res.data);
-    // })
-    // .catch((error) => {});
+    let { userid } = this.state;
+    list("api/v1/accounts/profile/")
+      .then((res) => {
+        var data = JSON.parse(res.data.id);
+        userid = data;
+
+        this.setState({ userid });
+        console.log("profile", this.state.userid);
+      })
+      .catch((error) => {});
 
     var tabindex2 = 1;
 
@@ -67,34 +136,35 @@ class TabbarRegistration extends Component {
       tabindex2 = parseInt(localStorage.getItem("tabindex"));
     }
 
-    this.clickone(tabindex2);
+    this.getTabIndexFromLocalStorage(tabindex2);
   }
 
-  stateHandler = (stateData, isSubmit) => {
-    let {data} = this.state
-    console.log("personal state data", stateData);
-    console.log("issub value", isSubmit);
+  personalProfilestateHandler = (stateData, isSubmit) => {
+    let { data } = this.state;
     if (isSubmit === true) {
-      data = { user: stateData}
-        this.setState({data})
-      this.setState({ personalProfileIsSubmit: true });
-      post("api/v1/freelancer_profile/", this.state.data)
-        .then((response) => {
-          console.log("freelancer_profile res:", response);
-        })
-
-        .catch((error) => {
-          console.log("error", error);
-        });
+      data = {
+        mobile_no: stateData.mobile_number,
+        street: stateData.address,
+        service: "service1",
+        user: this.state.userid,
+        account_type: this.state.account_type,
+        city: {
+          name: stateData.city,
+        },
+        country: {
+          name: stateData.country,
+        },
+      };
+      this.setState({ data });
+      this.setState({ personalProfileIsSubmited: true });
     } else {
-      this.setState({ personalProfileIsSubmit: false });
     }
-
-    console.log("pp in", this.state.personalProfileIsSubmit);
-  
+    this.setState({ showPersonalProfileError: false });
   };
 
-  personalProfileStateHandler(stateData) {}
+  professionalProfileStateHandler = (stateData, isSubmit) => {
+    console.log("professional profile:", stateData);
+  };
 
   idVerificationStateHandler(stateData, imgOf) {
     if (imgOf === "idCard") {
@@ -110,7 +180,15 @@ class TabbarRegistration extends Component {
   hourlyRateStateHandler() {}
 
   render() {
-    let { tabindex } = this.state;
+    let {
+      tabindex,
+      alert: { open, severity, message, title },
+      personalProfileIsSubmited,
+      professionalProfileIsSubmited,
+      personalProfileTickIcon,
+      iDVerificationIsSubmited,
+      hourlyRateErrorIsSubmited,
+    } = this.state;
 
     if (tabindex > 1) {
       localStorage.setItem("tabindex", tabindex);
@@ -120,13 +198,30 @@ class TabbarRegistration extends Component {
 
     return (
       <div className="tabbar  tabbarMain_bg">
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          onClose={() => {
+            this.handleClose();
+          }}
+        >
+          <Alert
+            onClose={() => {
+              this.handleClose();
+            }}
+            severity={severity}
+          >
+            <AlertTitle>{title}</AlertTitle>
+            <strong>{message}</strong>
+          </Alert>
+        </Snackbar>
         <div className="container tabbarContainer">
           <div className="row">
             <div className="tabbar_min_height col-xs-6 col-sm-4 col-md-4 col-lg-3 p-0 tabbar_sidebar_bg">
               <div>
                 <RegNavbar />
               </div>
-{  console.log("state data", this.state.data)}
               <div className="tabbar_tabarlist pt-4 pb-5 Changepadding ml-3 ">
                 <div className="ml-4 container">
                   <div class="Tab">
@@ -137,7 +232,7 @@ class TabbarRegistration extends Component {
                       {/*
               <button type="button" class={"btn btn-outline-secondary btn-circle btn-md " + (this.state.tabindex=== 1 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 1 })}> 1</button> */}
 
-                      {this.state.tabindex > 1 ? (
+                      {personalProfileTickIcon ? (
                         <span
                           style={{
                             color: "white",
@@ -182,7 +277,7 @@ class TabbarRegistration extends Component {
                       class=" "
                       onClick={() => this.setState({ tabindex: 2 })}
                     >
-                      {this.state.tabindex > 2 ? (
+                      {professionalProfileIsSubmited ? (
                         <span
                           style={{
                             color: "white",
@@ -226,7 +321,7 @@ class TabbarRegistration extends Component {
                       class=" "
                       onClick={() => this.setState({ tabindex: 3 })}
                     >
-                      {this.state.tabindex > 3 ? (
+                      {iDVerificationIsSubmited ? (
                         <span
                           style={{
                             color: "white",
@@ -346,11 +441,14 @@ class TabbarRegistration extends Component {
 
             <div className="tabbar_min_height col-xs-6 col-sm-8 col-md-8 col-lg-9  p-5 tabbar_panel_background">
               {tabindex === 1 && (
-                <PersonalProfile onStateChange={this.stateHandler} />
+                <PersonalProfile
+                  onStateChange={this.personalProfilestateHandler}
+                  tabindex={this.state.showPersonalProfileError}
+                />
               )}
               {tabindex === 2 && (
                 <ProfessionalProfile2
-                  onStateChange={this.personalProfileStateHandler}
+                  onStateChange={this.professionalProfileStateHandler}
                 />
               )}
               {tabindex === 3 && (
@@ -359,10 +457,12 @@ class TabbarRegistration extends Component {
                 />
               )}
               {tabindex === 4 && (
-                <PaymentInformation onStateChange={this.stateHandler} />
+                <PaymentInformation
+                  onStateChange={this.paymentInformationstateHandler}
+                />
               )}
               {tabindex === 5 && (
-                <HourlyRate onStateChange={this.stateHandler} />
+                <HourlyRate onStateChange={this.hourlyRatestateHandler} />
               )}
 
               <div className="container tabbar_next_pre_btn_background pt-4 pb-5">

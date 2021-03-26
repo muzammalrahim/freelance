@@ -8,13 +8,16 @@ import AvatarImage from "../../../../src/AvatarImage.png";
 import LOCKER from "../../../assets/LOCKER.png";
 import AlertCompo from "./Alert";
 import Signinfooter from "./Signinfooter";
-
 import { login } from "../../../redux/auth/authCrud";
 import { withRouter } from "react-router-dom";
-
 import LinkedInPage from "./LinkedInPage";
 import { Snackbar } from "@material-ui/core";
 import { Alert, AlertTitle } from "@material-ui/lab";
+import VisibilityOff from "@material-ui/icons/VisibilityOff"; 
+import Visibility from "@material-ui/icons/Visibility"; 
+import IconButton from "@material-ui/core/IconButton"; 
+
+
 
 class SignIn extends Component {
   constructor(props) {
@@ -40,8 +43,14 @@ class SignIn extends Component {
       code: "",
       passworderror: "",
       emailerror: "",
+      showPassword: false
     };
   }
+
+  passwordShowAndHide= (e) => {
+    e.preventDefault(); 
+      this.setState({ showPassword: !this.state.showPassword });
+   }
 
   handleClose() {
     this.setState({ alert: { open: false, severity: "", message: "" } });
@@ -152,6 +161,7 @@ class SignIn extends Component {
     let {
       passworderror,
       emailerror,
+      showPassword,
       alert: { open, severity, message, title },
     } = this.state;
 
@@ -187,8 +197,8 @@ class SignIn extends Component {
               <div className="col-md-6 align-self-center bg-white offset-md-3">
                 <div className="text-content">
                   <div className="welcome-text pt-3 pl-3 float-left ">
-                    <h5 className="text-light">Welcome!</h5>
-                    <h6 className="text-light">Sign up to continue</h6>
+                    <h5 className="text-light">Welcome Back!</h5>
+                    <h6 className="text-light">Sign in to continue</h6>
                   </div>
 
                   <div className="float-right">
@@ -228,15 +238,22 @@ class SignIn extends Component {
                       }
                     >
                       <label form="pwd">Password </label>
+                      <div className="hide-icon-position">
                       <input
-                        type="password"
+                        type={showPassword ? "text" : "password"} 
                         className="form-control"
                         id="pwd"
                         placeholder="Enter Password"
                         name="password"
                         onChange={this.onChangeHandler}
                       />
-
+                      <span>{<i class="hide-icon" onClick={this.passwordShowAndHide}><span><IconButton 
+                      onClick={this.signupChangeHandler} 
+                      onMouseDown={this.signupChangeHandler} 
+                    > 
+                      { showPassword ? <Visibility /> : <VisibilityOff />} 
+                    </IconButton> </span></i>}</span>
+                        </div>
                       {passworderror !== "" ? (
                         <div className="error-message">{passworderror}</div>
                       ) : null}

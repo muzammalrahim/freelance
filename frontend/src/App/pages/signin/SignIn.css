@@ -57,3 +57,14 @@
   outline: none;
 }
 
+.signInPage .hide-icon-position{
+  display: flex;
+  position: relative;
+}
+
+.signInPage .hide-icon-position .hide-icon{
+  position: absolute;
+  top: -5px;
+  right: -6px;
+}
+
