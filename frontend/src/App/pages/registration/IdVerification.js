@@ -9,16 +9,17 @@ function IdVerification(props) {
   const [drivingLicense, setdrivingLicense] = useState("");
   const [idCard, setidCard] = useState("");
 
-  function drimgUpload(base64file) {
-   let imgOf = "drivingLicense"
-    setdrivingLicense(base64file);   
-    props.onStateChange(drivingLicense,imgOf)
+  function drimgUpload(binaryfile) {
+   let imgOf = "license"
+    setdrivingLicense(binaryfile);   
+    props.onStateChange(binaryfile,imgOf)
   }
 
-  function icimgUpload(base64file) {
-      let imgOf = "idCard"
-    setidCard(base64file);
-    props.onStateChange(idCard,imgOf)
+  function icimgUpload(binaryfile) {
+      let imgOf = "id_card"
+    setidCard(binaryfile);
+    props.onStateChange(binaryfile,imgOf)
+
   }
 
   return (

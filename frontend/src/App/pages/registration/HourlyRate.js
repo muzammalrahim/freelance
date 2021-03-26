@@ -5,41 +5,50 @@ import img from "../../../img/HourlyRate.png";
 import img2 from "../../../img/HourlyRate_F.png";
 import { nameAction } from "../../../redux/actions/myaction";
 import { connect } from "react-redux";
+import { Snackbar } from "@material-ui/core";
+import { Alert, AlertTitle } from "@material-ui/lab";
 
 class HourlyRate extends React.Component  {
 
 
   constructor(props) {
     super(props);
+    this.alert = {
+      open: false,
+      severity: "",
+      message: "",
+      title: "",
+    };
+    this.proposalAmountValidate = {
+      proposal_amount:false
+    };
+
+    this.proposalAmountError = {
+      proposal_amount: "",
+    };
+
     this.state = {
+      alert:this.alert,
       total_amount: 0,
       proposal_amount: '',
       value2: 85,
       remainder : '',
-      userValidate: this.userValidate,
-      userError: this.userError
+      proposalAmountValidate: this.proposalAmountValidate,
+      proposalAmountError: this.proposalAmountError
     };
 
-    this.userValidate = {
-      username: false,
-      email: false,
-      password: false,
-      passwordConfirm: false,
-    };
-
-    this.userError = {
-      username: "",
-      email: "",
-      password: "",
-      passwordConfirm: "",
-    };
+  
 
   }
 
   
 
- proposalHandler = (e) => {
+  handleClose() {
+    this.setState({ alert: { open: false, severity: "", message: "" } });
+  }
 
+ proposalHandler = (e) => {
+   let {proposal_amount,proposalAmountValidate,proposalAmountError} = this.state
 let newValue=(e.target.value)
 
   const { name } = e.target;
@@ -50,15 +59,46 @@ let newValue=(e.target.value)
     [name]: newValue
   }));
 
+ // proposal_amount === "" ? (
+  proposal_amount.length > 3 ? (
+      <div>
+    
+        {(proposalAmountError['proposal_amount'] = true)},{(proposalAmountError['proposal_amount'] = "")}
+      </div>
+    
+  ) : (
+    (proposalAmountError['proposal_amount'] = "proposal Amount is required")
+  );
   this.setState({total_amount:percent , remainder:remainder})
-console.log("Hourly rate",newValue)
-  };
-render (){
 
+ 
+};
+render (){
+  let {  proposalValid,
+        proposalAmountError,
+    alert: { open, severity, message, title },
+  } = this.state;
   return (
     <div className="HourlyRate">
       {/*left section END*/}
-
+      <Snackbar
+      open={open}
+      autoHideDuration={4000}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      onClose={() => {
+        this.handleClose();
+      }}
+    >
+      <Alert
+        onClose={() => {
+          this.handleClose();
+        }}
+        severity={severity}
+      >
+        <AlertTitle>{title}</AlertTitle>
+        <strong>{message}</strong>
+      </Alert>
+    </Snackbar>
       {/*Right section*/}
       <div className="hr_rightbox   bg2 b_line2 p-5">
         {/*Rc 1_inn*/}
@@ -82,8 +122,11 @@ render (){
           {/*Rc 1_inn*/}
           <div className="firstTextField">
             <div className="Rb-1 col-md-8">
+                <div  className={ proposalAmountError.proposal_amount === ""? "": "error"}>
               <label className="hr_Para3">Proposal Amount</label>
-              <div class="form-group input-group mb-3">
+              <div className="form-group input-group mb-3 ">
+              
+                
                 <input
 
                   placeholder="Enter Value"
@@ -96,12 +139,17 @@ render (){
                   name="proposal_amount"
                   value={(this.state.proposal_amount)}
                   onChange={this.proposalHandler}
+                  
                 />
+                
                 <div class="input-group-append">
                   <span class="input-group-text labelBoderRight hr_Para3">
                     SAR
                   </span>
                 </div>
+               
+              </div>
+                             
               </div>
 
               <div>

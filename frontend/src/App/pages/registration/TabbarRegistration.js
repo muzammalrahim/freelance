@@ -64,12 +64,9 @@ class TabbarRegistration extends Component {
   tabUphandler = () => {
     let { tabindex, personalProfileIsSubmited, userid, data } = this.state;
 
-    console.log("current tab index", tabindex);
     this.setState({ showPersonalProfileError: true });
-    console.log("personalProfileIsSubmited", personalProfileIsSubmited);
     console.log("userid", userid);
     if (userid) {
-      console.log("personalProfileIsSubmited", personalProfileIsSubmited);
       if (personalProfileIsSubmited === true) {
         post("api/v1/freelancer_profile/", data)
           .then((response) => {
@@ -105,6 +102,8 @@ class TabbarRegistration extends Component {
       }
     }
 
+
+
     this.props.tabChangeHandler(tabindex);
   };
 
@@ -127,6 +126,16 @@ class TabbarRegistration extends Component {
 
         this.setState({ userid });
         console.log("profile", this.state.userid);
+      })
+      .catch((error) => {});
+      
+    list("api/v1/attachment/")
+      .then((res) => {
+        console.log("att res",res)
+        console.log("att res",res.data)
+        var data = JSON.parse(res.data.id);
+        console.log()
+    
       })
       .catch((error) => {});
 
@@ -162,16 +171,63 @@ class TabbarRegistration extends Component {
     this.setState({ showPersonalProfileError: false });
   };
 
-  professionalProfileStateHandler = (stateData, isSubmit) => {
-    console.log("professional profile:", stateData);
+  professionalProfileStateHandler = (stateData,dataType) => {
+
+   if(dataType === "Certficate")
+   {
+    let data = new FormData();
+    data.append("file",stateData);
+    data.append("model","profile");
+    data.append("model_id",58);
+    data.append("type","certification")
+    console.log("we are here");
+  
+         post('api/v1/attachment/',data)
+         .then((response)=>{
+                console.log("res",response)
+            })
+            .catch((error)=>console.log(error))
+      
+     }
+   else if(dataType === "StateData")
+      {
+          console.log("other state data",stateData)
+
+      }
+
   };
 
-  idVerificationStateHandler(stateData, imgOf) {
-    if (imgOf === "idCard") {
-      console.log("id card img", stateData);
-    } else if (imgOf === "drivingLicense") {
-      console.log("driving  img", stateData);
-    }
+  idVerificationStateHandler(stateData,datatype) {
+
+    if (datatype === "license") {
+      console.log("in licence",stateData)
+      let data = new FormData();
+    data.append("file",stateData);
+    data.append("model","profile");
+    data.append("model_id",58);
+    data.append("type","certification")
+  
+         post('api/v1/attachment/',data)
+         .then((response)=>{
+                console.log("res",response)
+            })
+            .catch((error)=>console.log(error))
+            }
+    // } else if (datatype === "id_card") {
+      // console.log("driving  img", stateData);
+      // let data = new FormData();
+      // data.append("file",stateData);
+      // data.append("model","profile");
+      // data.append("model_id",58);
+      // data.append("type",datatype)
+      // console.log("we are here");
+    // 
+          //  post('api/v1/attachment/',data)
+          //  .then((response)=>{
+                  // console.log("res",response)
+              // })
+              // .catch((error)=>console.log(error))
+    // }
   }
   paymentInformationStateHandler(stateData) {
     // console.log("neeeeee", stateData);
@@ -283,13 +339,11 @@ class TabbarRegistration extends Component {
                             color: "white",
                             background: " #1DA799",
                             borderRadius: "25px",
-                            height:"25px",
-                            width:"25px",
-
+                            height: "25px",
+                            width: "25px",
                           }}
                         >
-                          <CheckIcon /> 
-                         
+                          <CheckIcon />
                         </span>
                       ) : (
                         <button
@@ -466,7 +520,8 @@ class TabbarRegistration extends Component {
                 />
               )}
               {tabindex === 5 && (
-                <HourlyRate onStateChange={this.hourlyRatestateHandler} />
+                <HourlyRate onStateChange={this.hourlyRatestateHandler}  tabindex={true} />
+               
               )}
 
               <div className="container tabbar_next_pre_btn_background pt-4 pb-5">
