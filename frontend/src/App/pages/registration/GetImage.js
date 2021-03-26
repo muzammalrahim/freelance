@@ -162,6 +162,8 @@ import {post} from "../helper/api"
                    
                   </div>  
                 </div>
+                
+
               </ReactDropzone>
              }
             </div>

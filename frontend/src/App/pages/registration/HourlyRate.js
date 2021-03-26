@@ -1,42 +1,57 @@
-import React, { useState } from "react";
-
+import React from "react";
 import "./HourlyRate.css";
 import "../../../../src/common.css";
-
 import img from "../../../img/HourlyRate.png";
 import img2 from "../../../img/HourlyRate_F.png";
-
 import { nameAction } from "../../../redux/actions/myaction";
 import { connect } from "react-redux";
 
 class HourlyRate extends React.Component  {
 
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       total_amount: 0,
       proposal_amount: '',
       value2: 85,
-      remainder : ''
+      remainder : '',
+      userValidate: this.userValidate,
+      userError: this.userError
     };
+
+    this.userValidate = {
+      username: false,
+      email: false,
+      password: false,
+      passwordConfirm: false,
+    };
+
+    this.userError = {
+      username: "",
+      email: "",
+      password: "",
+      passwordConfirm: "",
+    };
+
   }
 
   
 
  proposalHandler = (e) => {
 
-  const { name, value } = e.target;
+let newValue=(e.target.value)
 
-    
-    var percent = (value/ 100) * 85;
-    var remainder = (value - percent) ;
+  const { name } = e.target;
+
+  var percent = (newValue/ 100) * 85;
+  var remainder = (newValue - percent) ;
   this.setState(state => ({
-    [name]: value
+    [name]: newValue
   }));
 
   this.setState({total_amount:percent , remainder:remainder})
-
+console.log("Hourly rate",newValue)
   };
 render (){
 
@@ -70,13 +85,16 @@ render (){
               <label className="hr_Para3">Proposal Amount</label>
               <div class="form-group input-group mb-3">
                 <input
-                  placeholder="0"
+
+                  placeholder="Enter Value"
                   type="number"
-                  min='0'
+                  min="0"
+
+
                   class="form-control form-controlBorderNone"
                   aria-label="Amount (to the nearest dollar)"
                   name="proposal_amount"
-                  value={this.state.proposal_amount}
+                  value={(this.state.proposal_amount)}
                   onChange={this.proposalHandler}
                 />
                 <div class="input-group-append">
@@ -93,7 +111,7 @@ render (){
               <div class="row">
                 <div class="col-md-12 pb-3 pl-3 pr-4">
                   <div class=" hr_Para3">
-                    <div class="pull-left">{this.state.remainder}</div>
+                    <div class="remainder pull-left">{(this.state.remainder)}</div>
                     <div class="pull-right">SAR</div>
                   </div>
                 </div>
