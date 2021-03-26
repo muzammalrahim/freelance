@@ -6,7 +6,6 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import GetImage from "../registration/GetImage";
-import UploadFile from '../../pages/Contract/UploadFile'
 import { post } from "../helper/api"; 
 import  list from "../helper/api";
 import { useHistory } from "react-router-dom";
@@ -143,7 +142,7 @@ const onClickHandler = () => {
                     idVerf_DL_imgUpload={uploadFile}
                     value="idVerf_DL_imgUpload"
                   /> */}
-                  <UploadFile onChange={(e) => onInputChange(e)} />
+                  {/* <UploadFile onChange={(e) => onInputChange(e)} /> */}
                 </div>
                 <div className="bid-buttons d-flex justify-content-center pb-4 mt-5">
                   <button
