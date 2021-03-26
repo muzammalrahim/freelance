@@ -1,63 +1,92 @@
-import React, { Component } from 'react'
+import React, { useState,useEffect } from 'react'
 import  "./ContactInfo.css"
 import  "./ProfileSetting.css"
 import Modal from "react-bootstrap/Modal";
 import CloseIcon from '@material-ui/icons/Close';
+import list from '../helper/api';
+
 import Dropdown from "../../../components/Dropdown";
 
 
-// export function ContactInfo(props) {
-    
-//         const [show, setShow] = useState(false);
-//         const handleClose = () => setShow(false);
-//         const handleSave = () => setShow(false);
-//         const handleShow = () => setShow(true);
-export default class ContactInfo extends Component {
+export default function ContactInfo(props) {
+  const [data, setData] = useState('');
+  const getData = () =>{
+    console.log("show response:");
+    list('api/v1/accounts/profile/')
+    .then((response)=>{
+      console.log("show response data:",response.data);
+      const data = response.data;
+      setData(data);
+            })
 
-  constructor(props){
-      super(props);
-      
-      this.state = {
-      show: false,
-      }
-
-      this.dropDownHandler = this.dropDownHandler.bind(this);
-      this.handleClose = this.handleClose.bind(this);
-      this.handleSave = this.handleSave.bind(this);
-      this.handleShow = this.handleShow.bind(this);
-
-      
   }
 
-  dropDownHandler (provideService2)
-     {
-        this.setState({provideService:provideService2})
-      }
+  useEffect(() => {
+    getData();
+  }, [])
 
-      handleClose (event){
-        this.setState({show:false})
-      }
+    
+        const [show, setShow] = useState(false);
+        const handleClose = () => setShow(false);
+        const handleSave = () => setShow(false);
+        const handleShow = () => setShow(true);
 
-      handleSave (event){
-        this.setState({show:false})
-      }
+// export default class ContactInfo extends Component {
 
-      handleShow (event){
-        this.setState({show:true})
-      }
+//   constructor(props){
+//       super(props);
+      
+//       this.state = {
+//       show: false,
+//        user : ''
+//       }
 
 
-render() {
+//       this.dropDownHandler = this.dropDownHandler.bind(this);
+//       this.handleClose = this.handleClose.bind(this);
+//       this.handleSave = this.handleSave.bind(this);
+//       this.handleShow = this.handleShow.bind(this);
+
+      
+//   }
+
+  // dropDownHandler (provideService2)
+  //    {
+  //       this.setState({provideService:provideService2})
+  //     }
+
+  //     handleClose (event){
+  //       this.setState({show:false})
+  //     }
+
+  //     handleSave (event){
+  //       this.setState({show:false})
+  //     }
+
+  //     handleShow (event){
+  //       this.setState({show:true})
+  //     }
+
+//       componentDidMount() {
+//         list('/api/v1/profile/')
+//         .then((res)=> {
+//           console.log("response" ,res)
+//           this.setState({...user});
+//         })
+//       }
+
+
+// render() {
         return (
             <div className="contact-information">
                 <div className="ci-heading">
                     Account
                     <span>
-                        <button onClick={this.handleShow}>Edit</button>
+                        <button onClick={handleShow}>Edit</button>
                     </span>
                 </div>
 
-                <Modal show={this.state.show}>
+                <Modal show={show}>
           <div className="container">
             <form>
               <div className="row pt-4 pb-3">
@@ -65,7 +94,7 @@ render() {
                 <p>Edit Account Details</p>
                 </div>
                 <div className="col-md-6">
-                <CloseIcon onClick={this.handleClose} className="float-right" />
+                <CloseIcon onClick={handleClose} className="float-right" />
                 </div>
               </div>
               <div className="form-row">
@@ -104,12 +133,12 @@ render() {
 
               <div className="form-row">
                 <div className="col-md-6 pb-5 pt-4 pull-left">
-                  <a href="#"  onClick={this.handleClose}>
+                  <a href="#"  onClick={handleClose}>
                     Cancel
                   </a>
                   </div>
                   <div className="col-md-6 pb-5 pt-3">
-                  <button type="button pull-right" className="form-btn btn btn-warning" onClick={this.handleSave}>
+                  <button type="button pull-right" className="form-btn btn btn-warning" onClick={handleSave}>
                     Save Changes
                   </button>
                   </div>
@@ -119,9 +148,9 @@ render() {
         </Modal>
                 
                     <div className="ci-account col-md-12">
-                        <p>User ID<span>Pixelz-Warrios14</span></p>
+                        <p>User ID<span>{data.username}</span></p>
                         <p>Name<span> Pixelz-Warrios</span></p>
-                        <p>Email<span> PixelzWarrios14@gmail.com</span></p>
+                        <p>Email<span>{data.email}</span></p>
                     </div>
 
                     <div className="ci-heading">
@@ -144,5 +173,6 @@ render() {
         )
 }
 
-}
+// }
+
 

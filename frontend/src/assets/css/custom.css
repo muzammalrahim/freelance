@@ -734,7 +734,9 @@ ul.app-detail-btns li{
     display: block;
 }
 .contractone-main{
-    background: #e5e5e5;
+        background: #e5e5e5;
+        height: auto;
+        overflow: hidden;
 }
 .cont-row {
     background: #ffffff;
