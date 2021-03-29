@@ -4,14 +4,10 @@ import "./ProfileSetting.css"
 import Modal from "react-bootstrap/Modal";
 import CloseIcon from '@material-ui/icons/Close';
 import list from '../helper/api';
-import { useHistory, useParams } from "react-router-dom";
-import Dropdown from "../../../components/Dropdown";
-
 
 export default function ContactInfo(props) {
-
 const [data, setData] = useState('');
-const [id, setId] = useState(null);
+const [id, setId] = useState();
 const [user, setUser] = useState({
 first_name : "" ,
 street : "",
@@ -19,21 +15,22 @@ mobile_no : ''
 });
 
 const getData = () =>{
+   
 list('api/v1/accounts/profile/')
 .then((response)=>{
-console.log("show response data:",response.data);
 const data = response.data;
-// var getid = JSON.parse(response.data.id);
-// setId(getid)
+console.log("freelancerd idfsf:",data.id);
+
 setData(data);
 })
 }
-const getUser = () => {
 
-list("api/v1/accounts/profile/id/")
+const getUser = () => {
+list(`api/v1/freelancer_profile/5/`)
 .then((response) => {
-console.log("janter" ,response.data);
 const data= response.data;
+var id = JSON.parse(response.data.id);
+console.log("freelancerd id:",id);
 setUser(data);
 })
 }
@@ -41,9 +38,7 @@ setUser(data);
 
 useEffect(() => {
 getData();
-
 getUser();
-
 }, [])
 
 
@@ -171,7 +166,7 @@ Save Changes
 
 <div className="ci-account col-md-12">
 <p>User ID<span>{data.username}</span></p>
-<p>Name<span> {data.first_name}</span></p>
+<p>Name<span> {data.first_name} {data.last_name}</span></p>
 <p>Email<span>{data.email}</span></p>
 </div>
 
@@ -196,4 +191,3 @@ Location
 }
 
 // }
-

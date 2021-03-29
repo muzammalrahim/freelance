@@ -28,15 +28,15 @@ function EditUser() {
           const  {...data} = response.data;
           console.log("get data :" ,response.data)
           setUser(data);
-          let skills =['python' , 'Java' , 'HTML' , 'Wordpress' , 'logo ','website design' ,'React'] ;
-          const user_skills = data.skills.map((skill, index) =>{
+    //       let skills =['python' , 'Java' , 'HTML' , 'Wordpress' , 'logo ','website design' ,'React'] ;
+    //       const user_skills = data.skills.map((skill, index) =>{
           
-            return(
-            <li>
-              <a href="#" class="pl-3 pr-3 pt-1 pb-1"   onChange={e => onInputChange(e)} value={user?.skills?.name} name="skills">{skill.name}</a>
-            </li>)
-          })
-    setSkills(user_skills,skills);
+    //         return(
+    //         <li>
+    //           <a href="#" class="pl-3 pr-3 pt-1 pb-1"   onChange={e => onInputChange(e)} value={user?.skills?.name} name="skills">{skill.name}</a>
+    //         </li>)
+    //       })
+    // setSkills(user_skills,skills);
           
     })
     
@@ -153,7 +153,7 @@ function EditUser() {
                       </div>
                     </div>
               </address>
-              <div class="container">
+              {/* <div class="container">
             <div class="row">
               <div class="col-md-12 pl-4">
               <p> Skills</p>
@@ -171,7 +171,7 @@ function EditUser() {
                     </div>
                 </div>
             }
-          </div>
+          </div> */}
             </div>
           </div>
         </div>
