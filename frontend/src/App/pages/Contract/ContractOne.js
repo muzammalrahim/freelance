@@ -21,17 +21,18 @@ export default function ContractOne () {
 
     let history = useHistory();
 
-    const [get ,setGet] = useState ();
+    const [get ,setGet] = useState ( );
 
     const handleClick =() =>{
         history.push('/jobs')
     }
+   
     function Contract() {
         console.log("show response:");
         list('api/v1/contract/')
         .then((response)=>{
           console.log("show response:",response.data);
-          const {...rest} = response.data;
+          const {...rest} = response.data[1];
           setGet(rest);
           
         })
@@ -54,7 +55,7 @@ export default function ContractOne () {
                 {/* top header */}
                 <div className="contractone-main">
                     <div className="container">
-                        <div className="main-wrap pt-5 pl-4 pr-4">
+                        <div className="main-wrap pt-5 pl-4 pr-4 mb-5">
                             <div className="row">
                                 <div className="col-md-3 col-sm-4">
                                     <ContractNav/>

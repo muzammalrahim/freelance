@@ -26,21 +26,35 @@ const useStyles = makeStyles((theme) => ({
   
 }));
 
-
 export default function ControlledAccordions() {
   const classes = useStyles();
   const [expanded, setExpanded] = useState('panel1');
-  const [type, setType] = useState()
+  const [type, setType] = useState();
+  const [status, setStatus] = useState({
+    status :"true",
+  });
 
+ 
   function typeProject() {
     list('api/v1/contract/')
     .then((response) => {
-      const data = response.data[0];
-      console.log("response:", response.data[0]);
+      const data = response.data[1];
+      console.log("response:", response.data[1]);
       setType(data);
     })
     
   }
+  // let milestone = '1';
+  // if (milestone === ' ' || milestone === "1"){
+  //   console.log("showstatus:",milestone )
+  //     return
+  //     <div>
+  //         {milestone.status.true}
+  //     </div>
+  // }
+  // else {
+  //   console.log("showstatus")
+  // }
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
