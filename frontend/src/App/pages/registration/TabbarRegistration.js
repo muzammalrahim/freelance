@@ -40,11 +40,11 @@ class TabbarRegistration extends Component {
       professionalProfileError: false,
       professionalProfileIsSubmited: false,
       iDVerificationError: false,
-      iDVerificationIsSubmited: false,
+      iDVerificationDrivingLicenseIsSubmited: false,
+      iDVerificationIDCardIsSubmited: false,
+      iDVerificationTickIcon: false,
       hourlyRateError: false,
       hourlyRateErrorIsSubmited: false,
-
-      goolo: false,
 
       account_type: this.props.account_type,
       data: {},
@@ -188,6 +188,7 @@ class TabbarRegistration extends Component {
          post('api/v1/attachment/',data)
          .then((response)=>{
                 console.log("res",response)
+                this.setState({})
             })
             .catch((error)=>console.log(error))
       
@@ -200,7 +201,9 @@ class TabbarRegistration extends Component {
 
   };
 
-  idVerificationStateHandler(stateData,datatype) {
+  idVerificationStateHandler=(stateData,datatype)=> {
+     
+    let {  iDVerificationIDCardIsSubmited,iDVerificationDrivingLicenseIsSubmited } = this.state;
 
     if (datatype === "license") {
       console.log("in licence",stateData)
@@ -213,24 +216,27 @@ class TabbarRegistration extends Component {
          post('api/v1/attachment/',data)
          .then((response)=>{
                 console.log("res",response)
+                // iDVerificationDrivingLicenseIsSubmited = true
+                this.setState({iDVerificationDrivingLicenseIsSubmited:true})
             })
             .catch((error)=>console.log(error))
             }
-    // } else if (datatype === "id_card") {
-      // console.log("driving  img", stateData);
-      // let data = new FormData();
-      // data.append("file",stateData);
-      // data.append("model","profile");
-      // data.append("model_id",58);
-      // data.append("type",datatype)
-      // console.log("we are here");
-    // 
-          //  post('api/v1/attachment/',data)
-          //  .then((response)=>{
-                  // console.log("res",response)
-              // })
-              // .catch((error)=>console.log(error))
-    // }
+    else if(datatype === "id_card") {
+      console.log("driving  img", stateData);
+      let data = new FormData();
+      data.append("file",stateData);
+      data.append("model","profile");
+      data.append("model_id",58);
+      data.append("type",datatype)
+      console.log("we are here");
+    
+           post('api/v1/attachment/',data)
+           .then((response)=>{
+           // iDVerificationIDCardIsSubmited = true
+                  this.setState({iDVerificationIDCardIsSubmited:true})
+              })
+              .catch((error)=>console.log(error))
+     }
   }
   paymentInformationStateHandler(stateData) {
     // console.log("neeeeee", stateData);
@@ -245,7 +251,8 @@ class TabbarRegistration extends Component {
       personalProfileIsSubmited,
       professionalProfileIsSubmited,
       personalProfileTickIcon,
-      iDVerificationIsSubmited,
+      iDVerificationDrivingLicenseIsSubmited,
+      iDVerificationIDCardIsSubmited,
       hourlyRateErrorIsSubmited,
     } = this.state;
 
@@ -382,7 +389,7 @@ class TabbarRegistration extends Component {
                       class=" "
                       onClick={() => this.setState({ tabindex: 3 })}
                     >
-                      {iDVerificationIsSubmited ? (
+                      {iDVerificationDrivingLicenseIsSubmited && iDVerificationIDCardIsSubmited ? (
                         <span
                           style={{
                             color: "white",
