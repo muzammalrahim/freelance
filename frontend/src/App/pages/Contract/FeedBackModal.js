@@ -27,33 +27,38 @@ const useStyles = makeStyles((theme) => ({
 function FeedBackModal() {
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState({
-    // provide_service : '',
-    description : ''
+    provideService : '',
+    description : '',
+    rate : ''
   });
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
-
+//open 
   const handleClickOpen = () => {
     setOpen(true);
-  };
-  const handleChange = (e) => {
-    setUser({
-      provide_service : e.target.value,
-      description : e.target.value
-    });
   };
   const handleClose = () => {
     setOpen(false);
   };
+  // close here
+
+
+  const handleChange = (e) => {
+    setUser({
+    provideService : e.target.value ,
+    });
+  };
+ 
   const onInputChange = (e) => {
-    setUser({user, [e.target.name] : e.target.value})
-    console.log(setUser);
+    setUser({...user, [e.target.name] : e.target.value})
+    console.log(user);
   }
    const onSubmitt = (e) => {
     e.preventDefault();
     post('/api/v1/feedback_review/',user)
     .then((res) => {
      console.log("res",res.data);
+     setUser({...user});
     })
     .catch(error => {
       console.log(error)
@@ -94,7 +99,11 @@ function FeedBackModal() {
                   <h1 className="mb-0 p-3">End Project</h1>
                 </div>
                 <div className="feedback-sec d-flex justify-content-center pt-4">
-                  <HoverRating />
+                  <HoverRating 
+                  name="rate"
+                  value={user.rate}
+                  onChange ={(e) => onInputChange(e)}
+                  />
                 </div>
 
                 <div className="select-reason text-left p-4">
@@ -102,15 +111,16 @@ function FeedBackModal() {
                   <div className="selection">
                     <select
                       id="inputState"
-                      // value={data.provide_service}
+                      name="provideService"
+                      value={user.provideService}
                       onChange={(e) => handleChange(e)}
                       className="border p-2"
                     >
-                      <option value="City">Select</option>
+                      <option value="Select">Select</option>
                       <option value="work completed">work completed</option>
-                      <option value="value">client is not  responding</option>
-                      <option value="value">client don't want the work  </option>
-                      <option value="value">client is asking for refund </option>
+                      <option value="client is not  responding">client is not  responding</option>
+                      <option value="client don't want the work">client don't want the work  </option>
+                      <option value="client is asking for refund">client is asking for refund </option>
                     </select>
                   </div>
                 </div>

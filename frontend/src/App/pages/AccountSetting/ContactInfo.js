@@ -4,25 +4,46 @@ import  "./ProfileSetting.css"
 import Modal from "react-bootstrap/Modal";
 import CloseIcon from '@material-ui/icons/Close';
 import list from '../helper/api';
-
+import { useHistory, useParams } from "react-router-dom";
 import Dropdown from "../../../components/Dropdown";
 
 
 export default function ContactInfo(props) {
+  
   const [data, setData] = useState('');
+  const [id, setId] = useState(null);
+  const [user, setUser] = useState({
+    first_name  : "" ,
+    street :  "",
+    mobile_no : ''
+  });
+
   const getData = () =>{
-    console.log("show response:");
     list('api/v1/accounts/profile/')
     .then((response)=>{
       console.log("show response data:",response.data);
       const data = response.data;
+      // var  getid = JSON.parse(response.data.id);
+      // setId(getid)
       setData(data);
             })
-
   }
+   const getUser = () => {
+  
+    list("api/v1/accounts/profile/id/")
+   .then((response) => {
+      console.log("janter" ,response.data);
+      const data= response.data;
+      setUser(data);
+    })
+   }
+
 
   useEffect(() => {
     getData();
+
+    getUser();
+  
   }, [])
 
     
@@ -79,6 +100,7 @@ export default function ContactInfo(props) {
 // render() {
         return (
             <div className="contact-information">
+              {console.log("id",id)}
                 <div className="ci-heading">
                     Account
                     <span>
@@ -149,7 +171,7 @@ export default function ContactInfo(props) {
                 
                     <div className="ci-account col-md-12">
                         <p>User ID<span>{data.username}</span></p>
-                        <p>Name<span> Pixelz-Warrios</span></p>
+                        <p>Name<span> {data.first_name} {data.last_name}</span></p>
                         <p>Email<span>{data.email}</span></p>
                     </div>
 
@@ -161,8 +183,8 @@ export default function ContactInfo(props) {
                 </div>
                 
                     <div className="ci-account col-md-12">
-                        <p>Address<span>Pixelz-Warrios14</span></p>
-                        <p>Phone<span> Pixelz-Warrios</span></p>
+                        <p>Address<span>{user.street}</span></p>
+                        <p>Phone<span>{user.mobile_no}</span></p>
                     </div>
                             <div className="my-profile-links col-md-12">
                                   <a href="">discard changes</a>
@@ -173,6 +195,6 @@ export default function ContactInfo(props) {
         )
 }
 
-// }
+
 
 
