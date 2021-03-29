@@ -25,18 +25,22 @@ const useStyles = makeStyles({
 });
 
 export default function HoverRating() {
-  const [value, setValue] = useState();
+  const [value, setValue] = useState({
+    rate : ""
+  });
   const classes = useStyles();
-
+  const onInputChange = (e) => {
+    setValue(value);
+    console.log(value);
+  }
   return (
     <div className={classes.root}>
       <Rating
-        name="hover-feedback"
-        value={value}
+        name="rate"
+        value={value.rate}
         precision={0.5}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
+        onChange ={(e) => onInputChange(e)}
+        
       />
       {console.log(value)}
     </div>
