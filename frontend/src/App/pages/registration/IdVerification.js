@@ -8,17 +8,73 @@ import img2 from "../../../img/IdVerfication_F.png";
 function IdVerification(props) {
   const [drivingLicense, setdrivingLicense] = useState("");
   const [idCard, setidCard] = useState("");
+  const [validation,setvalidation] = useState({
 
-  function drimgUpload(base64file) {
-   let imgOf = "drivingLicense"
-    setdrivingLicense(base64file);   
-    props.onStateChange(drivingLicense,imgOf)
+       license : false ,
+       idCard : false ,
+
+  })
+
+ 
+
+
+  // function checkEmptyField (isSubmit)
+  // {
+// 
+    // Object.values(validation).map((values) => {
+        // console.log("wai",values)
+    // });
+// 
+// 
+    // if(drivingLicense && idCard)
+    // {
+      // return true;
+    // }
+    //  else {
+      // return false;
+    // }
+// 
+  // }
+
+  function drimgUpload(binaryfile) {
+ let isSubmit = null
+   let imgOf = "license"
+    setdrivingLicense(binaryfile);
+    setvalidation({ ...validation, ['idCard']: true });
+  
+  if(drivingLicense && idCard)
+    {
+      isSubmit = true
+    }
+     else {
+      isSubmit = false
+    }
+
+
+    props.onStateChange(binaryfile,imgOf)
+   
+    console.log("isSubmit res",isSubmit)
+
   }
 
-  function icimgUpload(base64file) {
-      let imgOf = "idCard"
-    setidCard(base64file);
-    props.onStateChange(idCard,imgOf)
+  function icimgUpload(binaryfile) {
+    let isSubmit = null
+      let imgOf = "id_card"
+    setidCard(binaryfile);
+
+    if(drivingLicense && idCard)
+    {
+      isSubmit = true
+    }
+     else {
+      isSubmit = false
+    }
+
+   //isSubmit = Boolean(checkEmptyField(isSubmit));
+
+   console.log("wahhhhhh",isSubmit)
+    props.onStateChange(binaryfile,imgOf)
+    console.log("isSubmit res",isSubmit)
   }
 
   return (

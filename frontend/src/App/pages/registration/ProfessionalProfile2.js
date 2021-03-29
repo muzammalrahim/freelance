@@ -4,31 +4,38 @@ import Dropdown from "../../../components/Dropdown";
 import "./ProfessionalProfile2.css";
 import "../../../../src/common.css";
 import img from "../../../assets/Group 3539.png";
-// import img3 from '../../../img/WorkPlatform.png';
+
+import { Snackbar } from "@material-ui/core";
+import { Alert, AlertTitle } from "@material-ui/lab";
+
 import { connect } from "react-redux";
 import list from "../helper/api";
 
 class ProfessionalProfile2 extends Component {
   constructor(props) {
     super(props);
-
+    this.alert = {
+      open: false,
+      severity: "",
+      message: "",
+      title: "",
+    };
     this.state = {
+      alert: this.alert,
       provideService: "",
       skills: [],
-      getSkillsList: [],
       chooseCategory: [],
+      getSkillsList: [],
       getChooseCategoryList: [],
-      img: "",
-
-      //  people : [
-      //                       { name: 'chris' },
-      //                         { name: 'nick' }
-      //           ]
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleBase64File = this.handleBase64File.bind(this);
+    this.handleBinaryImg = this.handleBinaryImg.bind(this);
     this.dropDownHandler = this.dropDownHandler.bind(this);
+  }
+
+  handleClose() {
+    this.setState({ alert: { open: false, severity: "", message: "" } });
   }
 
   handleInputChange(event) {
@@ -40,18 +47,18 @@ class ProfessionalProfile2 extends Component {
         chooseCategory: [...prevState.chooseCategory, id],
       }));
     } else {
-     
-      const chooseCategory= this.state.chooseCategory.filter((chooseCategory) => chooseCategory != id);
-    this.setState({
-      chooseCategory,
-    });
+      const chooseCategory = this.state.chooseCategory.filter(
+        (chooseCategory) => chooseCategory != id
+      );
+      this.setState({
+        chooseCategory,
+      });
     }
+
   }
 
-  handleBase64File(base64file) {
-    this.setState({ img: base64file });
-
-    this.props.onStateChange(this.state);
+  handleBinaryImg(binaryfile) {
+    this.props.onStateChange(binaryfile,"Certficate");
   }
 
   dropDownHandler(provideService2) {
@@ -77,7 +84,6 @@ class ProfessionalProfile2 extends Component {
     list("api/v1/skill/")
       .then((response) => {
         let list_data = [];
-        console.log("res:", response.data);
         Object.values(response.data).map((data) => {
           list_data.push({ id: data.id, name: data.name });
         });
@@ -90,12 +96,10 @@ class ProfessionalProfile2 extends Component {
     list("api/v1/category/")
       .then((response) => {
         let list_data = [];
-        console.log("res:", response.data);
-        Object.values(response.data).map((data)=>{
-
-          list_data.push({id: data.id,name:data.name,})
-        })
-          this.setState({getChooseCategoryList:list_data})
+        Object.values(response.data).map((data) => {
+          list_data.push({ id: data.id, name: data.name });
+        });
+        this.setState({ getChooseCategoryList: list_data });
       })
       .catch((error) => {});
   };
@@ -106,12 +110,35 @@ class ProfessionalProfile2 extends Component {
   }
 
   render() {
-    let { getSkillsList ,getChooseCategoryList} = this.state;
+    let {
+      getSkillsList,
+      getChooseCategoryList,
+      alert: { open, severity, message, title },
+    } = this.state;
     return (
       <div className="ProfessionalProfile">
+        <Snackbar
+          open={open}
+          autoHideDuration={4000}
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          onClose={() => {
+            this.handleClose();
+          }}
+        >
+          <Alert
+            onClose={() => {
+              this.handleClose();
+            }}
+            severity={severity}
+          >
+            <AlertTitle>{title}</AlertTitle>
+            <strong>{message}</strong>
+          </Alert>
+        </Snackbar>
         <div className="Pf-container proff-prof">
           <div className="container Pf-rightbox   bg2 b_line2 p-5">
             <div class="container-fluid">
+            {console.log("oops",this.state) , this.props.onStateChange(this.state,"StateData")}
               <div>
                 <div class="row pl-3">
                   <div className="Per_img-wrap">
@@ -146,7 +173,6 @@ class ProfessionalProfile2 extends Component {
                           const isExisted = this.checkExistedSkill(value.name);
 
                           if (isExisted) {
-                              
                           } else {
                             let data = {
                               id: value.id,
@@ -156,6 +182,7 @@ class ProfessionalProfile2 extends Component {
                               skills: [...prevState.skills, data],
                             }));
                           }
+                          // this.props.onStateChange(this.state,"StateData");
                         }}
                         className="form-control"
                         id="exampleFormControlSelect1"
@@ -200,7 +227,6 @@ class ProfessionalProfile2 extends Component {
                         ))}
                       </div>
                     </div>
-                    {console.log("stae", this.state)}
                   </div>
                 </div>
                 {/* Choose Category Multi_select_checkboxes */}
@@ -208,31 +234,28 @@ class ProfessionalProfile2 extends Component {
                   <h3>Choose Category</h3>
                   <div className="container_Checkboxes">
                     <div className="row">
-                      { getChooseCategoryList.map((list)=>{
-                          return(
-                             <div className="example col-4">
-                        <label className="checkbox-button">
-                          <input
-                            type="checkbox"
-                            className="checkbox-button__input"
-                            name="hobbies"
-                            id={list.id}
-                            value={list.name}
-                            onChange={this.handleInputChange}
-                          />
-                          <span className="checkbox-button__control"></span>
-                          <span className="checkbox-button__label">
-                            {list.name}
-                          </span>
-                        </label>
-                      </div>)
+                      {getChooseCategoryList.map((list) => {
+                        return (
+                          <div className="example col-4">
+                            <label className="checkbox-button">
+                              <input
+                                type="checkbox"
+                                className="checkbox-button__input"
+                                name="hobbies"
+                                id={list.id}
+                                value={list.name}
+                                onChange={this.handleInputChange}
+                              />
+                              <span className="checkbox-button__control"></span>
+                              <span className="checkbox-button__label">
+                                {list.name}
+                              </span>
+                            </label>
+                          </div>
+                        );
                       })}
-                   
-
-                     
                     </div>{" "}
                     {/* End of first_3col*/}
-                  
                   </div>
                 </div>{" "}
                 {/* Choose Category Multi_select_checkboxes */}
@@ -252,7 +275,7 @@ class ProfessionalProfile2 extends Component {
                     <div>
                       <div className="getimage">
                         <GetImage
-                          onUpload={this.handleBase64File}
+                          onUpload={this.handleBinaryImg}
                           value="onUpload"
                         />
                       </div>
