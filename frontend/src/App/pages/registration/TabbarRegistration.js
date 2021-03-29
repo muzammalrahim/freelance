@@ -12,7 +12,7 @@ import ProfessionalProfile2Footer from "./ProfFooter";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 
 import CheckIcon from "@material-ui/icons/Check";
-import list, { post } from "../helper/api";
+import list, { patch, post } from "../helper/api";
 import { connect } from "react-redux";
 import { RegistrationTabBarAction } from "../../../redux/actions/RegistrationTabBarAction";
 
@@ -45,7 +45,7 @@ class TabbarRegistration extends Component {
       iDVerificationTickIcon: false,
       hourlyRateError: false,
       hourlyRateErrorIsSubmited: false,
-
+      proposal_amount : null,
       account_type: this.props.account_type,
       data: {},
     };
@@ -62,7 +62,7 @@ class TabbarRegistration extends Component {
   };
 
   tabUphandler = () => {
-    let { tabindex, personalProfileIsSubmited, userid, data } = this.state;
+    let { tabindex, personalProfileIsSubmited, userid, data,iDVerificationDrivingLicenseIsSubmited,iDVerificationIDCardIsSubmited,iDVerificationTickIcon,proposal_amount } = this.state;
 
     this.setState({ showPersonalProfileError: true });
     if (userid) {
@@ -101,7 +101,21 @@ class TabbarRegistration extends Component {
       }
     }
 
+      if(iDVerificationDrivingLicenseIsSubmited && iDVerificationIDCardIsSubmited)
+        {
+          this.setState({
+            iDVerificationTickIcon: true,
+            tabindex: tabindex + 1,
+            alert: {
+              open: true,
+              severity: "success",
+              title: "success",
+              message: "you have successfully complete id verfication step ",
+            },
+          });
+         }  
 
+       
 
     this.props.tabChangeHandler(tabindex);
   };
@@ -113,7 +127,27 @@ class TabbarRegistration extends Component {
   };
 
   stepsfinish = () => {
+      let {proposal_amount,userid} = this.state
  this.setState({hourlyRateError:true})
+
+ let data = {model_id:66,
+  proposal_amount : proposal_amount
+ }
+ if(proposal_amount)
+ {
+  patch("api/v1/freelancer_profile/66/", data)
+  .then((response) => {
+    console.log("proposal_amount res:", response);
+    this.setState({
+      alert: {
+        open: true,
+        severity: "success",
+        title: "success",
+        message: "you have successfully complete your registration process",
+      },
+    });
+  })
+ }
   }
 
   getTabIndexFromLocalStorage = (tabindex2) => {
@@ -237,12 +271,26 @@ class TabbarRegistration extends Component {
               })
               .catch((error)=>console.log(error))
      }
-  }
-  paymentInformationStateHandler(stateData) {
-    // console.log("neeeeee", stateData);
-  }
 
-  hourlyRateStateHandler() {}
+     else{
+       console.log("bhoom")
+     }
+    }
+    paymentInformationStateHandler = (stateData)=> {
+ 
+    }
+  
+
+    hourlyRateStateHandler=(stateData)=> {
+
+       this.setState({proposal_amount:stateData})
+   
+      console.log("hourly rate data:",stateData)
+  
+    }
+
+
+ 
 
   render() {
     let {
@@ -254,6 +302,7 @@ class TabbarRegistration extends Component {
       iDVerificationDrivingLicenseIsSubmited,
       iDVerificationIDCardIsSubmited,
       hourlyRateErrorIsSubmited,
+      iDVerificationTickIcon,
     } = this.state;
 
     if (tabindex > 1) {
@@ -389,7 +438,7 @@ class TabbarRegistration extends Component {
                       class=" "
                       onClick={() => this.setState({ tabindex: 3 })}
                     >
-                      {iDVerificationDrivingLicenseIsSubmited && iDVerificationIDCardIsSubmited ? (
+                      {iDVerificationTickIcon ? (
                         <span
                           style={{
                             color: "white",
@@ -530,7 +579,10 @@ class TabbarRegistration extends Component {
                 />
               )}
               {tabindex === 5 && (
-                <HourlyRate onStateChange={this.hourlyRatestateHandler}  showError={this.state.hourlyRateError} />
+                <HourlyRate  
+                  onStateChange={this.hourlyRateStateHandler}
+                    showError={this.state.hourlyRateError} 
+                    />
                
               )}
 

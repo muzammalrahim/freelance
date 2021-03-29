@@ -9,7 +9,7 @@ import Dropdown from "../../../components/Dropdown";
 
 
 export default function ContactInfo(props) {
-
+  var getid
 const [data, setData] = useState('');
 const [id, setId] = useState(null);
 const [user, setUser] = useState({
@@ -23,14 +23,19 @@ list('api/v1/accounts/profile/')
 .then((response)=>{
 console.log("show response data:",response.data);
 const data = response.data;
-// var getid = JSON.parse(response.data.id);
-// setId(getid)
+  getid = JSON.parse(response.data.id);
+ setId(getid)
 setData(data);
+
+console.log("get prifile id",getid)
 })
+
+  
+   
 }
 const getUser = () => {
 
-list("api/v1/accounts/profile/id/")
+list("api/v1/freelancer_profile/66/")
 .then((response) => {
 console.log("janter" ,response.data);
 const data= response.data;
@@ -171,7 +176,7 @@ Save Changes
 
 <div className="ci-account col-md-12">
 <p>User ID<span>{data.username}</span></p>
-<p>Name<span> {data.first_name}</span></p>
+<p>Name<span> {data.first_name} {data.last_name}</span></p>
 <p>Email<span>{data.email}</span></p>
 </div>
 
