@@ -65,7 +65,6 @@ class TabbarRegistration extends Component {
     let { tabindex, personalProfileIsSubmited, userid, data } = this.state;
 
     this.setState({ showPersonalProfileError: true });
-    console.log("userid", userid);
     if (userid) {
       if (personalProfileIsSubmited === true) {
         post("api/v1/freelancer_profile/", data)
@@ -112,6 +111,10 @@ class TabbarRegistration extends Component {
       tabindex: this.state.tabindex - 1,
     });
   };
+
+  stepsfinish = () => {
+ this.setState({hourlyRateError:true})
+  }
 
   getTabIndexFromLocalStorage = (tabindex2) => {
     this.setState({ tabindex: tabindex2 });
@@ -520,7 +523,7 @@ class TabbarRegistration extends Component {
                 />
               )}
               {tabindex === 5 && (
-                <HourlyRate onStateChange={this.hourlyRatestateHandler}  tabindex={true} />
+                <HourlyRate onStateChange={this.hourlyRatestateHandler}  showError={this.state.hourlyRateError} />
                
               )}
 
@@ -554,7 +557,13 @@ class TabbarRegistration extends Component {
                   </div>
                 ) : (
                   <div>
-                    <button type="button" className="btn tb_nextButton">
+                    <button type="button"
+                             className="btn tb_nextButton"
+                              onClick={() => {
+                   
+                        this.stepsfinish();
+                      }}
+                             >
                       {" "}
                       FINISH <ArrowRightAltIcon />
                     </button>
