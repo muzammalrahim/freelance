@@ -6,7 +6,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import GetImage from "../registration/GetImage";
-import { post } from "../helper/api";
+import { post } from "../helper/api"; 
 import  list from "../helper/api";
 import { useHistory } from "react-router-dom";
 
@@ -16,11 +16,14 @@ function RequestPaymentModal() {
   const [open, setOpen] = useState(false);
   const [select, setSelect] = useState("");
   // hook for  imageupload
-  // const [upload, setUpload] = useState();
+  const [upload, setUpload] = useState({
+    selectedFile: ''
+});
+
   // hook for post  meassage
   const [data, setData] = useState({
     description: "",
-    attachments: "",
+    attachments: "" 
   });
  
 
@@ -38,31 +41,33 @@ function RequestPaymentModal() {
 
   // function for image upload
 
-  function uploadFile(base64file) {
-    setData({
-      ...data,
-      attachments: base64file,
-    });
-    console.log("user : ", data);
-  }
+  // function uploadFile(base64file) {
+  //   setData({
+  //     ...data,
+  //     attachments: base64file,
+  //   });
+  //   console.log("user : ", data);
+  // }
 
   // post API call
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const onChangeHandler = event => {
+    setUpload({
+     selectedFile: event.target.files,
+    })
+}
+// On file upload (click the upload button)
 
-    post('/api/v1/contract/', data).then((response) => {
-      let alldata = { user: data, img: data };
-      console.log("userData", alldata);
-      if (response.data.Status === "Success") {
-        console.log(response.data.Status);
-        alert("Data Save Successfully");
-        history.push("/ContractOne");
-      } else {
-        alert("Data not Saved");
-        history.push("/ContractOne");
-      }
-    });
-  };
+const onClickHandler = () => {
+    const data = new FormData()
+    data.append('file', upload.selectedFile)
+    post('/api/v1/contract/', data, { 
+       // receive two    parameter endpoint url ,form data
+   })
+ 
+ .then(res => { // then print response status
+     console.log(res.statusText)
+  })
+ }
  
   const { description } = data;
   const onInputChange = (e) => {
@@ -131,12 +136,13 @@ function RequestPaymentModal() {
                     />
                   </div>
                 </div>
-                <div className="modal-upload-img text-left pt-4">
-                  <h3 className="pb-1">Upload Files</h3>
+                <div className="modal-upload-img text-left">
+                  {/* <h3 className="pb-1">Upload Files</h3>
                   <GetImage
                     idVerf_DL_imgUpload={uploadFile}
                     value="idVerf_DL_imgUpload"
-                  />
+                  /> */}
+                  {/* <UploadFile onChange={(e) => onInputChange(e)} /> */}
                 </div>
                 <div className="bid-buttons d-flex justify-content-center pb-4 mt-5">
                   <button
@@ -148,11 +154,10 @@ function RequestPaymentModal() {
                     <span class="MuiTouchRipple-root"></span>
                   </button>
                   <button
-                    onClick={handleSubmit}
+                    onClick={onClickHandler}
                     class="btn btn--yellow btn--medium"
                     autoFocus
                   >
-                    {" "}
                     Submit
                   </button>
                 </div>

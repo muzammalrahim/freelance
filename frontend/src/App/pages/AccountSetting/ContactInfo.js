@@ -4,14 +4,14 @@ import "./ProfileSetting.css"
 import Modal from "react-bootstrap/Modal";
 import CloseIcon from '@material-ui/icons/Close';
 import list from '../helper/api';
-import { useHistory, useParams } from "react-router-dom";
-import Dropdown from "../../../components/Dropdown";
-
 
 export default function ContactInfo(props) {
+<<<<<<< HEAD
   var getid
+=======
+>>>>>>> bb69640427c51e05294f7b4d20421b2ea6dccd25
 const [data, setData] = useState('');
-const [id, setId] = useState(null);
+const [id, setId] = useState();
 const [user, setUser] = useState({
 first_name : "" ,
 street : "",
@@ -19,12 +19,17 @@ mobile_no : ''
 });
 
 const getData = () =>{
+   
 list('api/v1/accounts/profile/')
 .then((response)=>{
-console.log("show response data:",response.data);
 const data = response.data;
+<<<<<<< HEAD
   getid = JSON.parse(response.data.id);
  setId(getid)
+=======
+console.log("freelancerd idfsf:",data.id);
+
+>>>>>>> bb69640427c51e05294f7b4d20421b2ea6dccd25
 setData(data);
 
 console.log("get prifile id",getid)
@@ -33,12 +38,17 @@ console.log("get prifile id",getid)
   
    
 }
-const getUser = () => {
 
+<<<<<<< HEAD
 list("api/v1/freelancer_profile/66/")
+=======
+const getUser = () => {
+list(`api/v1/freelancer_profile/5/`)
+>>>>>>> bb69640427c51e05294f7b4d20421b2ea6dccd25
 .then((response) => {
-console.log("janter" ,response.data);
 const data= response.data;
+var id = JSON.parse(response.data.id);
+console.log("freelancerd id:",id);
 setUser(data);
 })
 }
@@ -46,9 +56,7 @@ setUser(data);
 
 useEffect(() => {
 getData();
-
 getUser();
-
 }, [])
 
 
@@ -201,4 +209,3 @@ Location
 }
 
 // }
-
