@@ -10,6 +10,7 @@ import { useTheme } from "@material-ui/core/styles";
 import Proposal from "../jobs/Proposal";
 import GetImage from "../registration/GetImage";
 import { makeStyles } from "@material-ui/core/styles";
+import CloseIcon from '@material-ui/icons/Close';
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import HoverRating from "./FeedBackRating";
 import { post } from '../helper/api';
@@ -51,7 +52,7 @@ function FeedBackModal() {
  
   const onInputChange = (e) => {
     setUser({...user, [e.target.name] : e.target.value})
-    console.log(user);
+    console.log("user post" ,user);
   }
    const onSubmitt = (e) => {
     e.preventDefault();
@@ -90,19 +91,27 @@ function FeedBackModal() {
         maxWidth="xl"
         classes={{ paper: "myCustomDialog" }}
       >
-        {/* <DialogTitle id="responsive-dialog-title">{"Submit Bid"}</DialogTitle> */}
         <DialogContent classes={{ root: "custom-root" }}>
           <DialogContentText>
             <div className="modal-main">
               <div className="cont-submit-payment pb-2">
                 <div className="proposal-heading text-left">
-                  <h1 className="mb-0 p-3">End Project</h1>
+                  <div className="row">
+                    <div className="col-md-6 pl-5 pt-3 pb-3">
+                    <h1 className="font-weight-bold">End Project</h1>
                 </div>
+                <div className="col-md-6 pr-5 pt-3 pb-3">
+                <CloseIcon onClick={handleClose} className="float-right" />
+                </div>
+                    </div>
+                  </div>
+                </div>
+                
                 <div className="feedback-sec d-flex justify-content-center pt-4">
-                  <HoverRating 
-                  name="rate"
-                  value={user.rate}
-                  onChange ={(e) => onInputChange(e)}
+                    <HoverRating 
+                    name="rate"
+                    value={user.rate}
+                    onChange ={(e) => onInputChange(e)}
                   />
                 </div>
 
@@ -127,34 +136,33 @@ function FeedBackModal() {
                 <div className="modal-msg text-left p-4">
                   <h3 className="pb-1">Share your experience with client</h3>
                   <div className="modal-textarea">
-                    <textarea 
-                    placeholder="Type your feesback here..."
-                    name = "description"
-                    value ={user.description}
-                    onChange ={(e) => onInputChange(e)}
+                      <textarea 
+                      placeholder="Type your feedback here..."
+                      name = "description"
+                      value ={user.description}
+                      onChange ={(e) => onInputChange(e)}
                      />
                   </div>
                 </div>
                 <div className="bid-buttons d-flex justify-content-center pb-4 mt-3">
                   <button
-                    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary"
-                    tabindex="0"
-                    type="button"
+                      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary"
+                      tabindex="0"
+                      type="button"
                   >
-                    <span class="MuiButton-label">Cancel</span>
-                    <span class="MuiTouchRipple-root"></span>
+                      <span class="MuiButton-label">Cancel</span>
+                      <span class="MuiTouchRipple-root"></span>
                   </button>
                   <button
-                    onClick={(e) => onSubmitt(e)}
-                    class="btn btn--yellow btn--medium"
-                    autoFocus
+                      onClick={(e) => onSubmitt(e)}
+                      class="btn btn--yellow btn--medium"
+                      autoFocus
                   >
                     {" "}
                     Submit
                   </button>
                 </div>
               </div>
-            </div>
           </DialogContentText>
         </DialogContent>
       </Dialog>

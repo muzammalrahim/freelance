@@ -30,17 +30,17 @@ export default function HoverRating() {
   });
   const classes = useStyles();
   const onInputChange = (e) => {
-    setValue(value);
-    console.log(value);
+    setValue({value, [e.target.name] : e.target.value})
+    // console.log(value);
   }
   return (
     <div className={classes.root}>
       <Rating
+        size ='large'
         name="rate"
         value={value.rate}
         precision={0.5}
         onChange ={(e) => onInputChange(e)}
-        
       />
       {console.log(value)}
     </div>
