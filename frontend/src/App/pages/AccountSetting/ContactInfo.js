@@ -6,10 +6,6 @@ import CloseIcon from '@material-ui/icons/Close';
 import list from '../helper/api';
 
 export default function ContactInfo(props) {
-<<<<<<< HEAD
-  var getid
-=======
->>>>>>> bb69640427c51e05294f7b4d20421b2ea6dccd25
 const [data, setData] = useState('');
 const [id, setId] = useState();
 const [user, setUser] = useState({
@@ -23,28 +19,14 @@ const getData = () =>{
 list('api/v1/accounts/profile/')
 .then((response)=>{
 const data = response.data;
-<<<<<<< HEAD
-  getid = JSON.parse(response.data.id);
- setId(getid)
-=======
 console.log("freelancerd idfsf:",data.id);
 
->>>>>>> bb69640427c51e05294f7b4d20421b2ea6dccd25
 setData(data);
-
-console.log("get prifile id",getid)
 })
-
-  
-   
 }
 
-<<<<<<< HEAD
-list("api/v1/freelancer_profile/66/")
-=======
 const getUser = () => {
 list(`api/v1/freelancer_profile/5/`)
->>>>>>> bb69640427c51e05294f7b4d20421b2ea6dccd25
 .then((response) => {
 const data= response.data;
 var id = JSON.parse(response.data.id);
