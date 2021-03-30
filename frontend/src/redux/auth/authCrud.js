@@ -16,10 +16,19 @@ export function login(login, password) {
 
 
 
-export function sign_up(username, email,password,account_type,password_confirm,) {
+export function sign_up(data) {
 
+  let config ={
+
+    headers : {
+                  'Content-Type': 'application/json',
+                 
+              }
+          }
+
+  console.log("baby",data)
     // return axios.post(LOGIN_URL, { email, password })
-    return axios.post(process.env.REACT_APP_API_URL + SIGNUP_URL, {username, email,password,account_type,password_confirm})
+    return axios.post(process.env.REACT_APP_API_URL + SIGNUP_URL,data,config)
   }
 
 
@@ -42,6 +51,7 @@ export function sign_up(username, email,password,account_type,password_confirm,)
 
     console.log("api:",process.env.REACT_APP_API_URL + Linkedin_LOGIN_URL)
     console.log("length",data.length)
+    console.log("data",data)
     return axios.post(process.env.REACT_APP_API_URL + Linkedin_LOGIN_URL,data,config)
 
   }

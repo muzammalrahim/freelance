@@ -4,6 +4,8 @@ import AddPortfolio from './AddPortfolio'
 import PortfolioDetails from './PortfolioDetails'
 import DetailsPreview from '../../components/profileview/preview/DetailsPreview'
 import Header from '../header/Header'
+import CheckIcon from '@material-ui/icons/Check';
+
 
 export default class PortfolioTab extends Component {
   constructor(props) {
@@ -26,6 +28,14 @@ export default class PortfolioTab extends Component {
 
   
   render() {
+    let { tabindex } = this.state;
+
+    if (tabindex > 1) {
+      localStorage.setItem("tabindex", tabindex);
+    } else if (tabindex === 1) {
+      localStorage.setItem("tabindex", 1);
+    }
+
 
     return (
 
@@ -39,46 +49,111 @@ export default class PortfolioTab extends Component {
               <div className="portfoliotab-design-left col-md-3 pt-5 pl-5">
                
                 <div className="Tab pt-4">
-                  <span
-                    className=" "
-                    onClick={() => this.setState({ tabindex: 1 })}
-                  >
-                    <button className={"Buttoncls " + (this.state.tabindex=== 1 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 1 })}>
-                        1
-                  </button>
+                <span
+                      class=" "
+                      onClick={() => this.setState({ tabindex: 1 })}
+                    >
+                      {/*
+              <button type="button" class={"btn btn-outline-secondary btn-circle btn-md " + (this.state.tabindex=== 1 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 1 })}> 1</button> */}
 
-                  </span>{" "}
-                  <span className="text2">Add Project</span>
+              {this.state.tabindex >1 ?
+                <span style={{color: "white",background:" #1DA799", borderRadius: "25px"}}>
+                <CheckIcon/>
+                </span>
+              
+              :
+              
+              <button
+                className={
+                  "Buttoncls " +
+                  (tabindex === 1 ? "ButtonclsActive" : "hidden")
+                }
+                onClick={() => this.setState({ tabindex: 1 })}
+              >
+                1
+              </button>
+              }
+                     
+                      <span
+                        class={
+                          "text2" +
+                          (this.state.tabindex === 1 ? "y-text" : "hidden")
+                        }
+                        onClick={() => this.setState({ tabindex: 1 })}
+                      >
+                   Add Project
+                      </span>
+                    </span>{" "}
                 </div>{" "}
                 <div className="pt-5"> </div>
 
-                <div className="Tab">
-                  <span
-                    className=" "
-                    onClick={() => this.setState({ tabindex: 2 })}
-                  >
-                    <button className={"Buttoncls " + (this.state.tabindex=== 2 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 2 })}>
+                <div class="Tab">
+                    <span
+                      class=" "
+                      onClick={() => this.setState({ tabindex: 2 })}
+                    >
+
+                    {this.state.tabindex > 2 ?
+                      <span style={{color: "white",background:" #1DA799", borderRadius: "25px"}}>
+                      <CheckIcon/>
+                      </span>
+                    
+                    :
+                      <button
+                        className={
+                          "Buttoncls " +
+                          (tabindex === 2 ? "ButtonclsActive" : "hidden")
+                        }
+                        onClick={() => this.setState({ tabindex: 2 })}
+                      >
                         2
-                  </button>
-
-                  </span>{" "}
-                  <span className="text2">Add Details</span>
-                </div>{" "}
+                      </button>
+                    }
+                      <span
+                        class={
+                          "text2" +
+                          (this.state.tabindex === 2 ? "y-text" : "hidden")
+                        }
+                        onClick={() => this.setState({ tabindex: 2 })}
+                      >
+                  Add Details
+                      </span>
+                    </span>{" "}
+                  </div>{" "}
                 <div className="pt-5"> </div>
 
-
-                  <div className="Tab">
-                  <span
-                    className=" "
-                    onClick={() => this.setState({ tabindex: 3 })}
-                  >
-                    <button className={"Buttoncls " + (this.state.tabindex=== 3 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 3 })}>
+                <div class="Tab">
+                    <span
+                      class=" "
+                      onClick={() => this.setState({ tabindex: 3 })}
+                    >
+                    {this.state.tabindex > 3 ?
+                      <span style={{color: "white",background:" #1DA799", borderRadius: "25px"}}>
+                      <CheckIcon/>
+                      </span>
+                    
+                    :
+                      <button
+                        className={
+                          "Buttoncls " +
+                          (tabindex === 3 ? "ButtonclsActive" : "hidden")
+                        }
+                        onClick={() => this.setState({ tabindex: 3 })}
+                      >
                         3
-                  </button>
-   
-                  </span>{" "}
-                  <span className="text2">Preview</span>
-                </div>{" "}
+                      </button>
+                    }
+                      <span
+                        class={
+                          "text2" +
+                          (this.state.tabindex === 3 ? "y-text" : "hidden")
+                        }
+                        onClick={() => this.setState({ tabindex: 3 })}
+                      >
+                        Preview
+                      </span>
+                    </span>{" "}
+                  </div>{" "}
             </div>
         
 

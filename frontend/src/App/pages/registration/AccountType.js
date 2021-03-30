@@ -10,32 +10,30 @@ import TabbarRegistration from "./TabbarRegistration";
 export default class AccountType extends Component {
   state = {
     pageloadvalue: 0,
-    Accounttype : ''
+    Accounttype: "",
   };
 
   FreelacerPage = () => {
-
-    this.setState({ 
-                        pageloadvalue: 1,
-                        Accounttype : 'freelance'
-                    });
+    this.setState({
+      pageloadvalue: 1,
+      Accounttype: "hire",
+    });
   };
 
   ClientPage = () => {
-
-    this.setState({ 
-                        pageloadvalue: 1 ,
-                        Accounttype : 'client'
-                    });
+    this.setState({
+      pageloadvalue: 1,
+      Accounttype: "work",
+    });
   };
 
-
-
   render() {
-{console.log("omy",this.state.Accounttype)}
+    {
+      
+    }
 
     if (this.state.pageloadvalue === 1) {
-      return <TabbarRegistration />;
+      return <TabbarRegistration  account_type={this.state.Accounttype}/>;
     } else {
       return (
         <div className="main back_g">
@@ -86,7 +84,6 @@ export default class AccountType extends Component {
                         <div
                           onClick={this.ClientPage}
                           className="p-4 card cardfocus"
-                        
                         >
                           <img
                             className="card-img-top img-wh"
@@ -105,7 +102,6 @@ export default class AccountType extends Component {
                         <div
                           onClick={this.FreelacerPage}
                           className="p-4 card cardfocus"
-                      
                         >
                           <img
                             className="card-img-top img-wh bodr"

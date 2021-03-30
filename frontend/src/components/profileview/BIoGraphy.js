@@ -1,16 +1,13 @@
 import React, { useEffect, useState} from "react";
 import "./BioGraphy.css";
+import { Link } from  'react-router-dom';
 import list  from '../../App/pages/helper/api';
 
 
 function BioGraphy() {
-//   function handleClick(e) {
-//     e.preventDefault(put('api/v1/profile/')
-//     )
-//   console.log('clicked')
-// }
   const [profiledata, setprofileData] = useState ('');
   const [skills, setSkills] = useState ('');
+
 
   function getdata() {
     console.log("show response:");
@@ -39,9 +36,12 @@ function BioGraphy() {
             <h>Personal Profile</h>
           </div>
           <div class="col-md-6 pr-4">
+            <Link to={`EditBio/${profiledata.id}`}>
+          
             <button type="button" class="btn btn-primary btn-sm float-right" >
         EDIT
             </button>
+            </Link>
           </div>
           <address>
             <div className="tst">
@@ -79,7 +79,7 @@ function BioGraphy() {
                       <p>Address</p>
                     </div>
                     <div className="col-md-9">
-                      <a href="jack14@gmail.com ">
+                      <a href="">
                      {profiledata.street}
                       </a>
                     </div>

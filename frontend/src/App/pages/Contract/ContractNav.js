@@ -13,17 +13,14 @@ export default class ContractNav extends Component {
     
    }
    componentDidMount() {
-    console.log("show response:");
+    // console.log("show response:");
     list('api/v1/contract/')
     .then((response)=>{
-      console.log("show response:",response.data[1]);
+      console.log("show response:",response.data);
       const {...rest} = response.data[1];
       this.setState(rest);
        }) 
    }
-   
-   
-   
 
     render() {
         return (
