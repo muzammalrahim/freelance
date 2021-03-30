@@ -69,6 +69,13 @@
   .tabbar .lineActive{
   border-left: 1px dashed #EE9821;
   }
+
+  .tabbar .lineActivee{
+    border-left: 1px dashed red;
+    width: 0px;
+  height: 40px;
+  margin-left: 12px;
+    }
   
   .but{
   background: #ffffff;
