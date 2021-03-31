@@ -9,7 +9,7 @@ import LOCKER from "../../../assets/LOCKER.png";
 import AlertCompo from "./Alert";
 import Signinfooter from "./Signinfooter";
 import { login } from "../../../redux/auth/authCrud";
-import { withRouter } from "react-router-dom";
+import {Link, withRouter } from "react-router-dom";
 import LinkedInPage from "./LinkedInPage";
 import { Snackbar } from "@material-ui/core";
 import { Alert, AlertTitle } from "@material-ui/lab";
@@ -268,7 +268,8 @@ class SignIn extends Component {
           </Alert>
         </Snackbar>
         <div className="si-container">
-          <Navbar text="New Member?" value="Signup" />
+        <Link to="/signup"><Navbar text="New Member?" value="Signup" /></Link>
+        
         </div>
         <div>
           <SiSoHero />

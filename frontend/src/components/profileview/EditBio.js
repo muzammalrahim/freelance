@@ -115,7 +115,7 @@ function EditUser() {
                         class="form-control"
                         type="text"
                         name="user"
-                        value= {user.user.email}
+                        value= {user.email}
                         onChange={e => onInputChange(e)}
                         />
                         
