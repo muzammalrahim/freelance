@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { Snackbar } from "@material-ui/core";
 import { Alert, AlertTitle } from "@material-ui/lab";
 
-class HourlyRate extends React.Component {
+class HourlyRate extends React.Component{
   constructor(props) {
     super(props);
     this.alert = {
@@ -41,13 +41,13 @@ class HourlyRate extends React.Component {
   }
 
   proposalHandler = (e) => {
+     let isSubmit = null
     let {
       proposal_amount,
       proposalAmountValidate,
       proposalAmountError,
     } = this.state;
     let newValue = e.target.value;
-
     const { name } = e.target;
 
     var percent = (newValue / 100) * 85;
@@ -55,7 +55,7 @@ class HourlyRate extends React.Component {
     this.setState((state) => ({
       [name]: newValue,
     }));
-
+    this.props.onStateChange(newValue)
     newValue !== "" ? (
       <div>
         {(proposalAmountError["proposal_amount"] = true)},
@@ -64,8 +64,8 @@ class HourlyRate extends React.Component {
     ) : (
       (proposalAmountError["proposal_amount"] = "proposal Amount is required")
     );
-    this.setState({ total_amount: percent, remainder: remainder ,});
-   
+  
+    this.setState({ total_amount: percent, remainder: remainder ,})
   };
   render() {
     let {
@@ -75,6 +75,7 @@ class HourlyRate extends React.Component {
     } = this.state;
     return (
       <div className="HourlyRate">
+    
         {/*left section END*/}
         <Snackbar
           open={open}
