@@ -69,13 +69,13 @@ class ProfessionalProfile2 extends Component {
         // validation[key] = chooseCategory  ? true : false
       } else if (key === "skills") {
         if (this.state.skills !== "") {
-          console.log("skills", key);
+         
         }
         //return skills.length > 0 ? console.log("skills",key) : null
         //  validation[key] = skills.length > 0 ? true : false
       } else if (key === "provideService") {
         if (this.state.provideService !== "") {
-          console.log("provideService", key);
+         
         }
         //  return provideService ? console.log("provideService",key) :null
         // validation[key] = provideService ? true : false
@@ -94,7 +94,7 @@ class ProfessionalProfile2 extends Component {
       }
     });
 
-    console.log("doom", doom);
+   
   };
 
   handleInputChange(event) {
@@ -188,7 +188,7 @@ class ProfessionalProfile2 extends Component {
     } = this.state;
     return (
       <div className="ProfessionalProfile">
-        <Snackbar
+       <Snackbar
           open={open}
           autoHideDuration={4000}
           anchorOrigin={{ vertical: "top", horizontal: "right" }}
@@ -206,8 +206,8 @@ class ProfessionalProfile2 extends Component {
             <strong>{message}</strong>
           </Alert>
         </Snackbar>
+          
         <div className="Pf-container proff-prof">
-          {console.log("this state", this.state.validation)}
           <div className="container Pf-rightbox   bg2 b_line2 p-5">
             <div class="container-fluid">
               {this.props.onStateChange(this.state, "StateData")}
