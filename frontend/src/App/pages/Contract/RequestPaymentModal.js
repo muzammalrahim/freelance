@@ -10,7 +10,7 @@ import { post } from "../helper/api";
 import  list from "../helper/api";
 import { useHistory } from "react-router-dom";
 
-function RequestPaymentModal() {
+function RequestPaymentModal(props) {
   
   let history = useHistory();
   const [open, setOpen] = useState(false);
@@ -38,7 +38,10 @@ function RequestPaymentModal() {
   const handleClose = () => {
     setOpen(false);
   };
-
+ 
+  const handleBinaryImg = (binaryfile)=>{
+    this.props.onStateChange(binaryfile,"Certficate");
+  }
   // function for image upload
 
   // function uploadFile(base64file) {
@@ -50,17 +53,17 @@ function RequestPaymentModal() {
   // }
 
   // post API call
-  const onChangeHandler = event => {
-    setUpload({
-     selectedFile: event.target.files,
-    })
-}
+//   const onChangeHandler = event => {
+//     setUpload({
+//      selectedFile: event.target.files,
+//     })
+// }
 // On file upload (click the upload button)
 
 const onClickHandler = () => {
-    const data = new FormData()
-    data.append('file', upload.selectedFile)
-    post('/api/v1/contract/', data, { 
+    // const data = new FormData()
+    // data.append('file', upload.selectedFile)
+    post('api/v1/contract/', data, { 
        // receive two    parameter endpoint url ,form data
    })
  
@@ -137,12 +140,16 @@ const onClickHandler = () => {
                   </div>
                 </div>
                 <div className="modal-upload-img text-left">
-                  {/* <h3 className="pb-1">Upload Files</h3>
-                  <GetImage
+                 <h3 className="pb-1">Upload Files</h3>
+                 {/*   <GetImage
                     idVerf_DL_imgUpload={uploadFile}
                     value="idVerf_DL_imgUpload"
                   /> */}
                   {/* <UploadFile onChange={(e) => onInputChange(e)} /> */}
+                  <GetImage
+                          onUpload={handleBinaryImg}
+                          value="onUpload"
+                        />
                 </div>
                 <div className="bid-buttons d-flex justify-content-center pb-4 mt-5">
                   <button

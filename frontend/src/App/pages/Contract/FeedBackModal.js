@@ -4,16 +4,18 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
-import Proposal from "../jobs/Proposal";
-import GetImage from "../registration/GetImage";
 import { makeStyles } from "@material-ui/core/styles";
 import CloseIcon from '@material-ui/icons/Close';
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import HoverRating from "./FeedBackRating";
+// import HoverRating from "./FeedBackRating";
 import { post } from '../helper/api';
+import { useHistory } from 'react-router-dom'
+ 
+
+// import { makeStyles } from '@material-ui/core/styles';
+import Rating from '@material-ui/lab/Rating';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -25,13 +27,37 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function FeedBackModal() {
+function FeedBackModal(props) {
+  let history = useHistory();
   const [open, setOpen] = useState(false);
+  const [value, setValue] = useState();
   const [user, setUser] = useState({
     provideService : '',
     description : '',
-    rate : ''
+    rate: ''
   });
+  
+  const labels = {
+    0.5: 'hello',
+    1: 'hello',
+    1.5: 'hello',
+    2: 'hello',
+    2.5: 'hello',
+    3: 'hello',
+    3.5: 'hello',
+    4: 'hello',
+    4.5: 'hello',
+    5: 'hello',
+  };
+  
+  const useStyles = makeStyles({
+    root: {
+      width: 200,
+      display: 'flex',
+      alignItems: 'center',
+    },
+  });
+  const classes = useStyles();
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 //open 
@@ -46,24 +72,29 @@ function FeedBackModal() {
 
   const handleChange = (e) => {
     setUser({
-    provideService : e.target.value ,
+    ...user, [e.target.name] : e.target.value
     });
   };
  
   const onInputChange = (e) => {
-    setUser({...user, [e.target.name] : e.target.value})
-    console.log("user post" ,user);
+    setUser({...user, [e.target.name] : e.target.value
+
+    })
+    setValue({value, [e.target.name] : e.target.value})
+    
   }
    const onSubmitt = (e) => {
     e.preventDefault();
-    post('/api/v1/feedback_review/',user)
+      console.log("all data",user)
+      
+    post('api/v1/feedback_review/',{ type: 'freelancer', rate: 4, description: 'teste', user: 22})
     .then((res) => {
      console.log("res",res.data);
-     setUser({...user});
+     setUser({user});
+     history.push('/contractThree')
     })
-    .catch(error => {
-      console.log(error)
-    })
+    .catch(error => { console.log(error)})
+    
    }
 
   return (
@@ -108,11 +139,16 @@ function FeedBackModal() {
                 </div>
                 
                 <div className="feedback-sec d-flex justify-content-center pt-4">
-                    <HoverRating 
-                    name="rate"
-                    value={user.rate}
-                    onChange ={(e) => onInputChange(e)}
-                  />
+                <div className={classes.root}>
+      <Rating
+        size ='large'
+        name="rate"
+        value={user.rate}
+        precision={0.5}
+        onChange ={(e) => onInputChange(e)}
+      />
+      {console.log(value)}
+    </div>
                 </div>
 
                 <div className="select-reason text-left p-4">
