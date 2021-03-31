@@ -20,13 +20,29 @@ class ProfessionalProfile2 extends Component {
       message: "",
       title: "",
     };
+
+    this.validation = {
+      skills: false,
+      provideService: false,
+      chooseCategory: false,
+    };
+
+    this.professionalProfileData = {
+      provideService: "",
+      skills: [],
+      chooseCategory: [],
+    };
+
     this.state = {
+      professionalProfileData: this.professionalProfileData,
       alert: this.alert,
+      validation: this.validation,
       provideService: "",
       skills: [],
       chooseCategory: [],
       getSkillsList: [],
       getChooseCategoryList: [],
+      isSubmit: false,
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -38,7 +54,51 @@ class ProfessionalProfile2 extends Component {
     this.setState({ alert: { open: false, severity: "", message: "" } });
   }
 
+  checkvalidtion = () => {
+    let {
+      validation,
+      skills,
+      chooseCategory,
+      provideService,
+      isSubmit,
+    } = this.state;
+
+    Object.keys(validation).map((key) => {
+      if (key === "chooseCategory") {
+        // return provideService ? console.log("chooseCategory",key) : null
+        // validation[key] = chooseCategory  ? true : false
+      } else if (key === "skills") {
+        if (this.state.skills !== "") {
+         
+        }
+        //return skills.length > 0 ? console.log("skills",key) : null
+        //  validation[key] = skills.length > 0 ? true : false
+      } else if (key === "provideService") {
+        if (this.state.provideService !== "") {
+         
+        }
+        //  return provideService ? console.log("provideService",key) :null
+        // validation[key] = provideService ? true : false
+      }
+    });
+    this.setState({ validation });
+  };
+
+  checkvalidtion2 = () => {
+    let { validation } = this.state;
+    let doom = 0;
+
+    Object.values(validation).map((value) => {
+      if (value === false) {
+        doom = doom + 1;
+      }
+    });
+
+   
+  };
+
   handleInputChange(event) {
+    let { professionalProfileData } = this.state;
     const target = event.target;
     var id = target.id;
 
@@ -46,23 +106,33 @@ class ProfessionalProfile2 extends Component {
       this.setState((prevState) => ({
         chooseCategory: [...prevState.chooseCategory, id],
       }));
+
+      // this.setState((prevState) => ({
+      //  professionalProfileData: {  chooseCategory: [...prevState.chooseCategory, id], }
+      //
+      // }));
     } else {
       const chooseCategory = this.state.chooseCategory.filter(
         (chooseCategory) => chooseCategory != id
       );
+
       this.setState({
         chooseCategory,
       });
     }
 
+    this.checkvalidtion();
   }
 
   handleBinaryImg(binaryfile) {
-    this.props.onStateChange(binaryfile,"Certficate");
+    this.props.onStateChange(binaryfile, "Certficate");
   }
 
   dropDownHandler(provideService2) {
+  
     this.setState({ provideService: provideService2 });
+    
+    this.checkvalidtion();
   }
 
   checkExistedSkill(name) {
@@ -114,10 +184,11 @@ class ProfessionalProfile2 extends Component {
       getSkillsList,
       getChooseCategoryList,
       alert: { open, severity, message, title },
+      validation,
     } = this.state;
     return (
       <div className="ProfessionalProfile">
-        <Snackbar
+       <Snackbar
           open={open}
           autoHideDuration={4000}
           anchorOrigin={{ vertical: "top", horizontal: "right" }}
@@ -135,10 +206,11 @@ class ProfessionalProfile2 extends Component {
             <strong>{message}</strong>
           </Alert>
         </Snackbar>
+          
         <div className="Pf-container proff-prof">
           <div className="container Pf-rightbox   bg2 b_line2 p-5">
             <div class="container-fluid">
-            {console.log("oops",this.state) , this.props.onStateChange(this.state,"StateData")}
+              {this.props.onStateChange(this.state, "StateData")}
               <div>
                 <div class="row pl-3">
                   <div className="Per_img-wrap">
@@ -182,6 +254,8 @@ class ProfessionalProfile2 extends Component {
                               skills: [...prevState.skills, data],
                             }));
                           }
+
+                          this.checkvalidtion();
                           // this.props.onStateChange(this.state,"StateData");
                         }}
                         className="form-control"
