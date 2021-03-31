@@ -192,13 +192,13 @@ AUTHENTICATION_BACKENDS = [
 	'allauth.account.auth_backends.AuthenticationBackend',
 ]
 REST_REGISTRATION = {
-	'REGISTER_VERIFICATION_ENABLED': False,
-	'REGISTER_EMAIL_VERIFICATION_ENABLED': False,
+	'REGISTER_VERIFICATION_ENABLED': True,
+	'REGISTER_EMAIL_VERIFICATION_ENABLED': True,
 	'RESET_PASSWORD_VERIFICATION_ENABLED': True,
 	'REGISTER_VERIFICATION_URL': '{}/verify-user/'.format(SITE_URL),
 	'RESET_PASSWORD_VERIFICATION_URL': '{}/reset-password/'.format(SITE_URL),
 	'REGISTER_EMAIL_VERIFICATION_URL': '{}/verify-email/'.format(SITE_URL),
-	'VERIFICATION_FROM_EMAIL': 'arslanmehmood051@gmail.com',
+	'VERIFICATION_FROM_EMAIL': 'shaheroumwali@gmail.com',
 	'USER_LOGIN_FIELDS': ('email', 'username'),
 
 	# 'USER_PUBLIC_FIELDS': ('first_name', 'last_name', 'email',),

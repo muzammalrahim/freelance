@@ -160,6 +160,11 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
 	# category = CategorySerializers(many=True, required=False)
 	city = CitySerializers(required=False)
 	country = CountrySerializers(required=False)
+	ACCOUNT_TYPE_CHOICES = (
+		('work', 'Work'),
+		('hire', 'Hire'),
+	)
+	account_type = serializers.ChoiceField(choices=ACCOUNT_TYPE_CHOICES, required=False)
 
 	# license = AttachmentSerializer(write_only=True, required=False)
 	# id_card = AttachmentSerializer(write_only=True, required=False)
@@ -171,6 +176,15 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
 	def create(self, validated_data):
 		# 	skills = validated_data.pop('skills')
 		# 	category = validated_data.pop('category')
+		if 'account_type' in validated_data:
+			account_type = validated_data.pop('account_type')
+			user = self.context['request'].user
+
+			if account_type == 'work':
+				user.groups.add(Group.objects.get(name=settings.FREELANCER_USER))
+
+			elif account_type == "hire":
+				user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
 		user = validated_data.pop('user')
 		id = user.get('id')
 		print("useruseruser--id", id)
@@ -210,6 +224,30 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
 		# 		freelance_profile.category.add(s)
 		#
 		return freelance_profile
+
+	# def update(self, instance, validated_data):
+	# 	user = validated_data.pop('user')
+	# 	print("user", user)
+	# 	city = validated_data.pop('city')
+	# 	country = validated_data.pop('country')
+	#
+	# 	user = UserSerializer(data=user)
+	# 	if user.is_valid():
+	# 		user.save()
+	#
+	#     freelance_api = super().update(instance, validated_data)
+ 	# 	city = CitySerializers(data=city)
+	# 	if city.is_valid():
+	# 		city.save()
+	#
+	# 	country = CountrySerializers(data=country)
+	# 	if country.is_valid():
+	# 		country.save()
+	#
+	# 	self.fields.pop('city')
+	#
+	#
+	#      return freelance_api
 
 	def to_representation(self, instance):
 		representation = super(FreelancerProfileSerializers, self).to_representation(instance)
