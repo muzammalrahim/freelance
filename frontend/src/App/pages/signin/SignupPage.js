@@ -6,7 +6,7 @@ import AvatarImage from "../../../../src/AvatarImage.png";
 import loginimage from "../../../assets/LoginImage.png";
 import Signinfooter from "./Signinfooter";
 import { sign_up } from "../../../redux/auth/authCrud";
-import { withRouter } from "react-router-dom";
+import { Link , withRouter } from "react-router-dom";
 import LinkedInPage from "./LinkedInPage";
 import AlertCompo from "./Alert";
 import { Snackbar } from "@material-ui/core";
@@ -300,7 +300,8 @@ class SignupPage extends Component {
           </Alert>
         </Snackbar>
         <div className="si-container">
-          <Navbar text="Already A Member?" value="LogIn" className="pl-5" />
+        <Link to="/#"><Navbar text="Already A Member?" value="LogIn" className="pl-5" /></Link>
+          
         </div>
         <div>
           <SiSoHero />
