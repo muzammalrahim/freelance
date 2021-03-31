@@ -4,47 +4,36 @@ import "./ProfileSetting.css"
 import Modal from "react-bootstrap/Modal";
 import CloseIcon from '@material-ui/icons/Close';
 import list from '../helper/api';
+import {put, patch} from '../helper/api';
+import { useHistory , useParams } from 'react-router-dom';
 
 export default function ContactInfo(props) {
-<<<<<<< HEAD
-  var getid
-=======
->>>>>>> bb69640427c51e05294f7b4d20421b2ea6dccd25
 const [data, setData] = useState('');
+const [save, setSave] = useState('');
 const [id, setId] = useState();
 const [user, setUser] = useState({
 first_name : "" ,
 street : "",
-mobile_no : ''
+mobile_no : '',
+email: '',
+username:''
+
 });
+let history = useHistory();
 
 const getData = () =>{
-   
+let getid = null
 list('api/v1/accounts/profile/')
 .then((response)=>{
 const data = response.data;
-<<<<<<< HEAD
-  getid = JSON.parse(response.data.id);
- setId(getid)
-=======
-console.log("freelancerd idfsf:",data.id);
-
->>>>>>> bb69640427c51e05294f7b4d20421b2ea6dccd25
+getid = response.data.id
 setData(data);
-
-console.log("get prifile id",getid)
+setId(getid)
 })
-
-  
-   
 }
 
-<<<<<<< HEAD
-list("api/v1/freelancer_profile/66/")
-=======
 const getUser = () => {
-list(`api/v1/freelancer_profile/5/`)
->>>>>>> bb69640427c51e05294f7b4d20421b2ea6dccd25
+list(`api/v1/freelancer_profile/${id}/`)
 .then((response) => {
 const data= response.data;
 var id = JSON.parse(response.data.id);
@@ -53,65 +42,38 @@ setUser(data);
 })
 }
 
+const onInputChange = e =>
+{
+setData({...data ,
+[e.target.name]: e.target.value
+})
+}
+
+const handleSave = (e) => {
+e.preventDefault();
+setShow(false)
+patch("api/v1/accounts/profile/",data)
+.then((response) => {
+const data= response.data;
+var id = JSON.parse(response.data.id);
+history.push(`/account-setting`);
+})
+setSave(data)
+}
+
 
 useEffect(() => {
 getData();
 getUser();
 }, [])
 
-
 const [show, setShow] = useState(false);
 const handleClose = () => setShow(false);
-const handleSave = () => setShow(false);
+
 const handleShow = () => setShow(true);
 
-// export default class ContactInfo extends Component {
-
-// constructor(props){
-// super(props);
-
-// this.state = {
-// show: false,
-// user : ''
-// }
-
-
-// this.dropDownHandler = this.dropDownHandler.bind(this);
-// this.handleClose = this.handleClose.bind(this);
-// this.handleSave = this.handleSave.bind(this);
-// this.handleShow = this.handleShow.bind(this);
-
-
-// }
-
-// dropDownHandler (provideService2)
-// {
-// this.setState({provideService:provideService2})
-// }
-
-// handleClose (event){
-// this.setState({show:false})
-// }
-
-// handleSave (event){
-// this.setState({show:false})
-// }
-
-// handleShow (event){
-// this.setState({show:true})
-// }
-
-// componentDidMount() {
-// list('/api/v1/profile/')
-// .then((res)=> {
-// console.log("response" ,res)
-// this.setState({...user});
-// })
-// }
-
-
-// render() {
 return (
+
 <div className="contact-information">
 {console.log("id",id)}
 <div className="ci-heading">
@@ -133,34 +95,55 @@ Account
 </div>
 </div>
 <div className="form-row">
-<div className="form-group col-md-6">
+<div className="form-group col-md-12">
 <label for="inputtext">Username</label>
 <input
 type="email"
 className="form-control"
 id="inputtext"
-placeholder="Username"
+value={data.username}
+name="username"
+onChange={e => onInputChange(e)}
+// placeholder="Username"
 />
 </div>
 </div>
 <div className="form-row">
-<div className="form-group col-md-6">
-<label for="inputtext">Name</label>
+<div className="form-group col-md-12">
+<label for="inputtext">First Name</label>
 <input
 type="email"
 className="form-control"
 id="inputtext"
-placeholder="Name"
+name="first_name"
+value={data.first_name}
+onChange={e => onInputChange(e)}
 />
 </div>
 </div>
 <div className="form-row">
-<div className="form-group col-md-6">
+<div className="form-group col-md-12">
+<label for="inputtext">Last Name</label>
+<input
+type="email"
+className="form-control"
+id="inputtext"
+name="last_name"
+value={data.last_name}
+onChange={e => onInputChange(e)}
+/>
+</div>
+</div>
+<div className="form-row">
+<div className="form-group col-md-12">
 <label for="inputtext">Email</label>
 <input
 type="email"
 className="form-control"
 id="inputtext"
+name="email"
+value={data.email}
+onChange={e => onInputChange(e)}
 placeholder="Email"
 />
 </div>
@@ -184,7 +167,7 @@ Save Changes
 
 <div className="ci-account col-md-12">
 <p>User ID<span>{data.username}</span></p>
-<p>Name<span> {data.first_name} {data.last_name}</span></p>
+<p>Name<span> {data.first_name} { data.last_name}</span></p>
 <p>Email<span>{data.email}</span></p>
 </div>
 
@@ -207,5 +190,3 @@ Location
 </div>
 )
 }
-
-// }

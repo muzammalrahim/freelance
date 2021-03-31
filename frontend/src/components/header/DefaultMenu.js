@@ -1,14 +1,47 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import { MenuItems,AccountSettingMenuItems } from "./MenuItems";
-/*import './defaultmenu.css';*/
 import AvatarImage from '../../AvatarImage.png';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import {Link} from 'react-router-dom';
 import Logout from "../../App/pages/signin/Logout"
-
-
+import AccountSettingMain from '../../App/pages/AccountSetting/AccountSettingMain'
+import list from '../../App/pages/helper/api'
 
 function DefaultMenu(props) {
+
+  const [data, setData] = useState('');
+  const [id, setId] = useState();
+  const [user, setUser] = useState({
+  first_name : "" 
+  });
+
+  const getData = () =>{
+   
+    list('api/v1/accounts/profile/')
+    .then((response)=>{
+    const data = response.data;
+    console.log("freelancerd idfsf:",data.id);
+    
+    setData(data);
+    })
+    }
+    
+    const getUser = () => {
+    list(`api/v1/freelancer_profile/5/`)
+    .then((response) => {
+    const data= response.data;
+    var id = JSON.parse(response.data.id);
+    console.log("freelancerd id:",id);
+    setUser(data);
+    })
+    }
+    
+    
+    useEffect(() => {
+    getData();
+    getUser();
+    }, [])
+
     return (
       <nav className="navbar navbar-expand-md">
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -58,7 +91,7 @@ function DefaultMenu(props) {
                 </li>
                 <li class="nav-item dropdown pl-1">
                    
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pixelz Warrios</a>
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{data.first_name} {data.last_name}</a>
                     <div class="dropdown-menu dropdown-menu-right dropdown">
                         <a href="#" class="dropdown-item users-status "data-toggle="dropdown">Status</a>
                           <ul className="user-states pt-2 pl-2 pr-2 ml-5">
@@ -69,10 +102,9 @@ function DefaultMenu(props) {
                               <p className="user-inactive-status dropdown"><span class="inactive-state mr-2 mb-0"></span>Inactive</p>
                             </li>
                           </ul>
-                        <a href="#" class="dropdown-item">View Profile</a>
-                        <a href="#" class="dropdown-item">Account Settings</a>
-                        {/* <div class="dropdown-divider"></div> */}
-                        <Link href="#"  class="dropdown-item"><Logout/></Link>
+                          <Link to="/profileview" class="dropdown-item">View Profile</Link>
+                          <Link to="/account-setting" class="dropdown-item">Account Setting</Link>
+                          <Link href="#"  class="dropdown-item"><Logout/></Link>
                           
                     </div>
                 </li>

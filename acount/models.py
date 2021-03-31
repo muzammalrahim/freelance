@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from polymorphic.models import PolymorphicModel
-from django.utils import timezone
 
 
 # Create your models here.
@@ -120,8 +119,9 @@ class ClientProfile(Profile):
 
 class FreelancerProfile(Profile):
 	SERVICE_CHOICES = (
-		('service1', 'Service 1'),
-		('service2', 'Service 2'),
+		('Copywriting', 'Blog Editing'),
+		('Web Design','Web Development'),
+		('WordPress Setup','Graphic Design')
 	)
 	service = models.CharField(max_length=20, choices=SERVICE_CHOICES, blank=True, null=True)
 	category = models.ManyToManyField(Category, blank=True)

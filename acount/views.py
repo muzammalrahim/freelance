@@ -3,7 +3,6 @@ from rest_framework import viewsets
 # import face_recognition
 import decimal
 from rest_framework.response import Response
-from allauth.socialaccount.providers.linkedin.views import LinkedInOAuthAdapter
 from allauth.socialaccount.providers.linkedin_oauth2.views import LinkedInOAuth2Adapter
 # from rest_auth.registration.views import SocialLoginView
 from dj_rest_auth.registration.views import SocialLoginView
@@ -19,11 +18,6 @@ class LinkedinLogin(SocialLoginView):
 	# serializer_class = LinkedinLoginSerializer
 	# adapter_class = LinkedInOAuthAdapter
 	adapter_class = LinkedInOAuth2Adapter
-
-	# def get_serializer(self, *args, **kwargs):
-	# 	serializer_class = self.get_serializer_class()
-	# 	kwargs['context'] = self.get_serializer_context()
-	# 	return serializer_class(*args, **kwargs)
 
 	def get_response_serializer(self):
 		return acount_serializer.MyTokenSerializer
@@ -78,7 +72,8 @@ class ProfileViewSet(viewsets.ModelViewSet):
 		data = serializer.data
 		data['current_time'] = datetime.utcnow() + timedelta(hours=4)
 		if instance.proposal_amount is not None:
-			data['total_proposal_amount'] = instance.proposal_amount - (decimal.Decimal(15/100)*instance.proposal_amount)
+			data['total_proposal_amount'] = instance.proposal_amount - (
+					decimal.Decimal(15 / 100) * instance.proposal_amount)
 		return Response(data)
 
 
