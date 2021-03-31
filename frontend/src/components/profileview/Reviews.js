@@ -29,7 +29,8 @@ export function Reviews() {
     });
   }
   const loadMore = () =>{
-    setVisible((prevValue) => prevValue +1);
+    setVisible((prevValue) => prevValue +5);
+  
     
   };
   useEffect(() => {

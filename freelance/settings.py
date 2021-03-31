@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 	'drf_yasg',
 	'rest_registration',
 	'rest_framework',
+	'corsheaders',
 	'rest_framework.authtoken',
 	'rest_auth',
 	'constance',
@@ -70,12 +71,12 @@ MIDDLEWARE = [
 	'corsheaders.middleware.CorsMiddleware',
 	'django.middleware.common.CommonMiddleware',
 	'django.middleware.csrf.CsrfViewMiddleware',
-	'django.middleware.csrf.CsrfViewMiddleware',
-	'django.middleware.csrf.CsrfViewMiddleware',
+	'corsheaders.middleware.CorsPostCsrfMiddleware',
 	'django.contrib.auth.middleware.AuthenticationMiddleware',
 	'django.contrib.messages.middleware.MessageMiddleware',
 	'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 CONSTANCE_CONFIG = {
 	'15 % service free': (True, 'Answer to the Ultimate Question of Life, '
@@ -89,11 +90,14 @@ CONSTANCE_CONFIG = {
 ROOT_URLCONF = 'freelance.urls'
 
 CORS_ALLOW_ALL_ORIGINS = True
-
+# CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
 	"http://localhost:3000",
 	"http://127.0.0.1:3000",
 ]
+
+
+
 
 TEMPLATES = [
 	{

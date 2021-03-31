@@ -33,14 +33,14 @@ export function put(endpoint, data) {
     
     }
   }
-  console.log("user",data)
+  // console.log("user",data)
   return axios.put(API_URL + endpoint, data, config)
 }
 export function patch(endpoint, data) {
   let config = {
     headers: headers,
   }
-  return axios.patch(API_URL + endpoint, data, config)
+  return axios.patch(API_URL + endpoint, data)
 }
 
 export function post(endpoint, data) {

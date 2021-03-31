@@ -4,16 +4,16 @@ import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 
 const labels = {
-  0.5: '0.5',
-  1: '1',
-  1.5: '1.5',
-  2: '2',
-  2.5: '2.5',
-  3: '3',
-  3.5: '3.5',
-  4: '4',
-  4.5: '4.5',
-  5: '5',
+  0.5: 'hello',
+  1: 'hello',
+  1.5: 'hello',
+  2: 'hello',
+  2.5: 'hello',
+  3: 'hello',
+  3.5: 'hello',
+  4: 'hello',
+  4.5: 'hello',
+  5: 'hello',
 };
 
 const useStyles = makeStyles({
@@ -24,19 +24,21 @@ const useStyles = makeStyles({
   },
 });
 
-export default function HoverRating() {
+export default function HoverRating(props) {
   const [value, setValue] = useState();
   const classes = useStyles();
-
+  const onInputChange = (e) => {
+    setValue({value, [e.target.name] : e.target.value})
+    
+  }
   return (
     <div className={classes.root}>
       <Rating
-        name="hover-feedback"
-        value={value}
+        size ='large'
+        name="rate"
+        value={props.value}
         precision={0.5}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
+        onChange ={(e) => onInputChange(e)}
       />
       {console.log(value)}
     </div>

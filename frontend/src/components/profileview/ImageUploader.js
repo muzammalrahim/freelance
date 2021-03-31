@@ -1,6 +1,8 @@
 import React from 'react'
 
  function Uploading(props) {
+
+   const [state, setstate] = React.useState('')
     
     const uploadedImage = React.useRef({
         imageUploader : '',
@@ -17,6 +19,8 @@ import React from 'react'
           current.src = e.target.result;
         };
         reader.readAsDataURL(file);
+        setstate(file)
+        console.log(file)
       }
     };
   
