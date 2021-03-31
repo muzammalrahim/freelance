@@ -4,8 +4,7 @@ import "./ProfileSetting.css"
 import Modal from "react-bootstrap/Modal";
 import CloseIcon from '@material-ui/icons/Close';
 import list from '../helper/api';
-import {put, patch} from '../helper/api';
-import { useHistory , useParams } from 'react-router-dom';
+import { patch } from '../helper/api';
 
 export default function ContactInfo(props) {
 const [data, setData] = useState('');
@@ -16,10 +15,10 @@ first_name : "" ,
 street : "",
 mobile_no : '',
 email: '',
-username:''
+username:'',
+last_name:''
 
 });
-let history = useHistory();
 
 const getData = () =>{
 let getid = null
@@ -36,8 +35,7 @@ const getUser = () => {
 list(`api/v1/freelancer_profile/${id}/`)
 .then((response) => {
 const data= response.data;
-var id = JSON.parse(response.data.id);
-console.log("freelancerd id:",id);
+console.log("My id:",id);
 setUser(data);
 })
 }
@@ -56,15 +54,15 @@ patch("api/v1/accounts/profile/",data)
 .then((response) => {
 const data= response.data;
 var id = JSON.parse(response.data.id);
-history.push(`/account-setting`);
 })
 setSave(data)
 }
 
-
 useEffect(() => {
+
 getData();
 getUser();
+
 }, [])
 
 const [show, setShow] = useState(false);
