@@ -5,20 +5,36 @@ import list  from '../../App/pages/helper/api';
 
 
 function BioGraphy() {
-  const [profiledata, setprofileData] = useState ('');
+  const [profiledata, setprofileData] = useState ({
+    description : "enter your bio here ..."
+  });
+  const [data, setData] = useState ();
   const [skills, setSkills] = useState ('');
 
+  
+  function getDataId () {
+    console.log("show response:");
+    list('api/v1/accounts/profile/')
+    .then((response)=>{
+     const data = response.data;
+     console.log("freelancerd idfsf:",data.id);
+
+setData(data);
+})
+}
 
   function getdata() {
-    console.log("show response:");
-    list('api/v1/profile/')
-    .then((response)=>{
-      const {...rest} = response.data[2];
-       setprofileData(rest);
-       const user_skills = rest.skills.map((skill, index) =>{
+  list('api/v1/freelancer_profile/id/')
+.then((response)=>{
+const profiledata = response.profiledata;
+console.log("freelancerd :",response.profiledata);
+setprofileData(profiledata);
+
+
+       const user_skills = profiledata.skills.map((skills, index) =>{
                 return(
                 <li>
-                  <a href="#" class="pl-3 pr-3 pt-1 pb-1">{skill.name}</a>
+                  <a href="#" class="pl-3 pr-3 pt-1 pb-1">{skills.name}</a>
                 </li>)
               })
         setSkills(user_skills);
@@ -26,8 +42,8 @@ function BioGraphy() {
     }
     useEffect(() => {
       getdata();
+      getDataId();
     },[]);
-  
   return (
     <div className="ui-comments">
       <div class="container bg-white">
@@ -61,7 +77,8 @@ function BioGraphy() {
                     <p>Email</p>
                   </div>
                   <div className="col-md-9">
-                    <a href="jack14@gmail.com ">{profiledata?.user?.email} </a>
+                  {data && data.email ? data.email : ''}
+                    {/* {data.email} */}
                   </div>
                 </div>
                 
@@ -71,7 +88,9 @@ function BioGraphy() {
                     <p>Mobile Number</p>
                   </div>
                   <div className="col-md-9">
-                    <a href="9778787989767 ">{profiledata.mobile_no}</a>
+                    <a href="9778787989767 ">
+                    {profiledata && profiledata.mobile_no ? profiledata.mobile_no : ''}
+                    </a>
                    </div>  
                   </div>
                   <div className="contact-info row">
@@ -80,7 +99,8 @@ function BioGraphy() {
                     </div>
                     <div className="col-md-9">
                       <a href="">
-                     {profiledata.street}
+                      {profiledata && profiledata.street ? profiledata.street : ''}  
+                  
                       </a>
                     </div>
                   </div>
