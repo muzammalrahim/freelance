@@ -471,7 +471,7 @@ class TabbarRegistration extends Component {
 
               <div className="container tabbar_next_pre_btn_background pt-4 pb-5">
                 {tabindex > 1 && (
-                  <div>
+                  
                     <button
                       type="button"
                       className="btn rounded-pill "
@@ -480,11 +480,11 @@ class TabbarRegistration extends Component {
                       {" "}
                       Previous Step
                     </button>
-                  </div>
+                  
                 )}
 
                 {tabindex < 5 ? (
-                  <div>
+                  
                     <button
                       type="button"
                       className="btn tb_nextButton"
@@ -496,14 +496,14 @@ class TabbarRegistration extends Component {
                       {" "}
                       Next
                     </button>
-                  </div>
+                  
                 ) : (
-                  <div>
+                  
                     <button type="button" className="btn tb_nextButton">
                       {" "}
                       FINISH <ArrowRightAltIcon />
                     </button>
-                  </div>
+                  
                 )}
               </div>
             </div>

@@ -231,18 +231,15 @@ class PersonalProfile extends React.Component {
               </div>
             </div>
             <div className="container">
-              <div className="row pt-3">
-                <div className=" col-sm-6 col-md-6">
-                  <div className="Rb-0">
-                    <div
+              <div className="new-box">
+              <div
                       className={
+                        errorProfile.first_name !== "" &&
                         this.props.tabindex === true
-                          ? errorProfile.first_name === ""
-                            ? "form-group "
-                            : "form-group error"
-                          : null
+                          ? "form-group error"
+                          : "form-group "
                       }
-                    >
+                      >
                       <label className="pp_inputHeading" for="usr">
                         First Name
                       </label>
@@ -267,8 +264,37 @@ class PersonalProfile extends React.Component {
                         )
                       ) : <div> </div>}
                     </div>
-
                     <div
+                      className={
+                        errorProfile.last_name !== "" &&
+                        this.props.tabindex === true
+                          ? "form-group error"
+                          : "form-group "
+                      }
+                    >
+                      <label className="pp_inputHeading" for="usr">
+                        Last name
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        Placeholder=" Enter last name"
+                        id="last_name"
+                        value={per_profile.last_name}
+                        onChange={(e) => {
+                          this.changeHandler(e);
+                        }}
+                      />
+                      {errorProfile.last_name !== "" &&
+                      this.props.tabindex === true ? (
+                        <div className="error-message">
+                          {errorProfile.last_name}
+                        </div>
+                      ) : null}
+                    </div>
+              </div>
+              <div className="new-box">
+              <div
                       className={
                         errorProfile.mobile_number !== "" &&
                         this.props.tabindex === true
@@ -298,64 +324,6 @@ class PersonalProfile extends React.Component {
                        ): null}
                     
                     </div>
-
-                    <div
-                      className={
-                        errorProfile.city !== "" && this.props.tabindex === true
-                          ? "form-group error"
-                          : "form-group "
-                      }
-                    >
-                      <label className="pp_inputHeading" for="usr">
-                        City
-                      </label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        Placeholder=" Enter city"
-                        id="city"
-                        value={per_profile.city}
-                        onChange={(e) => {
-                          this.changeHandler(e);
-                        }}
-                      />
-                      {errorProfile.city !== "" &&
-                      this.props.tabindex === true ? (
-                        <div className="error-message">{errorProfile.city}</div>
-                      ) : null}
-                    </div>
-                  </div>
-                </div>
-                <div className=" col-sm-6 col-md-6">
-                  <div className="Rb-0">
-                    <div
-                      className={
-                        errorProfile.last_name !== "" &&
-                        this.props.tabindex === true
-                          ? "form-group error"
-                          : "form-group "
-                      }
-                    >
-                      <label className="pp_inputHeading" for="usr">
-                        Last name
-                      </label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        Placeholder=" Enter last name"
-                        id="last_name"
-                        value={per_profile.last_name}
-                        onChange={(e) => {
-                          this.changeHandler(e);
-                        }}
-                      />
-                      {errorProfile.last_name !== "" &&
-                      this.props.tabindex === true ? (
-                        <div className="error-message">
-                          {errorProfile.last_name}
-                        </div>
-                      ) : null}
-                    </div>
                     <div
                       className={
                         errorProfile.address !== "" &&
@@ -384,7 +352,36 @@ class PersonalProfile extends React.Component {
                         </div>
                       ) : null}
                     </div>
-                    <div
+                    
+              </div>
+              <div className="new-box">
+              <div
+                      className={
+                        errorProfile.city !== "" && this.props.tabindex === true
+                          ? "form-group error"
+                          : "form-group "
+                      }
+                    >
+                      <label className="pp_inputHeading" for="usr">
+                        City
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        Placeholder=" Enter city"
+                        id="city"
+                        value={per_profile.city}
+                        onChange={(e) => {
+                          this.changeHandler(e);
+                        }}
+                      />
+                      {errorProfile.city !== "" &&
+                      this.props.tabindex === true ? (
+                        <div className="error-message">{errorProfile.city}</div>
+                      ) : null}
+                    </div>
+              
+              <div
                       className={
                         errorProfile.country !== "" &&
                         this.props.tabindex === true
@@ -411,9 +408,7 @@ class PersonalProfile extends React.Component {
                           {errorProfile.country}
                         </div>
                       ) : null}
-                    </div>
-                  </div>
-                </div>
+                    </div>     
               </div>
             </div>{" "}
             {/* end of inner container*/}
