@@ -7,6 +7,8 @@ import base64, six, uuid
 from django.core.files.base import ContentFile
 from rest_auth.models import TokenModel
 
+from default import utils
+
 
 class Base64ImageField(serializers.ImageField):
 
@@ -84,6 +86,20 @@ class CountrySerializers(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
 	id = serializers.IntegerField()
+	# profile = serializers.SerializerMethodField()
+	#
+	# def get_profile(self, instance):
+	# 	profile = models.Profile.objects.get(user=instance.id)
+	# 	return ProfileSerializers(profile).data
+
+	def to_representation(self, instance):
+		representation = super(UserSerializer, self).to_representation(instance)
+		# try:
+		representation['profile'] = models.Profile.objects.filter(user=instance.id).values()
+		print("representation['profile']",representation['profile'])
+		# except:
+		# 	representation['profile'] = None
+		return representation
 
 	class Meta:
 		model = models.User
