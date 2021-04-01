@@ -16,6 +16,7 @@ class GetImage extends Component {
 
     this.state = {
       filesBase64: "",
+      certificate: "",
       Id_Card: "",
       Driving_License: "",
       fileBinary: null,
@@ -46,16 +47,16 @@ class GetImage extends Component {
   //         .catch((error)=>console.log(error))
   // }
 
-componentDidMount()
-{
+  componentDidMount() {
+    var stored_Driving_License = JSON.parse(
+      localStorage.getItem("driving_License")
+    );
+    this.setState({ Driving_License: stored_Driving_License });
+    var stored_Id_Card = JSON.parse(localStorage.getItem("id_card"));
+    this.setState({ Id_Card: stored_Id_Card });
 
-       var stored_Driving_License = JSON.parse(localStorage.getItem("driving_License"));
-      this.setState({filesBase64:stored_Driving_License })
-       var stored_Id_Card = JSON.parse(localStorage.getItem("id_card"));
-      this.setState({stored_Id_Card:stored_Id_Card })
-     
-this.setDrivingImg()
-}
+    this.setDrivingImg();
+  }
 
   onDrop = (files) => {
     //  POST to a test endpoint for demo purposes
@@ -66,7 +67,6 @@ this.setDrivingImg()
       // req.attach(file.name, file);
 
       this.setState({ filesBase64: "" });
-         console.log("oops",file)
       const reader = new FileReader();
       reader.onabort = () => console.log("file reading was aborted");
       reader.onerror = () => console.log("file reading has failed");
@@ -82,7 +82,7 @@ this.setDrivingImg()
         );
         // console.log(' base64Image ', base64Image);
         this.setState({ filesBase64: base64Image });
-       
+
         // if(base64Image)
         // {
 
@@ -104,42 +104,40 @@ this.setDrivingImg()
         // }
         if (this.props.value === "onUpload") {
           this.props.onUpload(files[0]);
+          this.setState({ certificate: base64Image });
         } else if (this.props.value === "idVerf_DL_imgUpload") {
-          
           this.props.idVerf_DL_imgUpload(files[0]);
           localStorage.setItem("driving_License", JSON.stringify(base64Image));
+          this.setState({ Driving_License: base64Image });
         } else if (this.props.value === "idVerf_IC_imgUpload") {
-           localStorage.setItem("id_card", JSON.stringify(base64Image));
+          localStorage.setItem("id_card", JSON.stringify(base64Image));
           this.props.idVerf_IC_imgUpload(files[0]);
+          this.setState({ Id_Card: base64Image });
         }
       };
       reader.readAsArrayBuffer(file);
     });
   }; // drop end;
 
-  setDrivingImg=()=> {
-    var data
-    let {Driving_License} = this.state
+  setDrivingImg = () => {
+    var data;
+    let { Driving_License } = this.state;
 
-     data = Driving_License
+    data = Driving_License;
 
-   this.setState({data})
-   console.log("hehehh")
-  }
-  setId_card=()=>{
-     let {Id_Card} = this.state
-   this.setState({filesBase64:Id_Card})
-  }
+    this.setState({ data });
+  };
+  setId_card = () => {
+    let { Id_Card } = this.state;
+    this.setState({ filesBase64: Id_Card });
+  };
 
   render() {
-
+    let { Driving_License, Id_Card, certificate, filesBase64 } = this.state;
     return (
       <div className="style">
-        {this.state.Driving_License ? () => this.setDrivingImg() :null}
-        {this.props.value === "idVerf_IC_imgUpload" ? () => this.setId_card() : null}
-        {console.log("baw",this.state.Driving_License)}
         <div className="imgBack">
-          {this.state.filesBase64 != "" ? (
+          {certificate != "" && this.props.value === "onUpload" ? (
             <div>
               <ReactDropzone
                 className={this.props.value === 2 ? "dropzone2" : "dropzone"}
@@ -147,10 +145,55 @@ this.setDrivingImg()
                 onDrop={this.onDrop}
               >
                 <div className="imgcssclass">
-                  {console.log("file bai",this.state.filesBase64)}
                   <img
                     className="newimage"
-                    src={`data:image/png;base64,` + this.state.filesBase64}
+                    src={`data:image/png;base64,` + certificate}
+                  />
+                </div>
+              </ReactDropzone>
+            </div>
+          ) : Id_Card != "" && this.props.value === "idVerf_IC_imgUpload" ? (
+            <div>
+              <ReactDropzone
+                className={this.props.value === 2 ? "dropzone2" : "dropzone"}
+                accept="image/*"
+                onDrop={this.onDrop}
+              >
+                <div className="imgcssclass">
+                  <img
+                    className="newimage"
+                    src={`data:image/png;base64,` + Id_Card}
+                  />
+                </div>
+              </ReactDropzone>
+            </div>
+          ) : Driving_License != "" &&
+            this.props.value === "idVerf_DL_imgUpload" ? (
+            <div>
+              <ReactDropzone
+                className={this.props.value === 2 ? "dropzone2" : "dropzone"}
+                accept="image/*"
+                onDrop={this.onDrop}
+              >
+                <div className="imgcssclass">
+                  <img
+                    className="newimage"
+                    src={`data:image/png;base64,` + Driving_License}
+                  />
+                </div>
+              </ReactDropzone>
+            </div>
+          ) : filesBase64 != "" ? (
+            <div>
+              <ReactDropzone
+                className={this.props.value === 2 ? "dropzone2" : "dropzone"}
+                accept="image/*"
+                onDrop={this.onDrop}
+              >
+                <div className="imgcssclass">
+                  <img
+                    className="newimage"
+                    src={`data:image/png;base64,` + Id_Card}
                   />
                 </div>
               </ReactDropzone>
