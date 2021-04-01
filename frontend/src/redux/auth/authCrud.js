@@ -34,7 +34,13 @@ export function sign_up(data) {
 
   export function GettingLinkedinAccessToken (code)
   {
-    return axios.post(process.env.REACT_APP_LINKEDIN_API_URL+code+Linkedin_redirect_urI)
+    let config = {
+      headers: {
+      'Access-Control-Allow-Origin': '*'
+      
+      }
+    }
+    return axios.post(process.env.REACT_APP_LINKEDIN_API_URL+code+Linkedin_redirect_urI,config)
 
   }
 
