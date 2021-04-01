@@ -40,11 +40,10 @@ class ProfessionalProfile2 extends Component {
       provideService: "",
       skills: [],
       chooseCategory: [],
-      getchooseCategoryFromStorage :["7","4"],
+      getchooseCategoryFromStorage: [],
       getSkillsList: [],
       getChooseCategoryList: [],
       isSubmit: false,
-      ops : 7,
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -96,7 +95,6 @@ class ProfessionalProfile2 extends Component {
   };
 
   handleInputChange(event) {
-    let { professionalProfileData ,chooseCategory} = this.state;
     const target = event.target;
     var id = target.id;
 
@@ -104,29 +102,25 @@ class ProfessionalProfile2 extends Component {
       this.setState((prevState) => ({
         chooseCategory: [...prevState.chooseCategory, id],
       }));
-          
+
       // this.setState((prevState) => ({
       //  professionalProfileData: {  chooseCategory: [...prevState.chooseCategory, id], }
       //
       // }));
-      this.setState({ops:0})
-      console.log("ralama")
     } else {
       const chooseCategory = this.state.chooseCategory.filter(
         (chooseCategory) => chooseCategory != id
       );
+      const getchooseCategoryFromStorage = this.state.getchooseCategoryFromStorage.filter(
+        (getchooseCategoryFromStorage) => getchooseCategoryFromStorage != id
+      );
       this.setState({
         chooseCategory,
+        getchooseCategoryFromStorage,
       });
-      this.setState({ops:100})
-
-      console.log("ralama na",id)
     }
 
-    
-    localStorage.setItem("choosecategory", JSON.stringify(chooseCategory));
     this.checkvalidtion();
-  
   }
 
   handleBinaryImg(binaryfile) {
@@ -155,15 +149,13 @@ class ProfessionalProfile2 extends Component {
   };
 
   checkStoreChooseCategory = (item) => {
-    const chooseCategory = this.state.getchooseCategoryFromStorage.filter((getchooseCategoryFromStorage) => getchooseCategoryFromStorage === item);
-   console.log("match",chooseCategory)
-    if(chooseCategory)
-    {
-      console.log("tr")
-      return true
-    }else{
-      return false
+    const str = item.toString();
+    for (let i = 0; i < this.state.getchooseCategoryFromStorage.length; i++) {
+      if (this.state.getchooseCategoryFromStorage[i] === str) {
+        return true;
+      }
     }
+    return false;
   };
 
   getSkillsList = () => {
@@ -190,14 +182,14 @@ class ProfessionalProfile2 extends Component {
       .catch((error) => {});
   };
 
-  getCategoryFromStorage = () =>
-  {
+  getCategoryFromStorage = () => {
     var storedData = JSON.parse(localStorage.getItem("choosecategory"));
 
-    // this.setState({chooseCategory:storedData,
-                  //  getchooseCategoryFromStorage:storedData
-    // })
-  }
+    this.setState({
+      getchooseCategoryFromStorage: storedData,
+      chooseCategory: storedData,
+    });
+  };
 
   componentDidMount() {
     this.getSkillsList();
@@ -212,7 +204,8 @@ class ProfessionalProfile2 extends Component {
       alert: { open, severity, message, title },
       validation,
       checkTrue,
-      getchooseCategoryFromStorage
+      getchooseCategoryFromStorage,
+      chooseCategory,
     } = this.state;
     return (
       <div className="ProfessionalProfile">
@@ -234,12 +227,15 @@ class ProfessionalProfile2 extends Component {
             <strong>{message}</strong>
           </Alert>
         </Snackbar>
-
+        {chooseCategory != "" &&
+          localStorage.setItem(
+            "choosecategory",
+            JSON.stringify(chooseCategory)
+          )}
         <div className="Pf-container proff-prof">
           <div className="container Pf-rightbox   bg2 b_line2 p-5">
             <div class="container-fluid">
               {this.props.onStateChange(this.state, "StateData")}
-              {  console.log("chek ka ustaaz",this.state.chooseCategory)}
               <div>
                 <div class="row pl-3">
                   <div className="Per_img-wrap">
@@ -337,12 +333,10 @@ class ProfessionalProfile2 extends Component {
                   <h3>Choose Category</h3>
                   <div className="container_Checkboxes">
                     <div className="row">
-                      {getChooseCategoryList.map((list,index) => {
-                        
+                      {getChooseCategoryList.map((list, index) => {
                         return (
                           <div className="example col-4">
-                          { getchooseCategoryFromStorage[index] === "7" ? console.log("baw",getchooseCategoryFromStorage[index]) : null }
-                          {  }
+                            {}
                             <label className="checkbox-button">
                               <input
                                 type="checkbox"
@@ -351,7 +345,11 @@ class ProfessionalProfile2 extends Component {
                                 id={list.id}
                                 value={list.name}
                                 onChange={this.handleInputChange}
-                                checked={this.checkStoreChooseCategory(list.id)  ? true : null }
+                                checked={
+                                  this.checkStoreChooseCategory(list.id)
+                                    ? true
+                                    : null
+                                }
                               />
                               <span className="checkbox-button__control"></span>
                               <span className="checkbox-button__label">

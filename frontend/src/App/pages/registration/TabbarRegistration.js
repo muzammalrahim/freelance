@@ -53,7 +53,7 @@ class TabbarRegistration extends Component {
       proposal_amount: null,
       account_type: this.props.account_type,
       data: {},
-      patchdata:{},
+      patchdata: {},
       professionalProfilestatedata: {},
     };
   }
@@ -87,80 +87,77 @@ class TabbarRegistration extends Component {
 
     this.setState({ showPersonalProfileError: true });
     if (userid && tabindex === 1) {
-      if (personalProfileIsSubmited === true ) {  
-            if(registrationProcessid) 
-            {
-              console.log("frelacer id",registrationProcessid)
-             patch(`api/v1/freelancer_profile/${registrationProcessid}/`,patchdata) 
-          .then((response) => {
-            localStorage.setItem(
-              "registration_process_medel_id",
-              response.data.id
-            );
-            this.setState({
-              personalProfileTickIcon: true,
-              registrationProcessid: response.data.id,
-              tabindex: tabindex + 1,
-              alert: {
-                open: true,
-                severity: "success",
-                title: "success",
-                message: "you have successfully complete step one",
-              },
+      if (personalProfileIsSubmited === true) {
+        if (registrationProcessid) {
+          patch(
+            `api/v1/freelancer_profile/${registrationProcessid}/`,
+            patchdata
+          )
+            .then((response) => {
+              localStorage.setItem(
+                "registration_process_medel_id",
+                response.data.id
+              );
+              this.setState({
+                personalProfileTickIcon: true,
+                registrationProcessid: response.data.id,
+                tabindex: tabindex + 1,
+                alert: {
+                  open: true,
+                  severity: "success",
+                  title: "success",
+                  message: "you have successfully complete step one",
+                },
+              });
+            })
+            .catch((error) => {
+              this.setState({
+                alert: {
+                  open: true,
+                  severity: "error",
+                  title: "Error",
+                  //  message:`${key+": "+error.response.data[key][0]}`
+                  message: "step one not completed",
+                },
+              });
             });
-          })
-          .catch((error) => {
-            this.setState({
-              alert: {
-                open: true,
-                severity: "error",
-                title: "Error",
-                //  message:`${key+": "+error.response.data[key][0]}`
-                message: "step one not completed",
-              },
+        } else {
+          post("api/v1/freelancer_profile/", data)
+            .then((response) => {
+              localStorage.setItem(
+                "registration_process_medel_id",
+                response.data.id
+              );
+              this.setState({
+                personalProfileTickIcon: true,
+                registrationProcessid: response.data.id,
+                tabindex: tabindex + 1,
+                alert: {
+                  open: true,
+                  severity: "success",
+                  title: "success",
+                  message: "you have successfully complete step one",
+                },
+              });
+            })
+            .catch((error) => {
+              this.setState({
+                alert: {
+                  open: true,
+                  severity: "error",
+                  title: "Error",
+                  //  message:`${key+": "+error.response.data[key][0]}`
+                  message: "step one not completed",
+                },
+              });
             });
-          });
-      }
-      else{
-           post("api/v1/freelancer_profile/", data)
-          .then((response) => {
-            localStorage.setItem(
-              "registration_process_medel_id",
-              response.data.id
-            );
-            this.setState({
-              personalProfileTickIcon: true,
-              registrationProcessid: response.data.id,
-              tabindex: tabindex + 1,
-              alert: {
-                open: true,
-                severity: "success",
-                title: "success",
-                message: "you have successfully complete step one",
-              },
-            });
-          })
-          .catch((error) => {
-            this.setState({
-              alert: {
-                open: true,
-                severity: "error",
-                title: "Error",
-                //  message:`${key+": "+error.response.data[key][0]}`
-                message: "step one not completed",
-              },
-            });
-          });
-      }
-
-
+        }
       } else {
       }
-    }
-   
-   else if (
+    } else if (
       professionalProfileOtherdataIsSubmited &&
-      professionalProfileCertificateIsSubmited  && tabindex === 2
+      professionalProfileCertificateIsSubmited &&
+      tabindex === 2
     ) {
       patch(
         `api/v1/freelancer_profile/${registrationProcessid}/`,
@@ -176,10 +173,10 @@ class TabbarRegistration extends Component {
           },
         });
       });
-    }
-    else if (
+    } else if (
       iDVerificationDrivingLicenseIsSubmited &&
-      iDVerificationIDCardIsSubmited && tabindex === 3
+      iDVerificationIDCardIsSubmited &&
+      tabindex === 3
     ) {
       this.setState({
         iDVerificationTickIcon: true,
@@ -191,16 +188,11 @@ class TabbarRegistration extends Component {
           message: "you have successfully complete id verfication step ",
         },
       });
+    } else if (iDVerificationTickIcon && tabindex === 4) {
+      this.setState({
+        tabindex: tabindex + 1,
+      });
     }
-
-    else if(iDVerificationTickIcon && tabindex === 4)
-          {
-             this.setState({
-     
-                              tabindex: tabindex + 1,
-                                  })
-                                }
-     console.log("tab in",tabindex)
   };
 
   tabDownhandler = () => {
@@ -242,12 +234,8 @@ class TabbarRegistration extends Component {
       .then((res) => {
         var data = JSON.parse(res.data.id);
         userid = data;
-        this.setState({userid})
-        localStorage.setItem(
-          "profile_id",
-          data
-        )
-      
+        this.setState({ userid });
+        localStorage.setItem("profile_id", data);
       })
       .catch((error) => {});
 
@@ -275,18 +263,17 @@ class TabbarRegistration extends Component {
   }
 
   personalProfilestateHandler = (stateData, isSubmit) => {
-
-    console.log("data",stateData)
-    let { data ,userid,patchdata} = this.state;
+    console.log("data", stateData);
+    let { data, userid, patchdata } = this.state;
     if (isSubmit === true) {
       data = {
         mobile_no: stateData.mobile_number,
         street: stateData.address,
         user: {
-                id:userid,
-                first_name:stateData.first_name,
-                last_name:stateData.last_name,
-              },
+          id: userid,
+          first_name: stateData.first_name,
+          last_name: stateData.last_name,
+        },
         account_type: this.state.account_type,
         city: {
           name: stateData.city,
@@ -294,16 +281,14 @@ class TabbarRegistration extends Component {
         country: {
           name: stateData.country,
         },
-        
       };
       patchdata = {
         mobile_no: stateData.mobile_number,
         street: stateData.address,
         user: {
-                
-                first_name:stateData.first_name,
-                last_name:stateData.last_name,
-              },
+          first_name: stateData.first_name,
+          last_name: stateData.last_name,
+        },
         account_type: this.state.account_type,
         city: {
           name: stateData.city,
@@ -311,8 +296,8 @@ class TabbarRegistration extends Component {
         country: {
           name: stateData.country,
         },
-      }
-      this.setState({ data,patchdata });
+      };
+      this.setState({ data, patchdata });
       this.setState({ personalProfileIsSubmited: true });
     } else {
     }
@@ -473,13 +458,13 @@ class TabbarRegistration extends Component {
               </div>
               <div className="tabbar_tabarlist pt-4 pb-5 Changepadding ml-3 ">
                 <div className="ml-4 container">
-                  <div class="Tab">
+                  <div className="Tab">
                     <span
-                      class=" "
+                      className=" "
                       onClick={() => this.setState({ tabindex: 1 })}
                     >
                       {/*
-              <button type="button" class={"btn btn-outline-secondary btn-circle btn-md " + (this.state.tabindex=== 1 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 1 })}> 1</button> */}
+              <button type="button" className={"btn btn-outline-secondary btn-circle btn-md " + (this.state.tabindex=== 1 ? 'ButtonclsActive': 'hidden')} onClick={() => this.setState({ tabindex: 1 })}> 1</button> */}
 
                       {personalProfileTickIcon ? (
                         <span
@@ -504,7 +489,7 @@ class TabbarRegistration extends Component {
                       )}
 
                       <span
-                        class={
+                        className={
                           "text2" +
                           (this.state.tabindex === 1 ? "y-text" : "hidden")
                         }
@@ -521,9 +506,9 @@ class TabbarRegistration extends Component {
                   >
                     {" "}
                   </div>
-                  <div class="Tab">
+                  <div className="Tab">
                     <span
-                      class=" "
+                      className=" "
                       onClick={() => this.setState({ tabindex: 2 })}
                     >
                       {professionalProfileCertificateIsSubmited &&
@@ -551,7 +536,7 @@ class TabbarRegistration extends Component {
                         </button>
                       )}
                       <span
-                        class={
+                        className={
                           "text2" +
                           (this.state.tabindex === 2 ? "y-text" : "hidden")
                         }
@@ -568,9 +553,9 @@ class TabbarRegistration extends Component {
                   >
                     {" "}
                   </div>
-                  <div class="Tab">
+                  <div className="Tab">
                     <span
-                      class=" "
+                      className=" "
                       onClick={() => this.setState({ tabindex: 3 })}
                     >
                       {iDVerificationTickIcon ? (
@@ -595,7 +580,7 @@ class TabbarRegistration extends Component {
                         </button>
                       )}
                       <span
-                        class={
+                        className={
                           "text2" +
                           (this.state.tabindex === 3 ? "y-text" : "hidden")
                         }
@@ -612,9 +597,9 @@ class TabbarRegistration extends Component {
                   >
                     {" "}
                   </div>
-                  <div class="Tab">
+                  <div className="Tab">
                     <span
-                      class=" "
+                      className=" "
                       onClick={() => this.setState({ tabindex: 4 })}
                     >
                       {this.state.tabindex > 4 ? (
@@ -639,7 +624,7 @@ class TabbarRegistration extends Component {
                         </button>
                       )}
                       <span
-                        class={
+                        className={
                           "text2" +
                           (this.state.tabindex === 4 ? "y-text" : "hidden")
                         }
@@ -656,9 +641,9 @@ class TabbarRegistration extends Component {
                   >
                     {" "}
                   </div>
-                  <div class="Tab">
+                  <div className="Tab">
                     <span
-                      class=" "
+                      className=" "
                       onClick={() => this.setState({ tabindex: 5 })}
                     >
                       <button
@@ -671,7 +656,7 @@ class TabbarRegistration extends Component {
                         5
                       </button>
                       <span
-                        class={
+                        className={
                           "text2" +
                           (this.state.tabindex === 5 ? "y-text" : "hidden")
                         }
@@ -723,45 +708,39 @@ class TabbarRegistration extends Component {
 
               <div className="container tabbar_next_pre_btn_background pt-4 pb-5">
                 {tabindex > 1 && (
-                  
-                    <button
-                      type="button"
-                      className="btn rounded-pill "
-                      onClick={() => this.setState({ tabindex: tabindex - 1 })}
-                    >
-                      {" "}
-                      Previous Step
-                    </button>
-                  
+                  <button
+                    type="button"
+                    className="btn rounded-pill "
+                    onClick={() => this.setState({ tabindex: tabindex - 1 })}
+                  >
+                    {" "}
+                    Previous Step
+                  </button>
                 )}
 
                 {tabindex < 5 ? (
-                  
-                    <button
-                      type="button"
-                      className="btn tb_nextButton"
-                      onClick={() => {
-                        this.tabUphandler();
-                        this.sendDataHandler();
-                      }}
-                    >
-                      {" "}
-                      Next
-                    </button>
-                  
+                  <button
+                    type="button"
+                    className="btn tb_nextButton"
+                    onClick={() => {
+                      this.tabUphandler();
+                      this.sendDataHandler();
+                    }}
+                  >
+                    {" "}
+                    Next
+                  </button>
                 ) : (
-                  
-                    <button
-                      type="button"
-                      className="btn tb_nextButton"
-                      onClick={() => {
-                        this.stepsfinish();
-                      }}
-                    >
-                      {" "}
-                      FINISH <ArrowRightAltIcon />
-                    </button>
-                  
+                  <button
+                    type="button"
+                    className="btn tb_nextButton"
+                    onClick={() => {
+                      this.stepsfinish();
+                    }}
+                  >
+                    {" "}
+                    FINISH <ArrowRightAltIcon />
+                  </button>
                 )}
               </div>
             </div>

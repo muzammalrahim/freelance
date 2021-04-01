@@ -13,7 +13,6 @@ export default function list(endpoint, params={}) {
      return axios.get(API_URL+endpoint).then(response => {
     // return axios.get(API_URL+endpoint) .then(response => {
 
-    console.log("api",API_URL+endpoint)
       if(response.data.results !== undefined) {
          response.extra_data = {
           count : response.data.count,
@@ -33,7 +32,6 @@ export function put(endpoint, data) {
     
     }
   }
-  // console.log("user",data)
   return axios.put(API_URL + endpoint, data, config)
 }
 export function patch(endpoint, data) {
