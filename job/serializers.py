@@ -7,7 +7,18 @@ from acount import models as acount_models
 
 
 class AttachmentSerializer(serializers.ModelSerializer):
-	# file = acount_serializer.Base64ImageField(required=False)
+	# # file = acount_serializer.Base64ImageField(required=False)
+	def create(self, validated_data):
+		files = validated_data.pop('file')
+		model_id = validated_data.pop('model_id')
+		type = validated_data.pop('type')
+		model = validated_data.pop('model')
+		attachment = models.Attachment.objects.filter(model_id=model_id, type=type, model=model)
+		if attachment.exists():
+			obj = models.Attachment.objects.filter(model_id=model_id, type=type, model=model)
+			obj.delete()
+		attachment = models.Attachment.objects.create(model_id=model_id, type=type, model=model, file=files)
+		return attachment
 
 	class Meta:
 		model = models.Attachment
@@ -75,7 +86,6 @@ class ApplicationSerializer(serializers.ModelSerializer):
 
 
 class ContractSerializer(serializers.ModelSerializer):
-
 	attachment = serializers.ListField(write_only=True)
 
 	def __init__(self, *args, **kwargs):
@@ -87,7 +97,8 @@ class ContractSerializer(serializers.ModelSerializer):
 			**validated_data)
 
 		for attachments in attachment:
-			models.Attachment.objects.create(model_id=contract.id, model='contract', file=attachments, type="attachment")
+			models.Attachment.objects.create(model_id=contract.id, model='contract', file=attachments,
+											 type="attachment")
 		return contract
 
 	def to_representation(self, instance):
