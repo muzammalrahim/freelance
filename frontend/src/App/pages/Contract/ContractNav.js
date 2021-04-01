@@ -17,7 +17,7 @@ export default class ContractNav extends Component {
     list('api/v1/contract/')
     .then((response)=>{
       console.log("show response:",response.data);
-      const {...rest} = response.data[1];
+      const {...rest} = response.data;
       this.setState(rest);
        }) 
    }

@@ -12,17 +12,27 @@ import list  from '../../App/pages/helper/api';
 
 
 function Card() {
+  // var today = new Date(),
+  // time= today.getHours() + ':' + today.getMinutes();
+
+  const currTime = new Date().toLocaleTimeString();
+  
+  // var hours = new Date().getHours();
+  // var minutes = new Date().getMinutes();
+
   const [carddata, setcardData] = useState ('');
+ 
   function  dataCollection() {
       console.log("show response:");
-      list('api/v1/profile/')
+      list('api/v1/accounts/profile/')
       .then((response)=>{
-        console.log("show response:",response.data[2]);
-        const {...rest} = response.data[2];
-         setcardData(rest);
+        console.log("show response:",response.data);
+        const {...carddata} = response.data;
+         setcardData(carddata);
       
         })
       }
+      
   
   useEffect(() => {
     dataCollection();
@@ -87,14 +97,14 @@ function Card() {
                     <div className="col-md-10">
                       <a href="">
                     <p>
-                    It’s Currently 3:43 Pm here
+                    It’s Currently {currTime} here
                     </p>
                     </a>
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-md-2">
-                    <img src={Display} className="img_setting_screen" alt=" " />
+                    <img src={Display} className="img_setting_screen" alt="" />
                     </div>
                     <div className="col-md-10">
                       <a href="">

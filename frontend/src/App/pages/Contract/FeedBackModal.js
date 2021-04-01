@@ -4,15 +4,18 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
-import Proposal from "../jobs/Proposal";
-import GetImage from "../registration/GetImage";
 import { makeStyles } from "@material-ui/core/styles";
+import CloseIcon from '@material-ui/icons/Close';
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import HoverRating from "./FeedBackRating";
+// import HoverRating from "./FeedBackRating";
 import { post } from '../helper/api';
+import { useHistory } from 'react-router-dom'
+ 
+
+// import { makeStyles } from '@material-ui/core/styles';
+import Rating from '@material-ui/lab/Rating';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -24,40 +27,74 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function FeedBackModal() {
+function FeedBackModal(props) {
+  let history = useHistory();
   const [open, setOpen] = useState(false);
+  const [value, setValue] = useState();
   const [user, setUser] = useState({
-    // provide_service : '',
-    description : ''
+    provideService : '',
+    description : '',
+    rate: ''
   });
+  
+  const labels = {
+    0.5: 'hello',
+    1: 'hello',
+    1.5: 'hello',
+    2: 'hello',
+    2.5: 'hello',
+    3: 'hello',
+    3.5: 'hello',
+    4: 'hello',
+    4.5: 'hello',
+    5: 'hello',
+  };
+  
+  const useStyles = makeStyles({
+    root: {
+      width: 200,
+      display: 'flex',
+      alignItems: 'center',
+    },
+  });
+  const classes = useStyles();
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
-
+//open 
   const handleClickOpen = () => {
     setOpen(true);
-  };
-  const handleChange = (e) => {
-    setUser({
-      provide_service : e.target.value,
-      description : e.target.value
-    });
   };
   const handleClose = () => {
     setOpen(false);
   };
+  // close here
+
+
+  const handleChange = (e) => {
+    setUser({
+    ...user, [e.target.name] : e.target.value
+    });
+  };
+ 
   const onInputChange = (e) => {
-    setUser({user, [e.target.name] : e.target.value})
-    console.log(setUser);
+    setUser({...user, [e.target.name] : e.target.value
+
+    })
+    setValue({value, [e.target.name] : e.target.value})
+    
   }
    const onSubmitt = (e) => {
     e.preventDefault();
-    post('/api/v1/feedback_review/',user)
+      console.log("all data",user)
+      
+    post('api/v1/feedback_review/',{ type: 'freelancer', rate: 4, description: 'teste', user: 22})
     .then((res) => {
      console.log("res",res.data);
+     setUser({user});
+     history.push('/contractThree')
     })
-    .catch(error => {
-      console.log(error)
-    })
+    .catch(error => { console.log(error)})
+    
    }
 
   return (
@@ -85,16 +122,33 @@ function FeedBackModal() {
         maxWidth="xl"
         classes={{ paper: "myCustomDialog" }}
       >
-        {/* <DialogTitle id="responsive-dialog-title">{"Submit Bid"}</DialogTitle> */}
         <DialogContent classes={{ root: "custom-root" }}>
           <DialogContentText>
             <div className="modal-main">
               <div className="cont-submit-payment pb-2">
                 <div className="proposal-heading text-left">
-                  <h1 className="mb-0 p-3">End Project</h1>
+                  <div className="row">
+                    <div className="col-md-6 pl-5 pt-3 pb-3">
+                    <h1 className="font-weight-bold">End Project</h1>
                 </div>
+                <div className="col-md-6 pr-5 pt-3 pb-3">
+                <CloseIcon onClick={handleClose} className="float-right" />
+                </div>
+                    </div>
+                  </div>
+                </div>
+                
                 <div className="feedback-sec d-flex justify-content-center pt-4">
-                  <HoverRating />
+                <div className={classes.root}>
+      <Rating
+        size ='large'
+        name="rate"
+        value={user.rate}
+        precision={0.5}
+        onChange ={(e) => onInputChange(e)}
+      />
+      {console.log(value)}
+    </div>
                 </div>
 
                 <div className="select-reason text-left p-4">
@@ -102,49 +156,49 @@ function FeedBackModal() {
                   <div className="selection">
                     <select
                       id="inputState"
-                      // value={data.provide_service}
+                      name="provideService"
+                      value={user.provideService}
                       onChange={(e) => handleChange(e)}
                       className="border p-2"
                     >
-                      <option value="City">Select</option>
+                      <option value="Select">Select</option>
                       <option value="work completed">work completed</option>
-                      <option value="value">client is not  responding</option>
-                      <option value="value">client don't want the work  </option>
-                      <option value="value">client is asking for refund </option>
+                      <option value="client is not  responding">client is not  responding</option>
+                      <option value="client don't want the work">client don't want the work  </option>
+                      <option value="client is asking for refund">client is asking for refund </option>
                     </select>
                   </div>
                 </div>
                 <div className="modal-msg text-left p-4">
                   <h3 className="pb-1">Share your experience with client</h3>
                   <div className="modal-textarea">
-                    <textarea 
-                    placeholder="Type your feesback here..."
-                    name = "description"
-                    value ={user.description}
-                    onChange ={(e) => onInputChange(e)}
+                      <textarea 
+                      placeholder="Type your feedback here..."
+                      name = "description"
+                      value ={user.description}
+                      onChange ={(e) => onInputChange(e)}
                      />
                   </div>
                 </div>
                 <div className="bid-buttons d-flex justify-content-center pb-4 mt-3">
                   <button
-                    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary"
-                    tabindex="0"
-                    type="button"
+                      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary"
+                      tabindex="0"
+                      type="button"
                   >
-                    <span class="MuiButton-label">Cancel</span>
-                    <span class="MuiTouchRipple-root"></span>
+                      <span class="MuiButton-label">Cancel</span>
+                      <span class="MuiTouchRipple-root"></span>
                   </button>
                   <button
-                    onClick={(e) => onSubmitt(e)}
-                    class="btn btn--yellow btn--medium"
-                    autoFocus
+                      onClick={(e) => onSubmitt(e)}
+                      class="btn btn--yellow btn--medium"
+                      autoFocus
                   >
                     {" "}
                     Submit
                   </button>
                 </div>
               </div>
-            </div>
           </DialogContentText>
         </DialogContent>
       </Dialog>

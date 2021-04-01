@@ -12,12 +12,13 @@ import ProfessionalProfile2Footer from "./ProfFooter";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 
 import CheckIcon from "@material-ui/icons/Check";
-import list, { post } from "../helper/api";
+import list, { patch, post, put } from "../helper/api";
 import { connect } from "react-redux";
 import { RegistrationTabBarAction } from "../../../redux/actions/RegistrationTabBarAction";
 
 import { Snackbar } from "@material-ui/core";
 import { Alert, AlertTitle } from "@material-ui/lab";
+import { withRouter } from "react-router-dom";
 
 class TabbarRegistration extends Component {
   constructor(props) {
@@ -37,17 +38,22 @@ class TabbarRegistration extends Component {
       showPersonalProfileError: false,
       personalProfileIsSubmited: false,
       personalProfileTickIcon: false,
+
       professionalProfileError: false,
-      professionalProfileIsSubmited: false,
+      professionalProfileCertificateIsSubmited: false,
+      professionalProfileOtherdataIsSubmited: false,
+      professionalProfileTickIcon: false,
+
       iDVerificationError: false,
-      iDVerificationIsSubmited: false,
+      iDVerificationDrivingLicenseIsSubmited: false,
+      iDVerificationIDCardIsSubmited: false,
+      iDVerificationTickIcon: false,
       hourlyRateError: false,
       hourlyRateErrorIsSubmited: false,
-
-      goolo: false,
-
+      proposal_amount: null,
       account_type: this.props.account_type,
       data: {},
+      professionalProfilestatedata: {},
     };
   }
 
@@ -62,19 +68,31 @@ class TabbarRegistration extends Component {
   };
 
   tabUphandler = () => {
-    let { tabindex, personalProfileIsSubmited, userid, data } = this.state;
+    let {
+      tabindex,
+      personalProfileIsSubmited,
+      userid,
+      data,
+      iDVerificationDrivingLicenseIsSubmited,
+      iDVerificationIDCardIsSubmited,
+      iDVerificationTickIcon,
+      proposal_amount,
+      professionalProfileCertificateIsSubmited,
+      professionalProfileOtherdataIsSubmited,
+      professionalProfilestatedata,
+      registrationProcessid,
+    } = this.state;
 
-    console.log("current tab index", tabindex);
     this.setState({ showPersonalProfileError: true });
-    console.log("personalProfileIsSubmited", personalProfileIsSubmited);
-    console.log("userid", userid);
     if (userid) {
-      console.log("personalProfileIsSubmited", personalProfileIsSubmited);
-      if (personalProfileIsSubmited === true) {
+      if (personalProfileIsSubmited === true && tabindex === 1) {  
+        //  registrationProcessid ? patch(`api/v1/freelancer_profile/${registrationProcessid}/`, data) :
         post("api/v1/freelancer_profile/", data)
           .then((response) => {
-            console.log("freelancer_profile res:", response);
-            console.log("freelancer_profile res:", response.data.id);
+            localStorage.setItem(
+              "registration_process_medel_id",
+              response.data.id
+            );
             this.setState({
               personalProfileTickIcon: true,
               registrationProcessid: response.data.id,
@@ -98,14 +116,46 @@ class TabbarRegistration extends Component {
                 message: "step one not completed",
               },
             });
-
-            console.log("error", error);
           });
       } else {
       }
     }
 
-    this.props.tabChangeHandler(tabindex);
+    else if (
+      iDVerificationDrivingLicenseIsSubmited &&
+      iDVerificationIDCardIsSubmited && tabindex === 3
+    ) {
+      this.setState({
+        iDVerificationTickIcon: true,
+        tabindex: tabindex + 1,
+        alert: {
+          open: true,
+          severity: "success",
+          title: "success",
+          message: "you have successfully complete id verfication step ",
+        },
+      });
+    }
+
+   else if (
+      professionalProfileOtherdataIsSubmited &&
+      professionalProfileCertificateIsSubmited && tabindex === 2
+    ) {
+      patch(
+        `api/v1/freelancer_profile/${registrationProcessid}/`,
+        professionalProfilestatedata
+      ).then((response) => {
+        this.setState({
+          tabindex: tabindex + 1,
+          alert: {
+            open: true,
+            severity: "success",
+            title: "success",
+            message: "you have successfully complete professional profile step",
+          },
+        });
+      });
+    }
   };
 
   tabDownhandler = () => {
@@ -114,19 +164,47 @@ class TabbarRegistration extends Component {
     });
   };
 
+  stepsfinish = () => {
+    let { proposal_amount, userid, registrationProcessid } = this.state;
+    this.setState({ hourlyRateError: true });
+
+    let data = { proposal_amount: proposal_amount };
+
+    patch(`api/v1/freelancer_profile/${registrationProcessid}/`, data).then(
+      (response) => {
+        this.setState({
+          alert: {
+            open: true,
+            severity: "success",
+            title: "success",
+            message: "you have successfully complete your registration process",
+          },
+        });
+        setTimeout(() => {
+          this.props.history.push("/jobs");
+        }, 2000);
+      }
+    );
+  };
+
   getTabIndexFromLocalStorage = (tabindex2) => {
     this.setState({ tabindex: tabindex2 });
   };
 
   componentDidMount() {
-    let { userid } = this.state;
+    let { userid, registrationProcessid } = this.state;
     list("api/v1/accounts/profile/")
       .then((res) => {
         var data = JSON.parse(res.data.id);
         userid = data;
 
         this.setState({ userid });
-        console.log("profile", this.state.userid);
+      })
+      .catch((error) => {});
+
+    list("api/v1/attachment/")
+      .then((res) => {
+        var data = JSON.parse(res.data.id);
       })
       .catch((error) => {});
 
@@ -134,6 +212,14 @@ class TabbarRegistration extends Component {
 
     if (localStorage.getItem("tabindex")) {
       tabindex2 = parseInt(localStorage.getItem("tabindex"));
+    }
+
+    if (localStorage.getItem("registration_process_medel_id")) {
+      registrationProcessid = parseInt(
+        localStorage.getItem("registration_process_medel_id")
+      );
+
+      this.setState({ registrationProcessid });
     }
 
     this.getTabIndexFromLocalStorage(tabindex2);
@@ -145,7 +231,7 @@ class TabbarRegistration extends Component {
       data = {
         mobile_no: stateData.mobile_number,
         street: stateData.address,
-        service: "service1",
+        // service: "service1",
         user: this.state.userid,
         account_type: this.state.account_type,
         city: {
@@ -162,32 +248,124 @@ class TabbarRegistration extends Component {
     this.setState({ showPersonalProfileError: false });
   };
 
-  professionalProfileStateHandler = (stateData, isSubmit) => {
-    console.log("professional profile:", stateData);
+  professionalProfileStateHandler = (stateData, dataType) => {
+    let {
+      professionalProfileOtherdataIsSubmited,
+      professionalProfileCertificateIsSubmited,
+      registrationProcessid,
+    } = this.state;
+    let data = {};
+    let skills = [];
+
+    if (dataType === "Certficate") {
+      let data = new FormData();
+      data.append("file", stateData);
+      data.append("model", "profile");
+      data.append("model_id", registrationProcessid);
+      data.append("type", "certification");
+      registrationProcessid &&
+        post("api/v1/attachment/", data)
+          .then((response) => {
+            this.setState({ professionalProfileCertificateIsSubmited: true });
+          })
+          .catch((error) => {});
+    } else if (dataType === "StateData") {
+      this.setState({ professionalProfilestatedata: stateData });
+
+      if (
+        stateData.skills.length > 0 &&
+        stateData.provideService !== "" &&
+        stateData.chooseCategory.length > 0
+      ) {
+        stateData.skills.map((key, index) => {
+          skills.push(key.id);
+        });
+
+        data = {
+          service: stateData.provideService,
+          skills: skills,
+          category: stateData.chooseCategory,
+        };
+
+        this.setState({
+          professionalProfileOtherdataIsSubmited: true,
+
+          professionalProfilestatedata: data,
+        });
+      } else {
+        this.setState({
+          professionalProfileOtherdataIsSubmited: false,
+        });
+      }
+
+      if (
+        professionalProfileOtherdataIsSubmited &&
+        professionalProfileCertificateIsSubmited
+      ) {
+        this.setState({ professionalProfileError: true });
+      } else {
+        this.setState({ professionalProfileError: false });
+      }
+    }
   };
 
-  idVerificationStateHandler(stateData, imgOf) {
-    if (imgOf === "idCard") {
-      console.log("id card img", stateData);
-    } else if (imgOf === "drivingLicense") {
-      console.log("driving  img", stateData);
-    }
-  }
-  paymentInformationStateHandler(stateData) {
-    // console.log("neeeeee", stateData);
-  }
+  idVerificationStateHandler = (stateData, datatype) => {
+    let {
+      iDVerificationIDCardIsSubmited,
+      iDVerificationDrivingLicenseIsSubmited,
+      registrationProcessid,
+    } = this.state;
 
-  hourlyRateStateHandler() {}
+    if (datatype === "license") {
+      let data = new FormData();
+      data.append("file", stateData);
+      data.append("model", "profile");
+      data.append("model_id", registrationProcessid);
+      data.append("type", "certification");
+
+      registrationProcessid &&
+        post("api/v1/attachment/", data)
+          .then((response) => {
+            // iDVerificationDrivingLicenseIsSubmited = true
+            this.setState({ iDVerificationDrivingLicenseIsSubmited: true });
+          })
+          .catch((error) => {});
+    } else if (datatype === "id_card") {
+      let data = new FormData();
+      data.append("file", stateData);
+      data.append("model", "profile");
+      data.append("model_id", 58);
+      data.append("type", datatype);
+
+      registrationProcessid &&
+        post("api/v1/attachment/", data)
+          .then((response) => {
+            // iDVerificationIDCardIsSubmited = true
+            this.setState({ iDVerificationIDCardIsSubmited: true });
+          })
+          .catch((error) => {});
+    } else {
+    }
+  };
+  paymentInformationStateHandler = (stateData) => {};
+
+  hourlyRateStateHandler = (stateData) => {
+    this.setState({ proposal_amount: stateData });
+  };
 
   render() {
     let {
       tabindex,
       alert: { open, severity, message, title },
       personalProfileIsSubmited,
-      professionalProfileIsSubmited,
+      professionalProfileTickIcon,
+      professionalProfileCertificateIsSubmited,
+      professionalProfileOtherdataIsSubmited,
       personalProfileTickIcon,
-      iDVerificationIsSubmited,
+      iDVerificationDrivingLicenseIsSubmited,
+      iDVerificationIDCardIsSubmited,
       hourlyRateErrorIsSubmited,
+      iDVerificationTickIcon,
     } = this.state;
 
     if (tabindex > 1) {
@@ -277,19 +455,18 @@ class TabbarRegistration extends Component {
                       class=" "
                       onClick={() => this.setState({ tabindex: 2 })}
                     >
-                      {professionalProfileIsSubmited ? (
+                      {professionalProfileCertificateIsSubmited &&
+                      professionalProfileOtherdataIsSubmited ? (
                         <span
                           style={{
                             color: "white",
                             background: " #1DA799",
                             borderRadius: "25px",
-                            height:"25px",
-                            width:"25px",
-
+                            height: "25px",
+                            width: "25px",
                           }}
                         >
-                          <CheckIcon /> 
-                         
+                          <CheckIcon />
                         </span>
                       ) : (
                         <button
@@ -325,7 +502,7 @@ class TabbarRegistration extends Component {
                       class=" "
                       onClick={() => this.setState({ tabindex: 3 })}
                     >
-                      {iDVerificationIsSubmited ? (
+                      {iDVerificationTickIcon ? (
                         <span
                           style={{
                             color: "white",
@@ -453,6 +630,7 @@ class TabbarRegistration extends Component {
               {tabindex === 2 && (
                 <ProfessionalProfile2
                   onStateChange={this.professionalProfileStateHandler}
+                  showError={this.state.professionalProfileError}
                 />
               )}
               {tabindex === 3 && (
@@ -466,7 +644,10 @@ class TabbarRegistration extends Component {
                 />
               )}
               {tabindex === 5 && (
-                <HourlyRate onStateChange={this.hourlyRatestateHandler} />
+                <HourlyRate
+                  onStateChange={this.hourlyRateStateHandler}
+                  showError={this.state.hourlyRateError}
+                />
               )}
 
               <div className="container tabbar_next_pre_btn_background pt-4 pb-5">
@@ -498,8 +679,19 @@ class TabbarRegistration extends Component {
                     </button>
                   
                 ) : (
+<<<<<<< HEAD
                   
                     <button type="button" className="btn tb_nextButton">
+=======
+                  <div>
+                    <button
+                      type="button"
+                      className="btn tb_nextButton"
+                      onClick={() => {
+                        this.stepsfinish();
+                      }}
+                    >
+>>>>>>> ee11656cc981f81cfaf479740b939ed4bb3fcd86
                       {" "}
                       FINISH <ArrowRightAltIcon />
                     </button>
@@ -514,18 +706,4 @@ class TabbarRegistration extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    tabChangeHandler: (tabindex) => {
-      // console.log("tab in redux:", tabindex);
-      dispatch(
-        RegistrationTabBarAction({
-          type: "REGISTRATION_TAB_CHANGE",
-          payload: tabindex,
-        })
-      );
-    },
-  };
-};
-
-export default connect(null, mapDispatchToProps)(TabbarRegistration);
+export default withRouter(TabbarRegistration);

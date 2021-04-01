@@ -66,7 +66,7 @@ class PersonalProfile extends React.Component {
     return true;
   }
 
-  goal() {
+  getDatafromLocaStorage() {
     let isSubmit = null;
     let vvalue = 2;
     let { per_profile, per_profileValidate, errorProfile } = this.state;
@@ -109,7 +109,7 @@ class PersonalProfile extends React.Component {
   }
 
   componentDidMount() {
-    this.goal();
+    this.getDatafromLocaStorage();
   }
 
   submitHandler(ans) {
@@ -170,7 +170,7 @@ class PersonalProfile extends React.Component {
         );
       }
     });
-    
+
     localStorage.setItem("personal_profile", JSON.stringify(per_profile));
     this.setState({ per_profile, per_profileValidate, errorProfile });
 
@@ -262,7 +262,9 @@ class PersonalProfile extends React.Component {
                         ) : (
                           <div> </div>
                         )
-                      ) : <div> </div>}
+                      ) : (
+                        <div> </div>
+                      )}
                     </div>
                     <div
                       className={
@@ -285,12 +287,22 @@ class PersonalProfile extends React.Component {
                           this.changeHandler(e);
                         }}
                       />
+<<<<<<< HEAD
                       {errorProfile.last_name !== "" &&
                       this.props.tabindex === true ? (
                         <div className="error-message">
                           {errorProfile.last_name}
                         </div>
                       ) : null}
+=======
+                      {errorProfile.mobile_number !== ""
+                        ? this.props.tabindex === true && (
+                            <div className="error-message">
+                              {errorProfile.mobile_number}
+                            </div>
+                          )
+                        : null}
+>>>>>>> ee11656cc981f81cfaf479740b939ed4bb3fcd86
                     </div>
               </div>
               <div className="new-box">

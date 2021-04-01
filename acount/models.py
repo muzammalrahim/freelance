@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from polymorphic.models import PolymorphicModel
-from django.utils import timezone
 
 
 # Create your models here.
@@ -66,8 +65,13 @@ class Profile(PolymorphicModel):
 		('english', 'English'),
 	)
 	language = models.CharField(choices=LANG_CHOICES, max_length=30,
+<<<<<<< HEAD
 								default='arabic')
 	skills = models.ManyToManyField(Skill,blank=True)
+=======
+								default='arabic', blank=True, null=True)
+	skills = models.ManyToManyField(Skill, blank=True)
+>>>>>>> ee11656cc981f81cfaf479740b939ed4bb3fcd86
 	city = models.ForeignKey(City, on_delete=models.SET_NULL, blank=True,
 							 null=True)
 	country = models.ForeignKey(Country, on_delete=models.SET_NULL, blank=True,
@@ -120,8 +124,9 @@ class ClientProfile(Profile):
 
 class FreelancerProfile(Profile):
 	SERVICE_CHOICES = (
-		('service1', 'Service 1'),
-		('service2', 'Service 2'),
+		('Copywriting', 'Blog Editing'),
+		('Web Design','Web Development'),
+		('WordPress Setup','Graphic Design')
 	)
 	service = models.CharField(max_length=20, choices=SERVICE_CHOICES, blank=True, null=True)
 	category = models.ManyToManyField(Category, blank=True)
