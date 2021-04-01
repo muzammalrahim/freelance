@@ -4,200 +4,107 @@ from acount import models
 from rest_framework import serializers
 from django.contrib.auth.models import Group
 import base64, six, uuid
-
-from job.models import Attachment
 from django.core.files.base import ContentFile
 from rest_auth.models import TokenModel
-from django.core.files.base import File
-import os
-from django.core.files import temp as tempfile
-from io import BytesIO
+
+from default import utils
 
 
-# class UploadedFile(File):
-# 	"""
-# 	An abstract uploaded file (``TemporaryUploadedFile`` and
-# 	``InMemoryUploadedFile`` are the built-in concrete subclasses).
-#
-# 	An ``UploadedFile`` object behaves somewhat like a file object and
-# 	represents some file data that the user submitted with a form.
-# 	"""
-#
-# 	def __init__(self, file=None, name=None, content_type=None, size=None, charset=None, content_type_extra=None):
-# 		super().__init__(file, name)
-# 		self.size = size
-# 		self.content_type = content_type
-# 		self.charset = charset
-# 		self.content_type_extra = content_type_extra
-#
-# 	def __repr__(self):
-# 		return "<%s: %s (%s)>" % (self.__class__.__name__, self.name, self.content_type)
-#
-# 	def _get_name(self):
-# 		return self._name
-#
-#
-# 	def _set_name(self, name):
-# 		# Sanitize the file name so that it can't be dangerous.
-# 		if name is not None:
-# 			# Just use the basename of the file -- anything else is dangerous.
-# 			name = os.path.basename(name)
-#
-# 			# File names longer than 255 characters can cause problems on older OSes.
-# 			if len(name) > 255:
-# 				name, ext = os.path.splitext(name)
-# 				ext = ext[:255]
-# 				name = name[:255 - len(ext)] + ext
-#
-# 		self._name = name
-#
-# 	name = property(_get_name, _set_name)
-#
-#
-# class TemporaryUploadedFile(UploadedFile):
-# 	"""
-# 	A file uploaded to a temporary location (i.e. stream-to-disk).
-# 	"""
-#
-# 	def __init__(self, name, content_type, size, charset, content_type_extra=None):
-# 		_, ext = os.path.splitext(name)
-# 		file = tempfile.NamedTemporaryFile(suffix='.upload' + ext, dir=settings.FILE_UPLOAD_TEMP_DIR)
-# 		super().__init__(file, name, content_type, size, charset, content_type_extra)
-#
-# 	def temporary_file_path(self):
-# 		print()
-# 		"""Return the full path of this file."""
-# 		return self.file.name
-#
-# 	def close(self):
-# 		try:
-# 			return self.file.close()
-# 		except FileNotFoundError:
-# 			# The file was moved or deleted before the tempfile could unlink
-# 			# it. Still sets self.file.close_called and calls
-# 			# self.file.file.close() before the exception.
-# 			pass
-#
-#
-# class InMemoryUploadedFile(UploadedFile):
-# 	"""
-# 	A file uploaded into memory (i.e. stream-to-memory).
-# 	"""
-#
-# 	def __init__(self, file, field_name, name, content_type, size, charset, content_type_extra=None):
-# 		super().__init__(file, name, content_type, size, charset, content_type_extra)
-# 		self.field_name = field_name
-#
-# 	def open(self, mode=None):
-# 		self.file.seek(0)
-# 		return self
-#
-# 	def chunks(self, chunk_size=None):
-# 		self.file.seek(0)
-# 		yield self.read()
-#
-# 	def multiple_chunks(self, chunk_size=None):
-# 		# Since it's in memory, we'll never have multiple chunks.
-# 		return False
-#
-#
-# class SimpleUploadedFile(InMemoryUploadedFile):
-# 	"""
-# 	A simple representation of a file, which just has content, size, and a name.
-# 	"""
-#
-# 	def __init__(self, name, content, content_type='text/plain'):
-# 		content = content or b''
-# 		super().__init__(BytesIO(content), None, name, content_type, len(content), None, None)
-#
-# 	@classmethod
-# 	def from_dict(cls, file_dict):
-# 		"""
-# 		Create a SimpleUploadedFile object from a dictionary with keys:
-# 		   - filename
-# 		   - content-type
-# 		   - content
-# 		"""
-# 		return cls(file_dict['filename'],
-# 				   file_dict['content'],
-# 				   file_dict.get('content-type', 'text/plain'))
+class Base64ImageField(serializers.ImageField):
 
+	def __init__(self, *args, **kwargs):
+		self.represent_in_base64 = kwargs.pop('represent_in_base64', False)
+		super(Base64ImageField, self).__init__(*args, **kwargs)
 
-# class Base64ImageField(serializers.ImageField):
-#
-# 	def __init__(self, *args, **kwargs):
-# 		self.represent_in_base64 = kwargs.pop('represent_in_base64', False)
-# 		super(Base64ImageField, self).__init__(*args, **kwargs)
-#
-# 	def to_internal_value(self, data):
-#
-# 		if isinstance(data, six.string_types):
-# 			if 'data:' in data and ';base64,' in data:
-# 				header, data = data.split(';base64,')
-#
-# 			try:
-# 				decoded_file = base64.b64decode(data)
-# 			except TypeError:
-# 				self.fail('invalid_image')
-#
-# 			if 'data-orig' in header:
-# 				fname, garbage = header.split(';data:')
-# 				garbage_val, file_name = fname.split('data-orig:')
-# 				complete_file_name = "thumb_%s" % (file_name)
-# 			else:
-# 				file_name = str(uuid.uuid4())[:12]  # 12 characters are more than enough.
-# 				file_extension = self.get_file_extension(file_name, decoded_file)
-# 				complete_file_name = "%s.%s" % (file_name, file_extension,)
-# 			data = ContentFile(decoded_file, name=complete_file_name)
-#
-# 		return super(Base64ImageField, self).to_internal_value(data)
-#
-# 	def get_file_extension(self, file_name, decoded_file):
-# 		import imghdr
-#
-# 		extension = imghdr.what(file_name, decoded_file)
-# 		extension = "jpg" if extension == "jpeg" else extension
-#
-# 		return extension
-#
-# 	def from_native(self, data):
-# 		if isinstance(data, basestring) and data.startswith('data:image'):
-# 			# base64 encoded image - decode
-# 			format, imgstr = data.split(';base64,')  # format ~= data:image/X,
-# 			ext = format.split('/')[-1]  # guess file extension
-#
-# 			data = ContentFile(base64.b64decode(imgstr), name='temp.' + ext)
-#
-# 		return super(Base64ImageField, self).from_native(data)
-#
-# 	def to_representation(self, file):
-# 		if self.represent_in_base64:
-# 			try:
-# 				with open(file.path, 'rb') as f:
-# 					return base64.b64encode(f.read()).decode()
-# 			except Exception as e:
-# 				print
-# 				'Fails to decode file: %s (%s)' % (e.message, type(e))
-# 		else:
-# 			return super(Base64ImageField, self).to_representation(file)
+	def to_internal_value(self, data):
+
+		if isinstance(data, six.string_types):
+			if 'data:' in data and ';base64,' in data:
+				header, data = data.split(';base64,')
+
+			try:
+				decoded_file = base64.b64decode(data)
+			except TypeError:
+				self.fail('invalid_image')
+
+			if 'data-orig' in header:
+				fname, garbage = header.split(';data:')
+				garbage_val, file_name = fname.split('data-orig:')
+				complete_file_name = "thumb_%s" % (file_name)
+			else:
+				file_name = str(uuid.uuid4())[:12]  # 12 characters are more than enough.
+				file_extension = self.get_file_extension(file_name, decoded_file)
+				complete_file_name = "%s.%s" % (file_name, file_extension,)
+			data = ContentFile(decoded_file, name=complete_file_name)
+
+		return super(Base64ImageField, self).to_internal_value(data)
+
+	def get_file_extension(self, file_name, decoded_file):
+		import imghdr
+
+		extension = imghdr.what(file_name, decoded_file)
+		extension = "jpg" if extension == "jpeg" else extension
+
+		return extension
+
+	def from_native(self, data):
+		if isinstance(data, basestring) and data.startswith('data:image'):
+			# base64 encoded image - decode
+			format, imgstr = data.split(';base64,')  # format ~= data:image/X,
+			ext = format.split('/')[-1]  # guess file extension
+
+			data = ContentFile(base64.b64decode(imgstr), name='temp.' + ext)
+
+		return super(Base64ImageField, self).from_native(data)
+
+	def to_representation(self, file):
+		if self.represent_in_base64:
+			try:
+				with open(file.path, 'rb') as f:
+					return base64.b64encode(f.read()).decode()
+			except Exception as e:
+				print
+				'Fails to decode file: %s (%s)' % (e.message, type(e))
+		else:
+			return super(Base64ImageField, self).to_representation(file)
 
 
 class CitySerializers(serializers.ModelSerializer):
+	# id = serializers.IntegerField()
 	class Meta:
 		model = models.City
 		fields = '__all__'
+		validator = []
 
 
 class CountrySerializers(serializers.ModelSerializer):
+	# id = serializers.IntegerField()
 	class Meta:
 		model = models.Country
 		fields = '__all__'
 
 
 class UserSerializer(serializers.ModelSerializer):
+	id = serializers.IntegerField()
+	# profile = serializers.SerializerMethodField()
+	#
+	# def get_profile(self, instance):
+	# 	profile = models.Profile.objects.get(user=instance.id)
+	# 	return ProfileSerializers(profile).data
+
+	def to_representation(self, instance):
+		representation = super(UserSerializer, self).to_representation(instance)
+		# try:
+		representation['profile'] = models.Profile.objects.filter(user=instance.id).values()
+		print("representation['profile']",representation['profile'])
+		# except:
+		# 	representation['profile'] = None
+		return representation
+
 	class Meta:
 		model = models.User
-		fields = '__all__'
+		# fields = '__all__'
+		fields = ['id', 'first_name', 'last_name']
 
 
 class SkillSerializers(serializers.ModelSerializer):
@@ -213,7 +120,7 @@ class CategorySerializers(serializers.ModelSerializer):
 
 
 class ProfileSerializers(serializers.ModelSerializer):
-	# avatar = Base64ImageField(required=False)
+	avatar = Base64ImageField(required=False)
 	ACCOUNT_TYPE_CHOICES = (
 		('work', 'Work'),
 		('hire', 'Hire'),
@@ -237,16 +144,14 @@ class ProfileSerializers(serializers.ModelSerializer):
 	def create(self, validated_data):
 		if 'account_type' in validated_data:
 			account_type = validated_data.pop('account_type')
-			print("account_type", account_type)
-			# if 'account_type' in validated_data :
-			# 	validated_data['account_type'] = self.context['request'].User.account_type
-			# account_type = validated_data.pop('account_type')
 			user = self.context['request'].user
-			# user = super().create(validated_data)
+
 			if account_type == 'work':
 				user.groups.add(Group.objects.get(name=settings.FREELANCER_USER))
+
 			elif account_type == "hire":
 				user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
+
 		validated_data['created_by'] = self.context['request'].user
 		return super().create(validated_data)
 
@@ -275,43 +180,90 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
 	# category = CategorySerializers(many=True, required=False)
 	city = CitySerializers(required=False)
 	country = CountrySerializers(required=False)
+	ACCOUNT_TYPE_CHOICES = (
+		('work', 'Work'),
+		('hire', 'Hire'),
+	)
+	account_type = serializers.ChoiceField(choices=ACCOUNT_TYPE_CHOICES, required=False)
+
 	# license = AttachmentSerializer(write_only=True, required=False)
 	# id_card = AttachmentSerializer(write_only=True, required=False)
 	# certification = AttachmentSerializer(write_only=True, required=False)
-	# user = UserSerializer(required=False)
-
-	# user_type = UserSerializer
+	user = UserSerializer(write_only=True, required=False)
 
 	def create(self, validated_data):
+		# 	skills = validated_data.pop('skills')
+		# 	category = validated_data.pop('category')
+		if 'account_type' in validated_data:
+			account_type = validated_data.pop('account_type')
+			user = self.context['request'].user
 
-	# 	skills = validated_data.pop('skills')
-	# 	category = validated_data.pop('category')
-	# user = validated_data.pop('user')
+			if account_type == 'work':
+				user.groups.add(Group.objects.get(name=settings.FREELANCER_USER))
+
+			elif account_type == "hire":
+				user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
+
+		user = validated_data.pop('user')
+
+		id = user.get('id')
+		first_name = user.get('first_name')
+		last_name = user.get('last_name')
+
 		city = validated_data.pop('city')
 		country = validated_data.pop('country')
-	# 	license = validated_data.pop('license')
-	# 	id_card = validated_data.pop('id_card')
-	# 	certification = validated_data.pop('certification')
-	#
-	# user = models.User.objects.get(id=user)
-	# 	Attachment.objects.create(**license)
-	# 	Attachment.objects.create(**id_card)
-	# 	Attachment.objects.create(**certification)
+
+		user = models.User.objects.get(pk=id)
+		user.first_name = first_name
+		user.last_name = last_name
+		user.save()
+		# license = validated_data.pop('license')
+		# 	id_card = validated_data.pop('id_card')
+		# 	certification = validated_data.pop('certification')
+		#
+		# user = models.User.objects.create(user)
+
+		# 	Attachment.objects.create(**license)
+		# 	Attachment.objects.create(**id_card)
+		# 	Attachment.objects.create(**certification)
 		city = models.City.objects.create(**city)
 		country = models.Country.objects.create(**country)
-	
-		freelance_profile = models.FreelancerProfile.objects.create( city=city, country=country,
-																	**validated_data)
-# 
-	# 	for data in skills:
-	# 		k = models.Skill.objects.create(name=data.get('name'))
-	# 		freelance_profile.skills.add(k)
-	#
-	# 	for data in category:
-	# 		s = models.Category.objects.create(name=data.get('name'))
-	# 		freelance_profile.category.add(s)
-	#
+
+		freelance_profile = models.FreelancerProfile.objects.create(user=user, city=city, country=country)
+
+		# 	for data in skills:
+		# 		k = models.Skill.objects.create(name=data.get('name'))
+		# 		freelance_profile.skills.add(k)
+		#
+		# 	for data in category:
+		# 		s = models.Category.objects.create(name=data.get('name'))
+		# 		freelance_profile.category.add(s)
+		#
 		return freelance_profile
+
+	def update(self, instance, validated_data):
+		user = validated_data.pop('user')
+		city = validated_data.pop('city')
+		country = validated_data.pop('country')
+
+		user = UserSerializer(instance.user, data=user, partial=True)
+		if user.is_valid():
+			user.save()
+
+		city = CitySerializers(instance.city, data=city)
+		if city.is_valid():
+			city.save()
+
+		country = CountrySerializers(instance.country, data=country)
+		if country.is_valid():
+			country.save()
+
+		freelance_api = super().update(instance, validated_data)
+
+		instance.mobile_no = validated_data.get('mobile_no', instance.mobile_no)
+		instance.street = validated_data.get('street', instance.street)
+
+		return freelance_api
 
 	def to_representation(self, instance):
 		representation = super(FreelancerProfileSerializers, self).to_representation(instance)
@@ -327,6 +279,7 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
 	class Meta:
 		model = models.FreelancerProfile
 		fields = '__all__'
+		extra_kwargs = {'user.password': {'required': False}}
 
 
 class MyTokenSerializer(serializers.Serializer):
@@ -379,16 +332,14 @@ class CustomRegisterUserSerializer(DefaultRegisterUserSerializer):
 		user = super().create(validated_data)
 		# Profile(user=user).save()
 
-		# if 'account_type' in validated_data:
-		# 	print("dddddddddddddddd")
-
-		# if account_type == 'work':
-			# models.FreelancerProfile(user=user).save()
-			# user.groups.add(Group.objects.get(name=settings.FREELANCER_USER))
-		# elif account_type == 'hire':
-			# models.ClientProfile(user=user).save()
-			# user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
-		# else:
-			# user.groups.add(Group.objects.get(name=settings.ADMIN_USER))
+		if 'account_type' in validated_data:
+			if account_type == 'work':
+				models.FreelancerProfile(user=user).save()
+				user.groups.add(Group.objects.get(name=settings.FREELANCER_USER))
+			elif account_type == 'hire':
+				models.ClientProfile(user=user).save()
+				user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
+			else:
+				user.groups.add(Group.objects.get(name=settings.ADMIN_USER))
 
 		return user

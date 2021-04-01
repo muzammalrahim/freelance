@@ -34,7 +34,7 @@ class LinkedInPage extends Component {
       GettingLinkedinAccessToken(this.state.authorizationCode)
         .then((response) => {
           this.setState({ access_token: response.data.access_token });
-              console.log("response:",response)
+          console.log("response:", response);
           if (this.state.access_token) {
             const data = JSON.stringify({
               access_token: this.state.access_token,
@@ -67,6 +67,7 @@ class LinkedInPage extends Component {
   }
 
   linkedinRequest() {
+   
     /* Creates a new Window */
     const newWindow = window.open(this.winUrl, "_blank", true, 500, 600);
 

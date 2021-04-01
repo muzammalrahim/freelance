@@ -53,7 +53,7 @@ function IdVerification(props) {
 
     props.onStateChange(binaryfile,imgOf)
    
-    console.log("isSubmit res",isSubmit)
+   
 
   }
 
@@ -61,7 +61,7 @@ function IdVerification(props) {
     let isSubmit = null
       let imgOf = "id_card"
     setidCard(binaryfile);
-
+    // localStorage.setItem("id_card",binaryfile);
     if(drivingLicense && idCard)
     {
       isSubmit = true
@@ -72,11 +72,16 @@ function IdVerification(props) {
 
    //isSubmit = Boolean(checkEmptyField(isSubmit));
 
-   console.log("wahhhhhh",isSubmit)
     props.onStateChange(binaryfile,imgOf)
-    console.log("isSubmit res",isSubmit)
+  
   }
+//  useEffect(() => {
+//      let idcard
+//     if (localStorage.getItem("id_card")) {
+//       idcard = parseInt(localStorage.getItem("id_card"));
+//     }
 
+//   });
   return (
     <div className="idVerification">
       <div className="Pf-container">
