@@ -86,8 +86,9 @@ class TabbarRegistration extends Component {
     this.setState({ showPersonalProfileError: true });
     if (userid && tabindex === 1) {
       if (personalProfileIsSubmited === true ) {  
-        //  registrationProcessid ? patch(`api/v1/freelancer_profile/${registrationProcessid}/`, data) :
-        post("api/v1/freelancer_profile/", data)
+            if(registrationProcessid) 
+            {
+             patch((`api/v1/freelancer_profile/${userid}/`,data)) 
           .then((response) => {
             localStorage.setItem(
               "registration_process_medel_id",
@@ -105,7 +106,6 @@ class TabbarRegistration extends Component {
               },
             });
           })
-
           .catch((error) => {
             this.setState({
               alert: {
@@ -117,6 +117,40 @@ class TabbarRegistration extends Component {
               },
             });
           });
+      }
+      else{
+           post("api/v1/freelancer_profile/", data)
+          .then((response) => {
+            localStorage.setItem(
+              "registration_process_medel_id",
+              response.data.id
+            );
+            this.setState({
+              personalProfileTickIcon: true,
+              registrationProcessid: response.data.id,
+              tabindex: tabindex + 1,
+              alert: {
+                open: true,
+                severity: "success",
+                title: "success",
+                message: "you have successfully complete step one",
+              },
+            });
+          })
+          .catch((error) => {
+            this.setState({
+              alert: {
+                open: true,
+                severity: "error",
+                title: "Error",
+                //  message:`${key+": "+error.response.data[key][0]}`
+                message: "step one not completed",
+              },
+            });
+          });
+      }
+
+
       } else {
       }
     }
@@ -234,13 +268,19 @@ class TabbarRegistration extends Component {
   }
 
   personalProfilestateHandler = (stateData, isSubmit) => {
+
+    console.log("data",stateData)
     let { data } = this.state;
     if (isSubmit === true) {
       data = {
         mobile_no: stateData.mobile_number,
         street: stateData.address,
         // service: "service1",
-        user: this.state.userid,
+        user: {
+                id:this.state.userid,
+                first_name:stateData.first_name,
+                last_name:stateData.last_name,
+              },
         account_type: this.state.account_type,
         city: {
           name: stateData.city,
