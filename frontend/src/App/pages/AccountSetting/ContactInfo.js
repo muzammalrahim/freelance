@@ -16,9 +16,11 @@ first_name : "" ,
 street : "",
 mobile_no : '',
 email: '',
-username:''
+username:'',
+avatar:''
 
 });
+// setUser({ avatar: "http://127.0.0.1:8000/media/1-01_H7pzMtG.png" });
 let history = useHistory();
 
 const getData = () =>{
@@ -33,7 +35,7 @@ setId(getid)
 }
 
 const getUser = () => {
-list(`api/v1/freelancer_profile/${id}/`)
+list(`api/v1/freelancer_profile/${24}/`)
 .then((response) => {
 const data= response.data;
 var id = JSON.parse(response.data.id);
@@ -181,6 +183,10 @@ Location
 <div className="ci-account col-md-12">
 <p>Address<span>{user.street}</span></p>
 <p>Phone<span>{user.mobile_no}</span></p>
+</div>
+<div className="col-md-12">
+    {user.avatar}
+    
 </div>
 <div className="my-profile-links col-md-12">
 <a href="">discard changes</a>

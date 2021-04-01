@@ -96,6 +96,9 @@ class GetImage extends Component {
         } else if (this.props.value === "idVerf_IC_imgUpload") {
           this.props.idVerf_IC_imgUpload(files[0]);
         }
+         else if (this.props.value === "RequestPayment") {
+          this.props.onUploadbinaryImg(files[0]);
+        }
       };
       reader.readAsArrayBuffer(file);
     });
