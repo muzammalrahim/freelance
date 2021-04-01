@@ -26,15 +26,7 @@ class ProfessionalProfile2 extends Component {
       provideService: false,
       chooseCategory: false,
     };
-
-    this.professionalProfileData = {
-      provideService: "",
-      skills: [],
-      chooseCategory: [],
-    };
-
     this.state = {
-      professionalProfileData: this.professionalProfileData,
       alert: this.alert,
       validation: this.validation,
       provideService: "",
@@ -190,11 +182,19 @@ class ProfessionalProfile2 extends Component {
       chooseCategory: storedData,
     });
   };
+  getSkillsFromStorage = () => {
+    var storedData = JSON.parse(localStorage.getItem("skills"));
+
+    this.setState({
+      skills: storedData,
+    });
+  };
 
   componentDidMount() {
     this.getSkillsList();
     this.getCategory();
-    this.getCategoryFromStorage();
+   // this.getCategoryFromStorage();
+    this.getSkillsFromStorage();
   }
 
   render() {
@@ -202,10 +202,8 @@ class ProfessionalProfile2 extends Component {
       getSkillsList,
       getChooseCategoryList,
       alert: { open, severity, message, title },
-      validation,
-      checkTrue,
-      getchooseCategoryFromStorage,
       chooseCategory,
+      skills,
     } = this.state;
     return (
       <div className="ProfessionalProfile">
@@ -231,6 +229,11 @@ class ProfessionalProfile2 extends Component {
           localStorage.setItem(
             "choosecategory",
             JSON.stringify(chooseCategory)
+          )}
+        {skills != "" &&
+          localStorage.setItem(
+            "skills",
+            JSON.stringify(skills)
           )}
         <div className="Pf-container proff-prof">
           <div className="container Pf-rightbox   bg2 b_line2 p-5">

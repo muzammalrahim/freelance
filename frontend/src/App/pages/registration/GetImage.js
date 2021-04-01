@@ -54,8 +54,10 @@ class GetImage extends Component {
     this.setState({ Driving_License: stored_Driving_License });
     var stored_Id_Card = JSON.parse(localStorage.getItem("id_card"));
     this.setState({ Id_Card: stored_Id_Card });
+    
+    var stored_Certificate = JSON.parse(localStorage.getItem("certificate"));
+    this.setState({ certificate: stored_Certificate});
 
-    this.setDrivingImg();
   }
 
   onDrop = (files) => {
@@ -104,6 +106,7 @@ class GetImage extends Component {
         // }
         if (this.props.value === "onUpload") {
           this.props.onUpload(files[0]);
+          localStorage.setItem("certificate", JSON.stringify(base64Image));
           this.setState({ certificate: base64Image });
         } else if (this.props.value === "idVerf_DL_imgUpload") {
           this.props.idVerf_DL_imgUpload(files[0]);
@@ -119,18 +122,6 @@ class GetImage extends Component {
     });
   }; // drop end;
 
-  setDrivingImg = () => {
-    var data;
-    let { Driving_License } = this.state;
-
-    data = Driving_License;
-
-    this.setState({ data });
-  };
-  setId_card = () => {
-    let { Id_Card } = this.state;
-    this.setState({ filesBase64: Id_Card });
-  };
 
   render() {
     let { Driving_License, Id_Card, certificate, filesBase64 } = this.state;

@@ -106,7 +106,7 @@ class TabbarRegistration extends Component {
                   open: true,
                   severity: "success",
                   title: "success",
-                  message: "you have successfully complete step one",
+                  message: "you have successfully update step one",
                 },
               });
             })
@@ -116,8 +116,8 @@ class TabbarRegistration extends Component {
                   open: true,
                   severity: "error",
                   title: "Error",
-                  //  message:`${key+": "+error.response.data[key][0]}`
-                  message: "step one not completed",
+                   message:`${"step one not completed : "+error.response.data}`
+                  // message: "step one not completed",
                 },
               });
             });

@@ -33,7 +33,7 @@ render() {
 return (
 <div className="dropdown-comp">
 <p className="dropheader">{this.props.title}</p>
-<select className="Select" value={this.state.provide_service} onChange={this.handleChange} >
+<select className="Select" value={this.state.provide_service} onChange={this.handleChange}>
 
 <option value="Select service">Select service</option>
 <option value="Copywriting">Copywriting</option>
