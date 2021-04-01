@@ -36,7 +36,7 @@ setId(getid)
 
 const getData1 = () => {
     let getid = null
-list("api/v1/freelancer_profile/5/")
+list("api/v1/freelancer_profile/1/")
 .then((response) => {
 const data= response.data;
 getid = response.data.id
