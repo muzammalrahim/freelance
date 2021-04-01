@@ -120,8 +120,8 @@ class ClientProfile(Profile):
 class FreelancerProfile(Profile):
 	SERVICE_CHOICES = (
 		('Copywriting', 'Blog Editing'),
-		('Web Design','Web Development'),
-		('WordPress Setup','Graphic Design')
+		('Web Design', 'Web Development'),
+		('WordPress Setup', 'Graphic Design')
 	)
 	service = models.CharField(max_length=20, choices=SERVICE_CHOICES, blank=True, null=True)
 	category = models.ManyToManyField(Category, blank=True)
