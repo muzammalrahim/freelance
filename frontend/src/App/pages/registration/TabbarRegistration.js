@@ -53,6 +53,7 @@ class TabbarRegistration extends Component {
       proposal_amount: null,
       account_type: this.props.account_type,
       data: {},
+      patchdata:{},
       professionalProfilestatedata: {},
     };
   }
@@ -81,6 +82,7 @@ class TabbarRegistration extends Component {
       professionalProfileOtherdataIsSubmited,
       professionalProfilestatedata,
       registrationProcessid,
+      patchdata,
     } = this.state;
 
     this.setState({ showPersonalProfileError: true });
@@ -88,7 +90,8 @@ class TabbarRegistration extends Component {
       if (personalProfileIsSubmited === true ) {  
             if(registrationProcessid) 
             {
-             patch((`api/v1/freelancer_profile/${userid}/`,data)) 
+              console.log("frelacer id",registrationProcessid)
+             patch(`api/v1/freelancer_profile/${registrationProcessid}/`,patchdata) 
           .then((response) => {
             localStorage.setItem(
               "registration_process_medel_id",
@@ -239,8 +242,12 @@ class TabbarRegistration extends Component {
       .then((res) => {
         var data = JSON.parse(res.data.id);
         userid = data;
-
-        this.setState({ userid });
+        this.setState({userid})
+        localStorage.setItem(
+          "profile_id",
+          data
+        )
+      
       })
       .catch((error) => {});
 
@@ -270,14 +277,13 @@ class TabbarRegistration extends Component {
   personalProfilestateHandler = (stateData, isSubmit) => {
 
     console.log("data",stateData)
-    let { data } = this.state;
+    let { data ,userid,patchdata} = this.state;
     if (isSubmit === true) {
       data = {
         mobile_no: stateData.mobile_number,
         street: stateData.address,
-        // service: "service1",
         user: {
-                id:this.state.userid,
+                id:userid,
                 first_name:stateData.first_name,
                 last_name:stateData.last_name,
               },
@@ -288,8 +294,25 @@ class TabbarRegistration extends Component {
         country: {
           name: stateData.country,
         },
+        
       };
-      this.setState({ data });
+      patchdata = {
+        mobile_no: stateData.mobile_number,
+        street: stateData.address,
+        user: {
+                
+                first_name:stateData.first_name,
+                last_name:stateData.last_name,
+              },
+        account_type: this.state.account_type,
+        city: {
+          name: stateData.city,
+        },
+        country: {
+          name: stateData.country,
+        },
+      }
+      this.setState({ data,patchdata });
       this.setState({ personalProfileIsSubmited: true });
     } else {
     }

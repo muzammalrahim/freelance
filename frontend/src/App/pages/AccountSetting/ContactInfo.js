@@ -36,7 +36,7 @@ setId(getid)
 
 const getData1 = () => {
     let getid = null
-list("api/v1/freelancer_profile/5/")
+list("api/v1/freelancer_profile/{id}/")
 .then((response) => {
 const data= response.data;
 getid = response.data.id
@@ -75,7 +75,7 @@ setSave(data)
 const handleSave2 = (e) => {
 e.preventDefault();
 setShow2(false)
-patch("api/v1/freelancer_profile/5/",data1)
+patch("api/v1/freelancer_profile/85/",data1)
 .then((response) => {
     const data1= response.data1;
     var id = JSON.parse(response.data1.id);
