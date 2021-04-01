@@ -68,12 +68,15 @@ class Base64ImageField(serializers.ImageField):
 
 
 class CitySerializers(serializers.ModelSerializer):
+	# id = serializers.IntegerField()
 	class Meta:
 		model = models.City
 		fields = '__all__'
+		validator = []
 
 
 class CountrySerializers(serializers.ModelSerializer):
+	# id = serializers.IntegerField()
 	class Meta:
 		model = models.Country
 		fields = '__all__'
@@ -84,6 +87,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = models.User
+		# fields = '__all__'
 		fields = ['id', 'first_name', 'last_name']
 
 
@@ -171,8 +175,6 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
 	# certification = AttachmentSerializer(write_only=True, required=False)
 	user = UserSerializer(write_only=True, required=False)
 
-	# user_type = UserSerializer
-
 	def create(self, validated_data):
 		# 	skills = validated_data.pop('skills')
 		# 	category = validated_data.pop('category')
@@ -185,10 +187,10 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
 
 			elif account_type == "hire":
 				user.groups.add(Group.objects.get(name=settings.CLIENT_USER))
-		user = validated_data.pop('user')
-		id = user.get('id')
-		print("useruseruser--id", id)
 
+		user = validated_data.pop('user')
+
+		id = user.get('id')
 		first_name = user.get('first_name')
 		last_name = user.get('last_name')
 
@@ -196,11 +198,9 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
 		country = validated_data.pop('country')
 
 		user = models.User.objects.get(pk=id)
-		print("user user", user)
 		user.first_name = first_name
 		user.last_name = last_name
 		user.save()
-		print(user)
 		# license = validated_data.pop('license')
 		# 	id_card = validated_data.pop('id_card')
 		# 	certification = validated_data.pop('certification')
@@ -225,29 +225,29 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
 		#
 		return freelance_profile
 
-	# def update(self, instance, validated_data):
-	# 	user = validated_data.pop('user')
-	# 	print("user", user)
-	# 	city = validated_data.pop('city')
-	# 	country = validated_data.pop('country')
-	#
-	# 	user = UserSerializer(data=user)
-	# 	if user.is_valid():
-	# 		user.save()
-	#
-	#     freelance_api = super().update(instance, validated_data)
- 	# 	city = CitySerializers(data=city)
-	# 	if city.is_valid():
-	# 		city.save()
-	#
-	# 	country = CountrySerializers(data=country)
-	# 	if country.is_valid():
-	# 		country.save()
-	#
-	# 	self.fields.pop('city')
-	#
-	#
-	#      return freelance_api
+	def update(self, instance, validated_data):
+		user = validated_data.pop('user')
+		city = validated_data.pop('city')
+		country = validated_data.pop('country')
+
+		user = UserSerializer(instance.user, data=user, partial=True)
+		if user.is_valid():
+			user.save()
+
+		city = CitySerializers(instance.city, data=city)
+		if city.is_valid():
+			city.save()
+
+		country = CountrySerializers(instance.country, data=country)
+		if country.is_valid():
+			country.save()
+
+		freelance_api = super().update(instance, validated_data)
+
+		instance.mobile_no = validated_data.get('mobile_no', instance.mobile_no)
+		instance.street = validated_data.get('street', instance.street)
+
+		return freelance_api
 
 	def to_representation(self, instance):
 		representation = super(FreelancerProfileSerializers, self).to_representation(instance)

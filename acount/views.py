@@ -29,6 +29,11 @@ class CityViewSet(viewsets.ModelViewSet):
 	search_fields = ['^name']
 
 
+class UserViewSet(viewsets.ModelViewSet):
+	queryset = models.User.objects.all()
+	serializer_class = acount_serializer.UserSerializer
+
+
 class CountryViewSet(viewsets.ModelViewSet):
 	queryset = models.Country.objects.all()
 	serializer_class = acount_serializer.CountrySerializers
