@@ -2,7 +2,7 @@ import React, { useEffect, useState} from "react";
 import "./Editbio.css";
 
 import list  from '../../App/pages/helper/api';
-import {put}  from '../../App/pages/helper/api';
+import {put,patch}  from '../../App/pages/helper/api';
 import { useHistory , useParams } from 'react-router-dom';
 
 

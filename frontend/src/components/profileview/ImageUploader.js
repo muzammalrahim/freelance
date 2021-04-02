@@ -22,6 +22,7 @@ import Cooper from '../../assets/Cooper.png';
         console.log("fileload :",  uploadedImage)
       }
     };
+    
   
     return (
       <div

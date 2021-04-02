@@ -139,8 +139,8 @@ function Card() {
                     <div className="col-md-10">
                       <a href="">
                     <p>
-                    {/* Join Decemeber 10, 2015 */}
-                    {getCardData?.user?.date_joined}
+                    Join Decemeber 10, 2015
+                    {/* {getCardData?.user?.date_joined} */}
                     </p>
                     </a>
                     </div>
