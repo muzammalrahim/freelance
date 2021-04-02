@@ -6,9 +6,13 @@ import list  from '../../App/pages/helper/api';
 
 function BioGraphy() {
   const [profiledata, setprofileData] = useState ({
-    description : "enter your bio here"
+    description : "enter your bio here enter your bio here enter your bio here "
   });
   const [data, setData] = useState ();
+  const [getid, setGetId] = useState ({
+    
+  });
+
   const [skills, setSkills] = useState ('');
 
   
@@ -22,9 +26,19 @@ function BioGraphy() {
 setData(data);
 })
 }
+function getId () {
+  console.log("show response:");
+  list('api/v1/user/25/')
+  .then((response)=>{
+   const data = response.data;
+   console.log("freelance id:",data.id);
+
+   setGetId(data);
+})
+}
 
   function getdata() {
-  list('api/v1/freelancer_profile/24/')
+  list('api/v1/freelancer_profile/25/')
 .then((response)=>{
 const data = response.data;
 console.log("freelancerd :",response.data);
@@ -41,6 +55,7 @@ setprofileData(data);
     useEffect(() => {
       getdata();
       getDataId();
+      getId ();
     },[]);
   return (
     <div className="ui-comments">
@@ -50,7 +65,7 @@ setprofileData(data);
             <h>Personal Profile</h>
           </div>
           <div class="col-md-6 pr-4">
-            <Link to={`EditBio/${profiledata.id}`}>
+            <Link to={`EditBio/${setGetId.id,setData.id}`}>
           
             <button type="button" class="btn btn-primary btn-sm float-right" >
         EDIT
@@ -76,7 +91,7 @@ setprofileData(data);
                   </div>
                   <div className="col-md-9">
                   {data && data.email ? data.email : ''}
-                    {/* {profiledata.email} */}
+                    {/* {data.email} */}
                   </div>
                 </div>
                 
