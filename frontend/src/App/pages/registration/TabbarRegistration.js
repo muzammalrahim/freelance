@@ -43,7 +43,7 @@ class TabbarRegistration extends Component {
       professionalProfileCertificateIsSubmited: false,
       professionalProfileOtherdataIsSubmited: false,
       professionalProfileTickIcon: false,
-      
+
       iDVerificationError: false,
       iDVerificationDrivingLicenseIsSubmited: false,
       iDVerificationIDCardIsSubmited: false,
@@ -85,12 +85,10 @@ class TabbarRegistration extends Component {
 
     this.setState({ showPersonalProfileError: true });
     if (userid) {
-      if (personalProfileIsSubmited === true && tabindex === 1) {
+      if (personalProfileIsSubmited === true && tabindex === 1) {  
+        //  registrationProcessid ? patch(`api/v1/freelancer_profile/${registrationProcessid}/`, data) :
         post("api/v1/freelancer_profile/", data)
           .then((response) => {
-            console.log("freelancer_profile res:", response);
-            console.log("freelancer_profile res:", response.data.id);
-
             localStorage.setItem(
               "registration_process_medel_id",
               response.data.id
@@ -118,16 +116,15 @@ class TabbarRegistration extends Component {
                 message: "step one not completed",
               },
             });
-
-            console.log("error", error);
           });
       } else {
       }
     }
 
-    //  if(professionalProfileOtherdataIsSubmited === true && registrationProcessid )
-
-   else if ( iDVerificationDrivingLicenseIsSubmited && iDVerificationIDCardIsSubmited) {
+    else if (
+      iDVerificationDrivingLicenseIsSubmited &&
+      iDVerificationIDCardIsSubmited && tabindex === 3
+    ) {
       this.setState({
         iDVerificationTickIcon: true,
         tabindex: tabindex + 1,
@@ -140,12 +137,14 @@ class TabbarRegistration extends Component {
       });
     }
 
-    if(professionalProfileOtherdataIsSubmited && professionalProfileCertificateIsSubmited) 
-    {
-      console.log("else")
-      patch(`api/v1/freelancer_profile/${registrationProcessid}/`, professionalProfilestatedata)
-      .then((response) => {
-        console.log("professional profile res:", response);
+   else if (
+      professionalProfileOtherdataIsSubmited &&
+      professionalProfileCertificateIsSubmited && tabindex === 2
+    ) {
+      patch(
+        `api/v1/freelancer_profile/${registrationProcessid}/`,
+        professionalProfilestatedata
+      ).then((response) => {
         this.setState({
           tabindex: tabindex + 1,
           alert: {
@@ -157,11 +156,6 @@ class TabbarRegistration extends Component {
         });
       });
     }
-  
-
-
-
-    this.props.tabChangeHandler(tabindex);
   };
 
   tabDownhandler = () => {
@@ -171,24 +165,26 @@ class TabbarRegistration extends Component {
   };
 
   stepsfinish = () => {
-    let { proposal_amount, userid,registrationProcessid} = this.state;
+    let { proposal_amount, userid, registrationProcessid } = this.state;
     this.setState({ hourlyRateError: true });
 
     let data = { proposal_amount: proposal_amount };
 
-    patch(`api/v1/freelancer_profile/${registrationProcessid}/`, data).then((response) => {
-      this.setState({
-        alert: {
-          open: true,
-          severity: "success",
-          title: "success",
-          message: "you have successfully complete your registration process",
-        },
-      });
-      setTimeout(() => {
-        this.props.history.push("/jobs");
-      }, 2000);
-    });
+    patch(`api/v1/freelancer_profile/${registrationProcessid}/`, data).then(
+      (response) => {
+        this.setState({
+          alert: {
+            open: true,
+            severity: "success",
+            title: "success",
+            message: "you have successfully complete your registration process",
+          },
+        });
+        setTimeout(() => {
+          this.props.history.push("/jobs");
+        }, 2000);
+      }
+    );
   };
 
   getTabIndexFromLocalStorage = (tabindex2) => {
@@ -203,14 +199,12 @@ class TabbarRegistration extends Component {
         userid = data;
 
         this.setState({ userid });
-        console.log("profile", this.state.userid);
       })
       .catch((error) => {});
 
     list("api/v1/attachment/")
       .then((res) => {
         var data = JSON.parse(res.data.id);
-       
       })
       .catch((error) => {});
 
@@ -221,24 +215,30 @@ class TabbarRegistration extends Component {
     }
 
     if (localStorage.getItem("registration_process_medel_id")) {
-
-      registrationProcessid = parseInt(localStorage.getItem("registration_process_medel_id"));
+      registrationProcessid = parseInt(
+        localStorage.getItem("registration_process_medel_id")
+      );
 
       this.setState({ registrationProcessid });
     }
-
 
     this.getTabIndexFromLocalStorage(tabindex2);
   }
 
   personalProfilestateHandler = (stateData, isSubmit) => {
+
+    console.log("data",stateData)
     let { data } = this.state;
     if (isSubmit === true) {
       data = {
         mobile_no: stateData.mobile_number,
         street: stateData.address,
-       // service: "service1",
-        user: this.state.userid,
+        // service: "service1",
+        user: {
+                id:this.state.userid,
+                first_name:stateData.first_name,
+                last_name:stateData.last_name,
+              },
         account_type: this.state.account_type,
         city: {
           name: stateData.city,
@@ -254,71 +254,64 @@ class TabbarRegistration extends Component {
     this.setState({ showPersonalProfileError: false });
   };
 
-  professionalProfileStateHandler = (stateData, dataType) => { 
-    let {professionalProfileOtherdataIsSubmited,professionalProfileCertificateIsSubmited} = this.state
-    let data = {}
-    let skills = []
-    
+  professionalProfileStateHandler = (stateData, dataType) => {
+    let {
+      professionalProfileOtherdataIsSubmited,
+      professionalProfileCertificateIsSubmited,
+      registrationProcessid,
+    } = this.state;
+    let data = {};
+    let skills = [];
+
     if (dataType === "Certficate") {
       let data = new FormData();
       data.append("file", stateData);
       data.append("model", "profile");
-      data.append("model_id", 58);
+      data.append("model_id", registrationProcessid);
       data.append("type", "certification");
-      post("api/v1/attachment/", data)
-        .then((response) => {
-          this.setState({professionalProfileCertificateIsSubmited:true});
-        })
-        .catch((error) => {});
-    } else if (dataType === "StateData") {
-     
-      this.setState({ professionalProfilestatedata: stateData });
-   
-           
-     console.log("oops",stateData.skills)
-   
-
-
-console.log("stateData.chooseCategory",stateData.chooseCategory)
-console.log("stateData.skills",skills)
-
-
-       if(stateData.skills.length>0 && stateData.provideService !=="" && stateData.chooseCategory.length>0)
-       {
-            stateData.skills.map((key,index)=>{
-              skills.push(key.id)
-            })
-            
-            data = {  service:stateData.provideService,
-                        skills:skills ,
-                     category:stateData.chooseCategory,
-                  }
-
-
-          this.setState({
-                          professionalProfileOtherdataIsSubmited:true,
-            
-                          professionalProfilestatedata:data,
+      registrationProcessid &&
+        post("api/v1/attachment/", data)
+          .then((response) => {
+            this.setState({ professionalProfileCertificateIsSubmited: true });
           })
- 
-       }
-       else{
+          .catch((error) => {});
+    } else if (dataType === "StateData") {
+      this.setState({ professionalProfilestatedata: stateData });
+
+      if (
+        stateData.skills.length > 0 &&
+        stateData.provideService !== "" &&
+        stateData.chooseCategory.length > 0
+      ) {
+        stateData.skills.map((key, index) => {
+          skills.push(key.id);
+        });
+
+        data = {
+          service: stateData.provideService,
+          skills: skills,
+          category: stateData.chooseCategory,
+        };
+
         this.setState({
-          professionalProfileOtherdataIsSubmited:false,
+          professionalProfileOtherdataIsSubmited: true,
 
-         
-        })
+          professionalProfilestatedata: data,
+        });
+      } else {
+        this.setState({
+          professionalProfileOtherdataIsSubmited: false,
+        });
+      }
 
-       }
-
-       if(professionalProfileOtherdataIsSubmited && professionalProfileCertificateIsSubmited)
-          {
-            this.setState({professionalProfileError:true})
-          }
-          else{
-            this.setState({professionalProfileError:false})
-          }
-
+      if (
+        professionalProfileOtherdataIsSubmited &&
+        professionalProfileCertificateIsSubmited
+      ) {
+        this.setState({ professionalProfileError: true });
+      } else {
+        this.setState({ professionalProfileError: false });
+      }
     }
   };
 
@@ -326,21 +319,23 @@ console.log("stateData.skills",skills)
     let {
       iDVerificationIDCardIsSubmited,
       iDVerificationDrivingLicenseIsSubmited,
+      registrationProcessid,
     } = this.state;
 
     if (datatype === "license") {
       let data = new FormData();
       data.append("file", stateData);
       data.append("model", "profile");
-      data.append("model_id", 58);
+      data.append("model_id", registrationProcessid);
       data.append("type", "certification");
 
-      post("api/v1/attachment/", data)
-        .then((response) => {
-          // iDVerificationDrivingLicenseIsSubmited = true
-          this.setState({ iDVerificationDrivingLicenseIsSubmited: true });
-        })
-        .catch((error) => {});
+      registrationProcessid &&
+        post("api/v1/attachment/", data)
+          .then((response) => {
+            // iDVerificationDrivingLicenseIsSubmited = true
+            this.setState({ iDVerificationDrivingLicenseIsSubmited: true });
+          })
+          .catch((error) => {});
     } else if (datatype === "id_card") {
       let data = new FormData();
       data.append("file", stateData);
@@ -348,21 +343,20 @@ console.log("stateData.skills",skills)
       data.append("model_id", 58);
       data.append("type", datatype);
 
-      post("api/v1/attachment/", data)
-        .then((response) => {
-          // iDVerificationIDCardIsSubmited = true
-          this.setState({ iDVerificationIDCardIsSubmited: true });
-        })
-        .catch((error) => {});
+      registrationProcessid &&
+        post("api/v1/attachment/", data)
+          .then((response) => {
+            // iDVerificationIDCardIsSubmited = true
+            this.setState({ iDVerificationIDCardIsSubmited: true });
+          })
+          .catch((error) => {});
     } else {
-
     }
   };
   paymentInformationStateHandler = (stateData) => {};
 
   hourlyRateStateHandler = (stateData) => {
     this.setState({ proposal_amount: stateData });
-
   };
 
   render() {
@@ -467,7 +461,8 @@ console.log("stateData.skills",skills)
                       class=" "
                       onClick={() => this.setState({ tabindex: 2 })}
                     >
-                      {professionalProfileCertificateIsSubmited && professionalProfileOtherdataIsSubmited ? (
+                      {professionalProfileCertificateIsSubmited &&
+                      professionalProfileOtherdataIsSubmited ? (
                         <span
                           style={{
                             color: "white",
@@ -663,7 +658,7 @@ console.log("stateData.skills",skills)
 
               <div className="container tabbar_next_pre_btn_background pt-4 pb-5">
                 {tabindex > 1 && (
-                  <div>
+                  
                     <button
                       type="button"
                       className="btn rounded-pill "
@@ -672,11 +667,11 @@ console.log("stateData.skills",skills)
                       {" "}
                       Previous Step
                     </button>
-                  </div>
+                  
                 )}
 
                 {tabindex < 5 ? (
-                  <div>
+                  
                     <button
                       type="button"
                       className="btn tb_nextButton"
@@ -688,20 +683,13 @@ console.log("stateData.skills",skills)
                       {" "}
                       Next
                     </button>
-                  </div>
+                  
                 ) : (
-                  <div>
-                    <button
-                      type="button"
-                      className="btn tb_nextButton"
-                      onClick={() => {
-                        this.stepsfinish();
-                      }}
-                    >
+                    <button type="button" className="btn tb_nextButton">
                       {" "}
                       FINISH <ArrowRightAltIcon />
                     </button>
-                  </div>
+                  
                 )}
               </div>
             </div>
@@ -711,18 +699,5 @@ console.log("stateData.skills",skills)
     );
   }
 }
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    tabChangeHandler: (tabindex) => {
-      dispatch(
-        RegistrationTabBarAction({
-          type: "REGISTRATION_TAB_CHANGE",
-          payload: tabindex,
-        })
-      );
-    },
-  };
-};
 
 export default withRouter(TabbarRegistration);
