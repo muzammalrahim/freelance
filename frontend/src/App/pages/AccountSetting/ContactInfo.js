@@ -133,7 +133,7 @@ id="inputtext"
 value={data.username}
 name="username"
 onChange={e => onInputChange(e)}
-// placeholder="Username"
+placeholder="Username"
 />
 </div>
 </div>
@@ -228,7 +228,7 @@ id="inputtext"
 value={data1.street}
 name="street"
 onChange={e => onInputChange2(e)}
-// placeholder="Username"
+ placeholder="Username"
 />
 </div>
 </div>
@@ -277,3 +277,4 @@ Save Changes
 </div>
 )
 }
+ 

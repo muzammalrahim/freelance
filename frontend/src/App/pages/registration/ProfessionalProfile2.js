@@ -32,6 +32,7 @@ class ProfessionalProfile2 extends Component {
       provideService: "",
       skills: [],
       chooseCategory: [],
+      chooseCategoryHandler : false,
       getchooseCategoryFromStorage: [],
       getSkillsList: [],
       getChooseCategoryList: [],
@@ -91,9 +92,16 @@ class ProfessionalProfile2 extends Component {
     var id = target.id;
 
     if (target.checked) {
-      this.setState((prevState) => ({
-        chooseCategory: [...prevState.chooseCategory, id],
-      }));
+     
+      if(this.state.chooseCategory !=null)
+      { this.setState((prevState) => ({
+        chooseCategory: [...prevState.chooseCategory,id],
+      }));}else{
+        this.setState((prevState) => ({
+          chooseCategory: [id],
+        }));
+      }
+     
 
       // this.setState((prevState) => ({
       //  professionalProfileData: {  chooseCategory: [...prevState.chooseCategory, id], }
@@ -111,7 +119,8 @@ class ProfessionalProfile2 extends Component {
         getchooseCategoryFromStorage,
       });
     }
-
+  
+    this.setState({ chooseCategoryHandler :true})
     this.checkvalidtion();
   }
 
@@ -142,12 +151,16 @@ class ProfessionalProfile2 extends Component {
 
   checkStoreChooseCategory = (item) => {
     const str = item.toString();
+    if(this.state.getchooseCategoryFromStorage !=null)
+    {
     for (let i = 0; i < this.state.getchooseCategoryFromStorage.length; i++) {
       if (this.state.getchooseCategoryFromStorage[i] === str) {
         return true;
       }
-    }
+    }}
+    else{
     return false;
+    }
   };
 
   getSkillsList = () => {
@@ -178,9 +191,11 @@ class ProfessionalProfile2 extends Component {
     var storedData = JSON.parse(localStorage.getItem("choosecategory"));
 
     this.setState({
-      getchooseCategoryFromStorage: storedData,
+      getchooseCategoryFromStorage:storedData,
       chooseCategory: storedData,
     });
+
+    console.log("get chhose",storedData)
   };
   getSkillsFromStorage = () => {
     var storedData = JSON.parse(localStorage.getItem("skills"));
@@ -193,7 +208,7 @@ class ProfessionalProfile2 extends Component {
   componentDidMount() {
     this.getSkillsList();
     this.getCategory();
-   // this.getCategoryFromStorage();
+    this.getCategoryFromStorage();
     this.getSkillsFromStorage();
   }
 
@@ -204,6 +219,7 @@ class ProfessionalProfile2 extends Component {
       alert: { open, severity, message, title },
       chooseCategory,
       skills,
+      chooseCategoryHandler,
     } = this.state;
     return (
       <div className="ProfessionalProfile">
@@ -225,11 +241,13 @@ class ProfessionalProfile2 extends Component {
             <strong>{message}</strong>
           </Alert>
         </Snackbar>
-        {chooseCategory != "" &&
+        {console.log("chose",chooseCategory)}
+        {chooseCategoryHandler === true &&
           localStorage.setItem(
             "choosecategory",
             JSON.stringify(chooseCategory)
-          )}
+          ) }
+        
         {skills != "" &&
           localStorage.setItem(
             "skills",
@@ -303,7 +321,7 @@ class ProfessionalProfile2 extends Component {
                       </select>
 
                       <div className="test">
-                        {this.state.skills.map((item, index) => (
+                        {this.state.skills != null && this.state.skills.map((item, index) => (
                           <div
                             className="option"
                             style={{

@@ -329,9 +329,9 @@ class TabbarRegistration extends Component {
       this.setState({ professionalProfilestatedata: stateData });
 
       if (
-        stateData.skills.length > 0 &&
+        stateData.skills !="" &&
         stateData.provideService !== "" &&
-        stateData.chooseCategory.length > 0
+        stateData.chooseCategory !=""
       ) {
         stateData.skills.map((key, index) => {
           skills.push(key.id);
