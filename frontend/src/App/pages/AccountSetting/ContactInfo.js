@@ -36,7 +36,7 @@ setId(getid)
 
 const getData1 = () => {
     let getid = null
-list("api/v1/freelancer_profile/5/")
+list("api/v1/freelancer_profile/1/")
 .then((response) => {
 const data= response.data;
 getid = response.data.id
@@ -267,7 +267,7 @@ Save Changes
 </div>
 <div className="display-picture col-nd-12">
     Hello
-    <img src="{data1.avatar}"></img>
+    <img src={data1.avatar}></img>
 </div>
 <div className="my-profile-links col-md-12">
 <a href="">discard changes</a>

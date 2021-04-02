@@ -226,13 +226,19 @@ class TabbarRegistration extends Component {
   }
 
   personalProfilestateHandler = (stateData, isSubmit) => {
+
+    console.log("data",stateData)
     let { data } = this.state;
     if (isSubmit === true) {
       data = {
         mobile_no: stateData.mobile_number,
         street: stateData.address,
         // service: "service1",
-        user: this.state.userid,
+        user: {
+                id:this.state.userid,
+                first_name:stateData.first_name,
+                last_name:stateData.last_name,
+              },
         account_type: this.state.account_type,
         city: {
           name: stateData.city,
@@ -679,19 +685,7 @@ class TabbarRegistration extends Component {
                     </button>
                   
                 ) : (
-<<<<<<< HEAD
-                  
                     <button type="button" className="btn tb_nextButton">
-=======
-                  <div>
-                    <button
-                      type="button"
-                      className="btn tb_nextButton"
-                      onClick={() => {
-                        this.stepsfinish();
-                      }}
-                    >
->>>>>>> ee11656cc981f81cfaf479740b939ed4bb3fcd86
                       {" "}
                       FINISH <ArrowRightAltIcon />
                     </button>

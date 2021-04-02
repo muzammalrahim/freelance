@@ -287,22 +287,12 @@ class PersonalProfile extends React.Component {
                           this.changeHandler(e);
                         }}
                       />
-<<<<<<< HEAD
                       {errorProfile.last_name !== "" &&
                       this.props.tabindex === true ? (
                         <div className="error-message">
                           {errorProfile.last_name}
                         </div>
                       ) : null}
-=======
-                      {errorProfile.mobile_number !== ""
-                        ? this.props.tabindex === true && (
-                            <div className="error-message">
-                              {errorProfile.mobile_number}
-                            </div>
-                          )
-                        : null}
->>>>>>> ee11656cc981f81cfaf479740b939ed4bb3fcd86
                     </div>
               </div>
               <div className="new-box">
