@@ -135,11 +135,13 @@ class ProfessionalProfile2 extends Component {
   }
 
   checkExistedSkill(name) {
-    for (let i = 0; i < this.state.skills.length; i++) {
+     let {skills} = this.state
+    if(skills !=null) 
+    { for (let i = 0; i < this.state.skills.length; i++) {
       if (this.state.skills[i].name === name) {
         return true;
       }
-    }
+    }}
     return false;
   }
   removeSkills = (item) => {
@@ -292,13 +294,21 @@ class ProfessionalProfile2 extends Component {
 
                           if (isExisted) {
                           } else {
+
                             let data = {
                               id: value.id,
                               name: value.name,
                             };
-                            this.setState((prevState) => ({
+
+                            if(this.state.skills !=null)
+                            { this.setState((prevState) => ({
                               skills: [...prevState.skills, data],
-                            }));
+                            }));}else{
+                              this.setState((prevState) => ({
+                                skills: [ data],
+                              }));
+                            }
+
                           }
 
                           this.checkvalidtion();
