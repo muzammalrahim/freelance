@@ -7,8 +7,6 @@ import base64, six, uuid
 from django.core.files.base import ContentFile
 from rest_auth.models import TokenModel
 
-from default import utils
-
 
 class Base64ImageField(serializers.ImageField):
 
@@ -86,19 +84,10 @@ class CountrySerializers(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
 	id = serializers.IntegerField()
-	# profile = serializers.SerializerMethodField()
-	#
-	# def get_profile(self, instance):
-	# 	profile = models.Profile.objects.get(user=instance.id)
-	# 	return ProfileSerializers(profile).data
 
 	def to_representation(self, instance):
 		representation = super(UserSerializer, self).to_representation(instance)
-		# try:
 		representation['profile'] = models.Profile.objects.filter(user=instance.id).values()
-		print("representation['profile']",representation['profile'])
-		# except:
-		# 	representation['profile'] = None
 		return representation
 
 	class Meta:
@@ -108,6 +97,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class SkillSerializers(serializers.ModelSerializer):
+	# id = serializers.IntegerField()
 	class Meta:
 		model = models.Skill
 		fields = '__all__'
@@ -176,8 +166,8 @@ class ClientProfileSerializers(serializers.ModelSerializer):
 
 class FreelancerProfileSerializers(serializers.ModelSerializer):
 	# from job.serializers import AttachmentSerializer
-	# skills = SkillSerializers(many=True, required=False)
-	# category = CategorySerializers(many=True, required=False)
+	skills = SkillSerializers(many=True, required=False)
+	category = CategorySerializers(many=True, required=False)
 	city = CitySerializers(required=False)
 	country = CountrySerializers(required=False)
 	ACCOUNT_TYPE_CHOICES = (
@@ -242,26 +232,37 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
 		return freelance_profile
 
 	def update(self, instance, validated_data):
-		user = validated_data.pop('user')
-		city = validated_data.pop('city')
-		country = validated_data.pop('country')
+		if 'user' in validated_data:
+			user = validated_data.pop('user')
+			user = UserSerializer(instance.user, data=user, partial=True)
+			if user.is_valid():
+				user.save()
 
-		user = UserSerializer(instance.user, data=user, partial=True)
-		if user.is_valid():
-			user.save()
+		if 'country' in validated_data:
+			country = validated_data.pop('country')
+			country = CountrySerializers(instance.country, data=country)
+			if country.is_valid():
+				country.save()
 
-		city = CitySerializers(instance.city, data=city)
-		if city.is_valid():
-			city.save()
+		if 'city' in validated_data:
+			city = validated_data.pop('city')
+			city = CitySerializers(instance.city, data=city)
+			if city.is_valid():
+				city.save()
 
-		country = CountrySerializers(instance.country, data=country)
-		if country.is_valid():
-			country.save()
+		if 'skills' in validated_data:
+			skill = validated_data.pop('skills')
+			for data in skill:
+				k = models.Skill.objects.create(name=data.get('name'))
+				instance.skills.add(k)
+
+		if 'category' in validated_data:
+			category = validated_data.pop('category')
+			for data in category:
+				c = models.Category.objects.create(name=data.get('name'))
+				instance.category.add(c)
 
 		freelance_api = super().update(instance, validated_data)
-
-		instance.mobile_no = validated_data.get('mobile_no', instance.mobile_no)
-		instance.street = validated_data.get('street', instance.street)
 
 		return freelance_api
 
@@ -279,7 +280,6 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
 	class Meta:
 		model = models.FreelancerProfile
 		fields = '__all__'
-		extra_kwargs = {'user.password': {'required': False}}
 
 
 class MyTokenSerializer(serializers.Serializer):

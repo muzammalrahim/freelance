@@ -117,6 +117,9 @@ class GetImage extends Component {
           this.props.idVerf_IC_imgUpload(files[0]);
           this.setState({ Id_Card: base64Image });
         }
+         else if (this.props.value === "RequestPayment") {
+          this.props.onUploadbinaryImg(files[0]);
+        }
       };
       reader.readAsArrayBuffer(file);
     });

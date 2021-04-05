@@ -64,11 +64,9 @@ class Profile(PolymorphicModel):
 		('arabic', 'Arabic'),
 		('english', 'English'),
 	)
-	language = models.CharField(choices=LANG_CHOICES, max_length=30,
 
-								default='arabic', blank=True, null=True)
+	language = models.CharField(choices=LANG_CHOICES, max_length=30, default='arabic', blank=True, null=True)
 	skills = models.ManyToManyField(Skill, blank=True)
-
 	city = models.ForeignKey(City, on_delete=models.SET_NULL, blank=True,
 							 null=True)
 	country = models.ForeignKey(Country, on_delete=models.SET_NULL, blank=True,

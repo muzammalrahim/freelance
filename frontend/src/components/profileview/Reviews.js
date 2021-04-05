@@ -55,7 +55,8 @@ export function Reviews() {
             <div class="row pb-3">
               <div class="col-md-6 pb-3 pt-3">
                 <img src={Stanton} alt="/" />
-                <h class="pl-3"> {review?.user?.username} </h>
+                {/* <h class="pl-3"> {review?.user?.username} </h> */}
+                <h class="pl-3"> Ann Stanton </h>
               </div>
               <div class="col-md-6 pt-3">
                 <div className="float-right">
@@ -64,7 +65,13 @@ export function Reviews() {
                 </div>
               </div>
               <div class="col-md-12">
-                <p>{review.description}</p>
+                {/* <p>{review.description}</p> */}
+                
+               <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                 when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                 It has survived not only five centuries, </p>
+
               </div>
             </div>
           ))}

@@ -57,7 +57,7 @@ function EditUser() {
           mobile_no : user.mobile_no,  
           street : user.street,  
           user : user.user ,
-          skills : user.skills.name,
+          // skills : user.skills.name,
     
       }; 
           put(`api/v1/profile/${id}/`,users)
@@ -115,7 +115,7 @@ function EditUser() {
                         class="form-control"
                         type="text"
                         name="user"
-                        value= {user.email}
+                        value= {user.user.email}
                         onChange={e => onInputChange(e)}
                         />
                         

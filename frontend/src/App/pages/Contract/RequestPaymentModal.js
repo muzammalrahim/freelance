@@ -40,7 +40,9 @@ function RequestPaymentModal(props) {
   };
  
   const handleBinaryImg = (binaryfile)=>{
-    this.props.onStateChange(binaryfile,"Certficate");
+ 
+    setSelect(binaryfile)
+
   }
   // function for image upload
 
@@ -61,17 +63,14 @@ function RequestPaymentModal(props) {
 // On file upload (click the upload button)
 
 const onClickHandler = () => {
-    // const data = new FormData()
-    // data.append('file', upload.selectedFile)
-    post('api/v1/contract/', data, { 
-       // receive two    parameter endpoint url ,form data
-   })
- 
- .then(res => { // then print response status
+  
+  console.log("fileuploader",data)
+    post('api/v1/contract/',data)
+   .then(res => { 
      console.log(res.statusText)
   })
+  setSelect(data);
  }
- 
   const { description } = data;
   const onInputChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -79,8 +78,8 @@ const onClickHandler = () => {
   // get data for milestone
   const showData = async (e) => {
     list('api/v1/contract/').then((response) => {
-      const data = response.data[1];
-      console.log("response:", response.data[1]);
+      const data = response.data;
+      console.log("response:", response.data);
       setSelect(data);
       console.log("response :", data);
     });
@@ -147,8 +146,8 @@ const onClickHandler = () => {
                   /> */}
                   {/* <UploadFile onChange={(e) => onInputChange(e)} /> */}
                   <GetImage
-                          onUpload={handleBinaryImg}
-                          value="onUpload"
+                          onUploadbinaryImg={handleBinaryImg}
+                          value="RequestPayment"
                         />
                 </div>
                 <div className="bid-buttons d-flex justify-content-center pb-4 mt-5">

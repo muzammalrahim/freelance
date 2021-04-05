@@ -6,7 +6,7 @@ import list  from '../../App/pages/helper/api';
 
 function BioGraphy() {
   const [profiledata, setprofileData] = useState ({
-    description : "enter your bio here ..."
+    description : "enter your bio here"
   });
   const [data, setData] = useState ();
   const [skills, setSkills] = useState ('');
@@ -24,14 +24,12 @@ setData(data);
 }
 
   function getdata() {
-  list('api/v1/freelancer_profile/id/')
+  list('api/v1/freelancer_profile/24/')
 .then((response)=>{
-const profiledata = response.profiledata;
-console.log("freelancerd :",response.profiledata);
-setprofileData(profiledata);
-
-
-       const user_skills = profiledata.skills.map((skills, index) =>{
+const data = response.data;
+console.log("freelancerd :",response.data);
+setprofileData(data);
+       const user_skills = data.skills.map((skills, index) =>{
                 return(
                 <li>
                   <a href="#" class="pl-3 pr-3 pt-1 pb-1">{skills.name}</a>
@@ -78,7 +76,7 @@ setprofileData(profiledata);
                   </div>
                   <div className="col-md-9">
                   {data && data.email ? data.email : ''}
-                    {/* {data.email} */}
+                    {/* {profiledata.email} */}
                   </div>
                 </div>
                 
