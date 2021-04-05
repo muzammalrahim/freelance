@@ -199,9 +199,9 @@ REST_REGISTRATION = {
 	'REGISTER_VERIFICATION_ENABLED': True,
 	'REGISTER_EMAIL_VERIFICATION_ENABLED': True,
 	'RESET_PASSWORD_VERIFICATION_ENABLED': True,
-	'REGISTER_VERIFICATION_URL': '{}/verify-user/'.format(SITE_URL),
+	'REGISTER_VERIFICATION_URL': 'http://localhost:3000/verify-user/'.format(SITE_URL),
 	'RESET_PASSWORD_VERIFICATION_URL': '{}/reset-password/'.format(SITE_URL),
-	'REGISTER_EMAIL_VERIFICATION_URL': '{}/verify-email/'.format(SITE_URL),
+	'REGISTER_EMAIL_VERIFICATION_URL': 'http://localhost:3000/verify-email/'.format(SITE_URL),
 	'VERIFICATION_FROM_EMAIL': 'shaheroumwali@gmail.com',
 	'USER_LOGIN_FIELDS': ('email', 'username'),
 
