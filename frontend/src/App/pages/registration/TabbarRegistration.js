@@ -19,6 +19,7 @@ import { RegistrationTabBarAction } from "../../../redux/actions/RegistrationTab
 import { Snackbar } from "@material-ui/core";
 import { Alert, AlertTitle } from "@material-ui/lab";
 import { withRouter } from "react-router-dom";
+import { Key } from "react-bootstrap-icons";
 
 class TabbarRegistration extends Component {
   constructor(props) {
@@ -312,6 +313,9 @@ class TabbarRegistration extends Component {
     } = this.state;
     let data = {};
     let skills = [];
+    let chooseCategory = [];
+
+console.log("allllll data",stateData)
 
     if (dataType === "Certficate") {
       let data = new FormData();
@@ -334,15 +338,25 @@ class TabbarRegistration extends Component {
         stateData.chooseCategory !=""
       ) {
         stateData.skills.map((key, index) => {
-          skills.push(key.id);
+          let name = key.name
+          skills.push({name});
+
+         
+        });
+
+        stateData.chooseCategory.map((key, index) => {
+          let name = key
+          chooseCategory.push({name});
+
         });
 
         data = {
-          service: stateData.provideService,
+          service:stateData.provideService,
           skills: skills,
-          category: stateData.chooseCategory,
+          category:chooseCategory,
         };
 
+        console.log("oops",data)
         this.setState({
           professionalProfileOtherdataIsSubmited: true,
 

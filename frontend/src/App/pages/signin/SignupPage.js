@@ -245,7 +245,7 @@ class SignupPage extends Component {
               },
             });
             setTimeout(() => {
-              this.props.history.push("/verify-user/:user_id&:timestamp&:signature");
+              this.props.history.push("/verify-user/?user_id&timestamp&signature");
             }, 2000);
           })
           .catch((error) => {
