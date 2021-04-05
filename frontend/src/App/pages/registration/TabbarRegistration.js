@@ -84,8 +84,8 @@ class TabbarRegistration extends Component {
     } = this.state;
 
     this.setState({ showPersonalProfileError: true });
-    if (userid) {
-      if (personalProfileIsSubmited === true && tabindex === 1) {  
+    if (userid && tabindex === 1) {
+      if (personalProfileIsSubmited === true ) {  
         //  registrationProcessid ? patch(`api/v1/freelancer_profile/${registrationProcessid}/`, data) :
         post("api/v1/freelancer_profile/", data)
           .then((response) => {
@@ -120,26 +120,10 @@ class TabbarRegistration extends Component {
       } else {
       }
     }
-
-    else if (
-      iDVerificationDrivingLicenseIsSubmited &&
-      iDVerificationIDCardIsSubmited && tabindex === 3
-    ) {
-      this.setState({
-        iDVerificationTickIcon: true,
-        tabindex: tabindex + 1,
-        alert: {
-          open: true,
-          severity: "success",
-          title: "success",
-          message: "you have successfully complete id verfication step ",
-        },
-      });
-    }
-
+   
    else if (
       professionalProfileOtherdataIsSubmited &&
-      professionalProfileCertificateIsSubmited && tabindex === 2
+      professionalProfileCertificateIsSubmited  && tabindex === 2
     ) {
       patch(
         `api/v1/freelancer_profile/${registrationProcessid}/`,
@@ -156,6 +140,30 @@ class TabbarRegistration extends Component {
         });
       });
     }
+    else if (
+      iDVerificationDrivingLicenseIsSubmited &&
+      iDVerificationIDCardIsSubmited && tabindex === 3
+    ) {
+      this.setState({
+        iDVerificationTickIcon: true,
+        tabindex: tabindex + 1,
+        alert: {
+          open: true,
+          severity: "success",
+          title: "success",
+          message: "you have successfully complete id verfication step ",
+        },
+      });
+    }
+
+    else if(iDVerificationTickIcon && tabindex === 4)
+          {
+             this.setState({
+     
+                              tabindex: tabindex + 1,
+                                  })
+                                }
+     console.log("tab in",tabindex)
   };
 
   tabDownhandler = () => {
@@ -652,7 +660,7 @@ class TabbarRegistration extends Component {
 
               <div className="container tabbar_next_pre_btn_background pt-4 pb-5">
                 {tabindex > 1 && (
-                  <div>
+                  
                     <button
                       type="button"
                       className="btn rounded-pill "
@@ -661,11 +669,11 @@ class TabbarRegistration extends Component {
                       {" "}
                       Previous Step
                     </button>
-                  </div>
+                  
                 )}
 
                 {tabindex < 5 ? (
-                  <div>
+                  
                     <button
                       type="button"
                       className="btn tb_nextButton"
@@ -677,9 +685,9 @@ class TabbarRegistration extends Component {
                       {" "}
                       Next
                     </button>
-                  </div>
+                  
                 ) : (
-                  <div>
+                  
                     <button
                       type="button"
                       className="btn tb_nextButton"
@@ -690,7 +698,7 @@ class TabbarRegistration extends Component {
                       {" "}
                       FINISH <ArrowRightAltIcon />
                     </button>
-                  </div>
+                  
                 )}
               </div>
             </div>

@@ -84,17 +84,21 @@ function FeedBackModal(props) {
     
   }
    const onSubmitt = (e) => {
-    e.preventDefault();
-      console.log("all data",user)
-      
-    post('api/v1/feedback_review/',{ type: 'freelancer', rate: 4, description: 'teste', user: 22})
+        e.preventDefault();
+        console.log("all data",user)
+      post('api/v1/feedback_review/',{
+        type: 'freelancer', 
+        rate: '4', 
+        description: 'test', 
+        user: '22'
+      })
     .then((res) => {
-     console.log("res",res.data);
-     setUser({user});
-     history.push('/contractThree')
+      console.log("res",res.data);
+      setUser({user});
+    
     })
     .catch(error => { console.log(error)})
-    
+    handleClose()
    }
 
   return (

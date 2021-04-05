@@ -1,13 +1,12 @@
-import React from 'react'
+import React,{ useState,useRef } from 'react'
+import Cooper from '../../assets/Cooper.png';
 
  function Uploading(props) {
-
-   const [state, setstate] = React.useState('')
-    
-    const uploadedImage = React.useRef({
+    const [state, setstate] = useState('')
+    const uploadedImage = useRef({
         imageUploader : '',
     });
-    const imageUploader = React.useRef(null);
+    const imageUploader = useRef(null);
   
     const handleImageUpload = e => {
       const [file] = e.target.files;
@@ -19,8 +18,8 @@ import React from 'react'
           current.src = e.target.result;
         };
         reader.readAsDataURL(file);
-        setstate(file)
-        console.log(file)
+        setstate(uploadedImage);
+        console.log("fileload :",  uploadedImage)
       }
     };
   
@@ -60,6 +59,7 @@ import React from 'react'
             }}
         
           />
+        
         </div>
     
       </div>
