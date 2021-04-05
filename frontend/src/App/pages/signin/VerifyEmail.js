@@ -25,19 +25,15 @@ export default class VerifyEmail extends Component {
 
     submitData=()=>{
         const { match, location, history } = this.props;
-            // let data = {
-                // user_id: match.params.user_id ,
-                // timestamp: match.params.timestamp,
-                // signature: match.params.signature
-            // }
-            let data = {
-                user_id: "97",
-                timestamp: 1617362433,
-                signature: "6kjX3i8BNBrrXtnYKHH5z6pLRMozeR8THdz54eBwpgo"
-            }
+        
+              let   user_id =  JSON.parse(match.params.user_id)
+              let   timestamp = match.params.timestamp
+              let  signature = match.params.signature
+            
+         
 
-         console.log("imp data",data)
-         email_verification(data)
+         console.log("imp data",user_id,timestamp,signature)
+         email_verification(user_id,timestamp,signature)
         .then((res) => {
             console.log("sign up",res)
             this.setState({

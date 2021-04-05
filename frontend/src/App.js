@@ -122,7 +122,7 @@ return (
 
 <Route path='/signup' exact component={SignupPage}/>
 
-<Route path='/verify-user/:user_id&:timestamp&:signature' exact component={VerifyEmail}/>
+<Route path='/verify-user/:user_id?' exact component={VerifyEmail}/>
 
 <Route path='/registration-process' exact component={Accounttype}/>
 <Route path='/tabbar-registration' exact component={TabbarRegistration}/>
