@@ -17,9 +17,9 @@ export function login(login, password) {
   }
 
 
-export function email_verification ({user_id,timestamp,signature})
+export function email_verification (user_id,timestamp,signature)
  {
-     console.log("send big data",{user_id,timestamp,signature})
+     console.log({user_id,timestamp,signature})
     return axios.post(process.env.REACT_APP_API_URL + Verify_Email, {user_id,timestamp,signature})
   }
 

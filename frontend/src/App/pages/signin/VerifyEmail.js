@@ -24,12 +24,13 @@ export default class VerifyEmail extends Component {
 
 
     submitData=()=>{
-
-        const { match, location, history } = this.props
+      const query= new URLSearchParams(this.props.location.search)
+      console.log("this.props.",query.get("user_id"));
+        const { match, location, history } = this.props;
         
-              let   user_id =  JSON.parse(match.params.user_id)
-              let   timestamp = match.params.timestamp
-              let  signature = match.params.signature
+              let   user_id =  query.get("user_id")
+              let   timestamp = query.get("timestamp")
+              let  signature = query.get("signature")
             
          
 
@@ -81,6 +82,7 @@ export default class VerifyEmail extends Component {
           }}
         >
           <Alert
+
             onClose={() => {
               this.handleClose();
             }}
@@ -89,6 +91,7 @@ export default class VerifyEmail extends Component {
             <AlertTitle>{title}</AlertTitle>
             <strong>{message}</strong>
           </Alert>
+          
         </Snackbar>
             <h1> verify email</h1>
             <button onClick={()=>{this.submitData()}}> verify </button>
