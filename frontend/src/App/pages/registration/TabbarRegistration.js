@@ -477,6 +477,8 @@ class TabbarRegistration extends Component {
           })
           .catch((error) => {});
     } else if (dataType === "StateData") {
+
+      console.log("statedata",stateData)
       this.setState({ professionalProfilestatedata: stateData });
 
       if (
@@ -485,15 +487,14 @@ class TabbarRegistration extends Component {
         stateData.provideService !== "" &&
         stateData.chooseCategory != ""
       ) {
-        stateData.skills.map((key, index) => {
-          let name = key.name;
-          skills.push({ name });
+        stateData.skills.map((key, index) => {	
+          skills.push(key.id);	
         });
 
         stateData.chooseCategory &&
           stateData.chooseCategory.map((key, index) => {
             let name = key;
-            chooseCategory.push({ name });
+            chooseCategory.push( name );
           });
 
         data = {
