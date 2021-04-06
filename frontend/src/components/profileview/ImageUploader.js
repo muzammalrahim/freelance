@@ -1,7 +1,9 @@
 import React,{ useState,useRef } from 'react'
 import Cooper from '../../assets/Cooper.png';
+import {post} from '../../App/pages/helper/api'
 
  function Uploading(props) {
+
     const [state, setstate] = useState('')
     const uploadedImage = useRef({
         imageUploader : '',
@@ -10,6 +12,7 @@ import Cooper from '../../assets/Cooper.png';
   
     const handleImageUpload = e => {
       const [file] = e.target.files;
+      // post('api/v1/freelancer_profile/')
       if (file) {
         const reader = new FileReader();
         const { current } = uploadedImage;
@@ -22,6 +25,7 @@ import Cooper from '../../assets/Cooper.png';
         console.log("fileload :",  uploadedImage)
       }
     };
+    
   
     return (
       <div
@@ -35,7 +39,7 @@ import Cooper from '../../assets/Cooper.png';
         <input
           type="file"
           accept="image/*"
-          onChange={handleImageUpload}
+          onChange={(e) => handleImageUpload(e)}
           ref={imageUploader}
           style={{
             display: "none",
@@ -47,10 +51,10 @@ import Cooper from '../../assets/Cooper.png';
             height: "100px",
             width: "100px",
           }}
-          onClick={() => imageUploader.current.click()}
+          onClick={(e) => handleImageUpload(e)}
         >
           <img
-            ref={uploadedImage}
+            ref={imageUploader}
             style={{
               width: "100%",
               height: "100%",

@@ -15,16 +15,17 @@ import { useParams } from 'react-router-dom';
 
 function Card() {
   const {id} =useParams();
-  // var today = new Date(),
-  // time= today.getHours() + ':' + today.getMinutes();
-
-  const currTime = new Date().toLocaleTimeString();
+  // const currentDate = new Date().toDateString()
   
-  // var hours = new Date().getHours();
-  // var minutes = new Date().getMinutes();
+  const currentTime = new Date()
+      .toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })
+      .toLowerCase();
+
+      const currentDate = new Date()
+      .toDateString([], {month : '2-digit' , year : '2-digit', year12: true })
+      .toLowerCase();
 
   const [carddata, setcardData] = useState ('');
-  // const [id, setId] = useState();
   const [getCardData, setGetCardData] = useState({
     city : "",
     username : ""
@@ -52,14 +53,6 @@ function Card() {
         const data = response.data;
         console.log("freelancerd :",response.data);
         setGetCardData(data);
-        // let getid = null
-        // console.log("card data: ",cardData)
-        // list('api/v1/freelancer_profile/24/',alldata)
-        // .then((response) => {
-        // const data= response.data;
-        // var id = JSON.parse(response.data.id);
-        // console.log("freelancerd id:",id);
-        // setGetCardData(data);
         })
       }
   
@@ -74,10 +67,12 @@ function Card() {
         <div className="row bg-white">
           <div className="col-md-12">
             <div className="pt-3 pb-2">
-            <Uploading/>
+            <Uploading
+
+            />
             </div>
               <div className="profile pt-3">
-                <h5><b>{carddata.username}</b></h5>
+                <h5><b>{carddata.first_name} {carddata.last_name}</b></h5>
                 <h5>{getCardData.service}</h5>
               </div>
               <div className="text-center pb-1">
@@ -127,7 +122,7 @@ function Card() {
                     <div className="col-md-10">
                       <a href="">
                     <p>
-                    It’s Currently {currTime} here
+                    It’s Currently {currentTime} here
                     </p>
                     </a>
                     </div>
@@ -139,7 +134,7 @@ function Card() {
                     <div className="col-md-10">
                       <a href="">
                     <p>
-                    {/* Join Decemeber 10, 2015 */}
+                    Join {currentDate}
                     {getCardData?.user?.date_joined}
                     </p>
                     </a>

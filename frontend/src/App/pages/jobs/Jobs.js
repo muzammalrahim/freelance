@@ -173,11 +173,6 @@ function Jobs() {
                             <ul className="tags">
                             
                             {
-
-                      
-
-                                
-        
                                 Object.values(row.category).map((keyName, i) =>{
                                     if(i===1){
                             return <li className="pr-3">
