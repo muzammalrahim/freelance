@@ -1,32 +1,15 @@
-import React,{ useState,useRef } from 'react'
-import Cooper from '../../assets/Cooper.png';
-import {post} from '../../App/pages/helper/api'
+import React,{ Component} from 'react'
+import GetImage from "../../App/pages/registration/GetImage"
 
- function Uploading(props) {
 
-    const [state, setstate] = useState('')
-    const uploadedImage = useRef({
-        imageUploader : '',
-    });
-    const imageUploader = useRef(null);
-  
-    const handleImageUpload = e => {
-      const [file] = e.target.files;
-      // post('api/v1/freelancer_profile/')
-      if (file) {
-        const reader = new FileReader();
-        const { current } = uploadedImage;
-        current.file = file;
-        reader.onload = e => {
-          current.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-        setstate(uploadedImage);
-        console.log("fileload :",  uploadedImage)
-      }
-    };
+export default class ImageUploader extends Component {
+
+  profilePicBinaryImg(binaryfile) {
     
-  
+  }
+
+
+  render() {
     return (
       <div
         style={{
@@ -36,37 +19,31 @@ import {post} from '../../App/pages/helper/api'
           justifyContent: "center"
         }}
       >
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(e) => handleImageUpload(e)}
-          ref={imageUploader}
-          style={{
-            display: "none",
-          
-          }}
-        />
+      
         <div
           style={{
             height: "100px",
             width: "100px",
           }}
-          onClick={(e) => handleImageUpload(e)}
         >
-          <img
-            ref={imageUploader}
-            style={{
-              width: "100%",
-              height: "100%",
-              borderRadius: "50%",
-              border : '0.4px solid '
-            }}
+        <GetImage
         
-          />
+          profilePicUpload={this.profilePicBinaryImg}
+          value="Profilepic"
+        />
         
         </div>
     
       </div>
     );
   }
-export default Uploading;
+}
+
+
+
+
+
+   
+    
+  
+   

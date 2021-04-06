@@ -19,6 +19,7 @@ class GetImage extends Component {
       certificate: "",
       Id_Card: "",
       Driving_License: "",
+      profileBinarypic:"",
       fileBinary: null,
     };
   }
@@ -120,6 +121,9 @@ class GetImage extends Component {
          else if (this.props.value === "RequestPayment") {
           this.props.onUploadbinaryImg(files[0]);
         }
+         else if (this.props.value === "Profilepic") {
+          this.props.profilePicUpload(files[0]);
+        }
       };
       reader.readAsArrayBuffer(file);
     });
@@ -127,7 +131,7 @@ class GetImage extends Component {
 
 
   render() {
-    let { Driving_License, Id_Card, certificate, filesBase64 } = this.state;
+    let { Driving_License, Id_Card, certificate, filesBase64, profileBinarypic } = this.state;
     return (
       <div className="style">
         <div className="imgBack">
@@ -173,6 +177,22 @@ class GetImage extends Component {
                   <img
                     className="newimage"
                     src={`data:image/png;base64,` + Driving_License}
+                  />
+                </div>
+              </ReactDropzone>
+            </div>
+          )  : profileBinarypic != "" &&
+            this.props.value === "Profilepic" ? (
+            <div>
+              <ReactDropzone
+                className={this.props.value === 2 ? "dropzone2" : "dropzone"}
+                accept="image/*"
+                onDrop={this.onDrop}
+              >
+                <div className="imgcssclass">
+                  <img
+                    className="newimage"
+                    src={`data:image/png;base64,` + profileBinarypic}
                   />
                 </div>
               </ReactDropzone>
