@@ -120,9 +120,6 @@ class GetImage extends Component {
          else if (this.props.value === "RequestPayment") {
           this.props.onUploadbinaryImg(files[0]);
         }
-        else if (this.props.value === "ProfileImage") {
-          this.props.onUploadbinaryProfileImg(files[0]);
-        }
       };
       reader.readAsArrayBuffer(file);
     });

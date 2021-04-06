@@ -32,6 +32,7 @@ class ProfessionalProfile2 extends Component {
       provideService: "",
       skills: [],
       chooseCategory: [],
+      chooseCategoryHandler: false,
       getchooseCategoryFromStorage: [],
       getSkillsList: [],
       getChooseCategoryList: [],
@@ -91,9 +92,15 @@ class ProfessionalProfile2 extends Component {
     var id = target.id;
 
     if (target.checked) {
-      this.setState((prevState) => ({
-        chooseCategory: [...prevState.chooseCategory, id],
-      }));
+      if (this.state.chooseCategory != null) {
+        this.setState((prevState) => ({
+          chooseCategory: [...prevState.chooseCategory, id],
+        }));
+      } else {
+        this.setState((prevState) => ({
+          chooseCategory: [id],
+        }));
+      }
 
       // this.setState((prevState) => ({
       //  professionalProfileData: {  chooseCategory: [...prevState.chooseCategory, id], }
@@ -112,6 +119,7 @@ class ProfessionalProfile2 extends Component {
       });
     }
 
+    this.setState({ chooseCategoryHandler: true });
     this.checkvalidtion();
   }
 
@@ -121,14 +129,16 @@ class ProfessionalProfile2 extends Component {
 
   dropDownHandler(provideService2) {
     this.setState({ provideService: provideService2 });
-
     this.checkvalidtion();
   }
 
   checkExistedSkill(name) {
-    for (let i = 0; i < this.state.skills.length; i++) {
-      if (this.state.skills[i].name === name) {
-        return true;
+    let { skills } = this.state;
+    if (skills != null) {
+      for (let i = 0; i < this.state.skills.length; i++) {
+        if (this.state.skills[i].name === name) {
+          return true;
+        }
       }
     }
     return false;
@@ -142,12 +152,15 @@ class ProfessionalProfile2 extends Component {
 
   checkStoreChooseCategory = (item) => {
     const str = item.toString();
-    for (let i = 0; i < this.state.getchooseCategoryFromStorage.length; i++) {
-      if (this.state.getchooseCategoryFromStorage[i] === str) {
-        return true;
+    if (this.state.getchooseCategoryFromStorage != null) {
+      for (let i = 0; i < this.state.getchooseCategoryFromStorage.length; i++) {
+        if (this.state.getchooseCategoryFromStorage[i] === str) {
+          return true;
+        }
       }
+    } else {
+      return false;
     }
-    return false;
   };
 
   getSkillsList = () => {
@@ -165,6 +178,7 @@ class ProfessionalProfile2 extends Component {
   getCategory = () => {
     list("api/v1/category/")
       .then((response) => {
+        console.log("response of choose", response.data);
         let list_data = [];
         Object.values(response.data).map((data) => {
           list_data.push({ id: data.id, name: data.name });
@@ -181,6 +195,8 @@ class ProfessionalProfile2 extends Component {
       getchooseCategoryFromStorage: storedData,
       chooseCategory: storedData,
     });
+
+    console.log("get chhose", storedData);
   };
   getSkillsFromStorage = () => {
     var storedData = JSON.parse(localStorage.getItem("skills"));
@@ -193,7 +209,7 @@ class ProfessionalProfile2 extends Component {
   componentDidMount() {
     this.getSkillsList();
     this.getCategory();
-   // this.getCategoryFromStorage();
+    this.getCategoryFromStorage();
     this.getSkillsFromStorage();
   }
 
@@ -204,6 +220,7 @@ class ProfessionalProfile2 extends Component {
       alert: { open, severity, message, title },
       chooseCategory,
       skills,
+      chooseCategoryHandler,
     } = this.state;
     return (
       <div className="ProfessionalProfile">
@@ -225,16 +242,14 @@ class ProfessionalProfile2 extends Component {
             <strong>{message}</strong>
           </Alert>
         </Snackbar>
-        {chooseCategory != "" &&
+        {console.log("chose", chooseCategory)}
+        {chooseCategoryHandler === true &&
           localStorage.setItem(
             "choosecategory",
             JSON.stringify(chooseCategory)
           )}
-        {skills != "" &&
-          localStorage.setItem(
-            "skills",
-            JSON.stringify(skills)
-          )}
+
+        {skills != "" && localStorage.setItem("skills", JSON.stringify(skills))}
         <div className="Pf-container proff-prof">
           <div className="container Pf-rightbox   bg2 b_line2 p-5">
             <div class="container-fluid">
@@ -278,9 +293,16 @@ class ProfessionalProfile2 extends Component {
                               id: value.id,
                               name: value.name,
                             };
-                            this.setState((prevState) => ({
-                              skills: [...prevState.skills, data],
-                            }));
+
+                            if (this.state.skills != null) {
+                              this.setState((prevState) => ({
+                                skills: [...prevState.skills, data],
+                              }));
+                            } else {
+                              this.setState((prevState) => ({
+                                skills: [data],
+                              }));
+                            }
                           }
 
                           this.checkvalidtion();
@@ -303,30 +325,31 @@ class ProfessionalProfile2 extends Component {
                       </select>
 
                       <div className="test">
-                        {this.state.skills.map((item, index) => (
-                          <div
-                            className="option"
-                            style={{
-                              background: "#61C1B8",
-                              color: "white",
-                              padding: "0px 8px",
-                              margin: "7px ",
-                              borderRadius: "4px",
-                              width: "113px",
-                            }}
-                          >
-                            <h5 className="Addskillh5item">{item.name} </h5>
-                            <span
-                              className="float AddSkill_pl"
-                              onClick={() => {
-                                this.removeSkills(item);
+                        {this.state.skills != null &&
+                          this.state.skills.map((item, index) => (
+                            <div
+                              className="option"
+                              style={{
+                                background: "#61C1B8",
+                                color: "white",
+                                padding: "0px 8px",
+                                margin: "7px ",
+                                borderRadius: "4px",
+                                width: "113px",
                               }}
-                              style={{ cursor: "pointer" }}
                             >
-                              x
-                            </span>
-                          </div>
-                        ))}
+                              <h5 className="Addskillh5item">{item.name} </h5>
+                              <span
+                                className="float AddSkill_pl"
+                                onClick={() => {
+                                  this.removeSkills(item);
+                                }}
+                                style={{ cursor: "pointer" }}
+                              >
+                                x
+                              </span>
+                            </div>
+                          ))}
                       </div>
                     </div>
                   </div>

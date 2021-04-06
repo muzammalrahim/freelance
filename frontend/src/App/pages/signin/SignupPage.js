@@ -235,6 +235,7 @@ class SignupPage extends Component {
           }
         sign_up(CustomRegisterUser)
           .then((res) => {
+            console.log("sign up",res)
             this.setState({
               alert: {
                 open: true,
@@ -244,8 +245,8 @@ class SignupPage extends Component {
               },
             });
             setTimeout(() => {
-              this.props.history.push("/login");
-            }, 3000);
+              this.props.history.push("/verify-user/?user_id&timestamp&signature");
+            }, 2000);
           })
           .catch((error) => {
             this.setState({

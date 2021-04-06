@@ -8,6 +8,8 @@ export const  Linkedin_redirect_urI  = "&redirect_uri=http://localhost:3000"
 
 export const  Linkedin_LOGIN_URL  = "api/v1/rest-auth/linkedin/"
 
+export const  Verify_Email  = "api/v1/accounts/verify-registration/"
+
 
 export function login(login, password) {
     // return axios.post(LOGIN_URL, { email, password })
@@ -15,6 +17,11 @@ export function login(login, password) {
   }
 
 
+export function email_verification (user_id,timestamp,signature)
+ {
+     console.log({user_id,timestamp,signature})
+    return axios.post(process.env.REACT_APP_API_URL + Verify_Email, {user_id,timestamp,signature})
+  }
 
 export function sign_up(data) {
 
@@ -26,7 +33,6 @@ export function sign_up(data) {
               }
           }
 
-  console.log("baby",data)
     // return axios.post(LOGIN_URL, { email, password })
     return axios.post(process.env.REACT_APP_API_URL + SIGNUP_URL,data,config)
   }
@@ -54,10 +60,7 @@ export function sign_up(data) {
                     'Content-Length': data.length
                 }
             }
-
-    console.log("api:",process.env.REACT_APP_API_URL + Linkedin_LOGIN_URL)
-    console.log("length",data.length)
-    console.log("data",data)
+   
     return axios.post(process.env.REACT_APP_API_URL + Linkedin_LOGIN_URL,data,config)
 
   }

@@ -5,6 +5,7 @@ import { LinkedInPopUp } from 'react-linkedin-login-oauth2';
 // signup pages
 import SignupPage from './App/pages/signin/SignupPage'
 import SignIn from './App/pages/signin/SignIn'
+import VerifyEmail from './App/pages/signin/VerifyEmail'
 // signup pages
 
 // Registration Process
@@ -121,7 +122,7 @@ return (
 
 <Route path='/signup' exact component={SignupPage}/>
 
-
+<Route path='/verify-user/:user_id?' exact component={VerifyEmail}/>
 
 <Route path='/registration-process' exact component={Accounttype}/>
 <Route path='/tabbar-registration' exact component={TabbarRegistration}/>
