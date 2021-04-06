@@ -240,9 +240,7 @@ class PersonalProfile extends React.Component {
                       : "form-group "
                   }
                 >
-                  <label className="pp_inputHeading" >
-                    First Name
-                  </label>
+                  <label className="pp_inputHeading">First Name</label>
                   <input
                     type="text"
                     class="form-control"
@@ -274,9 +272,7 @@ class PersonalProfile extends React.Component {
                       : "form-group "
                   }
                 >
-                  <label className="pp_inputHeading" >
-                    Last name
-                  </label>
+                  <label className="pp_inputHeading">Last name</label>
                   <input
                     type="text"
                     class="form-control"
@@ -304,9 +300,7 @@ class PersonalProfile extends React.Component {
                       : "form-group "
                   }
                 >
-                  <label className="pp_inputHeading" >
-                    Mobile number
-                  </label>
+                  <label className="pp_inputHeading">Mobile number</label>
                   <input
                     type="text"
                     class="form-control"
@@ -332,9 +326,7 @@ class PersonalProfile extends React.Component {
                       : "form-group "
                   }
                 >
-                  <label className="pp_inputHeading" >
-                    Address
-                  </label>
+                  <label className="pp_inputHeading">Address</label>
                   <input
                     type="text"
                     class="form-control"
@@ -359,9 +351,7 @@ class PersonalProfile extends React.Component {
                       : "form-group "
                   }
                 >
-                  <label className="pp_inputHeading" >
-                    City
-                  </label>
+                  <label className="pp_inputHeading">City</label>
                   <input
                     type="text"
                     class="form-control"
@@ -384,9 +374,7 @@ class PersonalProfile extends React.Component {
                       : "form-group "
                   }
                 >
-                  <label className="pp_inputHeading" >
-                    Country
-                  </label>
+                  <label className="pp_inputHeading">Country</label>
                   <input
                     type="text"
                     class="form-control"

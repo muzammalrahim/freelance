@@ -18,16 +18,36 @@ this.handleChange = this.handleChange.bind(this);
 
 
 handleChange(event) {
+
+   console.log("waedad", typeof(event.target.value));
 this.setState({provide_service: event.target.value});
 this.props.changeName(event.target.value)
-
 this.props.onDropdownn(event.target.value);
 
-console.log("dropdown",event.target.value)
+if(this.props.title === "What service you provide")
+{
+   localStorage.setItem("serviceProvide",event.target.value)  
 }
 
+}
 
+getServiceProvide()
+{
+    let{provide_service} = this.state
+       
+  if (localStorage.getItem("serviceProvide")) {
+    var getserviceProvide = localStorage.getItem("serviceProvide")
+    this.setState({provide_service:getserviceProvide});
+    this.props.onDropdownn(getserviceProvide); 
+}
+      
+     
+}
 
+componentDidMount()
+{
+  this.getServiceProvide()
+}
 
 render() {
 return (

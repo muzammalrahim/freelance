@@ -24,7 +24,8 @@ export default class VerifyEmail extends Component {
 
 
     submitData=()=>{
-        const { match, location, history } = this.props;
+
+        const { match, location, history } = this.props
         
               let   user_id =  JSON.parse(match.params.user_id)
               let   timestamp = match.params.timestamp
@@ -32,7 +33,7 @@ export default class VerifyEmail extends Component {
             
          
 
-         console.log("imp data",user_id,timestamp,signature)
+         console.log("imp data",match)
          email_verification(user_id,timestamp,signature)
         .then((res) => {
             console.log("sign up",res)
