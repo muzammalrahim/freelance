@@ -34,7 +34,7 @@ export default class VerifyEmail extends Component {
             
          
 
-         console.log("imp data",user_id,timestamp,signature)
+         console.log("imp data",match)
          email_verification(user_id,timestamp,signature)
         .then((res) => {
             console.log("sign up",res)
@@ -82,6 +82,7 @@ export default class VerifyEmail extends Component {
           }}
         >
           <Alert
+
             onClose={() => {
               this.handleClose();
             }}
@@ -90,6 +91,7 @@ export default class VerifyEmail extends Component {
             <AlertTitle>{title}</AlertTitle>
             <strong>{message}</strong>
           </Alert>
+          
         </Snackbar>
             <h1> verify email</h1>
             <button onClick={()=>{this.submitData()}}> verify </button>

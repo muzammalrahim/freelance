@@ -84,6 +84,7 @@ class TabbarRegistration extends Component {
       professionalProfilestatedata,
       registrationProcessid,
       patchdata,
+      personalProfileTickIcon,
     } = this.state;
 
     this.setState({ showPersonalProfileError: true });
@@ -110,6 +111,7 @@ class TabbarRegistration extends Component {
                   message: "you have successfully update step one",
                 },
               });
+              localStorage.setItem("personalProfileTickIcon", true);
             })
             .catch((error) => {
               this.setState({
@@ -117,7 +119,9 @@ class TabbarRegistration extends Component {
                   open: true,
                   severity: "error",
                   title: "Error",
-                   message:`${"step one not completed : "+error.response.data}`
+                  message: `${
+                    "step one not completed : " + error.response.data
+                  }`,
                   // message: "step one not completed",
                 },
               });
@@ -140,6 +144,7 @@ class TabbarRegistration extends Component {
                   message: "you have successfully complete step one",
                 },
               });
+              localStorage.setItem("personalProfileTickIcon", true);
             })
             .catch((error) => {
               this.setState({
@@ -163,17 +168,32 @@ class TabbarRegistration extends Component {
       patch(
         `api/v1/freelancer_profile/${registrationProcessid}/`,
         professionalProfilestatedata
-      ).then((response) => {
-        this.setState({
-          tabindex: tabindex + 1,
-          alert: {
-            open: true,
-            severity: "success",
-            title: "success",
-            message: "you have successfully complete professional profile step",
-          },
+      )
+        .then((response) => {
+          this.setState({
+            professionalProfileTickIcon: true,
+            tabindex: tabindex + 1,
+            alert: {
+              open: true,
+              severity: "success",
+              title: "success",
+              message:
+                "you have successfully complete professional profile step",
+            },
+          });
+          localStorage.setItem("professionalProfileTickIcon", true);
+        })
+        .catch((error) => {
+          this.setState({
+            alert: {
+              open: true,
+              severity: "error",
+              title: "Error",
+              //  message:`${key+": "+error.response.data[key][0]}`
+              message: "step professional profile not completed",
+            },
+          });
         });
-      });
     } else if (
       iDVerificationDrivingLicenseIsSubmited &&
       iDVerificationIDCardIsSubmited &&
@@ -189,6 +209,7 @@ class TabbarRegistration extends Component {
           message: "you have successfully complete id verfication step ",
         },
       });
+      localStorage.setItem("iDVerificationTickIcon", true);
     } else if (iDVerificationTickIcon && tabindex === 4) {
       this.setState({
         tabindex: tabindex + 1,
@@ -208,26 +229,145 @@ class TabbarRegistration extends Component {
 
     let data = { proposal_amount: proposal_amount };
 
-    patch(`api/v1/freelancer_profile/${registrationProcessid}/`, data).then(
-      (response) => {
-        this.setState({
-          alert: {
-            open: true,
-            severity: "success",
-            title: "success",
-            message: "you have successfully complete your registration process",
-          },
-        });
-        setTimeout(() => {
-          this.props.history.push("/jobs");
-        }, 2000);
-      }
-    );
+    if (data != "" && data.proposal_amount !== null) {
+      patch(`api/v1/freelancer_profile/${registrationProcessid}/`, data).then(
+        (response) => {
+          this.setState({
+            alert: {
+              open: true,
+              severity: "success",
+              title: "success",
+              message:
+                "you have successfully complete your registration process",
+            },
+          });
+          setTimeout(() => {
+            this.props.history.push("/jobs");
+          }, 2000);
+
+          let keysToRemove = [
+            "registration_process_medel_id",
+            "choosecategory",
+            "certificate",
+            "professionalProfileCertificateIsSubmited",
+            "skills",
+            "id_card",
+            "iDVerificationIDCardIsSubmited",
+            "iDVerificationDrivingLicenseIsSubmited",
+            "personal_profile",
+            "tabindex",
+            "professionalProfileTickIcon",
+            "driving_License",
+            "profile_id",
+            "personalProfileTickIcon",
+            "iDVerificationTickIcon",
+          ];
+
+          keysToRemove.map((key) => {
+            localStorage.removeItem(key);
+          });
+        }
+      );
+    }
   };
 
   getTabIndexFromLocalStorage = (tabindex2) => {
     this.setState({ tabindex: tabindex2 });
   };
+
+  getTickIconsFromLocalStorage() {
+    if (localStorage.getItem("personalProfileTickIcon")) {
+      var getpersonalProfileTickIcon = JSON.parse(
+        localStorage.getItem("personalProfileTickIcon")
+      );
+      this.setState({ personalProfileTickIcon: getpersonalProfileTickIcon });
+    }
+
+    if (localStorage.getItem("professionalProfileTickIcon")) {
+      var getprofessionalProfileTickIcon = JSON.parse(
+        localStorage.getItem("professionalProfileTickIcon")
+      );
+      this.setState({
+        professionalProfileTickIcon: getprofessionalProfileTickIcon,
+      });
+    }
+
+    if (localStorage.getItem("professionalProfileCertificateIsSubmited")) {
+      var getprofessionalProfileCertificateIsSubmited = JSON.parse(
+        localStorage.getItem("professionalProfileCertificateIsSubmited")
+      );
+      this.setState({
+        professionalProfileCertificateIsSubmited: getprofessionalProfileCertificateIsSubmited,
+      });
+    }
+    if (localStorage.getItem("iDVerificationTickIcon")) {
+      var getiDVerificationTickIcon = JSON.parse(
+        localStorage.getItem("iDVerificationTickIcon")
+      );
+      this.setState({ iDVerificationTickIcon: getiDVerificationTickIcon });
+    }
+    if (localStorage.getItem("iDVerificationIDCardIsSubmited")) {
+      var getiDVerificationIDCardIsSubmited = JSON.parse(
+        localStorage.getItem("iDVerificationIDCardIsSubmited")
+      );
+      this.setState({
+        iDVerificationIDCardIsSubmited: getiDVerificationIDCardIsSubmited,
+      });
+    }
+    if (localStorage.getItem("iDVerificationDrivingLicenseIsSubmited")) {
+      var getiDVerificationDrivingLicenseIsSubmited = JSON.parse(
+        localStorage.getItem("iDVerificationDrivingLicenseIsSubmited")
+      );
+      this.setState({
+        iDVerificationDrivingLicenseIsSubmited: getiDVerificationDrivingLicenseIsSubmited,
+      });
+    }
+  }
+
+  removeLocalStorageData()
+  {
+    
+    let keysToRemove = [
+      "registration_process_medel_id",
+      "choosecategory",
+      "certificate",
+      "professionalProfileCertificateIsSubmited",
+      "skills",
+      "id_card",
+      "iDVerificationIDCardIsSubmited",
+      "iDVerificationDrivingLicenseIsSubmited",
+      "personal_profile",
+      "tabindex",
+      "professionalProfileTickIcon",
+      "driving_License",
+      "profile_id",
+      "personalProfileTickIcon",
+      "iDVerificationTickIcon",
+    ];
+
+    keysToRemove.map((key) => {
+      localStorage.removeItem(key);
+    });
+
+  }
+
+  getRegistrationToken()
+  {
+      var getToken = localStorage.getItem("token")
+
+      if(localStorage.getItem("registrationProcessToken"))
+      {
+        if(localStorage.getItem("registrationProcessToken") != localStorage.getItem("token"))
+        {
+          this.removeLocalStorageData()
+        }
+
+      }
+      else{
+        localStorage.setItem("registrationProcessToken",getToken)
+      }
+
+  }
 
   componentDidMount() {
     let { userid, registrationProcessid } = this.state;
@@ -261,6 +401,10 @@ class TabbarRegistration extends Component {
     }
 
     this.getTabIndexFromLocalStorage(tabindex2);
+
+    this.getTickIconsFromLocalStorage();
+
+    this.getRegistrationToken();
   }
 
   personalProfilestateHandler = (stateData, isSubmit) => {
@@ -301,6 +445,7 @@ class TabbarRegistration extends Component {
       this.setState({ data, patchdata });
       this.setState({ personalProfileIsSubmited: true });
     } else {
+      this.setState({ personalProfileIsSubmited: false });
     }
     this.setState({ showPersonalProfileError: false });
   };
@@ -315,8 +460,6 @@ class TabbarRegistration extends Component {
     let skills = [];
     let chooseCategory = [];
 
-console.log("allllll data",stateData)
-
     if (dataType === "Certficate") {
       let data = new FormData();
       data.append("file", stateData);
@@ -327,36 +470,39 @@ console.log("allllll data",stateData)
         post("api/v1/attachment/", data)
           .then((response) => {
             this.setState({ professionalProfileCertificateIsSubmited: true });
+            localStorage.setItem(
+              "professionalProfileCertificateIsSubmited",
+              true
+            );
           })
           .catch((error) => {});
     } else if (dataType === "StateData") {
       this.setState({ professionalProfilestatedata: stateData });
 
       if (
-        stateData.skills !="" &&
+        stateData.skills != "" &&
+        stateData.skills != null &&
         stateData.provideService !== "" &&
-        stateData.chooseCategory !=""
+        stateData.chooseCategory != ""
       ) {
         stateData.skills.map((key, index) => {
-          let name = key.name
-          skills.push({name});
-
-         
+          let name = key.name;
+          skills.push({ name });
         });
 
-        stateData.chooseCategory.map((key, index) => {
-          let name = key
-          chooseCategory.push({name});
-
-        });
+        stateData.chooseCategory &&
+          stateData.chooseCategory.map((key, index) => {
+            let name = key;
+            chooseCategory.push({ name });
+          });
 
         data = {
-          service:stateData.provideService,
+          service: stateData.provideService,
           skills: skills,
-          category:chooseCategory,
+          category: chooseCategory,
         };
 
-        console.log("oops",data)
+        console.log("oops", data);
         this.setState({
           professionalProfileOtherdataIsSubmited: true,
 
@@ -396,8 +542,11 @@ console.log("allllll data",stateData)
       registrationProcessid &&
         post("api/v1/attachment/", data)
           .then((response) => {
-            // iDVerificationDrivingLicenseIsSubmited = true
             this.setState({ iDVerificationDrivingLicenseIsSubmited: true });
+            localStorage.setItem(
+              "iDVerificationDrivingLicenseIsSubmited",
+              true
+            );
           })
           .catch((error) => {});
     } else if (datatype === "id_card") {
@@ -410,8 +559,8 @@ console.log("allllll data",stateData)
       registrationProcessid &&
         post("api/v1/attachment/", data)
           .then((response) => {
-            // iDVerificationIDCardIsSubmited = true
             this.setState({ iDVerificationIDCardIsSubmited: true });
+            localStorage.setItem("iDVerificationIDCardIsSubmited", true);
           })
           .catch((error) => {});
     } else {
@@ -525,8 +674,7 @@ console.log("allllll data",stateData)
                       className=" "
                       onClick={() => this.setState({ tabindex: 2 })}
                     >
-                      {professionalProfileCertificateIsSubmited &&
-                      professionalProfileOtherdataIsSubmited ? (
+                      {professionalProfileTickIcon ? (
                         <span
                           style={{
                             color: "white",
@@ -616,7 +764,7 @@ console.log("allllll data",stateData)
                       className=" "
                       onClick={() => this.setState({ tabindex: 4 })}
                     >
-                      {this.state.tabindex > 4 ? (
+                      {iDVerificationTickIcon ? (
                         <span
                           style={{
                             color: "white",
