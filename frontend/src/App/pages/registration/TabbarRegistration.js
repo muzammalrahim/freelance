@@ -253,7 +253,7 @@ class TabbarRegistration extends Component {
       registrationProcessid,
       personalProfileTickIcon,
       professionalProfileTickIcon,
-      iDVerificationDataSubmited,
+      iDVerificationTickIcon
     } = this.state;
     this.setState({ hourlyRateError: true });
 
@@ -262,7 +262,7 @@ class TabbarRegistration extends Component {
     if (
       personalProfileTickIcon &&
       professionalProfileTickIcon &&
-      iDVerificationDataSubmited
+      iDVerificationTickIcon
     ) {
       if (data != "" && data.proposal_amount !== null) {
         patch(`api/v1/freelancer_profile/${registrationProcessid}/`, data).then(
