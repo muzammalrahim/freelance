@@ -244,9 +244,9 @@ class SignupPage extends Component {
                 message: "User Created Sucessfully",
               },
             });
-            setTimeout(() => {
-              this.props.history.push("/verify-user/?user_id&timestamp&signature");
-            }, 2000);
+            // setTimeout(() => {
+              // this.props.history.push("/verify-user/?user_id&timestamp&signature");
+            // }, 2000);
           })
           .catch((error) => {
             this.setState({
