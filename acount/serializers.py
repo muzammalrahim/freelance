@@ -166,8 +166,8 @@ class ClientProfileSerializers(serializers.ModelSerializer):
 
 class FreelancerProfileSerializers(serializers.ModelSerializer):
 	# from job.serializers import AttachmentSerializer
-	skills = SkillSerializers(many=True, required=False)
-	category = CategorySerializers(many=True, required=False)
+	# skills = SkillSerializers(many=True, required=False)
+	# category = CategorySerializers(many=True, required=False)
 	city = CitySerializers(required=False)
 	country = CountrySerializers(required=False)
 	ACCOUNT_TYPE_CHOICES = (
@@ -250,17 +250,17 @@ class FreelancerProfileSerializers(serializers.ModelSerializer):
 			if city.is_valid():
 				city.save()
 
-		if 'skills' in validated_data:
-			skill = validated_data.pop('skills')
-			for data in skill:
-				k = models.Skill.objects.create(name=data.get('name'))
-				instance.skills.add(k)
-
-		if 'category' in validated_data:
-			category = validated_data.pop('category')
-			for data in category:
-				c = models.Category.objects.create(name=data.get('name'))
-				instance.category.add(c)
+		# if 'skills' in validated_data:
+		# 	skill = validated_data.pop('skills')
+		# 	for data in skill:
+		# 		k = models.Skill.objects.create(name=data.get('name'))
+		# 		instance.skills.add(k)
+		#
+		# if 'category' in validated_data:
+		# 	category = validated_data.pop('category')
+		# 	for data in category:
+		# 		c = models.Category.objects.create(name=data.get('name'))
+		# 		instance.category.add(c)
 
 		freelance_api = super().update(instance, validated_data)
 
