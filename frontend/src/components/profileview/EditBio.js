@@ -22,12 +22,20 @@ function EditUser() {
           street :  user.street,
           user : user.email,
   }
-  const loadUser = () => {
-          list(`api/v1/profile/${id}/`,alldata)
-          .then((response) => {
-          const  {...data} = response.data;
-          console.log("get data :" ,response.data)
-          setUser(data);
+  function loadUser() {
+    console.log("show response:");
+    list("api/v1/user/25/").then((response) => {
+    const data = response.data;
+    console.log("freelance id:", data.id);
+
+    setUser(data);
+
+  // const loadUser = () => {
+  //         list(`api/v1/profile/${id}/`,alldata)
+  //         .then((response) => {
+  //         const  {...data} = response.data;
+  //         console.log("get data :" ,response.data)
+  //         setUser(data);
     //       let skills =['python' , 'Java' , 'HTML' , 'Wordpress' , 'logo ','website design' ,'React'] ;
     //       const user_skills = data.skills.map((skill, index) =>{
           
@@ -115,7 +123,7 @@ function EditUser() {
                         class="form-control"
                         type="text"
                         name="user"
-                        value= {user.user.email}
+                        value= {user?.user?.email}
                         onChange={e => onInputChange(e)}
                         />
                         

@@ -68,6 +68,8 @@ class Profile(PolymorphicModel):
 
 								default='arabic', blank=True, null=True)
 	skills = models.ManyToManyField(Skill, blank=True)
+
+
 	city = models.ForeignKey(City, on_delete=models.SET_NULL, blank=True,
 							 null=True)
 	country = models.ForeignKey(Country, on_delete=models.SET_NULL, blank=True,
