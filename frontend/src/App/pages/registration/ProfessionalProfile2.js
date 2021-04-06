@@ -368,11 +368,11 @@ class ProfessionalProfile2 extends Component {
                                 type="checkbox"
                                 className="checkbox-button__input"
                                 name="hobbies"
-                                id={list.name}
+                                id={list.id}
                                 value={list.name}
                                 onChange={this.handleInputChange}
                                 checked={
-                                  this.checkStoreChooseCategory(list.name)
+                                  this.checkStoreChooseCategory(list.id)
                                     ? true
                                     : null
                                 }
