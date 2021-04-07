@@ -85,6 +85,7 @@ class GetImage extends Component {
         );
         // console.log(' base64Image ', base64Image);
         this.setState({ filesBase64: base64Image });
+        this.setState({ profileBinarypic: base64Image });
 
         // if(base64Image)
         // {
@@ -185,13 +186,13 @@ class GetImage extends Component {
             this.props.value === "Profilepic" ? (
             <div>
               <ReactDropzone
-                className={this.props.value === 2 ? "dropzone2" : "dropzone"}
+                className={this.props.value === "Profilepic" ? "profileViewPic" : "dropzone2"}
                 accept="image/*"
                 onDrop={this.onDrop}
               >
                 <div className="imgcssclass">
                   <img
-                    className="newimage"
+                    className="profileBinarypicnewimage"
                     src={`data:image/png;base64,` + profileBinarypic}
                   />
                 </div>

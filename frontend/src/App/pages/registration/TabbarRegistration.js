@@ -281,7 +281,6 @@ class TabbarRegistration extends Component {
             }, 2000);
 
             let keysToRemove = [
-              "registration_process_medel_id",
               "choosecategory",
               "certificate",
               "professionalProfileCertificateIsSubmited",
@@ -293,7 +292,6 @@ class TabbarRegistration extends Component {
               "tabindex",
               "professionalProfileTickIcon",
               "driving_License",
-              "profile_id",
               "personalProfileTickIcon",
               "iDVerificationTickIcon",
             ];
