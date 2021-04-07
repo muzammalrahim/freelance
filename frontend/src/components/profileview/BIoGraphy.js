@@ -71,9 +71,10 @@ function BioGraphy() {
 
   //get skills
   const getdata = () => {
-      list("api/v1/freelancer_profile/25/").then((response) => {
+      list(`api/v1/freelancer_profile/${35}/`)
+      .then((response) => {
       const data = response.data;
-      console.log("freelancerd :", response.data);
+      console.log("get skill data:", response.data);
       setprofileData(data);
       let user_skills;
       user_skills = data.skills.map((skills, index) => {
@@ -86,6 +87,7 @@ function BioGraphy() {
         );
       });
       setSkills(user_skills);
+      console.log("skils ",user_skills)
     });
   }
 

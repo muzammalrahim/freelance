@@ -48,11 +48,12 @@ function Card() {
       }
       
       const cardData = () => {
-        list('api/v1/freelancer_profile/24/')
+        list(`api/v1/freelancer_profile/${35}/`)
         .then((response)=>{
         const data = response.data;
         console.log("freelancerd :",response.data);
         setGetCardData(data);
+
         })
       }
   
