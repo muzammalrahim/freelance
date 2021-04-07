@@ -10,37 +10,47 @@ import list from '../../App/pages/helper/api'
 function DefaultMenu(props) {
 
   const [data, setData] = useState('');
-  const [id, setId] = useState();
-  const [user, setUser] = useState({
-  first_name : "" 
-  });
+  const [data1, setData1] = useState(
+    {
+      profile :{
+      avatar: ''
+      }
+      }
+  );
+  const [id, setId] = useState(0);
+ 
 
   const getData = () =>{
-   
+    let getid = null
     list('api/v1/accounts/profile/')
     .then((response)=>{
     const data = response.data;
-    console.log("freelancerd idfsf:",data.id);
-    
+    getid = response.data.id;
+    console.log("The ID is",getid)
     setData(data);
+    setId(getid)
     })
     }
-    
-    const getUser = () => {
-    list(`api/v1/freelancer_profile/5/`)
-    .then((response) => {
-    const data= response.data;
-    var id = JSON.parse(response.data.id);
-    console.log("freelancerd id:",id);
-    setUser(data);
-    })
-    }
-    
+
+    const getData1 = () => {
+      
+  list(`api/v1/user/${id}/`)
+  .then((response) => {
+  const data= response.data;
+  setData1(data);
+
+  })
+  }
     
     useEffect(() => {
     getData();
-    getUser();
     }, [])
+
+    useEffect(() => {
+      if(id !== 0)
+        getData1();
+      }, [id])
+      
 
     return (
       <nav className="navbar navbar-expand-md">
@@ -80,12 +90,12 @@ function DefaultMenu(props) {
                 <div className="">
                   <a href="#" class="notification mr-3">
                     <span><NotificationsIcon/>15</span>
-                    {/* <span class="badge">15</span> */}
+                    
                   </a>
                 </div>
                 </li>
                 <li>
-                <div className='avatar-user' style={{backgroundImage: `url(${AvatarImage})`}}>
+                <div className='avatar-user' style={{backgroundImage: `url(http://localhost:8000/static/media/uploads/${data1?.profile[0]?.avatar})`}}>
                       
                 </div>
                 </li>

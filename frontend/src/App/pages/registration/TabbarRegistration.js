@@ -85,6 +85,7 @@ class TabbarRegistration extends Component {
       registrationProcessid,
       patchdata,
       personalProfileTickIcon,
+      professionalProfileTickIcon,
     } = this.state;
 
     this.setState({ showPersonalProfileError: true });
@@ -160,56 +161,78 @@ class TabbarRegistration extends Component {
         }
       } else {
       }
-    } else if (
-      professionalProfileOtherdataIsSubmited &&
-      professionalProfileCertificateIsSubmited &&
-      tabindex === 2
-    ) {
-      patch(
-        `api/v1/freelancer_profile/${registrationProcessid}/`,
-        professionalProfilestatedata
-      )
-        .then((response) => {
-          this.setState({
-            professionalProfileTickIcon: true,
-            tabindex: tabindex + 1,
-            alert: {
-              open: true,
-              severity: "success",
-              title: "success",
-              message:
-                "you have successfully complete professional profile step",
-            },
-          });
-          localStorage.setItem("professionalProfileTickIcon", true);
-        })
-        .catch((error) => {
-          this.setState({
-            alert: {
-              open: true,
-              severity: "error",
-              title: "Error",
-              //  message:`${key+": "+error.response.data[key][0]}`
-              message: "step professional profile not completed",
-            },
-          });
+    } else if (tabindex === 2) {
+      if (personalProfileTickIcon) {
+        if (
+          professionalProfileOtherdataIsSubmited &&
+          professionalProfileCertificateIsSubmited
+        ) {
+          // if(personalProfileTickIcon)
+          patch(
+            `api/v1/freelancer_profile/${registrationProcessid}/`,
+            professionalProfilestatedata
+          )
+            .then((response) => {
+              this.setState({
+                professionalProfileTickIcon: true,
+                tabindex: tabindex + 1,
+                alert: {
+                  open: true,
+                  severity: "success",
+                  title: "success",
+                  message:
+                    "you have successfully complete professional profile step",
+                },
+              });
+              localStorage.setItem("professionalProfileTickIcon", true);
+            })
+            .catch((error) => {
+              this.setState({
+                alert: {
+                  open: true,
+                  severity: "error",
+                  title: "Error",
+                  //  message:`${key+": "+error.response.data[key][0]}`
+                  message: "step professional profile not completed",
+                },
+              });
+            });
+        }
+      } else {
+        this.setState({
+          alert: {
+            open: true,
+            severity: "error",
+            title: "Error",
+            message:
+              "First you should complete your previous registration steps",
+          },
         });
-    } else if (
-      iDVerificationDrivingLicenseIsSubmited &&
-      iDVerificationIDCardIsSubmited &&
-      tabindex === 3
-    ) {
-      this.setState({
-        iDVerificationTickIcon: true,
-        tabindex: tabindex + 1,
-        alert: {
-          open: true,
-          severity: "success",
-          title: "success",
-          message: "you have successfully complete id verfication step ",
-        },
-      });
-      localStorage.setItem("iDVerificationTickIcon", true);
+      }
+    } else if (tabindex === 3) {
+      if (personalProfileTickIcon && professionalProfileTickIcon) {
+        this.setState({
+          iDVerificationTickIcon: true,
+          tabindex: tabindex + 1,
+          alert: {
+            open: true,
+            severity: "success",
+            title: "success",
+            message: "you have successfully complete id verfication step ",
+          },
+        });
+        localStorage.setItem("iDVerificationTickIcon", true);
+      } else {
+        this.setState({
+          alert: {
+            open: true,
+            severity: "error",
+            title: "Error",
+            message:
+              "First you should complete your previous registration steps",
+          },
+        });
+      }
     } else if (iDVerificationTickIcon && tabindex === 4) {
       this.setState({
         tabindex: tabindex + 1,
@@ -224,50 +247,72 @@ class TabbarRegistration extends Component {
   };
 
   stepsfinish = () => {
-    let { proposal_amount, userid, registrationProcessid } = this.state;
+    let {
+      proposal_amount,
+      userid,
+      registrationProcessid,
+      personalProfileTickIcon,
+      professionalProfileTickIcon,
+      iDVerificationTickIcon
+    } = this.state;
     this.setState({ hourlyRateError: true });
 
     let data = { proposal_amount: proposal_amount };
 
-    if (data != "" && data.proposal_amount !== null) {
-      patch(`api/v1/freelancer_profile/${registrationProcessid}/`, data).then(
-        (response) => {
-          this.setState({
-            alert: {
-              open: true,
-              severity: "success",
-              title: "success",
-              message:
-                "you have successfully complete your registration process",
-            },
-          });
-          setTimeout(() => {
-            this.props.history.push("/jobs");
-          }, 2000);
+    if (
+      personalProfileTickIcon &&
+      professionalProfileTickIcon &&
+      iDVerificationTickIcon
+    ) {
+      if (data != "" && data.proposal_amount !== null) {
+        patch(`api/v1/freelancer_profile/${registrationProcessid}/`, data).then(
+          (response) => {
+            this.setState({
+              alert: {
+                open: true,
+                severity: "success",
+                title: "success",
+                message:
+                  "you have successfully complete your registration process",
+              },
+            });
+            setTimeout(() => {
+              this.props.history.push("/jobs");
+            }, 2000);
 
-          let keysToRemove = [
-            "registration_process_medel_id",
-            "choosecategory",
-            "certificate",
-            "professionalProfileCertificateIsSubmited",
-            "skills",
-            "id_card",
-            "iDVerificationIDCardIsSubmited",
-            "iDVerificationDrivingLicenseIsSubmited",
-            "personal_profile",
-            "tabindex",
-            "professionalProfileTickIcon",
-            "driving_License",
-            "profile_id",
-            "personalProfileTickIcon",
-            "iDVerificationTickIcon",
-          ];
+            let keysToRemove = [
+              "registration_process_medel_id",
+              "choosecategory",
+              "certificate",
+              "professionalProfileCertificateIsSubmited",
+              "skills",
+              "id_card",
+              "iDVerificationIDCardIsSubmited",
+              "iDVerificationDrivingLicenseIsSubmited",
+              "personal_profile",
+              "tabindex",
+              "professionalProfileTickIcon",
+              "driving_License",
+              "profile_id",
+              "personalProfileTickIcon",
+              "iDVerificationTickIcon",
+            ];
 
-          keysToRemove.map((key) => {
-            localStorage.removeItem(key);
-          });
-        }
-      );
+            keysToRemove.map((key) => {
+              localStorage.removeItem(key);
+            });
+          }
+        );
+      }
+    } else {
+      this.setState({
+        alert: {
+          open: true,
+          severity: "error",
+          title: "Error",
+          message: "First you should complete your previous registration steps",
+        },
+      });
     }
   };
 
@@ -324,9 +369,7 @@ class TabbarRegistration extends Component {
     }
   }
 
-  removeLocalStorageData()
-  {
-    
+  removeLocalStorageData() {
     let keysToRemove = [
       "registration_process_medel_id",
       "choosecategory",
@@ -348,25 +391,21 @@ class TabbarRegistration extends Component {
     keysToRemove.map((key) => {
       localStorage.removeItem(key);
     });
-
   }
 
-  getRegistrationToken()
-  {
-      var getToken = localStorage.getItem("token")
+  getRegistrationToken() {
+    var getToken = localStorage.getItem("token");
 
-      if(localStorage.getItem("registrationProcessToken"))
-      {
-        if(localStorage.getItem("registrationProcessToken") != localStorage.getItem("token"))
-        {
-          this.removeLocalStorageData()
-        }
-
+    if (localStorage.getItem("registrationProcessToken")) {
+      if (
+        localStorage.getItem("registrationProcessToken") !=
+        localStorage.getItem("token")
+      ) {
+        this.removeLocalStorageData();
       }
-      else{
-        localStorage.setItem("registrationProcessToken",getToken)
-      }
-
+    } else {
+      localStorage.setItem("registrationProcessToken", getToken);
+    }
   }
 
   componentDidMount() {
@@ -477,6 +516,7 @@ class TabbarRegistration extends Component {
           })
           .catch((error) => {});
     } else if (dataType === "StateData") {
+      console.log("statedata", stateData);
       this.setState({ professionalProfilestatedata: stateData });
 
       if (
@@ -486,14 +526,13 @@ class TabbarRegistration extends Component {
         stateData.chooseCategory != ""
       ) {
         stateData.skills.map((key, index) => {
-          let name = key.name;
-          skills.push({ name });
+          skills.push(key.id);
         });
 
         stateData.chooseCategory &&
           stateData.chooseCategory.map((key, index) => {
             let name = key;
-            chooseCategory.push({ name });
+            chooseCategory.push(name);
           });
 
         data = {
