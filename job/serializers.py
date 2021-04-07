@@ -1,13 +1,10 @@
 from rest_framework import serializers
-
-# from acount.serializers import Base64ImageField
 from job import models
 from acount import serializers as acount_serializer
 from acount import models as acount_models
 
 
 class AttachmentSerializer(serializers.ModelSerializer):
-	# # file = acount_serializer.Base64ImageField(required=False)
 	def create(self, validated_data):
 		files = validated_data.pop('file')
 		model_id = validated_data.pop('model_id')
@@ -40,15 +37,6 @@ class JobSerializer(serializers.ModelSerializer):
 
 	def to_representation(self, instance):
 		representation = super(JobSerializer, self).to_representation(instance)
-		# print("representation representation" , representation)
-		related_models = ['category', 'skills']
-		# print("related_modelsrelated_models ", related_models)
-		# for model in related_models:
-		#     try:
-		#         representation[model] = utils.to_dict(getattr(instance, model))
-		#         print("representation[model] representation[model]", representation[model])
-		#     except:
-		#         representation[model] = None
 
 		representation['skills'] = acount_serializer.SkillSerializers(instance.skills, many=True).data
 		representation['category'] = acount_serializer.CategorySerializers(instance.category).data
