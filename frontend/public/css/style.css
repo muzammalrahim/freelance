@@ -137,8 +137,15 @@ padding-bottom: 104px;
 
 .profileBinarypicnewimage{
   width: 100%;
+  height  :100px;
     border-radius: 50%;
     border: 2px solid;
+     width: "100%";
+     height: "100%";
+     border-radius: 50%;
+     border : 0.4px solid ;
+     margin-left: 30px;
+                 
 }
 .avatar-user {
   width: 40px;
@@ -146,4 +153,5 @@ padding-bottom: 104px;
   box-sizing: border-box;
   border-radius: 50%;
   background-position: center;
+  margin-left: 40px;
 }
