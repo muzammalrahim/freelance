@@ -77,6 +77,7 @@ function Card() {
   // });
   const [carddata, setcardData] = useState("");
   const [getCardData, setGetCardData] = useState({
+
     city: "",
     username: "",
     service: "",
@@ -120,6 +121,7 @@ var getProfileiD =  localStorage.getItem("profileId")
 
     list(`api/v1/freelancer_profile/${getProfileiD}/`)
       .then((response) => {
+
         const data = response.data;
         console.log("freelancerd:", response.data);
         setGetCardData(data);

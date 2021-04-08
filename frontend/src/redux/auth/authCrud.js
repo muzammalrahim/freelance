@@ -42,11 +42,10 @@ export function sign_up(data) {
   {
     let config = {
       headers: {
-      'Access-Control-Allow-Origin': '*'
-      
+      'Content-Type': 'application/x-www-form-urlencoded'
       }
     }
-    return axios.post(process.env.REACT_APP_LINKEDIN_API_URL+code+Linkedin_redirect_urI,config)
+    return axios.post(process.env.REACT_APP_LINKEDIN_API_URL+code+Linkedin_redirect_urI)
 
   }
 
@@ -56,8 +55,8 @@ export function sign_up(data) {
     let config ={
 
       headers : {
-                    'Content-Type': 'application/json',
-                    'Content-Length': data.length
+                     'Content-Type': 'application/json',
+                      'Content-Length': data.length,
                 }
             }
    

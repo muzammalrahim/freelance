@@ -72,6 +72,7 @@ function BioGraphy() {
 
   //get skills
   const getdata = () => {
+
        var getProfileid = localStorage.getItem("profileId")
       list(`api/v1/freelancer_profile/${getProfileid}/`)
       .then((response) => {

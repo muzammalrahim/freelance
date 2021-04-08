@@ -33,8 +33,7 @@ if(this.props.title === "What service you provide")
 
 getServiceProvide()
 {
-    let{provide_service} = this.state
-       
+    let{provide_service} = this.state     
   if (localStorage.getItem("serviceProvide")) {
     var getserviceProvide = localStorage.getItem("serviceProvide")
     this.setState({provide_service:getserviceProvide});
@@ -46,7 +45,10 @@ getServiceProvide()
 
 componentDidMount()
 {
+  if(this.props.title==="What service you provide")
+  {
   this.getServiceProvide()
+  }
 }
 
 render() {

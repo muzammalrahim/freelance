@@ -198,7 +198,27 @@ class GetImage extends Component {
                 </div>
               </ReactDropzone>
             </div>
-          ) : filesBase64 != "" ? (
+          ) 
+          : filesBase64 != "" &&
+          this.props.value === "Profilepic" ? (
+          <div>
+            <ReactDropzone
+              className={this.props.value === "RequestPayment" ? "dropzone" : "dropzone2"}
+              accept="image/*"
+              onDrop={this.onDrop}
+            >
+              <div className="imgcssclass">
+                <img
+                  className="profileBinarypicnewimage"
+                  src={`data:image/png;base64,` + filesBase64}
+                />
+              </div>
+            </ReactDropzone>
+          </div>
+        ) 
+          
+          
+          : filesBase64 != "" ? (
             <div>
               <ReactDropzone
                 className={this.props.value === 2 ? "dropzone2" : "dropzone"}
