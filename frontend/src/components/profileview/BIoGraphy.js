@@ -22,6 +22,7 @@ function BioGraphy() {
         mobile_no: "",
         description: profile?.description,
         id: "",
+        
       },
     ],
   });
@@ -56,7 +57,7 @@ function BioGraphy() {
       setId(getid);
     });
   }
-  const getId = () => {
+  const getDataSet = () => {
     list(`api/v1/user/${id}/`)
     .then((response) => {
       const data = response.data;
@@ -71,8 +72,10 @@ function BioGraphy() {
 
   //get skills
   const getdata = () => {
-      list(`api/v1/freelancer_profile/${35}/`)
+       var getProfileid = localStorage.getItem("profileId")
+      list(`api/v1/freelancer_profile/${getProfileid}/`)
       .then((response) => {
+
       const data = response.data;
       console.log("get skill data:", response.data);
       setprofileData(data);
@@ -94,27 +97,15 @@ function BioGraphy() {
   // get data for edit
 
   const handleChange = () => {
-    // const user = {
-    //   email: profiledata.email,
-      // profile: [
-      //   {
-      //     street: profile?.street,
-      //     mobile_no: profile?.mobile_no,
-      //     description: profile?.description,
-      //     id: profile?.id,
-      //   },
-      // ],
-    // };
     setShow(false);
-    
     patch('api/v1/accounts/profile/', profiledata)
     .then((response) => {
       const data = response.data;
       var id = JSON.parse(response.data);
       console.log("raja", response.data);
     });
-
     setUser(profiledata);
+
     patch(`api/v1/freelancer_profile/${data?.profile[0]?.id}/`, profile)
     .then((response) => {
       const data = response.data;
@@ -123,16 +114,16 @@ function BioGraphy() {
     setUser(profile);
     console.log("raja", data);
   };
+
   useEffect(() => {
     getdata();
     getDataId();
-    // getId();
     handleChange();
   }, []);
 
   useEffect(() => {
-    if(id !== 0)
-    getId();
+    if(id !== 0 )
+    getDataSet();
     }, [id])
 
   return (
