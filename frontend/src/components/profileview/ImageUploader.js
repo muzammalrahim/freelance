@@ -66,10 +66,6 @@ return (
 <div className="row">
 <div className="col-md-12">
 <form>
-{/* <div className="form-group preview">
-{imgPreview}
-
-</div> */}
 
 <div className="form-group">
 <div
@@ -80,20 +76,11 @@ width: "100px",
 >
  {this.state.Uploadimg  ?<GetImage  value="Profilepic" profilePicUpload={this.profilePicUploadHandler} /> : <div onClick={() => {
   this.Uploadimg()}}  className='avatar-user' style={{backgroundImage : `url(http://localhost:8000/static/media/uploads/${this.state.getImageFromdatabase?.profile[0]?.avatar})`}}>
-                      
+                     
 </div>
-
-
  }
 </div>
 </div>
-{/* <button
-type="button"
-className="btn btn-primary btn-block"
-onClick={this.upload}
->
-Upload
-</button> */}
 </form>
 </div>
 </div>
