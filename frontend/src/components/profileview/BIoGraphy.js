@@ -71,7 +71,7 @@ function BioGraphy() {
 
   //get skills
   const getdata = () => {
-      list("api/v1/freelancer_profile/95/").then((response) => {
+      list("api/v1/freelancer_profile/99/").then((response) => {
       const data = response.data;
       console.log("freelancerd :", response.data);
       setprofileData(data);

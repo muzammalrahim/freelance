@@ -334,11 +334,11 @@ class SignupPage extends Component {
                           : "form-group pt-4 error "
                       }
                     >
-                      <label form="usr">Full name</label>
+                      <label form="usr">User name</label>
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="Enter Full Name"
+                        placeholder="Enter User Name"
                         value={username}
                         name="username"
                         onChange={this.signupChangeHandler}

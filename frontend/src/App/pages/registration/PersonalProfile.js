@@ -94,11 +94,11 @@ class PersonalProfile extends React.Component {
               <div>
                 {" "}
                 {(per_profileValidate[key] = false)},
-                {(errorProfile[key] = "minimum Password length 3 characters")}
+                {(errorProfile[key] = "minimum length 3 characters")}
               </div>
             )
           ) : (
-            (errorProfile[key] = "Password is required")
+            (errorProfile[key] = "this is required")
           );
         }
       });
@@ -162,11 +162,11 @@ class PersonalProfile extends React.Component {
             <div>
               {" "}
               {(per_profileValidate[key] = false)},
-              {(errorProfile[key] = "minimum Password length 3 characters")}
+              {(errorProfile[key] = "minimum length 3 characters")}
             </div>
           )
         ) : (
-          (errorProfile[key] = "Password is required")
+          (errorProfile[key] = "this is required")
         );
       }
     });
