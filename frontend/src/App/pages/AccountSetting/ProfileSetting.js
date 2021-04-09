@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import  "./ProfileSetting.css"
 import Dropdown from "../../../components/Dropdown";
-
-
+import list, { patch } from "../helper/api"
 export default class ProfileSetting extends Component {
 
     constructor(props){
@@ -23,6 +22,7 @@ export default class ProfileSetting extends Component {
         this.handleToggleChange1 = this.handleToggleChange1.bind(this);
         this.handleToggleChange2 = this.handleToggleChange2.bind(this);
         this. dropDownHandler = this.dropDownHandler.bind(this);
+        this. saveChanges = this.saveChanges.bind(this);
 
 
 
@@ -65,11 +65,48 @@ export default class ProfileSetting extends Component {
     handleToggleChange2(event) 
     {
         this.setState({RadioclassActivee: 3});
-        this.setState({id:event.currentTarget.id});
-        
-        
+        this.setState({id:event.currentTarget.id});         
     }
     
+ getId()
+ {   
+       var id = localStorage.getItem("profile_id")
+        list(`api/v1/user/${id}/`)
+        .then((response) => {
+          var profileId = response.data.profile[0].id
+          localStorage.setItem("modelId",profileId)
+      
+        });
+
+ }
+
+saveChanges= () => {
+    let {id} = this.state
+
+   if(id === "junior")
+   {
+        var data = { experience_level : "junior"}
+   }
+   else if(id === "intermediate")
+   {
+        var data = { experience_level : "intermediate"}
+   }
+   else if (id === "expert")
+   {
+        var data = { experience_level : "expert"}
+   }
+    var getModelId= localStorage.getItem("modelId")
+
+   patch(`api/v1/freelancer_profile/${getModelId}/`,data)
+    .then((res)=>{
+     console.log("res34:",res)
+    })
+}
+    componentDidMount()
+    {
+        this.getId() 
+        this.saveChanges() 
+    }
 
     render() {
           
@@ -119,19 +156,19 @@ export default class ProfileSetting extends Component {
                                 <div className="row">
                                     <div className="col-md-4">
                    
-                        <div className={"card-as "+ (this.state.RadioclassActivee=== 1 ? 'card-as-green': 'hidden')} id="Entry Level" onClick={this.handleToggleChange}>              
-                                        <t>Entry Level</t>
+                        <div className={"card-as "+ (this.state.RadioclassActivee=== 1 ? 'card-as-green': 'hidden')} id="junior" onClick={this.handleToggleChange}>              
+                                        <t>Junior</t>
                                         <p>I am relatively new to this field.</p>
                                         </div>
                                     </div>
                                     <div className="col-md-4">
-                                    <div className={"card-as "+ (this.state.RadioclassActivee=== 2 ? 'card-as-green': 'hidden')} id="Intermediate" onClick={this.handleToggleChange1}>             
+                                    <div className={"card-as "+ (this.state.RadioclassActivee=== 2 ? 'card-as-green': 'hidden')} id="intermediate" onClick={this.handleToggleChange1}>             
                                         <t>Intermediate</t>
                                         <p>I have substantial experience in this field.</p>
                                         </div>
                                     </div>
                                     <div className="col-md-4">
-                                    <div className={"card-as "+ (this.state.RadioclassActivee=== 3 ? 'card-as-green': 'hidden')} id="Expert" onClick={this.handleToggleChange2}>         
+                                    <div className={"card-as "+ (this.state.RadioclassActivee=== 3 ? 'card-as-green': 'hidden')} id="expert" onClick={this.handleToggleChange2}>         
                                         <t>Expert</t>
                                         <p>I have comprehensive and deep experience in this field.</p>
                                         </div>
@@ -144,7 +181,9 @@ export default class ProfileSetting extends Component {
                         <div className="row">
                             <div className="my-profile-links col-md-12">
                                   <a href="">discard changes</a>
-                                  <button>save changes</button>
+                                  <button onClick={() => {
+                                    this.saveChanges()
+                                  }} >save changes</button>
                             </div>
                         </div>
                     </div>
