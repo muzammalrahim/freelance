@@ -381,18 +381,22 @@ class TabbarRegistration extends Component {
       "tabindex",
       "professionalProfileTickIcon",
       "driving_License",
-      "profile_id",
       "personalProfileTickIcon",
       "iDVerificationTickIcon",
+      "serviceProvide",
     ];
 
     keysToRemove.map((key) => {
       localStorage.removeItem(key);
     });
+
+    var getToken = localStorage.getItem("token")
+      localStorage.setItem("registrationProcessToken", getToken)
+    
   }
 
   getRegistrationToken() {
-    var getToken = localStorage.getItem("token");
+   
 
     if (localStorage.getItem("registrationProcessToken")) {
       if (
@@ -401,7 +405,8 @@ class TabbarRegistration extends Component {
       ) {
         this.removeLocalStorageData();
       }
-    } else {
+    } else{
+      var getToken = localStorage.getItem("token");
       localStorage.setItem("registrationProcessToken", getToken);
     }
   }
@@ -425,6 +430,8 @@ class TabbarRegistration extends Component {
 
     var tabindex2 = 1;
 
+    this.getRegistrationToken();
+
     if (localStorage.getItem("tabindex")) {
       tabindex2 = parseInt(localStorage.getItem("tabindex"));
     }
@@ -441,11 +448,10 @@ class TabbarRegistration extends Component {
 
     this.getTickIconsFromLocalStorage();
 
-    this.getRegistrationToken();
+
   }
 
   personalProfilestateHandler = (stateData, isSubmit) => {
-    console.log("data", stateData);
     let { data, userid, patchdata } = this.state;
     if (isSubmit === true) {
       data = {
@@ -514,7 +520,6 @@ class TabbarRegistration extends Component {
           })
           .catch((error) => {});
     } else if (dataType === "StateData") {
-      console.log("statedata", stateData);
       this.setState({ professionalProfilestatedata: stateData });
 
       if (
@@ -538,8 +543,6 @@ class TabbarRegistration extends Component {
           skills: skills,
           category: chooseCategory,
         };
-
-        console.log("oops", data);
         this.setState({
           professionalProfileOtherdataIsSubmited: true,
 

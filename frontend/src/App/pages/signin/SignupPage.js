@@ -235,7 +235,6 @@ class SignupPage extends Component {
           }
         sign_up(CustomRegisterUser)
           .then((res) => {
-            console.log("sign up",res)
             this.setState({
               alert: {
                 open: true,

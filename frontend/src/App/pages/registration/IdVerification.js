@@ -15,26 +15,6 @@ function IdVerification(props) {
 
   })
 
- 
-
-
-  // function checkEmptyField (isSubmit)
-  // {
-// 
-    // Object.values(validation).map((values) => {
-        // console.log("wai",values)
-    // });
-// 
-// 
-    // if(drivingLicense && idCard)
-    // {
-      // return true;
-    // }
-    //  else {
-      // return false;
-    // }
-// 
-  // }
 
   function drimgUpload(binaryfile) {
  let isSubmit = null
