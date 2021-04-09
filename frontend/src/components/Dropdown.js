@@ -18,8 +18,6 @@ this.handleChange = this.handleChange.bind(this);
 
 
 handleChange(event) {
-
-   console.log("waedad", typeof(event.target.value));
 this.setState({provide_service: event.target.value});
 this.props.changeName(event.target.value)
 this.props.onDropdownn(event.target.value);

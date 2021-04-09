@@ -59,18 +59,15 @@ class ProfessionalProfile2 extends Component {
 
     Object.keys(validation).map((key) => {
       if (key === "chooseCategory") {
-        // return provideService ? console.log("chooseCategory",key) : null
-        // validation[key] = chooseCategory  ? true : false
+    
       } else if (key === "skills") {
         if (this.state.skills !== "") {
         }
-        //return skills.length > 0 ? console.log("skills",key) : null
-        //  validation[key] = skills.length > 0 ? true : false
+
       } else if (key === "provideService") {
         if (this.state.provideService !== "") {
         }
-        //  return provideService ? console.log("provideService",key) :null
-        // validation[key] = provideService ? true : false
+
       }
     });
     this.setState({ validation });
@@ -178,7 +175,6 @@ class ProfessionalProfile2 extends Component {
   getCategory = () => {
     list("api/v1/category/")
       .then((response) => {
-        console.log("response of choose", response.data);
         let list_data = [];
         Object.values(response.data).map((data) => {
           list_data.push({ id: data.id, name: data.name });
@@ -196,7 +192,6 @@ class ProfessionalProfile2 extends Component {
       chooseCategory: storedData,
     });
 
-    console.log("get chhose", storedData);
   };
   getSkillsFromStorage = () => {
     var storedData = JSON.parse(localStorage.getItem("skills"));
@@ -242,7 +237,6 @@ class ProfessionalProfile2 extends Component {
             <strong>{message}</strong>
           </Alert>
         </Snackbar>
-        {console.log("chose", chooseCategory)}
         {chooseCategoryHandler === true &&
           localStorage.setItem(
             "choosecategory",

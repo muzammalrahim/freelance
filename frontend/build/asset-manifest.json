@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.0cf2e480.chunk.css",
-    "main.js": "/static/js/main.bbd553c0.chunk.js",
-    "main.js.map": "/static/js/main.bbd553c0.chunk.js.map",
+    "main.css": "/static/css/main.0aefc8e3.chunk.css",
+    "main.js": "/static/js/main.c6dd4c9e.chunk.js",
+    "main.js.map": "/static/js/main.c6dd4c9e.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.5adc5ad9.js",
     "runtime-main.js.map": "/static/js/runtime-main.5adc5ad9.js.map",
     "static/css/2.2f1c09ac.chunk.css": "/static/css/2.2f1c09ac.chunk.css",
-    "static/js/2.50ecd9dd.chunk.js": "/static/js/2.50ecd9dd.chunk.js",
-    "static/js/2.50ecd9dd.chunk.js.map": "/static/js/2.50ecd9dd.chunk.js.map",
+    "static/js/2.f0e685b4.chunk.js": "/static/js/2.f0e685b4.chunk.js",
+    "static/js/2.f0e685b4.chunk.js.map": "/static/js/2.f0e685b4.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.2f1c09ac.chunk.css.map": "/static/css/2.2f1c09ac.chunk.css.map",
-    "static/css/main.0cf2e480.chunk.css.map": "/static/css/main.0cf2e480.chunk.css.map",
-    "static/js/2.50ecd9dd.chunk.js.LICENSE.txt": "/static/js/2.50ecd9dd.chunk.js.LICENSE.txt",
+    "static/css/main.0aefc8e3.chunk.css.map": "/static/css/main.0aefc8e3.chunk.css.map",
+    "static/js/2.f0e685b4.chunk.js.LICENSE.txt": "/static/js/2.f0e685b4.chunk.js.LICENSE.txt",
     "static/media/1-01.ad17da0e.png": "/static/media/1-01.ad17da0e.png",
     "static/media/AvatarImage1.c2584ed1.png": "/static/media/AvatarImage1.c2584ed1.png",
     "static/media/AvatarImage2.1bf882c2.png": "/static/media/AvatarImage2.1bf882c2.png",
@@ -33,6 +33,7 @@
     "static/media/certificate.6c4b0215.png": "/static/media/certificate.6c4b0215.png",
     "static/media/certificate2.e3ed99c4.png": "/static/media/certificate2.e3ed99c4.png",
     "static/media/dislike.8cc62ea9.svg": "/static/media/dislike.8cc62ea9.svg",
+    "static/media/download.65629b4c.png": "/static/media/download.65629b4c.png",
     "static/media/font-awesome.min.css": "/static/media/fontawesome-webfont.f691f37e.woff",
     "static/media/preview1.96ed7d42.png": "/static/media/preview1.96ed7d42.png",
     "static/media/preview2.027f2dee.png": "/static/media/preview2.027f2dee.png",
@@ -43,8 +44,8 @@
   "entrypoints": [
     "static/js/runtime-main.5adc5ad9.js",
     "static/css/2.2f1c09ac.chunk.css",
-    "static/js/2.50ecd9dd.chunk.js",
-    "static/css/main.0cf2e480.chunk.css",
-    "static/js/main.bbd553c0.chunk.js"
+    "static/js/2.f0e685b4.chunk.js",
+    "static/css/main.0aefc8e3.chunk.css",
+    "static/js/main.c6dd4c9e.chunk.js"
   ]
 }
