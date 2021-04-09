@@ -294,6 +294,7 @@ class TabbarRegistration extends Component {
               "driving_License",
               "personalProfileTickIcon",
               "iDVerificationTickIcon",
+              "registration_process_medel_id"
             ];
 
             keysToRemove.map((key) => {
@@ -384,6 +385,7 @@ class TabbarRegistration extends Component {
       "personalProfileTickIcon",
       "iDVerificationTickIcon",
       "serviceProvide",
+      
     ];
 
     keysToRemove.map((key) => {
