@@ -25,19 +25,14 @@ export default class VerifyEmail extends Component {
 
     submitData=()=>{
       const query= new URLSearchParams(this.props.location.search)
-      console.log("this.props.",query.get("user_id"));
         const { match, location, history } = this.props;
         
               let   user_id =  query.get("user_id")
               let   timestamp = query.get("timestamp")
               let  signature = query.get("signature")
             
-         
-
-         console.log("imp data",match)
          email_verification(user_id,timestamp,signature)
         .then((res) => {
-            console.log("sign up",res)
             this.setState({
               alert: {
                 open: true,
@@ -95,7 +90,6 @@ export default class VerifyEmail extends Component {
         </Snackbar>
             <h1> verify email</h1>
             <button onClick={()=>{this.submitData()}}> verify </button>
-            {console.log( match)} 
             </div>
         )
     }

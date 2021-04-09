@@ -75,15 +75,12 @@ class GetImage extends Component {
       reader.onerror = () => console.log("file reading has failed");
       reader.onload = () => {
         const binaryStr = reader.result;
-        // console.log(' binaryStr ', binaryStr);
-
         var base64Image = btoa(
           new Uint8Array(binaryStr).reduce(
             (data, byte) => data + String.fromCharCode(byte),
             ""
           )
         );
-        // console.log(' base64Image ', base64Image);
         this.setState({ filesBase64: base64Image });
         this.setState({ profileBinarypic: base64Image });
 
