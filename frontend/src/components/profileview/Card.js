@@ -147,7 +147,7 @@ var getProfileiD =  localStorage.getItem("profileId")
             <div className="pt-3 pb-2">
               <Uploading />
             </div>
-            <div className="profile pt-3">
+            <div className="profile">
               <h5>
                 <b>
                   {profiledata.first_name} {profiledata.last_name}
@@ -177,7 +177,7 @@ var getProfileiD =  localStorage.getItem("profileId")
                     </div>
                     <div className="col-md-10">
                       <a href="">
-                        <p>SAR {data?.profile[0]?.id} Per/Hour</p>
+                        <p>SAR {data?.profile[0]?.proposal_amount} Per/Hour</p>
                       </a>
                     </div>
                   </div>
@@ -218,7 +218,7 @@ var getProfileiD =  localStorage.getItem("profileId")
                     
                       <a href="">
                         <p>
-                          Join {   createdDate.split("T11", 1)}
+                          Join {   createdDate.split("", 10)}
                         </p>
                       </a>
                     </div>
